@@ -1,14 +1,13 @@
-// import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../../components/EditScreenInfo';
-import { Text, View } from '../../components/Themed';
+import Button from "../../components/Button";
+import { Text, View } from "../../components/Themed";
 
 export default function TabOneScreen() {
   return (
-    <View className="bg-red-600">
-      <Text className='text-red-500'>TEST TEST asd</Text>
-      <View lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+    <View className="flex justify-center items-center h-full">
+      <View className="flex">
+        <Button label="asd" onPress={() => {}}></Button>
+        {/* <Text className="text-red-500">TEST TEST asd</Text> */}
+      </View>
     </View>
   );
 }
