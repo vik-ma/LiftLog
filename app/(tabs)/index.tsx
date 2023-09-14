@@ -1,30 +1,20 @@
+import React, { useState } from "react";
 import Button from "../../components/Button";
 import { Text, View } from "../../components/Themed";
 
 export default function TabOneScreen() {
+  const [buttonText, setButtonText] = useState<string>("");
+
   return (
     <View className="flex justify-center items-center h-full">
-      <View className="flex">
-        <Button label="asd" onPress={() => {}}></Button>
-        {/* <Text className="text-red-500">TEST TEST asd</Text> */}
+      <View className="flex justify-center items-center">
+        <Text>{buttonText}</Text>
+        <Button
+          label="Test Button"
+          styling="bg-red-500"
+          onPress={() => setButtonText("Test")}
+        ></Button>
       </View>
     </View>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   title: {
-//     fontSize: 20,
-//     fontWeight: 'bold',
-//   },
-//   separator: {
-//     marginVertical: 30,
-//     height: 1,
-//     width: '80%',
-//   },
-// });
