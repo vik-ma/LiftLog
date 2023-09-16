@@ -77,7 +77,7 @@ function App(): JSX.Element {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           <Section title="Step One">
-            <Text>TEST TEST</Text>
+            <Text>TEST TEST asd</Text>
           </Section>
           <Section title="See Your Changes">
             <ReloadInstructions />
