@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LocalLiftLog.Views.EditRoutinePage"
              Title="Edit Routine">
-    <VerticalStackLayout>
+    <!--<VerticalStackLayout>
         <Label 
             x:Name="lblName"
             Text="Welcome to .NET MAUI!"
@@ -11,5 +11,43 @@
             HorizontalOptions="Center" />
 
         <Button x:Name="btnCancel" Text="Cancel" Clicked="btnCancel_Clicked"></Button>
+    </VerticalStackLayout>-->
+
+    <VerticalStackLayout 
+        Spacing="30" 
+        Margin="50, 30, 50, 50">
+
+        <Frame 
+            Padding="10" 
+            WidthRequest="320">
+            <HorizontalStackLayout>
+                <Label Text="Name" VerticalOptions="Center" WidthRequest="80"></Label>
+                <Entry x:Name="entryName" VerticalOptions="Center" WidthRequest="200"></Entry>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <Frame 
+            Padding="10" 
+            WidthRequest="320">
+            <HorizontalStackLayout>
+                <Label Text="Order Slot" VerticalOptions="Center" WidthRequest="80"></Label>
+                <Entry x:Name="entryOrderSlot" VerticalOptions="Center" WidthRequest="200"></Entry>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <Button 
+            Padding="10"
+            WidthRequest="320" 
+            x:Name="btnUpdate" 
+            Text="Update" 
+            Clicked="btnUpdate_Clicked"></Button>
+        
+        <Button 
+            Padding="10"
+            WidthRequest="320" 
+            x:Name="btnCancel" 
+            Text="Cancel" 
+            Clicked="btnCancel_Clicked"></Button>
+
     </VerticalStackLayout>
 </ContentPage>

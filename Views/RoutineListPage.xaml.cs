@@ -1,4 +1,5 @@
 using LocalLiftLog.Models;
+using System.Collections.ObjectModel;
 using Routine = LocalLiftLog.Models.Routine;
 
 namespace LocalLiftLog.Views;
@@ -9,12 +10,16 @@ public partial class RoutineListPage : ContentPage
 	public RoutineListPage()
 	{
 		InitializeComponent();
+	}
 
-        List<Routine> routines = RoutineRepository.GetRoutines();
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        var routines = new ObservableCollection<Routine>(RoutineRepository.GetRoutines());
 
         listRoutines.ItemsSource = routines;
-        
-	}
+    }
 
     private async void listRoutines_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {

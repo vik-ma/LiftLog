@@ -20,7 +20,31 @@ namespace LocalLiftLog.Models
 
         public static Routine GetRoutineById(int routineId)
         {
-            return _routines.FirstOrDefault(x => x.RoutineId == routineId);
+            var routine = _routines.FirstOrDefault(x => x.RoutineId == routineId);
+
+            if (routine != null) 
+            {
+                return new Routine
+                {
+                    RoutineId = routineId,
+                    Name = routine.Name,
+                    OrderSlot = routine.OrderSlot,
+                };
+            }
+            return null;
+        }
+
+        public static void UpdateRoutine(int routineId, Routine routine)
+        {
+            if (routineId != routine.RoutineId) return;
+
+            var routineToUpdate = _routines.FirstOrDefault(x => x.RoutineId == routineId);
+
+            if (routine != null)
+            {
+                routineToUpdate.Name = routine.Name;
+                routineToUpdate.OrderSlot = routine.OrderSlot;
+            }
         }
     }
 }
