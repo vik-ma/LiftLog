@@ -20,7 +20,7 @@ public partial class RoutineListPage : ContentPage
     {
         if (listRoutines.SelectedItem != null)
         {
-            await Shell.Current.GoToAsync(nameof(EditRoutinePage));
+            await Shell.Current.GoToAsync($"{nameof(EditRoutinePage)}?Id={((Routine)listRoutines.SelectedItem).RoutineId}");
         }
     }
 

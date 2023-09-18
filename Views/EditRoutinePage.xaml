@@ -5,6 +5,7 @@
              Title="Edit Routine">
     <VerticalStackLayout>
         <Label 
+            x:Name="lblName"
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
