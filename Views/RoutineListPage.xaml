@@ -3,7 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LocalLiftLog.Views.RoutineListPage"
              Title="Routine List">
-    <VerticalStackLayout Spacing="5">
+    
+    <ListView 
+        x:Name="listRoutines" 
+        BackgroundColor="Transparent"
+        SeparatorColor="Silver"
+        RowHeight="50"
+        ItemSelected="listRoutines_ItemSelected"
+        ItemTapped="listRoutines_ItemTapped"
+        >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell 
+                    Text="{Binding Name}"
+                    Detail="{Binding OrderSlot}"></TextCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        
+    </ListView>
+    
+    <!--<VerticalStackLayout Spacing="5">
         <Label 
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
@@ -11,5 +30,5 @@
         <Button x:Name="btnEditRoutineList" Clicked="btnEditRoutineList_Clicked" Text="Edit Routine List"></Button>
         <Button x:Name="btnAddRoutine" Clicked="btnAddRoutine_Clicked" Text="Add Routine"></Button>
         <Button x:Name="btnEditRoutine" Clicked="btnEditRoutine_Clicked" Text="Edit Routine"></Button>
-    </VerticalStackLayout>
+    </VerticalStackLayout>-->
 </ContentPage>
