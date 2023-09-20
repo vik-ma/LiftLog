@@ -25,8 +25,8 @@ public partial class EditRoutinePage : ContentPage
             routine = RoutineRepository.GetRoutineById(int.Parse(value));
             if (routine != null) 
             {
-                entryName.Text = routine.Name;
-                entryOrderSlot.Text = routine.OrderSlot.ToString();
+                routineCtrl.Name = routine.Name;
+                routineCtrl.OrderSlot = routine.OrderSlot.ToString();
             }
             
         }
@@ -34,25 +34,15 @@ public partial class EditRoutinePage : ContentPage
 
     private void btnUpdate_Clicked(object sender, EventArgs e)
     {
-        if (nameValidator.IsNotValid)
-        {
-            DisplayAlert("Error", "Name is required.", "OK");
-            return;
-        }
-
-        if (orderSlotValidator.IsNotValid)
-        {
-            foreach(var error in orderSlotValidator.Errors) 
-            {
-                DisplayAlert("Error", error.ToString(), "OK");
-            }
-            return;
-        }
-
-        routine.Name = entryName.Text;
-        routine.OrderSlot = int.Parse(entryOrderSlot.Text);
+        routine.Name = routineCtrl.Name;
+        routine.OrderSlot = int.Parse(routineCtrl.OrderSlot);
 
         RoutineRepository.UpdateRoutine(routine.RoutineId, routine);
         Shell.Current.GoToAsync("..");
+    }
+
+    private void routineCtrl_OnError(object sender, string e)
+    {
+        DisplayAlert("Error", e, "OK");
     }
 }

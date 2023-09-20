@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="LocalLiftLog.Views.Controls.RoutineControl">
+    <VerticalStackLayout 
+    Spacing="30" 
+    Margin="50, 30, 50, 50">
+
+        <Frame 
+        Padding="10" 
+        WidthRequest="320">
+            <HorizontalStackLayout>
+                <Label Text="Name" VerticalOptions="Center" WidthRequest="80"></Label>
+                <Entry x:Name="entryName" VerticalOptions="Center" WidthRequest="200">
+                    <Entry.Behaviors>
+                        <toolkit:TextValidationBehavior 
+                        x:Name="nameValidator"
+                        Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                        MinimumLength="1"
+                        />
+                    </Entry.Behaviors>
+                </Entry>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <Frame 
+        Padding="10" 
+        WidthRequest="320">
+            <HorizontalStackLayout>
+                <Label Text="Order Slot" VerticalOptions="Center" WidthRequest="80"></Label>
+                <Entry x:Name="entryOrderSlot" VerticalOptions="Center" WidthRequest="200" Keyboard="Numeric">
+                    <Entry.Behaviors>
+                        <toolkit:MultiValidationBehavior
+                        x:Name="orderSlotValidator"
+                        Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                        >
+                            <toolkit:TextValidationBehavior 
+                            Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                            MinimumLength="1"
+                            toolkit:MultiValidationBehavior.Error="Order Slot is required."
+                            />
+                        </toolkit:MultiValidationBehavior>
+                    </Entry.Behaviors>
+                </Entry>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <Button 
+        Padding="10"
+        WidthRequest="320" 
+        x:Name="btnSave" 
+        Text="Save" 
+        Clicked="btnSave_Clicked"></Button>
+
+        <Button 
+        Padding="10"
+        WidthRequest="320" 
+        x:Name="btnCancel" 
+        Text="Cancel" 
+        Clicked="btnCancel_Clicked"></Button>
+
+    </VerticalStackLayout>
+</ContentView>
