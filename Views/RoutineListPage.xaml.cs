@@ -34,18 +34,8 @@ public partial class RoutineListPage : ContentPage
         listRoutines.SelectedItem = null;
     }
 
-    //private void btnEditRoutineList_Clicked(object sender, EventArgs e)
-    //{
-    //    Shell.Current.GoToAsync(nameof(EditRoutineListPage));
-    //}
-
-    //private void btnAddRoutine_Clicked(object sender, EventArgs e)
-    //{
-    //    Shell.Current.GoToAsync(nameof(AddRoutinePage));
-    //}
-
-    //private void btnEditRoutine_Clicked(object sender, EventArgs e)
-    //{
-    //    Shell.Current.GoToAsync(nameof(EditRoutinePage));
-    //}
+    private void btnAdd_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync(nameof(AddRoutinePage));
+    }
 }
