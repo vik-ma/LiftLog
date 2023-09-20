@@ -16,9 +16,7 @@ public partial class RoutineListPage : ContentPage
     {
         base.OnAppearing();
 
-        var routines = new ObservableCollection<Routine>(RoutineRepository.GetRoutines());
-
-        listRoutines.ItemsSource = routines;
+        LoadRoutines();
     }
 
     private async void listRoutines_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -37,5 +35,21 @@ public partial class RoutineListPage : ContentPage
     private void btnAdd_Clicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(AddRoutinePage));
+    }
+
+    private void Delete_Clicked(object sender, EventArgs e)
+    {
+        var menuItem = sender as MenuItem;
+        var routine = menuItem.CommandParameter as Routine;
+        RoutineRepository.DeleteRoutine(routine.RoutineId);
+
+        LoadRoutines();
+    }
+
+    private void LoadRoutines()
+    {
+        var routines = new ObservableCollection<Routine>(RoutineRepository.GetRoutines());
+
+        listRoutines.ItemsSource = routines;
     }
 }

@@ -53,5 +53,15 @@ namespace LocalLiftLog.Models
             routine.RoutineId = maxId + 1;
             _routines.Add(routine);
         }
+
+        public static void DeleteRoutine(int routineId)
+        {
+            var routine = _routines.FirstOrDefault(x => x.RoutineId == routineId);
+
+            if (routine != null)
+            {
+                _routines.Remove(routine);
+            }
+        }
     }
 }
