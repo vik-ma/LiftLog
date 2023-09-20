@@ -63,5 +63,17 @@ namespace LocalLiftLog.Models
                 _routines.Remove(routine);
             }
         }
+
+        public static List<Routine> SearchRoutines(string filterText)
+        {
+            var routines = _routines.Where(x => !string.IsNullOrWhiteSpace(x.Name) && x.Name.StartsWith(filterText, StringComparison.OrdinalIgnoreCase))?.ToList();
+
+            if (routines == null || routines.Count <= 0)
+                routines = _routines.Where(x => !string.IsNullOrWhiteSpace(x.OrderSlot.ToString()) && x.OrderSlot.ToString().StartsWith(filterText, StringComparison.OrdinalIgnoreCase))?.ToList();
+            else
+                return routines;
+
+            return routines;
+        }
     }
 }

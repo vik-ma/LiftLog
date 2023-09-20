@@ -16,6 +16,8 @@ public partial class RoutineListPage : ContentPage
     {
         base.OnAppearing();
 
+        SearchBar.Text = string.Empty;
+
         LoadRoutines();
     }
 
@@ -49,6 +51,13 @@ public partial class RoutineListPage : ContentPage
     private void LoadRoutines()
     {
         var routines = new ObservableCollection<Routine>(RoutineRepository.GetRoutines());
+
+        listRoutines.ItemsSource = routines;
+    }
+
+    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        var routines = new ObservableCollection<Routine>(RoutineRepository.SearchRoutines(((SearchBar)sender).Text));
 
         listRoutines.ItemsSource = routines;
     }
