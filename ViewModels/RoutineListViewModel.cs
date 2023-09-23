@@ -2,13 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using LocalLiftLog.Data;
 using LocalLiftLog.Models;
-using MetalPerformanceShadersGraph;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocalLiftLog.ViewModels
 {
@@ -53,6 +47,7 @@ namespace LocalLiftLog.ViewModels
             }, "Fetching Routine List...");  
         }
 
+        #nullable enable
         [RelayCommand]
         private void SetOperatingRoutineList(RoutineList? routineList) => OperatingRoutineList = routineList ?? new();
 
@@ -85,7 +80,7 @@ namespace LocalLiftLog.ViewModels
 
                     RoutineList.Insert(index, routineListCopy);
                 }
-
+                #nullable disable
                 setOperatingRoutineListCommand.Execute(new());
             }, busyText);
         }
@@ -107,12 +102,14 @@ namespace LocalLiftLog.ViewModels
             }, "Deleting Routine List...");
         }
 
+        #nullable enable
         private async Task ExecuteAsync(Func<Task> operation, string? busyText = null)
         {
             IsBusy = true;
             BusyText = busyText ?? "Processing...";
             try
             {
+                #nullable disable
                 await operation?.Invoke();
             }
             finally
