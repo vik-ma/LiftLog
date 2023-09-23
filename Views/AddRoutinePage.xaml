@@ -4,9 +4,9 @@
              xmlns:controls="clr-namespace:LocalLiftLog.Views.Controls"
              x:Class="LocalLiftLog.Views.AddRoutinePage"
              Title="Add Routine">
-    <controls:RoutineControl 
+    <!--<controls:RoutineControl 
         x:Name="routineCtrl" 
         OnSave="routineCtrl_OnSave" 
         OnCancel="routineCtrl_OnCancel"
-        OnError="routineCtrl_OnError"></controls:RoutineControl>
+        OnError="routineCtrl_OnError"></controls:RoutineControl>-->
 </ContentPage>

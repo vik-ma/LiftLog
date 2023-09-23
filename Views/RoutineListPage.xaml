@@ -4,7 +4,7 @@
              x:Class="LocalLiftLog.Views.RoutineListPage"
              Title="Routine List">
 
-    <Grid 
+    <!--<Grid 
         Padding="5"
         RowDefinitions="50, *, 50"
         ColumnDefinitions="*">
@@ -49,5 +49,5 @@
             Clicked="btnAdd_Clicked">
 
         </Button>
-    </Grid>
+    </Grid>-->
 </ContentPage>

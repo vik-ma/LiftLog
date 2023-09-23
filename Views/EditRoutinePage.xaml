@@ -6,10 +6,10 @@
              x:Class="LocalLiftLog.Views.EditRoutinePage"
              Title="Edit Routine">
 
-    <controls:RoutineControl 
+    <!--<controls:RoutineControl 
         x:Name="routineCtrl" 
         OnSave="btnUpdate_Clicked" 
         OnCancel="btnCancel_Clicked" 
-        OnError="routineCtrl_OnError"></controls:RoutineControl>
+        OnError="routineCtrl_OnError"></controls:RoutineControl>-->
     
 </ContentPage>

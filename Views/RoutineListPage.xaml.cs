@@ -1,64 +1,64 @@
 using LocalLiftLog.Models;
 using System.Collections.ObjectModel;
-using Routine = LocalLiftLog.Models.Routine;
+//using Routine = LocalLiftLog.Models.Routine;
 
 namespace LocalLiftLog.Views;
 
 
 public partial class RoutineListPage : ContentPage
 {
-	public RoutineListPage()
-	{
-		InitializeComponent();
-	}
+	//public RoutineListPage()
+	//{
+	//	InitializeComponent();
+	//}
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
+ //   protected override void OnAppearing()
+ //   {
+ //       base.OnAppearing();
 
-        SearchBar.Text = string.Empty;
+ //       SearchBar.Text = string.Empty;
 
-        LoadRoutines();
-    }
+ //       LoadRoutines();
+ //   }
 
-    private async void listRoutines_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-    {
-        if (listRoutines.SelectedItem != null)
-        {
-            await Shell.Current.GoToAsync($"{nameof(EditRoutinePage)}?Id={((Routine)listRoutines.SelectedItem).RoutineId}");
-        }
-    }
+ //   private async void listRoutines_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+ //   {
+ //       if (listRoutines.SelectedItem != null)
+ //       {
+ //           await Shell.Current.GoToAsync($"{nameof(EditRoutinePage)}?Id={((Routine)listRoutines.SelectedItem).RoutineId}");
+ //       }
+ //   }
 
-    private void listRoutines_ItemTapped(object sender, ItemTappedEventArgs e)
-    {
-        listRoutines.SelectedItem = null;
-    }
+ //   private void listRoutines_ItemTapped(object sender, ItemTappedEventArgs e)
+ //   {
+ //       listRoutines.SelectedItem = null;
+ //   }
 
-    private void btnAdd_Clicked(object sender, EventArgs e)
-    {
-        Shell.Current.GoToAsync(nameof(AddRoutinePage));
-    }
+ //   private void btnAdd_Clicked(object sender, EventArgs e)
+ //   {
+ //       Shell.Current.GoToAsync(nameof(AddRoutinePage));
+ //   }
 
-    private void Delete_Clicked(object sender, EventArgs e)
-    {
-        var menuItem = sender as MenuItem;
-        var routine = menuItem.CommandParameter as Routine;
-        RoutineRepository.DeleteRoutine(routine.RoutineId);
+ //   private void Delete_Clicked(object sender, EventArgs e)
+ //   {
+ //       var menuItem = sender as MenuItem;
+ //       var routine = menuItem.CommandParameter as Routine;
+ //       RoutineRepository.DeleteRoutine(routine.RoutineId);
 
-        LoadRoutines();
-    }
+ //       LoadRoutines();
+ //   }
 
-    private void LoadRoutines()
-    {
-        var routines = new ObservableCollection<Routine>(RoutineRepository.GetRoutines());
+ //   private void LoadRoutines()
+ //   {
+ //       var routines = new ObservableCollection<Routine>(RoutineRepository.GetRoutines());
 
-        listRoutines.ItemsSource = routines;
-    }
+ //       listRoutines.ItemsSource = routines;
+ //   }
 
-    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
-    {
-        var routines = new ObservableCollection<Routine>(RoutineRepository.SearchRoutines(((SearchBar)sender).Text));
+ //   private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+ //   {
+ //       var routines = new ObservableCollection<Routine>(RoutineRepository.SearchRoutines(((SearchBar)sender).Text));
 
-        listRoutines.ItemsSource = routines;
-    }
+ //       listRoutines.ItemsSource = routines;
+ //   }
 }
