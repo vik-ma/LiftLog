@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.Data
 {
-    public class DatabaseContext
+    public class DatabaseContext : IAsyncDisposable
     {
         private const string DbName = "LiftLogDb.db3";
         private static string DbPath => Path.Combine(FileSystem.AppDataDirectory, DbName);
@@ -81,6 +81,11 @@ namespace LocalLiftLog.Data
             return await Execute<TTable, bool>(async () => await Database.DeleteAsync<TTable>(primaryKey) > 0);
             //await CreateTableIfNotExists<TTable>();
             //return await Database.DeleteAsync<TTable>(primaryKey) > 0;
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            await _connection?.CloseAsync();
         }
     }
 }

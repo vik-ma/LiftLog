@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using LocalLiftLog.Data;
+using LocalLiftLog.ViewModels;
 using Microsoft.Extensions.Logging;
 
 namespace LocalLiftLog
@@ -22,6 +23,8 @@ namespace LocalLiftLog
 		builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<DatabaseContext>();
+            builder.Services.AddSingleton<RoutineListViewModel>();
+            builder.Services.AddSingleton<MainPage>();
 
             return builder.Build();
         }
