@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using LocalLiftLog.Data;
 using Microsoft.Extensions.Logging;
 
 namespace LocalLiftLog
@@ -20,6 +21,7 @@ namespace LocalLiftLog
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+            builder.Services.AddSingleton<DatabaseContext>();
 
             return builder.Build();
         }
