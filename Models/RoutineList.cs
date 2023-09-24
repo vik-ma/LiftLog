@@ -15,5 +15,18 @@ namespace LocalLiftLog.Models
         public int OrderSlot { get; set; }
 
         public RoutineList Clone() => MemberwiseClone() as RoutineList;
+
+        public (bool IsValid, string? ErrorMessage) Validate()
+        {
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                return (false, $"{nameof(Name)} is required.");
+            }
+            else if (OrderSlot <= 0)
+            {
+                return (false, $"{nameof(OrderSlot)} should be grater than 0.");
+            }
+            return (true, null);
+        }
     }
 }

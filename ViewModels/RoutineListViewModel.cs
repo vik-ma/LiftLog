@@ -57,7 +57,14 @@ namespace LocalLiftLog.ViewModels
             if (OperatingRoutineList is null)
                 return;
 
-            var busyText = OperatingRoutineList.Id == 0 ? "Creating Routine List..." : "Updating Product";
+            var (isValid, errorMessage) = OperatingRoutineList.Validate();
+            if (!isValid)
+            {
+                await Shell.Current.DisplayAlert("Validation Error", errorMessage, "OK");
+                return;
+            }
+
+            var busyText = OperatingRoutineList.Id == 0 ? "Creating Routine List..." : "Updating Routine List";
 
             await ExecuteAsync(async () =>
             {
@@ -80,7 +87,7 @@ namespace LocalLiftLog.ViewModels
                     RoutineList.Insert(index, routineListCopy);
                 }
                 #nullable disable
-                setOperatingRoutineListCommand.Execute(new());
+                SetOperatingRoutineListCommand.Execute(new());
             }, busyText);
         }
 

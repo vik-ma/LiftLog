@@ -1,7 +1,5 @@
 ﻿namespace LocalLiftLog;
 using LocalLiftLog.ViewModels;
-using Microsoft.Maui.Controls.Compatibility.Platform.UWP;
-using Windows.Graphics.Display;
 
 public partial class MainPage : ContentPage
 {
