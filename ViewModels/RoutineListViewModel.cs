@@ -16,7 +16,7 @@ namespace LocalLiftLog.ViewModels
         }
 
         [ObservableProperty]
-        private ObservableCollection<RoutineList> _routineList;
+        private ObservableCollection<RoutineList> _routineList = new();
 
         [ObservableProperty]
         private RoutineList _operatingRoutineList = new();
