@@ -1,24 +1,23 @@
-﻿namespace LocalLiftLog
+﻿namespace LocalLiftLog;
+using LocalLiftLog.ViewModels;
+using Microsoft.Maui.Controls.Compatibility.Platform.UWP;
+using Windows.Graphics.Display;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    private readonly RoutineListViewModel _viewModel;
+        
+    public MainPage(RoutineListViewModel viewModel)
     {
-        int count = 0;
-
-        public MainPage()
-        {
-            InitializeComponent();
-        }
-
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
+        InitializeComponent();
+        _viewModel = viewModel;
+        BindingContext = _viewModel;
     }
+
+    protected async override void OnAppearing()
+    {
+        base.OnAppearing();
+        await _viewModel.LoadRoutineListAsync();
+    }
+
 }

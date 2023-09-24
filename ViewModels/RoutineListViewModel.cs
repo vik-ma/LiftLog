@@ -27,8 +27,7 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private string _busyText;
 
-        [RelayCommand]
-        private async Task LoadRoutineListAsync()
+        public async Task LoadRoutineListAsync()
         {
             await ExecuteAsync(async () =>
             {
