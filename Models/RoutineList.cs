@@ -16,6 +16,7 @@ namespace LocalLiftLog.Models
 
         public RoutineList Clone() => MemberwiseClone() as RoutineList;
 
+        #nullable enable
         public (bool IsValid, string? ErrorMessage) Validate()
         {
             if (string.IsNullOrWhiteSpace(Name))

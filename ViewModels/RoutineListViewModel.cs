@@ -77,14 +77,20 @@ namespace LocalLiftLog.ViewModels
                 else
                 {
                     // Update Routine List
-                    await _context.UpdateItemAsync<RoutineList>(OperatingRoutineList);
+                    if (await _context.UpdateItemAsync<RoutineList>(OperatingRoutineList))
+                    {
+                        var routineListCopy = OperatingRoutineList.Clone();
 
-                    var routineListCopy = OperatingRoutineList.Clone();
+                        var index = RoutineList.IndexOf(OperatingRoutineList);
+                        RoutineList.RemoveAt(index);
 
-                    var index = RoutineList.IndexOf(OperatingRoutineList);
-                    RoutineList.RemoveAt(index);
-
-                    RoutineList.Insert(index, routineListCopy);
+                        RoutineList.Insert(index, routineListCopy);
+                    }
+                    else
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Product Updation Error", "OK");
+                        return;
+                    }
                 }
                 #nullable disable
                 SetOperatingRoutineListCommand.Execute(new());
@@ -117,6 +123,10 @@ namespace LocalLiftLog.ViewModels
             {
                 #nullable disable
                 await operation?.Invoke();
+            }
+            catch
+            {
+
             }
             finally
             {
