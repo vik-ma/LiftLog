@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LocalLiftLog.Helpers;
 
 namespace LocalLiftLog.Models
 {
@@ -12,6 +13,7 @@ namespace LocalLiftLog.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Name { get; set; }
+        public string CurrentDateTime { get; set; }
         public string Test { get; set; }    
 
         public RoutineList Clone() => MemberwiseClone() as RoutineList;
@@ -24,6 +26,10 @@ namespace LocalLiftLog.Models
                 return (false, $"{nameof(Name)} is required.");
             }
             return (true, null);
+        }
+        public void UpdateCurrentDateTime()
+        {
+            CurrentDateTime = DateTimeHelper.GetCurrentFormattedDateTime();
         }
     }
 }
