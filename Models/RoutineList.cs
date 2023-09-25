@@ -12,7 +12,6 @@ namespace LocalLiftLog.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Name { get; set; }
-        public int OrderSlot { get; set; }
         public string Test { get; set; }    
 
         public RoutineList Clone() => MemberwiseClone() as RoutineList;
@@ -23,10 +22,6 @@ namespace LocalLiftLog.Models
             if (string.IsNullOrWhiteSpace(Name))
             {
                 return (false, $"{nameof(Name)} is required.");
-            }
-            else if (OrderSlot <= 0)
-            {
-                return (false, $"{nameof(OrderSlot)} should be grater than 0.");
             }
             return (true, null);
         }

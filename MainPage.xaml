@@ -63,12 +63,6 @@
                                 Grid.Column="0"
                                 Text="{Binding Name}"
                                 FontAttributes="Bold" />
-                            <!--<Label 
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Text="{Binding OrderSlot, StringFormat='Order Slot: {0}'}"
-                                FontSize="14"
-                                FontAttributes="Bold" />-->
                             <Label 
                                 Grid.Row="1"
                                 Grid.Column="0"
@@ -140,13 +134,12 @@
                     <VerticalStackLayout 
                         Grid.Row="0"
                         Grid.Column="1">
-                        <Label Text="Order Slot" />
+                        <Label Text="Test" />
                         <Entry 
-                            Text="{Binding OperatingRoutineList.OrderSlot}"
-                            Placeholder="Order Slot"
+                            Text="{Binding OperatingRoutineList.Test}"
+                            Placeholder="Test"
                             Margin="0"
                             BackgroundColor="#DAD1F9"
-                            Keyboard="Numeric"
                              />
                     </VerticalStackLayout>
 
