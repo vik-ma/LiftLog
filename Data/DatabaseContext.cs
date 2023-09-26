@@ -51,36 +51,26 @@ namespace LocalLiftLog.Data
         public async Task<TTable> GetItemByKeyAsync<TTable>(object primaryKey) where TTable : class, new()
         {
             return await Execute<TTable, TTable>(async () => await Database.GetAsync<TTable>(primaryKey));
-            //await CreateTableIfNotExists<TTable>();
-            //return await Database.GetAsync<TTable>(primaryKey);
         }
 
         public async Task<bool> AddItemAsync<TTable>(TTable item) where TTable : class, new()
         {
             return await Execute<TTable, bool>(async () => await Database.InsertAsync(item) > 0);
-            //await CreateTableIfNotExists<TTable>();
-            //return await Database.InsertAsync(item) > 0;
         }
 
         public async Task<bool> UpdateItemAsync<TTable>(TTable item) where TTable : class, new()
         {
             return await Execute<TTable, bool>(async () => await Database.UpdateAsync(item) > 0);
-            //await CreateTableIfNotExists<TTable>();
-            //return await Database.UpdateAsync(item) > 0;
         }
 
         public async Task<bool> DeleteItemAsync<TTable>(TTable item) where TTable : class, new()
         {
             return await Execute<TTable, bool>(async () => await Database.DeleteAsync(item) > 0);
-            //await CreateTableIfNotExists<TTable>();
-            //return await Database.DeleteAsync(item) > 0;
         }
 
         public async Task<bool> DeleteItemByKeyAsync<TTable>(object primaryKey) where TTable : class, new()
         {
             return await Execute<TTable, bool>(async () => await Database.DeleteAsync<TTable>(primaryKey) > 0);
-            //await CreateTableIfNotExists<TTable>();
-            //return await Database.DeleteAsync<TTable>(primaryKey) > 0;
         }
 
         public async ValueTask DisposeAsync()
