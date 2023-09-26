@@ -100,7 +100,7 @@
                                                 FontAttributes="Bold"
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                             <Span 
-                                                Text="{Binding Focus, Converter={StaticResource emptyStringToEmptyText}}"
+                                                Text="{Binding Focus, Converter={StaticResource emptyStringToEmptyText}, ConverterParameter=Focus}"
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>

@@ -13,9 +13,12 @@ namespace LocalLiftLog.Converters
         {
             if (value == null || (value is string stringValue && string.IsNullOrEmpty(stringValue)))
             {
+                if (parameter is string context && !string.IsNullOrEmpty(context))
+                {
+                    return $"No {context} Set";
+                }
                 return "Empty";
             }
-
             return value;
         }
 
