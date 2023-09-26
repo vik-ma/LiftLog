@@ -55,7 +55,7 @@
                     <DataTemplate x:DataType="models:RoutineList">
                         <Grid RowDefinitions="Auto, Auto"
                               ColumnDefinitions="*, Auto"
-                              RowSpacing="5"
+                              RowSpacing="2"
                               Padding="10"
                               BackgroundColor="#ECECEC">
                             <Label 
@@ -66,8 +66,13 @@
                             <Label 
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                Text="{Binding CurrentDateTime, Converter={StaticResource emptyStringToEmptyText}}"
+                                Text="{Binding LastUpdateDateTime, Converter={StaticResource emptyStringToEmptyText}}"
                                 FontAttributes="Bold" />
+                            <!--<Label 
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="{Binding Focus, Converter={StaticResource emptyStringToEmptyText}}"
+                                FontAttributes="Bold" />-->
 
                             <Button 
                                 Grid.Row="0"
@@ -131,17 +136,16 @@
                             Margin="0" 
                             BackgroundColor="#DAD1F9" />
                     </VerticalStackLayout>
-                    <!--<VerticalStackLayout 
+                    <VerticalStackLayout 
                         Grid.Row="0"
                         Grid.Column="1">
-                        <Label Text="Test" />
+                        <Label Text="Routine Focus" />
                         <Entry 
-                            Text="{Binding OperatingRoutineList.Test}"
-                            Placeholder="Test"
+                            Text="{Binding OperatingRoutineList.Focus}"
+                            Placeholder="Routine Focus"
                             Margin="0"
-                            BackgroundColor="#DAD1F9"
-                             />
-                    </VerticalStackLayout>-->
+                            BackgroundColor="#DAD1F9" />
+                    </VerticalStackLayout>
 
                     <Button 
                         Grid.Row="1"

@@ -13,7 +13,8 @@ namespace LocalLiftLog.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Name { get; set; }
-        public string CurrentDateTime { get; set; }  
+        public string LastUpdateDateTime { get; set; }  
+        public string Focus { get; set; }
 
         public RoutineList Clone() => MemberwiseClone() as RoutineList;
 
@@ -26,9 +27,9 @@ namespace LocalLiftLog.Models
             }
             return (true, null);
         }
-        public void UpdateCurrentDateTime()
+        public void UpdateDateTime()
         {
-            CurrentDateTime = DateTimeHelper.GetCurrentFormattedDateTime();
+            LastUpdateDateTime = DateTimeHelper.GetCurrentFormattedDateTime();
         }
     }
 }

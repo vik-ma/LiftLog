@@ -64,7 +64,7 @@ namespace LocalLiftLog.ViewModels
                 return;
             }
 
-            OperatingRoutineList.UpdateCurrentDateTime();
+            OperatingRoutineList.UpdateDateTime();
 
             var busyText = OperatingRoutineList.Id == 0 ? "Creating Routine List..." : "Updating Routine List";
 
