@@ -27,6 +27,12 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private string _busyText;
 
+        [ObservableProperty]
+        private bool _isEditing;
+
+        [ObservableProperty]
+        private string _isCreatingNew;
+
         public async Task LoadRoutineListAsync()
         {
             await ExecuteAsync(async () =>

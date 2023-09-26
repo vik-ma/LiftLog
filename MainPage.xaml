@@ -11,6 +11,11 @@
 
     <ContentPage.Resources>
         <converters:EmptyStringToEmptyTextConverter x:Key="emptyStringToEmptyText" />
+        <ResourceDictionary>
+            <Style x:Key="RoutineSpanStyle" TargetType="Span">
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+        </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
@@ -38,8 +43,8 @@
             Grid.Row="0"
             Text="Routine List"
             FontAttributes="Bold"
-            FontSize="18"
-            Padding="10"/>
+            FontSize="22"
+            Padding="6, 10"/>
         <Grid 
             Grid.Row="1"
             RowDefinitions="*, Auto">
@@ -55,44 +60,73 @@
                     <DataTemplate x:DataType="models:RoutineList">
                         <Grid RowDefinitions="Auto, Auto"
                               ColumnDefinitions="*, Auto"
-                              RowSpacing="2"
                               Padding="10"
                               BackgroundColor="#ECECEC">
-                            <Label 
-                                Grid.Row="0"
+                            <VerticalStackLayout 
+                                Grid.Row="0" 
                                 Grid.Column="0"
-                                Text="{Binding Name}"
-                                FontAttributes="Bold" />
-                            <Label 
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Text="{Binding LastUpdateDateTime, Converter={StaticResource emptyStringToEmptyText}}"
-                                FontAttributes="Bold" />
-                            <!--<Label 
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Text="{Binding Focus, Converter={StaticResource emptyStringToEmptyText}}"
-                                FontAttributes="Bold" />-->
-
-                            <Button 
+                                Spacing="15">
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Name: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Name}"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Last Updated: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding LastUpdateDateTime, Converter={StaticResource emptyStringToEmptyText}}"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Focus: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Focus, Converter={StaticResource emptyStringToEmptyText}}"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout
                                 Grid.Row="0"
                                 Grid.Column="1"
-                                Text="Edit"
-                                Padding="20, 0"
-                                HeightRequest="25"
-                                FontSize="14"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=SetOperatingRoutineListCommand}" 
-                                CommandParameter="{Binding .}" />
-                            
-                            <Button 
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Text="Delete"
-                                Padding="20, 0"
-                                HeightRequest="25"
-                                FontSize="14"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=DeleteRoutineListCommand}" 
-                                CommandParameter="{Binding Id}" />
+                                Spacing="10" >
+                                <Button 
+                                    Text="Edit"
+                                    Padding="20, 0"
+                                    HeightRequest="25"
+                                    FontSize="16"
+                                    FontAttributes="Bold" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=SetOperatingRoutineListCommand}" 
+                                    CommandParameter="{Binding .}" />
+                                <Button 
+                                    Text="Delete"
+                                    Padding="20, 0"
+                                    HeightRequest="25"
+                                    FontSize="16"
+                                    FontAttributes="Bold" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=DeleteRoutineListCommand}" 
+                                    CommandParameter="{Binding Id}" />
+                            </VerticalStackLayout>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
