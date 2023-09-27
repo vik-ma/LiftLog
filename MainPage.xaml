@@ -153,13 +153,14 @@
                 <BoxView 
                     Color="{DynamicResource Primary}"
                     HeightRequest="1" />
-                <Grid 
+                <Grid
                     RowDefinitions="Auto, Auto"
                     ColumnDefinitions="*, Auto"
                     Padding="10"
                     RowSpacing="10"
                     ColumnSpacing="10"
-                    BackgroundColor="#CCBFFA" >
+                    BackgroundColor="#CCBFFA"
+                    IsVisible="{Binding IsEditing}">
                     <VerticalStackLayout 
                         Grid.Row="0"
                         Grid.Column="0">

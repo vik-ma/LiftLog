@@ -28,7 +28,7 @@ namespace LocalLiftLog.ViewModels
         private string _busyText;
 
         [ObservableProperty]
-        private bool _isEditing;
+        private bool _isEditing = false;
 
         [ObservableProperty]
         private string _isCreatingNew;
@@ -54,7 +54,11 @@ namespace LocalLiftLog.ViewModels
 
         #nullable enable
         [RelayCommand]
-        private void SetOperatingRoutineList(RoutineList? routineList) => OperatingRoutineList = routineList ?? new();
+        private void SetOperatingRoutineList(RoutineList? routineList)
+        {
+            OperatingRoutineList = routineList ?? new();
+            IsEditing = true;
+        }
 
 
         [RelayCommand]
@@ -140,7 +144,14 @@ namespace LocalLiftLog.ViewModels
             {
                 IsBusy = false;
                 BusyText = "Processing...";
+                IsEditing = false;
             }
+        }
+
+        [RelayCommand]
+        private void ShowEditMenu()
+        {
+            
         }
     }
 }
