@@ -99,7 +99,7 @@
                                                 Text="Last Updated: " 
                                                 FontAttributes="Bold"
                                                 Style="{StaticResource RoutineSpanStyle}" />
-                                                                            <Span 
+                                            <Span 
                                                 Text="{Binding LastUpdateDateTime, Converter={StaticResource emptyStringToEmptyText}}"
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                         </FormattedString>
@@ -165,6 +165,53 @@
                         Grid.Row="0"
                         Grid.Column="0">
                         <Label 
+                            Grid.Column="0"
+                            Text="Edit Routine" 
+                            FontAttributes="Bold"
+                            FontSize="26"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center" >
+                            <Label.Triggers>
+                                <DataTrigger 
+                                    TargetType="Label"        
+                                    Binding="{Binding OperatingRoutineList.Id}"                
+                                    Value="0">
+                                    <Setter 
+                                        Property="Text" 
+                                        Value="Create New Routine" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout 
+                        Grid.Row="0"
+                        Grid.Column="2">
+                        <Button 
+                            Grid.Column="1"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            Text="Update Routine"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            CornerRadius="6"
+                            Command="{Binding SaveRoutineListCommand}">
+                            <Button.Triggers>
+                                <DataTrigger 
+                                    TargetType="Button"
+                                    Binding="{Binding OperatingRoutineList.Id}"
+                                    Value="0">
+                                    <Setter 
+                                        Property="Text" 
+                                        Value="Create Routine" />
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout 
+                        Grid.Row="1"
+                        Grid.Column="0">
+                        <Label 
                             Text="Name:" 
                             FontAttributes="Bold" 
                             Margin="5, 0"
@@ -174,8 +221,13 @@
                             Margin="5, 0"
                             FontSize="20">
                             <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding OperatingRoutineList.Id}" Value="0">
-                                    <Setter Property="IsVisible" Value="False" />
+                                <DataTrigger 
+                                    TargetType="Label"        
+                                    Binding="{Binding OperatingRoutineList.Id}"                
+                                    Value="0">
+                                    <Setter 
+                                        Property="IsVisible" 
+                                        Value="False" />
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
@@ -184,10 +236,10 @@
                             Placeholder="Name"
                             Margin="0, 5"
                             BackgroundColor="#DAD1F9"
-                            FontSize="20" />
+                            FontSize="20"/>
                     </VerticalStackLayout>
                     <VerticalStackLayout 
-                        Grid.Row="0"
+                        Grid.Row="1"
                         Grid.Column="1">
                         <Label 
                             Text="Focus:" 
@@ -199,8 +251,13 @@
                             Margin="5, 0"
                             FontSize="20">
                             <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding OperatingRoutineList.Id}" Value="0">
-                                    <Setter Property="IsVisible" Value="False" />
+                                <DataTrigger 
+                                    TargetType="Label" 
+                                    Binding="{Binding OperatingRoutineList.Id}" 
+                                    Value="0">
+                                    <Setter 
+                                        Property="IsVisible" 
+                                        Value="False" />
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
@@ -209,27 +266,9 @@
                             Placeholder="Focus"
                             Margin="0, 5"
                             BackgroundColor="#DAD1F9"
-                            FontSize="20" />
+                            FontSize="20"
+                            WidthRequest="400" />
                     </VerticalStackLayout>
-
-                    <Button 
-                        Grid.Row="1"
-                        Grid.Column="2"
-                        Text="Update Routine"
-                        HorizontalOptions="Center"
-                        VerticalOptions="End"
-                        CornerRadius="4"
-                        Padding="50, 0" 
-                        Command="{Binding SaveRoutineListCommand}">
-                        <Button.Triggers>
-                            <DataTrigger 
-                                TargetType="Button"
-                                Binding="{Binding OperatingRoutineList.Id}"
-                                Value="0">
-                                <Setter Property="Text" Value="Create Routine" />
-                            </DataTrigger>
-                        </Button.Triggers>
-                    </Button>
                 </Grid>
             </VerticalStackLayout>
         </Grid>
