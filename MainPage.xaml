@@ -172,11 +172,17 @@
                         <Label 
                             Text="{Binding OperatingRoutineList.Name}" 
                             Margin="5, 0"
-                            FontSize="20" />
+                            FontSize="20">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding OperatingRoutineList.Id}" Value="0">
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
                         <Entry 
                             Text="{Binding OperatingRoutineList.Name}"
                             Placeholder="Name"
-                            Margin="0, 10"
+                            Margin="0, 5"
                             BackgroundColor="#DAD1F9"
                             FontSize="20" />
                     </VerticalStackLayout>
@@ -189,13 +195,19 @@
                             Margin="5, 0"
                             FontSize="20" />
                         <Label 
-                            Text="{Binding OperatingRoutineList.Focus}"
+                            Text="{Binding OperatingRoutineList.Focus}" 
                             Margin="5, 0"
-                            FontSize="20"/>
+                            FontSize="20">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding OperatingRoutineList.Id}" Value="0">
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
                         <Entry 
                             Text="{Binding OperatingRoutineList.Focus}"
                             Placeholder="Focus"
-                            Margin="0, 10"
+                            Margin="0, 5"
                             BackgroundColor="#DAD1F9"
                             FontSize="20" />
                     </VerticalStackLayout>
