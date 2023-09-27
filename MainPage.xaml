@@ -18,33 +18,52 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem 
             Text="{OnPlatform Default='+ Add Routine', iOS='+'}"
             Command="{Binding SetOperatingRoutineListCommand}" />
-    </ContentPage.ToolbarItems>
-    
-    <Grid RowDefinitions="Auto, *">
+    </ContentPage.ToolbarItems>-->
+
+    <Grid 
+        RowDefinitions="Auto, *">
+        <VerticalStackLayout
+            Grid.Row="0"
+            Grid.Column="0"
+            >
+            <Label 
+                Text="Routine List"
+                VerticalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="22"
+                Padding="6, 10"
+                />
+        </VerticalStackLayout>
+        <VerticalStackLayout
+            Grid.Row="0"
+            Grid.Column="1"
+            HorizontalOptions="End"
+            VerticalOptions="Center"
+            MaximumWidthRequest="400">
+            <Button
+                Text="Create New Routine"
+                FontSize="16"
+                FontAttributes="Bold"
+                Command="{Binding SetOperatingRoutineListCommand}" />
+        </VerticalStackLayout>
         <VerticalStackLayout 
             Grid.RowSpan="2"
             VerticalOptions="Center"
             HorizontalOptions="Center"
             IsVisible="{Binding IsBusy}">
-            <ActivityIndicator 
-                IsRunning="True"
-                VerticalOptions="Center"
-                HorizontalOptions="Center" />
-            <Label 
-                Text="{Binding BusyText}"
-                VerticalOptions="Center"
-                HorizontalOptions="Center" />
+                <ActivityIndicator 
+                    IsRunning="True"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center" />
+                <Label 
+                    Text="{Binding BusyText}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center" />
         </VerticalStackLayout>
-        <Label 
-            Grid.Row="0"
-            Text="Routine List"
-            FontAttributes="Bold"
-            FontSize="22"
-            Padding="6, 10"/>
         <Grid 
             Grid.Row="1"
             RowDefinitions="*, Auto">
