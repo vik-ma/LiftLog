@@ -30,9 +30,6 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private bool _isEditing = false;
 
-        [ObservableProperty]
-        private string _isCreatingNew;
-
         public async Task LoadRoutineListAsync()
         {
             await ExecuteAsync(async () =>

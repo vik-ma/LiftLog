@@ -15,7 +15,6 @@ namespace LocalLiftLog.Models
         public string Name { get; set; }
         public string LastUpdateDateTime { get; set; }  
         public string Focus { get; set; }
-
         public string Test { get; set; }    
 
         public RoutineList Clone() => MemberwiseClone() as RoutineList;

@@ -164,22 +164,40 @@
                     <VerticalStackLayout 
                         Grid.Row="0"
                         Grid.Column="0">
-                        <Label Text="Name" />
+                        <Label 
+                            Text="Name:" 
+                            FontAttributes="Bold" 
+                            Margin="5, 0"
+                            FontSize="20" />
+                        <Label 
+                            Text="{Binding OperatingRoutineList.Name}" 
+                            Margin="5, 0"
+                            FontSize="20" />
                         <Entry 
                             Text="{Binding OperatingRoutineList.Name}"
-                            Placeholder="Routine Name"
-                            Margin="0" 
-                            BackgroundColor="#DAD1F9" />
+                            Placeholder="Name"
+                            Margin="0, 10"
+                            BackgroundColor="#DAD1F9"
+                            FontSize="20" />
                     </VerticalStackLayout>
                     <VerticalStackLayout 
                         Grid.Row="0"
                         Grid.Column="1">
-                        <Label Text="Routine Focus" />
+                        <Label 
+                            Text="Focus:" 
+                            FontAttributes="Bold" 
+                            Margin="5, 0"
+                            FontSize="20" />
+                        <Label 
+                            Text="{Binding OperatingRoutineList.Focus}"
+                            Margin="5, 0"
+                            FontSize="20"/>
                         <Entry 
                             Text="{Binding OperatingRoutineList.Focus}"
-                            Placeholder="Routine Focus"
-                            Margin="0"
-                            BackgroundColor="#DAD1F9" />
+                            Placeholder="Focus"
+                            Margin="0, 10"
+                            BackgroundColor="#DAD1F9"
+                            FontSize="20" />
                     </VerticalStackLayout>
 
                     <Button 
