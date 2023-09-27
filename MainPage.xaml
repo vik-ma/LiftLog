@@ -211,7 +211,7 @@
                         Grid.Row="1"
                         Grid.Column="0">
                         <Label 
-                            Text="Name:" 
+                            Text="Name" 
                             FontAttributes="Bold" 
                             Margin="5, 0"
                             FontSize="20" />
@@ -241,7 +241,7 @@
                         Grid.Row="1"
                         Grid.Column="1">
                         <Label 
-                            Text="Focus:" 
+                            Text="Focus (Optional)" 
                             FontAttributes="Bold" 
                             Margin="5, 0"
                             FontSize="20" />
