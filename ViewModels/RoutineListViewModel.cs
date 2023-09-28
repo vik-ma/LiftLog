@@ -16,10 +16,10 @@ namespace LocalLiftLog.ViewModels
         }
 
         [ObservableProperty]
-        private ObservableCollection<RoutineList> _routineList = new();
+        private ObservableCollection<Routine> _routine = new();
 
         [ObservableProperty]
-        private RoutineList _operatingRoutineList = new();
+        private Routine _operatingRoutine = new();
 
         [ObservableProperty]
         private bool _isBusy;
@@ -30,20 +30,20 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private bool _isEditing = false;
 
-        public async Task LoadRoutineListAsync()
+        public async Task LoadRoutinesAsync()
         {
             await ExecuteAsync(async () =>
             {
-                var routineList = await _context.GetAllAsync<RoutineList>();
+                var routines = await _context.GetAllAsync<Routine>();
                 // Add more models here
 
-                if (routineList is not null && routineList.Any())
+                if (routines is not null && routines.Any())
                 {
-                    routineList ??= new ObservableCollection<RoutineList>();
+                    routines ??= new ObservableCollection<Routine>();
 
-                    foreach (var routine in routineList)
+                    foreach (var routine in routines)
                     {
-                        RoutineList.Add(routine);
+                        Routine.Add(routine);
                     }
                 }
             }, "Fetching Routine List...");  
@@ -51,49 +51,49 @@ namespace LocalLiftLog.ViewModels
 
         #nullable enable
         [RelayCommand]
-        private void SetOperatingRoutineList(RoutineList? routineList)
+        private void SetOperatingRoutine(Routine? routine)
         {
-            OperatingRoutineList = routineList ?? new();
+            OperatingRoutine = routine ?? new();
             IsEditing = true;
         }
 
 
         [RelayCommand]
-        private async Task SaveRoutineListAsync()
+        private async Task SaveRoutineAsync()
         {
-            if (OperatingRoutineList is null)
+            if (OperatingRoutine is null)
                 return;
 
-            var (isValid, errorMessage) = OperatingRoutineList.Validate();
+            var (isValid, errorMessage) = OperatingRoutine.Validate();
             if (!isValid)
             {
                 await Shell.Current.DisplayAlert("Validation Error", errorMessage, "OK");
                 return;
             }
 
-            OperatingRoutineList.UpdateDateTime();
+            OperatingRoutine.UpdateDateTime();
 
-            var busyText = OperatingRoutineList.Id == 0 ? "Creating Routine List..." : "Updating Routine List";
+            var busyText = OperatingRoutine.Id == 0 ? "Creating Routine List..." : "Updating Routine List";
 
             await ExecuteAsync(async () =>
             {
-                if (OperatingRoutineList.Id == 0)
+                if (OperatingRoutine.Id == 0)
                 {
                     // Create Routine List
-                    await _context.AddItemAsync<RoutineList>(OperatingRoutineList);
-                    RoutineList.Add(OperatingRoutineList);
+                    await _context.AddItemAsync<Routine>(OperatingRoutine);
+                    Routine.Add(OperatingRoutine);
                 }
                 else
                 {
                     // Update Routine List
-                    if (await _context.UpdateItemAsync<RoutineList>(OperatingRoutineList))
+                    if (await _context.UpdateItemAsync<Routine>(OperatingRoutine))
                     {
-                        var routineListCopy = OperatingRoutineList.Clone();
+                        var routineCopy = OperatingRoutine.Clone();
 
-                        var index = RoutineList.IndexOf(OperatingRoutineList);
-                        RoutineList.RemoveAt(index);
+                        var index = Routine.IndexOf(OperatingRoutine);
+                        Routine.RemoveAt(index);
 
-                        RoutineList.Insert(index, routineListCopy);
+                        Routine.Insert(index, routineCopy);
                     }
                     else
                     {
@@ -102,19 +102,19 @@ namespace LocalLiftLog.ViewModels
                     }
                 }
                 #nullable disable
-                SetOperatingRoutineListCommand.Execute(new());
+                SetOperatingRoutineCommand.Execute(new());
             }, busyText);
         }
 
         [RelayCommand]
-        private async Task DeleteRoutineListAsync(int id)
+        private async Task DeleteRoutineAsync(int id)
         {
             await ExecuteAsync(async () =>
             {
-                if (await _context.DeleteItemByKeyAsync<RoutineList>(id))
+                if (await _context.DeleteItemByKeyAsync<Routine>(id))
                 {
-                    var routineList = RoutineList.FirstOrDefault(p => p.Id == id);
-                    RoutineList.Remove(routineList);
+                    var routine = Routine.FirstOrDefault(p => p.Id == id);
+                    Routine.Remove(routine);
                 }
                 else
                 {

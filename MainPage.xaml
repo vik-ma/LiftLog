@@ -18,25 +18,17 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem 
-            Text="{OnPlatform Default='+ Add Routine', iOS='+'}"
-            Command="{Binding SetOperatingRoutineListCommand}" />
-    </ContentPage.ToolbarItems>-->
-
     <Grid 
         RowDefinitions="Auto, *">
         <VerticalStackLayout
             Grid.Row="0"
-            Grid.Column="0"
-            >
+            Grid.Column="0">
             <Label 
                 Text="Routine List"
                 VerticalOptions="Center"
                 FontAttributes="Bold"
                 FontSize="22"
-                Padding="6, 10"
-                />
+                Padding="6, 10" />
         </VerticalStackLayout>
         <VerticalStackLayout
             Grid.Row="0"
@@ -48,7 +40,7 @@
                 Text="Create New Routine"
                 FontSize="16"
                 FontAttributes="Bold"
-                Command="{Binding SetOperatingRoutineListCommand}" />
+                Command="{Binding SetOperatingRoutineCommand}" />
         </VerticalStackLayout>
         <VerticalStackLayout 
             Grid.RowSpan="2"
@@ -69,14 +61,14 @@
             RowDefinitions="*, Auto">
             <CollectionView 
                 Grid.Row="0"
-                ItemsSource="{Binding RoutineList}">
+                ItemsSource="{Binding Routine}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout 
                         ItemSpacing="3"
-                        Orientation="Vertical"/>
+                        Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:RoutineList">
+                    <DataTemplate x:DataType="models:Routine">
                         <Grid RowDefinitions="Auto, Auto"
                               ColumnDefinitions="*, Auto"
                               Padding="10"
@@ -135,7 +127,7 @@
                                     HeightRequest="25"
                                     FontSize="16"
                                     FontAttributes="Bold" 
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=SetOperatingRoutineListCommand}" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=SetOperatingRoutineCommand}" 
                                     CommandParameter="{Binding .}" />
                                 <Button 
                                     Text="Delete"
@@ -143,7 +135,7 @@
                                     HeightRequest="25"
                                     FontSize="16"
                                     FontAttributes="Bold" 
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=DeleteRoutineListCommand}" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=DeleteRoutineCommand}" 
                                     CommandParameter="{Binding Id}" />
                             </VerticalStackLayout>
                         </Grid>
@@ -193,7 +185,7 @@
                             <Label.Triggers>
                                 <DataTrigger 
                                     TargetType="Label"        
-                                    Binding="{Binding OperatingRoutineList.Id}"                
+                                    Binding="{Binding OperatingRoutine.Id}"                
                                     Value="0">
                                     <Setter 
                                         Property="Text" 
@@ -213,11 +205,11 @@
                             FontSize="18"
                             FontAttributes="Bold"
                             CornerRadius="6"
-                            Command="{Binding SaveRoutineListCommand}">
+                            Command="{Binding SaveRoutineCommand}">
                             <Button.Triggers>
                                 <DataTrigger 
                                     TargetType="Button"
-                                    Binding="{Binding OperatingRoutineList.Id}"
+                                    Binding="{Binding OperatingRoutine.Id}"
                                     Value="0">
                                     <Setter 
                                         Property="Text" 
@@ -235,13 +227,13 @@
                             Margin="5, 0"
                             FontSize="20" />
                         <Label 
-                            Text="{Binding OperatingRoutineList.Name}" 
+                            Text="{Binding OperatingRoutine.Name}" 
                             Margin="5, 0"
                             FontSize="20">
                             <Label.Triggers>
                                 <DataTrigger 
                                     TargetType="Label"        
-                                    Binding="{Binding OperatingRoutineList.Id}"                
+                                    Binding="{Binding OperatingRoutine.Id}"                
                                     Value="0">
                                     <Setter 
                                         Property="IsVisible" 
@@ -250,7 +242,7 @@
                             </Label.Triggers>
                         </Label>
                         <Entry 
-                            Text="{Binding OperatingRoutineList.Name}"
+                            Text="{Binding OperatingRoutine.Name}"
                             Placeholder="Name"
                             Margin="0, 5"
                             BackgroundColor="#DAD1F9"
@@ -265,13 +257,13 @@
                             Margin="5, 0"
                             FontSize="20" />
                         <Label 
-                            Text="{Binding OperatingRoutineList.Focus}" 
+                            Text="{Binding OperatingRoutine.Focus}" 
                             Margin="5, 0"
                             FontSize="20">
                             <Label.Triggers>
                                 <DataTrigger 
                                     TargetType="Label" 
-                                    Binding="{Binding OperatingRoutineList.Id}" 
+                                    Binding="{Binding OperatingRoutine.Id}" 
                                     Value="0">
                                     <Setter 
                                         Property="IsVisible" 
@@ -280,7 +272,7 @@
                             </Label.Triggers>
                         </Label>
                         <Entry 
-                            Text="{Binding OperatingRoutineList.Focus}"
+                            Text="{Binding OperatingRoutine.Focus}"
                             Placeholder="Focus"
                             Margin="0, 5"
                             BackgroundColor="#DAD1F9"

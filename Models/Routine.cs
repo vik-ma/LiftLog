@@ -8,7 +8,7 @@ using LocalLiftLog.Helpers;
 
 namespace LocalLiftLog.Models
 {
-    public class RoutineList
+    public class Routine
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -17,7 +17,7 @@ namespace LocalLiftLog.Models
         public string Focus { get; set; }
         public string Test { get; set; }    
 
-        public RoutineList Clone() => MemberwiseClone() as RoutineList;
+        public Routine Clone() => MemberwiseClone() as Routine;
 
         #nullable enable
         public (bool IsValid, string? ErrorMessage) Validate()
