@@ -61,7 +61,7 @@
             RowDefinitions="*, Auto">
             <CollectionView 
                 Grid.Row="0"
-                ItemsSource="{Binding Routine}">
+                ItemsSource="{Binding RoutineList}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout 
                         ItemSpacing="3"
@@ -121,6 +121,14 @@
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Spacing="10" >
+                                <Button 
+                                    Text="Details"
+                                    Padding="20, 0"
+                                    HeightRequest="25"
+                                    FontSize="16"
+                                    FontAttributes="Bold" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=ViewRoutineDetailsCommand}" 
+                                    CommandParameter="{Binding Id}" />
                                 <Button 
                                     Text="Edit"
                                     Padding="20, 0"

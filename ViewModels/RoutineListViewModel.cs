@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using LocalLiftLog.Data;
 using LocalLiftLog.Models;
+using LocalLiftLog.Pages;
 using System.Collections.ObjectModel;
 
 namespace LocalLiftLog.ViewModels
@@ -16,7 +17,7 @@ namespace LocalLiftLog.ViewModels
         }
 
         [ObservableProperty]
-        private ObservableCollection<Routine> _routine = new();
+        private ObservableCollection<Routine> _routineList = new();
 
         [ObservableProperty]
         private Routine _operatingRoutine = new();
@@ -43,7 +44,7 @@ namespace LocalLiftLog.ViewModels
 
                     foreach (var routine in routines)
                     {
-                        Routine.Add(routine);
+                        RoutineList.Add(routine);
                     }
                 }
             }, "Fetching Routine List...");  
@@ -81,7 +82,7 @@ namespace LocalLiftLog.ViewModels
                 {
                     // Create Routine List
                     await _context.AddItemAsync<Routine>(OperatingRoutine);
-                    Routine.Add(OperatingRoutine);
+                    RoutineList.Add(OperatingRoutine);
                 }
                 else
                 {
@@ -90,10 +91,10 @@ namespace LocalLiftLog.ViewModels
                     {
                         var routineCopy = OperatingRoutine.Clone();
 
-                        var index = Routine.IndexOf(OperatingRoutine);
-                        Routine.RemoveAt(index);
+                        var index = RoutineList.IndexOf(OperatingRoutine);
+                        RoutineList.RemoveAt(index);
 
-                        Routine.Insert(index, routineCopy);
+                        RoutineList.Insert(index, routineCopy);
                     }
                     else
                     {
@@ -113,8 +114,8 @@ namespace LocalLiftLog.ViewModels
             {
                 if (await _context.DeleteItemByKeyAsync<Routine>(id))
                 {
-                    var routine = Routine.FirstOrDefault(p => p.Id == id);
-                    Routine.Remove(routine);
+                    var routine = RoutineList.FirstOrDefault(p => p.Id == id);
+                    RoutineList.Remove(routine);
                 }
                 else
                 {
@@ -146,9 +147,11 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private void ShowEditMenu()
+        private async Task ViewRoutineDetails(int id)
         {
-            
+            var routine = RoutineList.FirstOrDefault(p => p.Id == id);
+
+            await Shell.Current.GoToAsync(nameof(RoutineDetailPage));
         }
     }
 }
