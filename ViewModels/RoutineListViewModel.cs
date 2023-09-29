@@ -55,7 +55,7 @@ namespace LocalLiftLog.ViewModels
         private void SetOperatingRoutine(Routine? routine)
         {
             OperatingRoutine = routine ?? new();
-            IsEditing = true;
+            // IsEditing = true;
         }
 
 
@@ -151,7 +151,12 @@ namespace LocalLiftLog.ViewModels
         {
             var routine = RoutineList.FirstOrDefault(p => p.Id == id);
 
-            await Shell.Current.GoToAsync(nameof(RoutineDetailPage));
+            var navigationParameter = new Dictionary<string, object>
+            {
+                { id.ToString(), routine }
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(RoutineDetailPage)}?Id={id}", navigationParameter);
         }
     }
 }
