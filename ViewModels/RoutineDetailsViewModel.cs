@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace LocalLiftLog.ViewModels
 {
     [QueryProperty("Routine", "Routine")]
-    public partial class RoutineDetailViewModel : ObservableObject
+    public partial class RoutineDetailsViewModel : ObservableObject
     {
         [ObservableProperty]
         private Routine routine;

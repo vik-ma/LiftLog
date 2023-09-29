@@ -2,9 +2,9 @@ using LocalLiftLog.ViewModels;
 
 namespace LocalLiftLog.Pages;
 
-public partial class RoutineDetailPage : ContentPage
+public partial class RoutineDetailsPage : ContentPage
 {
-	public RoutineDetailPage(RoutineDetailViewModel viewModel)
+	public RoutineDetailsPage(RoutineDetailsViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;

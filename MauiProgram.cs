@@ -27,8 +27,8 @@ namespace LocalLiftLog
             builder.Services.AddSingleton<RoutineListViewModel>();
             builder.Services.AddSingleton<MainPage>();
 
-            builder.Services.AddTransient<RoutineDetailPage>();
-            builder.Services.AddTransient<RoutineDetailViewModel>();
+            builder.Services.AddTransient<RoutineDetailsPage>();
+            builder.Services.AddTransient<RoutineDetailsViewModel>();
 
             return builder.Build();
         }
