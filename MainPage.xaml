@@ -107,6 +107,19 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span 
+                                                Text="Id: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Id, Converter={StaticResource emptyStringToEmptyText}}"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
                                                 Text="Last Updated: " 
                                                 FontAttributes="Bold"
                                                 Style="{StaticResource RoutineSpanStyle}" />

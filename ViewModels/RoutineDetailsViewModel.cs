@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.ViewModels
 {
-    [QueryProperty("Routine", "Routine")]
+    [QueryProperty("Id", "Id")]
     public partial class RoutineDetailsViewModel : ObservableObject
     {
         [ObservableProperty]
-        private Routine routine;
+        private string id;
 
 
         [RelayCommand]

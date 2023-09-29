@@ -7,7 +7,7 @@
              Title="RoutineDetailsPage">
     <VerticalStackLayout>
         <Label 
-            Text="{Binding Routine.Name}"
+            Text="{Binding Id}"
             FontSize="26"
             FontAttributes="Bold"
             VerticalOptions="Center" 
