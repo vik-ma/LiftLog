@@ -81,11 +81,24 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span 
-                                                Text="Name: " 
+                                                Text="Routine: " 
                                                 FontAttributes="Bold"  
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                             <Span 
                                                 Text="{Binding Name}"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Id: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                                                            <Span 
+                                                Text="{Binding Id, Converter={StaticResource emptyStringToEmptyText}}"
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -99,19 +112,6 @@
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                             <Span 
                                                 Text="{Binding Focus, Converter={StaticResource emptyStringToEmptyText}, ConverterParameter=Focus}"
-                                                Style="{StaticResource RoutineSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Id: " 
-                                                FontAttributes="Bold"
-                                                Style="{StaticResource RoutineSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Id, Converter={StaticResource emptyStringToEmptyText}}"
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>

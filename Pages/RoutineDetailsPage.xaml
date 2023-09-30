@@ -5,31 +5,76 @@
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:converters="clr-namespace:LocalLiftLog.Converters"
              x:DataType="viewmodel:RoutineDetailsViewModel"
-             Title="RoutineDetailsPage">
+             Title="Routine Details Page">
 
     <ContentPage.Resources>
         <converters:EmptyStringToEmptyTextConverter x:Key="emptyStringToEmptyText" />
+        <ResourceDictionary>
+            <Style x:Key="RoutineSubSpanStyle" TargetType="Span">
+                <Setter Property="FontSize" Value="26" />
+            </Style>
+            <Style x:Key="RoutineHeaderSpanStyle" TargetType="Span">
+                <Setter Property="FontSize" Value="36" />
+            </Style>
+        </ResourceDictionary>
     </ContentPage.Resources>
 
     <VerticalStackLayout 
         Spacing="15"
-        Padding="15">
-        <Label 
-            Text="{Binding Routine.Name}"
-            FontSize="36"
-            FontAttributes="Bold"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding Routine.Focus, Converter={StaticResource emptyStringToEmptyText}, ConverterParameter=Focus}"
-            FontSize="26"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding Routine.LastUpdateDateTime}"
-            FontSize="26"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        Padding="15"
+        HorizontalOptions="Center">
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span 
+                        Text="Routine: " 
+                        FontAttributes="Bold"  
+                        Style="{StaticResource RoutineHeaderSpanStyle}" />
+                            <Span 
+                        Text="{Binding Routine.Name}"
+                        Style="{StaticResource RoutineHeaderSpanStyle}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span 
+                Text="Id: " 
+                FontAttributes="Bold"
+                Style="{StaticResource RoutineSubSpanStyle}" />
+                    <Span 
+                Text="{Binding Routine.Id, Converter={StaticResource emptyStringToEmptyText}}"
+                Style="{StaticResource RoutineSubSpanStyle}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span 
+                        Text="Focus: " 
+                        FontAttributes="Bold"
+                        Style="{StaticResource RoutineSubSpanStyle}" />
+                    <Span 
+                        Text="{Binding Routine.Focus, Converter={StaticResource emptyStringToEmptyText}, ConverterParameter=Focus}"
+                        Style="{StaticResource RoutineSubSpanStyle}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span 
+                        Text="Last Updated: " 
+                        FontAttributes="Bold"
+                        Style="{StaticResource RoutineSubSpanStyle}" />
+                            <Span 
+                        Text="{Binding Routine.LastUpdateDateTime, Converter={StaticResource emptyStringToEmptyText}}"
+                        Style="{StaticResource RoutineSubSpanStyle}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
 
         <Button 
             Text="Go Back"
