@@ -36,10 +36,11 @@ namespace LocalLiftLog.ViewModels
             await ExecuteAsync(async () =>
             {
                 var routines = await _context.GetAllAsync<Routine>();
-                // Add more models here
 
                 if (routines is not null && routines.Any())
                 {
+                    RoutineList.Clear();
+
                     routines ??= new ObservableCollection<Routine>();
 
                     foreach (var routine in routines)
