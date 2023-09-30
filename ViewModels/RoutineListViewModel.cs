@@ -154,10 +154,10 @@ namespace LocalLiftLog.ViewModels
 
             var navigationParameter = new Dictionary<string, object>
             {
-                { id.ToString(), routine }
+                ["Routine"] = routine
             };
 
-            await Shell.Current.GoToAsync($"{nameof(RoutineDetailsPage)}?Id={id}");
+            await Shell.Current.GoToAsync($"{nameof(RoutineDetailsPage)}?Id={id}", navigationParameter);
         }
     }
 }

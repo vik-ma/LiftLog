@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LocalLiftLog.Models;
-using LocalLiftLog.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +9,11 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.ViewModels
 {
-    [QueryProperty("Id", "Id")]
+    [QueryProperty(nameof(Routine), nameof(Routine))]
     public partial class RoutineDetailsViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string id;
-
+        private Routine routine;
 
         [RelayCommand]
         async Task GoBack()
