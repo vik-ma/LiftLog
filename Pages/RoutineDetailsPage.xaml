@@ -3,17 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LocalLiftLog.Pages.RoutineDetailsPage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
+             xmlns:converters="clr-namespace:LocalLiftLog.Converters"
              x:DataType="viewmodel:RoutineDetailsViewModel"
              Title="RoutineDetailsPage">
-    <VerticalStackLayout>
+
+    <ContentPage.Resources>
+        <converters:EmptyStringToEmptyTextConverter x:Key="emptyStringToEmptyText" />
+    </ContentPage.Resources>
+
+    <VerticalStackLayout 
+        Spacing="15"
+        Padding="15">
         <Label 
             Text="{Binding Routine.Name}"
-            FontSize="26"
+            FontSize="36"
             FontAttributes="Bold"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Label 
+            Text="{Binding Routine.Focus, Converter={StaticResource emptyStringToEmptyText}, ConverterParameter=Focus}"
+            FontSize="26"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label 
+            Text="{Binding Routine.LastUpdateDateTime}"
+            FontSize="26"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
 
-        <Button Text="Go Back"
-                Command="{Binding GoBackCommand}" />
+        <Button 
+            Text="Go Back"
+            FontSize="24"
+            FontAttributes="Bold"
+            Command="{Binding GoBackCommand}"
+            Margin="5"
+            WidthRequest="300" />
     </VerticalStackLayout>
 </ContentPage>
