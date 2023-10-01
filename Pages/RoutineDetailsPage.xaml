@@ -40,12 +40,12 @@
             <Label.FormattedText>
                 <FormattedString>
                     <Span 
-                Text="Id: " 
-                FontAttributes="Bold"
-                Style="{StaticResource RoutineSubSpanStyle}" />
-                    <Span 
-                Text="{Binding Routine.Id, Converter={StaticResource emptyStringToEmptyText}}"
-                Style="{StaticResource RoutineSubSpanStyle}" />
+                        Text="Id: " 
+                        FontAttributes="Bold"
+                        Style="{StaticResource RoutineSubSpanStyle}" />
+                            <Span 
+                        Text="{Binding Routine.Id, Converter={StaticResource emptyStringToEmptyText}}"
+                        Style="{StaticResource RoutineSubSpanStyle}" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
@@ -75,6 +75,9 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Button 
+            Text="Test"
+            Command="{Binding RoutineListViewModel.SaveRoutineCommand}"/>
 
         <Button 
             Text="Go Back"

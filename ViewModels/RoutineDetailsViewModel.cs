@@ -13,6 +13,14 @@ namespace LocalLiftLog.ViewModels
     public partial class RoutineDetailsViewModel : ObservableObject
     {
         [ObservableProperty]
+        private RoutineListViewModel _routineListViewModel;
+
+        public RoutineDetailsViewModel(RoutineListViewModel routineListViewModel)
+        {
+            _routineListViewModel = routineListViewModel;
+        }
+
+        [ObservableProperty]
         private Routine routine;
 
         [RelayCommand]

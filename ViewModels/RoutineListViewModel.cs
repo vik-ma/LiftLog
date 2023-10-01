@@ -157,6 +157,8 @@ namespace LocalLiftLog.ViewModels
                 ["Routine"] = routine
             };
 
+            OperatingRoutine = routine;
+
             await Shell.Current.GoToAsync($"{nameof(RoutineDetailsPage)}?Id={id}", navigationParameter);
         }
     }
