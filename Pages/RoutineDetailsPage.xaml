@@ -23,6 +23,13 @@
         Spacing="15"
         Padding="15"
         HorizontalOptions="Center">
+        <Button 
+            Text="Edit Routine"
+            FontSize="24"
+            FontAttributes="Bold"
+            Command="{Binding RoutineListViewModel.SetOperatingRoutineCommand}" 
+            CommandParameter="{Binding Routine}"
+            WidthRequest="300" />
         <Label>
             <Label.FormattedText>
                 <FormattedString>
@@ -30,12 +37,17 @@
                         Text="Routine: " 
                         FontAttributes="Bold"  
                         Style="{StaticResource RoutineHeaderSpanStyle}" />
-                            <Span 
+                    <Span 
                         Text="{Binding Routine.Name}"
                         Style="{StaticResource RoutineHeaderSpanStyle}" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Entry 
+            Text="{Binding RoutineListViewModel.OperatingRoutine.Name}"
+            Placeholder="Routine Name"
+            FontSize="20"
+            IsVisible="{Binding RoutineListViewModel.IsEditing}" />
         <Label>
             <Label.FormattedText>
                 <FormattedString>
@@ -43,7 +55,7 @@
                         Text="Id: " 
                         FontAttributes="Bold"
                         Style="{StaticResource RoutineSubSpanStyle}" />
-                            <Span 
+                    <Span 
                         Text="{Binding Routine.Id, Converter={StaticResource emptyStringToEmptyText}}"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                 </FormattedString>
@@ -62,6 +74,11 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Entry 
+            Text="{Binding RoutineListViewModel.OperatingRoutine.Focus}"
+            Placeholder="Routine Focus"
+            FontSize="20"
+            IsVisible="{Binding RoutineListViewModel.IsEditing}" />
         <Label>
             <Label.FormattedText>
                 <FormattedString>
@@ -69,15 +86,18 @@
                         Text="Last Updated: " 
                         FontAttributes="Bold"
                         Style="{StaticResource RoutineSubSpanStyle}" />
-                            <Span 
+                    <Span 
                         Text="{Binding Routine.LastUpdateDateTime, Converter={StaticResource emptyStringToEmptyText}}"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
         <Button 
-            Text="Test"
-            Command="{Binding RoutineListViewModel.SaveRoutineCommand}"/>
+            Text="Save"
+            FontSize="24"
+            FontAttributes="Bold"
+            Command="{Binding RoutineListViewModel.SaveRoutineCommand}"
+            IsVisible="{Binding RoutineListViewModel.IsEditing}" />
 
         <Button 
             Text="Go Back"

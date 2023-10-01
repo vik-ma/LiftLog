@@ -97,7 +97,7 @@
                                                 Text="Id: " 
                                                 FontAttributes="Bold"
                                                 Style="{StaticResource RoutineSpanStyle}" />
-                                                                            <Span 
+                                            <Span 
                                                 Text="{Binding Id, Converter={StaticResource emptyStringToEmptyText}}"
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                         </FormattedString>
