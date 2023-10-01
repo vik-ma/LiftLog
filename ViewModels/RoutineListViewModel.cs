@@ -142,7 +142,7 @@ namespace LocalLiftLog.ViewModels
             finally
             {
                 IsBusy = false;
-                BusyText = "Processing...";
+                BusyText = "Finished";
                 IsEditing = false;
             }
         }
@@ -163,6 +163,7 @@ namespace LocalLiftLog.ViewModels
                 ["Routine"] = routine
             };
 
+            IsEditing = false;
             OperatingRoutine = routine;
 
             await Shell.Current.GoToAsync($"{nameof(RoutineDetailsPage)}?Id={id}", navigationParameter);

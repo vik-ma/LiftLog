@@ -133,29 +133,29 @@
                             <VerticalStackLayout
                                 Grid.Row="0"
                                 Grid.Column="1"
-                                Spacing="10" >
+                                Spacing="20"
+                                VerticalOptions="Center">
                                 <Button 
                                     Text="Details"
-                                    Padding="20, 0"
-                                    HeightRequest="25"
-                                    FontSize="16"
+                                    Padding="20, 10"
+                                    FontSize="18"
                                     FontAttributes="Bold" 
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=ViewRoutineDetailsCommand}" 
                                     CommandParameter="{Binding Id}" />
-                                <Button 
+                                <!--<Button 
                                     Text="Edit"
                                     Padding="20, 0"
                                     HeightRequest="25"
                                     FontSize="16"
                                     FontAttributes="Bold" 
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=SetOperatingRoutineCommand}" 
-                                    CommandParameter="{Binding .}" />
+                                    CommandParameter="{Binding .}" />-->
                                 <Button 
                                     Text="Delete"
-                                    Padding="20, 0"
-                                    HeightRequest="25"
-                                    FontSize="16"
+                                    Padding="20, 10"
+                                    FontSize="18"
                                     FontAttributes="Bold" 
+                                    BackgroundColor="#ef4444"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=DeleteRoutineCommand}" 
                                     CommandParameter="{Binding Id}" />
                             </VerticalStackLayout>
@@ -198,12 +198,12 @@
                         Grid.Column="0">
                         <Label 
                             Grid.Column="0"
-                            Text="Edit Routine" 
+                            Text="Create New Routine" 
                             FontAttributes="Bold"
                             FontSize="26"
                             HorizontalOptions="Start"
                             VerticalOptions="Center" >
-                            <Label.Triggers>
+                            <!--<Label.Triggers>
                                 <DataTrigger 
                                     TargetType="Label"        
                                     Binding="{Binding OperatingRoutine.Id}"                
@@ -212,7 +212,7 @@
                                         Property="Text" 
                                         Value="Create New Routine" />
                                 </DataTrigger>
-                            </Label.Triggers>
+                            </Label.Triggers>-->
                         </Label>
                     </VerticalStackLayout>
                     <VerticalStackLayout 
@@ -222,12 +222,12 @@
                             Grid.Column="1"
                             HorizontalOptions="End"
                             VerticalOptions="Center"
-                            Text="Update Routine"
+                            Text="Create Routine"
                             FontSize="18"
                             FontAttributes="Bold"
                             CornerRadius="6"
                             Command="{Binding SaveRoutineCommand}">
-                            <Button.Triggers>
+                            <!--<Button.Triggers>
                                 <DataTrigger 
                                     TargetType="Button"
                                     Binding="{Binding OperatingRoutine.Id}"
@@ -236,7 +236,7 @@
                                         Property="Text" 
                                         Value="Create Routine" />
                                 </DataTrigger>
-                            </Button.Triggers>
+                            </Button.Triggers>-->
                         </Button>
                     </VerticalStackLayout>
                     <VerticalStackLayout 
