@@ -16,6 +16,11 @@
             <Style x:Key="RoutineHeaderSpanStyle" TargetType="Span">
                 <Setter Property="FontSize" Value="36" />
             </Style>
+            <Style x:Key="RoutineButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="WidthRequest" Value="300" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -25,11 +30,9 @@
         HorizontalOptions="Center">
         <Button 
             Text="Edit Routine"
-            FontSize="24"
-            FontAttributes="Bold"
+            Style="{StaticResource RoutineButtonStyle}"
             Command="{Binding RoutineListViewModel.SetOperatingRoutineCommand}" 
-            CommandParameter="{Binding Routine}"
-            WidthRequest="300" />
+            CommandParameter="{Binding Routine}" />
         <Label>
             <Label.FormattedText>
                 <FormattedString>
@@ -93,18 +96,15 @@
             </Label.FormattedText>
         </Label>
         <Button 
-            Text="Save"
-            FontSize="24"
-            FontAttributes="Bold"
+            Text="Save Routine"
+            Style="{StaticResource RoutineButtonStyle}"
             Command="{Binding RoutineListViewModel.SaveRoutineCommand}"
             IsVisible="{Binding RoutineListViewModel.IsEditing}" />
 
         <Button 
             Text="Go Back"
-            FontSize="24"
-            FontAttributes="Bold"
+            Style="{StaticResource RoutineButtonStyle}"
             Command="{Binding GoBackCommand}"
-            Margin="5"
-            WidthRequest="300" />
+            Margin="5" />
     </VerticalStackLayout>
 </ContentPage>

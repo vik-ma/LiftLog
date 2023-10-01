@@ -152,6 +152,12 @@ namespace LocalLiftLog.ViewModels
         {
             var routine = RoutineList.FirstOrDefault(p => p.Id == id);
 
+            if (routine is null)
+            {
+                await Shell.Current.DisplayAlert("Error", "Routine does not exist", "OK");
+                return;
+            }
+                
             var navigationParameter = new Dictionary<string, object>
             {
                 ["Routine"] = routine
