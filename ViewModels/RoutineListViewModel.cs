@@ -105,7 +105,7 @@ namespace LocalLiftLog.ViewModels
                     }
                     else
                     {
-                        await Shell.Current.DisplayAlert("Error", "Error occured when updating Routine", "OK");
+                        await Shell.Current.DisplayAlert("Error", "Error occured when updating Routine.", "OK");
                         return;
                     }
                 }
@@ -117,11 +117,21 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task DeleteRoutineAsync(int id)
         {
+            var routine = RoutineList.FirstOrDefault(p => p.Id == id);
+
+            if (routine is null) {
+                await Shell.Current.DisplayAlert("Error", "Routine does not exist.", "OK");
+                return;
+            };
+
+            bool userClickedCancel = await Shell.Current.DisplayAlert("Delete Routine", $"Are you sure you want to delete {routine.Name}?", "Cancel", "Delete");
+
+            if (userClickedCancel) return;
+
             await ExecuteAsync(async () =>
             {
                 if (await _context.DeleteItemByKeyAsync<Routine>(id))
                 {
-                    var routine = RoutineList.FirstOrDefault(p => p.Id == id);
                     RoutineList.Remove(routine);
                 }
                 else
