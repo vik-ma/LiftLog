@@ -59,6 +59,12 @@ namespace LocalLiftLog.ViewModels
             IsEditing = true;
         }
 
+        [RelayCommand]
+        private void CancelEditing()
+        {
+            IsEditing = false;
+        }
+
 
         [RelayCommand]
         private async Task SaveRoutineAsync()
