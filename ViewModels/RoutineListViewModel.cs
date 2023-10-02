@@ -81,19 +81,19 @@ namespace LocalLiftLog.ViewModels
 
             OperatingRoutine.UpdateDateTime();
 
-            var busyText = OperatingRoutine.Id == 0 ? "Creating Routine List..." : "Updating Routine List";
+            var busyText = OperatingRoutine.Id == 0 ? "Creating Routine..." : "Updating Routine";
 
             await ExecuteAsync(async () =>
             {
                 if (OperatingRoutine.Id == 0)
                 {
-                    // Create Routine List
+                    // Create Routine
                     await _context.AddItemAsync<Routine>(OperatingRoutine);
                     RoutineList.Add(OperatingRoutine);
                 }
                 else
                 {
-                    // Update Routine List
+                    // Update Routine
                     if (await _context.UpdateItemAsync<Routine>(OperatingRoutine))
                     {
                         var routineCopy = OperatingRoutine.Clone();
@@ -105,7 +105,7 @@ namespace LocalLiftLog.ViewModels
                     }
                     else
                     {
-                        await Shell.Current.DisplayAlert("Error", "Product Updation Error", "OK");
+                        await Shell.Current.DisplayAlert("Error", "Error occured when updating Routine", "OK");
                         return;
                     }
                 }
@@ -126,9 +126,9 @@ namespace LocalLiftLog.ViewModels
                 }
                 else
                 {
-                    await Shell.Current.DisplayAlert("Delete Error", "Routine List was not deleted.", "OK");
+                    await Shell.Current.DisplayAlert("Delete Error", "Routine was not deleted.", "OK");
                 }
-            }, "Deleting Routine List...");
+            }, "Deleting Routine...");
         }
 
         #nullable enable

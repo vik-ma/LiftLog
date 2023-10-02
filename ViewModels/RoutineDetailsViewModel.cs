@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using LocalLiftLog.Data;
 using LocalLiftLog.Models;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,12 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private RoutineListViewModel _routineListViewModel;
 
-        public RoutineDetailsViewModel(RoutineListViewModel routineListViewModel)
+        private readonly DatabaseContext _context;
+
+        public RoutineDetailsViewModel(RoutineListViewModel routineListViewModel, DatabaseContext context)
         {
             _routineListViewModel = routineListViewModel;
+            _context = context;
         }
 
         [ObservableProperty]
@@ -27,6 +31,16 @@ namespace LocalLiftLog.ViewModels
         async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
+        }
+
+        [RelayCommand]
+        private async Task UpdateRoutine()
+        {
+            var id = Routine.Id;
+
+            RoutineListViewModel.SaveRoutineCommand.Execute(RoutineListViewModel.OperatingRoutine);
+
+            Routine = await _context.GetItemByKeyAsync<Routine>(id);
         }
     }
 }

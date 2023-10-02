@@ -106,17 +106,17 @@
                 Spacing="20"
                 Grid.Row="0">
                 <Button 
-                        Grid.Column="0"
-                        Text="Cancel"
-                        Style="{StaticResource EditingRoutineButtonStyle}"
-                        Command="{Binding RoutineListViewModel.CancelEditingCommand}"
-                        BackgroundColor="#ef4444" />
+                    Grid.Column="0"
+                    Text="Cancel"
+                    Style="{StaticResource EditingRoutineButtonStyle}"
+                    Command="{Binding RoutineListViewModel.CancelEditingCommand}"
+                    BackgroundColor="#ef4444" />
                 <Button 
-                        Grid.Column="1"
-                        Text="Save"
-                        Style="{StaticResource EditingRoutineButtonStyle}"
-                        Command="{Binding RoutineListViewModel.SaveRoutineCommand}"
-                        BackgroundColor="#22c55e" />
+                    Grid.Column="1"
+                    Text="Save"
+                    Style="{StaticResource EditingRoutineButtonStyle}"
+                    Command="{Binding UpdateRoutineCommand}"
+                    BackgroundColor="#22c55e" />
             </HorizontalStackLayout>
         </Grid>
         <Button 
@@ -125,8 +125,6 @@
             Command="{Binding RoutineListViewModel.SetOperatingRoutineCommand}" 
             CommandParameter="{Binding Routine}"
             IsVisible="{Binding RoutineListViewModel.IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
-
-        
 
         <Button 
             Text="Go Back"

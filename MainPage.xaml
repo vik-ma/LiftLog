@@ -133,7 +133,7 @@
                             <VerticalStackLayout
                                 Grid.Row="0"
                                 Grid.Column="1"
-                                Spacing="20"
+                                Spacing="15"
                                 VerticalOptions="Center">
                                 <Button 
                                     Text="Details"
