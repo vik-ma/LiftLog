@@ -4,11 +4,13 @@
              x:Class="LocalLiftLog.Pages.RoutineDetailsPage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:converters="clr-namespace:LocalLiftLog.Converters"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:RoutineDetailsViewModel"
              Title="Routine Details Page">
 
     <ContentPage.Resources>
         <converters:EmptyStringToEmptyTextConverter x:Key="emptyStringToEmptyText" />
+        <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
         <ResourceDictionary>
             <Style x:Key="RoutineSubSpanStyle" TargetType="Span">
                 <Setter Property="FontSize" Value="26" />
@@ -21,6 +23,11 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="WidthRequest" Value="300" />
             </Style>
+            <Style x:Key="EditingRoutineButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="WidthRequest" Value="140" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -28,11 +35,6 @@
         Spacing="15"
         Padding="15"
         HorizontalOptions="Center">
-        <Button 
-            Text="Edit Routine"
-            Style="{StaticResource RoutineButtonStyle}"
-            Command="{Binding RoutineListViewModel.SetOperatingRoutineCommand}" 
-            CommandParameter="{Binding Routine}" />
         <Label>
             <Label.FormattedText>
                 <FormattedString>
@@ -95,16 +97,41 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Grid 
+            WidthRequest="300"
+            HorizontalOptions="Center"
+            IsVisible="{Binding RoutineListViewModel.IsEditing}">
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                Spacing="20"
+                Grid.Row="0">
+                <Button 
+                        Grid.Column="0"
+                        Text="Cancel"
+                        Style="{StaticResource EditingRoutineButtonStyle}"
+                        Command="{Binding RoutineListViewModel.SaveRoutineCommand}"
+                        BackgroundColor="#ef4444" />
+                <Button 
+                        Grid.Column="1"
+                        Text="Save"
+                        Style="{StaticResource EditingRoutineButtonStyle}"
+                        Command="{Binding RoutineListViewModel.SaveRoutineCommand}"
+                        BackgroundColor="#22c55e" />
+            </HorizontalStackLayout>
+        </Grid>
         <Button 
-            Text="Save Routine"
+            Text="Edit Routine"
             Style="{StaticResource RoutineButtonStyle}"
-            Command="{Binding RoutineListViewModel.SaveRoutineCommand}"
-            IsVisible="{Binding RoutineListViewModel.IsEditing}" />
+            Command="{Binding RoutineListViewModel.SetOperatingRoutineCommand}" 
+            CommandParameter="{Binding Routine}"
+            IsVisible="{Binding RoutineListViewModel.IsEditing, Converter={StaticResource InvertedBoolConverter}}"/>
+
+        
 
         <Button 
             Text="Go Back"
             Style="{StaticResource RoutineButtonStyle}"
             Command="{Binding GoBackCommand}"
-            Margin="5" />
+            Margin="50" />
     </VerticalStackLayout>
 </ContentPage>
