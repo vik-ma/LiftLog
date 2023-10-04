@@ -2,13 +2,37 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:LocalLiftLog"
+             xmlns:converters="clr-namespace:LocalLiftLog.Converters"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="LocalLiftLog.App">
+    
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="RoutineSpanStyle" TargetType="Span">
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+            <Style x:Key="RoutineSubSpanStyle" TargetType="Span">
+                <Setter Property="FontSize" Value="26" />
+            </Style>
+            <Style x:Key="RoutineHeaderSpanStyle" TargetType="Span">
+                <Setter Property="FontSize" Value="36" />
+            </Style>
+            <Style x:Key="RoutineButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="WidthRequest" Value="300" />
+            </Style>
+            <Style x:Key="EditingRoutineButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="WidthRequest" Value="140" />
+            </Style>
+            <converters:EmptyStringToEmptyTextConverter x:Key="emptyStringToEmptyText" />
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

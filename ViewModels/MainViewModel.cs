@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LocalLiftLog.Data;
-using LocalLiftLog.Models;
 using LocalLiftLog.Pages;
 using System;
 using System.Collections.Generic;

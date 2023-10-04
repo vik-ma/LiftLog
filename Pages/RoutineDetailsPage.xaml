@@ -3,33 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LocalLiftLog.Pages.RoutineDetailsPage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
-             xmlns:converters="clr-namespace:LocalLiftLog.Converters"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:RoutineDetailsViewModel"
              Title="Routine Details Page">
-
-    <ContentPage.Resources>
-        <converters:EmptyStringToEmptyTextConverter x:Key="emptyStringToEmptyText" />
-        <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
-        <ResourceDictionary>
-            <Style x:Key="RoutineSubSpanStyle" TargetType="Span">
-                <Setter Property="FontSize" Value="26" />
-            </Style>
-            <Style x:Key="RoutineHeaderSpanStyle" TargetType="Span">
-                <Setter Property="FontSize" Value="36" />
-            </Style>
-            <Style x:Key="RoutineButtonStyle" TargetType="Button">
-                <Setter Property="FontSize" Value="24" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="WidthRequest" Value="300" />
-            </Style>
-            <Style x:Key="EditingRoutineButtonStyle" TargetType="Button">
-                <Setter Property="FontSize" Value="24" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="WidthRequest" Value="140" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
 
     <VerticalStackLayout 
         Spacing="15"

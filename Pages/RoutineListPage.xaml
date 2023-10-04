@@ -3,20 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:models="clr-namespace:LocalLiftLog.Models"
-             xmlns:converters="clr-namespace:LocalLiftLog.Converters"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="vm:RoutineListViewModel"
              x:Class="LocalLiftLog.Pages.RoutineListPage"
              Title="Routine List">
-    
-    <ContentPage.Resources>
-        <converters:EmptyStringToEmptyTextConverter x:Key="emptyStringToEmptyText" />
-        <ResourceDictionary>
-            <Style x:Key="RoutineSpanStyle" TargetType="Span">
-                <Setter Property="FontSize" Value="16" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
 
     <Grid RowDefinitions="Auto, *">
         <VerticalStackLayout
