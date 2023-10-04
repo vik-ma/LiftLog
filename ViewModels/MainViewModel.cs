@@ -13,6 +13,13 @@ namespace LocalLiftLog.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
+        private readonly DatabaseContext _context;
+
+        public MainViewModel(DatabaseContext context)
+        {
+            _context = context;
+        }
+
         [RelayCommand]
         private async Task GoToRoutineList()
         {
