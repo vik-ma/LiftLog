@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:LocalLiftLog.ViewModels"
+             xmlns:models="clr-namespace:LocalLiftLog.Models"
+             xmlns:converters="clr-namespace:LocalLiftLog.Converters"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="vm:RoutineListViewModel"
+             x:Class="LocalLiftLog.Pages.RoutineListPage"
+             Title="Routine List">
+    
+    <ContentPage.Resources>
+        <converters:EmptyStringToEmptyTextConverter x:Key="emptyStringToEmptyText" />
+        <ResourceDictionary>
+            <Style x:Key="RoutineSpanStyle" TargetType="Span">
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, *">
+        <VerticalStackLayout
+            Grid.Row="0"
+            Grid.Column="0">
+            <Label 
+                Text="Routine List"
+                VerticalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="22"
+                Padding="6, 10" />
+        </VerticalStackLayout>
+        <VerticalStackLayout
+            Grid.Row="0"
+            Grid.Column="1"
+            HorizontalOptions="End"
+            VerticalOptions="Center"
+            MaximumWidthRequest="400">
+            <Button
+                Text="Create New Routine"
+                FontSize="16"
+                FontAttributes="Bold"
+                Command="{Binding SetOperatingRoutineCommand}" />
+        </VerticalStackLayout>
+        <VerticalStackLayout 
+            Grid.RowSpan="2"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            IsVisible="{Binding IsBusy}">
+            <ActivityIndicator 
+                IsRunning="True"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Label 
+                Text="{Binding BusyText}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
+        <Grid 
+            Grid.Row="1"
+            RowDefinitions="*, Auto">
+            <CollectionView 
+                Grid.Row="0"
+                ItemsSource="{Binding RoutineList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                    ItemSpacing="3"
+                    Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Routine">
+                        <Grid 
+                            RowDefinitions="Auto, Auto"
+                            ColumnDefinitions="*, Auto"
+                            Padding="10"
+                            BackgroundColor="#ECECEC">
+                            <VerticalStackLayout 
+                                Grid.Row="0" 
+                                Grid.Column="0"
+                                Spacing="15">
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Routine: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Name}"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Id: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Id, Converter={StaticResource emptyStringToEmptyText}}"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Focus: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Focus, Converter={StaticResource emptyStringToEmptyText}, ConverterParameter=Focus}"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Last Updated: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding LastUpdateDateTime, Converter={StaticResource emptyStringToEmptyText}}"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Spacing="15"
+                                VerticalOptions="Center">
+                                <Button 
+                                    Text="Details"
+                                    Padding="20, 10"
+                                    FontSize="18"
+                                    FontAttributes="Bold" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=ViewRoutineDetailsCommand}" 
+                                    CommandParameter="{Binding Id}" />
+                                    <!--<Button 
+                                    Text="Edit"
+                                    Padding="20, 0"
+                                    HeightRequest="25"
+                                    FontSize="16"
+                                    FontAttributes="Bold" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=SetOperatingRoutineCommand}" 
+                                    CommandParameter="{Binding .}" />-->
+                                <Button 
+                                    Text="Delete"
+                                    Padding="20, 10"
+                                    FontSize="18"
+                                    FontAttributes="Bold" 
+                                    BackgroundColor="#ef4444"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=DeleteRoutineCommand}" 
+                                    CommandParameter="{Binding Id}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <VerticalStackLayout
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Label 
+                                Text="No Routines In List!" 
+                                FontSize="18" 
+                                FontAttributes="Bold" 
+                                HorizontalTextAlignment="Center" />
+                            <Label 
+                                Text="Create a Routine in the form below." 
+                                FontSize="18" 
+                                FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
+
+            <VerticalStackLayout Grid.Row="1">
+                <BoxView 
+                    Color="{DynamicResource Primary}"
+                    HeightRequest="1" />
+                <Grid
+                    RowDefinitions="*, *"
+                    ColumnDefinitions="*, *"
+                    Padding="10"
+                    RowSpacing="10"
+                    ColumnSpacing="10"
+                    BackgroundColor="#CCBFFA"
+                    IsVisible="{Binding IsEditing}">
+                    <VerticalStackLayout 
+                        Grid.Row="0"
+                        Grid.Column="0">
+                        <Label 
+                            Grid.Column="0"
+                            Text="Create New Routine" 
+                            FontAttributes="Bold"
+                            FontSize="26"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center" >
+                            <!--<Label.Triggers>
+                            <DataTrigger 
+                                TargetType="Label"        
+                                Binding="{Binding OperatingRoutine.Id}"                
+                                Value="0">
+                                <Setter 
+                                    Property="Text" 
+                                    Value="Create New Routine" />
+                            </DataTrigger>
+                        </Label.Triggers>-->
+                        </Label>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout 
+                        Grid.Row="0"
+                        Grid.Column="2">
+                        <Button 
+                            Grid.Column="1"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            Text="Create Routine"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            CornerRadius="6"
+                            Command="{Binding SaveRoutineCommand}">
+                            <!--<Button.Triggers>
+                            <DataTrigger 
+                                TargetType="Button"
+                                Binding="{Binding OperatingRoutine.Id}"
+                                Value="0">
+                                <Setter 
+                                    Property="Text" 
+                                    Value="Create Routine" />
+                            </DataTrigger>
+                        </Button.Triggers>-->
+                        </Button>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout 
+                        Grid.Row="1"
+                        Grid.Column="0">
+                        <Label 
+                            Text="Name" 
+                            FontAttributes="Bold" 
+                            Margin="5, 0"
+                            FontSize="20" />
+                        <Label 
+                            Text="{Binding OperatingRoutine.Name}" 
+                            Margin="5, 0"
+                            FontSize="20">
+                            <Label.Triggers>
+                                <DataTrigger 
+                                    TargetType="Label"        
+                                    Binding="{Binding OperatingRoutine.Id}"                
+                                    Value="0">
+                                    <Setter 
+                                        Property="IsVisible" 
+                                        Value="False" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Entry 
+                            Text="{Binding OperatingRoutine.Name}"
+                            Placeholder="Name"
+                            Margin="0, 5"
+                            BackgroundColor="#DAD1F9"
+                            FontSize="20"/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout 
+                        Grid.Row="1"
+                        Grid.Column="1">
+                        <Label 
+                            Text="Focus (Optional)" 
+                            FontAttributes="Bold" 
+                            Margin="5, 0"
+                            FontSize="20" />
+                        <Label 
+                            Text="{Binding OperatingRoutine.Focus}" 
+                            Margin="5, 0"
+                            FontSize="20">
+                            <Label.Triggers>
+                                <DataTrigger 
+                                    TargetType="Label" 
+                                    Binding="{Binding OperatingRoutine.Id}" 
+                                    Value="0">
+                                    <Setter 
+                                        Property="IsVisible" 
+                                        Value="False" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Entry 
+                            Text="{Binding OperatingRoutine.Focus}"
+                            Placeholder="Focus"
+                            Margin="0, 5"
+                            BackgroundColor="#DAD1F9"
+                            FontSize="20" />
+                    </VerticalStackLayout>
+                </Grid>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

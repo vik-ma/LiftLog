@@ -8,6 +8,7 @@ namespace LocalLiftLog
         {
             InitializeComponent();
 
+            Routing.RegisterRoute(nameof(RoutineListPage), typeof(RoutineListPage));
             Routing.RegisterRoute(nameof(RoutineDetailsPage), typeof(RoutineDetailsPage));
         }
     }
