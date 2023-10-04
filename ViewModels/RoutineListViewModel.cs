@@ -65,6 +65,12 @@ namespace LocalLiftLog.ViewModels
             IsEditing = false;
         }
 
+        [RelayCommand]
+        async Task GoBack()
+        {
+            await Shell.Current.GoToAsync("..");
+        }
+
 
         [RelayCommand]
         private async Task SaveRoutineAsync()

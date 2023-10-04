@@ -131,7 +131,7 @@
                                     FontAttributes="Bold" 
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoutineListViewModel}}, Path=ViewRoutineDetailsCommand}" 
                                     CommandParameter="{Binding Id}" />
-                                    <!--<Button 
+                                <!--<Button 
                                     Text="Edit"
                                     Padding="20, 0"
                                     HeightRequest="25"
@@ -289,6 +289,13 @@
                             FontSize="20" />
                     </VerticalStackLayout>
                 </Grid>
+            </VerticalStackLayout>
+            <VerticalStackLayout VerticalOptions="End">
+                <Button 
+                    Text="Go Back"
+                    Style="{StaticResource RoutineButtonStyle}"
+                    Command="{Binding GoBackCommand}"
+                    Margin="50" />
             </VerticalStackLayout>
         </Grid>
     </Grid>

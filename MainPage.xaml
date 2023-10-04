@@ -9,7 +9,7 @@
              x:Class="LocalLiftLog.MainPage"
              Title="Local Lift Log">
 
-    <VerticalStackLayout
+    <VerticalStackLayout 
         HorizontalOptions="Center">
         <Button
             Text="Go To Routine List"
