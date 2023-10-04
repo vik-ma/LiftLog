@@ -9,10 +9,12 @@
              x:Class="LocalLiftLog.MainPage"
              Title="Local Lift Log">
 
-    <VerticalStackLayout>
+    <VerticalStackLayout
+        HorizontalOptions="Center">
         <Button
             Text="Go To Routine List"
-            Command="{Binding GoToRoutineListCommand}" />
+            Command="{Binding GoToRoutineListCommand}"
+            Style="{StaticResource MainPageNavigationButtonStyle}"/>
     </VerticalStackLayout>
 
 </ContentPage>
