@@ -10,13 +10,14 @@
     <Grid RowDefinitions="Auto, *">
         <VerticalStackLayout
             Grid.Row="0"
-            Grid.Column="0">
+            Grid.Column="0"
+            Padding="6, 10" >
             <Label 
                 Text="Routine List"
                 VerticalOptions="Center"
                 FontAttributes="Bold"
-                FontSize="22"
-                Padding="6, 10" />
+                FontSize="36"
+                />
         </VerticalStackLayout>
         <VerticalStackLayout
             Grid.Row="0"
@@ -26,8 +27,7 @@
             MaximumWidthRequest="400">
             <Button 
                 Text="Go Back"
-                FontSize="16"
-                FontAttributes="Bold"
+                Style="{StaticResource GoBackTopRightButtonStyle}"
                 Command="{Binding GoBackCommand}" />
         </VerticalStackLayout>
         <VerticalStackLayout 

@@ -37,6 +37,12 @@
                 <Setter Property="WidthRequest" Value="300" />
                 <Setter Property="Margin" Value="15" />
             </Style>
+            <Style x:Key="GoBackTopRightButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="WidthRequest" Value="120" />
+                <Setter Property="Margin" Value="10" />
+            </Style>
             <converters:EmptyStringToEmptyTextConverter x:Key="emptyStringToEmptyText" />
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
         </ResourceDictionary>
