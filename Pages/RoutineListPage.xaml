@@ -24,11 +24,11 @@
             HorizontalOptions="End"
             VerticalOptions="Center"
             MaximumWidthRequest="400">
-            <Button
-                Text="Create New Routine"
+            <Button 
+                Text="Go Back"
                 FontSize="16"
                 FontAttributes="Bold"
-                Command="{Binding SetOperatingRoutineCommand}" />
+                Command="{Binding GoBackCommand}" />
         </VerticalStackLayout>
         <VerticalStackLayout 
             Grid.RowSpan="2"
@@ -291,10 +291,10 @@
                 </Grid>
             </VerticalStackLayout>
             <VerticalStackLayout VerticalOptions="End">
-                <Button 
-                    Text="Go Back"
+                <Button
+                    Text="Create New Routine"
                     Style="{StaticResource RoutineButtonStyle}"
-                    Command="{Binding GoBackCommand}"
+                    Command="{Binding SetOperatingRoutineCommand}"
                     Margin="50" />
             </VerticalStackLayout>
         </Grid>
