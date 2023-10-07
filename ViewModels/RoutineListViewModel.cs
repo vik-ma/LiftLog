@@ -96,6 +96,11 @@ namespace LocalLiftLog.ViewModels
                     // Create Routine
                     await _context.AddItemAsync<Routine>(OperatingRoutine);
                     RoutineList.Add(OperatingRoutine);
+
+                    int id = RoutineList[RoutineList.Count - 1].Id;
+
+                    // Send user to RoutineDetailsPage of newly created Routine
+                    ViewRoutineDetailsCommand.Execute(id);
                 }
                 else
                 {
