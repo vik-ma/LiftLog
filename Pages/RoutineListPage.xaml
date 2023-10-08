@@ -204,9 +204,20 @@
                         </Label.Triggers>-->
                         </Label>
                     </VerticalStackLayout>
-                    <VerticalStackLayout 
+                    <HorizontalStackLayout 
                         Grid.Row="0"
                         Grid.Column="2">
+                        <Button 
+                            Grid.Column="1"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            Text="Cancel"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            CornerRadius="6"
+                            BackgroundColor="#ef4444"
+                            Command="{Binding CancelEditingCommand}" >
+                        </Button>
                         <Button 
                             Grid.Column="1"
                             HorizontalOptions="End"
@@ -217,18 +228,8 @@
                             CornerRadius="6"
                             BackgroundColor="#22c55e"
                             Command="{Binding SaveRoutineCommand}" >
-                            <!--<Button.Triggers>
-                            <DataTrigger 
-                                TargetType="Button"
-                                Binding="{Binding OperatingRoutine.Id}"
-                                Value="0">
-                                <Setter 
-                                    Property="Text" 
-                                    Value="Create Routine" />
-                            </DataTrigger>
-                        </Button.Triggers>-->
                         </Button>
-                    </VerticalStackLayout>
+                    </HorizontalStackLayout>
                     <VerticalStackLayout 
                         Grid.Row="1"
                         Grid.Column="0">
