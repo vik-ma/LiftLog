@@ -180,7 +180,7 @@
                     Padding="10"
                     RowSpacing="10"
                     ColumnSpacing="10"
-                    BackgroundColor="#CCBFFA"
+                    BackgroundColor="#ECECEC"
                     IsVisible="{Binding IsEditing}">
                     <VerticalStackLayout 
                         Grid.Row="0"
@@ -215,7 +215,8 @@
                             FontSize="18"
                             FontAttributes="Bold"
                             CornerRadius="6"
-                            Command="{Binding SaveRoutineCommand}">
+                            BackgroundColor="#22c55e"
+                            Command="{Binding SaveRoutineCommand}" >
                             <!--<Button.Triggers>
                             <DataTrigger 
                                 TargetType="Button"
@@ -255,7 +256,7 @@
                             Text="{Binding OperatingRoutine.Name}"
                             Placeholder="Name"
                             Margin="0, 5"
-                            BackgroundColor="#DAD1F9"
+                            BackgroundColor="#FFFFFF"
                             FontSize="20"/>
                     </VerticalStackLayout>
                     <VerticalStackLayout 
@@ -285,7 +286,7 @@
                             Text="{Binding OperatingRoutine.Focus}"
                             Placeholder="Focus"
                             Margin="0, 5"
-                            BackgroundColor="#DAD1F9"
+                            BackgroundColor="#FFFFFF"
                             FontSize="20" />
                     </VerticalStackLayout>
                 </Grid>
@@ -296,7 +297,7 @@
                     Style="{StaticResource RoutineButtonStyle}"
                     Command="{Binding SetOperatingRoutineCommand}"
                     Margin="50"
-                    IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"/>
+                    IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
             </VerticalStackLayout>
         </Grid>
     </Grid>
