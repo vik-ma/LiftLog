@@ -295,7 +295,8 @@
                     Text="Create New Routine"
                     Style="{StaticResource RoutineButtonStyle}"
                     Command="{Binding SetOperatingRoutineCommand}"
-                    Margin="50" />
+                    Margin="50"
+                    IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"/>
             </VerticalStackLayout>
         </Grid>
     </Grid>
