@@ -15,9 +15,9 @@ namespace LocalLiftLog.Models
         public string Name { get; set; }
         public string LastUpdateDateTime { get; set; }  
         public string Focus { get; set; }
-        public int WorkoutScheduleId { get; set; }
-        public string Test { get; set; }    
-
+        public int? ScheduleId { get; set; }
+        public string Test { get; set; }
+        
         public Routine Clone() => MemberwiseClone() as Routine;
 
         #nullable enable
