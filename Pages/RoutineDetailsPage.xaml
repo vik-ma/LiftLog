@@ -26,7 +26,7 @@
         <Entry 
             Text="{Binding RoutineListViewModel.OperatingRoutine.Name}"
             Placeholder="Routine Name"
-            FontSize="20"
+            FontSize="24"
             IsVisible="{Binding RoutineListViewModel.IsEditing}" />
         <Label>
             <Label.FormattedText>
@@ -57,7 +57,7 @@
         <Entry 
             Text="{Binding RoutineListViewModel.OperatingRoutine.Focus}"
             Placeholder="Routine Focus"
-            FontSize="20"
+            FontSize="24"
             IsVisible="{Binding RoutineListViewModel.IsEditing}" />
         <Label>
             <Label.FormattedText>
@@ -85,11 +85,37 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <Entry 
-            Text="{Binding RoutineListViewModel.OperatingRoutine.ScheduleId}"
-            Placeholder="Schedule ID"
-            FontSize="20"
-            IsVisible="{Binding RoutineListViewModel.IsEditing}" />
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span 
+                        Text="Is Schedule Weekly: " 
+                        FontAttributes="Bold"
+                        Style="{StaticResource RoutineSubSpanStyle}" />
+                    <Span 
+                        Text="{Binding Routine.IsScheduleWeekly}"
+                        Style="{StaticResource RoutineSubSpanStyle}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <VerticalStackLayout
+            IsVisible="{Binding RoutineListViewModel.IsEditing}"
+            Spacing="4">
+            <Entry 
+                Text="{Binding RoutineListViewModel.OperatingRoutine.ScheduleId}"
+                Placeholder="Schedule ID"
+                FontSize="24" />
+            <HorizontalStackLayout Spacing="20">
+                <Label 
+                    Text="Weekly Schedule "
+                    FontSize="26"
+                    VerticalOptions="Center" />
+                <CheckBox 
+                    VerticalOptions="Center"
+                    Scale="1.5"
+                    IsChecked="{Binding RoutineListViewModel.OperatingRoutine.IsScheduleWeekly}" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
         <Grid 
             WidthRequest="300"
             HorizontalOptions="Center"

@@ -131,6 +131,19 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Is Schedule Weekly: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding IsScheduleWeekly}"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
                             </VerticalStackLayout>
                             <VerticalStackLayout
                                 Grid.Row="0"
