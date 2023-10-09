@@ -72,6 +72,24 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span 
+                        Text="Schedule ID: " 
+                        FontAttributes="Bold"
+                        Style="{StaticResource RoutineSubSpanStyle}" />
+                    <Span 
+                        Text="{Binding Routine.ScheduleId, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=Schedule}"
+                        Style="{StaticResource RoutineSubSpanStyle}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Entry 
+            Text="{Binding RoutineListViewModel.OperatingRoutine.ScheduleId}"
+            Placeholder="Schedule ID"
+            FontSize="20"
+            IsVisible="{Binding RoutineListViewModel.IsEditing}" />
         <Grid 
             WidthRequest="300"
             HorizontalOptions="Center"
