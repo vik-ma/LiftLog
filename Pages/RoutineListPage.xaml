@@ -118,32 +118,6 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Schedule ID: " 
-                                                FontAttributes="Bold"
-                                                Style="{StaticResource RoutineSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding ScheduleId, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=Schedule}"
-                                                Style="{StaticResource RoutineSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Is Schedule Weekly: " 
-                                                FontAttributes="Bold"
-                                                Style="{StaticResource RoutineSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding IsScheduleWeekly}"
-                                                Style="{StaticResource RoutineSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
                             </VerticalStackLayout>
                             <VerticalStackLayout
                                 Grid.Row="0"
@@ -204,8 +178,7 @@
                     RowDefinitions="*, *"
                     ColumnDefinitions="*, *"
                     Padding="10"
-                    RowSpacing="10"
-                    ColumnSpacing="10"
+                    ColumnSpacing="15"
                     BackgroundColor="#ECECEC"
                     IsVisible="{Binding IsEditing}">
                     <VerticalStackLayout 
@@ -215,27 +188,18 @@
                             Grid.Column="0"
                             Text="Create New Routine" 
                             FontAttributes="Bold"
-                            FontSize="26"
+                            FontSize="32"
                             HorizontalOptions="Start"
                             VerticalOptions="Center" >
-                            <!--<Label.Triggers>
-                            <DataTrigger 
-                                TargetType="Label"        
-                                Binding="{Binding OperatingRoutine.Id}"                
-                                Value="0">
-                                <Setter 
-                                    Property="Text" 
-                                    Value="Create New Routine" />
-                            </DataTrigger>
-                        </Label.Triggers>-->
                         </Label>
                     </VerticalStackLayout>
                     <HorizontalStackLayout 
                         Grid.Row="0"
-                        Grid.Column="2">
+                        Grid.Column="2"
+                        HorizontalOptions="End"
+                        Spacing="12">
                         <Button 
                             Grid.Column="1"
-                            HorizontalOptions="Start"
                             VerticalOptions="Center"
                             Text="Cancel"
                             FontSize="18"
@@ -246,7 +210,6 @@
                         </Button>
                         <Button 
                             Grid.Column="1"
-                            HorizontalOptions="End"
                             VerticalOptions="Center"
                             Text="Create Routine"
                             FontSize="18"
@@ -262,11 +225,11 @@
                         <Label 
                             Text="Name" 
                             FontAttributes="Bold" 
-                            Margin="5, 0"
+                            Margin="2, 0"
                             FontSize="20" />
                         <Label 
                             Text="{Binding OperatingRoutine.Name}" 
-                            Margin="5, 0"
+                            Margin="2, 0"
                             FontSize="20">
                             <Label.Triggers>
                                 <DataTrigger 
@@ -292,11 +255,11 @@
                         <Label 
                             Text="Focus (Optional)" 
                             FontAttributes="Bold" 
-                            Margin="5, 0"
+                            Margin="2, 0"
                             FontSize="20" />
                         <Label 
                             Text="{Binding OperatingRoutine.Focus}" 
-                            Margin="5, 0"
+                            Margin="2, 0"
                             FontSize="20">
                             <Label.Triggers>
                                 <DataTrigger 
