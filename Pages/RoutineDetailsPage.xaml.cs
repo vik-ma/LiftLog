@@ -1,6 +1,5 @@
+namespace LocalLiftLog.Pages; 
 using LocalLiftLog.ViewModels;
-
-namespace LocalLiftLog.Pages;
 
 public partial class RoutineDetailsPage : ContentPage
 {
