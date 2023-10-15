@@ -8,8 +8,13 @@
     
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Routine Schedule"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Button 
+            Text="Go Back"
+            Style="{StaticResource RoutineButtonStyle}"
+            Command="{Binding GoBackCommand}"
+            Margin="50" />
     </VerticalStackLayout>
 </ContentPage>

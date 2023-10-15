@@ -24,5 +24,11 @@ namespace LocalLiftLog.ViewModels
         {
             await Shell.Current.GoToAsync($"{nameof(RoutineListPage)}");
         }
+
+        [RelayCommand]
+        private async Task GoToRoutineSchedule()
+        {
+            await Shell.Current.GoToAsync($"{nameof(RoutineSchedulePage)}");
+        }
     }
 }

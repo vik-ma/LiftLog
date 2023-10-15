@@ -15,6 +15,10 @@
             Text="Go To Routine List"
             Command="{Binding GoToRoutineListCommand}"
             Style="{StaticResource MainPageNavigationButtonStyle}"/>
+        <Button
+            Text="Go To Routine Schedule"
+            Command="{Binding GoToRoutineScheduleCommand}"
+            Style="{StaticResource MainPageNavigationButtonStyle}"/>
     </VerticalStackLayout>
 
 </ContentPage>
