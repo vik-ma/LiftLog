@@ -16,7 +16,7 @@
             Command="{Binding GoToRoutineListCommand}"
             Style="{StaticResource MainPageNavigationButtonStyle}"/>
         <Button
-            Text="Go To Weekly Schedule"
+            Text="Go To Weekly Schedule List"
             Command="{Binding GoToWeeklyScheduleCommand}"
             Style="{StaticResource MainPageNavigationButtonStyle}"/>
     </VerticalStackLayout>

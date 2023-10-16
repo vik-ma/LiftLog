@@ -19,10 +19,6 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private Dictionary<int, string> daysOfWeek;
 
-        [ObservableProperty]
-        private ObservableCollection<WeeklySchedule> weeklySchedule;
-
-
         public WeeklyScheduleViewModel(DatabaseContext context)
         {
             _context = context;
@@ -39,7 +35,28 @@ namespace LocalLiftLog.ViewModels
                 };
         }
 
+        [ObservableProperty]
+        private ObservableCollection<WeeklySchedule> _scheduleList = new();
 
+        [ObservableProperty]
+        private Routine _operatingSchedule = new();
+
+        public async Task LoadSchedulesAsync()
+        {
+            var schedules = await _context.GetAllAsync<WeeklySchedule>();
+
+            if (schedules is not null && schedules.Any())
+            {
+                ScheduleList.Clear();
+
+                schedules ??= new ObservableCollection<WeeklySchedule>();
+
+                foreach (var routine in schedules)
+                {
+                    ScheduleList.Add(routine);
+                }
+            }
+        }
 
         [RelayCommand]
         async Task GoBack()

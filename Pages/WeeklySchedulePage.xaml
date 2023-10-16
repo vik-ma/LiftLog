@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LocalLiftLog.Pages.WeeklySchedulePage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
+             xmlns:models="clr-namespace:LocalLiftLog.Models"
              x:DataType="viewmodel:WeeklyScheduleViewModel"
              Title="Weekly Schedule Page">
 
@@ -12,6 +13,71 @@
             VerticalOptions="Center"
             FontAttributes="Bold"
             FontSize="36" />
+        <VerticalStackLayout
+            Margin="10">
+            <CollectionView 
+                ItemsSource="{Binding ScheduleList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:WeeklySchedule">
+                        <Grid 
+                            RowDefinitions="Auto, Auto"
+                            ColumnDefinitions="*, Auto"
+                            Padding="10"
+                            BackgroundColor="#ECECEC">
+                            <VerticalStackLayout 
+                                Grid.Row="0" 
+                                Grid.Column="0"
+                                Spacing="15">
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Id: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Id}"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Spacing="15"
+                                VerticalOptions="Center">
+                                <Button 
+                                    Text="Delete"
+                                    Padding="20, 10"
+                                    FontSize="18"
+                                    FontAttributes="Bold" 
+                                    BackgroundColor="#ef4444"
+                                    />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <VerticalStackLayout
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Label 
+                                Text="No Schedules In List!" 
+                                FontSize="20" 
+                                FontAttributes="Bold" 
+                                HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
+        </VerticalStackLayout>
 
         <CollectionView ItemsSource="{Binding DaysOfWeek.Values}">
             <CollectionView.ItemTemplate>
@@ -29,7 +95,7 @@
                             Style="{StaticResource ScheduleLabelStyle}" />
                         <Entry 
                             Grid.Column="1"
-                             FontSize="20" />
+                                FontSize="20" />
                         <Button 
                             Text="Set" 
                             Grid.Column="2"
@@ -38,6 +104,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        
 
         <VerticalStackLayout>
             <Button 
