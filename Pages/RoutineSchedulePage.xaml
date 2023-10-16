@@ -24,10 +24,17 @@
                         WidthRequest="500"
                         ColumnSpacing="10"
                         RowSpacing="2">
-
-                        <Label Text="{Binding .}" Grid.Column="0" />
-                        <Entry Grid.Column="1" />
-                        <Button Text="Set" Grid.Column="2" />
+                        <Label 
+                            Text="{Binding .}" 
+                            Grid.Column="0"
+                            Style="{StaticResource ScheduleLabelStyle}" />
+                        <Entry 
+                            Grid.Column="1"
+                             FontSize="20" />
+                        <Button 
+                            Text="Set" 
+                            Grid.Column="2"
+                            Style="{StaticResource ScheduleButtonStyle}" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
