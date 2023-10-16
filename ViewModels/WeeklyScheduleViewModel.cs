@@ -61,6 +61,17 @@ namespace LocalLiftLog.ViewModels
             });
         }
 
+        [RelayCommand]
+        private async Task CreateScheduleAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                WeeklySchedule schedule = new();
+                await _context.AddItemAsync<WeeklySchedule>(schedule);
+                ScheduleList.Add(schedule);
+            });
+        }
+
         #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {

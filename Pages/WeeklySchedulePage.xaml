@@ -77,6 +77,10 @@
                     </ContentView>
                 </CollectionView.EmptyView>
             </CollectionView>
+            <Button 
+                Text="Create New Schedule"
+                Style="{StaticResource MainPageNavigationButtonStyle}"
+                Command="{Binding CreateScheduleCommand}" />
         </VerticalStackLayout>
 
         <CollectionView ItemsSource="{Binding DaysOfWeek.Values}">
