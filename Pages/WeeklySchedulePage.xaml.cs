@@ -1,9 +1,9 @@
 namespace LocalLiftLog.Pages;
 using LocalLiftLog.ViewModels;
 
-public partial class RoutineSchedulePage : ContentPage
+public partial class WeeklySchedulePage : ContentPage
 {
-    public RoutineSchedulePage(RoutineScheduleViewModel viewModel)
+    public WeeklySchedulePage(WeeklyScheduleViewModel viewModel)
 	{
 		InitializeComponent();
         BindingContext = viewModel;

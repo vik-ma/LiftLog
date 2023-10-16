@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.ViewModels
 {
-    public partial class RoutineScheduleViewModel : ObservableObject
+    public partial class WeeklyScheduleViewModel : ObservableObject
     {
         private readonly DatabaseContext _context;
 
@@ -23,7 +23,7 @@ namespace LocalLiftLog.ViewModels
         private ObservableCollection<WeeklySchedule> weeklySchedule;
 
 
-        public RoutineScheduleViewModel(DatabaseContext context)
+        public WeeklyScheduleViewModel(DatabaseContext context)
         {
             _context = context;
 
