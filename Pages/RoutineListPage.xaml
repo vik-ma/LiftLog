@@ -87,7 +87,7 @@
                                                 FontAttributes="Bold"
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                             <Span 
-                                                Text="{Binding Id, Converter={StaticResource nullValueToEmptyText}}"
+                                                Text="{Binding Id}"
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
