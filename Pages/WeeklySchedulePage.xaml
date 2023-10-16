@@ -58,7 +58,8 @@
                                     FontSize="18"
                                     FontAttributes="Bold" 
                                     BackgroundColor="#ef4444"
-                                    />
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WeeklyScheduleViewModel}}, Path=DeleteScheduleCommand}" 
+                                    CommandParameter="{Binding Id}"/>
                             </VerticalStackLayout>
                         </Grid>
                     </DataTemplate>
@@ -77,6 +78,7 @@
                     </ContentView>
                 </CollectionView.EmptyView>
             </CollectionView>
+            
             <Button 
                 Text="Create New Schedule"
                 Style="{StaticResource MainPageNavigationButtonStyle}"

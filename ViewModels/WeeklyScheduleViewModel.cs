@@ -91,6 +91,30 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
+        private async Task DeleteScheduleAsync(int id)
+        {
+            var schedule = ScheduleList.FirstOrDefault(p => p.Id == id);
+
+            if (schedule is null)
+            {
+                await Shell.Current.DisplayAlert("Error", "Schedule does not exist.", "OK");
+                return;
+            };
+
+            await ExecuteAsync(async () =>
+            {
+                if (await _context.DeleteItemByKeyAsync<WeeklySchedule>(id))
+                {
+                    ScheduleList.Remove(schedule);
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("Delete Error", "Schedule was not deleted.", "OK");
+                }
+            });
+        }
+
+        [RelayCommand]
         async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
