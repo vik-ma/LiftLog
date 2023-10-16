@@ -13,99 +13,25 @@
             FontAttributes="Bold"
             FontSize="36" />
 
-        <Grid 
-            HorizontalOptions="Center"
-            ColumnDefinitions="*, *, *"
-            RowDefinitions="*, *, *, *, *, *, *"
-            WidthRequest="500"
-            ColumnSpacing="10"
-            RowSpacing="15">
-            <Label 
-                Text="Monday"
-                Grid.Row="0"
-                Grid.Column="0" />
-            <Entry 
-                Grid.Row="0"
-                Grid.Column="1" />
-            <Button 
-                Text="Set"
-                Grid.Row="0"
-                Grid.Column="2" />
+        
+        <CollectionView ItemsSource="{Binding DaysOfWeek.Values}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid 
+                        HorizontalOptions="Center"
+                        ColumnDefinitions="*, *, *"
+                        RowDefinitions="*, *, *, *, *, *, *"
+                        WidthRequest="500"
+                        ColumnSpacing="10"
+                        RowSpacing="2">
 
-            <Label 
-                Text="Tuesday"
-                Grid.Row="1"
-                Grid.Column="0" />
-            <Entry 
-                Grid.Row="1"
-                Grid.Column="1" />
-            <Button 
-                Text="Set"
-                Grid.Row="1"
-                Grid.Column="2" />
-            
-            <Label 
-                Text="Wednesday"
-                Grid.Row="2"
-                Grid.Column="0" />
-            <Entry 
-                Grid.Row="2"
-                Grid.Column="1" />
-            <Button 
-                Text="Set"
-                Grid.Row="2"
-                Grid.Column="2" />
-            
-            <Label
-                Text="Thursday"
-                Grid.Row="3"
-                Grid.Column="0" />
-            <Entry 
-                Grid.Row="3"
-                Grid.Column="1" />
-            <Button 
-                Text="Set"
-                Grid.Row="3"
-                Grid.Column="2" />
-            
-            <Label 
-                Text="Friday"
-                Grid.Row="4"
-                Grid.Column="0" />
-            <Entry 
-                Grid.Row="4"
-                Grid.Column="1" />
-            <Button 
-                Text="Set"
-                Grid.Row="4"
-                Grid.Column="2" />
-            
-            <Label 
-                Text="Saturday"
-                Grid.Row="5"
-                Grid.Column="0" />
-            <Entry 
-                Grid.Row="5"
-                Grid.Column="1" />
-            <Button 
-                Text="Set"
-                Grid.Row="5"
-                Grid.Column="2" />
-            
-            <Label 
-                Text="Sunday"
-                Grid.Row="6"
-                Grid.Column="0" />
-            <Entry 
-                Grid.Row="6"
-                Grid.Column="1" />
-            <Button 
-                Text="Set"
-                Grid.Row="6"
-                Grid.Column="2" />
-
-        </Grid>
-
+                        <Label Text="{Binding .}" Grid.Column="0" />
+                        <Entry Grid.Column="1" />
+                        <Button Text="Set" Grid.Column="2" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
         <VerticalStackLayout>
             <Button 
