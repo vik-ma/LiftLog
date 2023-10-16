@@ -43,18 +43,39 @@ namespace LocalLiftLog.ViewModels
 
         public async Task LoadSchedulesAsync()
         {
-            var schedules = await _context.GetAllAsync<WeeklySchedule>();
-
-            if (schedules is not null && schedules.Any())
+            await ExecuteAsync(async () =>
             {
-                ScheduleList.Clear();
+                var schedules = await _context.GetAllAsync<WeeklySchedule>();
 
-                schedules ??= new ObservableCollection<WeeklySchedule>();
-
-                foreach (var routine in schedules)
+                if (schedules is not null && schedules.Any())
                 {
-                    ScheduleList.Add(routine);
+                    ScheduleList.Clear();
+
+                    schedules ??= new ObservableCollection<WeeklySchedule>();
+
+                    foreach (var routine in schedules)
+                    {
+                        ScheduleList.Add(routine);
+                    }
                 }
+            });
+        }
+
+        #nullable enable
+        private async Task ExecuteAsync(Func<Task> operation)
+        {
+            try
+            {
+                #nullable disable
+                await operation?.Invoke();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+
             }
         }
 
