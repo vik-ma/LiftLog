@@ -50,8 +50,13 @@
                             <VerticalStackLayout
                                 Grid.Row="0"
                                 Grid.Column="1"
-                                Spacing="15"
+                                Spacing="10"
                                 VerticalOptions="Center">
+                                <Button 
+                                    Text="Edit"
+                                    Padding="20, 10"
+                                    FontSize="18"
+                                    FontAttributes="Bold" />
                                 <Button 
                                     Text="Delete"
                                     Padding="20, 10"
@@ -85,7 +90,7 @@
                 Command="{Binding CreateScheduleCommand}" />
         </VerticalStackLayout>
 
-        <CollectionView ItemsSource="{Binding DaysOfWeek.Values}">
+        <CollectionView ItemsSource="{Binding DaysOfWeek.Keys}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid 
