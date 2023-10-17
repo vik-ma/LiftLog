@@ -19,6 +19,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private Dictionary<string, string> daysOfWeek;
 
+        [ObservableProperty]
+        private string asd = "Day1TemplateId";
+
         public WeeklyScheduleViewModel(DatabaseContext context)
         {
             _context = context;
