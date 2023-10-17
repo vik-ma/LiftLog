@@ -181,7 +181,7 @@
                 Command="{Binding CreateScheduleCommand}" />
         </VerticalStackLayout>
 
-        <CollectionView ItemsSource="{Binding DaysOfWeek.Keys}">
+        <CollectionView ItemsSource="{Binding DaysOfWeek}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid 

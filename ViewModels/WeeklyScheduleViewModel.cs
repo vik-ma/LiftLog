@@ -17,25 +17,12 @@ namespace LocalLiftLog.ViewModels
         private readonly DatabaseContext _context;
 
         [ObservableProperty]
-        private Dictionary<string, string> daysOfWeek;
-
-        [ObservableProperty]
-        private string asd = "Day1TemplateId";
+        private string[] daysOfWeek = new string[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
         public WeeklyScheduleViewModel(DatabaseContext context)
         {
             _context = context;
-
-            DaysOfWeek = new Dictionary<string, string>
-                {
-                    { "Monday", "Day1TemplateId" },
-                    { "Tuesday", "Day2TemplateId" },
-                    { "Wednesday", "Day3TemplateId" },
-                    { "Thursday", "Day4TemplateId" },
-                    { "Friday", "Day5TemplateId" },
-                    { "Saturday", "Day6TemplateId" },
-                    { "Sunday", "Day7TemplateId" }
-                };
+                
         }
 
         [ObservableProperty]
