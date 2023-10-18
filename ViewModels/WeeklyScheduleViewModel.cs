@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.ViewModels
 {
+    [QueryProperty(nameof(WeeklySchedule), nameof(WeeklySchedule))]
     public partial class WeeklyScheduleViewModel : ObservableObject
     {
         private readonly DatabaseContext _context;
@@ -22,14 +23,16 @@ namespace LocalLiftLog.ViewModels
         public WeeklyScheduleViewModel(DatabaseContext context)
         {
             _context = context;
-                
         }
+
+        [ObservableProperty]
+        private WeeklySchedule weeklySchedule;
 
         [ObservableProperty]
         private ObservableCollection<WeeklySchedule> _scheduleList = new();
 
         [ObservableProperty]
-        private Routine _operatingSchedule = new();
+        private WeeklySchedule operatingSchedule = new();
 
         public async Task LoadSchedulesAsync()
         {
@@ -108,6 +111,27 @@ namespace LocalLiftLog.ViewModels
         async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
+        }
+
+        [RelayCommand]
+        private async Task ViewWeeklySchedule(int id)
+        {
+            var schedule = ScheduleList.FirstOrDefault(p => p.Id == id);
+
+            if (schedule is null)
+            {
+                await Shell.Current.DisplayAlert("Error", "Schedule does not exist", "OK");
+                return;
+            }
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["WeeklySchedule"] = schedule
+            };
+
+            OperatingSchedule = schedule;
+
+            await Shell.Current.GoToAsync($"{nameof(WeeklySchedulePage)}?Id={id}", navigationParameter);
         }
     }
 }

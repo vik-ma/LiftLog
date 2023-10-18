@@ -141,7 +141,9 @@
                                 Text="Edit"
                                 Padding="20, 10"
                                 FontSize="18"
-                                FontAttributes="Bold" />
+                                FontAttributes="Bold"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WeeklyScheduleViewModel}}, Path=ViewWeeklyScheduleCommand}" 
+                                CommandParameter="{Binding Id}"/>
                             <Button 
                                 Text="Delete"
                                 Padding="20, 10"

@@ -8,13 +8,116 @@
              Title="Weekly Schedule Page">
 
     <VerticalStackLayout Padding="6, 10">
-        <Label 
-            Text="Weekly Schedule"
-            VerticalOptions="Center"
-            FontAttributes="Bold"
-            FontSize="36" />
+        <HorizontalStackLayout Spacing="50">
+            <Label 
+                Text="Weekly Schedule"
+                VerticalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="36" />
+            <Label 
+                Text="{Binding WeeklySchedule.Id}"
+                VerticalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="36" />
+        </HorizontalStackLayout>
         
-
+        <HorizontalStackLayout 
+            HorizontalOptions="Center" 
+            Spacing="15"
+            Margin="10">
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="Monday: " 
+                            FontAttributes="Bold"
+                            Style="{StaticResource RoutineSpanStyle}" />
+                        <Span 
+                            Text="{Binding WeeklySchedule.Day1TemplateId}"
+                            Style="{StaticResource RoutineSpanStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="Tuesday: " 
+                            FontAttributes="Bold"
+                            Style="{StaticResource RoutineSpanStyle}" />
+                        <Span 
+                            Text="{Binding WeeklySchedule.Day1TemplateId}"
+                            Style="{StaticResource RoutineSpanStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="Wednesday: " 
+                            FontAttributes="Bold"
+                            Style="{StaticResource RoutineSpanStyle}" />
+                        <Span 
+                            Text="{Binding WeeklySchedule.Day3TemplateId}"
+                            Style="{StaticResource RoutineSpanStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="Thursday: " 
+                            FontAttributes="Bold"
+                            Style="{StaticResource RoutineSpanStyle}" />
+                        <Span 
+                            Text="{Binding WeeklySchedule.Day4TemplateId}"
+                            Style="{StaticResource RoutineSpanStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="Friday: " 
+                            FontAttributes="Bold"
+                            Style="{StaticResource RoutineSpanStyle}" />
+                        <Span 
+                            Text="{Binding WeeklySchedule.Day5TemplateId}"
+                            Style="{StaticResource RoutineSpanStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="Saturday: " 
+                            FontAttributes="Bold"
+                            Style="{StaticResource RoutineSpanStyle}" />
+                        <Span 
+                            Text="{Binding WeeklySchedule.Day6TemplateId}"
+                            Style="{StaticResource RoutineSpanStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="Sunday: " 
+                            FontAttributes="Bold"
+                            Style="{StaticResource RoutineSpanStyle}" />
+                        <Span 
+                            Text="{Binding WeeklySchedule.Day7TemplateId}"
+                            Style="{StaticResource RoutineSpanStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </HorizontalStackLayout>
+        
         <CollectionView ItemsSource="{Binding DaysOfWeek}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -31,7 +134,7 @@
                             Style="{StaticResource ScheduleLabelStyle}" />
                         <Entry 
                             Grid.Column="1"
-                                FontSize="20" />
+                            FontSize="20" />
                         <Button 
                             Text="Set" 
                             Grid.Column="2"
@@ -41,7 +144,6 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
         
-
         <VerticalStackLayout>
             <Button 
                 Text="Go Back"
