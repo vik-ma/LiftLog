@@ -129,7 +129,7 @@
                         ColumnSpacing="10"
                         RowSpacing="2">
                         <Label 
-                            Text="{Binding .}" 
+                            Text="{Binding .}"
                             Grid.Column="0"
                             Style="{StaticResource ScheduleLabelStyle}" />
                         <Entry 
@@ -138,7 +138,10 @@
                         <Button 
                             Text="Set" 
                             Grid.Column="2"
-                            Style="{StaticResource ScheduleButtonStyle}" />
+                            Style="{StaticResource ScheduleButtonStyle}"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WeeklyScheduleViewModel}}, Path=ModifyWeeklyScheduleDayCommand}" 
+                            CommandParameter="{Binding .}"
+                            />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
