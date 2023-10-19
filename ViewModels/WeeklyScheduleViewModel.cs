@@ -20,30 +20,13 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private WeeklySchedule weeklySchedule;
 
-        [ObservableProperty]
-        private string[] daysOfWeek = new string[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-
-        public Dictionary<string, string> dayToScheduleIdDict;
-
         public WeeklyScheduleViewModel(DatabaseContext context)
         {
             _context = context;
-
-            dayToScheduleIdDict = new Dictionary<string, string>
-            {
-                { "Monday", "day1TemplateId" },
-                { "Tuesday", "day2TemplateId" },
-                { "Wednesday" , "day3TemplateId" },
-                { "Thursday" , "day4TemplateId" },
-                { "Friday" , "day5TemplateId" },
-                { "Saturday" , "day6TemplateId" },
-                { "Sunday" , "day7TemplateId" }
-            };
         }
 
         [ObservableProperty]
         private ObservableCollection<WeeklySchedule> _scheduleList = new();
-
 
         public async Task LoadSchedulesAsync()
         {
@@ -141,12 +124,6 @@ namespace LocalLiftLog.ViewModels
             };
 
             await Shell.Current.GoToAsync($"{nameof(WeeklySchedulePage)}?Id={id}", navigationParameter);
-        }
-
-        [RelayCommand]
-        private async Task ModifyWeeklyScheduleDay(string day) 
-        {
-            await Shell.Current.DisplayAlert("Error", dayToScheduleIdDict[day], "OK");
         }
 
         [RelayCommand]
