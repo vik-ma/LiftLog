@@ -148,5 +148,31 @@ namespace LocalLiftLog.ViewModels
         {
             await Shell.Current.DisplayAlert("Error", dayToScheduleIdDict[day], "OK");
         }
+
+        [RelayCommand]
+        private async Task SaveWeeklyScheduleAsync()
+        {
+            if (WeeklySchedule is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                // Update WeeklySchedule
+                if (await _context.UpdateItemAsync<WeeklySchedule>(WeeklySchedule))
+                {
+                    var scheduleCopy = WeeklySchedule.Clone();
+
+                    var index = ScheduleList.IndexOf(WeeklySchedule);
+                    ScheduleList.RemoveAt(index);
+
+                    ScheduleList.Insert(index, scheduleCopy);
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Weekly Schedule.", "OK");
+                    return;
+                }
+            });
+        }
     }
 }

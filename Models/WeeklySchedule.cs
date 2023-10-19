@@ -18,5 +18,7 @@ namespace LocalLiftLog.Models
         public int Day5TemplateId { get; set; } = 5;
         public int Day6TemplateId { get; set; }
         public int Day7TemplateId { get; set; }
+
+        public WeeklySchedule Clone() => MemberwiseClone() as WeeklySchedule;
     }
 }
