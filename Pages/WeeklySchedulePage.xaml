@@ -36,6 +36,7 @@
                 Text="{Binding WeeklySchedule.Day1TemplateId, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=WorkoutID}"
                 Grid.Row="0"
                 Grid.Column="1"
+                WidthRequest="250"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Entry 
                 Text="{Binding WeeklySchedule.Day1TemplateId}"
