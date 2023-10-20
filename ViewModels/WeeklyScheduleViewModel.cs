@@ -150,6 +150,10 @@ namespace LocalLiftLog.ViewModels
                     return;
                 }
             });
+
+            var id = WeeklySchedule.Id;
+
+            WeeklySchedule = await _context.GetItemByKeyAsync<WeeklySchedule>(id);
         }
     }
 }
