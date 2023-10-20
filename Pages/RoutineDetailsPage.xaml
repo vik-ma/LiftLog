@@ -144,6 +144,11 @@
             Command="{Binding RoutineListViewModel.SetOperatingRoutineCommand}" 
             CommandParameter="{Binding Routine}"
             IsVisible="{Binding RoutineListViewModel.IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
+        <Button 
+            Text="Edit Schedule"
+            Style="{StaticResource RoutineButtonStyle}"
+            IsVisible="{Binding RoutineListViewModel.IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+            Command="{Binding VisitScheduleCommand}" />
 
         <Button 
             Text="Go Back"

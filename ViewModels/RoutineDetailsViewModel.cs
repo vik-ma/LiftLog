@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using LocalLiftLog.Data;
 using LocalLiftLog.Models;
+using LocalLiftLog.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,31 @@ namespace LocalLiftLog.ViewModels
             RoutineListViewModel.SaveRoutineCommand.Execute(RoutineListViewModel.OperatingRoutine);
 
             Routine = await _context.GetItemByKeyAsync<Routine>(id);
+        }
+
+        [RelayCommand]
+        private async Task VisitSchedule()
+        {
+            var scheduleId = Routine.ScheduleId;
+
+            try
+            {
+                var schedule = await _context.GetItemByKeyAsync<WeeklySchedule>(scheduleId);
+
+                int id = schedule.Id;
+
+                var navigationParameter = new Dictionary<string, object>
+                {
+                    ["WeeklySchedule"] = schedule
+                };
+
+                await Shell.Current.GoToAsync($"{nameof(WeeklySchedulePage)}?Id={id}", navigationParameter);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "Schedule does not exist!", "OK");
+            }
+
         }
     }
 }
