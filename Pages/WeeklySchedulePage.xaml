@@ -23,130 +23,149 @@
 
         <Grid 
             HorizontalOptions="Center"
-            ColumnDefinitions="Auto, Auto, Auto, Auto"
+            ColumnDefinitions="*, *, *, *"
             RowDefinitions="*, *, *, *, *, *, *"
-            WidthRequest="800"
             ColumnSpacing="10"
             RowSpacing="2">
-            <HorizontalStackLayout Grid.Row="0">
-                <Label 
-                    Text="Monday"
-                    Grid.Column="0"
-                    Style="{StaticResource ScheduleLabelStyle}" />
-                <Label 
-                    Text="{Binding WeeklySchedule.Day1TemplateId}"
-                    Grid.Column="1"
-                    Style="{StaticResource ScheduleLabelStyle}" />
-                <Entry 
-                    Grid.Column="2"
-                    FontSize="20" />
-                <Button 
-                    Text="Set" 
-                    Grid.Column="3"
+            <Label 
+                Text="Monday"
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{StaticResource ScheduleLabelStyle}" />
+            <Label 
+                Text="{Binding WeeklySchedule.Day1TemplateId}"
+                Grid.Row="0"
+                Grid.Column="1"
+                Style="{StaticResource ScheduleLabelStyle}" />
+            <Entry 
+                Grid.Row="0"
+                Grid.Column="2"
+                FontSize="20" />
+            <Button 
+                Text="Set" 
+                Grid.Row="0"
+                Grid.Column="3"
+                Style="{StaticResource ScheduleButtonStyle}" />
+            
+            <Label 
+                Text="Tuesday"
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource ScheduleLabelStyle}" />
+            <Label 
+                Text="{Binding WeeklySchedule.Day2TemplateId}"
+                Grid.Row="1"
+                Grid.Column="1"
+                Style="{StaticResource ScheduleLabelStyle}" />
+            <Entry 
+                Grid.Row="1"
+                Grid.Column="2"
+                FontSize="20" />
+            <Button 
+                Text="Set" 
+                Grid.Row="1"
+                Grid.Column="3"
+                Style="{StaticResource ScheduleButtonStyle}" />
+            
+            <Label 
+                Text="Wednesday"
+                Grid.Row="2"
+                Grid.Column="0"
+                Style="{StaticResource ScheduleLabelStyle}" />
+            <Label 
+                Text="{Binding WeeklySchedule.Day3TemplateId}"
+                Grid.Row="2"
+                Grid.Column="1"
+                Style="{StaticResource ScheduleLabelStyle}" />
+            <Entry 
+                Grid.Row="2"
+                Grid.Column="2"
+                FontSize="20" />
+            <Button 
+                Text="Set" 
+                Grid.Row="2"
+                Grid.Column="3"
+                Style="{StaticResource ScheduleButtonStyle}" />
+            
+            <Label 
+                Text="Thursday"
+                Grid.Row="3"
+                Grid.Column="0"
+                Style="{StaticResource ScheduleLabelStyle}" />
+            <Label 
+                Text="{Binding WeeklySchedule.Day4TemplateId}"
+                Grid.Row="3"
+                Grid.Column="1"
+                Style="{StaticResource ScheduleLabelStyle}" />
+            <Entry 
+                Grid.Row="3"
+                Grid.Column="2"
+                FontSize="20" />
+            <Button 
+                Text="Set" 
+                Grid.Row="3"
+                Grid.Column="3"
                     Style="{StaticResource ScheduleButtonStyle}" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Grid.Row="1">
-                <Label 
-                    Text="Tuesday"
-                    Grid.Column="0"
-                    Style="{StaticResource ScheduleLabelStyle}" />
-                <Label 
-                    Text="{Binding WeeklySchedule.Day2TemplateId}"
-                    Grid.Column="1"
-                    Style="{StaticResource ScheduleLabelStyle}" />
-                <Entry 
-                    Grid.Column="2"
-                    FontSize="20" />
-                <Button 
-                    Text="Set" 
-                    Grid.Column="3"
-                    Style="{StaticResource ScheduleButtonStyle}" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Grid.Row="2">
-                <Label 
-                    Text="Wednesday"
-                    Grid.Column="0"
-                    Style="{StaticResource ScheduleLabelStyle}" />
-                <Label 
-                    Text="{Binding WeeklySchedule.Day3TemplateId}"
-                    Grid.Column="1"
-                    Style="{StaticResource ScheduleLabelStyle}" />
-                <Entry 
-                    Grid.Column="2"
-                    FontSize="20" />
-                <Button 
-                    Text="Set" 
-                    Grid.Column="3"
-                    Style="{StaticResource ScheduleButtonStyle}" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Grid.Row="3">
-                <Label 
-                    Text="Thursday"
-                    Grid.Column="0"
-                    Style="{StaticResource ScheduleLabelStyle}" />
-                <Label 
-                    Text="{Binding WeeklySchedule.Day4TemplateId}"
-                    Grid.Column="1"
-                    Style="{StaticResource ScheduleLabelStyle}" />
-                <Entry 
-                    Grid.Column="2"
-                    FontSize="20" />
-                <Button 
-                    Text="Set" 
-                    Grid.Column="3"
-                    Style="{StaticResource ScheduleButtonStyle}" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Grid.Row="4">
-                <Label 
-                    Text="Friday"
-                    Grid.Column="0"
-                    Style="{StaticResource ScheduleLabelStyle}" />
-                <Label 
-                    Text="{Binding WeeklySchedule.Day5TemplateId}"
-                    Grid.Column="1"
-                    Style="{StaticResource ScheduleLabelStyle}" />
-                <Entry 
-                    Grid.Column="2"
-                    FontSize="20" />
-                <Button 
-                    Text="Set" 
-                    Grid.Column="3"
-                    Style="{StaticResource ScheduleButtonStyle}" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Grid.Row="5">
-                <Label 
-                    Text="Saturday"
-                    Grid.Column="0"
-                    Style="{StaticResource ScheduleLabelStyle}" />
-                <Label 
-                    Text="{Binding WeeklySchedule.Day6TemplateId}"
-                    Grid.Column="1"
-                    Style="{StaticResource ScheduleLabelStyle}" />
-                <Entry 
-                    Grid.Column="2"
-                    FontSize="20" />
-                <Button 
-                    Text="Set" 
-                    Grid.Column="3"
-                    Style="{StaticResource ScheduleButtonStyle}" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Grid.Row="6">
-                <Label 
-                    Text="Sunday"
-                    Grid.Column="0"
-                    Style="{StaticResource ScheduleLabelStyle}" />
-                <Label 
-                    Text="{Binding WeeklySchedule.Day7TemplateId}"
-                    Grid.Column="1"
-                    Style="{StaticResource ScheduleLabelStyle}" />
-                <Entry 
-                    Grid.Column="2"
-                    FontSize="20" />
-                <Button 
-                    Text="Set" 
-                    Grid.Column="3"
-                    Style="{StaticResource ScheduleButtonStyle}" />
-            </HorizontalStackLayout>
+            
+            <Label 
+                Text="Friday"
+                Grid.Row="4"
+                Grid.Column="0"
+                Style="{StaticResource ScheduleLabelStyle}" />
+            <Label 
+                Text="{Binding WeeklySchedule.Day5TemplateId}"
+                Grid.Row="4"
+                Grid.Column="1"
+                Style="{StaticResource ScheduleLabelStyle}" />
+            <Entry 
+                Grid.Row="4"
+                Grid.Column="2"
+                FontSize="20" />
+            <Button 
+                Text="Set" 
+                Grid.Row="4"
+                Grid.Column="3"
+                Style="{StaticResource ScheduleButtonStyle}" />
+            
+            <Label 
+                Text="Saturday"
+                Grid.Row="5"
+                Grid.Column="0"
+                Style="{StaticResource ScheduleLabelStyle}" />
+            <Label 
+                Text="{Binding WeeklySchedule.Day6TemplateId}"
+                Grid.Row="5"
+                Grid.Column="1"
+                Style="{StaticResource ScheduleLabelStyle}" />
+            <Entry 
+                Grid.Row="5"
+                Grid.Column="2"
+                FontSize="20" />
+            <Button 
+                Text="Set" 
+                Grid.Row="5"
+                Grid.Column="3"
+                Style="{StaticResource ScheduleButtonStyle}" />
+            
+            <Label 
+                Text="Sunday"
+                Grid.Row="6"
+                Grid.Column="0"
+                Style="{StaticResource ScheduleLabelStyle}" />
+            <Label 
+                Text="{Binding WeeklySchedule.Day7TemplateId}"
+                Grid.Row="6"
+                Grid.Column="1"
+                Style="{StaticResource ScheduleLabelStyle}" />
+            <Entry 
+                Grid.Row="6"
+                Grid.Column="2"
+                FontSize="20" />
+            <Button 
+                Text="Set" 
+                Grid.Row="6"
+                Grid.Column="3"
+                Style="{StaticResource ScheduleButtonStyle}" />
         </Grid>
 
         <VerticalStackLayout>
