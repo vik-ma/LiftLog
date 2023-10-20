@@ -175,5 +175,13 @@
             Text="Create New Schedule"
             Style="{StaticResource MainPageNavigationButtonStyle}"
             Command="{Binding CreateScheduleCommand}" />
+
+        <VerticalStackLayout>
+            <Button 
+                Text="Go Back"
+                Style="{StaticResource RoutineButtonStyle}"
+                Command="{Binding GoBackCommand}"
+                Margin="50" />
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
