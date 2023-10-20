@@ -23,7 +23,7 @@
 
         <Grid 
             HorizontalOptions="Center"
-            ColumnDefinitions="*, *, *, *"
+            ColumnDefinitions="*, *, *"
             RowDefinitions="*, *, *, *, *, *, *"
             ColumnSpacing="20"
             RowSpacing="2">
@@ -43,13 +43,7 @@
                 Grid.Column="2"
                 WidthRequest="150"
                 FontSize="20" />
-            <Button 
-                Text="Set" 
-                Grid.Row="0"
-                Grid.Column="3"
-                Style="{StaticResource ScheduleButtonStyle}"
-                Command="{Binding SaveWeeklyScheduleCommand}" />
-            
+
             <Label 
                 Text="Tuesday"
                 Grid.Row="1"
@@ -65,13 +59,7 @@
                 Grid.Row="1"
                 Grid.Column="2"
                 FontSize="20" />
-            <Button 
-                Text="Set" 
-                Grid.Row="1"
-                Grid.Column="3"
-                Style="{StaticResource ScheduleButtonStyle}"
-                Command="{Binding SaveWeeklyScheduleCommand}" />
-            
+
             <Label 
                 Text="Wednesday"
                 Grid.Row="2"
@@ -87,13 +75,7 @@
                 Grid.Row="2"
                 Grid.Column="2"
                 FontSize="20" />
-            <Button 
-                Text="Set" 
-                Grid.Row="2"
-                Grid.Column="3"
-                Style="{StaticResource ScheduleButtonStyle}"
-                Command="{Binding SaveWeeklyScheduleCommand}" />
-            
+
             <Label 
                 Text="Thursday"
                 Grid.Row="3"
@@ -109,13 +91,7 @@
                 Grid.Row="3"
                 Grid.Column="2"
                 FontSize="20" />
-            <Button 
-                Text="Set" 
-                Grid.Row="3"
-                Grid.Column="3"
-                Style="{StaticResource ScheduleButtonStyle}"
-                Command="{Binding SaveWeeklyScheduleCommand}" />
-            
+
             <Label 
                 Text="Friday"
                 Grid.Row="4"
@@ -131,13 +107,7 @@
                 Grid.Row="4"
                 Grid.Column="2"
                 FontSize="20" />
-            <Button 
-                Text="Set" 
-                Grid.Row="4"
-                Grid.Column="3"
-                Style="{StaticResource ScheduleButtonStyle}"
-                Command="{Binding SaveWeeklyScheduleCommand}" />
-            
+
             <Label 
                 Text="Saturday"
                 Grid.Row="5"
@@ -153,13 +123,7 @@
                 Grid.Row="5"
                 Grid.Column="2"
                 FontSize="20" />
-            <Button 
-                Text="Set" 
-                Grid.Row="5"
-                Grid.Column="3"
-                Style="{StaticResource ScheduleButtonStyle}"
-                Command="{Binding SaveWeeklyScheduleCommand}" />
-            
+
             <Label 
                 Text="Sunday"
                 Grid.Row="6"
@@ -175,14 +139,16 @@
                 Grid.Row="6"
                 Grid.Column="2"
                 FontSize="20" />
-            <Button 
-                Text="Set" 
-                Grid.Row="6"
-                Grid.Column="3"
-                Style="{StaticResource ScheduleButtonStyle}"
-                Command="{Binding SaveWeeklyScheduleCommand}" />
         </Grid>
-
+        
+        <VerticalStackLayout
+            Margin="20">
+            <Button 
+                Text="Save Weekly Schedule" 
+                Style="{StaticResource RoutineButtonStyle}"
+                Command="{Binding SaveWeeklyScheduleCommand}" />
+        </VerticalStackLayout>
+    
         <VerticalStackLayout>
             <Button 
                 Text="Go Back"
