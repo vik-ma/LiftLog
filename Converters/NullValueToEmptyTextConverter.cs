@@ -11,7 +11,7 @@ namespace LocalLiftLog.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null || (value is string stringValue && string.IsNullOrEmpty(stringValue)))
+            if (value == null || (value is string stringValue && string.IsNullOrEmpty(stringValue)) || value is int intValue && intValue == 0)
             {
                 if (parameter is string context && !string.IsNullOrEmpty(context))
                 {

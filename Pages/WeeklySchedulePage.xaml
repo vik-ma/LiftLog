@@ -25,7 +25,7 @@
             HorizontalOptions="Center"
             ColumnDefinitions="*, *, *, *"
             RowDefinitions="*, *, *, *, *, *, *"
-            ColumnSpacing="10"
+            ColumnSpacing="20"
             RowSpacing="2">
             <Label 
                 Text="Monday"
@@ -33,13 +33,14 @@
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Label 
-                Text="{Binding WeeklySchedule.Day1TemplateId}"
+                Text="{Binding WeeklySchedule.Day1TemplateId, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=WorkoutID}"
                 Grid.Row="0"
                 Grid.Column="1"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Entry 
                 Grid.Row="0"
                 Grid.Column="2"
+                WidthRequest="150"
                 FontSize="20" />
             <Button 
                 Text="Set" 
@@ -53,7 +54,7 @@
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Label 
-                Text="{Binding WeeklySchedule.Day2TemplateId}"
+                Text="{Binding WeeklySchedule.Day2TemplateId, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=WorkoutID}"
                 Grid.Row="1"
                 Grid.Column="1"
                 Style="{StaticResource ScheduleLabelStyle}" />
@@ -73,7 +74,7 @@
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Label 
-                Text="{Binding WeeklySchedule.Day3TemplateId}"
+                Text="{Binding WeeklySchedule.Day3TemplateId, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=WorkoutID}"
                 Grid.Row="2"
                 Grid.Column="1"
                 Style="{StaticResource ScheduleLabelStyle}" />
@@ -93,7 +94,7 @@
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Label 
-                Text="{Binding WeeklySchedule.Day4TemplateId}"
+                Text="{Binding WeeklySchedule.Day4TemplateId, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=WorkoutID}"
                 Grid.Row="3"
                 Grid.Column="1"
                 Style="{StaticResource ScheduleLabelStyle}" />
@@ -113,7 +114,7 @@
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Label 
-                Text="{Binding WeeklySchedule.Day5TemplateId}"
+                Text="{Binding WeeklySchedule.Day5TemplateId, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=WorkoutID}"
                 Grid.Row="4"
                 Grid.Column="1"
                 Style="{StaticResource ScheduleLabelStyle}" />
@@ -133,7 +134,7 @@
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Label 
-                Text="{Binding WeeklySchedule.Day6TemplateId}"
+                Text="{Binding WeeklySchedule.Day6TemplateId, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=WorkoutID}"
                 Grid.Row="5"
                 Grid.Column="1"
                 Style="{StaticResource ScheduleLabelStyle}" />
@@ -153,7 +154,7 @@
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Label 
-                Text="{Binding WeeklySchedule.Day7TemplateId}"
+                Text="{Binding WeeklySchedule.Day7TemplateId, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=WorkoutID}"
                 Grid.Row="6"
                 Grid.Column="1"
                 Style="{StaticResource ScheduleLabelStyle}" />
