@@ -11,13 +11,13 @@ namespace LocalLiftLog.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public int Day1TemplateId { get; set; } = 2;
-        public int Day2TemplateId { get; set; }
-        public int Day3TemplateId { get; set; }
-        public int Day4TemplateId { get; set; }
-        public int Day5TemplateId { get; set; } = 5;
-        public int Day6TemplateId { get; set; }
-        public int Day7TemplateId { get; set; }
+        public string Day1TemplateId { get; set; } = "aa";
+        public string Day2TemplateId { get; set; }
+        public string Day3TemplateId { get; set; }
+        public string Day4TemplateId { get; set; }
+        public string Day5TemplateId { get; set; } = "asd";
+        public string Day6TemplateId { get; set; }
+        public string Day7TemplateId { get; set; }
 
         public WeeklySchedule Clone() => MemberwiseClone() as WeeklySchedule;
     }
