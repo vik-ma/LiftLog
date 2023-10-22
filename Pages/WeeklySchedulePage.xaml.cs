@@ -16,5 +16,6 @@ public partial class WeeklySchedulePage : ContentPage
     {
         base.OnAppearing();
         await _viewModel.LoadSchedulesAsync();
+        await _viewModel.LoadDayTemplateIdAsync();
     }
 }

@@ -149,7 +149,44 @@
                 Style="{StaticResource RoutineButtonStyle}"
                 Command="{Binding SaveWeeklyScheduleCommand}" />
         </VerticalStackLayout>
-    
+
+        <VerticalStackLayout
+            Margin="20">
+            <Button 
+                Text="Test" 
+                Style="{StaticResource RoutineButtonStyle}"
+                Command="{Binding TestCommand}" />
+        </VerticalStackLayout>
+
+        <CollectionView 
+            Grid.Row="0"
+            ItemsSource="{Binding Day1TemplateIdList}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout 
+                    ItemSpacing="3"
+                    Orientation="Horizontal" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding .}" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <CollectionView 
+            Grid.Row="0"
+            ItemsSource="{Binding Day2TemplateIdList}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout 
+                    ItemSpacing="3"
+                    Orientation="Horizontal" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding .}" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
         <VerticalStackLayout>
             <Button 
                 Text="Go Back"

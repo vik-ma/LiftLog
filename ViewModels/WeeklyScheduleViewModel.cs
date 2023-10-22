@@ -28,6 +28,27 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private ObservableCollection<WeeklySchedule> _scheduleList = new();
 
+        [ObservableProperty]
+        private int[] _day1TemplateIdList;
+
+        [ObservableProperty]
+        private int[] _day2TemplateIdList;
+
+        [ObservableProperty]
+        private int[] _day3TemplateIdList;
+
+        [ObservableProperty]
+        private int[] _day4TemplateIdList;
+
+        [ObservableProperty]
+        private int[] _day5TemplateIdList;
+
+        [ObservableProperty]
+        private int[] _day6TemplateIdList;
+
+        [ObservableProperty]
+        private int[] _day7TemplateIdList;
+
         public async Task LoadSchedulesAsync()
         {
             await ExecuteAsync(async () =>
@@ -154,6 +175,27 @@ namespace LocalLiftLog.ViewModels
             var id = WeeklySchedule.Id;
 
             WeeklySchedule = await _context.GetItemByKeyAsync<WeeklySchedule>(id);
+        }
+
+        public async Task LoadDayTemplateIdAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                Day1TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day1");
+                Day2TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day2");
+                Day3TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day3");
+                Day4TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day4");
+                Day5TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day5");
+                Day6TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day6");
+                Day7TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day7");
+            });
+        }
+
+        [RelayCommand]
+        private async Task Test()
+        {
+            string test = WeeklySchedule.ValidateTemplateIdInput("asd").ToString();
+            await Shell.Current.DisplayAlert("Error", test, "OK");
         }
     }
 }
