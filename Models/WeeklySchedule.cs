@@ -25,14 +25,16 @@ namespace LocalLiftLog.Models
 
         public int[] GetDayTemplateIdIntArray(string day)
         {
-            Dictionary<string, string> dayDictionary = new Dictionary<string, string>();
-            dayDictionary["Day1"] = "Day1TemplateId";
-            dayDictionary["Day2"] = "Day2TemplateId";
-            dayDictionary["Day3"] = "Day3TemplateId";
-            dayDictionary["Day4"] = "Day4TemplateId";
-            dayDictionary["Day5"] = "Day5TemplateId";
-            dayDictionary["Day6"] = "Day6TemplateId";
-            dayDictionary["Day7"] = "Day7TemplateId";
+            Dictionary<string, string> dayDictionary = new Dictionary<string, string>
+            {
+                { "Day1", "Day1TemplateId" },
+                { "Day2", "Day2TemplateId" },
+                { "Day3", "Day3TemplateId" },
+                { "Day4", "Day4TemplateId" },
+                { "Day5", "Day5TemplateId" },
+                { "Day6", "Day6TemplateId" },
+                { "Day7", "Day7TemplateId" }
+            };
 
             if (!dayDictionary.ContainsKey(day)) return Array.Empty<int>();
                 
@@ -54,6 +56,7 @@ namespace LocalLiftLog.Models
 
         public bool ValidateTemplateIdInput(string input)
         {
+            // Pattern to check if string is empty, just one integer, or a list of integers separated by commas
             string regExPattern = @"^(\d+,)*\d*$";
 
             return Regex.IsMatch(input, regExPattern);
