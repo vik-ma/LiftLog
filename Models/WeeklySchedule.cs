@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace LocalLiftLog.Models
 {
@@ -48,6 +50,13 @@ namespace LocalLiftLog.Models
             {
                 return Array.Empty<int>();
             }
+        }
+
+        public bool ValidateTemplateIdInput(string input)
+        {
+            string regExPattern = @"^(\d+,)*\d*$";
+
+            return Regex.IsMatch(input, regExPattern);
         }
     }
 }
