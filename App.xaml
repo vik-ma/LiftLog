@@ -54,6 +54,16 @@
             </Style>
             <converters:NullValueToEmptyTextConverter x:Key="nullValueToEmptyText" />
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+
+            <DataTemplate x:Key="DayTemplateIdDataTemplate">
+                <HorizontalStackLayout>
+                    <Label Text="{Binding .}" />
+                    <Button Text="Remove" />
+                </HorizontalStackLayout>
+            </DataTemplate>
+            <LinearItemsLayout x:Key="DayTemplateIdItemsLayout"
+                ItemSpacing="3"
+                Orientation="Horizontal" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

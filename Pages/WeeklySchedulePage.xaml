@@ -47,30 +47,10 @@
 
             <CollectionView 
                 Grid.Row="1"
-                ItemsSource="{Binding Day1TemplateIdList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding .}" />
-                            <Button Text="Remove" />
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <HorizontalStackLayout>
-                            <Label 
-                                Text="No Workout Set" />
-                        </HorizontalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
-            
+                ItemsSource="{Binding Day1TemplateIdList}"
+                EmptyView="No Workout Set"
+                ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
+                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}" />
 
             <Label 
                 Text="Tuesday"
@@ -90,29 +70,10 @@
 
             <CollectionView 
                 Grid.Row="3"
-                ItemsSource="{Binding Day2TemplateIdList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding .}" />
-                            <Button Text="Remove" />
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <HorizontalStackLayout>
-                            <Label 
-                                Text="No Workout Set" />
-                        </HorizontalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
+                ItemsSource="{Binding Day2TemplateIdList}"
+                EmptyView="No Workout Set"
+                ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
+                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}" />
 
             <Label 
                 Text="Wednesday"
@@ -129,33 +90,14 @@
                 Grid.Row="4"
                 Grid.Column="2"
                 FontSize="20" />
-            
+
             <CollectionView 
                 Grid.Row="5"
-                ItemsSource="{Binding Day3TemplateIdList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding .}" />
-                            <Button Text="Remove" />
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <HorizontalStackLayout>
-                            <Label 
-                                Text="No Workout Set" />
-                        </HorizontalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
-            
+                ItemsSource="{Binding Day3TemplateIdList}"
+                EmptyView="No Workout Set"
+                ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
+                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}" />
+
             <Label 
                 Text="Thursday"
                 Grid.Row="6"
@@ -174,29 +116,10 @@
 
             <CollectionView 
                 Grid.Row="7"
-                ItemsSource="{Binding Day4TemplateIdList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding .}" />
-                            <Button Text="Remove" />
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <HorizontalStackLayout>
-                            <Label 
-                                Text="No Workout Set" />
-                        </HorizontalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
+                ItemsSource="{Binding Day4TemplateIdList}"
+                EmptyView="No Workout Set"
+                ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
+                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}" />
 
             <Label 
                 Text="Friday"
@@ -216,29 +139,10 @@
 
             <CollectionView 
                 Grid.Row="9"
-                ItemsSource="{Binding Day5TemplateIdList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding .}" />
-                            <Button Text="Remove" />
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <HorizontalStackLayout>
-                            <Label 
-                                Text="No Workout Set" />
-                        </HorizontalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
+                ItemsSource="{Binding Day5TemplateIdList}"
+                EmptyView="No Workout Set"
+                ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
+                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}" />
 
             <Label 
                 Text="Saturday"
@@ -258,29 +162,10 @@
 
             <CollectionView 
                 Grid.Row="11"
-                ItemsSource="{Binding Day6TemplateIdList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding .}" />
-                            <Button Text="Remove" />
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <HorizontalStackLayout>
-                            <Label 
-                                Text="No Workout Set" />
-                        </HorizontalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
+                ItemsSource="{Binding Day6TemplateIdList}"
+                EmptyView="No Workout Set"
+                ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
+                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}" />
 
             <Label 
                 Text="Sunday"
@@ -300,29 +185,10 @@
 
             <CollectionView 
                 Grid.Row="13"
-                ItemsSource="{Binding Day7TemplateIdList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding .}" />
-                            <Button Text="Remove" />
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <HorizontalStackLayout>
-                            <Label 
-                                Text="No Workout Set" />
-                        </HorizontalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
+                ItemsSource="{Binding Day7TemplateIdList}"
+                EmptyView="No Workout Set"
+                ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
+                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}" />
 
         </Grid>
         
