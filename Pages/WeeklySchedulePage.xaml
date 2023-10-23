@@ -52,7 +52,9 @@
                 ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
                 ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
                 <CollectionView.EmptyView>
-                    <Label Text="No Workout Set" />
+                    <Label 
+                        Text="No Workout Set"
+                        Style="{StaticResource TemplateIdEmptyListLabelStyle}" />
                 </CollectionView.EmptyView>
             </CollectionView>
 
@@ -80,7 +82,9 @@
                 ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
                 ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
                 <CollectionView.EmptyView>
-                    <Label Text="No Workout Set" />
+                    <Label 
+                        Text="No Workout Set"
+                        Style="{StaticResource TemplateIdEmptyListLabelStyle}" />
                 </CollectionView.EmptyView>
             </CollectionView>
 
@@ -108,7 +112,9 @@
                 ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
                 ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
                 <CollectionView.EmptyView>
-                    <Label Text="No Workout Set" />
+                    <Label 
+                        Text="No Workout Set"
+                        Style="{StaticResource TemplateIdEmptyListLabelStyle}" />
                 </CollectionView.EmptyView>
             </CollectionView>
 
@@ -136,7 +142,9 @@
                 ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
                 ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
                 <CollectionView.EmptyView>
-                    <Label Text="No Workout Set" />
+                    <Label 
+                        Text="No Workout Set"
+                        Style="{StaticResource TemplateIdEmptyListLabelStyle}" />
                 </CollectionView.EmptyView>
             </CollectionView>
 
@@ -164,7 +172,9 @@
                 ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
                 ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
                 <CollectionView.EmptyView>
-                    <Label Text="No Workout Set" />
+                    <Label 
+                        Text="No Workout Set"
+                        Style="{StaticResource TemplateIdEmptyListLabelStyle}" />
                 </CollectionView.EmptyView>
             </CollectionView>
 
@@ -192,7 +202,9 @@
                 ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
                 ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
                 <CollectionView.EmptyView>
-                    <Label Text="No Workout Set" />
+                    <Label 
+                        Text="No Workout Set"
+                        Style="{StaticResource TemplateIdEmptyListLabelStyle}" />
                 </CollectionView.EmptyView>
             </CollectionView>
 
@@ -220,19 +232,13 @@
                 ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
                 ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
                 <CollectionView.EmptyView>
-                    <Label Text="No Workout Set" />
+                    <Label 
+                        Text="No Workout Set"
+                        Style="{StaticResource TemplateIdEmptyListLabelStyle}" />
                 </CollectionView.EmptyView>
             </CollectionView>
 
         </Grid>
-        
-        <VerticalStackLayout
-            Margin="20">
-            <Button 
-                Text="Save Weekly Schedule" 
-                Style="{StaticResource RoutineButtonStyle}"
-                Command="{Binding SaveWeeklyScheduleCommand}" />
-        </VerticalStackLayout>
 
         <VerticalStackLayout
             Margin="20">
@@ -241,22 +247,6 @@
                 Style="{StaticResource RoutineButtonStyle}"
                 Command="{Binding TestCommand}" />
         </VerticalStackLayout>
-
-        
-        <CollectionView 
-            Grid.Row="0"
-            ItemsSource="{Binding Day2TemplateIdList}">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout 
-                    ItemSpacing="3"
-                    Orientation="Horizontal" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Label Text="{Binding .}" />
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
 
         <VerticalStackLayout>
             <Button 

@@ -69,11 +69,17 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
+            <Style x:Key="TemplateIdEmptyListLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="#9e9e9e" />
+            </Style>
             <converters:NullValueToEmptyTextConverter x:Key="nullValueToEmptyText" />
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
 
             <DataTemplate x:Key="DayTemplateIdDataTemplate">
-                <HorizontalStackLayout Spacing="5">
+                <HorizontalStackLayout Spacing="6">
                     <Label 
                         Text="{Binding .}"
                         Style="{StaticResource TemplateIdListLabelStyle}" />
