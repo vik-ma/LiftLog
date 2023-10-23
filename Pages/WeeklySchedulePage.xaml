@@ -61,7 +61,16 @@
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <HorizontalStackLayout>
+                            <Label 
+                                Text="No Workout Set" />
+                        </HorizontalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
             </CollectionView>
+            
 
             <Label 
                 Text="Tuesday"
@@ -95,6 +104,14 @@
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <HorizontalStackLayout>
+                            <Label 
+                                Text="No Workout Set" />
+                        </HorizontalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
             </CollectionView>
 
             <Label 
@@ -129,6 +146,14 @@
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <HorizontalStackLayout>
+                            <Label 
+                                Text="No Workout Set" />
+                        </HorizontalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
             </CollectionView>
             
             <Label 
@@ -163,6 +188,14 @@
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <HorizontalStackLayout>
+                            <Label 
+                                Text="No Workout Set" />
+                        </HorizontalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
             </CollectionView>
 
             <Label 
@@ -197,6 +230,14 @@
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <HorizontalStackLayout>
+                            <Label 
+                                Text="No Workout Set" />
+                        </HorizontalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
             </CollectionView>
 
             <Label 
@@ -231,6 +272,14 @@
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <HorizontalStackLayout>
+                            <Label 
+                                Text="No Workout Set" />
+                        </HorizontalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
             </CollectionView>
 
             <Label 
@@ -265,6 +314,14 @@
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <HorizontalStackLayout>
+                            <Label 
+                                Text="No Workout Set" />
+                        </HorizontalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
             </CollectionView>
 
         </Grid>
