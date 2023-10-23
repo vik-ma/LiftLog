@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace LocalLiftLog.ViewModels
 {
@@ -19,6 +20,8 @@ namespace LocalLiftLog.ViewModels
 
         [ObservableProperty]
         private WeeklySchedule weeklySchedule;
+
+        private readonly string[] validDayList = { "Day1", "Day2", "Day3", "Day4", "Day5", "Day6", "Day7" };
 
         public WeeklyScheduleViewModel(DatabaseContext context)
         {
@@ -194,5 +197,32 @@ namespace LocalLiftLog.ViewModels
             string test = WeeklySchedule.ValidateTemplateIdInput("asd").ToString();
             await Shell.Current.DisplayAlert("Error", test, "OK");
         }
+
+        [RelayCommand]
+        private async Task AddTemplateIdToDay(string day)
+        {
+            if (validDayList.Contains(day))
+            {
+                int[] templateIdArray = WeeklySchedule.GetDayTemplateIdIntArray(day);
+
+                string templateIdString;
+
+                if (templateIdArray.Length > 0)
+                {
+                    templateIdString = string.Join(", ", templateIdArray);
+                }
+                else
+                {
+                    templateIdString = "Empty";
+                }
+                
+                await Shell.Current.DisplayAlert("Success", templateIdString, "OK");
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid Day", "OK");
+            }
+        }
+
     }
 }

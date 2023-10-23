@@ -41,7 +41,9 @@
             <Button
                 Text="Add"
                 Grid.Row="0"
-                Grid.Column="2" />
+                Grid.Column="2"
+                Command="{Binding AddTemplateIdToDayCommand}"
+                CommandParameter="Day1" />
 
             <CollectionView 
                 Grid.Row="1"
@@ -63,7 +65,9 @@
             <Button
                 Text="Add"
                 Grid.Row="2"
-                Grid.Column="2" />
+                Grid.Column="2"
+                Command="{Binding AddTemplateIdToDayCommand}"
+                CommandParameter="Day2" />
 
             <CollectionView 
                 Grid.Row="3"
@@ -85,7 +89,9 @@
             <Button
                 Text="Add"
                 Grid.Row="4"
-                Grid.Column="2" />
+                Grid.Column="2"
+                Command="{Binding AddTemplateIdToDayCommand}"
+                CommandParameter="Day3" />
 
             <CollectionView 
                 Grid.Row="5"
@@ -107,7 +113,9 @@
             <Button
                 Text="Add"
                 Grid.Row="6"
-                Grid.Column="2" />
+                Grid.Column="2"
+                Command="{Binding AddTemplateIdToDayCommand}"
+                CommandParameter="Day4" />
 
             <CollectionView 
                 Grid.Row="7"
@@ -129,7 +137,9 @@
             <Button
                 Text="Add"
                 Grid.Row="8"
-                Grid.Column="2" />
+                Grid.Column="2"
+                Command="{Binding AddTemplateIdToDayCommand}"
+                CommandParameter="Day5" />
 
             <CollectionView 
                 Grid.Row="9"
@@ -151,7 +161,9 @@
             <Button
                 Text="Add"
                 Grid.Row="10"
-                Grid.Column="2" />
+                Grid.Column="2"
+                Command="{Binding AddTemplateIdToDayCommand}"
+                CommandParameter="Day6" />
 
             <CollectionView 
                 Grid.Row="11"
@@ -173,7 +185,9 @@
             <Button
                 Text="Add"
                 Grid.Row="12"
-                Grid.Column="2" />
+                Grid.Column="2"
+                Command="{Binding AddTemplateIdToDayCommand}"
+                CommandParameter="Day7" />
 
             <CollectionView 
                 Grid.Row="13"
