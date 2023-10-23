@@ -64,19 +64,26 @@
                 <Setter Property="Padding" Value="20, 10" />
                 <Setter Property="BackgroundColor" Value="#ef4444" />
             </Style>
+            <Style x:Key="TemplateIdListLabelStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
             <converters:NullValueToEmptyTextConverter x:Key="nullValueToEmptyText" />
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
 
             <DataTemplate x:Key="DayTemplateIdDataTemplate">
-                <HorizontalStackLayout>
-                    <Label Text="{Binding .}" />
+                <HorizontalStackLayout Spacing="5">
+                    <Label 
+                        Text="{Binding .}"
+                        Style="{StaticResource TemplateIdListLabelStyle}" />
                     <Button 
                         Text="Remove"
-                        Style="{StaticResource TemplateIdRemoveButtonStyle}"/>
+                        Style="{StaticResource TemplateIdRemoveButtonStyle}" />
                 </HorizontalStackLayout>
             </DataTemplate>
             <LinearItemsLayout x:Key="DayTemplateIdItemsLayout"
-                ItemSpacing="3"
+                ItemSpacing="7"
                 Orientation="Horizontal" />
         </ResourceDictionary>
     </Application.Resources>
