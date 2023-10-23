@@ -177,18 +177,15 @@ namespace LocalLiftLog.ViewModels
             WeeklySchedule = await _context.GetItemByKeyAsync<WeeklySchedule>(id);
         }
 
-        public async Task LoadDayTemplateIdAsync()
+        public void LoadDayTemplateIdList()
         {
-            await ExecuteAsync(async () =>
-            {
-                Day1TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day1");
-                Day2TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day2");
-                Day3TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day3");
-                Day4TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day4");
-                Day5TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day5");
-                Day6TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day6");
-                Day7TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day7");
-            });
+            Day1TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day1");
+            Day2TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day2");
+            Day3TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day3");
+            Day4TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day4");
+            Day5TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day5");
+            Day6TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day6");
+            Day7TemplateIdList = WeeklySchedule.GetDayTemplateIdIntArray("Day7");
         }
 
         [RelayCommand]
