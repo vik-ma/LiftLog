@@ -64,7 +64,7 @@
                 <Setter Property="Padding" Value="20, 10" />
                 <Setter Property="BackgroundColor" Value="#ef4444" />
             </Style>
-            <Style x:Key="TemplateIdListLabelStyle" TargetType="Button">
+            <Style x:Key="TemplateIdListLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="24" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="VerticalOptions" Value="Center" />

@@ -49,9 +49,12 @@
             <CollectionView 
                 Grid.Row="1"
                 ItemsSource="{Binding Day1TemplateIdList}"
-                EmptyView="No Workout Set"
                 ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
-                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}" />
+                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
+                <CollectionView.EmptyView>
+                    <Label Text="No Workout Set" />
+                </CollectionView.EmptyView>
+            </CollectionView>
 
             <Label 
                 Text="Tuesday"
@@ -74,9 +77,12 @@
             <CollectionView 
                 Grid.Row="3"
                 ItemsSource="{Binding Day2TemplateIdList}"
-                EmptyView="No Workout Set"
                 ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
-                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}" />
+                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
+                <CollectionView.EmptyView>
+                    <Label Text="No Workout Set" />
+                </CollectionView.EmptyView>
+            </CollectionView>
 
             <Label 
                 Text="Wednesday"
@@ -99,9 +105,12 @@
             <CollectionView 
                 Grid.Row="5"
                 ItemsSource="{Binding Day3TemplateIdList}"
-                EmptyView="No Workout Set"
                 ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
-                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}" />
+                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
+                <CollectionView.EmptyView>
+                    <Label Text="No Workout Set" />
+                </CollectionView.EmptyView>
+            </CollectionView>
 
             <Label 
                 Text="Thursday"
@@ -124,9 +133,12 @@
             <CollectionView 
                 Grid.Row="7"
                 ItemsSource="{Binding Day4TemplateIdList}"
-                EmptyView="No Workout Set"
                 ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
-                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}" />
+                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
+                <CollectionView.EmptyView>
+                    <Label Text="No Workout Set" />
+                </CollectionView.EmptyView>
+            </CollectionView>
 
             <Label 
                 Text="Friday"
@@ -149,9 +161,12 @@
             <CollectionView 
                 Grid.Row="9"
                 ItemsSource="{Binding Day5TemplateIdList}"
-                EmptyView="No Workout Set"
                 ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
-                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}" />
+                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
+                <CollectionView.EmptyView>
+                    <Label Text="No Workout Set" />
+                </CollectionView.EmptyView>
+            </CollectionView>
 
             <Label 
                 Text="Saturday"
@@ -174,9 +189,12 @@
             <CollectionView 
                 Grid.Row="11"
                 ItemsSource="{Binding Day6TemplateIdList}"
-                EmptyView="No Workout Set"
                 ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
-                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}" />
+                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
+                <CollectionView.EmptyView>
+                    <Label Text="No Workout Set" />
+                </CollectionView.EmptyView>
+            </CollectionView>
 
             <Label 
                 Text="Sunday"
@@ -199,9 +217,12 @@
             <CollectionView 
                 Grid.Row="13"
                 ItemsSource="{Binding Day7TemplateIdList}"
-                EmptyView="No Workout Set"
                 ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
-                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}" />
+                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
+                <CollectionView.EmptyView>
+                    <Label Text="No Workout Set" />
+                </CollectionView.EmptyView>
+            </CollectionView>
 
         </Grid>
         
