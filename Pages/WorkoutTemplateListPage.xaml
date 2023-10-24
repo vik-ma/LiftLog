@@ -62,6 +62,7 @@
             <Button 
                 Text="Go Back"
                 Style="{StaticResource RoutineButtonStyle}"
+                Command="{Binding GoBackCommand}"
                 Margin="50" />
         </VerticalStackLayout>
     </VerticalStackLayout>

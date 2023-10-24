@@ -24,6 +24,12 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private ObservableCollection<WorkoutTemplate> _workoutTemplateList = new();
 
+        [RelayCommand]
+        static async Task GoBack()
+        {
+            await Shell.Current.GoToAsync("..");
+        }
+
         public async Task LoadWorkoutTemplatesAsync()
         {
             await ExecuteAsync(async () =>

@@ -29,7 +29,7 @@ namespace LocalLiftLog.ViewModels
         private Routine routine;
 
         [RelayCommand]
-        async Task GoBack()
+        static async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
         }
