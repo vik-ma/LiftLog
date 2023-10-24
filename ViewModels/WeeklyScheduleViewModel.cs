@@ -9,7 +9,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace LocalLiftLog.ViewModels
 {
@@ -64,9 +63,9 @@ namespace LocalLiftLog.ViewModels
 
                     schedules ??= new ObservableCollection<WeeklySchedule>();
 
-                    foreach (var routine in schedules)
+                    foreach (var schedule in schedules)
                     {
-                        ScheduleList.Add(routine);
+                        ScheduleList.Add(schedule);
                     }
                 }
             });
