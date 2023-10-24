@@ -12,6 +12,7 @@ namespace LocalLiftLog
             Routing.RegisterRoute(nameof(RoutineDetailsPage), typeof(RoutineDetailsPage));
             Routing.RegisterRoute(nameof(WeeklyScheduleListPage), typeof(WeeklyScheduleListPage));
             Routing.RegisterRoute(nameof(WeeklySchedulePage), typeof(WeeklySchedulePage));
+            Routing.RegisterRoute(nameof(WorkoutTemplateListPage), typeof(WorkoutTemplateListPage));
         }
     }
 }

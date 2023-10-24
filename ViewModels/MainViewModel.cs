@@ -30,5 +30,11 @@ namespace LocalLiftLog.ViewModels
         {
             await Shell.Current.GoToAsync($"{nameof(WeeklyScheduleListPage)}");
         }
+
+        [RelayCommand]
+        private async Task GoToWorkoutTemplate()
+        {
+            await Shell.Current.GoToAsync($"{nameof(WorkoutTemplateListPage)}");
+        }
     }
 }

@@ -12,12 +12,16 @@
     <VerticalStackLayout 
         HorizontalOptions="Center">
         <Button
-            Text="Go To Routine List"
+            Text="Routine List"
             Command="{Binding GoToRoutineListCommand}"
             Style="{StaticResource MainPageNavigationButtonStyle}"/>
         <Button
-            Text="Go To Weekly Schedule List"
+            Text="Weekly Schedule List"
             Command="{Binding GoToWeeklyScheduleCommand}"
+            Style="{StaticResource MainPageNavigationButtonStyle}"/>
+        <Button
+            Text="Workout Template List"
+            Command="{Binding GoToWorkoutTemplateCommand}"
             Style="{StaticResource MainPageNavigationButtonStyle}"/>
     </VerticalStackLayout>
 
