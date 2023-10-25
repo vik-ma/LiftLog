@@ -76,24 +76,11 @@
             <Label.FormattedText>
                 <FormattedString>
                     <Span 
-                        Text="Schedule ID: " 
+                        Text="Schedule List ID: " 
                         FontAttributes="Bold"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                     <Span 
-                        Text="{Binding Routine.ScheduleId, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=Schedule}"
-                        Style="{StaticResource RoutineSubSpanStyle}" />
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Label>
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span 
-                        Text="Is Schedule Weekly: " 
-                        FontAttributes="Bold"
-                        Style="{StaticResource RoutineSubSpanStyle}" />
-                    <Span 
-                        Text="{Binding Routine.IsScheduleWeekly}"
+                        Text="{Binding Routine.ScheduleListId, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=Schedule}"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                 </FormattedString>
             </Label.FormattedText>
@@ -102,7 +89,7 @@
             IsVisible="{Binding RoutineListViewModel.IsEditing}"
             Spacing="4">
             <Entry 
-                Text="{Binding RoutineListViewModel.OperatingRoutine.ScheduleId}"
+                Text="{Binding RoutineListViewModel.OperatingRoutine.ScheduleListId}"
                 Placeholder="Schedule ID"
                 FontSize="24" />
             <HorizontalStackLayout Spacing="20">
@@ -110,10 +97,6 @@
                     Text="Weekly Schedule "
                     FontSize="26"
                     VerticalOptions="Center" />
-                <CheckBox 
-                    VerticalOptions="Center"
-                    Scale="1.5"
-                    IsChecked="{Binding RoutineListViewModel.OperatingRoutine.IsScheduleWeekly}" />
             </HorizontalStackLayout>
         </VerticalStackLayout>
         <Grid 

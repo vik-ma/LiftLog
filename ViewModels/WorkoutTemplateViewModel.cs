@@ -24,6 +24,15 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private ObservableCollection<WorkoutTemplate> _workoutTemplateList = new();
 
+        [ObservableProperty]
+        private bool _isCreating = false;
+
+        [RelayCommand]
+        private void CancelCreating()
+        {
+            IsCreating = false;
+        }
+
         [RelayCommand]
         static async Task GoBack()
         {
