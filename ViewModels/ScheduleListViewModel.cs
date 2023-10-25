@@ -97,7 +97,7 @@ namespace LocalLiftLog.ViewModels
 
             await ExecuteAsync(async () =>
             {
-                if (await _context.DeleteItemByKeyAsync<WeeklySchedule>(id))
+                if (await _context.DeleteItemByKeyAsync<ScheduleFactory>(id))
                 {
                     ScheduleFactoryList.Remove(schedule);
                 }
@@ -115,7 +115,7 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task ViewWeeklySchedule(int id)
+        private async Task ViewSchedule(int id)
         {
             var schedule = ScheduleFactoryList.FirstOrDefault(p => p.Id == id);
 

@@ -77,7 +77,7 @@
                                 Padding="20, 10"
                                 FontSize="18"
                                 FontAttributes="Bold"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WeeklyScheduleViewModel}}, Path=ViewWeeklyScheduleCommand}" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleListViewModel}}, Path=ViewScheduleCommand}" 
                                 CommandParameter="{Binding Id}"/>
                             <Button 
                                 Text="Delete"
@@ -85,7 +85,7 @@
                                 FontSize="18"
                                 FontAttributes="Bold" 
                                 BackgroundColor="#ef4444"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WeeklyScheduleViewModel}}, Path=DeleteScheduleCommand}" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleListViewModel}}, Path=DeleteScheduleCommand}" 
                                 CommandParameter="{Binding Id}"/>
                         </HorizontalStackLayout>
                     </Grid>
