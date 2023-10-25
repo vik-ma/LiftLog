@@ -125,12 +125,22 @@ namespace LocalLiftLog.ViewModels
                 return;
             }
 
-            var navigationParameter = new Dictionary<string, object>
+            if (schedule.IsScheduleWeekly)
             {
-                ["WeeklySchedule"] = schedule
-            };
+                WeeklySchedule weeklySchedule = await _context.GetItemByKeyAsync<WeeklySchedule>(schedule.ScheduleId);
 
-            await Shell.Current.GoToAsync($"{nameof(WeeklySchedulePage)}?Id={id}", navigationParameter);
+                var navigationParameter = new Dictionary<string, object>
+                {
+                    ["WeeklySchedule"] = weeklySchedule
+                };
+
+                await Shell.Current.GoToAsync($"{nameof(WeeklySchedulePage)}?Id={id}", navigationParameter);
+            }
+            else
+            {
+
+            }
+
         }
 
         [RelayCommand]
