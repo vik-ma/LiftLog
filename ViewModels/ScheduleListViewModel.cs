@@ -52,7 +52,15 @@ namespace LocalLiftLog.ViewModels
         {
             await ExecuteAsync(async () =>
             {
-                ScheduleFactory schedule = new();
+                WeeklySchedule weeklySchedule = new();
+                await _context.AddItemAsync<WeeklySchedule>(weeklySchedule);
+                
+                ScheduleFactory schedule = new()
+                {
+                    ScheduleId = weeklySchedule.Id,
+                    IsScheduleWeekly = true
+                };
+
                 await _context.AddItemAsync<ScheduleFactory>(schedule);
                 ScheduleFactoryList.Add(schedule);
             });
