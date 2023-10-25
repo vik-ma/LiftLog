@@ -33,7 +33,7 @@
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Entry 
-                Text="{Binding WeeklySchedule.Day1TemplateId}"
+                Text="{Binding WeeklySchedule.Day1WorkoutTemplateListId}"
                 Grid.Row="0"
                 Grid.Column="1"
                 WidthRequest="150"
@@ -43,20 +43,7 @@
                 Grid.Row="0"
                 Grid.Column="2"
                 Style="{StaticResource TemplateIdAddButtonStyle}"
-                Command="{Binding AddTemplateIdToDayCommand}"
                 CommandParameter="Day1" />
-
-            <CollectionView 
-                Grid.Row="1"
-                ItemsSource="{Binding Day1TemplateIdList}"
-                ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
-                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
-                <CollectionView.EmptyView>
-                    <Label 
-                        Text="No Workout Set"
-                        Style="{StaticResource TemplateIdEmptyListLabelStyle}" />
-                </CollectionView.EmptyView>
-            </CollectionView>
 
             <Label 
                 Text="Tuesday"
@@ -64,7 +51,7 @@
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Entry 
-                Text="{Binding WeeklySchedule.Day2TemplateId}"
+                Text="{Binding WeeklySchedule.Day2WorkoutTemplateListId}"
                 Grid.Row="2"
                 Grid.Column="1"
                 FontSize="20" />
@@ -73,20 +60,7 @@
                 Grid.Row="2"
                 Grid.Column="2"
                 Style="{StaticResource TemplateIdAddButtonStyle}"
-                Command="{Binding AddTemplateIdToDayCommand}"
                 CommandParameter="Day2" />
-
-            <CollectionView 
-                Grid.Row="3"
-                ItemsSource="{Binding Day2TemplateIdList}"
-                ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
-                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
-                <CollectionView.EmptyView>
-                    <Label 
-                        Text="No Workout Set"
-                        Style="{StaticResource TemplateIdEmptyListLabelStyle}" />
-                </CollectionView.EmptyView>
-            </CollectionView>
 
             <Label 
                 Text="Wednesday"
@@ -94,7 +68,7 @@
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Entry 
-                Text="{Binding WeeklySchedule.Day3TemplateId}"
+                Text="{Binding WeeklySchedule.Day3WorkoutTemplateListId}"
                 Grid.Row="4"
                 Grid.Column="1"
                 FontSize="20" />
@@ -103,20 +77,7 @@
                 Grid.Row="4"
                 Grid.Column="2"
                 Style="{StaticResource TemplateIdAddButtonStyle}"
-                Command="{Binding AddTemplateIdToDayCommand}"
                 CommandParameter="Day3" />
-
-            <CollectionView 
-                Grid.Row="5"
-                ItemsSource="{Binding Day3TemplateIdList}"
-                ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
-                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
-                <CollectionView.EmptyView>
-                    <Label 
-                        Text="No Workout Set"
-                        Style="{StaticResource TemplateIdEmptyListLabelStyle}" />
-                </CollectionView.EmptyView>
-            </CollectionView>
 
             <Label 
                 Text="Thursday"
@@ -124,7 +85,7 @@
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Entry 
-                Text="{Binding WeeklySchedule.Day4TemplateId}"
+                Text="{Binding WeeklySchedule.Day4WorkoutTemplateListId}"
                 Grid.Row="6"
                 Grid.Column="1"
                 FontSize="20" />
@@ -133,20 +94,7 @@
                 Grid.Row="6"
                 Grid.Column="2"
                 Style="{StaticResource TemplateIdAddButtonStyle}"
-                Command="{Binding AddTemplateIdToDayCommand}"
                 CommandParameter="Day4" />
-
-            <CollectionView 
-                Grid.Row="7"
-                ItemsSource="{Binding Day4TemplateIdList}"
-                ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
-                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
-                <CollectionView.EmptyView>
-                    <Label 
-                        Text="No Workout Set"
-                        Style="{StaticResource TemplateIdEmptyListLabelStyle}" />
-                </CollectionView.EmptyView>
-            </CollectionView>
 
             <Label 
                 Text="Friday"
@@ -154,7 +102,7 @@
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Entry 
-                Text="{Binding WeeklySchedule.Day5TemplateId}"
+                Text="{Binding WeeklySchedule.Day5WorkoutTemplateListId}"
                 Grid.Row="8"
                 Grid.Column="1"
                 FontSize="20" />
@@ -163,20 +111,7 @@
                 Grid.Row="8"
                 Grid.Column="2"
                 Style="{StaticResource TemplateIdAddButtonStyle}"
-                Command="{Binding AddTemplateIdToDayCommand}"
                 CommandParameter="Day5" />
-
-            <CollectionView 
-                Grid.Row="9"
-                ItemsSource="{Binding Day5TemplateIdList}"
-                ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
-                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
-                <CollectionView.EmptyView>
-                    <Label 
-                        Text="No Workout Set"
-                        Style="{StaticResource TemplateIdEmptyListLabelStyle}" />
-                </CollectionView.EmptyView>
-            </CollectionView>
 
             <Label 
                 Text="Saturday"
@@ -184,7 +119,7 @@
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Entry 
-                Text="{Binding WeeklySchedule.Day6TemplateId}"
+                Text="{Binding WeeklySchedule.Day6WorkoutTemplateListId}"
                 Grid.Row="10"
                 Grid.Column="1"
                 FontSize="20" />
@@ -193,20 +128,7 @@
                 Grid.Row="10"
                 Grid.Column="2"
                 Style="{StaticResource TemplateIdAddButtonStyle}"
-                Command="{Binding AddTemplateIdToDayCommand}"
                 CommandParameter="Day6" />
-
-            <CollectionView 
-                Grid.Row="11"
-                ItemsSource="{Binding Day6TemplateIdList}"
-                ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
-                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
-                <CollectionView.EmptyView>
-                    <Label 
-                        Text="No Workout Set"
-                        Style="{StaticResource TemplateIdEmptyListLabelStyle}" />
-                </CollectionView.EmptyView>
-            </CollectionView>
 
             <Label 
                 Text="Sunday"
@@ -214,7 +136,7 @@
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <Entry 
-                Text="{Binding WeeklySchedule.Day7TemplateId}"
+                Text="{Binding WeeklySchedule.Day7WorkoutTemplateListId}"
                 Grid.Row="12"
                 Grid.Column="1"
                 FontSize="20" />
@@ -223,30 +145,9 @@
                 Grid.Row="12"
                 Grid.Column="2"
                 Style="{StaticResource TemplateIdAddButtonStyle}"
-                Command="{Binding AddTemplateIdToDayCommand}"
                 CommandParameter="Day7" />
 
-            <CollectionView 
-                Grid.Row="13"
-                ItemsSource="{Binding Day7TemplateIdList}"
-                ItemsLayout="{StaticResource DayTemplateIdItemsLayout}"
-                ItemTemplate="{StaticResource DayTemplateIdDataTemplate}">
-                <CollectionView.EmptyView>
-                    <Label 
-                        Text="No Workout Set"
-                        Style="{StaticResource TemplateIdEmptyListLabelStyle}" />
-                </CollectionView.EmptyView>
-            </CollectionView>
-
         </Grid>
-
-        <VerticalStackLayout
-            Margin="20">
-            <Button 
-                Text="Test" 
-                Style="{StaticResource RoutineButtonStyle}"
-                Command="{Binding TestCommand}" />
-        </VerticalStackLayout>
 
         <VerticalStackLayout>
             <Button 

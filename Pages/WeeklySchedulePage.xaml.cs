@@ -11,10 +11,4 @@ public partial class WeeklySchedulePage : ContentPage
         _viewModel = viewModel;
         BindingContext = _viewModel;
     }
-
-    protected async override void OnAppearing()
-    {
-        base.OnAppearing();
-        _viewModel.LoadDayTemplateIdList();
-    }
 }
