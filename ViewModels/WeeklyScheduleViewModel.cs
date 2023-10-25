@@ -69,5 +69,20 @@ namespace LocalLiftLog.ViewModels
 
             }
         }
+
+        [RelayCommand]
+        private async Task UpdateWeeklyScheduleAsync()
+        {
+            if (WeeklySchedule is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<WeeklySchedule>(WeeklySchedule))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Weekly Schedule.", "OK");
+                }
+            });
+        }
     }
 }

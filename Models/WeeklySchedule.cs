@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static Java.Util.Jar.Attributes;
 
 namespace LocalLiftLog.Models
 {
@@ -20,8 +21,6 @@ namespace LocalLiftLog.Models
         public int Day5WorkoutTemplateListId { get; set; }
         public int Day6WorkoutTemplateListId { get; set; }
         public int Day7WorkoutTemplateListId { get; set; }
-
-        public WeeklySchedule Clone() => MemberwiseClone() as WeeklySchedule;
 
     }
 }
