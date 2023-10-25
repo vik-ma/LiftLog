@@ -104,6 +104,19 @@ namespace LocalLiftLog.ViewModels
 
             await ExecuteAsync(async () =>
             {
+                if (schedule.IsScheduleWeekly)
+                {
+                    if (!await _context.DeleteItemByKeyAsync<WeeklySchedule>(schedule.ScheduleId))
+                    {
+                        await Shell.Current.DisplayAlert("Delete Error", "Weekly Schedule was not deleted.", "OK");
+                    }
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("Error", "Custom Schedule not implemented yet.", "OK");
+                }
+
+
                 if (await _context.DeleteItemByKeyAsync<ScheduleFactory>(id))
                 {
                     ScheduleFactoryList.Remove(schedule);

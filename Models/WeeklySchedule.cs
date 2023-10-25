@@ -13,11 +13,11 @@ namespace LocalLiftLog.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string Day1TemplateId { get; set; } = "1";
-        public string Day2TemplateId { get; set; } = "1,2,3";
+        public string Day1TemplateId { get; set; }
+        public string Day2TemplateId { get; set; }
         public string Day3TemplateId { get; set; }
         public string Day4TemplateId { get; set; }
-        public string Day5TemplateId { get; set; } = "3";
+        public string Day5TemplateId { get; set; }
         public string Day6TemplateId { get; set; }
         public string Day7TemplateId { get; set; }
 
