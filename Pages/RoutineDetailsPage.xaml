@@ -80,7 +80,7 @@
                         FontAttributes="Bold"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                     <Span 
-                        Text="{Binding Routine.ScheduleListId, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=Schedule}"
+                        Text="{Binding Routine.ScheduleFactoryId, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=Schedule}"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                 </FormattedString>
             </Label.FormattedText>
@@ -89,7 +89,7 @@
             IsVisible="{Binding RoutineListViewModel.IsEditing}"
             Spacing="4">
             <Entry 
-                Text="{Binding RoutineListViewModel.OperatingRoutine.ScheduleListId}"
+                Text="{Binding RoutineListViewModel.OperatingRoutine.ScheduleFactoryId}"
                 Placeholder="Schedule ID"
                 FontSize="24" />
             <HorizontalStackLayout Spacing="20">

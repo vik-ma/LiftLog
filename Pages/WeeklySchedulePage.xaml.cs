@@ -15,7 +15,6 @@ public partial class WeeklySchedulePage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-        await _viewModel.LoadSchedulesAsync();
         _viewModel.LoadDayTemplateIdList();
     }
 }

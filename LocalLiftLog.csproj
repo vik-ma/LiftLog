@@ -60,6 +60,9 @@
 	  <Compile Update="Pages\RoutineDetailsPage.xaml.cs">
 	    <DependentUpon>RoutineDetailsPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\ScheduleFactoryPage.xaml.cs">
+	    <DependentUpon>ScheduleFactoryPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\WeeklySchedulePage.xaml.cs">
 	    <DependentUpon>WeeklySchedulePage.xaml</DependentUpon>
 	  </Compile>
@@ -75,7 +78,7 @@
 	  <MauiXaml Update="Pages\RoutineListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\WeeklyScheduleListPage.xaml">
+	  <MauiXaml Update="Pages\ScheduleFactoryPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\WeeklySchedulePage.xaml">

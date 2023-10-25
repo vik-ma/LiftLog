@@ -47,11 +47,11 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task VisitSchedule()
         {
-            var scheduleListId = Routine.ScheduleListId;
+            var ScheduleFactoryId = Routine.ScheduleFactoryId;
 
             try
             {
-                var schedule = await _context.GetItemByKeyAsync<WeeklySchedule>(scheduleListId);
+                var schedule = await _context.GetItemByKeyAsync<WeeklySchedule>(ScheduleFactoryId);
 
                 int id = schedule.Id;
 

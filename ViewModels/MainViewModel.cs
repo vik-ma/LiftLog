@@ -26,9 +26,9 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task GoToWeeklySchedule()
+        private async Task GoToScheduleList()
         {
-            await Shell.Current.GoToAsync($"{nameof(WeeklyScheduleListPage)}");
+            await Shell.Current.GoToAsync($"{nameof(ScheduleListPage)}");
         }
 
         [RelayCommand]

@@ -16,8 +16,8 @@
             Command="{Binding GoToRoutineListCommand}"
             Style="{StaticResource MainPageNavigationButtonStyle}"/>
         <Button
-            Text="Weekly Schedule List"
-            Command="{Binding GoToWeeklyScheduleCommand}"
+            Text="Schedule List"
+            Command="{Binding GoToScheduleListCommand}"
             Style="{StaticResource MainPageNavigationButtonStyle}"/>
         <Button
             Text="Workout Template List"
