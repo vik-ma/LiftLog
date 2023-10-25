@@ -48,22 +48,29 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task CreateScheduleAsync()
+        private async Task CreateScheduleAsync(bool isScheduleWeekly)
         {
-            await ExecuteAsync(async () =>
+            if (isScheduleWeekly)
             {
-                WeeklySchedule weeklySchedule = new();
-                await _context.AddItemAsync<WeeklySchedule>(weeklySchedule);
-                
-                ScheduleFactory schedule = new()
+                await ExecuteAsync(async () =>
                 {
-                    ScheduleId = weeklySchedule.Id,
-                    IsScheduleWeekly = true
-                };
+                    WeeklySchedule weeklySchedule = new();
+                    await _context.AddItemAsync<WeeklySchedule>(weeklySchedule);
 
-                await _context.AddItemAsync<ScheduleFactory>(schedule);
-                ScheduleFactoryList.Add(schedule);
-            });
+                    ScheduleFactory schedule = new()
+                    {
+                        ScheduleId = weeklySchedule.Id,
+                        IsScheduleWeekly = true
+                    };
+
+                    await _context.AddItemAsync<ScheduleFactory>(schedule);
+                    ScheduleFactoryList.Add(schedule);
+                });
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Error", "Custom Schedule not implemented yet.", "OK");
+            }
         }
 
         #nullable enable
@@ -148,39 +155,8 @@ namespace LocalLiftLog.ViewModels
             }
             else
             {
-                await Shell.Current.DisplayAlert("Error", "Custom Schedule placeholder", "OK");
+                await Shell.Current.DisplayAlert("Error", "Custom Schedule not implemented yet.", "OK");
             }
-
-        }
-
-        [RelayCommand]
-        private async Task SaveWeeklyScheduleAsync()
-        {
-            if (OperatingSchedule is null)
-                return;
-
-            await ExecuteAsync(async () =>
-            {
-                // Update WeeklySchedule
-                if (await _context.UpdateItemAsync<ScheduleFactory>(OperatingSchedule))
-                {
-                    var scheduleCopy = OperatingSchedule.Clone();
-
-                    var index = ScheduleFactoryList.IndexOf(OperatingSchedule);
-                    ScheduleFactoryList.RemoveAt(index);
-
-                    ScheduleFactoryList.Insert(index, scheduleCopy);
-                }
-                else
-                {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Weekly Schedule.", "OK");
-                    return;
-                }
-            });
-
-            var id = OperatingSchedule.Id;
-
-            OperatingSchedule = await _context.GetItemByKeyAsync<ScheduleFactory>(id);
         }
     }
 }

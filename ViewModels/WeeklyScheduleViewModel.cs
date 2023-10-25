@@ -48,12 +48,6 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private int[] _day7TemplateIdList;
 
-        
-
-        
-
-        
-
         [RelayCommand]
         static async Task GoBack()
         {
@@ -104,5 +98,22 @@ namespace LocalLiftLog.ViewModels
             }
         }
 
+        #nullable enable
+        private async Task ExecuteAsync(Func<Task> operation)
+        {
+            try
+            {
+                #nullable disable
+                await operation?.Invoke();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+
+            }
+        }
     }
 }

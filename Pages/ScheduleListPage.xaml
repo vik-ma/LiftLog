@@ -106,10 +106,18 @@
             </CollectionView.EmptyView>
         </CollectionView>
 
-        <Button 
-            Text="Create New Schedule"
-            Style="{StaticResource MainPageNavigationButtonStyle}"
-            Command="{Binding CreateScheduleCommand}" />
+        <VerticalStackLayout>
+            <Button 
+                Text="Create Weekly Schedule"
+                Style="{StaticResource MainPageNavigationButtonStyle}"
+                Command="{Binding CreateScheduleCommand}"
+                CommandParameter="{x:Boolean true}" />
+            <Button 
+                Text="Create Custom Schedule"
+                Style="{StaticResource MainPageNavigationButtonStyle}"
+                Command="{Binding CreateScheduleCommand}"
+                CommandParameter="{x:Boolean false}" />
+        </VerticalStackLayout>
 
         <VerticalStackLayout>
             <Button 
