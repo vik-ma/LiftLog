@@ -51,16 +51,33 @@ namespace LocalLiftLog.ViewModels
 
             try
             {
-                var schedule = await _context.GetItemByKeyAsync<WeeklySchedule>(ScheduleFactoryId);
+                var schedule = await _context.GetItemByKeyAsync<ScheduleFactory>(ScheduleFactoryId);
 
-                int id = schedule.Id;
-
-                var navigationParameter = new Dictionary<string, object>
+                if (schedule.IsScheduleWeekly)
                 {
-                    ["WeeklySchedule"] = schedule
-                };
+                    WeeklySchedule weeklySchedule;
 
-                await Shell.Current.GoToAsync($"{nameof(WeeklySchedulePage)}?Id={id}", navigationParameter);
+                    try
+                    {
+                        weeklySchedule = await _context.GetItemByKeyAsync<WeeklySchedule>(schedule.ScheduleId);
+
+                        var navigationParameter = new Dictionary<string, object>
+                        {
+                            ["WeeklySchedule"] = weeklySchedule
+                        };
+
+                        await Shell.Current.GoToAsync($"{nameof(WeeklySchedulePage)}?Id={weeklySchedule.Id}", navigationParameter);
+                    }
+                    catch
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Weekly Schedule ID does not exist!", "OK");
+                        return;
+                    }
+                } 
+                else
+                {
+                    await Shell.Current.DisplayAlert("Error", "Custom Schedule not implemented yet.", "OK");
+                }
             }
             catch
             {
