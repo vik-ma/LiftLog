@@ -122,5 +122,44 @@ namespace LocalLiftLog.ViewModels
             }
         }
 
+        [RelayCommand]
+        private async Task UpdateWorkoutTemplateAsync(int id)
+        {
+            WorkoutTemplate workoutTemplate = WorkoutTemplateList.FirstOrDefault(p => p.Id == id);
+
+            if (workoutTemplate is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<WorkoutTemplate>(workoutTemplate))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Workout Template.", "OK");
+                }
+
+                await LoadWorkoutTemplatesAsync();
+            });
+        }
+
+        [RelayCommand]
+        private async Task UpdateWorkoutTemplateCollectionAsync(int id)
+        {
+            WorkoutTemplateCollection workoutTemplateCollection = WorkoutTemplateCollectionList.FirstOrDefault(p => p.Id == id);
+
+            if (workoutTemplateCollection is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<WorkoutTemplateCollection>(workoutTemplateCollection))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Workout Template Collection.", "OK");
+                }
+
+                await LoadWorkoutTemplateCollectionsAsync();
+            });
+
+        }
+
     }
 }
