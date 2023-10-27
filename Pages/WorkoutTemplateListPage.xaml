@@ -140,11 +140,11 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
-                                            Text="Schedule Id: " 
+                                            Text="Schedule Factory Id: " 
                                             FontAttributes="Bold"  
                                             Style="{StaticResource RoutineSpanStyle}" />
                                         <Span 
-                                            Text="{Binding ScheduleId}"
+                                            Text="{Binding ScheduleFactoryId}"
                                             Style="{StaticResource RoutineSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
