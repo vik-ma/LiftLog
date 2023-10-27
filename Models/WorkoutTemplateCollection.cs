@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.Models
 {
-    public class WorkoutTemplateList
+    public class WorkoutTemplateCollection
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

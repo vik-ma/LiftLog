@@ -26,25 +26,25 @@ namespace LocalLiftLog.ViewModels
         }
 
         [ObservableProperty]
-        private int day1WorkoutTemplateListId;
+        private int day1WorkoutTemplateCollectionId;
 
         [ObservableProperty]
-        private int day2WorkoutTemplateListId;
+        private int day2WorkoutTemplateCollectionId;
 
         [ObservableProperty]
-        private int day3WorkoutTemplateListId;
+        private int day3WorkoutTemplateCollectionId;
 
         [ObservableProperty]
-        private int day4WorkoutTemplateListId;
+        private int day4WorkoutTemplateCollectionId;
 
         [ObservableProperty]
-        private int day5WorkoutTemplateListId;
+        private int day5WorkoutTemplateCollectionId;
 
         [ObservableProperty]
-        private int day6WorkoutTemplateListId;
+        private int day6WorkoutTemplateCollectionId;
 
         [ObservableProperty]
-        private int day7WorkoutTemplateListId;
+        private int day7WorkoutTemplateCollectionId;
 
         [RelayCommand]
         static async Task GoBack()

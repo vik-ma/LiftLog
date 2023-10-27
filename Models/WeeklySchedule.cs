@@ -13,13 +13,13 @@ namespace LocalLiftLog.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public int Day1WorkoutTemplateListId { get; set; }
-        public int Day2WorkoutTemplateListId { get; set; }
-        public int Day3WorkoutTemplateListId { get; set; }
-        public int Day4WorkoutTemplateListId { get; set; }
-        public int Day5WorkoutTemplateListId { get; set; }
-        public int Day6WorkoutTemplateListId { get; set; }
-        public int Day7WorkoutTemplateListId { get; set; }
+        public int Day1WorkoutTemplateCollectionId { get; set; }
+        public int Day2WorkoutTemplateCollectionId { get; set; }
+        public int Day3WorkoutTemplateCollectionId { get; set; }
+        public int Day4WorkoutTemplateCollectionId { get; set; }
+        public int Day5WorkoutTemplateCollectionId { get; set; }
+        public int Day6WorkoutTemplateCollectionId { get; set; }
+        public int Day7WorkoutTemplateCollectionId { get; set; }
 
     }
 }
