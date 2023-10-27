@@ -17,7 +17,7 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:WorkoutTemplate">
-                    <VerticalStackLayout
+                    <HorizontalStackLayout
                         Spacing="15">
                         <Label>
                             <Label.FormattedText>
@@ -32,7 +32,33 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                    </VerticalStackLayout>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Name: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource RoutineSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding Name}"
+                                        Style="{StaticResource RoutineSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Set List Id: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource RoutineSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding SetListId}"
+                                        Style="{StaticResource RoutineSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
             <CollectionView.EmptyView>
@@ -52,7 +78,7 @@
 
         <VerticalStackLayout>
             <Button 
-                Text="Create New Workout Template" 
+                Text="Create New WT" 
                 Style="{StaticResource RoutineButtonStyle}"
                 Command="{Binding CreateWorkoutTemplateCommand}"
                 Margin="50" />
