@@ -8,80 +8,170 @@
              Title="Workout Template List">
     
     <VerticalStackLayout HorizontalOptions="Center">
-        <CollectionView
-                ItemsSource="{Binding WorkoutTemplateList}">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout 
-                    ItemSpacing="3"
-                    Orientation="Vertical" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:WorkoutTemplate">
-                    <HorizontalStackLayout
-                        Spacing="15">
-                        <Label>
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span 
-                                        Text="Id: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource RoutineSpanStyle}" />
-                                    <Span 
-                                        Text="{Binding Id}"
-                                        Style="{StaticResource RoutineSpanStyle}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label>
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span 
-                                        Text="Name: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource RoutineSpanStyle}" />
-                                    <Span 
-                                        Text="{Binding Name}"
-                                        Style="{StaticResource RoutineSpanStyle}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label>
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span 
-                                        Text="Set List Id: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource RoutineSpanStyle}" />
-                                    <Span 
-                                        Text="{Binding SetListId}"
-                                        Style="{StaticResource RoutineSpanStyle}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                    </HorizontalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-            <CollectionView.EmptyView>
-                <ContentView>
-                    <VerticalStackLayout
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center">
-                        <Label 
-                            Text="No Workout Templates In List!" 
-                            FontSize="18" 
-                            FontAttributes="Bold" 
-                            HorizontalTextAlignment="Center" />
-                    </VerticalStackLayout>
-                </ContentView>
-            </CollectionView.EmptyView>
-        </CollectionView>
-
         <VerticalStackLayout>
+            <Label 
+                Text="Workout Templates"
+                HorizontalOptions="Center"
+                FontSize="30"
+                FontAttributes="Bold"
+                Margin="10" />
+            <CollectionView
+                    ItemsSource="{Binding WorkoutTemplateList}"
+                    HorizontalOptions="Center">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:WorkoutTemplate">
+                        <HorizontalStackLayout
+                            Spacing="15">
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Id: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding Id}"
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Name: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding Name}"
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Set List Id: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding SetListId}"
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <VerticalStackLayout
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                            <Label 
+                                Text="No Workout Templates In List!" 
+                                FontSize="18" 
+                                FontAttributes="Bold" 
+                                HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
+
             <Button 
                 Text="Create New WT" 
                 Style="{StaticResource RoutineButtonStyle}"
                 Command="{Binding CreateWorkoutTemplateCommand}"
-                Margin="50" />
+                Margin="15" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label 
+                Text="Workout Template Collections"
+                HorizontalOptions="Center"
+                FontSize="30"
+                FontAttributes="Bold"
+                Margin="10" />
+            <CollectionView
+                    ItemsSource="{Binding WorkoutTemplateCollectionList}"
+                    HorizontalOptions="Center">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:WorkoutTemplateCollection">
+                        <HorizontalStackLayout
+                            Spacing="15">
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Id: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding Id}"
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Workout Template Id: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding WorkoutTemplateId}"
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Schedule Id: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding ScheduleId}"
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <VerticalStackLayout
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                            <Label 
+                                Text="No Workout Template Collections In List!" 
+                                FontSize="18" 
+                                FontAttributes="Bold" 
+                                HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
+
+            <Button 
+                Text="Create New WTC" 
+                Style="{StaticResource RoutineButtonStyle}"
+                Command="{Binding CreateWorkoutTemplateCollectionCommand}"
+                Margin="15" />
         </VerticalStackLayout>
 
         <VerticalStackLayout>

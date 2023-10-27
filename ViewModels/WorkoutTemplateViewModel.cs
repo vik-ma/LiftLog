@@ -93,6 +93,17 @@ namespace LocalLiftLog.ViewModels
             });
         }
 
+        [RelayCommand]
+        private async Task CreateWorkoutTemplateCollectionAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                WorkoutTemplateCollection workoutCollection = new();
+                await _context.AddItemAsync<WorkoutTemplateCollection>(workoutCollection);
+                WorkoutTemplateCollectionList.Add(workoutCollection);
+            });
+        }
+
         #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
