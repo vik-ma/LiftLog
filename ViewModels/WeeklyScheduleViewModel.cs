@@ -4,6 +4,7 @@ using LocalLiftLog.Data;
 using LocalLiftLog.Models;
 using LocalLiftLog.Pages;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -46,6 +47,27 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private int day7WorkoutTemplateCollectionId;
 
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplate> day1WorkoutTemplateList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplate> day2WorkoutTemplateList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplate> day3WorkoutTemplateList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplate> day4WorkoutTemplateList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplate> day5WorkoutTemplateList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplate> day6WorkoutTemplateList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplate> day7WorkoutTemplateList = new();
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -83,6 +105,45 @@ namespace LocalLiftLog.ViewModels
                     await Shell.Current.DisplayAlert("Error", "Error occured when updating Weekly Schedule.", "OK");
                 }
             });
+        }
+
+        public async Task LoadWorkoutTemplateCollectionsAsync()
+        {
+            int[] workoutDayIdList =
+            {
+                WeeklySchedule.Day1WorkoutTemplateCollectionId,
+                WeeklySchedule.Day2WorkoutTemplateCollectionId,
+                WeeklySchedule.Day3WorkoutTemplateCollectionId,
+                WeeklySchedule.Day4WorkoutTemplateCollectionId,
+                WeeklySchedule.Day5WorkoutTemplateCollectionId,
+                WeeklySchedule.Day6WorkoutTemplateCollectionId,
+                WeeklySchedule.Day7WorkoutTemplateCollectionId
+            };
+
+            List<WorkoutTemplateCollection> workoutCollectionList = Enumerable.Repeat(new WorkoutTemplateCollection(), 7).ToList();
+
+            for (int i = 0; i < 7; i++)
+            {
+                WorkoutTemplateCollection workoutTemplateCollectionObj;
+                try 
+                {
+                    workoutTemplateCollectionObj = await _context.GetItemByKeyAsync<WorkoutTemplateCollection>(workoutDayIdList[i]);
+                }
+                catch
+                {
+                    workoutTemplateCollectionObj = null;
+                }
+                
+                workoutCollectionList[i] = workoutTemplateCollectionObj;
+            }
+
+            string msg = "";
+            for (int i = 0; i < 7; i++)
+            {
+                if (workoutCollectionList[i] == null) msg += $"{i} - null, ";
+                else msg += $"{i} - {workoutCollectionList[i].Id}, ";   
+            }
+            await Shell.Current.DisplayAlert("Error", msg, "OK");
         }
     }
 }
