@@ -15,5 +15,6 @@ public partial class WorkoutTemplateListPage : ContentPage
     {
         base.OnAppearing();
         await _viewModel.LoadWorkoutTemplatesAsync();
+        await _viewModel.LoadWorkoutTemplateCollectionsAsync();
     }
 }

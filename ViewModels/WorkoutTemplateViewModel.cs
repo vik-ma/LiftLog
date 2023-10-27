@@ -25,6 +25,9 @@ namespace LocalLiftLog.ViewModels
         private ObservableCollection<WorkoutTemplate> _workoutTemplateList = new();
 
         [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> _workoutTemplateCollectionList = new();
+
+        [ObservableProperty]
         private bool _isCreating = false;
 
         [RelayCommand]
@@ -54,6 +57,26 @@ namespace LocalLiftLog.ViewModels
                     foreach (var workout in workouts)
                     {
                         WorkoutTemplateList.Add(workout);
+                    }
+                }
+            });
+        }
+
+        public async Task LoadWorkoutTemplateCollectionsAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                var workoutCollections = await _context.GetAllAsync<WorkoutTemplateCollection>();
+
+                if (workoutCollections is not null && workoutCollections.Any())
+                {
+                    WorkoutTemplateCollectionList.Clear();
+
+                    workoutCollections ??= new ObservableCollection<WorkoutTemplateCollection>();
+
+                    foreach (var workoutCollection in workoutCollections)
+                    {
+                        WorkoutTemplateCollectionList.Add(workoutCollection);
                     }
                 }
             });
