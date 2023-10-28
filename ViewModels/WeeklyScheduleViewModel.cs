@@ -162,7 +162,7 @@ namespace LocalLiftLog.ViewModels
             }
         }
 
-        private async void ResetWorkoutIdValue(int day)
+        private void ResetWorkoutIdValue(int day)
         {
             switch (day)
             {
@@ -195,7 +195,7 @@ namespace LocalLiftLog.ViewModels
                     break;
 
                 default:
-                    await Shell.Current.DisplayAlert("Error", "Invalid Day.", "OK");
+                    Shell.Current.DisplayAlert("Error", "Invalid Day.", "OK");
                     break;
             }
 
