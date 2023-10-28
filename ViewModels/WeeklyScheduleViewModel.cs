@@ -150,13 +150,9 @@ namespace LocalLiftLog.ViewModels
                     catch
                     {
                         bool userClickedNo = await Shell.Current.DisplayAlert("Workout Not Found", $"The Workout for {daysOfWeekList[i]} was not found. Remove Workout from {daysOfWeekList[i]}?", "No", "Yes");
-
-                        if (userClickedNo) return;
-                        else
-                        {
-                            // Reset value for day if user clicked Yes
-                            ResetWorkoutIdValue(i);
-                        }
+                        
+                        // Reset value for day if user clicked Yes
+                        if (!userClickedNo) ResetWorkoutIdValue(i);
 
                         workoutTemplateCollectionObj = null;
                     }
@@ -164,14 +160,6 @@ namespace LocalLiftLog.ViewModels
                 
                 workoutCollectionList[i] = workoutTemplateCollectionObj;
             }
-
-            //string msg = "";
-            //for (int i = 0; i < 7; i++)
-            //{
-            //    if (workoutCollectionList[i] == null) msg += $"{i} - null, ";
-            //    else msg += $"{i} - {workoutCollectionList[i].Id}, ";   
-            //}
-            //await Shell.Current.DisplayAlert("Error", msg, "OK");
         }
 
         private async void ResetWorkoutIdValue(int day)
