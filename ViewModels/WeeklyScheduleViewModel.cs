@@ -212,7 +212,7 @@ namespace LocalLiftLog.ViewModels
             }
 
             updateWeeklyScheduleCommand.Execute(WeeklySchedule);
-            await LoadWorkoutTemplateCollectionsAsync();
+            OnPropertyChanged(nameof(WeeklySchedule));
         }
     }
 }
