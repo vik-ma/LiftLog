@@ -3,13 +3,16 @@ using CommunityToolkit.Mvvm.Input;
 using LocalLiftLog.Data;
 using LocalLiftLog.Models;
 using LocalLiftLog.Pages;
+using Microsoft.Maui.Controls;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Sources;
 
 namespace LocalLiftLog.ViewModels
 {
@@ -68,6 +71,17 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private ObservableCollection<WorkoutTemplate> day7WorkoutTemplateList = new();
 
+        private readonly string[] daysOfWeekList =
+        {
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+        };
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -120,7 +134,7 @@ namespace LocalLiftLog.ViewModels
                 WeeklySchedule.Day7WorkoutTemplateCollectionId
             };
 
-            List<WorkoutTemplateCollection> workoutCollectionList;
+            List<WorkoutTemplateCollection> workoutCollectionList = Enumerable.Repeat(new WorkoutTemplateCollection(), 7).ToList();
 
             for (int i = 0; i < 7; i++)
             {
@@ -135,6 +149,15 @@ namespace LocalLiftLog.ViewModels
                     }
                     catch
                     {
+                        bool userClickedNo = await Shell.Current.DisplayAlert("Workout Not Found", $"The Workout for {daysOfWeekList[i]} was not found. Remove Workout from {daysOfWeekList[i]}?", "No", "Yes");
+
+                        if (userClickedNo) return;
+                        else
+                        {
+                            // Reset value for day if user clicked Yes
+                            ResetWorkoutIdValue(i);
+                        }
+
                         workoutTemplateCollectionObj = null;
                     }
                 }
@@ -142,13 +165,54 @@ namespace LocalLiftLog.ViewModels
                 workoutCollectionList[i] = workoutTemplateCollectionObj;
             }
 
-            string msg = "";
-            for (int i = 0; i < 7; i++)
+            //string msg = "";
+            //for (int i = 0; i < 7; i++)
+            //{
+            //    if (workoutCollectionList[i] == null) msg += $"{i} - null, ";
+            //    else msg += $"{i} - {workoutCollectionList[i].Id}, ";   
+            //}
+            //await Shell.Current.DisplayAlert("Error", msg, "OK");
+        }
+
+        private async void ResetWorkoutIdValue(int day)
+        {
+            switch (day)
             {
-                if (workoutCollectionList[i] == null) msg += $"{i} - null, ";
-                else msg += $"{i} - {workoutCollectionList[i].Id}, ";   
+                case 0:
+                    WeeklySchedule.Day1WorkoutTemplateCollectionId = 0;
+                    break;
+
+                case 1:
+                    WeeklySchedule.Day2WorkoutTemplateCollectionId = 0;
+                    break;
+
+                case 2:
+                    WeeklySchedule.Day3WorkoutTemplateCollectionId = 0;
+                    break;
+
+                case 3:
+                    WeeklySchedule.Day4WorkoutTemplateCollectionId = 0;
+                    break;
+
+                case 4:
+                    WeeklySchedule.Day5WorkoutTemplateCollectionId = 0;
+                    break;
+
+                case 5:
+                    WeeklySchedule.Day6WorkoutTemplateCollectionId = 0;
+                    break;
+
+                case 6:
+                    WeeklySchedule.Day7WorkoutTemplateCollectionId = 0;
+                    break;
+
+                default:
+                    await Shell.Current.DisplayAlert("Error", "Invalid Day.", "OK");
+                    break;
             }
-            await Shell.Current.DisplayAlert("Error", msg, "OK");
+
+            updateWeeklyScheduleCommand.Execute(WeeklySchedule);
+            await LoadWorkoutTemplateCollectionsAsync();
         }
     }
 }
