@@ -120,18 +120,23 @@ namespace LocalLiftLog.ViewModels
                 WeeklySchedule.Day7WorkoutTemplateCollectionId
             };
 
-            List<WorkoutTemplateCollection> workoutCollectionList = Enumerable.Repeat(new WorkoutTemplateCollection(), 7).ToList();
+            List<WorkoutTemplateCollection> workoutCollectionList;
 
             for (int i = 0; i < 7; i++)
             {
                 WorkoutTemplateCollection workoutTemplateCollectionObj;
-                try 
+
+                if (workoutDayIdList[i] == 0) workoutTemplateCollectionObj = null;
+                else 
                 {
-                    workoutTemplateCollectionObj = await _context.GetItemByKeyAsync<WorkoutTemplateCollection>(workoutDayIdList[i]);
-                }
-                catch
-                {
-                    workoutTemplateCollectionObj = null;
+                    try
+                    {
+                        workoutTemplateCollectionObj = await _context.GetItemByKeyAsync<WorkoutTemplateCollection>(workoutDayIdList[i]);
+                    }
+                    catch
+                    {
+                        workoutTemplateCollectionObj = null;
+                    }
                 }
                 
                 workoutCollectionList[i] = workoutTemplateCollectionObj;
