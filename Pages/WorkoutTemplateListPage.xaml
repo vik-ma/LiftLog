@@ -27,7 +27,7 @@
                     <DataTemplate x:DataType="models:WorkoutTemplate">
                         <HorizontalStackLayout
                             Spacing="15">
-                            <Label>
+                            <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
@@ -40,7 +40,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
@@ -56,7 +56,7 @@
                             <Entry 
                                 Text="{Binding Name}"
                                 WidthRequest="100" />
-                            <Label>
+                            <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
@@ -118,7 +118,7 @@
                     <DataTemplate x:DataType="models:WorkoutTemplateCollection">
                         <HorizontalStackLayout
                             Spacing="15">
-                            <Label>
+                            <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
@@ -131,7 +131,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
@@ -147,7 +147,7 @@
                             <Entry 
                                 Text="{Binding WorkoutTemplateId}"
                                 WidthRequest="100" />
-                            <Label>
+                            <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
@@ -162,6 +162,22 @@
                             </Label>
                             <Entry 
                                 Text="{Binding ScheduleFactoryId}"
+                                WidthRequest="100" />
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Day: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding Day}"
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Entry 
+                                Text="{Binding Day}"
                                 WidthRequest="100" />
                             <Button
                                 Text="Save"
