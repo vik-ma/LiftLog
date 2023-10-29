@@ -64,6 +64,10 @@ namespace LocalLiftLog.ViewModels
                     };
 
                     await _context.AddItemAsync<ScheduleFactory>(schedule);
+
+                    weeklySchedule.ScheduleFactoryId = schedule.Id;
+                    await _context.UpdateItemAsync<WeeklySchedule>(weeklySchedule);
+
                     ScheduleFactoryList.Add(schedule);
                 });
             }
