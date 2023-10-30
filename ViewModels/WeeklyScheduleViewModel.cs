@@ -32,27 +32,6 @@ namespace LocalLiftLog.ViewModels
         }
 
         [ObservableProperty]
-        private int day1WorkoutTemplateCollectionId;
-
-        [ObservableProperty]
-        private int day2WorkoutTemplateCollectionId;
-
-        [ObservableProperty]
-        private int day3WorkoutTemplateCollectionId;
-
-        [ObservableProperty]
-        private int day4WorkoutTemplateCollectionId;
-
-        [ObservableProperty]
-        private int day5WorkoutTemplateCollectionId;
-
-        [ObservableProperty]
-        private int day6WorkoutTemplateCollectionId;
-
-        [ObservableProperty]
-        private int day7WorkoutTemplateCollectionId;
-
-        [ObservableProperty]
         private ObservableCollection<WorkoutTemplate> day1WorkoutTemplateList = new();
 
         [ObservableProperty]
@@ -285,44 +264,6 @@ namespace LocalLiftLog.ViewModels
 
             updateWeeklyScheduleCommand.Execute(WeeklySchedule);
             OnPropertyChanged(nameof(WeeklySchedule));
-        }
-
-        private void LoadWorkoutTemplateLists(int day, WorkoutTemplateCollection workoutTemplateCollection)
-        {
-            switch (day)
-            {
-                case 0:
-                    WeeklySchedule.Day1WorkoutTemplateCollectionId = 0;
-                    break;
-
-                case 1:
-                    WeeklySchedule.Day2WorkoutTemplateCollectionId = 0;
-                    break;
-
-                case 2:
-                    WeeklySchedule.Day3WorkoutTemplateCollectionId = 0;
-                    break;
-
-                case 3:
-                    WeeklySchedule.Day4WorkoutTemplateCollectionId = 0;
-                    break;
-
-                case 4:
-                    WeeklySchedule.Day5WorkoutTemplateCollectionId = 0;
-                    break;
-
-                case 5:
-                    WeeklySchedule.Day6WorkoutTemplateCollectionId = 0;
-                    break;
-
-                case 6:
-                    WeeklySchedule.Day7WorkoutTemplateCollectionId = 0;
-                    break;
-
-                default:
-                    Shell.Current.DisplayAlert("Error", "Invalid Day.", "OK");
-                    break;
-            }
         }
     }
 }
