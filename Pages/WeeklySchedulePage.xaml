@@ -43,8 +43,7 @@
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
             <CollectionView
-                Grid.Row="0"
-                Grid.Column="1"
+                Grid.Row="1"
                 ItemsSource="{Binding Day1WorkoutTemplateList}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout 
@@ -53,84 +52,129 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
-                        <Label
-
-                                Text="{Binding Id}" />
+                        <Label Text="{Binding Id}" />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <!--<Entry 
-                Text="{Binding WeeklySchedule.Day1WorkoutTemplateCollectionId}"
-                Grid.Row="0"
-                Grid.Column="1"
-                WidthRequest="150"
-                FontSize="20" />-->
 
             <Label 
                 Text="Tuesday"
                 Grid.Row="2"
-                Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
-            <Entry 
-                Text="{Binding WeeklySchedule.Day2WorkoutTemplateCollectionId}"
-                Grid.Row="2"
-                Grid.Column="1"
-                FontSize="20" />
+            <CollectionView
+                Grid.Row="3"
+                ItemsSource="{Binding Day2WorkoutTemplateList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:WorkoutTemplate">
+                        <Label Text="{Binding Id}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
             <Label 
                 Text="Wednesday"
                 Grid.Row="4"
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
-            <Entry 
-                Text="{Binding WeeklySchedule.Day3WorkoutTemplateCollectionId}"
-                Grid.Row="4"
-                Grid.Column="1"
-                FontSize="20" />
+            <CollectionView
+                Grid.Row="5"
+                ItemsSource="{Binding Day3WorkoutTemplateList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:WorkoutTemplate">
+                        <Label Text="{Binding Id}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
             <Label 
                 Text="Thursday"
                 Grid.Row="6"
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
-            <Entry 
-                Text="{Binding WeeklySchedule.Day4WorkoutTemplateCollectionId}"
-                Grid.Row="6"
-                Grid.Column="1"
-                FontSize="20" />
+            <CollectionView
+                Grid.Row="7"
+                ItemsSource="{Binding Day4WorkoutTemplateList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:WorkoutTemplate">
+                        <Label Text="{Binding Id}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
             <Label 
                 Text="Friday"
                 Grid.Row="8"
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
-            <Entry 
-                Text="{Binding WeeklySchedule.Day5WorkoutTemplateCollectionId}"
-                Grid.Row="8"
-                Grid.Column="1"
-                FontSize="20" />
+            <CollectionView
+                Grid.Row="9"
+                ItemsSource="{Binding Day5WorkoutTemplateList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:WorkoutTemplate">
+                        <Label Text="{Binding Id}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
             <Label 
                 Text="Saturday"
                 Grid.Row="10"
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
-            <Entry 
-                Text="{Binding WeeklySchedule.Day6WorkoutTemplateCollectionId}"
-                Grid.Row="10"
-                Grid.Column="1"
-                FontSize="20" />
+            <CollectionView
+                Grid.Row="11"
+                ItemsSource="{Binding Day6WorkoutTemplateList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:WorkoutTemplate">
+                        <Label Text="{Binding Id}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
             <Label 
                 Text="Sunday"
                 Grid.Row="12"
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
-            <Entry 
-                Text="{Binding WeeklySchedule.Day7WorkoutTemplateCollectionId}"
-                Grid.Row="12"
-                Grid.Column="1"
-                FontSize="20" />
+            <CollectionView
+                Grid.Row="13"
+                ItemsSource="{Binding Day7WorkoutTemplateList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:WorkoutTemplate">
+                        <Label Text="{Binding Id}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
         </Grid>
         <VerticalStackLayout>
