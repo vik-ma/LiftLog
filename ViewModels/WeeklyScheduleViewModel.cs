@@ -126,63 +126,124 @@ namespace LocalLiftLog.ViewModels
         public async Task LoadWorkoutTemplateCollectionsAsync()
         {
             Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.ScheduleFactoryId == WeeklySchedule.ScheduleFactoryId;
-
-            var filteredWorkoutTemplateCollectionList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
-
-            string wtcListString = "";
-
-            foreach (var item in filteredWorkoutTemplateCollectionList)
+            
+            IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
+            try 
             {
-                wtcListString += $"{item.Id} ";
+                filteredWtcList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+                LoadWorkoutTemplateForEachDay(filteredWtcList);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
             }
 
-            await Shell.Current.DisplayAlert("List", wtcListString, "OK");
+                //int[] workoutDayIdList =
+                //{
+                //    WeeklySchedule.Day1WorkoutTemplateCollectionId,
+                //    WeeklySchedule.Day2WorkoutTemplateCollectionId,
+                //    WeeklySchedule.Day3WorkoutTemplateCollectionId,
+                //    WeeklySchedule.Day4WorkoutTemplateCollectionId,
+                //    WeeklySchedule.Day5WorkoutTemplateCollectionId,
+                //    WeeklySchedule.Day6WorkoutTemplateCollectionId,
+                //    WeeklySchedule.Day7WorkoutTemplateCollectionId
+                //};
 
-            //int[] workoutDayIdList =
-            //{
-            //    WeeklySchedule.Day1WorkoutTemplateCollectionId,
-            //    WeeklySchedule.Day2WorkoutTemplateCollectionId,
-            //    WeeklySchedule.Day3WorkoutTemplateCollectionId,
-            //    WeeklySchedule.Day4WorkoutTemplateCollectionId,
-            //    WeeklySchedule.Day5WorkoutTemplateCollectionId,
-            //    WeeklySchedule.Day6WorkoutTemplateCollectionId,
-            //    WeeklySchedule.Day7WorkoutTemplateCollectionId
-            //};
+                //List<WorkoutTemplateCollection> workoutCollectionList = Enumerable.Repeat(new WorkoutTemplateCollection(), 7).ToList();
 
-            //List<WorkoutTemplateCollection> workoutCollectionList = Enumerable.Repeat(new WorkoutTemplateCollection(), 7).ToList();
+                //for (int i = 0; i < 7; i++)
+                //{
+                //    WorkoutTemplateCollection workoutTemplateCollectionObj;
 
-            //for (int i = 0; i < 7; i++)
-            //{
-            //    WorkoutTemplateCollection workoutTemplateCollectionObj;
+                //    if (workoutDayIdList[i] == 0) workoutTemplateCollectionObj = null;
+                //    else 
+                //    {
+                //        try
+                //        {
+                //            workoutTemplateCollectionObj = await _context.GetItemByKeyAsync<WorkoutTemplateCollection>(workoutDayIdList[i]);
 
-            //    if (workoutDayIdList[i] == 0) workoutTemplateCollectionObj = null;
-            //    else 
-            //    {
-            //        try
-            //        {
-            //            workoutTemplateCollectionObj = await _context.GetItemByKeyAsync<WorkoutTemplateCollection>(workoutDayIdList[i]);
+                //            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.ScheduleFactoryId == WeeklySchedule.ScheduleFactoryId;
 
-            //            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.ScheduleFactoryId == WeeklySchedule.ScheduleFactoryId;
+                //            var asd = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
 
-            //            var asd = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+                //            await Shell.Current.DisplayAlert("Error", asd.ToString(), "OK");
+                //        }
+                //        catch
+                //        {
+                //            bool userClickedNo = await Shell.Current.DisplayAlert("Workout Not Found", $"The Workout for {daysOfWeekList[i]} was not found. Remove Workout from {daysOfWeekList[i]}?", "No", "Yes");
 
-            //            await Shell.Current.DisplayAlert("Error", asd.ToString(), "OK");
-            //        }
-            //        catch
-            //        {
-            //            bool userClickedNo = await Shell.Current.DisplayAlert("Workout Not Found", $"The Workout for {daysOfWeekList[i]} was not found. Remove Workout from {daysOfWeekList[i]}?", "No", "Yes");
+                //            // Reset value for day if user clicked Yes
+                //            if (!userClickedNo) ResetWorkoutIdValue(i);
 
-            //            // Reset value for day if user clicked Yes
-            //            if (!userClickedNo) ResetWorkoutIdValue(i);
+                //            workoutTemplateCollectionObj = null;
+                //        }
+                //    }
 
-            //            workoutTemplateCollectionObj = null;
-            //        }
-            //    }
+                //    workoutCollectionList[i] = workoutTemplateCollectionObj;
+                //}
+            }
 
-            //    workoutCollectionList[i] = workoutTemplateCollectionObj;
-            //}
+        private async void LoadWorkoutTemplateForEachDay(IEnumerable<WorkoutTemplateCollection> filteredWtcList)
+        {
+            foreach (var item in filteredWtcList)
+            {
+                Expression<Func<WorkoutTemplate, bool>> predicate = entity => entity.Id == item.WorkoutTemplateId;
 
+                IEnumerable<WorkoutTemplate> filteredWtList = null;
+                try
+                {
+                    filteredWtList = await _context.GetFilteredAsync<WorkoutTemplate>(predicate);
+                }
+                catch
+                {
+                    await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
+                    return;
+                }
 
+                int day = item.Day;
+
+                switch (day)
+                {
+                    case 0:
+                        foreach (var wt in filteredWtList)
+                            Day1WorkoutTemplateList.Add(wt);
+                        break;
+
+                    case 1:
+                        foreach (var wt in filteredWtList)
+                            Day2WorkoutTemplateList.Add(wt);
+                        break;
+
+                    case 2:
+                        foreach (var wt in filteredWtList)
+                            Day3WorkoutTemplateList.Add(wt);
+                        break;
+
+                    case 3:
+                        foreach (var wt in filteredWtList)
+                            Day4WorkoutTemplateList.Add(wt);
+                        break;
+
+                    case 4:
+                        foreach (var wt in filteredWtList)
+                            Day5WorkoutTemplateList.Add(wt);
+                        break;
+
+                    case 5:
+                        foreach (var wt in filteredWtList)
+                            Day6WorkoutTemplateList.Add(wt);
+                        break;
+
+                    case 6:
+                        foreach (var wt in filteredWtList)
+                            Day7WorkoutTemplateList.Add(wt);
+                        break;
+
+                    default:
+                        await Shell.Current.DisplayAlert("Error", "Invalid Day.", "OK");
+                        break;
+                }
+            }
         }
 
         private void ResetWorkoutIdValue(int day)

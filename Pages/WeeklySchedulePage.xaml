@@ -42,12 +42,29 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
-            <Entry 
+            <CollectionView
+                Grid.Row="0"
+                Grid.Column="1"
+                ItemsSource="{Binding Day1WorkoutTemplateList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:WorkoutTemplate">
+                        <Label
+
+                                Text="{Binding Id}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!--<Entry 
                 Text="{Binding WeeklySchedule.Day1WorkoutTemplateCollectionId}"
                 Grid.Row="0"
                 Grid.Column="1"
                 WidthRequest="150"
-                FontSize="20" />
+                FontSize="20" />-->
 
             <Label 
                 Text="Tuesday"
