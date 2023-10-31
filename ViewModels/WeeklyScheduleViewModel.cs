@@ -52,17 +52,6 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private ObservableCollection<WorkoutTemplate> day7WorkoutTemplateList = new();
 
-        private readonly string[] daysOfWeekList =
-        {
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
-        };
-
         [RelayCommand]
         static async Task GoBack()
         {

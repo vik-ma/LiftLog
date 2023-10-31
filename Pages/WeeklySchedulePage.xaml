@@ -52,7 +52,12 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
-                        <Label Text="{Binding Id}" />
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding Id}" />
+                            <Button 
+                                Text="DEL"
+                                Style="{StaticResource DeleteButtonStyle}" />
+                        </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
@@ -71,7 +76,12 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
+                        <HorizontalStackLayout>
                         <Label Text="{Binding Id}" />
+                        <Button 
+                            Text="DEL"
+                            Style="{StaticResource DeleteButtonStyle}" />
+                        </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
@@ -91,7 +101,12 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
-                        <Label Text="{Binding Id}" />
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding Id}" />
+                            <Button 
+                                Text="DEL"
+                                Style="{StaticResource DeleteButtonStyle}" />
+                        </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
@@ -111,7 +126,12 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
-                        <Label Text="{Binding Id}" />
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding Id}" />
+                            <Button 
+                                Text="DEL"
+                                Style="{StaticResource DeleteButtonStyle}" />
+                        </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
@@ -131,7 +151,12 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
-                        <Label Text="{Binding Id}" />
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding Id}" />
+                            <Button 
+                                Text="DEL"
+                                Style="{StaticResource DeleteButtonStyle}" />
+                        </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
@@ -151,7 +176,12 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
-                        <Label Text="{Binding Id}" />
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding Id}" />
+                            <Button 
+                                Text="DEL"
+                                Style="{StaticResource DeleteButtonStyle}" />
+                        </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
@@ -171,7 +201,12 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
-                        <Label Text="{Binding Id}" />
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding Id}" />
+                            <Button 
+                                Text="DEL"
+                                Style="{StaticResource DeleteButtonStyle}" />
+                        </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
