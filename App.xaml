@@ -88,8 +88,8 @@
                         Style="{StaticResource TemplateIdRemoveButtonStyle}" />
                 </HorizontalStackLayout>
             </DataTemplate>
-            <LinearItemsLayout x:Key="DayTemplateIdItemsLayout"
-                ItemSpacing="7"
+            <LinearItemsLayout x:Key="ScheduleCollectionViewItemsLayout"
+                ItemSpacing="5"
                 Orientation="Horizontal" />
         </ResourceDictionary>
     </Application.Resources>

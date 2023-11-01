@@ -44,12 +44,8 @@
                 Style="{StaticResource ScheduleLabelStyle}" />
             <CollectionView
                 Grid.Row="1"
-                ItemsSource="{Binding Day1WorkoutTemplateList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
+                ItemsSource="{Binding Day1WorkoutTemplateList}"
+                ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
                         <HorizontalStackLayout>
@@ -68,12 +64,8 @@
                 Style="{StaticResource ScheduleLabelStyle}" />
             <CollectionView
                 Grid.Row="3"
-                ItemsSource="{Binding Day2WorkoutTemplateList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
+                ItemsSource="{Binding Day2WorkoutTemplateList}"
+                ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
                         <HorizontalStackLayout>
@@ -93,12 +85,8 @@
                 Style="{StaticResource ScheduleLabelStyle}" />
             <CollectionView
                 Grid.Row="5"
-                ItemsSource="{Binding Day3WorkoutTemplateList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
+                ItemsSource="{Binding Day3WorkoutTemplateList}"
+                ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
                         <HorizontalStackLayout>
@@ -118,12 +106,8 @@
                 Style="{StaticResource ScheduleLabelStyle}" />
             <CollectionView
                 Grid.Row="7"
-                ItemsSource="{Binding Day4WorkoutTemplateList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
+                ItemsSource="{Binding Day4WorkoutTemplateList}"
+                ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
                         <HorizontalStackLayout>
@@ -143,12 +127,8 @@
                 Style="{StaticResource ScheduleLabelStyle}" />
             <CollectionView
                 Grid.Row="9"
-                ItemsSource="{Binding Day5WorkoutTemplateList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
+                ItemsSource="{Binding Day5WorkoutTemplateList}"
+                ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
                         <HorizontalStackLayout>
@@ -168,12 +148,8 @@
                 Style="{StaticResource ScheduleLabelStyle}" />
             <CollectionView
                 Grid.Row="11"
-                ItemsSource="{Binding Day6WorkoutTemplateList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
+                ItemsSource="{Binding Day6WorkoutTemplateList}"
+                ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
                         <HorizontalStackLayout>
@@ -193,12 +169,8 @@
                 Style="{StaticResource ScheduleLabelStyle}" />
             <CollectionView
                 Grid.Row="13"
-                ItemsSource="{Binding Day7WorkoutTemplateList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
+                ItemsSource="{Binding Day7WorkoutTemplateList}"
+                ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
                         <HorizontalStackLayout>
