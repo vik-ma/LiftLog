@@ -48,9 +48,14 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
+            <Style x:Key="ScheduleWTLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
             <Style x:Key="ScheduleButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="0" />
             </Style>
             <Style x:Key="AddButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="16" />

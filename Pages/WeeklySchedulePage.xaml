@@ -48,10 +48,12 @@
                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding Id}" />
+                        <HorizontalStackLayout Spacing="4">
+                            <Label 
+                                Text="{Binding Name}"
+                                Style="{StaticResource ScheduleWTLabelStyle}" />
                             <Button 
-                                Text="DEL"
+                                Text="Delete"
                                 Style="{StaticResource DeleteButtonStyle}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
@@ -68,11 +70,13 @@
                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
-                        <HorizontalStackLayout>
-                        <Label Text="{Binding Id}" />
-                        <Button 
-                            Text="DEL"
-                            Style="{StaticResource DeleteButtonStyle}" />
+                        <HorizontalStackLayout Spacing="4">
+                            <Label 
+                                Text="{Binding Name}"
+                                Style="{StaticResource ScheduleWTLabelStyle}" />
+                            <Button 
+                                Text="Delete"
+                                Style="{StaticResource DeleteButtonStyle}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -89,10 +93,12 @@
                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding Id}" />
+                        <HorizontalStackLayout Spacing="4">
+                            <Label 
+                                Text="{Binding Name}"
+                                Style="{StaticResource ScheduleWTLabelStyle}" />
                             <Button 
-                                Text="DEL"
+                                Text="Delete"
                                 Style="{StaticResource DeleteButtonStyle}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
@@ -110,10 +116,12 @@
                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding Id}" />
+                        <HorizontalStackLayout Spacing="4">
+                            <Label 
+                                Text="{Binding Name}"
+                                Style="{StaticResource ScheduleWTLabelStyle}" />
                             <Button 
-                                Text="DEL"
+                                Text="Delete"
                                 Style="{StaticResource DeleteButtonStyle}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
@@ -131,10 +139,12 @@
                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding Id}" />
+                        <HorizontalStackLayout Spacing="4">
+                            <Label 
+                                Text="{Binding Name}"
+                                Style="{StaticResource ScheduleWTLabelStyle}" />
                             <Button 
-                                Text="DEL"
+                                Text="Delete"
                                 Style="{StaticResource DeleteButtonStyle}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
@@ -152,10 +162,12 @@
                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding Id}" />
+                        <HorizontalStackLayout Spacing="4">
+                            <Label 
+                                Text="{Binding Name}"
+                                Style="{StaticResource ScheduleWTLabelStyle}" />
                             <Button 
-                                Text="DEL"
+                                Text="Delete"
                                 Style="{StaticResource DeleteButtonStyle}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
@@ -173,10 +185,12 @@
                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding Id}" />
+                        <HorizontalStackLayout Spacing="4">
+                            <Label 
+                                Text="{Binding Name}"
+                                Style="{StaticResource ScheduleWTLabelStyle}" />
                             <Button 
-                                Text="DEL"
+                                Text="Delete"
                                 Style="{StaticResource DeleteButtonStyle}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
