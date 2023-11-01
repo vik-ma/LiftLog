@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:LocalLiftLog"
              xmlns:converters="clr-namespace:LocalLiftLog.Converters"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:models="clr-namespace:LocalLiftLog.Models"
              x:Class="LocalLiftLog.App">
     
     <Application.Resources>
@@ -83,14 +84,16 @@
             <converters:NullValueToEmptyTextConverter x:Key="nullValueToEmptyText" />
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
 
-            <DataTemplate x:Key="DayTemplateIdDataTemplate">
-                <HorizontalStackLayout Spacing="6">
+            <DataTemplate 
+                x:Key="ScheduleCollectionViewDataTemplate"
+                x:DataType="models:WorkoutTemplate">
+                <HorizontalStackLayout Spacing="4">
                     <Label 
-                        Text="{Binding .}"
-                        Style="{StaticResource TemplateIdListLabelStyle}" />
+                        Text="{Binding Name}"
+                        Style="{StaticResource ScheduleWTLabelStyle}" />
                     <Button 
-                        Text="Remove"
-                        Style="{StaticResource TemplateIdRemoveButtonStyle}" />
+                        Text="Delete"
+                        Style="{StaticResource DeleteButtonStyle}" />
                 </HorizontalStackLayout>
             </DataTemplate>
             <LinearItemsLayout x:Key="ScheduleCollectionViewItemsLayout"
