@@ -179,5 +179,24 @@ namespace LocalLiftLog.ViewModels
                 await LoadWorkoutTemplateCollectionsAsync();
             });
         }
+
+        [RelayCommand]
+        private async Task DeleteWorkoutTemplateAsync(int id)
+        {
+            WorkoutTemplate workoutTemplate = WorkoutTemplateList.FirstOrDefault(p => p.Id == id);
+
+            if (workoutTemplate is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<WorkoutTemplate>(workoutTemplate))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template.", "OK");
+                }
+
+                await LoadWorkoutTemplatesAsync();
+            });
+        }
     }
 }
