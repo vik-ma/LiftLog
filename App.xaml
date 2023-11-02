@@ -87,7 +87,8 @@
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="#9e9e9e" />
             </Style>
-            <converters:NullValueToEmptyTextConverter x:Key="nullValueToEmptyText" />
+            <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyText" />
+            <converters:MultiBindingConverter x:Key="MultiBindingConverter" />
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
 
             <DataTemplate 

@@ -36,7 +36,7 @@
                         FontAttributes="Bold"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                     <Span 
-                        Text="{Binding Routine.Id, Converter={StaticResource nullValueToEmptyText}}"
+                        Text="{Binding Routine.Id, Converter={StaticResource NullValueToEmptyText}}"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                 </FormattedString>
             </Label.FormattedText>
@@ -49,7 +49,7 @@
                         FontAttributes="Bold"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                     <Span 
-                        Text="{Binding Routine.Focus, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=Focus}"
+                        Text="{Binding Routine.Focus, Converter={StaticResource NullValueToEmptyText}, ConverterParameter=Focus}"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                 </FormattedString>
             </Label.FormattedText>
@@ -67,7 +67,7 @@
                         FontAttributes="Bold"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                     <Span 
-                        Text="{Binding Routine.LastUpdateDateTime, Converter={StaticResource nullValueToEmptyText}}"
+                        Text="{Binding Routine.LastUpdateDateTime, Converter={StaticResource NullValueToEmptyText}}"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                 </FormattedString>
             </Label.FormattedText>
@@ -80,7 +80,7 @@
                         FontAttributes="Bold"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                     <Span 
-                        Text="{Binding Routine.ScheduleFactoryId, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=Schedule}"
+                        Text="{Binding Routine.ScheduleFactoryId, Converter={StaticResource NullValueToEmptyText}, ConverterParameter=Schedule}"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                 </FormattedString>
             </Label.FormattedText>

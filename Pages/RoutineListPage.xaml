@@ -100,7 +100,7 @@
                                                 FontAttributes="Bold"
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                             <Span 
-                                                Text="{Binding Focus, Converter={StaticResource nullValueToEmptyText}, ConverterParameter=Focus}"
+                                                Text="{Binding Focus, Converter={StaticResource NullValueToEmptyText}, ConverterParameter=Focus}"
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -113,7 +113,7 @@
                                                 FontAttributes="Bold"
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                             <Span 
-                                                Text="{Binding LastUpdateDateTime, Converter={StaticResource nullValueToEmptyText}}"
+                                                Text="{Binding LastUpdateDateTime, Converter={StaticResource NullValueToEmptyText}}"
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
