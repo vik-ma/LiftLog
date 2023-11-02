@@ -104,12 +104,12 @@ namespace LocalLiftLog.ViewModels
             });
         }
 
-        #nullable enable
+#nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
             try
             {
-                #nullable disable
+#nullable disable
                 await operation?.Invoke();
             }
             catch
@@ -161,5 +161,23 @@ namespace LocalLiftLog.ViewModels
 
         }
 
+        [RelayCommand]
+        private async Task DeleteWorkoutTemplateCollectionAsync(int id)
+        {
+            WorkoutTemplateCollection workoutTemplateCollection = WorkoutTemplateCollectionList.FirstOrDefault(p => p.Id == id);
+
+            if (workoutTemplateCollection is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<WorkoutTemplateCollection>(workoutTemplateCollection))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
+                }
+
+                await LoadWorkoutTemplateCollectionsAsync();
+            });
+        }
     }
 }
