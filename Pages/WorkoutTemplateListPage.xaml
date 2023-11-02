@@ -74,6 +74,11 @@
                                 Style="{StaticResource AddButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutTemplateViewModel}}, Path=UpdateWorkoutTemplateCommand}" 
                                 CommandParameter="{Binding Id}" />
+                            <Button
+                                Text="Delete"
+                                Style="{StaticResource DeleteButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutTemplateViewModel}}, Path=DeleteWorkoutTemplateCommand}" 
+                                CommandParameter="{Binding Id}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -183,6 +188,11 @@
                                 Text="Save"
                                 Style="{StaticResource AddButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutTemplateViewModel}}, Path=UpdateWorkoutTemplateCollectionCommand}" 
+                                CommandParameter="{Binding Id}" />
+                            <Button
+                                Text="Delete"
+                                Style="{StaticResource DeleteButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutTemplateViewModel}}, Path=DeleteWorkoutTemplateCollectionCommand}" 
                                 CommandParameter="{Binding Id}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
