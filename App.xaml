@@ -104,7 +104,7 @@
             </DataTemplate>
             <LinearItemsLayout 
                 x:Key="ScheduleCollectionViewItemsLayout"
-                ItemSpacing="15"
+                ItemSpacing="12"
                 Orientation="Horizontal" />
         </ResourceDictionary>
     </Application.Resources>

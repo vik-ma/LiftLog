@@ -105,51 +105,7 @@ namespace LocalLiftLog.ViewModels
             {
                 await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
             }
-
-                //int[] workoutDayIdList =
-                //{
-                //    WeeklySchedule.Day1WorkoutTemplateCollectionId,
-                //    WeeklySchedule.Day2WorkoutTemplateCollectionId,
-                //    WeeklySchedule.Day3WorkoutTemplateCollectionId,
-                //    WeeklySchedule.Day4WorkoutTemplateCollectionId,
-                //    WeeklySchedule.Day5WorkoutTemplateCollectionId,
-                //    WeeklySchedule.Day6WorkoutTemplateCollectionId,
-                //    WeeklySchedule.Day7WorkoutTemplateCollectionId
-                //};
-
-                //List<WorkoutTemplateCollection> workoutCollectionList = Enumerable.Repeat(new WorkoutTemplateCollection(), 7).ToList();
-
-                //for (int i = 0; i < 7; i++)
-                //{
-                //    WorkoutTemplateCollection workoutTemplateCollectionObj;
-
-                //    if (workoutDayIdList[i] == 0) workoutTemplateCollectionObj = null;
-                //    else 
-                //    {
-                //        try
-                //        {
-                //            workoutTemplateCollectionObj = await _context.GetItemByKeyAsync<WorkoutTemplateCollection>(workoutDayIdList[i]);
-
-                //            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.ScheduleFactoryId == WeeklySchedule.ScheduleFactoryId;
-
-                //            var asd = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
-
-                //            await Shell.Current.DisplayAlert("Error", asd.ToString(), "OK");
-                //        }
-                //        catch
-                //        {
-                //            bool userClickedNo = await Shell.Current.DisplayAlert("Workout Not Found", $"The Workout for {daysOfWeekList[i]} was not found. Remove Workout from {daysOfWeekList[i]}?", "No", "Yes");
-
-                //            // Reset value for day if user clicked Yes
-                //            if (!userClickedNo) ResetWorkoutIdValue(i);
-
-                //            workoutTemplateCollectionObj = null;
-                //        }
-                //    }
-
-                //    workoutCollectionList[i] = workoutTemplateCollectionObj;
-                //}
-            }
+        }
 
         private async void LoadWorkoutTemplateForEachDay(IEnumerable<WorkoutTemplateCollection> filteredWtcList)
         {
@@ -212,47 +168,6 @@ namespace LocalLiftLog.ViewModels
                         break;
                 }
             }
-        }
-
-        private void ResetWorkoutIdValue(int day)
-        {
-            switch (day)
-            {
-                case 0:
-                    WeeklySchedule.Day1WorkoutTemplateCollectionId = 0;
-                    break;
-
-                case 1:
-                    WeeklySchedule.Day2WorkoutTemplateCollectionId = 0;
-                    break;
-
-                case 2:
-                    WeeklySchedule.Day3WorkoutTemplateCollectionId = 0;
-                    break;
-
-                case 3:
-                    WeeklySchedule.Day4WorkoutTemplateCollectionId = 0;
-                    break;
-
-                case 4:
-                    WeeklySchedule.Day5WorkoutTemplateCollectionId = 0;
-                    break;
-
-                case 5:
-                    WeeklySchedule.Day6WorkoutTemplateCollectionId = 0;
-                    break;
-
-                case 6:
-                    WeeklySchedule.Day7WorkoutTemplateCollectionId = 0;
-                    break;
-
-                default:
-                    Shell.Current.DisplayAlert("Error", "Invalid Day.", "OK");
-                    break;
-            }
-
-            updateWeeklyScheduleCommand.Execute(WeeklySchedule);
-            OnPropertyChanged(nameof(WeeklySchedule));
         }
     }
 }
