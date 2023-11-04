@@ -111,18 +111,20 @@ namespace LocalLiftLog.ViewModels
         {
             foreach (var item in filteredWtcList)
             {
-                //Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.Id == item.WorkoutTemplateId;
+                //Expression<Func<WorkoutTemplate, bool>> predicate = entity => entity.Id == item.WorkoutTemplateId;
 
                 //IEnumerable<WorkoutTemplateCollection> filteredWtList = null;
-                //try
-                //{
-                //    filteredWtList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
-                //}
-                //catch
-                //{
-                //    await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
-                //    return;
-                //}
+                try
+                {
+                    var workoutTemplate = await _context.GetItemByKeyAsync<WorkoutTemplate>(item.WorkoutTemplateId);
+                    item.WorkoutTemplateName = workoutTemplate.Name;
+                    //filteredWtList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+                }
+                catch
+                {
+                    await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workout name.", "OK");
+                    return;
+                }
 
                 int day = item.Day;
 

@@ -98,7 +98,7 @@
                 x:DataType="models:WorkoutTemplateCollection">
                 <HorizontalStackLayout Spacing="10">
                     <Label 
-                        Text="{Binding WorkoutTemplateId}"
+                        Text="{Binding WorkoutTemplateName}"
                         Style="{StaticResource ScheduleWTLabelStyle}" />
                     <Button 
                         Text="Delete"
