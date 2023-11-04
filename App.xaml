@@ -5,6 +5,7 @@
              xmlns:converters="clr-namespace:LocalLiftLog.Converters"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:models="clr-namespace:LocalLiftLog.Models"
+             xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              x:Class="LocalLiftLog.App">
     
     <Application.Resources>
@@ -90,6 +91,7 @@
             <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyText" />
             <converters:MultiBindingConverter x:Key="MultiBindingConverter" />
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+            <toolkit:IndexToArrayItemConverter x:Key="IndexToArrayItemConverter" />
 
             <DataTemplate 
                 x:Key="ScheduleCollectionViewDataTemplate"
@@ -100,7 +102,17 @@
                         Style="{StaticResource ScheduleWTLabelStyle}" />
                     <Button 
                         Text="Delete"
-                        Style="{StaticResource ScheduleDeleteButtonStyle}" />
+                        Style="{StaticResource ScheduleDeleteButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WeeklyScheduleViewModel}}, Path=RemoveWorkoutTemplateForDayCommand}">
+                        <Button.CommandParameter>
+                            <MultiBinding Converter="{StaticResource MultiBindingConverter}">
+                                <MultiBinding.Bindings >
+                                    <Binding Path="Id" />
+                                    <Binding Path="Name" />
+                                </MultiBinding.Bindings>
+                            </MultiBinding>
+                        </Button.CommandParameter>
+                    </Button>
                 </HorizontalStackLayout>
             </DataTemplate>
             <LinearItemsLayout 

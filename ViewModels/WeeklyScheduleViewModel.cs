@@ -169,5 +169,11 @@ namespace LocalLiftLog.ViewModels
                 }
             }
         }
+
+        [RelayCommand]
+        private async Task RemoveWorkoutTemplateForDayAsync(object multiBinding)
+        {
+            await Shell.Current.DisplayAlert("Error", multiBinding.ToString(), "OK");
+        }
     }
 }
