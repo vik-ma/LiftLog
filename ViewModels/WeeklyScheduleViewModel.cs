@@ -32,25 +32,25 @@ namespace LocalLiftLog.ViewModels
         }
 
         [ObservableProperty]
-        private ObservableCollection<WorkoutTemplate> day1WorkoutTemplateList = new();
+        private ObservableCollection<WorkoutTemplateCollection> day1WorkoutTemplateCollectionList = new();
 
         [ObservableProperty]
-        private ObservableCollection<WorkoutTemplate> day2WorkoutTemplateList = new();
+        private ObservableCollection<WorkoutTemplateCollection> day2WorkoutTemplateCollectionList = new();
 
         [ObservableProperty]
-        private ObservableCollection<WorkoutTemplate> day3WorkoutTemplateList = new();
+        private ObservableCollection<WorkoutTemplateCollection> day3WorkoutTemplateCollectionList = new();
 
         [ObservableProperty]
-        private ObservableCollection<WorkoutTemplate> day4WorkoutTemplateList = new();
+        private ObservableCollection<WorkoutTemplateCollection> day4WorkoutTemplateCollectionList = new();
 
         [ObservableProperty]
-        private ObservableCollection<WorkoutTemplate> day5WorkoutTemplateList = new();
+        private ObservableCollection<WorkoutTemplateCollection> day5WorkoutTemplateCollectionList = new();
 
         [ObservableProperty]
-        private ObservableCollection<WorkoutTemplate> day6WorkoutTemplateList = new();
+        private ObservableCollection<WorkoutTemplateCollection> day6WorkoutTemplateCollectionList = new();
 
         [ObservableProperty]
-        private ObservableCollection<WorkoutTemplate> day7WorkoutTemplateList = new();
+        private ObservableCollection<WorkoutTemplateCollection> day7WorkoutTemplateCollectionList = new();
 
         [RelayCommand]
         static async Task GoBack()
@@ -99,7 +99,7 @@ namespace LocalLiftLog.ViewModels
             try 
             {
                 filteredWtcList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
-                LoadWorkoutTemplateForEachDay(filteredWtcList);
+                LoadWorkoutTemplateCollectionsForEachDay(filteredWtcList);
             }
             catch
             {
@@ -107,60 +107,53 @@ namespace LocalLiftLog.ViewModels
             }
         }
 
-        private async void LoadWorkoutTemplateForEachDay(IEnumerable<WorkoutTemplateCollection> filteredWtcList)
+        private async void LoadWorkoutTemplateCollectionsForEachDay(IEnumerable<WorkoutTemplateCollection> filteredWtcList)
         {
             foreach (var item in filteredWtcList)
             {
-                Expression<Func<WorkoutTemplate, bool>> predicate = entity => entity.Id == item.WorkoutTemplateId;
+                //Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.Id == item.WorkoutTemplateId;
 
-                IEnumerable<WorkoutTemplate> filteredWtList = null;
-                try
-                {
-                    filteredWtList = await _context.GetFilteredAsync<WorkoutTemplate>(predicate);
-                }
-                catch
-                {
-                    await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
-                    return;
-                }
+                //IEnumerable<WorkoutTemplateCollection> filteredWtList = null;
+                //try
+                //{
+                //    filteredWtList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+                //}
+                //catch
+                //{
+                //    await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
+                //    return;
+                //}
 
                 int day = item.Day;
 
                 switch (day)
                 {
                     case 0:
-                        foreach (var wt in filteredWtList)
-                            Day1WorkoutTemplateList.Add(wt);
+                        Day1WorkoutTemplateCollectionList.Add(item);
                         break;
 
                     case 1:
-                        foreach (var wt in filteredWtList)
-                            Day2WorkoutTemplateList.Add(wt);
+                        Day2WorkoutTemplateCollectionList.Add(item);
                         break;
 
                     case 2:
-                        foreach (var wt in filteredWtList)
-                            Day3WorkoutTemplateList.Add(wt);
+                        Day3WorkoutTemplateCollectionList.Add(item);
                         break;
 
                     case 3:
-                        foreach (var wt in filteredWtList)
-                            Day4WorkoutTemplateList.Add(wt);
+                        Day4WorkoutTemplateCollectionList.Add(item);
                         break;
 
                     case 4:
-                        foreach (var wt in filteredWtList)
-                            Day5WorkoutTemplateList.Add(wt);
+                        Day5WorkoutTemplateCollectionList.Add(item);
                         break;
 
                     case 5:
-                        foreach (var wt in filteredWtList)
-                            Day6WorkoutTemplateList.Add(wt);
+                        Day6WorkoutTemplateCollectionList.Add(item);
                         break;
 
                     case 6:
-                        foreach (var wt in filteredWtList)
-                            Day7WorkoutTemplateList.Add(wt);
+                        Day7WorkoutTemplateCollectionList.Add(item);
                         break;
 
                     default:

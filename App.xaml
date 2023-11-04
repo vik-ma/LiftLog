@@ -95,10 +95,10 @@
 
             <DataTemplate 
                 x:Key="ScheduleCollectionViewDataTemplate"
-                x:DataType="models:WorkoutTemplate">
+                x:DataType="models:WorkoutTemplateCollection">
                 <HorizontalStackLayout Spacing="10">
                     <Label 
-                        Text="{Binding Name}"
+                        Text="{Binding WorkoutTemplateId}"
                         Style="{StaticResource ScheduleWTLabelStyle}" />
                     <Button 
                         Text="Delete"
@@ -108,7 +108,7 @@
                             <MultiBinding Converter="{StaticResource MultiBindingConverter}">
                                 <MultiBinding.Bindings >
                                     <Binding Path="Id" />
-                                    <Binding Path="Name" />
+                                    <Binding Path="WorkoutTemplateId" />
                                 </MultiBinding.Bindings>
                             </MultiBinding>
                         </Button.CommandParameter>
