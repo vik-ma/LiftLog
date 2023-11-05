@@ -197,7 +197,26 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task AddWorkoutTemplateCollectionToDay(int day)
         {
-            await Shell.Current.DisplayAlert("Day", day.ToString(), "OK");
+            if (day < 0 || day > 6)
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid Day", "OK");
+                return;
+            }
+
+            int scheduleId = WeeklySchedule.ScheduleFactoryId;
+
+            await ExecuteAsync(async () =>
+            {
+                WorkoutTemplateCollection workoutCollection = new()
+                {
+                    Day = day,
+                    ScheduleFactoryId = scheduleId,
+                    WorkoutTemplateId = 1 // CHANGE THIS
+                };
+                await _context.AddItemAsync<WorkoutTemplateCollection>(workoutCollection);
+            });
+
+            await LoadWorkoutTemplateCollectionsAsync();
         }
     }
 }
