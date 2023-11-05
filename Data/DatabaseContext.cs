@@ -53,6 +53,19 @@ namespace LocalLiftLog.Data
             return await Execute<TTable, TTable>(async () => await Database.GetAsync<TTable>(primaryKey));
         }
 
+        public async Task<bool> ItemExistsByKeyAsync<TTable>(object primaryKey) where TTable : class, new()
+        {
+            try
+            {
+                var item = await Execute<TTable, TTable>(async () => await Database.GetAsync<TTable>(primaryKey));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public async Task<bool> AddItemAsync<TTable>(TTable item) where TTable : class, new()
         {
             return await Execute<TTable, bool>(async () => await Database.InsertAsync(item) > 0);
