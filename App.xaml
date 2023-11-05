@@ -108,7 +108,7 @@
                             <MultiBinding Converter="{StaticResource MultiBindingConverter}">
                                 <MultiBinding.Bindings >
                                     <Binding Path="Id" />
-                                    <Binding Path="WorkoutTemplateId" />
+                                    <Binding Path="Day" />
                                 </MultiBinding.Bindings>
                             </MultiBinding>
                         </Button.CommandParameter>

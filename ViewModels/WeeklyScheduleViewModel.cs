@@ -109,6 +109,14 @@ namespace LocalLiftLog.ViewModels
 
         private async void LoadWorkoutTemplateCollectionsForEachDay(IEnumerable<WorkoutTemplateCollection> filteredWtcList)
         {
+            Day1WorkoutTemplateCollectionList.Clear();
+            Day2WorkoutTemplateCollectionList.Clear();
+            Day3WorkoutTemplateCollectionList.Clear();
+            Day4WorkoutTemplateCollectionList.Clear();
+            Day5WorkoutTemplateCollectionList.Clear();
+            Day6WorkoutTemplateCollectionList.Clear();
+            Day7WorkoutTemplateCollectionList.Clear();
+
             foreach (var item in filteredWtcList)
             {
                 WorkoutTemplate workoutTemplate = null;
@@ -175,7 +183,31 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task RemoveWorkoutTemplateForDayAsync(object multiBinding)
         {
-            await Shell.Current.DisplayAlert("Error", multiBinding.ToString(), "OK");
+            int workoutTemplateCollectionId;
+            int day;
+            try
+            {
+                Tuple<object, object> idAndDay = multiBinding as Tuple<object, object>;
+
+                workoutTemplateCollectionId = Convert.ToInt32(idAndDay.Item1);
+                day = Convert.ToInt32(idAndDay.Item2);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured.", "OK");
+                return;
+            }
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemByKeyAsync<WorkoutTemplateCollection>(workoutTemplateCollectionId))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
+                }
+
+                await LoadWorkoutTemplateCollectionsAsync();
+            });
+
         }
     }
 }
