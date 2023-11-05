@@ -50,7 +50,15 @@ namespace LocalLiftLog.Data
 
         public async Task<TTable> GetItemByKeyAsync<TTable>(object primaryKey) where TTable : class, new()
         {
-            return await Execute<TTable, TTable>(async () => await Database.GetAsync<TTable>(primaryKey));
+            try
+            {
+                return await Execute<TTable, TTable>(async () => await Database.GetAsync<TTable>(primaryKey));
+            }
+            catch
+            {
+                return null;
+            }
+            
         }
 
         public async Task<bool> ItemExistsByKeyAsync<TTable>(object primaryKey) where TTable : class, new()
