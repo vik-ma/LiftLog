@@ -42,6 +42,13 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
+            <Button 
+                Text="Add Workout"
+                Grid.Row="0"
+                Grid.Column="1"
+                Style="{StaticResource AddButtonStyle}"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WeeklyScheduleViewModel}}, Path=AddWorkoutTemplateCollectionToDayCommand}"
+                CommandParameter="{x:Int32 0}" />
             <CollectionView
                 Grid.Row="1"
                 ItemsSource="{Binding Day1WorkoutTemplateCollectionList}"
@@ -56,6 +63,13 @@
                 Text="Tuesday"
                 Grid.Row="2"
                 Style="{StaticResource ScheduleLabelStyle}" />
+            <Button 
+                Text="Add Workout"
+                Grid.Row="2"
+                Grid.Column="1"
+                Style="{StaticResource AddButtonStyle}"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WeeklyScheduleViewModel}}, Path=AddWorkoutTemplateCollectionToDayCommand}"
+                CommandParameter="{x:Int32 1}" />
             <CollectionView
                 Grid.Row="3"
                 ItemsSource="{Binding Day2WorkoutTemplateCollectionList}"
@@ -71,6 +85,13 @@
                 Grid.Row="4"
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
+            <Button 
+                Text="Add Workout"
+                Grid.Row="4"
+                Grid.Column="1"
+                Style="{StaticResource AddButtonStyle}" 
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WeeklyScheduleViewModel}}, Path=AddWorkoutTemplateCollectionToDayCommand}"
+                CommandParameter="{x:Int32 2}" />
             <CollectionView
                 Grid.Row="5"
                 ItemsSource="{Binding Day3WorkoutTemplateCollectionList}"
@@ -86,6 +107,13 @@
                 Grid.Row="6"
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
+            <Button 
+                Text="Add Workout"
+                Grid.Row="6"
+                Grid.Column="1"
+                Style="{StaticResource AddButtonStyle}"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WeeklyScheduleViewModel}}, Path=AddWorkoutTemplateCollectionToDayCommand}"
+                CommandParameter="{x:Int32 3}" />
             <CollectionView
                 Grid.Row="7"
                 ItemsSource="{Binding Day4WorkoutTemplateCollectionList}"
@@ -101,6 +129,13 @@
                 Grid.Row="8"
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
+            <Button 
+                Text="Add Workout"
+                Grid.Row="8"
+                Grid.Column="1"
+                Style="{StaticResource AddButtonStyle}"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WeeklyScheduleViewModel}}, Path=AddWorkoutTemplateCollectionToDayCommand}"
+                CommandParameter="{x:Int32 4}" />
             <CollectionView
                 Grid.Row="9"
                 ItemsSource="{Binding Day5WorkoutTemplateCollectionList}"
@@ -116,6 +151,13 @@
                 Grid.Row="10"
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
+            <Button 
+                Text="Add Workout"
+                Grid.Row="10"
+                Grid.Column="1"
+                Style="{StaticResource AddButtonStyle}"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WeeklyScheduleViewModel}}, Path=AddWorkoutTemplateCollectionToDayCommand}"
+                CommandParameter="{x:Int32 5}" />
             <CollectionView
                 Grid.Row="11"
                 ItemsSource="{Binding Day6WorkoutTemplateCollectionList}"
@@ -131,6 +173,13 @@
                 Grid.Row="12"
                 Grid.Column="0"
                 Style="{StaticResource ScheduleLabelStyle}" />
+            <Button 
+                Text="Add Workout"
+                Grid.Row="12"
+                Grid.Column="1"
+                Style="{StaticResource AddButtonStyle}"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WeeklyScheduleViewModel}}, Path=AddWorkoutTemplateCollectionToDayCommand}"
+                CommandParameter="{x:Int32 6}" />
             <CollectionView
                 Grid.Row="13"
                 ItemsSource="{Binding Day7WorkoutTemplateCollectionList}"

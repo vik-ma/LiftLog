@@ -192,7 +192,12 @@ namespace LocalLiftLog.ViewModels
 
                 await LoadWorkoutTemplateCollectionsAsync();
             });
+        }
 
+        [RelayCommand]
+        private async Task AddWorkoutTemplateCollectionToDay(int day)
+        {
+            await Shell.Current.DisplayAlert("Day", day.ToString(), "OK");
         }
     }
 }
