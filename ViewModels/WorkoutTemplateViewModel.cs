@@ -9,6 +9,7 @@ using LocalLiftLog.Models;
 using LocalLiftLog.Pages;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Linq.Expressions;
 
 namespace LocalLiftLog.ViewModels
 {
@@ -197,6 +198,35 @@ namespace LocalLiftLog.ViewModels
 
                 await LoadWorkoutTemplatesAsync();
             });
+
+            await DeleteWorkoutTemplateCollectionsByWorkoutTemplateId(id);
+        }
+
+        private async Task DeleteWorkoutTemplateCollectionsByWorkoutTemplateId(int id)
+        {
+            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutTemplateId == id;
+
+            IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
+            try
+            {
+                filteredWtcList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Workout Template Collections.", "OK");
+            }
+
+            foreach (var item in filteredWtcList)
+            {
+                await ExecuteAsync(async () =>
+                {
+                    if (!await _context.DeleteItemAsync<WorkoutTemplateCollection>(item))
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
+                    }
+                });
+            }
+            await LoadWorkoutTemplateCollectionsAsync();
         }
     }
 }
