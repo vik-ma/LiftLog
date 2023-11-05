@@ -181,26 +181,11 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task RemoveWorkoutTemplateForDayAsync(object multiBinding)
+        private async Task RemoveWorkoutTemplateCollection(int id)
         {
-            int workoutTemplateCollectionId;
-            int day;
-            try
-            {
-                Tuple<object, object> idAndDay = multiBinding as Tuple<object, object>;
-
-                workoutTemplateCollectionId = Convert.ToInt32(idAndDay.Item1);
-                day = Convert.ToInt32(idAndDay.Item2);
-            }
-            catch
-            {
-                await Shell.Current.DisplayAlert("Error", "An error occured.", "OK");
-                return;
-            }
-
             await ExecuteAsync(async () =>
             {
-                if (!await _context.DeleteItemByKeyAsync<WorkoutTemplateCollection>(workoutTemplateCollectionId))
+                if (!await _context.DeleteItemByKeyAsync<WorkoutTemplateCollection>(id))
                 {
                     await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
                 }
