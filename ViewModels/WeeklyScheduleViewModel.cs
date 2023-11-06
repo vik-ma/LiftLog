@@ -52,6 +52,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private ObservableCollection<WorkoutTemplateCollection> day7WorkoutTemplateCollectionList = new();
 
+        [ObservableProperty]
+        private bool showWorkoutTemplateList = false;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -217,6 +220,12 @@ namespace LocalLiftLog.ViewModels
             });
 
             await LoadWorkoutTemplateCollectionsAsync();
+        }
+
+        [RelayCommand]
+        private void ToggleWorkoutTemplateList()
+        {
+            ShowWorkoutTemplateList = !ShowWorkoutTemplateList;
         }
     }
 }
