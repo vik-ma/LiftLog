@@ -31,12 +31,12 @@ namespace LocalLiftLog.ViewModels
         {
             await ExecuteAsync(async () =>
             {
+                ScheduleFactoryList.Clear();
+
                 var schedules = await _context.GetAllAsync<ScheduleFactory>();
 
                 if (schedules is not null && schedules.Any())
                 {
-                    ScheduleFactoryList.Clear();
-
                     schedules ??= new ObservableCollection<ScheduleFactory>();
 
                     foreach (var schedule in schedules)

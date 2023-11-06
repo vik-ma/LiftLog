@@ -246,12 +246,12 @@ namespace LocalLiftLog.ViewModels
         {
             await ExecuteAsync(async () =>
             {
+                WorkoutTemplateList.Clear();
+
                 var workoutTemplates = await _context.GetAllAsync<WorkoutTemplate>();
 
                 if (workoutTemplates is not null && workoutTemplates.Any())
                 {
-                    WorkoutTemplateList.Clear();
-
                     workoutTemplates ??= new ObservableCollection<WorkoutTemplate>();
 
                     foreach (var workout in workoutTemplates)
