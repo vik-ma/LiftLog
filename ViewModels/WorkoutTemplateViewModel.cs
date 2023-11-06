@@ -47,12 +47,12 @@ namespace LocalLiftLog.ViewModels
         {
             await ExecuteAsync(async () =>
             {
+                WorkoutTemplateList.Clear();
+
                 var workouts = await _context.GetAllAsync<WorkoutTemplate>();
 
                 if (workouts is not null && workouts.Any())
                 {
-                    WorkoutTemplateList.Clear();
-
                     workouts ??= new ObservableCollection<WorkoutTemplate>();
 
                     foreach (var workout in workouts)
@@ -67,12 +67,12 @@ namespace LocalLiftLog.ViewModels
         {
             await ExecuteAsync(async () =>
             {
+                WorkoutTemplateCollectionList.Clear();
+
                 var workoutCollections = await _context.GetAllAsync<WorkoutTemplateCollection>();
 
                 if (workoutCollections is not null && workoutCollections.Any())
                 {
-                    WorkoutTemplateCollectionList.Clear();
-
                     workoutCollections ??= new ObservableCollection<WorkoutTemplateCollection>();
 
                     foreach (var workoutCollection in workoutCollections)
@@ -176,9 +176,9 @@ namespace LocalLiftLog.ViewModels
                 {
                     await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
                 }
-
-                await LoadWorkoutTemplateCollectionsAsync();
             });
+
+            await LoadWorkoutTemplateCollectionsAsync();
         }
 
         [RelayCommand]
@@ -195,9 +195,9 @@ namespace LocalLiftLog.ViewModels
                 {
                     await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template.", "OK");
                 }
-
-                await LoadWorkoutTemplatesAsync();
             });
+
+            await LoadWorkoutTemplatesAsync();
 
             await DeleteWorkoutTemplateCollectionsByWorkoutTemplateId(id);
         }
@@ -226,6 +226,7 @@ namespace LocalLiftLog.ViewModels
                     }
                 });
             }
+
             await LoadWorkoutTemplateCollectionsAsync();
         }
     }
