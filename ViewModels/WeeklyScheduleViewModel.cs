@@ -58,6 +58,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private int selectedDay;
 
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -237,6 +240,26 @@ namespace LocalLiftLog.ViewModels
         private void HideWorkoutTemplateList()
         {
             ShowWorkoutTemplateList = false;
+        }
+
+        public async Task LoadWorkoutTemplatesAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                var workoutTemplates = await _context.GetAllAsync<WorkoutTemplate>();
+
+                if (workoutTemplates is not null && workoutTemplates.Any())
+                {
+                    WorkoutTemplateList.Clear();
+
+                    workoutTemplates ??= new ObservableCollection<WorkoutTemplate>();
+
+                    foreach (var workout in workoutTemplates)
+                    {
+                        WorkoutTemplateList.Add(workout);
+                    }
+                }
+            });
         }
     }
 }

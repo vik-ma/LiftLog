@@ -16,5 +16,6 @@ public partial class WeeklySchedulePage : ContentPage
     {
         base.OnAppearing();
         await _viewModel.LoadWorkoutTemplateCollectionsAsync();
+        await _viewModel.LoadWorkoutTemplatesAsync();
     }
 }
