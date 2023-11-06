@@ -261,5 +261,11 @@ namespace LocalLiftLog.ViewModels
                 }
             });
         }
+
+        [RelayCommand]
+        private static async Task GoToWorkoutTemplate()
+        {
+            await Shell.Current.GoToAsync($"{nameof(WorkoutTemplateListPage)}");
+        }
     }
 }
