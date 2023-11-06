@@ -55,6 +55,20 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private bool showWorkoutTemplateList = false;
 
+        [ObservableProperty]
+        private string selectedDay;
+
+        private Dictionary<int, string> DayDictionary = new()
+        {
+            { 0, "Monday" },
+            { 1, "Tuesday" },
+            { 2, "Wednesday" },
+            { 3, "Thursday" },
+            { 4, "Friday" },
+            { 5, "Saturday" },
+            { 6, "Sunday" }
+        };
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -200,32 +214,36 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task AddWorkoutTemplateCollectionToDay(int day)
         {
+            ShowWorkoutTemplateList = true;
+
             if (day < 0 || day > 6)
             {
                 await Shell.Current.DisplayAlert("Error", "Invalid Day", "OK");
                 return;
             }
 
+            SelectedDay = DayDictionary[day];
+
             int scheduleId = WeeklySchedule.ScheduleFactoryId;
 
-            await ExecuteAsync(async () =>
-            {
-                WorkoutTemplateCollection workoutCollection = new()
-                {
-                    Day = day,
-                    ScheduleFactoryId = scheduleId,
-                    WorkoutTemplateId = 1 // CHANGE THIS
-                };
-                await _context.AddItemAsync<WorkoutTemplateCollection>(workoutCollection);
-            });
+            //await ExecuteAsync(async () =>
+            //{
+            //    WorkoutTemplateCollection workoutCollection = new()
+            //    {
+            //        Day = day,
+            //        ScheduleFactoryId = scheduleId,
+            //        WorkoutTemplateId = 1 // CHANGE THIS
+            //    };
+            //    await _context.AddItemAsync<WorkoutTemplateCollection>(workoutCollection);
+            //});
 
-            await LoadWorkoutTemplateCollectionsAsync();
+            //await LoadWorkoutTemplateCollectionsAsync();
         }
 
         [RelayCommand]
-        private void ToggleWorkoutTemplateList()
+        private void HideWorkoutTemplateList()
         {
-            ShowWorkoutTemplateList = !ShowWorkoutTemplateList;
+            ShowWorkoutTemplateList = false;
         }
     }
 }
