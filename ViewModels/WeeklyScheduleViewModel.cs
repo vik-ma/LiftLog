@@ -56,18 +56,7 @@ namespace LocalLiftLog.ViewModels
         private bool showWorkoutTemplateList = false;
 
         [ObservableProperty]
-        private string selectedDay;
-
-        private Dictionary<int, string> DayDictionary = new()
-        {
-            { 0, "Monday" },
-            { 1, "Tuesday" },
-            { 2, "Wednesday" },
-            { 3, "Thursday" },
-            { 4, "Friday" },
-            { 5, "Saturday" },
-            { 6, "Sunday" }
-        };
+        private int selectedDay;
 
         [RelayCommand]
         static async Task GoBack()
@@ -212,7 +201,26 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task AddWorkoutTemplateCollectionToDay(int day)
+        private async Task AddWorkoutTemplateCollectionToDay()
+        {
+            int scheduleId = WeeklySchedule.ScheduleFactoryId;
+
+            await ExecuteAsync(async () =>
+            {
+                WorkoutTemplateCollection workoutCollection = new()
+                {
+                    Day = SelectedDay,
+                    ScheduleFactoryId = scheduleId,
+                    WorkoutTemplateId = 1 // CHANGE THIS
+                };
+                await _context.AddItemAsync<WorkoutTemplateCollection>(workoutCollection);
+            });
+
+            await LoadWorkoutTemplateCollectionsAsync();
+        }
+
+        [RelayCommand]
+        private async Task ShowWorkoutTemplateListSidebar(int day)
         {
             ShowWorkoutTemplateList = true;
 
@@ -222,22 +230,7 @@ namespace LocalLiftLog.ViewModels
                 return;
             }
 
-            SelectedDay = DayDictionary[day];
-
-            int scheduleId = WeeklySchedule.ScheduleFactoryId;
-
-            //await ExecuteAsync(async () =>
-            //{
-            //    WorkoutTemplateCollection workoutCollection = new()
-            //    {
-            //        Day = day,
-            //        ScheduleFactoryId = scheduleId,
-            //        WorkoutTemplateId = 1 // CHANGE THIS
-            //    };
-            //    await _context.AddItemAsync<WorkoutTemplateCollection>(workoutCollection);
-            //});
-
-            //await LoadWorkoutTemplateCollectionsAsync();
+            SelectedDay = day;
         }
 
         [RelayCommand]
