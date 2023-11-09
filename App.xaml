@@ -95,7 +95,7 @@
             <toolkit:IndexToArrayItemConverter x:Key="IndexToArrayItemConverter" />
 
             <DataTemplate 
-                x:Key="ScheduleCollectionViewDataTemplate"
+                x:Key="WeeklyScheduleCollectionViewDataTemplate"
                 x:DataType="models:WorkoutTemplateCollection">
                 <HorizontalStackLayout Spacing="10">
                     <Label 
