@@ -57,6 +57,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\CustomSchedulePage.xaml.cs">
+		<DependentUpon>CustomSchedulePage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\RoutineDetailsPage.xaml.cs">
 	    <DependentUpon>RoutineDetailsPage.xaml</DependentUpon>
 	  </Compile>

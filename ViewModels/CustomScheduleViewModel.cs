@@ -55,38 +55,38 @@ namespace LocalLiftLog.ViewModels
 
         public async Task LoadWorkoutTemplateCollectionsAsync()
         {
-            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.ScheduleFactoryId == CustomSchedule.ScheduleFactoryId;
+            //Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.ScheduleFactoryId == CustomSchedule.ScheduleFactoryId;
 
-            IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
-            try
-            {
-                filteredWtcList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
-                //LoadWorkoutTemplateCollectionsForEachDay(filteredWtcList);
-            }
-            catch
-            {
-                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
-            }
+            //IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
+            //try
+            //{
+            //    filteredWtcList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+            //    //LoadWorkoutTemplateCollectionsForEachDay(filteredWtcList);
+            //}
+            //catch
+            //{
+            //    await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
+            //}
         }
 
         public async Task LoadWorkoutTemplatesAsync()
         {
-            await ExecuteAsync(async () =>
-            {
-                WorkoutTemplateList.Clear();
+            //await ExecuteAsync(async () =>
+            //{
+            //    WorkoutTemplateList.Clear();
 
-                var workoutTemplates = await _context.GetAllAsync<WorkoutTemplate>();
+            //    var workoutTemplates = await _context.GetAllAsync<WorkoutTemplate>();
 
-                if (workoutTemplates is not null && workoutTemplates.Any())
-                {
-                    workoutTemplates ??= new ObservableCollection<WorkoutTemplate>();
+            //    if (workoutTemplates is not null && workoutTemplates.Any())
+            //    {
+            //        workoutTemplates ??= new ObservableCollection<WorkoutTemplate>();
 
-                    foreach (var workout in workoutTemplates)
-                    {
-                        WorkoutTemplateList.Add(workout);
-                    }
-                }
-            });
+            //        foreach (var workout in workoutTemplates)
+            //        {
+            //            WorkoutTemplateList.Add(workout);
+            //        }
+            //    }
+            //});
         }
     }
 }

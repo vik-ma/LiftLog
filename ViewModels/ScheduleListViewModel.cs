@@ -73,7 +73,24 @@ namespace LocalLiftLog.ViewModels
             }
             else
             {
-                await Shell.Current.DisplayAlert("Error", "Custom Schedule not implemented yet.", "OK");
+                await ExecuteAsync(async () =>
+                {
+                    CustomSchedule customSchedule = new();
+                    await _context.AddItemAsync<CustomSchedule>(customSchedule);
+
+                    ScheduleFactory schedule = new()
+                    {
+                        ScheduleId = customSchedule.Id,
+                        IsScheduleWeekly = false
+                    };
+
+                    await _context.AddItemAsync<ScheduleFactory>(schedule);
+
+                    customSchedule.ScheduleFactoryId = schedule.Id;
+                    await _context.UpdateItemAsync<CustomSchedule>(customSchedule);
+
+                    ScheduleFactoryList.Add(schedule);
+                });
             }
         }
 
@@ -172,7 +189,24 @@ namespace LocalLiftLog.ViewModels
             }
             else
             {
-                await Shell.Current.DisplayAlert("Error", "Custom Schedule not implemented yet.", "OK");
+                CustomSchedule customSchedule;
+
+                try
+                {
+                    customSchedule = await _context.GetItemByKeyAsync<CustomSchedule>(schedule.ScheduleId);
+                }
+                catch
+                {
+                    await Shell.Current.DisplayAlert("Error", "Custom Schedule ID does not exist!", "OK");
+                    return;
+                }
+
+                var navigationParameter = new Dictionary<string, object>
+                {
+                    ["CustomSchedule"] = customSchedule
+                };
+
+                await Shell.Current.GoToAsync($"{nameof(CustomSchedulePage)}?Id={id}", navigationParameter);
             }
         }
     }
