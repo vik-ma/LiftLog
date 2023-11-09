@@ -49,7 +49,7 @@
                     Grid.Column="1"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
-                    CommandParameter="{x:Int32 0}" />
+                    CommandParameter="0" />
                 <CollectionView
                     Grid.Row="1"
                     ItemsSource="{Binding Day1WorkoutTemplateCollectionList}"
@@ -70,7 +70,7 @@
                     Grid.Column="1"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
-                    CommandParameter="{x:Int32 1}" />
+                    CommandParameter="1" />
                 <CollectionView
                     Grid.Row="3"
                     ItemsSource="{Binding Day2WorkoutTemplateCollectionList}"
@@ -92,7 +92,7 @@
                     Grid.Column="1"
                     Style="{StaticResource AddButtonStyle}" 
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
-                    CommandParameter="{x:Int32 2}" />
+                    CommandParameter="2" />
                 <CollectionView
                     Grid.Row="5"
                     ItemsSource="{Binding Day3WorkoutTemplateCollectionList}"
@@ -114,7 +114,7 @@
                     Grid.Column="1"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
-                    CommandParameter="{x:Int32 3}" />
+                    CommandParameter="3" />
                 <CollectionView
                     Grid.Row="7"
                     ItemsSource="{Binding Day4WorkoutTemplateCollectionList}"
@@ -136,7 +136,7 @@
                     Grid.Column="1"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
-                    CommandParameter="{x:Int32 4}" />
+                    CommandParameter="4" />
                 <CollectionView
                     Grid.Row="9"
                     ItemsSource="{Binding Day5WorkoutTemplateCollectionList}"
@@ -158,7 +158,7 @@
                     Grid.Column="1"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
-                    CommandParameter="{x:Int32 5}" />
+                    CommandParameter="5" />
                 <CollectionView
                     Grid.Row="11"
                     ItemsSource="{Binding Day6WorkoutTemplateCollectionList}"
@@ -180,7 +180,7 @@
                     Grid.Column="1"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
-                    CommandParameter="{x:Int32 6}" />
+                    CommandParameter="6" />
                 <CollectionView
                     Grid.Row="13"
                     ItemsSource="{Binding Day7WorkoutTemplateCollectionList}"

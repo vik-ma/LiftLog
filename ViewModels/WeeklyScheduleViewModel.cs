@@ -223,15 +223,27 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task ShowWorkoutTemplateListSidebar(int day)
+        private async Task ShowWorkoutTemplateListSidebar(string dayString)
         {
-            ShowWorkoutTemplateList = true;
+            int day;
+
+            if (int.TryParse(dayString, out int intValue))
+            {
+                day = intValue;
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid Day String", "OK");
+                return;
+            }
 
             if (day < 0 || day > 6)
             {
                 await Shell.Current.DisplayAlert("Error", "Invalid Day", "OK");
                 return;
             }
+
+            ShowWorkoutTemplateList = true;
 
             SelectedDay = day;
         }
