@@ -27,6 +27,48 @@ namespace LocalLiftLog.ViewModels
         }
 
         [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> day1WorkoutTemplateCollectionList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> day2WorkoutTemplateCollectionList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> day3WorkoutTemplateCollectionList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> day4WorkoutTemplateCollectionList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> day5WorkoutTemplateCollectionList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> day6WorkoutTemplateCollectionList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> day7WorkoutTemplateCollectionList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> day8WorkoutTemplateCollectionList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> day9WorkoutTemplateCollectionList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> day10WorkoutTemplateCollectionList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> day11WorkoutTemplateCollectionList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> day12WorkoutTemplateCollectionList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> day13WorkoutTemplateCollectionList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> day14WorkoutTemplateCollectionList = new();
+
+        [ObservableProperty]
         private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
 
         [RelayCommand]
@@ -55,38 +97,146 @@ namespace LocalLiftLog.ViewModels
 
         public async Task LoadWorkoutTemplateCollectionsAsync()
         {
-            //Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.ScheduleFactoryId == CustomSchedule.ScheduleFactoryId;
+            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.ScheduleFactoryId == CustomSchedule.ScheduleFactoryId;
 
-            //IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
-            //try
-            //{
-            //    filteredWtcList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
-            //    //LoadWorkoutTemplateCollectionsForEachDay(filteredWtcList);
-            //}
-            //catch
-            //{
-            //    await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
-            //}
+            IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
+            try
+            {
+                filteredWtcList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+                LoadWorkoutTemplateCollectionsForEachDay(filteredWtcList);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
+            }
         }
 
         public async Task LoadWorkoutTemplatesAsync()
         {
-            //await ExecuteAsync(async () =>
-            //{
-            //    WorkoutTemplateList.Clear();
+            await ExecuteAsync(async () =>
+            {
+                WorkoutTemplateList.Clear();
 
-            //    var workoutTemplates = await _context.GetAllAsync<WorkoutTemplate>();
+                var workoutTemplates = await _context.GetAllAsync<WorkoutTemplate>();
 
-            //    if (workoutTemplates is not null && workoutTemplates.Any())
-            //    {
-            //        workoutTemplates ??= new ObservableCollection<WorkoutTemplate>();
+                if (workoutTemplates is not null && workoutTemplates.Any())
+                {
+                    workoutTemplates ??= new ObservableCollection<WorkoutTemplate>();
 
-            //        foreach (var workout in workoutTemplates)
-            //        {
-            //            WorkoutTemplateList.Add(workout);
-            //        }
-            //    }
-            //});
+                    foreach (var workout in workoutTemplates)
+                    {
+                        WorkoutTemplateList.Add(workout);
+                    }
+                }
+            });
+        }
+
+        private async void LoadWorkoutTemplateCollectionsForEachDay(IEnumerable<WorkoutTemplateCollection> filteredWtcList)
+        {
+            Day1WorkoutTemplateCollectionList.Clear();
+            Day2WorkoutTemplateCollectionList.Clear();
+            Day3WorkoutTemplateCollectionList.Clear();
+            Day4WorkoutTemplateCollectionList.Clear();
+            Day5WorkoutTemplateCollectionList.Clear();
+            Day6WorkoutTemplateCollectionList.Clear();
+            Day7WorkoutTemplateCollectionList.Clear();
+            Day8WorkoutTemplateCollectionList.Clear();
+            Day9WorkoutTemplateCollectionList.Clear();
+            Day10WorkoutTemplateCollectionList.Clear();
+            Day11WorkoutTemplateCollectionList.Clear();
+            Day12WorkoutTemplateCollectionList.Clear();
+            Day13WorkoutTemplateCollectionList.Clear();
+            Day14WorkoutTemplateCollectionList.Clear();
+
+            foreach (var item in filteredWtcList)
+            {
+                WorkoutTemplate workoutTemplate = null;
+
+                await ExecuteAsync(async () =>
+                {
+                    workoutTemplate = await _context.GetItemByKeyAsync<WorkoutTemplate>(item.WorkoutTemplateId);
+                });
+
+                if (workoutTemplate is null)
+                {
+                    // Delete WorkoutTemplateCollection if it references a WorkoutTemplate whose Id does not exist
+                    await ExecuteAsync(async () =>
+                    {
+                        if (!await _context.DeleteItemAsync<WorkoutTemplateCollection>(item))
+                        {
+                            await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
+                        }
+                    });
+                    return;
+                }
+
+                item.WorkoutTemplateName = workoutTemplate.Name;
+
+                int day = item.Day;
+
+                switch (day)
+                {
+                    case 0:
+                        Day1WorkoutTemplateCollectionList.Add(item);
+                        break;
+
+                    case 1:
+                        Day2WorkoutTemplateCollectionList.Add(item);
+                        break;
+
+                    case 2:
+                        Day3WorkoutTemplateCollectionList.Add(item);
+                        break;
+
+                    case 3:
+                        Day4WorkoutTemplateCollectionList.Add(item);
+                        break;
+
+                    case 4:
+                        Day5WorkoutTemplateCollectionList.Add(item);
+                        break;
+
+                    case 5:
+                        Day6WorkoutTemplateCollectionList.Add(item);
+                        break;
+
+                    case 6:
+                        Day7WorkoutTemplateCollectionList.Add(item);
+                        break;
+
+                    case 7:
+                        Day8WorkoutTemplateCollectionList.Add(item);
+                        break;
+
+                    case 8:
+                        Day9WorkoutTemplateCollectionList.Add(item);
+                        break;
+
+                    case 9:
+                        Day10WorkoutTemplateCollectionList.Add(item);
+                        break;
+
+                    case 10:
+                        Day11WorkoutTemplateCollectionList.Add(item);
+                        break;
+
+                    case 11:
+                        Day12WorkoutTemplateCollectionList.Add(item);
+                        break;
+
+                    case 12:
+                        Day13WorkoutTemplateCollectionList.Add(item);
+                        break;
+
+                    case 13:
+                        Day14WorkoutTemplateCollectionList.Add(item);
+                        break;
+
+                    default:
+                        await Shell.Current.DisplayAlert("Error", "Invalid Day.", "OK");
+                        break;
+                }
+            }
         }
     }
 }
