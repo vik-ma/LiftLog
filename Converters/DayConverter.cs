@@ -11,20 +11,34 @@ namespace LocalLiftLog.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Dictionary<int, string> dayDictionary = new()
+            if (parameter is string context)
             {
-                { 0, "Monday" },
-                { 1, "Tuesday" },
-                { 2, "Wednesday" },
-                { 3, "Thursday" },
-                { 4, "Friday" },
-                { 5, "Saturday" },
-                { 6, "Sunday" }
-            };
+                if (context == "Weekly")
+                {
+                    Dictionary<int, string> weekdayDictionary = new()
+                    {
+                        { 0, "Monday" },
+                        { 1, "Tuesday" },
+                        { 2, "Wednesday" },
+                        { 3, "Thursday" },
+                        { 4, "Friday" },
+                        { 5, "Saturday" },
+                        { 6, "Sunday" }
+                    };
 
-            if (value is int selectedDay && dayDictionary.ContainsKey(selectedDay))
-            {
-                return dayDictionary[selectedDay];
+                    if (value is int selectedDay && weekdayDictionary.ContainsKey(selectedDay))
+                    {
+                        return weekdayDictionary[selectedDay];
+                    }
+                }
+                else if (context == "Custom")
+                {
+                    if (value is int selectedDay && selectedDay >= 0 && selectedDay < 14)
+                    {
+                        return selectedDay + 1;
+                    }
+                }
+
             }
 
             return "Unknown";
