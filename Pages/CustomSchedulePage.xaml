@@ -205,7 +205,7 @@
                         FontAttributes="Bold"
                         FontSize="24" />
                     <Label 
-                        Text="{Binding Path=SelectedDay, StringFormat='Day {0}'}"
+                        Text="{Binding SelectedDay, Converter={StaticResource DayConverter}, ConverterParameter=Custom}"
                         FontAttributes="Bold"
                         FontSize="28"
                         TextColor="#4287f5"

@@ -35,7 +35,7 @@ namespace LocalLiftLog.Converters
                 {
                     if (value is int selectedDay && selectedDay >= 0 && selectedDay < 14)
                     {
-                        return selectedDay + 1;
+                        return $"Day {selectedDay + 1}";
                     }
                 }
 
