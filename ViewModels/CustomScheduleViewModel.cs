@@ -309,7 +309,7 @@ namespace LocalLiftLog.ViewModels
                 return;
             }
 
-            if (day < 0 || day > 6)
+            if (day < 0 || day > 13)
             {
                 await Shell.Current.DisplayAlert("Error", "Invalid Day", "OK");
                 return;
