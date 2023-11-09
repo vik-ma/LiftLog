@@ -67,6 +67,12 @@ namespace LocalLiftLog.ViewModels
 
         [ObservableProperty]
         private ObservableCollection<WorkoutTemplateCollection> day14WorkoutTemplateCollectionList = new();
+        
+        [ObservableProperty]
+        private bool showWorkoutTemplateList = false;
+
+        [ObservableProperty]
+        private int selectedDay;
 
         [ObservableProperty]
         private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
@@ -93,6 +99,21 @@ namespace LocalLiftLog.ViewModels
             {
 
             }
+        }
+
+        [RelayCommand]
+        private async Task UpdateCustomScheduleAsync()
+        {
+            if (CustomSchedule is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<CustomSchedule>(CustomSchedule))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Custom Schedule.", "OK");
+                }
+            });
         }
 
         public async Task LoadWorkoutTemplateCollectionsAsync()
@@ -237,6 +258,65 @@ namespace LocalLiftLog.ViewModels
                         break;
                 }
             }
+        }
+
+        [RelayCommand]
+        private async Task RemoveWorkoutTemplateCollection(int id)
+        {
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemByKeyAsync<WorkoutTemplateCollection>(id))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
+                }
+
+                await LoadWorkoutTemplateCollectionsAsync();
+            });
+        }
+
+        [RelayCommand]
+        private async Task AddWorkoutTemplateCollectionToDay(int workoutTemplateId)
+        {
+            int scheduleId = CustomSchedule.ScheduleFactoryId;
+
+            await ExecuteAsync(async () =>
+            {
+                WorkoutTemplateCollection workoutCollection = new()
+                {
+                    Day = SelectedDay,
+                    ScheduleFactoryId = scheduleId,
+                    WorkoutTemplateId = workoutTemplateId
+                };
+                await _context.AddItemAsync<WorkoutTemplateCollection>(workoutCollection);
+            });
+
+            await LoadWorkoutTemplateCollectionsAsync();
+        }
+
+        [RelayCommand]
+        private async Task ShowWorkoutTemplateListSidebar(int day)
+        {
+            ShowWorkoutTemplateList = true;
+
+            if (day < 0 || day > 6)
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid Day", "OK");
+                return;
+            }
+
+            SelectedDay = day;
+        }
+
+        [RelayCommand]
+        private void HideWorkoutTemplateList()
+        {
+            ShowWorkoutTemplateList = false;
+        }
+
+        [RelayCommand]
+        private static async Task GoToWorkoutTemplate()
+        {
+            await Shell.Current.GoToAsync($"{nameof(WorkoutTemplateListPage)}");
         }
     }
 }

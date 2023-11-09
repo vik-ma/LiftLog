@@ -192,7 +192,7 @@
                     </CollectionView.EmptyView>
                 </CollectionView>
             </Grid>
-            
+
             <Grid 
                 Grid.Column="1"
                 Margin="50, 0"
@@ -211,7 +211,7 @@
                         FontSize="28"
                         TextColor="#4287f5"
                         HorizontalOptions="Center"/>
-                    
+
                     <CollectionView
                         ItemsSource="{Binding WorkoutTemplateList}"
                         HorizontalOptions="Center"
@@ -255,9 +255,9 @@
                             </ContentView>
                         </CollectionView.EmptyView>
                     </CollectionView>
-                        
+
                 </VerticalStackLayout>
-                
+
                 <VerticalStackLayout 
                     VerticalOptions="End"
                     Spacing="20">
@@ -274,14 +274,6 @@
                 </VerticalStackLayout>
             </Grid>
         </Grid>
-        <!--<VerticalStackLayout>
-            <Button 
-                Text="Save"
-                Style="{StaticResource AddButtonStyle}"
-                Command="{Binding UpdateWeeklyScheduleCommand}"
-                WidthRequest="300"
-                Margin="50" />
-        </VerticalStackLayout>-->
 
         <VerticalStackLayout>
             <Button 
