@@ -73,6 +73,18 @@ namespace LocalLiftLog.ViewModels
             }
             else
             {
+                string enteredText = await Shell.Current.DisplayPromptAsync("Number Of Days In Schedule", "How many days should the schedule contain?\n(Must be between 2 and 14)\n", "OK", "Cancel");
+
+                if (enteredText == null) return;
+
+                bool validInput = int.TryParse(enteredText, out int numberOfDays);
+
+                if (!validInput || numberOfDays < 2 || numberOfDays > 14) 
+                {
+                    await Shell.Current.DisplayAlert("Error", "Invalid input.", "OK");
+                    return;
+                }
+
                 await ExecuteAsync(async () =>
                 {
                     CustomSchedule customSchedule = new();
@@ -87,6 +99,7 @@ namespace LocalLiftLog.ViewModels
                     await _context.AddItemAsync<ScheduleFactory>(schedule);
 
                     customSchedule.ScheduleFactoryId = schedule.Id;
+                    customSchedule.NumDaysInSchedule = numberOfDays;
                     await _context.UpdateItemAsync<CustomSchedule>(customSchedule);
 
                     ScheduleFactoryList.Add(schedule);
