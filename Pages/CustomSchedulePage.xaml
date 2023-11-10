@@ -12,22 +12,32 @@
                 Text="Custom Schedule ID:"
                 VerticalOptions="Center"
                 FontAttributes="Bold"
-                FontSize="36" />
+                FontSize="26" />
             <Label 
                 Text="{Binding CustomSchedule.Id}"
                 VerticalOptions="Center"
                 FontAttributes="Bold"
-                FontSize="36" />
+                FontSize="26" />
             <Label 
                 Text="Schedule Factory ID:"
                 VerticalOptions="Center"
                 FontAttributes="Bold"
-                FontSize="36" />
+                FontSize="26" />
             <Label 
                 Text="{Binding CustomSchedule.ScheduleFactoryId}"
                 VerticalOptions="Center"
                 FontAttributes="Bold"
-                FontSize="36" />
+                FontSize="26" />
+            <Label 
+                Text="Days In Schedule:"
+                VerticalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="26" />
+            <Label 
+                Text="{Binding CustomSchedule.NumDaysInSchedule}"
+                VerticalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="26" />
         </HorizontalStackLayout>
         <Grid 
             ColumnDefinitions="*, *"
