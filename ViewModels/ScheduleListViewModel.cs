@@ -48,67 +48,66 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task CreateScheduleAsync(bool isScheduleWeekly)
+        private async Task CreateWeeklyScheduleAsync()
         {
-            if (isScheduleWeekly)
+            await ExecuteAsync(async () =>
             {
-                await ExecuteAsync(async () =>
+                WeeklySchedule weeklySchedule = new();
+                await _context.AddItemAsync<WeeklySchedule>(weeklySchedule);
+
+                ScheduleFactory schedule = new()
                 {
-                    WeeklySchedule weeklySchedule = new();
-                    await _context.AddItemAsync<WeeklySchedule>(weeklySchedule);
+                    ScheduleId = weeklySchedule.Id,
+                    IsScheduleWeekly = true
+                };
 
-                    ScheduleFactory schedule = new()
-                    {
-                        ScheduleId = weeklySchedule.Id,
-                        IsScheduleWeekly = true
-                    };
+                await _context.AddItemAsync<ScheduleFactory>(schedule);
 
-                    await _context.AddItemAsync<ScheduleFactory>(schedule);
+                weeklySchedule.ScheduleFactoryId = schedule.Id;
+                await _context.UpdateItemAsync<WeeklySchedule>(weeklySchedule);
 
-                    weeklySchedule.ScheduleFactoryId = schedule.Id;
-                    await _context.UpdateItemAsync<WeeklySchedule>(weeklySchedule);
-
-                    ScheduleFactoryList.Add(schedule);
-                });
-            }
-            else
-            {
-                string enteredText = await Shell.Current.DisplayPromptAsync("Number Of Days In Schedule", "How many days should the schedule contain?\n(Must be between 2 and 14)\n", "OK", "Cancel");
-
-                if (enteredText == null) return;
-
-                bool validInput = int.TryParse(enteredText, out int numberOfDays);
-
-                if (!validInput || numberOfDays < 2 || numberOfDays > 14) 
-                {
-                    await Shell.Current.DisplayAlert("Error", "Invalid input.", "OK");
-                    return;
-                }
-
-                await ExecuteAsync(async () =>
-                {
-                    CustomSchedule customSchedule = new();
-                    await _context.AddItemAsync<CustomSchedule>(customSchedule);
-
-                    ScheduleFactory schedule = new()
-                    {
-                        ScheduleId = customSchedule.Id,
-                        IsScheduleWeekly = false
-                    };
-
-                    await _context.AddItemAsync<ScheduleFactory>(schedule);
-
-                    customSchedule.ScheduleFactoryId = schedule.Id;
-                    customSchedule.NumDaysInSchedule = numberOfDays;
-                    await _context.UpdateItemAsync<CustomSchedule>(customSchedule);
-
-                    ScheduleFactoryList.Add(schedule);
-                });
-            }
+                ScheduleFactoryList.Add(schedule);
+            });
         }
 
-        #nullable enable
-        private async Task ExecuteAsync(Func<Task> operation)
+        [RelayCommand]
+        private async Task CreateCustomScheduleAsync()
+        {
+            string enteredText = await Shell.Current.DisplayPromptAsync("Number Of Days In Schedule", "How many days should the schedule contain?\n(Must be between 2 and 14)\n", "OK", "Cancel");
+
+            if (enteredText == null) return;
+
+            bool validInput = int.TryParse(enteredText, out int numberOfDays);
+
+            if (!validInput || numberOfDays < 2 || numberOfDays > 14)
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid input.", "OK");
+                return;
+            }
+
+            await ExecuteAsync(async () =>
+            {
+                CustomSchedule customSchedule = new();
+                await _context.AddItemAsync<CustomSchedule>(customSchedule);
+
+                ScheduleFactory schedule = new()
+                {
+                    ScheduleId = customSchedule.Id,
+                    IsScheduleWeekly = false
+                };
+
+                await _context.AddItemAsync<ScheduleFactory>(schedule);
+
+                customSchedule.ScheduleFactoryId = schedule.Id;
+                customSchedule.NumDaysInSchedule = numberOfDays;
+                await _context.UpdateItemAsync<CustomSchedule>(customSchedule);
+
+                ScheduleFactoryList.Add(schedule);
+            });
+        }
+
+            #nullable enable
+            private async Task ExecuteAsync(Func<Task> operation)
         {
             try
             {
@@ -147,7 +146,10 @@ namespace LocalLiftLog.ViewModels
                 }
                 else
                 {
-                    await Shell.Current.DisplayAlert("Error", "Custom Schedule not implemented yet.", "OK");
+                    if (!await _context.DeleteItemByKeyAsync<CustomSchedule>(schedule.ScheduleId))
+                    {
+                        await Shell.Current.DisplayAlert("Delete Error", "Custom Schedule was not deleted.", "OK");
+                    }
                 }
 
 

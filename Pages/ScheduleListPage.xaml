@@ -110,13 +110,11 @@
             <Button 
                 Text="Create Weekly Schedule"
                 Style="{StaticResource MainPageNavigationButtonStyle}"
-                Command="{Binding CreateScheduleCommand}"
-                CommandParameter="{x:Boolean true}" />
+                Command="{Binding CreateWeeklyScheduleCommand}" />
             <Button 
                 Text="Create Custom Schedule"
                 Style="{StaticResource MainPageNavigationButtonStyle}"
-                Command="{Binding CreateScheduleCommand}"
-                CommandParameter="{x:Boolean false}" />
+                Command="{Binding CreateCustomScheduleCommand}" />
         </VerticalStackLayout>
 
         <VerticalStackLayout>
