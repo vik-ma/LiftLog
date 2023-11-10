@@ -117,16 +117,19 @@
                     Text="Day 3"
                     Grid.Row="4"
                     Grid.Column="0"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
                     Style="{StaticResource ScheduleLabelStyle}" />
                 <Button 
                     Text="Add Workout"
                     Grid.Row="4"
                     Grid.Column="1"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
                     Style="{StaticResource AddButtonStyle}" 
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
                     CommandParameter="2" />
                 <CollectionView
                     Grid.Row="5"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
                     ItemsSource="{Binding Day3WorkoutTemplateCollectionList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
@@ -139,16 +142,19 @@
                     Text="Day 4"
                     Grid.Row="6"
                     Grid.Column="0"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=3}"
                     Style="{StaticResource ScheduleLabelStyle}" />
                 <Button 
                     Text="Add Workout"
                     Grid.Row="6"
                     Grid.Column="1"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=3}"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
                     CommandParameter="3" />
                 <CollectionView
                     Grid.Row="7"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=3}"
                     ItemsSource="{Binding Day4WorkoutTemplateCollectionList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
@@ -161,16 +167,19 @@
                     Text="Day 5"
                     Grid.Row="8"
                     Grid.Column="0"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=4}"
                     Style="{StaticResource ScheduleLabelStyle}" />
                 <Button 
                     Text="Add Workout"
                     Grid.Row="8"
                     Grid.Column="1"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=4}"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
                     CommandParameter="4" />
                 <CollectionView
                     Grid.Row="9"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=4}"
                     ItemsSource="{Binding Day5WorkoutTemplateCollectionList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
@@ -183,16 +192,19 @@
                     Text="Day 6"
                     Grid.Row="10"
                     Grid.Column="0"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=5}"
                     Style="{StaticResource ScheduleLabelStyle}" />
                 <Button 
                     Text="Add Workout"
                     Grid.Row="10"
                     Grid.Column="1"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=5}"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
                     CommandParameter="5" />
                 <CollectionView
                     Grid.Row="11"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=5}"
                     ItemsSource="{Binding Day6WorkoutTemplateCollectionList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
@@ -205,16 +217,19 @@
                     Text="Day 7"
                     Grid.Row="12"
                     Grid.Column="0"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=6}"
                     Style="{StaticResource ScheduleLabelStyle}" />
                 <Button 
                     Text="Add Workout"
                     Grid.Row="12"
                     Grid.Column="1"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=6}"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
                     CommandParameter="6" />
                 <CollectionView
                     Grid.Row="13"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=6}"
                     ItemsSource="{Binding Day7WorkoutTemplateCollectionList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
@@ -227,17 +242,20 @@
                     Text="Day 8"
                     Grid.Row="0"
                     Grid.Column="2"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=7}"
                     Style="{StaticResource ScheduleLabelStyle}" />
                 <Button 
                     Text="Add Workout"
                     Grid.Row="0"
                     Grid.Column="3"
                     Style="{StaticResource AddButtonStyle}"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=7}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
                     CommandParameter="7" />
                 <CollectionView
                     Grid.Row="1"
                     Grid.Column="2"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=7}"
                     ItemsSource="{Binding Day8WorkoutTemplateCollectionList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
@@ -250,17 +268,20 @@
                     Text="Day 9"
                     Grid.Row="2"
                     Grid.Column="2"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=8}"
                     Style="{StaticResource ScheduleLabelStyle}" />
                 <Button 
                     Text="Add Workout"
                     Grid.Row="2"
                     Grid.Column="3"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=8}"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
                     CommandParameter="8" />
                 <CollectionView
                     Grid.Row="3"
                     Grid.Column="2"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=8}"
                     ItemsSource="{Binding Day9WorkoutTemplateCollectionList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
@@ -273,17 +294,20 @@
                     Text="Day 10"
                     Grid.Row="4"
                     Grid.Column="2"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=9}"
                     Style="{StaticResource ScheduleLabelStyle}" />
                 <Button 
                     Text="Add Workout"
                     Grid.Row="4"
                     Grid.Column="3"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=9}"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
                     CommandParameter="9" />
                 <CollectionView
                     Grid.Row="5"
                     Grid.Column="2"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=9}"
                     ItemsSource="{Binding Day10WorkoutTemplateCollectionList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
@@ -296,17 +320,20 @@
                     Text="Day 11"
                     Grid.Row="6"
                     Grid.Column="2"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=10}"
                     Style="{StaticResource ScheduleLabelStyle}" />
                 <Button 
                     Text="Add Workout"
                     Grid.Row="6"
                     Grid.Column="3"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=10}"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
                     CommandParameter="10" />
                 <CollectionView
                     Grid.Row="7"
                     Grid.Column="2"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=10}"
                     ItemsSource="{Binding Day11WorkoutTemplateCollectionList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
@@ -319,17 +346,20 @@
                     Text="Day 12"
                     Grid.Row="8"
                     Grid.Column="2"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=11}"
                     Style="{StaticResource ScheduleLabelStyle}" />
                 <Button 
                     Text="Add Workout"
                     Grid.Row="8"
                     Grid.Column="3"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=11}"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
                     CommandParameter="11" />
                 <CollectionView
                     Grid.Row="9"
                     Grid.Column="2"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=11}"
                     ItemsSource="{Binding Day12WorkoutTemplateCollectionList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
@@ -342,17 +372,20 @@
                     Text="Day 13"
                     Grid.Row="10"
                     Grid.Column="2"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=12}"
                     Style="{StaticResource ScheduleLabelStyle}" />
                 <Button 
                     Text="Add Workout"
                     Grid.Row="10"
                     Grid.Column="3"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=12}"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
                     CommandParameter="12" />
                 <CollectionView
                     Grid.Row="11"
                     Grid.Column="2"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=12}"
                     ItemsSource="{Binding Day13WorkoutTemplateCollectionList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
@@ -365,17 +398,20 @@
                     Text="Day 14"
                     Grid.Row="12"
                     Grid.Column="2"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=13}"
                     Style="{StaticResource ScheduleLabelStyle}" />
                 <Button 
                     Text="Add Workout"
                     Grid.Row="12"
                     Grid.Column="3"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=13}"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
                     CommandParameter="13" />
                 <CollectionView
                     Grid.Row="13"
                     Grid.Column="2"
+                    IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=13}"
                     ItemsSource="{Binding Day14WorkoutTemplateCollectionList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
