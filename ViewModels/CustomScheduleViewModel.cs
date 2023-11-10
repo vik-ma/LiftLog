@@ -78,6 +78,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
 
+        [ObservableProperty]
+        private bool isEditingNumDays = false;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -330,6 +333,12 @@ namespace LocalLiftLog.ViewModels
         private static async Task GoToWorkoutTemplate()
         {
             await Shell.Current.GoToAsync($"{nameof(WorkoutTemplateListPage)}");
+        }
+
+        [RelayCommand]
+        private void EnableEditNumDays()
+        {
+            IsEditingNumDays = true;
         }
     }
 }

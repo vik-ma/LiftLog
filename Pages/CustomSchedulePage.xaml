@@ -38,6 +38,20 @@
                 VerticalOptions="Center"
                 FontAttributes="Bold"
                 FontSize="26" />
+            <Button
+                Text="Change"
+                Style="{StaticResource GenericButtonStyle}"
+                IsVisible="{Binding IsEditingNumDays, Converter={StaticResource InvertedBoolConverter}}"
+                Command="{Binding EnableEditNumDaysCommand}" />
+            <Entry
+                Text="{Binding CustomSchedule.NumDaysInSchedule}"
+                WidthRequest="50"
+                FontSize="26"
+                IsVisible="{Binding IsEditingNumDays}"/>
+            <Button
+                Text="Save"
+                Style="{StaticResource AddButtonStyle}"
+                IsVisible="{Binding IsEditingNumDays}" />
         </HorizontalStackLayout>
         <Grid 
             ColumnDefinitions="*, *"
