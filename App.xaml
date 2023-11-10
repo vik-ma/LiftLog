@@ -96,6 +96,7 @@
             <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyText" />
             <converters:MultiBindingConverter x:Key="MultiBindingConverter" />
             <converters:DayConverter x:Key="DayConverter" />
+            <converters:IntAboveThresholdConverter x:Key="IntAboveThresholdConverter" />
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             <toolkit:IndexToArrayItemConverter x:Key="IndexToArrayItemConverter" />
 
