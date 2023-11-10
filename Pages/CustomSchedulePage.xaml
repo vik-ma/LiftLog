@@ -6,8 +6,10 @@
              xmlns:models="clr-namespace:LocalLiftLog.Models"
              x:DataType="viewmodel:CustomScheduleViewModel"
              Title="Custom Schedule Page">
-    <VerticalStackLayout Padding="6, 10">
-        <HorizontalStackLayout Spacing="50">
+    <VerticalStackLayout 
+        Padding="6, 10"
+        Spacing="5">
+        <HorizontalStackLayout Spacing="30">
             <Label 
                 Text="Custom Schedule ID:"
                 VerticalOptions="Center"
@@ -46,12 +48,18 @@
             <Entry
                 Text="{Binding CustomSchedule.NumDaysInSchedule}"
                 WidthRequest="50"
-                FontSize="26"
-                IsVisible="{Binding IsEditingNumDays}"/>
+                FontSize="24"
+                IsVisible="{Binding IsEditingNumDays}" />
             <Button
                 Text="Save"
                 Style="{StaticResource AddButtonStyle}"
-                IsVisible="{Binding IsEditingNumDays}" />
+                IsVisible="{Binding IsEditingNumDays}"
+                Command="{Binding UpdateNumDaysCommand}" />
+            <Button
+                Text="Cancel"
+                Style="{StaticResource DeleteButtonStyle}"
+                IsVisible="{Binding IsEditingNumDays}"
+                Command="{Binding DisableEditNumDaysCommand}" />
         </HorizontalStackLayout>
         <Grid 
             ColumnDefinitions="*, *"

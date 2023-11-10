@@ -340,5 +340,28 @@ namespace LocalLiftLog.ViewModels
         {
             IsEditingNumDays = true;
         }
+
+        [RelayCommand]
+        private void DisableEditNumDays()
+        {
+            IsEditingNumDays = false;
+        }
+
+        [RelayCommand]
+        private async Task UpdateNumDays()
+        {
+            if (CustomSchedule is null)
+                return;
+
+            if (CustomSchedule.NumDaysInSchedule < 2 || CustomSchedule.NumDaysInSchedule > 14)
+            {
+                await Shell.Current.DisplayAlert("Error", "Number must be between 2 and 14.", "OK");
+                return;
+            }
+
+            await UpdateCustomScheduleAsync();
+            OnPropertyChanged(nameof(CustomSchedule));
+            DisableEditNumDays();
+        }
     }
 }
