@@ -5,6 +5,7 @@ using LocalLiftLog.Models;
 using LocalLiftLog.Pages;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,47 @@ namespace LocalLiftLog.ViewModels
 
         [ObservableProperty]
         private Routine routine;
+
+        [ObservableProperty]
+        private ObservableCollection<ScheduleFactory> _scheduleFactoryList = new();
+
+        public async Task LoadSchedulesAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                ScheduleFactoryList.Clear();
+
+                var schedules = await _context.GetAllAsync<ScheduleFactory>();
+
+                if (schedules is not null && schedules.Any())
+                {
+                    schedules ??= new ObservableCollection<ScheduleFactory>();
+
+                    foreach (var schedule in schedules)
+                    {
+                        ScheduleFactoryList.Add(schedule);
+                    }
+                }
+            });
+        }
+
+        #nullable enable
+        private async Task ExecuteAsync(Func<Task> operation)
+        {
+            try
+            {
+                #nullable disable
+                await operation?.Invoke();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+
+            }
+        }
 
         [RelayCommand]
         static async Task GoBack()

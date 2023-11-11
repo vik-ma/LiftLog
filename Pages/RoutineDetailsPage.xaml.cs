@@ -3,9 +3,17 @@ using LocalLiftLog.ViewModels;
 
 public partial class RoutineDetailsPage : ContentPage
 {
-	public RoutineDetailsPage(RoutineDetailsViewModel viewModel)
+    private readonly RoutineDetailsViewModel _viewModel;
+    public RoutineDetailsPage(RoutineDetailsViewModel viewModel)
 	{
 		InitializeComponent();
-		BindingContext = viewModel;
-	}
+        _viewModel = viewModel;
+        BindingContext = _viewModel;
+    }
+
+    protected async override void OnAppearing()
+    {
+        base.OnAppearing();
+        await _viewModel.LoadSchedulesAsync();
+    }
 }

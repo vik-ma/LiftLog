@@ -106,8 +106,8 @@ namespace LocalLiftLog.ViewModels
             });
         }
 
-            #nullable enable
-            private async Task ExecuteAsync(Func<Task> operation)
+        #nullable enable
+        private async Task ExecuteAsync(Func<Task> operation)
         {
             try
             {
