@@ -91,6 +91,7 @@
             Spacing="4">
             <Button 
                 Text="Set Schedule"
+                IsVisible="{Binding IsShowingScheduleList, Converter={StaticResource InvertedBoolConverter}}"
                 WidthRequest="300"
                 Style="{StaticResource EditingRoutineButtonStyle}"
                 Command="{Binding ShowScheduleListCommand}" />
@@ -133,19 +134,9 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Schedule Id: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource RoutineSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding ScheduleId}"
-                                            Style="{StaticResource RoutineSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
+                            <Button
+                                Text="Set"
+                                Style="{StaticResource AddButtonStyle}" />
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
