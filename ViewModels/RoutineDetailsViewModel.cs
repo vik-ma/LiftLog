@@ -158,5 +158,18 @@ namespace LocalLiftLog.ViewModels
         {
             IsShowingScheduleList = true;
         }
+
+        [RelayCommand]
+        private async Task SetSchedule(ScheduleFactory schedule)
+        {
+            if (schedule == null) return;
+
+            Routine.ScheduleFactoryId = schedule.Id;
+
+            await UpdateRoutine();
+
+            OnPropertyChanged(nameof(Routine));
+            IsShowingScheduleList = false;
+        }
     }
 }
