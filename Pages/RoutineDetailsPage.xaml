@@ -88,15 +88,13 @@
         <VerticalStackLayout
             IsVisible="{Binding RoutineListViewModel.IsEditing}"
             Spacing="4">
-            <Entry 
-                Text="{Binding RoutineListViewModel.OperatingRoutine.ScheduleFactoryId}"
-                Placeholder="Schedule ID"
-                FontSize="24" />
-            <HorizontalStackLayout Spacing="20">
-                <Label 
-                    Text="Weekly Schedule "
-                    FontSize="26"
-                    VerticalOptions="Center" />
+            <Button 
+                Text="Set Schedule"
+                WidthRequest="300"
+                Style="{StaticResource EditingRoutineButtonStyle}"
+                Command="{Binding ShowScheduleListCommand}" />
+            <HorizontalStackLayout>
+                <Label Text="Schedule List" IsVisible="{Binding IsShowingScheduleList}" />
             </HorizontalStackLayout>
         </VerticalStackLayout>
         <Grid 
@@ -128,7 +126,7 @@
             CommandParameter="{Binding Routine}"
             IsVisible="{Binding RoutineListViewModel.IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
         <Button 
-            Text="Edit Schedule"
+            Text="View Schedule"
             Style="{StaticResource RoutineButtonStyle}"
             IsVisible="{Binding RoutineListViewModel.IsEditing, Converter={StaticResource InvertedBoolConverter}}"
             Command="{Binding VisitScheduleCommand}" />

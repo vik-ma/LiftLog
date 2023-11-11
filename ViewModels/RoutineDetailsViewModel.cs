@@ -26,6 +26,9 @@ namespace LocalLiftLog.ViewModels
         }
 
         [ObservableProperty]
+        private bool isShowingScheduleList = false;
+
+        [ObservableProperty]
         private Routine routine;
 
         [RelayCommand]
@@ -83,7 +86,12 @@ namespace LocalLiftLog.ViewModels
             {
                 await Shell.Current.DisplayAlert("Error", "Schedule does not exist!", "OK");
             }
+        }
 
+        [RelayCommand]
+        private void ShowScheduleList()
+        {
+            IsShowingScheduleList = true;
         }
     }
 }
