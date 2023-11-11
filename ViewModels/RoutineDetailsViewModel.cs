@@ -127,7 +127,24 @@ namespace LocalLiftLog.ViewModels
                 } 
                 else
                 {
-                    await Shell.Current.DisplayAlert("Error", "Custom Schedule not implemented yet.", "OK");
+                    CustomSchedule customSchedule;
+
+                    try
+                    {
+                        customSchedule = await _context.GetItemByKeyAsync<CustomSchedule>(schedule.ScheduleId);
+
+                        var navigationParameter = new Dictionary<string, object>
+                        {
+                            ["CustomSchedule"] = customSchedule
+                        };
+
+                        await Shell.Current.GoToAsync($"{nameof(CustomSchedulePage)}?Id={customSchedule.Id}", navigationParameter);
+                    }
+                    catch
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Custom Schedule ID does not exist!", "OK");
+                        return;
+                    }
                 }
             }
             catch
