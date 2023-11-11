@@ -94,6 +94,12 @@ namespace LocalLiftLog.ViewModels
         {
             var ScheduleFactoryId = Routine.ScheduleFactoryId;
 
+            if (ScheduleFactoryId == 0)
+            {
+                await Shell.Current.DisplayAlert("Error", "No Schedule Is Set!", "OK");
+                return;
+            }
+
             try
             {
                 var schedule = await _context.GetItemByKeyAsync<ScheduleFactory>(ScheduleFactoryId);
