@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LocalLiftLog.Pages.RoutineDetailsPage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
+             xmlns:models="clr-namespace:LocalLiftLog.Models"
              x:DataType="viewmodel:RoutineDetailsViewModel"
              Title="Routine Details Page">
 
@@ -93,9 +94,75 @@
                 WidthRequest="300"
                 Style="{StaticResource EditingRoutineButtonStyle}"
                 Command="{Binding ShowScheduleListCommand}" />
-            <HorizontalStackLayout>
-                <Label Text="Schedule List" IsVisible="{Binding IsShowingScheduleList}" />
-            </HorizontalStackLayout>
+            <CollectionView
+                IsVisible="{Binding IsShowingScheduleList}"
+                ItemsSource="{Binding ScheduleFactoryList}"
+                HorizontalOptions="Center">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:ScheduleFactory">
+                        <VerticalStackLayout
+                            Spacing="5">
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Id: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding Id}"
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Weekly Schedule: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding IsScheduleWeekly}"
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Schedule Id: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding ScheduleId}"
+                                            Style="{StaticResource RoutineSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <VerticalStackLayout
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                            <Label 
+                                Text="No Schedules In List!" 
+                                FontSize="18" 
+                                FontAttributes="Bold" 
+                                HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
         </VerticalStackLayout>
         <Grid 
             WidthRequest="300"
