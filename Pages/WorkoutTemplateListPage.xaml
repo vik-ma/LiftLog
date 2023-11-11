@@ -64,7 +64,7 @@
                                             FontAttributes="Bold"  
                                             Style="{StaticResource RoutineSpanStyle}" />
                                         <Span 
-                                            Text="{Binding SetListId}"
+                                            Text="{Binding SetTemplateCollectionId}"
                                             Style="{StaticResource RoutineSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>

@@ -12,7 +12,7 @@ namespace LocalLiftLog.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Name { get; set; }
-        public int SetListId { get; set; }
+        public int SetTemplateCollectionId { get; set; }
     }
 
 }
