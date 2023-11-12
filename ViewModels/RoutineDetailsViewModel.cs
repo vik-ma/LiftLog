@@ -35,6 +35,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private ObservableCollection<ScheduleFactory> _scheduleFactoryList = new();
 
+        [ObservableProperty]
+        private ScheduleFactory routineSchedule;
+
         public async Task LoadSchedulesAsync()
         {
             await ExecuteAsync(async () =>
@@ -82,11 +85,27 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task UpdateRoutine()
         {
-            var id = Routine.Id;
+            //var id = Routine.Id;
 
-            RoutineListViewModel.SaveRoutineCommand.Execute(RoutineListViewModel.OperatingRoutine);
+            //RoutineListViewModel.SaveRoutineCommand.Execute(RoutineListViewModel.OperatingRoutine);
 
-            Routine = await _context.GetItemByKeyAsync<Routine>(id);
+            var (isValid, errorMessage) = Routine.Validate();
+            if (!isValid)
+            {
+                await Shell.Current.DisplayAlert("Validation Error", errorMessage, "OK");
+                return;
+            }
+
+            if (!await _context.UpdateItemAsync<Routine>(Routine))
+            {
+                await Shell.Current.DisplayAlert("Error", "Error occured when updating Routine.", "OK");
+                return;
+            }
+
+            OnPropertyChanged(nameof(Routine));
+
+
+            //Routine = await _context.GetItemByKeyAsync<Routine>(id);
         }
 
         [RelayCommand]
@@ -159,6 +178,31 @@ namespace LocalLiftLog.ViewModels
             IsShowingScheduleList = true;
         }
 
+        public async Task LoadRoutineSchedule()
+        {
+            // Exit function if no ScheduleFactory is set
+            if (Routine.ScheduleFactoryId == 0) return;
+
+            ScheduleFactory scheduleFactory = null;
+
+            await ExecuteAsync(async () =>
+            {
+                scheduleFactory = await _context.GetItemByKeyAsync<ScheduleFactory>(Routine.ScheduleFactoryId);
+            });
+
+            if (scheduleFactory is null)
+            {
+                // Delete ScheduleFactoryId for Routine if ScheduleFactory key does not exist
+                Routine.ScheduleFactoryId = 0;
+                await UpdateRoutine();
+            }
+            else
+            {
+                // Set the loaded ScheduleFactory as RoutineSchedule
+                RoutineSchedule = scheduleFactory;
+            }
+        }
+
         [RelayCommand]
         private async Task SetSchedule(ScheduleFactory schedule)
         {
@@ -168,7 +212,6 @@ namespace LocalLiftLog.ViewModels
 
             await UpdateRoutine();
 
-            OnPropertyChanged(nameof(Routine));
             IsShowingScheduleList = false;
         }
     }

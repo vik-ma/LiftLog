@@ -15,5 +15,6 @@ public partial class RoutineDetailsPage : ContentPage
     {
         base.OnAppearing();
         await _viewModel.LoadSchedulesAsync();
+        await _viewModel.LoadRoutineSchedule();
     }
 }
