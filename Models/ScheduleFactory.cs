@@ -11,8 +11,10 @@ namespace LocalLiftLog.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+        public string Name { get; set; }
         public bool IsScheduleWeekly { get; set; }
         public int ScheduleId { get; set; }
+ 
 
         public ScheduleFactory Clone() => MemberwiseClone() as ScheduleFactory;
     }
