@@ -38,6 +38,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private ScheduleFactory routineSchedule;
 
+        [ObservableProperty]
+        private bool isScheduleSet = false;
+
         public async Task LoadSchedulesAsync()
         {
             await ExecuteAsync(async () =>
@@ -200,6 +203,7 @@ namespace LocalLiftLog.ViewModels
             {
                 // Set the loaded ScheduleFactory as RoutineSchedule
                 RoutineSchedule = scheduleFactory;
+                IsScheduleSet = true;
             }
         }
 
@@ -213,6 +217,8 @@ namespace LocalLiftLog.ViewModels
             await UpdateRoutine();
 
             IsShowingScheduleList = false;
+
+            IsScheduleSet = true;
         }
     }
 }

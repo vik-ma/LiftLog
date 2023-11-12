@@ -73,15 +73,21 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <Label>
+        <Label 
+            IsVisible="{Binding IsScheduleSet, Converter={StaticResource InvertedBoolConverter}}"
+            Text="No Schedule Set"
+            FontAttributes="Bold"
+            FontSize="26"
+            TextColor="Red" />
+        <Label IsVisible="{Binding IsScheduleSet}">
             <Label.FormattedText>
                 <FormattedString>
                     <Span 
-                        Text="Schedule List ID: " 
+                        Text="Schedule Name: " 
                         FontAttributes="Bold"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                     <Span 
-                        Text="{Binding Routine.ScheduleFactoryId, Converter={StaticResource NullValueToEmptyText}, ConverterParameter=Schedule}"
+                        Text="{Binding RoutineSchedule.Name}"
                         Style="{StaticResource RoutineSubSpanStyle}" />
                 </FormattedString>
             </Label.FormattedText>
