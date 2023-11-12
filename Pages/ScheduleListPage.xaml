@@ -44,6 +44,19 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
+                                            Text="Name: " 
+                                            FontAttributes="Bold"
+                                            FontSize="26" />
+                                        <Span 
+                                            Text="{Binding Name}"
+                                            FontSize="26" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
                                             Text="Schedule Id: " 
                                             FontAttributes="Bold"
                                             FontSize="26" />

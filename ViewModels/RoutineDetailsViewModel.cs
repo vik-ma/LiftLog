@@ -88,10 +88,6 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task UpdateRoutine()
         {
-            //var id = Routine.Id;
-
-            //RoutineListViewModel.SaveRoutineCommand.Execute(RoutineListViewModel.OperatingRoutine);
-
             var (isValid, errorMessage) = Routine.Validate();
             if (!isValid)
             {
@@ -106,9 +102,6 @@ namespace LocalLiftLog.ViewModels
             }
 
             OnPropertyChanged(nameof(Routine));
-
-
-            //Routine = await _context.GetItemByKeyAsync<Routine>(id);
         }
 
         [RelayCommand]
@@ -217,7 +210,6 @@ namespace LocalLiftLog.ViewModels
             await UpdateRoutine();
 
             IsShowingScheduleList = false;
-
             IsScheduleSet = true;
         }
     }

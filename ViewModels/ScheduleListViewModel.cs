@@ -50,6 +50,16 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task CreateWeeklyScheduleAsync()
         {
+            string enteredName = await Shell.Current.DisplayPromptAsync("Enter Name", "Enter a name for the Schedule\n", "OK", "Cancel");
+
+            if (enteredName == null) return;
+
+            if (string.IsNullOrWhiteSpace(enteredName))
+            {
+                await Shell.Current.DisplayAlert("Error", "Schedule name can't be empty.", "OK");
+                return;
+            }
+
             await ExecuteAsync(async () =>
             {
                 WeeklySchedule weeklySchedule = new();
@@ -57,6 +67,7 @@ namespace LocalLiftLog.ViewModels
 
                 ScheduleFactory schedule = new()
                 {
+                    Name = enteredName,
                     ScheduleId = weeklySchedule.Id,
                     IsScheduleWeekly = true
                 };
@@ -73,11 +84,21 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task CreateCustomScheduleAsync()
         {
-            string enteredText = await Shell.Current.DisplayPromptAsync("Number Of Days In Schedule", "How many days should the schedule contain?\n(Must be between 2 and 14)\n", "OK", "Cancel");
+            string enteredName = await Shell.Current.DisplayPromptAsync("Enter Name", "Enter a name for the Schedule\n", "OK", "Cancel");
 
-            if (enteredText == null) return;
+            if (enteredName == null) return;
 
-            bool validInput = int.TryParse(enteredText, out int numberOfDays);
+            if (string.IsNullOrWhiteSpace(enteredName))
+            {
+                await Shell.Current.DisplayAlert("Error", "Schedule name can't be empty.", "OK");
+                return;
+            }
+
+            string enteredNumber = await Shell.Current.DisplayPromptAsync("Number Of Days In Schedule", "How many days should the schedule contain?\n(Must be between 2 and 14)\n", "OK", "Cancel");
+
+            if (enteredNumber == null) return;
+
+            bool validInput = int.TryParse(enteredNumber, out int numberOfDays);
 
             if (!validInput || numberOfDays < 2 || numberOfDays > 14)
             {
@@ -92,6 +113,7 @@ namespace LocalLiftLog.ViewModels
 
                 ScheduleFactory schedule = new()
                 {
+                    Name = enteredName,
                     ScheduleId = customSchedule.Id,
                     IsScheduleWeekly = false
                 };

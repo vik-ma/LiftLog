@@ -92,6 +92,19 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Label IsVisible="{Binding IsScheduleSet}">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span 
+                        Text="Weekly Schedule: " 
+                        FontAttributes="Bold"
+                        Style="{StaticResource RoutineSubSpanStyle}" />
+                    <Span 
+                        Text="{Binding RoutineSchedule.IsScheduleWeekly}"
+                        Style="{StaticResource RoutineSubSpanStyle}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
         <VerticalStackLayout
             IsVisible="{Binding RoutineListViewModel.IsEditing}"
             Spacing="4">

@@ -14,8 +14,17 @@ namespace LocalLiftLog.Models
         public string Name { get; set; }
         public bool IsScheduleWeekly { get; set; }
         public int ScheduleId { get; set; }
- 
 
         public ScheduleFactory Clone() => MemberwiseClone() as ScheduleFactory;
+
+        #nullable enable
+        public (bool IsValid, string? ErrorMessage) Validate()
+        {
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                return (false, $"{nameof(Name)} is required.");
+            }
+            return (true, null);
+        }
     }
 }
