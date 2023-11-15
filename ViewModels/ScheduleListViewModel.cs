@@ -22,9 +22,6 @@ namespace LocalLiftLog.ViewModels
         }
 
         [ObservableProperty]
-        private ScheduleFactory _operatingSchedule = new();
-
-        [ObservableProperty]
         private ObservableCollection<ScheduleFactory> _scheduleFactoryList = new();
 
         public async Task LoadSchedulesAsync()
@@ -56,7 +53,7 @@ namespace LocalLiftLog.ViewModels
 
             if (string.IsNullOrWhiteSpace(enteredName))
             {
-                await Shell.Current.DisplayAlert("Error", "Schedule name can't be empty.", "OK");
+                await Shell.Current.DisplayAlert("Error", "Schedule Name can't be empty.", "OK");
                 return;
             }
 
@@ -90,7 +87,7 @@ namespace LocalLiftLog.ViewModels
 
             if (string.IsNullOrWhiteSpace(enteredName))
             {
-                await Shell.Current.DisplayAlert("Error", "Schedule name can't be empty.", "OK");
+                await Shell.Current.DisplayAlert("Error", "Schedule Name can't be empty.", "OK");
                 return;
             }
 
@@ -257,6 +254,32 @@ namespace LocalLiftLog.ViewModels
                 await Shell.Current.DisplayAlert("Error", "Schedule does not exist", "OK");
                 return;
             }
+
+            string enteredName = await Shell.Current.DisplayPromptAsync("Enter Name", "Enter a new name for the Schedule\n", "OK", "Cancel");
+
+            if (enteredName == null) return;
+
+            schedule.Name = enteredName;
+
+            var (isValid, errorMessage) = schedule.Validate();
+            if (!isValid)
+            {
+                await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
+                return;
+            }
+
+            if (!await _context.UpdateItemAsync<ScheduleFactory>(schedule))
+            {
+                await Shell.Current.DisplayAlert("Error", "Error occured when updating Schedule.", "OK");
+                return;
+            }
+
+            var scheduleCopy = schedule.Clone();
+
+            var index = ScheduleFactoryList.IndexOf(schedule);
+            ScheduleFactoryList.RemoveAt(index);
+
+            ScheduleFactoryList.Insert(index, scheduleCopy);
         }
 
     }

@@ -22,7 +22,7 @@ namespace LocalLiftLog.Models
         {
             if (string.IsNullOrWhiteSpace(Name))
             {
-                return (false, $"{nameof(Name)} is required.");
+                return (false, $"{nameof(Name)} can't be empty.");
             }
             return (true, null);
         }
