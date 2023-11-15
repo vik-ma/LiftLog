@@ -208,6 +208,7 @@ namespace LocalLiftLog.ViewModels
             Routine.ScheduleFactoryId = schedule.Id;
 
             await UpdateRoutine();
+            await LoadRoutineSchedule();
 
             IsShowingScheduleList = false;
             IsScheduleSet = true;
