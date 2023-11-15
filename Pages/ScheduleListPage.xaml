@@ -86,7 +86,14 @@
                             Spacing="10"
                             VerticalOptions="Center">
                             <Button 
-                                Text="Edit"
+                                Text="Change Name"
+                                Padding="20, 10"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleListViewModel}}, Path=ChangeScheduleNameCommand}" 
+                                CommandParameter="{Binding Id}"/>
+                            <Button 
+                                Text="View Details"
                                 Padding="20, 10"
                                 FontSize="18"
                                 FontAttributes="Bold"

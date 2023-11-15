@@ -246,5 +246,18 @@ namespace LocalLiftLog.ViewModels
                 await Shell.Current.GoToAsync($"{nameof(CustomSchedulePage)}?Id={id}", navigationParameter);
             }
         }
+
+        [RelayCommand]
+        private async Task ChangeScheduleName(int id)
+        {
+            var schedule = ScheduleFactoryList.FirstOrDefault(p => p.Id == id);
+
+            if (schedule is null)
+            {
+                await Shell.Current.DisplayAlert("Error", "Schedule does not exist", "OK");
+                return;
+            }
+        }
+
     }
 }
