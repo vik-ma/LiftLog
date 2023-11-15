@@ -8,207 +8,199 @@
              Title="Routine Details Page">
 
     <VerticalStackLayout 
-        Spacing="15"
-        Padding="15"
         HorizontalOptions="Center">
-        <Label>
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span 
-                        Text="Routine: " 
-                        FontAttributes="Bold"  
-                        Style="{StaticResource RoutineHeaderSpanStyle}" />
-                    <Span 
-                        Text="{Binding Routine.Name}"
-                        Style="{StaticResource RoutineHeaderSpanStyle}" />
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Entry 
-            Text="{Binding RoutineListViewModel.OperatingRoutine.Name}"
-            Placeholder="Routine Name"
-            FontSize="24"
-            IsVisible="{Binding RoutineListViewModel.IsEditing}" />
-        <Label>
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span 
-                        Text="Id: " 
-                        FontAttributes="Bold"
-                        Style="{StaticResource RoutineSubSpanStyle}" />
-                    <Span 
-                        Text="{Binding Routine.Id, Converter={StaticResource NullValueToEmptyText}}"
-                        Style="{StaticResource RoutineSubSpanStyle}" />
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Label>
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span 
-                        Text="Focus: " 
-                        FontAttributes="Bold"
-                        Style="{StaticResource RoutineSubSpanStyle}" />
-                    <Span 
-                        Text="{Binding Routine.Focus, Converter={StaticResource NullValueToEmptyText}, ConverterParameter=Focus}"
-                        Style="{StaticResource RoutineSubSpanStyle}" />
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Entry 
-            Text="{Binding RoutineListViewModel.OperatingRoutine.Focus}"
-            Placeholder="Routine Focus"
-            FontSize="24"
-            IsVisible="{Binding RoutineListViewModel.IsEditing}" />
-        <Label>
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span 
-                        Text="Last Updated: " 
-                        FontAttributes="Bold"
-                        Style="{StaticResource RoutineSubSpanStyle}" />
-                    <Span 
-                        Text="{Binding Routine.LastUpdateDateTime, Converter={StaticResource NullValueToEmptyText}}"
-                        Style="{StaticResource RoutineSubSpanStyle}" />
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Label 
-            IsVisible="{Binding IsScheduleSet, Converter={StaticResource InvertedBoolConverter}}"
-            Text="No Schedule Set"
-            FontAttributes="Bold"
-            FontSize="26"
-            TextColor="Red" />
-        <Label IsVisible="{Binding IsScheduleSet}">
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span 
-                        Text="Schedule Name: " 
-                        FontAttributes="Bold"
-                        Style="{StaticResource RoutineSubSpanStyle}" />
-                    <Span 
-                        Text="{Binding RoutineSchedule.Name}"
-                        Style="{StaticResource RoutineSubSpanStyle}" />
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Label IsVisible="{Binding IsScheduleSet}">
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span 
-                        Text="Weekly Schedule: " 
-                        FontAttributes="Bold"
-                        Style="{StaticResource RoutineSubSpanStyle}" />
-                    <Span 
-                        Text="{Binding RoutineSchedule.IsScheduleWeekly}"
-                        Style="{StaticResource RoutineSubSpanStyle}" />
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <VerticalStackLayout
-            IsVisible="{Binding RoutineListViewModel.IsEditing}"
-            Spacing="4">
-            <Button 
-                Text="Set Schedule"
-                IsVisible="{Binding IsShowingScheduleList, Converter={StaticResource InvertedBoolConverter}}"
-                WidthRequest="300"
-                Style="{StaticResource EditingRoutineButtonStyle}"
-                Command="{Binding ShowScheduleListCommand}" />
-            <CollectionView
-                IsVisible="{Binding IsShowingScheduleList}"
-                ItemsSource="{Binding ScheduleFactoryList}"
-                HorizontalOptions="Center">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:ScheduleFactory">
-                        <VerticalStackLayout
-                            Spacing="5">
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Id: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource RoutineSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding Id}"
-                                            Style="{StaticResource RoutineSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Weekly Schedule: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource RoutineSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding IsScheduleWeekly}"
-                                            Style="{StaticResource RoutineSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Button
-                                Text="Set"
-                                Style="{StaticResource AddButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:RoutineDetailsViewModel}}, Path=SetScheduleCommand}" 
-                                CommandParameter="{Binding .}" />
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <VerticalStackLayout
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center">
-                            <Label 
-                                Text="No Schedules In List!" 
-                                FontSize="18" 
-                                FontAttributes="Bold" 
-                                HorizontalTextAlignment="Center" />
-                        </VerticalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
-        </VerticalStackLayout>
         <Grid 
-            WidthRequest="300"
-            HorizontalOptions="Center"
-            IsVisible="{Binding RoutineListViewModel.IsEditing}">
-            <HorizontalStackLayout
-                HorizontalOptions="Center"
-                Spacing="20"
-                Grid.Row="0">
+            ColumnDefinitions="*, *">
+            <VerticalStackLayout
+                Spacing="15"
+                Padding="15"
+                Grid.Column="0">
+                
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span 
+                                Text="Routine: " 
+                                FontAttributes="Bold"  
+                                Style="{StaticResource RoutineHeaderSpanStyle}" />
+                            <Span 
+                                Text="{Binding Routine.Name}"
+                                Style="{StaticResource RoutineHeaderSpanStyle}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Entry 
+                    Text="{Binding RoutineListViewModel.OperatingRoutine.Name}"
+                    Placeholder="Routine Name"
+                    FontSize="24"
+                    IsVisible="{Binding RoutineListViewModel.IsEditing}" />
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span 
+                                Text="Id: " 
+                                FontAttributes="Bold"
+                                Style="{StaticResource RoutineSubSpanStyle}" />
+                            <Span 
+                                Text="{Binding Routine.Id, Converter={StaticResource NullValueToEmptyText}}"
+                                Style="{StaticResource RoutineSubSpanStyle}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span 
+                                Text="Focus: " 
+                                FontAttributes="Bold"
+                                Style="{StaticResource RoutineSubSpanStyle}" />
+                            <Span 
+                                Text="{Binding Routine.Focus, Converter={StaticResource NullValueToEmptyText}, ConverterParameter=Focus}"
+                                Style="{StaticResource RoutineSubSpanStyle}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Entry 
+                    Text="{Binding RoutineListViewModel.OperatingRoutine.Focus}"
+                    Placeholder="Routine Focus"
+                    FontSize="24"
+                    IsVisible="{Binding RoutineListViewModel.IsEditing}" />
+
+                <Grid 
+                    WidthRequest="300"
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding RoutineListViewModel.IsEditing}">
+                    <HorizontalStackLayout
+                        HorizontalOptions="Center"
+                        Spacing="20"
+                        Grid.Row="0">
+                        <Button 
+                            Grid.Column="0"
+                            Text="Cancel"
+                            Style="{StaticResource EditingRoutineButtonStyle}"
+                            Command="{Binding RoutineListViewModel.CancelEditingCommand}"
+                            BackgroundColor="#ef4444" />
+                        <Button 
+                            Grid.Column="1"
+                            Text="Save"
+                            Style="{StaticResource EditingRoutineButtonStyle}"
+                            Command="{Binding UpdateRoutineCommand}"
+                            BackgroundColor="#22c55e" />
+                    </HorizontalStackLayout>
+                </Grid>
+                
                 <Button 
-                    Grid.Column="0"
-                    Text="Cancel"
-                    Style="{StaticResource EditingRoutineButtonStyle}"
-                    Command="{Binding RoutineListViewModel.CancelEditingCommand}"
-                    BackgroundColor="#ef4444" />
+                    Text="Edit Routine"
+                    Style="{StaticResource RoutineButtonStyle}"
+                    Command="{Binding RoutineListViewModel.SetOperatingRoutineCommand}" 
+                    CommandParameter="{Binding Routine}"
+                    IsVisible="{Binding RoutineListViewModel.IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
+
+
+            </VerticalStackLayout>
+            
+            <VerticalStackLayout
+                Grid.Column="1"
+                Spacing="4">
+                <Label 
+                    IsVisible="{Binding IsScheduleSet, Converter={StaticResource InvertedBoolConverter}}"
+                    Text="No Schedule Set"
+                    FontAttributes="Bold"
+                    FontSize="26"
+                    TextColor="Red" />
+                <Label IsVisible="{Binding IsScheduleSet}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span 
+                                Text="Schedule Name: " 
+                                FontAttributes="Bold"
+                                Style="{StaticResource RoutineSubSpanStyle}" />
+                            <Span 
+                                Text="{Binding RoutineSchedule.Name}"
+                                Style="{StaticResource RoutineSubSpanStyle}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label IsVisible="{Binding IsScheduleSet}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span 
+                                Text="Weekly Schedule: " 
+                                FontAttributes="Bold"
+                                Style="{StaticResource RoutineSubSpanStyle}" />
+                            <Span 
+                                Text="{Binding RoutineSchedule.IsScheduleWeekly}"
+                                Style="{StaticResource RoutineSubSpanStyle}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                
                 <Button 
-                    Grid.Column="1"
-                    Text="Save"
+                    Text="Set Schedule"
+                    IsVisible="{Binding IsShowingScheduleList, Converter={StaticResource InvertedBoolConverter}}"
+                    WidthRequest="300"
                     Style="{StaticResource EditingRoutineButtonStyle}"
-                    Command="{Binding UpdateRoutineCommand}"
-                    BackgroundColor="#22c55e" />
-            </HorizontalStackLayout>
+                    Command="{Binding ShowScheduleListCommand}" />
+                
+                <CollectionView
+                    IsVisible="{Binding IsShowingScheduleList}"
+                    ItemsSource="{Binding ScheduleFactoryList}"
+                    HorizontalOptions="Center">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout 
+                            ItemSpacing="3"
+                            Orientation="Horizontal" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:ScheduleFactory">
+                            <HorizontalStackLayout
+                                Spacing="5">
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Name: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Name}"
+                                                Style="{StaticResource RoutineSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Button
+                                    Text="Set"
+                                    Style="{StaticResource AddButtonStyle}"
+                                    WidthRequest="50"
+                                    Padding="2"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:RoutineDetailsViewModel}}, Path=SetScheduleCommand}" 
+                                    CommandParameter="{Binding .}" />
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <ContentView>
+                            <VerticalStackLayout
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                <Label 
+                                    Text="No Schedules In List!" 
+                                    FontSize="18" 
+                                    FontAttributes="Bold" 
+                                    HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </ContentView>
+                    </CollectionView.EmptyView>
+                </CollectionView>
+                
+                <Button 
+                    Text="Go To Schedule"
+                    Style="{StaticResource RoutineButtonStyle}"
+                    Command="{Binding VisitScheduleCommand}" />
+                
+            </VerticalStackLayout>
+
         </Grid>
-        <Button 
-            Text="Edit Routine"
-            Style="{StaticResource RoutineButtonStyle}"
-            Command="{Binding RoutineListViewModel.SetOperatingRoutineCommand}" 
-            CommandParameter="{Binding Routine}"
-            IsVisible="{Binding RoutineListViewModel.IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
-        <Button 
-            Text="View Schedule"
-            Style="{StaticResource RoutineButtonStyle}"
-            IsVisible="{Binding RoutineListViewModel.IsEditing, Converter={StaticResource InvertedBoolConverter}}"
-            Command="{Binding VisitScheduleCommand}" />
 
         <Button 
             Text="Go Back"
