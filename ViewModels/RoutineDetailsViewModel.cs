@@ -213,5 +213,11 @@ namespace LocalLiftLog.ViewModels
             IsShowingScheduleList = false;
             IsScheduleSet = true;
         }
+
+        [RelayCommand]
+        private async Task GoToScheduleList()
+        {
+            await Shell.Current.GoToAsync($"{nameof(ScheduleListPage)}");
+        }
     }
 }

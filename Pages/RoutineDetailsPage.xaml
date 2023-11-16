@@ -195,8 +195,14 @@
                 
                 <Button 
                     Text="Go To Schedule"
+                    IsVisible="{Binding IsScheduleSet}"
                     Style="{StaticResource RoutineButtonStyle}"
                     Command="{Binding VisitScheduleCommand}" />
+                <Button 
+                    Text="Create New Schedule"
+                    Style="{StaticResource RoutineButtonStyle}"
+                    BackgroundColor="#4287f5"
+                    Command="{Binding GoToScheduleListCommand}" />
                 
             </VerticalStackLayout>
 
