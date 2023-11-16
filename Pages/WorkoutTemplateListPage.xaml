@@ -33,10 +33,10 @@
                                         <Span 
                                             Text="Id: " 
                                             FontAttributes="Bold"  
-                                            Style="{StaticResource RoutineSpanStyle}" />
+                                            Style="{StaticResource ProgramSpanStyle}" />
                                         <Span 
                                             Text="{Binding Id}"
-                                            Style="{StaticResource RoutineSpanStyle}" />
+                                            Style="{StaticResource ProgramSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -46,10 +46,10 @@
                                         <Span 
                                             Text="Name: " 
                                             FontAttributes="Bold"  
-                                            Style="{StaticResource RoutineSpanStyle}" />
+                                            Style="{StaticResource ProgramSpanStyle}" />
                                         <Span 
                                             Text="{Binding Name}"
-                                            Style="{StaticResource RoutineSpanStyle}" />
+                                            Style="{StaticResource ProgramSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -62,10 +62,10 @@
                                         <Span 
                                             Text="Set List Id: " 
                                             FontAttributes="Bold"  
-                                            Style="{StaticResource RoutineSpanStyle}" />
+                                            Style="{StaticResource ProgramSpanStyle}" />
                                         <Span 
                                             Text="{Binding SetTemplateCollectionId}"
-                                            Style="{StaticResource RoutineSpanStyle}" />
+                                            Style="{StaticResource ProgramSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -99,7 +99,7 @@
 
             <Button 
                 Text="Create New WT" 
-                Style="{StaticResource RoutineButtonStyle}"
+                Style="{StaticResource ProgramButtonStyle}"
                 Command="{Binding CreateWorkoutTemplateCommand}"
                 Margin="15" />
         </VerticalStackLayout>
@@ -129,10 +129,10 @@
                                         <Span 
                                             Text="Id: " 
                                             FontAttributes="Bold"  
-                                            Style="{StaticResource RoutineSpanStyle}" />
+                                            Style="{StaticResource ProgramSpanStyle}" />
                                         <Span 
                                             Text="{Binding Id}"
-                                            Style="{StaticResource RoutineSpanStyle}" />
+                                            Style="{StaticResource ProgramSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -142,10 +142,10 @@
                                         <Span 
                                             Text="Workout Template Id: " 
                                             FontAttributes="Bold"  
-                                            Style="{StaticResource RoutineSpanStyle}" />
+                                            Style="{StaticResource ProgramSpanStyle}" />
                                         <Span 
                                             Text="{Binding WorkoutTemplateId}"
-                                            Style="{StaticResource RoutineSpanStyle}" />
+                                            Style="{StaticResource ProgramSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -158,10 +158,10 @@
                                         <Span 
                                             Text="Schedule Factory Id: " 
                                             FontAttributes="Bold"  
-                                            Style="{StaticResource RoutineSpanStyle}" />
+                                            Style="{StaticResource ProgramSpanStyle}" />
                                         <Span 
                                             Text="{Binding ScheduleFactoryId}"
-                                            Style="{StaticResource RoutineSpanStyle}" />
+                                            Style="{StaticResource ProgramSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -174,10 +174,10 @@
                                         <Span 
                                             Text="Day: " 
                                             FontAttributes="Bold"  
-                                            Style="{StaticResource RoutineSpanStyle}" />
+                                            Style="{StaticResource ProgramSpanStyle}" />
                                         <Span 
                                             Text="{Binding Day}"
-                                            Style="{StaticResource RoutineSpanStyle}" />
+                                            Style="{StaticResource ProgramSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -214,7 +214,7 @@
 
             <Button 
                 Text="Create New WTC" 
-                Style="{StaticResource RoutineButtonStyle}"
+                Style="{StaticResource ProgramButtonStyle}"
                 Command="{Binding CreateWorkoutTemplateCollectionCommand}"
                 Margin="15" />
         </VerticalStackLayout>
@@ -222,7 +222,7 @@
         <VerticalStackLayout>
             <Button 
                 Text="Go Back"
-                Style="{StaticResource RoutineButtonStyle}"
+                Style="{StaticResource ProgramButtonStyle}"
                 Command="{Binding GoBackCommand}"
                 Margin="50" />
         </VerticalStackLayout>

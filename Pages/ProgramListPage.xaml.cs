@@ -1,11 +1,11 @@
 namespace LocalLiftLog.Pages;
 using LocalLiftLog.ViewModels;
 
-public partial class RoutineListPage : ContentPage
+public partial class ProgramListPage : ContentPage
 {
-    private readonly RoutineListViewModel _viewModel;
+    private readonly ProgramListViewModel _viewModel;
 
-    public RoutineListPage(RoutineListViewModel viewModel)
+    public ProgramListPage(ProgramListViewModel viewModel)
     {
 		InitializeComponent();
         _viewModel = viewModel;
@@ -15,6 +15,6 @@ public partial class RoutineListPage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-        await _viewModel.LoadRoutinesAsync();
+        await _viewModel.LoadProgramsAsync();
     }
 }

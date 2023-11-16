@@ -14,21 +14,21 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <Style x:Key="RoutineSpanStyle" TargetType="Span">
+            <Style x:Key="ProgramSpanStyle" TargetType="Span">
                 <Setter Property="FontSize" Value="16" />
             </Style>
-            <Style x:Key="RoutineSubSpanStyle" TargetType="Span">
+            <Style x:Key="ProgramSubSpanStyle" TargetType="Span">
                 <Setter Property="FontSize" Value="26" />
             </Style>
-            <Style x:Key="RoutineHeaderSpanStyle" TargetType="Span">
+            <Style x:Key="ProgramHeaderSpanStyle" TargetType="Span">
                 <Setter Property="FontSize" Value="36" />
             </Style>
-            <Style x:Key="RoutineButtonStyle" TargetType="Button">
+            <Style x:Key="ProgramButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="24" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="WidthRequest" Value="300" />
             </Style>
-            <Style x:Key="EditingRoutineButtonStyle" TargetType="Button">
+            <Style x:Key="EditingProgramButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="24" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="WidthRequest" Value="140" />

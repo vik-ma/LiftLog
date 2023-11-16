@@ -12,17 +12,17 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.ViewModels
 {
-    [QueryProperty(nameof(Routine), nameof(Routine))]
-    public partial class RoutineDetailsViewModel : ObservableObject
+    [QueryProperty(nameof(Program), nameof(Program))]
+    public partial class ProgramDetailsViewModel : ObservableObject
     {
         [ObservableProperty]
-        private RoutineListViewModel _routineListViewModel;
+        private ProgramListViewModel _programListViewModel;
 
         private readonly DatabaseContext _context;
 
-        public RoutineDetailsViewModel(RoutineListViewModel routineListViewModel, DatabaseContext context)
+        public ProgramDetailsViewModel(ProgramListViewModel programListViewModel, DatabaseContext context)
         {
-            _routineListViewModel = routineListViewModel;
+            _programListViewModel = programListViewModel;
             _context = context;
         }
 
@@ -30,13 +30,13 @@ namespace LocalLiftLog.ViewModels
         private bool isShowingScheduleList = false;
 
         [ObservableProperty]
-        private Routine routine;
+        private Program program;
 
         [ObservableProperty]
         private ObservableCollection<ScheduleFactory> _scheduleFactoryList = new();
 
         [ObservableProperty]
-        private ScheduleFactory routineSchedule;
+        private ScheduleFactory programSchedule;
 
         [ObservableProperty]
         private bool isScheduleSet = false;
@@ -86,28 +86,28 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task UpdateRoutine()
+        private async Task UpdateProgram()
         {
-            var (isValid, errorMessage) = Routine.Validate();
+            var (isValid, errorMessage) = Program.Validate();
             if (!isValid)
             {
                 await Shell.Current.DisplayAlert("Validation Error", errorMessage, "OK");
                 return;
             }
 
-            if (!await _context.UpdateItemAsync<Routine>(Routine))
+            if (!await _context.UpdateItemAsync<Program>(Program))
             {
-                await Shell.Current.DisplayAlert("Error", "Error occured when updating Routine.", "OK");
+                await Shell.Current.DisplayAlert("Error", "Error occured when updating Program.", "OK");
                 return;
             }
 
-            OnPropertyChanged(nameof(Routine));
+            OnPropertyChanged(nameof(Program));
         }
 
         [RelayCommand]
         private async Task VisitSchedule()
         {
-            var ScheduleFactoryId = Routine.ScheduleFactoryId;
+            var ScheduleFactoryId = Program.ScheduleFactoryId;
 
             if (ScheduleFactoryId == 0)
             {
@@ -174,28 +174,28 @@ namespace LocalLiftLog.ViewModels
             IsShowingScheduleList = true;
         }
 
-        public async Task LoadRoutineSchedule()
+        public async Task LoadProgramSchedule()
         {
             // Exit function if no ScheduleFactory is set
-            if (Routine.ScheduleFactoryId == 0) return;
+            if (Program.ScheduleFactoryId == 0) return;
 
             ScheduleFactory scheduleFactory = null;
 
             await ExecuteAsync(async () =>
             {
-                scheduleFactory = await _context.GetItemByKeyAsync<ScheduleFactory>(Routine.ScheduleFactoryId);
+                scheduleFactory = await _context.GetItemByKeyAsync<ScheduleFactory>(Program.ScheduleFactoryId);
             });
 
             if (scheduleFactory is null)
             {
-                // Delete ScheduleFactoryId for Routine if ScheduleFactory key does not exist
-                Routine.ScheduleFactoryId = 0;
-                await UpdateRoutine();
+                // Delete ScheduleFactoryId for Program if ScheduleFactory key does not exist
+                Program.ScheduleFactoryId = 0;
+                await UpdateProgram();
             }
             else
             {
-                // Set the loaded ScheduleFactory as RoutineSchedule
-                RoutineSchedule = scheduleFactory;
+                // Set the loaded ScheduleFactory as ProgramSchedule
+                ProgramSchedule = scheduleFactory;
                 IsScheduleSet = true;
             }
         }
@@ -205,10 +205,10 @@ namespace LocalLiftLog.ViewModels
         {
             if (schedule == null) return;
 
-            Routine.ScheduleFactoryId = schedule.Id;
+            Program.ScheduleFactoryId = schedule.Id;
 
-            await UpdateRoutine();
-            await LoadRoutineSchedule();
+            await UpdateProgram();
+            await LoadProgramSchedule();
 
             IsShowingScheduleList = false;
             IsScheduleSet = true;

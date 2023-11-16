@@ -12,8 +12,8 @@
     <VerticalStackLayout 
         HorizontalOptions="Center">
         <Button
-            Text="Routine List"
-            Command="{Binding GoToRoutineListCommand}"
+            Text="Program List"
+            Command="{Binding GoToProgramListCommand}"
             Style="{StaticResource MainPageNavigationButtonStyle}"/>
         <Button
             Text="Schedule List"

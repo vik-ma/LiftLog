@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:models="clr-namespace:LocalLiftLog.Models"
-             x:DataType="viewmodel:RoutineListViewModel"
-             x:Class="LocalLiftLog.Pages.RoutineListPage"
-             Title="Routine List">
+             x:DataType="viewmodel:ProgramListViewModel"
+             x:Class="LocalLiftLog.Pages.ProgramListPage"
+             Title="Program List">
 
     <Grid RowDefinitions="Auto, *">
         <VerticalStackLayout
@@ -13,7 +13,7 @@
             Grid.Column="0"
             Padding="6, 10" >
             <Label 
-                Text="Routine List"
+                Text="Program List"
                 VerticalOptions="Center"
                 FontAttributes="Bold"
                 FontSize="36"
@@ -49,14 +49,14 @@
             RowDefinitions="*, Auto">
             <CollectionView 
                 Grid.Row="0"
-                ItemsSource="{Binding RoutineList}">
+                ItemsSource="{Binding ProgramList}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout 
                     ItemSpacing="3"
                     Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Routine">
+                    <DataTemplate x:DataType="models:Program">
                         <Grid 
                             RowDefinitions="Auto, Auto"
                             ColumnDefinitions="*, Auto"
@@ -70,12 +70,12 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span 
-                                                Text="Routine: " 
+                                                Text="Program: " 
                                                 FontAttributes="Bold"  
-                                                Style="{StaticResource RoutineSpanStyle}" />
+                                                Style="{StaticResource ProgramSpanStyle}" />
                                             <Span 
                                                 Text="{Binding Name}"
-                                                Style="{StaticResource RoutineSpanStyle}" />
+                                                Style="{StaticResource ProgramSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -85,10 +85,10 @@
                                             <Span 
                                                 Text="Id: " 
                                                 FontAttributes="Bold"
-                                                Style="{StaticResource RoutineSpanStyle}" />
+                                                Style="{StaticResource ProgramSpanStyle}" />
                                             <Span 
                                                 Text="{Binding Id}"
-                                                Style="{StaticResource RoutineSpanStyle}" />
+                                                Style="{StaticResource ProgramSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -98,10 +98,10 @@
                                             <Span 
                                                 Text="Note: " 
                                                 FontAttributes="Bold"
-                                                Style="{StaticResource RoutineSpanStyle}" />
+                                                Style="{StaticResource ProgramSpanStyle}" />
                                             <Span 
                                                 Text="{Binding Note, Converter={StaticResource NullValueToEmptyText}, ConverterParameter=Note}"
-                                                Style="{StaticResource RoutineSpanStyle}" />
+                                                Style="{StaticResource ProgramSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -111,10 +111,10 @@
                                             <Span 
                                                 Text="Last Updated: " 
                                                 FontAttributes="Bold"
-                                                Style="{StaticResource RoutineSpanStyle}" />
+                                                Style="{StaticResource ProgramSpanStyle}" />
                                             <Span 
                                                 Text="{Binding LastUpdateDateTime, Converter={StaticResource NullValueToEmptyText}}"
-                                                Style="{StaticResource RoutineSpanStyle}" />
+                                                Style="{StaticResource ProgramSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -129,7 +129,7 @@
                                     Padding="20, 10"
                                     FontSize="18"
                                     FontAttributes="Bold" 
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:RoutineListViewModel}}, Path=ViewRoutineDetailsCommand}" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProgramListViewModel}}, Path=ViewProgramDetailsCommand}" 
                                     CommandParameter="{Binding Id}" />
                                 <!--<Button 
                                     Text="Edit"
@@ -137,7 +137,7 @@
                                     HeightRequest="25"
                                     FontSize="16"
                                     FontAttributes="Bold" 
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:RoutineListViewModel}}, Path=SetOperatingRoutineCommand}" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProgramListViewModel}}, Path=SetOperatingProgramCommand}" 
                                     CommandParameter="{Binding .}" />-->
                                 <Button 
                                     Text="Delete"
@@ -145,7 +145,7 @@
                                     FontSize="18"
                                     FontAttributes="Bold" 
                                     BackgroundColor="#ef4444"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:RoutineListViewModel}}, Path=DeleteRoutineCommand}" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProgramListViewModel}}, Path=DeleteProgramCommand}" 
                                     CommandParameter="{Binding Id}" />
                             </VerticalStackLayout>
                         </Grid>
@@ -157,12 +157,12 @@
                             HorizontalOptions="Center"
                             VerticalOptions="Center">
                             <Label 
-                                Text="No Routines In List!" 
+                                Text="No Programs In List!" 
                                 FontSize="18" 
                                 FontAttributes="Bold" 
                                 HorizontalTextAlignment="Center" />
                             <Label 
-                                Text="Create a Routine in the form below." 
+                                Text="Create a Program in the form below." 
                                 FontSize="18" 
                                 FontAttributes="Bold" />
                         </VerticalStackLayout>
@@ -186,7 +186,7 @@
                         Grid.Column="0">
                         <Label 
                             Grid.Column="0"
-                            Text="Create New Routine" 
+                            Text="Create New Program" 
                             FontAttributes="Bold"
                             FontSize="32"
                             HorizontalOptions="Start"
@@ -211,12 +211,12 @@
                         <Button 
                             Grid.Column="1"
                             VerticalOptions="Center"
-                            Text="Create Routine"
+                            Text="Create Program"
                             FontSize="18"
                             FontAttributes="Bold"
                             CornerRadius="6"
                             BackgroundColor="#22c55e"
-                            Command="{Binding SaveRoutineCommand}" >
+                            Command="{Binding SaveProgramCommand}" >
                         </Button>
                     </HorizontalStackLayout>
                     <VerticalStackLayout 
@@ -228,13 +228,13 @@
                             Margin="2, 0"
                             FontSize="20" />
                         <Label 
-                            Text="{Binding OperatingRoutine.Name}" 
+                            Text="{Binding OperatingProgram.Name}" 
                             Margin="2, 0"
                             FontSize="20">
                             <Label.Triggers>
                                 <DataTrigger 
                                     TargetType="Label"        
-                                    Binding="{Binding OperatingRoutine.Id}"                
+                                    Binding="{Binding OperatingProgram.Id}"                
                                     Value="0">
                                     <Setter 
                                         Property="IsVisible" 
@@ -243,7 +243,7 @@
                             </Label.Triggers>
                         </Label>
                         <Entry 
-                            Text="{Binding OperatingRoutine.Name}"
+                            Text="{Binding OperatingProgram.Name}"
                             Placeholder="Name"
                             Margin="0, 5"
                             BackgroundColor="#FFFFFF"
@@ -258,13 +258,13 @@
                             Margin="2, 0"
                             FontSize="20" />
                         <Label 
-                            Text="{Binding OperatingRoutine.Note}" 
+                            Text="{Binding OperatingProgram.Note}" 
                             Margin="2, 0"
                             FontSize="20">
                             <Label.Triggers>
                                 <DataTrigger 
                                     TargetType="Label" 
-                                    Binding="{Binding OperatingRoutine.Id}" 
+                                    Binding="{Binding OperatingProgram.Id}" 
                                     Value="0">
                                     <Setter 
                                         Property="IsVisible" 
@@ -273,7 +273,7 @@
                             </Label.Triggers>
                         </Label>
                         <Entry 
-                            Text="{Binding OperatingRoutine.Note}"
+                            Text="{Binding OperatingProgram.Note}"
                             Placeholder="Note"
                             Margin="0, 5"
                             BackgroundColor="#FFFFFF"
@@ -283,9 +283,9 @@
             </VerticalStackLayout>
             <VerticalStackLayout VerticalOptions="End">
                 <Button
-                    Text="Create New Routine"
-                    Style="{StaticResource RoutineButtonStyle}"
-                    Command="{Binding SetOperatingRoutineCommand}"
+                    Text="Create New Program"
+                    Style="{StaticResource ProgramButtonStyle}"
+                    Command="{Binding SetOperatingProgramCommand}"
                     Margin="50"
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
             </VerticalStackLayout>

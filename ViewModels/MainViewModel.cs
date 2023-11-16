@@ -20,9 +20,9 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task GoToRoutineList()
+        private async Task GoToProgramList()
         {
-            await Shell.Current.GoToAsync($"{nameof(RoutineListPage)}");
+            await Shell.Current.GoToAsync($"{nameof(ProgramListPage)}");
         }
 
         [RelayCommand]
