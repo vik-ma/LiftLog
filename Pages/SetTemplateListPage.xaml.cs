@@ -15,7 +15,7 @@ public partial class SetTemplateListPage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-        //await _viewModel.LoadSetTemplatesAsync();
-        //await _viewModel.LoadSetTemplateCollectionsAsync();
+        await _viewModel.LoadSetTemplatesAsync();
+        await _viewModel.LoadSetTemplateCollectionsAsync();
     }
 }
