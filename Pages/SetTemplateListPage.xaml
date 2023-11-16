@@ -25,7 +25,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:SetTemplate">
                         <HorizontalStackLayout
-                            Spacing="15">
+                            Spacing="5">
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -39,6 +39,36 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            <Entry 
+                                Text="{Binding ExerciseId}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding Note}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding IsTrackingWeight}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding IsTrackingReps}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding IsTrackingRir}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding IsTrackingRpe}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding IsTrackingTime}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding IsTrackingDistance}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding IsTrackingCardioResistance}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding IsUsingBodyWeightAsWeight}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -76,7 +106,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:SetTemplateCollection">
                         <HorizontalStackLayout
-                            Spacing="15">
+                            Spacing="5">
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -90,6 +120,12 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            <Entry 
+                                Text="{Binding SetTemplateId}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding SetListIndex}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
