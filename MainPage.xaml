@@ -23,6 +23,10 @@
             Text="Workout Template List"
             Command="{Binding GoToWorkoutTemplateCommand}"
             Style="{StaticResource MainPageNavigationButtonStyle}"/>
+        <Button
+            Text="Set Template List"
+            Command="{Binding GoToSetTemplateCommand}"
+            Style="{StaticResource MainPageNavigationButtonStyle}"/>
     </VerticalStackLayout>
 
 </ContentPage>

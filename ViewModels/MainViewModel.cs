@@ -36,5 +36,11 @@ namespace LocalLiftLog.ViewModels
         {
             await Shell.Current.GoToAsync($"{nameof(WorkoutTemplateListPage)}");
         }
+
+        [RelayCommand]
+        private async Task GoToSetTemplate()
+        {
+            await Shell.Current.GoToAsync($"{nameof(SetTemplateListPage)}");
+        }
     }
 }
