@@ -93,6 +93,10 @@
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="#9e9e9e" />
             </Style>
+            <Style x:Key="SmallEntryFieldStyle" TargetType="Entry">
+                <Setter Property="WidthRequest" Value="70" />
+                <Setter Property="FontSize" Value="18" />
+            </Style>
             <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyText" />
             <converters:MultiBindingConverter x:Key="MultiBindingConverter" />
             <converters:DayConverter x:Key="DayConverter" />
