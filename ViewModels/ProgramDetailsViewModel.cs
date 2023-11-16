@@ -102,6 +102,8 @@ namespace LocalLiftLog.ViewModels
             }
 
             OnPropertyChanged(nameof(Program));
+
+            ProgramListViewModel.IsEditing = false;
         }
 
         [RelayCommand]
