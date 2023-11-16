@@ -51,18 +51,18 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span 
-                                Text="Focus: " 
+                                Text="Note: " 
                                 FontAttributes="Bold"
                                 Style="{StaticResource RoutineSubSpanStyle}" />
                             <Span 
-                                Text="{Binding Routine.Focus, Converter={StaticResource NullValueToEmptyText}, ConverterParameter=Focus}"
+                                Text="{Binding Routine.Note, Converter={StaticResource NullValueToEmptyText}, ConverterParameter=Note}"
                                 Style="{StaticResource RoutineSubSpanStyle}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
                 <Entry 
-                    Text="{Binding RoutineListViewModel.OperatingRoutine.Focus}"
-                    Placeholder="Routine Focus"
+                    Text="{Binding RoutineListViewModel.OperatingRoutine.Note}"
+                    Placeholder="Routine Note"
                     FontSize="24"
                     IsVisible="{Binding RoutineListViewModel.IsEditing}" />
 

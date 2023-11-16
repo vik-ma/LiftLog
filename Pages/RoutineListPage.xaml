@@ -96,11 +96,11 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span 
-                                                Text="Focus: " 
+                                                Text="Note: " 
                                                 FontAttributes="Bold"
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                             <Span 
-                                                Text="{Binding Focus, Converter={StaticResource NullValueToEmptyText}, ConverterParameter=Focus}"
+                                                Text="{Binding Note, Converter={StaticResource NullValueToEmptyText}, ConverterParameter=Note}"
                                                 Style="{StaticResource RoutineSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -253,12 +253,12 @@
                         Grid.Row="1"
                         Grid.Column="1">
                         <Label 
-                            Text="Focus (Optional)" 
+                            Text="Note (Optional)" 
                             FontAttributes="Bold" 
                             Margin="2, 0"
                             FontSize="20" />
                         <Label 
-                            Text="{Binding OperatingRoutine.Focus}" 
+                            Text="{Binding OperatingRoutine.Note}" 
                             Margin="2, 0"
                             FontSize="20">
                             <Label.Triggers>
@@ -273,8 +273,8 @@
                             </Label.Triggers>
                         </Label>
                         <Entry 
-                            Text="{Binding OperatingRoutine.Focus}"
-                            Placeholder="Focus"
+                            Text="{Binding OperatingRoutine.Note}"
+                            Placeholder="Note"
                             Margin="0, 5"
                             BackgroundColor="#FFFFFF"
                             FontSize="20" />
