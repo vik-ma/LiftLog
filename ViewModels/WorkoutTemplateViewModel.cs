@@ -159,7 +159,6 @@ namespace LocalLiftLog.ViewModels
 
                 await LoadWorkoutTemplateCollectionsAsync();
             });
-
         }
 
         [RelayCommand]

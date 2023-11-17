@@ -109,6 +109,44 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
+        private async Task UpdateSetTemplateAsync(int id)
+        {
+            SetTemplate setTemplate = SetTemplateList.FirstOrDefault(p => p.Id == id);
+
+            if (setTemplate is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<SetTemplate>(setTemplate))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Set Template.", "OK");
+                }
+
+                await LoadSetTemplatesAsync();
+            });
+        }
+
+        [RelayCommand]
+        private async Task UpdateSetTemplateCollectionAsync(int id)
+        {
+            SetTemplateCollection setTemplateCollection = SetTemplateCollectionList.FirstOrDefault(p => p.Id == id);
+
+            if (setTemplateCollection is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<SetTemplateCollection>(setTemplateCollection))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Set Template Collection.", "OK");
+                }
+
+                await LoadSetTemplateCollectionsAsync();
+            });
+        }
+
+        [RelayCommand]
         static async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
