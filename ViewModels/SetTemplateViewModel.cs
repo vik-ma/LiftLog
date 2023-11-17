@@ -215,6 +215,25 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
+        private async Task GoToSetListDetails(int id)
+        {
+            SetTemplateCollection setTemplateCollection = SetTemplateCollectionList.FirstOrDefault(p => p.Id == id);
+
+            if (setTemplateCollection is null)
+            {
+                await Shell.Current.DisplayAlert("Error", "Set List does not exist", "OK");
+                return;
+            }
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["SetTemplateCollection"] = setTemplateCollection
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(SetListDetailsPage)}?Id={id}", navigationParameter);
+        }
+
+        [RelayCommand]
         static async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
