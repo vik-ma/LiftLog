@@ -74,6 +74,11 @@
                                 Style="{StaticResource AddButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetTemplateViewModel}}, Path=UpdateSetTemplateCommand}"
                                 CommandParameter="{Binding Id}" />
+                            <Button 
+                                Text="Delete"
+                                Style="{StaticResource DeleteButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetTemplateViewModel}}, Path=DeleteSetTemplateCommand}"
+                                CommandParameter="{Binding Id}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -140,6 +145,11 @@
                                 Text="Update"
                                 Style="{StaticResource AddButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetTemplateViewModel}}, Path=UpdateSetTemplateCollectionCommand}"
+                                CommandParameter="{Binding Id}" />
+                            <Button 
+                                Text="Delete"
+                                Style="{StaticResource DeleteButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetTemplateViewModel}}, Path=DeleteSetTemplateCollectionCommand}"
                                 CommandParameter="{Binding Id}" />
                         </HorizontalStackLayout>
                     </DataTemplate>

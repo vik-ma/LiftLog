@@ -147,6 +147,74 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
+        private async Task DeleteSetTemplateCollectionAsync(int id)
+        {
+            SetTemplateCollection setTemplateCollection = SetTemplateCollectionList.FirstOrDefault(p => p.Id == id);
+
+            if (setTemplateCollection is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<SetTemplateCollection>(setTemplateCollection))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set Template Collection.", "OK");
+                }
+            });
+
+            await LoadSetTemplateCollectionsAsync();
+        }
+
+        [RelayCommand]
+        private async Task DeleteSetTemplateAsync(int id)
+        {
+            SetTemplate setTemplate = SetTemplateList.FirstOrDefault(p => p.Id == id);
+
+            if (setTemplate is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<SetTemplate>(setTemplate))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set Template.", "OK");
+                }
+            });
+
+            await LoadSetTemplatesAsync();
+
+            await DeleteSetTemplateCollectionsBySetTemplateId(id);
+        }
+
+        private async Task DeleteSetTemplateCollectionsBySetTemplateId(int id)
+        {
+            Expression<Func<SetTemplateCollection, bool>> predicate = entity => entity.SetTemplateId == id;
+
+            IEnumerable<SetTemplateCollection> filteredWtcList = null;
+            try
+            {
+                filteredWtcList = await _context.GetFilteredAsync<SetTemplateCollection>(predicate);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Template Collections.", "OK");
+            }
+
+            foreach (var item in filteredWtcList)
+            {
+                await ExecuteAsync(async () =>
+                {
+                    if (!await _context.DeleteItemAsync<SetTemplateCollection>(item))
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set Template Collection.", "OK");
+                    }
+                });
+            }
+
+            await LoadSetTemplateCollectionsAsync();
+        }
+
+        [RelayCommand]
         static async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
