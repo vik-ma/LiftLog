@@ -71,7 +71,7 @@
                                 Style="{StaticResource SmallEntryFieldStyle}" />
                             <Button 
                                 Text="Update"
-                                Style="{StaticResource AddButtonStyle}"
+                                Style="{StaticResource GenericButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetTemplateViewModel}}, Path=UpdateSetTemplateCommand}"
                                 CommandParameter="{Binding Id}" />
                             <Button 
@@ -99,7 +99,8 @@
             <Button 
                 Text="New Set Template"
                 Style="{StaticResource AddButtonStyle}"
-                WidthRequest="400"
+                WidthRequest="300"
+                Margin="5"
                 Command="{Binding CreateSetTemplateCommand}" />
         </VerticalStackLayout>
 
@@ -143,7 +144,7 @@
                                 Style="{StaticResource SmallEntryFieldStyle}" />
                             <Button 
                                 Text="Update"
-                                Style="{StaticResource AddButtonStyle}"
+                                Style="{StaticResource GenericButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetTemplateViewModel}}, Path=UpdateSetTemplateCollectionCommand}"
                                 CommandParameter="{Binding Id}" />
                             <Button 
@@ -171,7 +172,8 @@
             <Button 
                 Text="New Set Template Collection"
                 Style="{StaticResource AddButtonStyle}"
-                WidthRequest="400"
+                WidthRequest="300"
+                Margin="5"
                 Command="{Binding CreateSetTemplateCollectionCommand}" />
         </VerticalStackLayout>
 
