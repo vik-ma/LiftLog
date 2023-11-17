@@ -52,6 +52,9 @@ namespace LocalLiftLog
             builder.Services.AddTransient<SetTemplateListPage>();
             builder.Services.AddTransient<SetTemplateViewModel>();
 
+            builder.Services.AddTransient<SetListDetailsPage>();
+            builder.Services.AddTransient<SetListDetailsViewModel>();
+
             return builder.Build();
         }
     }
