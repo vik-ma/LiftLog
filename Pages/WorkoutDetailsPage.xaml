@@ -6,12 +6,19 @@
              xmlns:models="clr-namespace:LocalLiftLog.Models"
              x:DataType="viewmodel:WorkoutDetailsViewModel"
              Title="Workout Details Page">
-    <VerticalStackLayout HorizontalOptions="Center">
-        <Label 
-            Text="{Binding WorkoutTemplate.Id}"
-            FontSize="30"
-            FontAttributes="Bold" />
-
+    <VerticalStackLayout>
+        <HorizontalStackLayout
+            HorizontalOptions="Center"
+            Spacing="5">
+            <Label 
+                Text="Workout Template Id:"
+                FontSize="30"
+                FontAttributes="Bold" />
+            <Label 
+                Text="{Binding WorkoutTemplate.Id}"
+                FontSize="30"
+                FontAttributes="Bold" />
+        </HorizontalStackLayout>
         <Button 
             Text="Go Back"
             Style="{StaticResource ProgramButtonStyle}"
