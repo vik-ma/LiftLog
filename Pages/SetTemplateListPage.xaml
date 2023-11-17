@@ -86,6 +86,11 @@
                     </ContentView>
                 </CollectionView.EmptyView>
             </CollectionView>
+            <Button 
+                Text="New Set Template"
+                Style="{StaticResource AddButtonStyle}"
+                WidthRequest="400"
+                Command="{Binding CreateSetTemplateCommand}" />
         </VerticalStackLayout>
 
         <VerticalStackLayout>
@@ -143,6 +148,11 @@
                     </ContentView>
                 </CollectionView.EmptyView>
             </CollectionView>
+            <Button 
+                Text="New Set Template Collection"
+                Style="{StaticResource AddButtonStyle}"
+                WidthRequest="400"
+                Command="{Binding CreateSetTemplateCollectionCommand}" />
         </VerticalStackLayout>
 
         <VerticalStackLayout>

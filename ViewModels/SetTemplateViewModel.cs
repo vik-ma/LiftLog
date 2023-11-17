@@ -87,6 +87,28 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
+        private async Task CreateSetTemplateAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                SetTemplate set = new();
+                await _context.AddItemAsync<SetTemplate>(set);
+                SetTemplateList.Add(set);
+            });
+        }
+
+        [RelayCommand]
+        private async Task CreateSetTemplateCollectionAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                SetTemplateCollection setCollection = new();
+                await _context.AddItemAsync<SetTemplateCollection>(setCollection);
+                SetTemplateCollectionList.Add(setCollection);
+            });
+        }
+
+        [RelayCommand]
         static async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
