@@ -163,6 +163,8 @@ namespace LocalLiftLog.ViewModels
             });
 
             await LoadSetTemplateCollectionsAsync();
+
+            await DeleteSetTemplatesBySetTemplateCollectionId(id);
         }
 
         [RelayCommand]
@@ -182,36 +184,34 @@ namespace LocalLiftLog.ViewModels
             });
 
             await LoadSetTemplatesAsync();
-
-            await DeleteSetTemplateCollectionsBySetTemplateId(id);
         }
 
-        private async Task DeleteSetTemplateCollectionsBySetTemplateId(int id)
+        private async Task DeleteSetTemplatesBySetTemplateCollectionId(int id)
         {
-            Expression<Func<SetTemplateCollection, bool>> predicate = entity => entity.SetTemplateId == id;
+            Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == id;
 
-            IEnumerable<SetTemplateCollection> filteredWtcList = null;
+            IEnumerable<SetTemplate> filteredWtcList = null;
             try
             {
-                filteredWtcList = await _context.GetFilteredAsync<SetTemplateCollection>(predicate);
+                filteredWtcList = await _context.GetFilteredAsync<SetTemplate>(predicate);
             }
             catch
             {
-                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Template Collections.", "OK");
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
             }
 
             foreach (var item in filteredWtcList)
             {
                 await ExecuteAsync(async () =>
                 {
-                    if (!await _context.DeleteItemAsync<SetTemplateCollection>(item))
+                    if (!await _context.DeleteItemAsync<SetTemplate>(item))
                     {
-                        await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set Template Collection.", "OK");
+                        await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set Template.", "OK");
                     }
                 });
             }
 
-            await LoadSetTemplateCollectionsAsync();
+            await LoadSetTemplatesAsync();
         }
 
         [RelayCommand]
