@@ -39,6 +39,13 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            <Label 
+                                Text="CollectionId:"
+                                VerticalOptions="Center"
+                                FontAttributes="Bold" />
+                            <Entry 
+                                Text="{Binding SetTemplateCollectionId}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
                             <Entry 
                                 Text="{Binding ExerciseId}"
                                 Style="{StaticResource SmallEntryFieldStyle}" />
