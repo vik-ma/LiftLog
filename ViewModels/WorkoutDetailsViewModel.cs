@@ -5,6 +5,7 @@ using LocalLiftLog.Models;
 using LocalLiftLog.Pages;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,10 +29,45 @@ namespace LocalLiftLog.ViewModels
             _context = context;
         }
 
+        [ObservableProperty]
+        private ObservableCollection<SetTemplateCollection> setList = new();
+
         [RelayCommand]
         static async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
+        }
+
+        #nullable enable
+        private async Task ExecuteAsync(Func<Task> operation)
+        {
+            try
+            {
+                #nullable disable
+                await operation?.Invoke();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+
+            }
+        }
+
+        [RelayCommand]
+        private async Task CreateNewSetListAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                SetTemplateCollection newSet = new();
+                await _context.AddItemAsync<SetTemplateCollection>(newSet);
+                WorkoutTemplate.SetTemplateCollectionId = newSet.Id;
+                await _context.UpdateItemAsync<WorkoutTemplate>(WorkoutTemplate);
+            });
+
+            OnPropertyChanged(nameof(WorkoutTemplate));
         }
     }
 }
