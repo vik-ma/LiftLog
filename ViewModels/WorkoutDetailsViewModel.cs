@@ -74,15 +74,36 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         public async Task LoadSetListFromSetTemplateCollectionIdAsync()
         {
+            if (WorkoutTemplate is null) return;
+
+            // Skip function if no SetTemplateCollectionId is set
             if (WorkoutTemplate.SetTemplateCollectionId == 0) return;
 
+            SetList.Clear();
+
             Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == WorkoutTemplate.SetTemplateCollectionId;
+
+            // Check if a SetTemplateCollection with that Id exists
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.ItemExistsByKeyAsync<SetTemplateCollection>(WorkoutTemplate.SetTemplateCollectionId))
+                {
+                    // Reset SetTemplateCollectionId value for current WorkoutTemplate
+                    WorkoutTemplate.SetTemplateCollectionId = 0;
+
+                    // Save the changes
+                    if (!await _context.UpdateItemAsync<WorkoutTemplate>(WorkoutTemplate))
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Error occured when updating Workout Template.", "OK");
+                    }
+                }
+                OnPropertyChanged(nameof(WorkoutTemplate));
+                return;
+            });
 
             try
             {
                 var filteredList = await _context.GetFilteredAsync<SetTemplate>(predicate);
-
-                SetList.Clear();
 
                 foreach (var item in filteredList)
                 {

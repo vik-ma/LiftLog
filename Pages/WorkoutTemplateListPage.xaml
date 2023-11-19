@@ -63,12 +63,10 @@
                                             Text="Set List Id: " 
                                             FontAttributes="Bold"  
                                             Style="{StaticResource ProgramSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding SetTemplateCollectionId}"
-                                            Style="{StaticResource ProgramSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            <Entry Text="{Binding SetTemplateCollectionId}" />
                             <Button
                                 Text="Save"
                                 Style="{StaticResource AddButtonStyle}"
