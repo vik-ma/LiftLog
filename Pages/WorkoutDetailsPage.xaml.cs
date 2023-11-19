@@ -14,5 +14,6 @@ public partial class WorkoutDetailsPage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
+        await _viewModel.LoadSetListFromSetTemplateCollectionIdAsync();
     }
 }

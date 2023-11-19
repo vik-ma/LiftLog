@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,7 +31,7 @@ namespace LocalLiftLog.ViewModels
         }
 
         [ObservableProperty]
-        private ObservableCollection<SetTemplateCollection> setList = new();
+        private ObservableCollection<SetTemplate> setList = new();
 
         [RelayCommand]
         static async Task GoBack()
@@ -68,6 +69,31 @@ namespace LocalLiftLog.ViewModels
             });
 
             OnPropertyChanged(nameof(WorkoutTemplate));
+        }
+
+        [RelayCommand]
+        public async Task LoadSetListFromSetTemplateCollectionIdAsync()
+        {
+            if (WorkoutTemplate.SetTemplateCollectionId == 0) return;
+
+            Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == WorkoutTemplate.SetTemplateCollectionId;
+
+            try
+            {
+                var filteredList = await _context.GetFilteredAsync<SetTemplate>(predicate);
+
+                SetList.Clear();
+
+                foreach (var item in filteredList)
+                {
+                    SetList.Add(item);
+                }
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
+                return;
+            }
         }
     }
 }
