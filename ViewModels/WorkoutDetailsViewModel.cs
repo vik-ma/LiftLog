@@ -116,15 +116,27 @@ namespace LocalLiftLog.ViewModels
                 {
                     // If no SetTemplateCollection with that Id exists
                     // Reset SetTemplateCollectionId value for current WorkoutTemplate
-                    WorkoutTemplate.SetTemplateCollectionId = 0;
-
-                    // Save the changes
-                    if (!await _context.UpdateItemAsync<WorkoutTemplate>(WorkoutTemplate))
-                    {
-                        await Shell.Current.DisplayAlert("Error", "Error occured when updating Workout Template.", "OK");
-                    }
-                    OnPropertyChanged(nameof(WorkoutTemplate));
+                    await ResetSetTemplateCollectionId();
                 }
+            });
+        }
+
+        [RelayCommand]
+        private async Task ResetSetTemplateCollectionId()
+        {
+            if (WorkoutTemplate is null) return;
+
+            WorkoutTemplate.SetTemplateCollectionId = 0;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<WorkoutTemplate>(WorkoutTemplate))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Workout Template.", "OK");
+                }
+
+                SetList.Clear();
+                OnPropertyChanged(nameof(WorkoutTemplate));
             });
         }
     }

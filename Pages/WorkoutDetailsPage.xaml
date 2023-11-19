@@ -29,6 +29,10 @@
                 Text="{Binding WorkoutTemplate.SetTemplateCollectionId}"
                 FontSize="30"
                 FontAttributes="Bold" />
+            <Button 
+                Text="Reset"
+                Style="{StaticResource DeleteButtonStyle}"
+                Command="{Binding ResetSetTemplateCollectionIdCommand}" />
         </HorizontalStackLayout>
 
         <CollectionView
