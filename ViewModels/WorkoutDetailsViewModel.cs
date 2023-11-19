@@ -83,24 +83,6 @@ namespace LocalLiftLog.ViewModels
 
             Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == WorkoutTemplate.SetTemplateCollectionId;
 
-            // Check if a SetTemplateCollection with that Id exists
-            await ExecuteAsync(async () =>
-            {
-                if (!await _context.ItemExistsByKeyAsync<SetTemplateCollection>(WorkoutTemplate.SetTemplateCollectionId))
-                {
-                    // Reset SetTemplateCollectionId value for current WorkoutTemplate
-                    WorkoutTemplate.SetTemplateCollectionId = 0;
-
-                    // Save the changes
-                    if (!await _context.UpdateItemAsync<WorkoutTemplate>(WorkoutTemplate))
-                    {
-                        await Shell.Current.DisplayAlert("Error", "Error occured when updating Workout Template.", "OK");
-                    }
-                }
-                OnPropertyChanged(nameof(WorkoutTemplate));
-                return;
-            });
-
             try
             {
                 var filteredList = await _context.GetFilteredAsync<SetTemplate>(predicate);
@@ -109,12 +91,41 @@ namespace LocalLiftLog.ViewModels
                 {
                     SetList.Add(item);
                 }
+
+                if (!filteredList.Any())
+                {
+                    // If filteredList is empty
+                    // Check if a SetTemplateCollection with that Id exists
+                    await CheckIfSetTemplateCollectionExists();
+                }
             }
             catch
             {
                 await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
                 return;
             }
+        }
+
+        private async Task CheckIfSetTemplateCollectionExists()
+        {
+            if (WorkoutTemplate is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.ItemExistsByKeyAsync<SetTemplateCollection>(WorkoutTemplate.SetTemplateCollectionId))
+                {
+                    // If no SetTemplateCollection with that Id exists
+                    // Reset SetTemplateCollectionId value for current WorkoutTemplate
+                    WorkoutTemplate.SetTemplateCollectionId = 0;
+
+                    // Save the changes
+                    if (!await _context.UpdateItemAsync<WorkoutTemplate>(WorkoutTemplate))
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Error occured when updating Workout Template.", "OK");
+                    }
+                    OnPropertyChanged(nameof(WorkoutTemplate));
+                }
+            });
         }
     }
 }
