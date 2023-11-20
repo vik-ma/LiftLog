@@ -134,7 +134,9 @@
                         </Label>
                         <Button 
                             Text="Copy"
-                            Style="{StaticResource AddButtonStyle}" />
+                            Style="{StaticResource AddButtonStyle}"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=CopySetTemplateCollectionCommand}" 
+                            CommandParameter="{Binding Id}" />
                     </HorizontalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

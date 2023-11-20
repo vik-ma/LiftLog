@@ -179,6 +179,53 @@ namespace LocalLiftLog.ViewModels
             ShowStcList = true;
         }
 
+        [RelayCommand]
+        private async Task CopySetTemplateCollection(int stcId)
+        {
+            if (WorkoutTemplate is null) return;
 
+            // Create New SetTemplateCollection
+            await CreateNewSetListAsync();
+
+            // Get Id of new SetTemplateCollection
+            int newStcId = WorkoutTemplate.SetTemplateCollectionId;
+
+            Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == stcId;
+
+            // Get all SetTemplates of old STC id
+            IEnumerable<SetTemplate> filteredWtcList = null;
+            try
+            {
+                filteredWtcList = await _context.GetFilteredAsync<SetTemplate>(predicate);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
+            }
+
+            if (!filteredWtcList.Any()) 
+            {
+                await Shell.Current.DisplayAlert("Error", "Set List is empty!", "OK");
+                return;
+            }
+
+            SetList.Clear();
+
+            // Copy old SetTemplates but with new SetTemplateCollectionId
+            foreach (var item in filteredWtcList)
+            {
+                await ExecuteAsync(async () =>
+                {
+                    var itemCopy = item.Clone();
+                    itemCopy.SetTemplateCollectionId = newStcId;
+                    await _context.AddItemAsync<SetTemplate>(itemCopy);
+                    SetList.Add(itemCopy);
+                });
+            }
+
+            await LoadSetTemplateCollectionsAsync();
+
+            ShowStcList = false;
+        }
     }
 }
