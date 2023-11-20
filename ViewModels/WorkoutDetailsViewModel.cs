@@ -33,6 +33,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private ObservableCollection<SetTemplate> setList = new();
 
+        [ObservableProperty]
+        private ObservableCollection<SetTemplateCollection> setTemplateCollectionList = new();
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -137,6 +140,26 @@ namespace LocalLiftLog.ViewModels
 
                 SetList.Clear();
                 OnPropertyChanged(nameof(WorkoutTemplate));
+            });
+        }
+
+        public async Task LoadSetTemplateCollectionsAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                SetTemplateCollectionList.Clear();
+
+                var setTemplatesCollections = await _context.GetAllAsync<SetTemplateCollection>();
+
+                if (setTemplatesCollections is not null && setTemplatesCollections.Any())
+                {
+                    setTemplatesCollections ??= new ObservableCollection<SetTemplateCollection>();
+
+                    foreach (var setCollection in setTemplatesCollections)
+                    {
+                        SetTemplateCollectionList.Add(setCollection);
+                    }
+                }
             });
         }
     }
