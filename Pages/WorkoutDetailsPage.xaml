@@ -6,9 +6,10 @@
              xmlns:models="clr-namespace:LocalLiftLog.Models"
              x:DataType="viewmodel:WorkoutDetailsViewModel"
              Title="Workout Details Page">
-    <VerticalStackLayout HorizontalOptions="Center">
-        <HorizontalStackLayout 
-            Spacing="5">
+    <VerticalStackLayout 
+        HorizontalOptions="Center"
+        Spacing="10">
+        <HorizontalStackLayout Spacing="5">
             <Label 
                 Text="Workout Template Id:"
                 FontSize="30"
@@ -19,15 +20,28 @@
                 FontAttributes="Bold" />
         </HorizontalStackLayout>
 
+        <HorizontalStackLayout Spacing="5">
+            <Label 
+                Text="Workout Name:"
+                VerticalOptions="Center"
+                FontSize="20"
+                FontAttributes="Bold" />
+            <Entry 
+                Text="{Binding WorkoutTemplate.Name}"
+                WidthRequest="200" />
+        </HorizontalStackLayout>
+
         <HorizontalStackLayout 
             Spacing="5">
             <Label 
                 Text="Set List Id:"
-                FontSize="30"
+                VerticalOptions="Center"
+                FontSize="20"
                 FontAttributes="Bold" />
             <Label 
                 Text="{Binding WorkoutTemplate.SetTemplateCollectionId}"
-                FontSize="30"
+                VerticalOptions="Center"
+                FontSize="20"
                 FontAttributes="Bold" />
             <Button 
                 Text="Reset"
