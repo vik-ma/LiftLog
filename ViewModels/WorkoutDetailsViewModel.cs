@@ -36,6 +36,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private ObservableCollection<SetTemplateCollection> setTemplateCollectionList = new();
 
+        [ObservableProperty]
+        private bool showStcList = false;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -169,5 +172,13 @@ namespace LocalLiftLog.ViewModels
                 OnPropertyChanged(nameof(WorkoutTemplate));
             });
         }
+
+        [RelayCommand]
+        private void ShowExistingSetTemplateCollectionList()
+        {
+            ShowStcList = true;
+        }
+
+
     }
 }

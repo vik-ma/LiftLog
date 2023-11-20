@@ -102,6 +102,58 @@
             Margin="50" />
 
         <Button 
+            Text="Copy Existing Set List"
+            Style="{StaticResource ProgramButtonStyle}"
+            Command="{Binding ShowExistingSetTemplateCollectionListCommand}"
+            Margin="50" />
+
+        <CollectionView
+            ItemsSource="{Binding SetTemplateCollectionList}"
+            HorizontalOptions="Center"
+            IsVisible="{Binding ShowStcList}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout 
+                    ItemSpacing="3"
+                    Orientation="Horizontal" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:SetTemplateCollection">
+                    <HorizontalStackLayout Spacing="5">
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Id: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource ProgramSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding Id}"
+                                        Style="{StaticResource ProgramSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button 
+                            Text="Copy"
+                            Style="{StaticResource AddButtonStyle}" />
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <ContentView>
+                    <VerticalStackLayout
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Label 
+                            Text="Set List Is Empty!" 
+                            FontSize="18" 
+                            FontAttributes="Bold" 
+                            HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </ContentView>
+            </CollectionView.EmptyView>
+        </CollectionView>
+
+        <Button 
             Text="Go Back"
             Style="{StaticResource ProgramButtonStyle}"
             Command="{Binding GoBackCommand}"
