@@ -208,11 +208,11 @@ namespace LocalLiftLog.ViewModels
         {
             if (WorkoutTemplate is null) return;
 
-            // Create New SetTemplateCollection
-            await CreateNewSetListAsync();
-
-            // Get Id of new SetTemplateCollection
-            int newStcId = WorkoutTemplate.SetTemplateCollectionId;
+            if (stcId == WorkoutTemplate.SetTemplateCollectionId)
+            {
+                await Shell.Current.DisplayAlert("Error", "Can not copy the same workout!", "OK");
+                return;
+            }
 
             Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == stcId;
 
@@ -232,6 +232,12 @@ namespace LocalLiftLog.ViewModels
                 await Shell.Current.DisplayAlert("Error", "Set List is empty!", "OK");
                 return;
             }
+
+            // Create New SetTemplateCollection
+            await CreateNewSetListAsync();
+
+            // Get Id of new SetTemplateCollection
+            int newStcId = WorkoutTemplate.SetTemplateCollectionId;
 
             SetList.Clear();
 
