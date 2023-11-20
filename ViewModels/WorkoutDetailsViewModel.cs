@@ -131,16 +131,9 @@ namespace LocalLiftLog.ViewModels
 
             WorkoutTemplate.SetTemplateCollectionId = 0;
 
-            await ExecuteAsync(async () =>
-            {
-                if (!await _context.UpdateItemAsync<WorkoutTemplate>(WorkoutTemplate))
-                {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Workout Template.", "OK");
-                }
+            await UpdateWorkoutTemplateAsync();
 
-                SetList.Clear();
-                OnPropertyChanged(nameof(WorkoutTemplate));
-            });
+            SetList.Clear();
         }
 
         public async Task LoadSetTemplateCollectionsAsync()
@@ -160,6 +153,20 @@ namespace LocalLiftLog.ViewModels
                         SetTemplateCollectionList.Add(setCollection);
                     }
                 }
+            });
+        }
+
+        [RelayCommand]
+        private async Task UpdateWorkoutTemplateAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<WorkoutTemplate>(WorkoutTemplate))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Workout Template.", "OK");
+                }
+
+                OnPropertyChanged(nameof(WorkoutTemplate));
             });
         }
     }

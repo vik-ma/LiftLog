@@ -28,11 +28,14 @@
                 FontAttributes="Bold" />
             <Entry 
                 Text="{Binding WorkoutTemplate.Name}"
-                WidthRequest="200" />
+                WidthRequest="150" />
+            <Button 
+                Text="Update"
+                Style="{StaticResource AddButtonStyle}"
+                Command="{Binding UpdateWorkoutTemplateCommand}" />
         </HorizontalStackLayout>
 
-        <HorizontalStackLayout 
-            Spacing="5">
+        <HorizontalStackLayout Spacing="5">
             <Label 
                 Text="Set List Id:"
                 VerticalOptions="Center"
