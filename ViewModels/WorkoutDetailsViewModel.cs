@@ -34,9 +34,6 @@ namespace LocalLiftLog.ViewModels
         private ObservableCollection<SetTemplate> setList = new();
 
         [ObservableProperty]
-        private ObservableCollection<SetTemplateCollection> setTemplateCollectionList = new();
-
-        [ObservableProperty]
         private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
 
         [ObservableProperty]
@@ -142,26 +139,6 @@ namespace LocalLiftLog.ViewModels
             SetList.Clear();
         }
 
-        public async Task LoadSetTemplateCollectionsAsync()
-        {
-            await ExecuteAsync(async () =>
-            {
-                SetTemplateCollectionList.Clear();
-
-                var setTemplatesCollections = await _context.GetAllAsync<SetTemplateCollection>();
-
-                if (setTemplatesCollections is not null && setTemplatesCollections.Any())
-                {
-                    setTemplatesCollections ??= new ObservableCollection<SetTemplateCollection>();
-
-                    foreach (var setCollection in setTemplatesCollections)
-                    {
-                        SetTemplateCollectionList.Add(setCollection);
-                    }
-                }
-            });
-        }
-
         public async Task LoadWorkoutTemplatesAsync()
         {
             await ExecuteAsync(async () =>
@@ -197,14 +174,14 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task ShowExistingSetTemplateCollectionList()
+        private async Task ShowExistingWorkoutList()
         {
             await LoadWorkoutTemplatesAsync();
             ShowStcList = true;
         }
 
         [RelayCommand]
-        private async Task CopySetTemplateCollection(int stcId)
+        private async Task CopyWorkout(int stcId)
         {
             if (WorkoutTemplate is null) return;
 
@@ -252,8 +229,6 @@ namespace LocalLiftLog.ViewModels
                     SetList.Add(itemCopy);
                 });
             }
-
-            await LoadSetTemplateCollectionsAsync();
 
             ShowStcList = false;
         }

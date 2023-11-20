@@ -104,7 +104,7 @@
         <Button 
             Text="Copy Existing Workout"
             Style="{StaticResource ProgramButtonStyle}"
-            Command="{Binding ShowExistingSetTemplateCollectionListCommand}"
+            Command="{Binding ShowExistingWorkoutListCommand}"
             Margin="50" />
 
         <CollectionView
@@ -135,7 +135,7 @@
                         <Button 
                             Text="Copy"
                             Style="{StaticResource AddButtonStyle}"
-                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=CopySetTemplateCollectionCommand}" 
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=CopyWorkoutCommand}" 
                             CommandParameter="{Binding SetTemplateCollectionId}" />
                     </HorizontalStackLayout>
                 </DataTemplate>
