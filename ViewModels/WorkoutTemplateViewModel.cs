@@ -188,6 +188,8 @@ namespace LocalLiftLog.ViewModels
             if (workoutTemplate is null)
                 return;
 
+            int stcId = workoutTemplate.SetTemplateCollectionId;
+
             await ExecuteAsync(async () =>
             {
                 if (!await _context.DeleteItemAsync<WorkoutTemplate>(workoutTemplate))
@@ -199,6 +201,12 @@ namespace LocalLiftLog.ViewModels
             await LoadWorkoutTemplatesAsync();
 
             await DeleteWorkoutTemplateCollectionsByWorkoutTemplateId(id);
+
+            if (stcId != 0)
+            {
+                await DeleteSetTemplateCollectionById(stcId);
+                await DeleteSetTemplateByStcId(stcId);
+            }
         }
 
         private async Task DeleteWorkoutTemplateCollectionsByWorkoutTemplateId(int id)
