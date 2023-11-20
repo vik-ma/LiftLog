@@ -102,13 +102,13 @@
             Margin="50" />
 
         <Button 
-            Text="Copy Existing Set List"
+            Text="Copy Existing Workout"
             Style="{StaticResource ProgramButtonStyle}"
             Command="{Binding ShowExistingSetTemplateCollectionListCommand}"
             Margin="50" />
 
         <CollectionView
-            ItemsSource="{Binding SetTemplateCollectionList}"
+            ItemsSource="{Binding WorkoutTemplateList}"
             HorizontalOptions="Center"
             IsVisible="{Binding ShowStcList}">
             <CollectionView.ItemsLayout>
@@ -117,17 +117,17 @@
                     Orientation="Horizontal" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:SetTemplateCollection">
+                <DataTemplate x:DataType="models:WorkoutTemplate">
                     <HorizontalStackLayout Spacing="5">
                         <Label VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span 
-                                        Text="Id: " 
+                                        Text="Name: " 
                                         FontAttributes="Bold"  
                                         Style="{StaticResource ProgramSpanStyle}" />
                                     <Span 
-                                        Text="{Binding Id}"
+                                        Text="{Binding Name}"
                                         Style="{StaticResource ProgramSpanStyle}" />
                                 </FormattedString>
                             </Label.FormattedText>
@@ -136,7 +136,7 @@
                             Text="Copy"
                             Style="{StaticResource AddButtonStyle}"
                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=CopySetTemplateCollectionCommand}" 
-                            CommandParameter="{Binding Id}" />
+                            CommandParameter="{Binding SetTemplateCollectionId}" />
                     </HorizontalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

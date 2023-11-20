@@ -197,8 +197,9 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private void ShowExistingSetTemplateCollectionList()
+        private async Task ShowExistingSetTemplateCollectionList()
         {
+            await LoadWorkoutTemplatesAsync();
             ShowStcList = true;
         }
 
