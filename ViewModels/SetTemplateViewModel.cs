@@ -190,17 +190,17 @@ namespace LocalLiftLog.ViewModels
         {
             Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == id;
 
-            IEnumerable<SetTemplate> filteredWtcList = null;
+            IEnumerable<SetTemplate> filteredList = null;
             try
             {
-                filteredWtcList = await _context.GetFilteredAsync<SetTemplate>(predicate);
+                filteredList = await _context.GetFilteredAsync<SetTemplate>(predicate);
             }
             catch
             {
                 await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
             }
 
-            foreach (var item in filteredWtcList)
+            foreach (var item in filteredList)
             {
                 await ExecuteAsync(async () =>
                 {
