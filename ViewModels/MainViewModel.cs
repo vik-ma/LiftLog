@@ -42,5 +42,11 @@ namespace LocalLiftLog.ViewModels
         {
             await Shell.Current.GoToAsync($"{nameof(SetTemplateListPage)}");
         }
+
+        [RelayCommand]
+        private async Task GoToCompletedSet()
+        {
+            await Shell.Current.GoToAsync($"{nameof(CompletedSetListPage)}");
+        }
     }
 }

@@ -27,6 +27,10 @@
             Text="Set Template List"
             Command="{Binding GoToSetTemplateCommand}"
             Style="{StaticResource MainPageNavigationButtonStyle}"/>
+        <Button
+            Text="Completed Set List"
+            Command="{Binding GoToCompletedSetCommand}"
+            Style="{StaticResource MainPageNavigationButtonStyle}"/>
     </VerticalStackLayout>
 
 </ContentPage>
