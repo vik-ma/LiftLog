@@ -12,7 +12,6 @@ namespace LocalLiftLog.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int Weight { get; set; }
-
         public int CompletedSetCollectionId { get; set; }
         
     }

@@ -9,6 +9,82 @@
     
     <VerticalStackLayout HorizontalOptions="Center">
         <VerticalStackLayout>
+            <Label 
+                Text="Completed Sets"
+                HorizontalOptions="Center"
+                FontSize="30"
+                FontAttributes="Bold"
+                Margin="10" />
+            <CollectionView
+                ItemsSource="{Binding CompletedSetList}"
+                HorizontalOptions="Center">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:CompletedSet">
+                        <HorizontalStackLayout Spacing="5">
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Id: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource ProgramSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding Id}"
+                                            Style="{StaticResource ProgramSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label 
+                                Text="CollectionId:"
+                                VerticalOptions="Center"
+                                FontAttributes="Bold" />
+                            <Entry 
+                                Text="{Binding CompletedSetCollectionId}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding Weight}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Button 
+                                Text="Update"
+                                Style="{StaticResource AddButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=UpdateCompletedSetCommand}"
+                                CommandParameter="{Binding Id}" />
+                            <Button 
+                                Text="Delete"
+                                Style="{StaticResource DeleteButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=DeleteCompletedSetCommand}"
+                                CommandParameter="{Binding Id}" />
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <VerticalStackLayout
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                            <Label 
+                                Text="No Completed Sets In List!" 
+                                FontSize="18" 
+                                FontAttributes="Bold" 
+                                HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
+            <Button 
+                Text="New Completed Set"
+                Style="{StaticResource AddButtonStyle}"
+                WidthRequest="300"
+                Margin="5"
+                Command="{Binding CreateCompletedSetCommand}" />
+
+        </VerticalStackLayout>
+        <VerticalStackLayout>
             <Button 
                 Text="Go Back"
                 Style="{StaticResource ProgramButtonStyle}"

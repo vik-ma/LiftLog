@@ -15,8 +15,8 @@
                 FontAttributes="Bold"
                 Margin="10" />
             <CollectionView
-                    ItemsSource="{Binding SetTemplateList}"
-                    HorizontalOptions="Center">
+                ItemsSource="{Binding SetTemplateList}"
+                HorizontalOptions="Center">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout 
                         ItemSpacing="3"
