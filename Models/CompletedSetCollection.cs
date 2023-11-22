@@ -12,6 +12,7 @@ namespace LocalLiftLog.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int CompletedSetId { get; set; }
+        public bool IsCompleted { get; set; }
         public string DateCompleted { get; set; }
     }
 }
