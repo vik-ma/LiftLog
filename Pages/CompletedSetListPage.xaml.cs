@@ -15,6 +15,5 @@ public partial class CompletedSetListPage : ContentPage
     {
         base.OnAppearing();
         await _viewModel.LoadCompletedSetsAsync();
-        await _viewModel.LoadCompletedSetCollectionsAsync();
     }
 }
