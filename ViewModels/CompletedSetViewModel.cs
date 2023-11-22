@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using LocalLiftLog.Data;
 using LocalLiftLog.Models;
 using LocalLiftLog.Pages;
+using LocalLiftLog.Helpers;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Linq.Expressions;
@@ -211,6 +212,30 @@ namespace LocalLiftLog.ViewModels
             }
 
             await LoadCompletedSetsAsync();
+        }
+
+        [RelayCommand]
+        private async Task SetCompleteCompletedSetCollection(int id)
+        {
+            CompletedSetCollection completedSetCollection = CompletedSetCollectionList.FirstOrDefault(p => p.Id == id);
+
+            if (completedSetCollection is null)
+                return;
+
+            string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
+
+            completedSetCollection.IsCompleted = true;
+            completedSetCollection.DateCompleted = currentDateTimeString;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<CompletedSetCollection>(completedSetCollection))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Completed Set Collection.", "OK");
+                }
+
+                await LoadCompletedSetCollectionsAsync();
+            });
         }
 
         [RelayCommand]
