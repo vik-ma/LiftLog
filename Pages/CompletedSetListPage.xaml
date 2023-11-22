@@ -39,20 +39,44 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label 
-                                Text="CollectionId:"
-                                VerticalOptions="Center"
-                                FontAttributes="Bold" />
-                            <Entry 
-                                Text="{Binding CompletedSetCollectionId}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
                             <Entry 
                                 Text="{Binding Weight}"
                                 Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Is Completed: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource ProgramSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding IsCompleted}"
+                                            Style="{StaticResource ProgramSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Date: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource ProgramSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding DateCompleted}"
+                                            Style="{StaticResource ProgramSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                             <Button 
                                 Text="Update"
                                 Style="{StaticResource AddButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=UpdateCompletedSetCommand}"
+                                CommandParameter="{Binding Id}" />
+                            <Button 
+                                Text="Set Complete"
+                                Style="{StaticResource GenericButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=MarkCompletedSetAsCompleteCommand}"
                                 CommandParameter="{Binding Id}" />
                             <Button 
                                 Text="Delete"

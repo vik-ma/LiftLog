@@ -113,28 +113,27 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task SetCompleteCompletedSetCollection(int id)
+        private async Task MarkCompletedSetAsComplete(int id)
         {
-            //CompletedSetCollection completedSetCollection = CompletedSetCollectionList.FirstOrDefault(p => p.Id == id);
+            CompletedSet completedSet = CompletedSetList.FirstOrDefault(p => p.Id == id);
 
-            //if (completedSetCollection is null)
-            //    return;
+            if (completedSet is null)
+                return;
 
-            //string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
+            string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
 
-         
-            //completedSetCollection.IsCompleted = true;
-            //completedSetCollection.DateCompleted = currentDateTimeString;
+            completedSet.IsCompleted = true;
+            completedSet.DateCompleted = currentDateTimeString;
 
-            //await ExecuteAsync(async () =>
-            //{
-            //    if (!await _context.UpdateItemAsync<CompletedSetCollection>(completedSetCollection))
-            //    {
-            //        await Shell.Current.DisplayAlert("Error", "Error occured when updating Completed Set Collection.", "OK");
-            //    }
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<CompletedSet>(completedSet))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Completed Set.", "OK");
+                }
 
-            //    await LoadCompletedSetCollectionsAsync();
-            //});
+                await LoadCompletedSetsAsync();
+            });
         }
 
         [RelayCommand]
