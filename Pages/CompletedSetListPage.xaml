@@ -39,9 +39,6 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Entry 
-                                Text="{Binding Weight}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -68,6 +65,30 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            <Entry 
+                                Text="{Binding Weight}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding Reps}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding Rir}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding Rpe}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding Time}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding Distance}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding CardioResistance}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
+                                Text="{Binding IsUsingBodyWeightAsWeight}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
                             <Button 
                                 Text="Update"
                                 Style="{StaticResource AddButtonStyle}"
