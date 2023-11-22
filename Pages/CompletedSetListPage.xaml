@@ -25,86 +25,106 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:CompletedSet">
-                        <HorizontalStackLayout Spacing="5">
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Id: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource ProgramSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding Id}"
-                                            Style="{StaticResource ProgramSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Is Completed: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource ProgramSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding IsCompleted}"
-                                            Style="{StaticResource ProgramSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Date: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource ProgramSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding DateCompleted}"
-                                            Style="{StaticResource ProgramSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Entry 
-                                Text="{Binding Weight}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
-                                Text="{Binding Reps}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
-                                Text="{Binding Rir}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
-                                Text="{Binding Rpe}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
-                                Text="{Binding Time}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
-                                Text="{Binding Distance}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
-                                Text="{Binding CardioResistance}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
-                                Text="{Binding IsUsingBodyWeightAsWeight}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Button 
-                                Text="Update"
-                                Style="{StaticResource AddButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=UpdateCompletedSetCommand}"
-                                CommandParameter="{Binding Id}" />
-                            <Button 
-                                Text="Set Complete"
-                                Style="{StaticResource GenericButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=MarkCompletedSetAsCompleteCommand}"
-                                CommandParameter="{Binding Id}" />
-                            <Button 
-                                Text="Delete"
-                                Style="{StaticResource DeleteButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=DeleteCompletedSetCommand}"
-                                CommandParameter="{Binding Id}" />
-                        </HorizontalStackLayout>
+                        <VerticalStackLayout Spacing="5">
+                            <HorizontalStackLayout Spacing="5">
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Id: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource ProgramSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Id}"
+                                                Style="{StaticResource ProgramSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Workout Id: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource ProgramSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding CompletedWorkoutId}"
+                                                Style="{StaticResource ProgramSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Entry 
+                                    Text="{Binding CompletedWorkoutId}"
+                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Is Completed: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource ProgramSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding IsCompleted}"
+                                                Style="{StaticResource ProgramSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Date: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource ProgramSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding DateCompleted}"
+                                                Style="{StaticResource ProgramSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Button 
+                                    Text="Set Complete"
+                                    Style="{StaticResource GenericButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=MarkCompletedSetAsCompleteCommand}"
+                                    CommandParameter="{Binding Id}" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="5">
+                                <Entry 
+                                    Text="{Binding Weight}"
+                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                <Entry 
+                                    Text="{Binding Reps}"
+                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                <Entry 
+                                    Text="{Binding Rir}"
+                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                <Entry 
+                                    Text="{Binding Rpe}"
+                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                <Entry 
+                                    Text="{Binding Time}"
+                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                <Entry 
+                                    Text="{Binding Distance}"
+                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                <Entry 
+                                    Text="{Binding CardioResistance}"
+                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                <Entry 
+                                    Text="{Binding IsUsingBodyWeightAsWeight}"
+                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                <Button 
+                                    Text="Update"
+                                    Style="{StaticResource AddButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=UpdateCompletedSetCommand}"
+                                    CommandParameter="{Binding Id}" />
+                                <Button 
+                                    Text="Delete"
+                                    Style="{StaticResource DeleteButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=DeleteCompletedSetCommand}"
+                                    CommandParameter="{Binding Id}" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
                 <CollectionView.EmptyView>
