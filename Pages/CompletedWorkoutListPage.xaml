@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LocalLiftLog.Pages.CompletedWorkoutListPage"
+             xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
+             xmlns:models="clr-namespace:LocalLiftLog.Models"
+             x:DataType="viewmodel:CompletedWorkoutViewModel"
+             Title="Completed Workout List">
+    <VerticalStackLayout HorizontalOptions="Center">
+        <VerticalStackLayout>
+            <Label 
+                Text="Completed Workouts"
+                HorizontalOptions="Center"
+                FontSize="30"
+                FontAttributes="Bold"
+                Margin="10" />
+        </VerticalStackLayout>
+        
+        <VerticalStackLayout>
+            <Button 
+                Text="Go Back"
+                Style="{StaticResource ProgramButtonStyle}"
+                Command="{Binding GoBackCommand}"
+                Margin="50" />
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
