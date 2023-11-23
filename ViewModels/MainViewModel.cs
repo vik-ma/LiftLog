@@ -48,5 +48,11 @@ namespace LocalLiftLog.ViewModels
         {
             await Shell.Current.GoToAsync($"{nameof(CompletedSetListPage)}");
         }
+
+        [RelayCommand]
+        private async Task GoToCompletedWorkout()
+        {
+            await Shell.Current.GoToAsync($"{nameof(CompletedWorkoutListPage)}");
+        }
     }
 }

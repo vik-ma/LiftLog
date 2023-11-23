@@ -31,6 +31,10 @@
             Text="Completed Set List"
             Command="{Binding GoToCompletedSetCommand}"
             Style="{StaticResource MainPageNavigationButtonStyle}"/>
+        <Button
+            Text="Completed Workout List"
+            Command="{Binding GoToCompletedWorkoutCommand}"
+            Style="{StaticResource MainPageNavigationButtonStyle}"/>
     </VerticalStackLayout>
 
 </ContentPage>
