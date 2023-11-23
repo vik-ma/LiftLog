@@ -23,6 +23,78 @@ namespace LocalLiftLog.ViewModels
             _context = context;
         }
 
+        [ObservableProperty]
+        private ObservableCollection<CompletedWorkout> completedWorkoutList = new();
+
+        public async Task LoadCompletedWorkoutsAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                CompletedWorkoutList.Clear();
+
+                var completedWorkouts = await _context.GetAllAsync<CompletedWorkout>();
+
+                if (completedWorkouts is not null && completedWorkouts.Any())
+                {
+                    completedWorkouts ??= new ObservableCollection<CompletedWorkout>();
+
+                    foreach (var set in completedWorkouts)
+                    {
+                        CompletedWorkoutList.Add(set);
+                    }
+                }
+            });
+        }
+
+        [RelayCommand]
+        private async Task CreateCompletedWorkoutAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                CompletedWorkout set = new();
+                await _context.AddItemAsync<CompletedWorkout>(set);
+                CompletedWorkoutList.Add(set);
+            });
+        }
+
+        [RelayCommand]
+        private async Task UpdateCompletedWorkoutAsync(int id)
+        {
+            CompletedWorkout completedWorkout = CompletedWorkoutList.FirstOrDefault(p => p.Id == id);
+
+            if (completedWorkout is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<CompletedWorkout>(completedWorkout))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Completed Set.", "OK");
+                }
+
+                await LoadCompletedWorkoutsAsync();
+            });
+        }
+
+        [RelayCommand]
+        private async Task DeleteCompletedWorkoutAsync(int id)
+        {
+            CompletedWorkout completedWorkout = CompletedWorkoutList.FirstOrDefault(p => p.Id == id);
+
+            if (completedWorkout is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<CompletedWorkout>(completedWorkout))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Completed Set.", "OK");
+                }
+            });
+
+            await LoadCompletedWorkoutsAsync();
+        }
+
         #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {

@@ -14,6 +14,6 @@ public partial class CompletedWorkoutListPage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-        //await _viewModel.LoadCompletedWorkoutsAsync();
+        await _viewModel.LoadCompletedWorkoutsAsync();
     }
 }
