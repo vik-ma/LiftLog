@@ -104,7 +104,7 @@
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center">
                             <Label 
-                                Text="No Completed Sets In List!" 
+                                Text="No Completed Workouts In List!" 
                                 FontSize="18" 
                                 FontAttributes="Bold" 
                                 HorizontalTextAlignment="Center" />
@@ -113,7 +113,7 @@
                 </CollectionView.EmptyView>
             </CollectionView>
             <Button 
-                Text="New Completed Set"
+                Text="New Completed Workout"
                 Style="{StaticResource AddButtonStyle}"
                 WidthRequest="300"
                 Margin="5"
