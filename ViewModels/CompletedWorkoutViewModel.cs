@@ -110,6 +110,8 @@ namespace LocalLiftLog.ViewModels
                 }
             });
 
+            await DeleteCompletedSetsByCompletedWorkoutId(id);
+
             await LoadCompletedWorkoutsAsync();
         }
 
@@ -139,7 +141,7 @@ namespace LocalLiftLog.ViewModels
 
         private async Task DeleteCompletedSetsByCompletedWorkoutId(int id)
         {
-            Expression<Func<CompletedWorkout, bool>> predicate = entity => entity.WorkoutTemplateId == id;
+            Expression<Func<CompletedSet, bool>> predicate = entity => entity.CompletedWorkoutId == id;
 
             IEnumerable<CompletedSet> filteredList = null;
             try
@@ -161,8 +163,6 @@ namespace LocalLiftLog.ViewModels
                     }
                 });
             }
-
-            await LoadWorkoutTemplateCollectionsAsync();
         }
 
         [RelayCommand]
