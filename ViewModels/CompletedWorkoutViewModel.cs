@@ -46,6 +46,24 @@ namespace LocalLiftLog.ViewModels
             });
         }
 
+        #nullable enable
+        private async Task ExecuteAsync(Func<Task> operation)
+        {
+            try
+            {
+                #nullable disable
+                await operation?.Invoke();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+
+            }
+        }
+
         [RelayCommand]
         private async Task CreateCompletedWorkoutAsync()
         {
@@ -95,22 +113,30 @@ namespace LocalLiftLog.ViewModels
             await LoadCompletedWorkoutsAsync();
         }
 
-        #nullable enable
-        private async Task ExecuteAsync(Func<Task> operation)
+
+
+        [RelayCommand]
+        private async Task MarkCompletedWorkoutAsComplete(int id)
         {
-            try
-            {
-                #nullable disable
-                await operation?.Invoke();
-            }
-            catch
-            {
+            CompletedWorkout completedWorkout = CompletedWorkoutList.FirstOrDefault(p => p.Id == id);
 
-            }
-            finally
-            {
+            if (completedWorkout is null)
+                return;
 
-            }
+            string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
+
+            completedWorkout.IsCompleted = true;
+            completedWorkout.DateCompleted = currentDateTimeString;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<CompletedWorkout>(completedWorkout))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Completed Set.", "OK");
+                }
+
+                await LoadCompletedWorkoutsAsync();
+            });
         }
 
         [RelayCommand]
