@@ -113,8 +113,6 @@ namespace LocalLiftLog.ViewModels
             await LoadCompletedWorkoutsAsync();
         }
 
-
-
         [RelayCommand]
         private async Task MarkCompletedWorkoutAsComplete(int id)
         {
@@ -137,6 +135,34 @@ namespace LocalLiftLog.ViewModels
 
                 await LoadCompletedWorkoutsAsync();
             });
+        }
+
+        private async Task DeleteCompletedSetsByCompletedWorkoutId(int id)
+        {
+            Expression<Func<CompletedWorkout, bool>> predicate = entity => entity.WorkoutTemplateId == id;
+
+            IEnumerable<CompletedSet> filteredList = null;
+            try
+            {
+                filteredList = await _context.GetFilteredAsync<CompletedSet>(predicate);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Workout Template Collections.", "OK");
+            }
+
+            foreach (var item in filteredList)
+            {
+                await ExecuteAsync(async () =>
+                {
+                    if (!await _context.DeleteItemAsync<CompletedSet>(item))
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
+                    }
+                });
+            }
+
+            await LoadWorkoutTemplateCollectionsAsync();
         }
 
         [RelayCommand]
