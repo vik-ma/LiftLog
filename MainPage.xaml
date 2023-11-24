@@ -35,6 +35,10 @@
             Text="Completed Workout List"
             Command="{Binding GoToCompletedWorkoutCommand}"
             Style="{StaticResource MainPageNavigationButtonStyle}"/>
+        <Button
+            Text="Time Period List"
+            Command="{Binding GoToTimePeriodCommand}"
+            Style="{StaticResource MainPageNavigationButtonStyle}"/>
     </VerticalStackLayout>
 
 </ContentPage>
