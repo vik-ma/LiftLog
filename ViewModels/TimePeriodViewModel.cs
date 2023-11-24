@@ -125,6 +125,7 @@ namespace LocalLiftLog.ViewModels
 
             timePeriod.IsPeriodOngoing = true;
             timePeriod.StartDate = currentDateTimeString;
+            timePeriod.EndDate = null;
 
             await ExecuteAsync(async () =>
             {
@@ -145,10 +146,27 @@ namespace LocalLiftLog.ViewModels
             if (timePeriod is null)
                 return;
 
+            if (timePeriod.StartDate is null)
+            {
+                await Shell.Current.DisplayAlert("Error", "Must set a Start Date before setting End Date.", "OK");
+                return;
+            }
+
             string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
 
+            if (DateTimeHelper.ValidateStartAndEndDate(timePeriod.StartDate, currentDateTimeString))
+            {
+                timePeriod.EndDate = currentDateTimeString;
+            }
+            else
+            {
+                timePeriod.StartDate = null;
+                timePeriod.EndDate = null;
+                await Shell.Current.DisplayAlert("Error", "Invalid Start Date.\nDates have been reset.", "OK");
+            }
+
             timePeriod.IsPeriodOngoing = false;
-            timePeriod.EndDate = currentDateTimeString;
+            
 
             await ExecuteAsync(async () =>
             {
