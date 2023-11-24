@@ -38,9 +38,9 @@ namespace LocalLiftLog.ViewModels
                 {
                     completedWorkouts ??= new ObservableCollection<CompletedWorkout>();
 
-                    foreach (var set in completedWorkouts)
+                    foreach (var workout in completedWorkouts)
                     {
-                        CompletedWorkoutList.Add(set);
+                        CompletedWorkoutList.Add(workout);
                     }
                 }
             });
@@ -69,9 +69,9 @@ namespace LocalLiftLog.ViewModels
         {
             await ExecuteAsync(async () =>
             {
-                CompletedWorkout set = new();
-                await _context.AddItemAsync<CompletedWorkout>(set);
-                CompletedWorkoutList.Add(set);
+                CompletedWorkout workout = new();
+                await _context.AddItemAsync<CompletedWorkout>(workout);
+                CompletedWorkoutList.Add(workout);
             });
         }
 
