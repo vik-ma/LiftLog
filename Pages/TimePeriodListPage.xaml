@@ -110,6 +110,16 @@
                                 </Label.FormattedText>
                             </Label>
                             <Button 
+                                Text="Set Start"
+                                Style="{StaticResource GenericButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=SetTimePeriodStartDateCommand}"
+                                CommandParameter="{Binding Id}" />
+                            <Button 
+                                Text="Set End"
+                                Style="{StaticResource GenericButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=SetTimePeriodEndDateCommand}"
+                                CommandParameter="{Binding Id}" />
+                            <Button 
                                 Text="Update"
                                 Style="{StaticResource AddButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=UpdateTimePeriodCommand}"

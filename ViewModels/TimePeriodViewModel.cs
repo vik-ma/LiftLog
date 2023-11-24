@@ -114,6 +114,54 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
+        private async Task SetTimePeriodStartDate(int id)
+        {
+            TimePeriod timePeriod = TimePeriodList.FirstOrDefault(p => p.Id == id);
+
+            if (timePeriod is null)
+                return;
+
+            string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
+
+            timePeriod.IsPeriodOngoing = true;
+            timePeriod.StartDate = currentDateTimeString;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<TimePeriod>(timePeriod))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Time Period.", "OK");
+                }
+
+                await LoadTimePeriodsAsync();
+            });
+        }
+
+        [RelayCommand]
+        private async Task SetTimePeriodEndDate(int id)
+        {
+            TimePeriod timePeriod = TimePeriodList.FirstOrDefault(p => p.Id == id);
+
+            if (timePeriod is null)
+                return;
+
+            string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
+
+            timePeriod.IsPeriodOngoing = false;
+            timePeriod.EndDate = currentDateTimeString;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<TimePeriod>(timePeriod))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Time Period.", "OK");
+                }
+
+                await LoadTimePeriodsAsync();
+            });
+        }
+
+        [RelayCommand]
         static async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
