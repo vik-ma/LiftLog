@@ -83,15 +83,7 @@ namespace LocalLiftLog.ViewModels
             if (timePeriod is null)
                 return;
 
-            await ExecuteAsync(async () =>
-            {
-                if (!await _context.UpdateItemAsync<TimePeriod>(timePeriod))
-                {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Time Period.", "OK");
-                }
-
-                await LoadTimePeriodsAsync();
-            });
+            await UpdateTimePeriodObjectAsync(timePeriod);
         }
 
         [RelayCommand]
@@ -127,15 +119,7 @@ namespace LocalLiftLog.ViewModels
             timePeriod.StartDate = currentDateTimeString;
             timePeriod.EndDate = null;
 
-            await ExecuteAsync(async () =>
-            {
-                if (!await _context.UpdateItemAsync<TimePeriod>(timePeriod))
-                {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Time Period.", "OK");
-                }
-
-                await LoadTimePeriodsAsync();
-            });
+            await UpdateTimePeriodObjectAsync(timePeriod);
         }
 
         [RelayCommand]
@@ -166,7 +150,13 @@ namespace LocalLiftLog.ViewModels
             }
 
             timePeriod.IsPeriodOngoing = false;
-            
+
+            await UpdateTimePeriodObjectAsync(timePeriod);
+        }
+
+        private async Task UpdateTimePeriodObjectAsync(TimePeriod timePeriod)
+        {
+            if (timePeriod is null) return;
 
             await ExecuteAsync(async () =>
             {
