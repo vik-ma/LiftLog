@@ -39,6 +39,10 @@
             Text="Time Period List"
             Command="{Binding GoToTimePeriodCommand}"
             Style="{StaticResource MainPageNavigationButtonStyle}"/>
+        <Button
+            Text="Custom Exercise List"
+            Command="{Binding GoToCustomExerciseCommand}"
+            Style="{StaticResource MainPageNavigationButtonStyle}"/>
     </VerticalStackLayout>
 
 </ContentPage>

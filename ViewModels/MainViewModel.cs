@@ -60,5 +60,11 @@ namespace LocalLiftLog.ViewModels
         {
             await Shell.Current.GoToAsync($"{nameof(TimePeriodListPage)}");
         }
+
+        [RelayCommand]
+        private async Task GoToCustomExercise()
+        {
+            await Shell.Current.GoToAsync($"{nameof(CustomExerciseListPage)}");
+        }
     }
 }
