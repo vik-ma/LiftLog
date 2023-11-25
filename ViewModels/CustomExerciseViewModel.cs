@@ -22,6 +22,97 @@ namespace LocalLiftLog.ViewModels
             _context = context;
         }
 
+        [ObservableProperty]
+        private ObservableCollection<CustomExercise> customExerciseList = new();
+
+        public async Task LoadCustomExercisesAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                CustomExerciseList.Clear();
+
+                var customExercise = await _context.GetAllAsync<CustomExercise>();
+
+                if (customExercise is not null && customExercise.Any())
+                {
+                    customExercise ??= new ObservableCollection<CustomExercise>();
+
+                    foreach (var exercise in customExercise)
+                    {
+                        CustomExerciseList.Add(exercise);
+                    }
+                }
+            });
+        }
+
+        #nullable enable
+        private async Task ExecuteAsync(Func<Task> operation)
+        {
+            try
+            {
+                #nullable disable
+                await operation?.Invoke();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+
+            }
+        }
+
+
+        [RelayCommand]
+        private async Task CreateCustomExerciseAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                CustomExercise exercise = new();
+                await _context.AddItemAsync<CustomExercise>(exercise);
+                CustomExerciseList.Add(exercise);
+            });
+        }
+
+        [RelayCommand]
+        private async Task UpdateCustomExerciseAsync(int id)
+        {
+            CustomExercise customExercise = CustomExerciseList.FirstOrDefault(p => p.Id == id);
+
+            if (customExercise is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<CustomExercise>(customExercise))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Custom Exercise.", "OK");
+                }
+
+                await LoadCustomExercisesAsync();
+            });
+        }
+
+        [RelayCommand]
+        private async Task DeleteCustomExerciseAsync(int id)
+        {
+            CustomExercise customExercise = CustomExerciseList.FirstOrDefault(p => p.Id == id);
+
+            if (customExercise is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<CustomExercise>(customExercise))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Custom Exercise.", "OK");
+                }
+            });
+
+            await LoadCustomExercisesAsync();
+        }
+
         [RelayCommand]
         static async Task GoBack()
         {
