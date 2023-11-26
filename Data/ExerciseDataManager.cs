@@ -10,15 +10,15 @@ namespace LocalLiftLog.Data
 {
     public class ExerciseDataManager
     {
-        public Exercise[] ExerciseList { get; set; }
+        public List<Exercise> ExerciseList { get; set; }
         public ExerciseDataManager() 
         {
             InitializeExerciseList();
         }
 
-        private void InitializeExerciseList ()
+        private void InitializeExerciseList()
         {
-            ExerciseList = new Exercise[]
+            ExerciseList = new List<Exercise>
             {
                 new Exercise { Name="Bench Press", ExerciseGroupSet=new HashSet<int>(new[] { 0, 1 }) },
                 new Exercise { Name="Hammer Curl", ExerciseGroupSet=new HashSet<int>(new[] { 2, 11 }) },
