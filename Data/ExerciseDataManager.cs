@@ -10,7 +10,7 @@ namespace LocalLiftLog.Data
 {
     public class ExerciseDataManager
     {
-        public List<Exercise> ExerciseList { get; set; }
+        private List<Exercise> ExerciseList;
         public ExerciseDataManager() 
         {
             InitializeExerciseList();
@@ -29,6 +29,11 @@ namespace LocalLiftLog.Data
                 new Exercise { Name="Running", ExerciseGroupSet=new HashSet<int>(new[] { 14 }) },
                 new Exercise { Name="Other", ExerciseGroupSet=new HashSet<int>(new[] { 15 }) },
             };
+        }
+
+        public IEnumerable<Exercise> GetExerciseList()
+        {
+            return ExerciseList;
         }
     }
 }
