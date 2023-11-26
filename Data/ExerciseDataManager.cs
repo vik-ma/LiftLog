@@ -11,9 +11,12 @@ namespace LocalLiftLog.Data
     public class ExerciseDataManager
     {
         private List<Exercise> ExerciseList;
-        public ExerciseDataManager() 
+
+        private readonly DatabaseContext _context;
+        public ExerciseDataManager(DatabaseContext context) 
         {
             InitializeExerciseList();
+            _context = context;
         }
 
         private void InitializeExerciseList()
@@ -38,6 +41,8 @@ namespace LocalLiftLog.Data
 
         public IEnumerable<Exercise> FilterExerciseListByExerciseGroup(int group)
         {
+            if (group < 0 || group > 15) return null;
+
             return ExerciseList.Where(item => item.ExerciseGroupSet.Contains(group));
         }
     }
