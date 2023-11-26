@@ -35,5 +35,10 @@ namespace LocalLiftLog.Data
         {
             return ExerciseList;
         }
+
+        public IEnumerable<Exercise> FilterExerciseListByExerciseGroup(int group)
+        {
+            return ExerciseList.Where(item => item.ExerciseGroupSet.Contains(group));
+        }
     }
 }
