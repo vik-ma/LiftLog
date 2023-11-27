@@ -79,7 +79,7 @@ namespace LocalLiftLog.Data
                 foreach (var property in groupProperties)
                 {
                     // Extract the number from the property name
-                    if (int.TryParse(property.Name.Substring("IsExerciseGroup".Length), out int groupNumber))
+                    if (int.TryParse(property.Name.AsSpan("IsExerciseGroup".Length), out int groupNumber))
                     {
                         bool propertyValue = (bool)property.GetValue(customExercise);
 
