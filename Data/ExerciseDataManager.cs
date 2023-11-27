@@ -2,6 +2,7 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,19 @@ namespace LocalLiftLog.Data
                 new Exercise { Name="Running", ExerciseGroupSet=new HashSet<int>(new[] { 14 }) },
                 new Exercise { Name="Other", ExerciseGroupSet=new HashSet<int>(new[] { 15 }) },
             };
+        }
+
+        private async Task<IEnumerable<CustomExercise>> LoadCustomExercises()
+        {
+            try
+            {
+                var customExerciseList = await _context.GetAllAsync<CustomExercise>();
+                return customExerciseList;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public IEnumerable<Exercise> GetExerciseList()
