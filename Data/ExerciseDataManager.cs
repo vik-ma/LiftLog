@@ -12,15 +12,17 @@ namespace LocalLiftLog.Data
     public class ExerciseDataManager
     {
         private List<Exercise> ExerciseList;
+        private List<Exercise> CustomExerciseList;
 
         private readonly DatabaseContext _context;
         public ExerciseDataManager(DatabaseContext context) 
         {
             InitializeExerciseList();
+            LoadCustomExerciseList();
             _context = context;
         }
 
-        private async void InitializeExerciseList()
+        private void InitializeExerciseList()
         {
             ExerciseList = new List<Exercise>
             {
@@ -33,15 +35,20 @@ namespace LocalLiftLog.Data
                 new Exercise { Name="Running", ExerciseGroupSet=new HashSet<int>(new[] { 14 }) },
                 new Exercise { Name="Other", ExerciseGroupSet=new HashSet<int>(new[] { 15 }) },
             };
-
-            var customExerciseList = await LoadCustomExercises();
-
-            if (customExerciseList is null || !customExerciseList.Any()) return;
-
-            var convertedCustomExerciseList = ConvertCustomExerciseListToExerciseList(customExerciseList);
         }
 
-        private async Task<IEnumerable<CustomExercise>> LoadCustomExercises()
+        private async void LoadCustomExerciseList()
+        {
+            CustomExerciseList.Clear();
+
+            var customExerciseDatabaseList = await LoadCustomExerciseFromDatabase();
+
+            if (customExerciseDatabaseList is null || !customExerciseDatabaseList.Any()) return;
+
+            CustomExerciseList = ConvertCustomExerciseListToExerciseList(customExerciseDatabaseList);
+        }
+
+        private async Task<IEnumerable<CustomExercise>> LoadCustomExerciseFromDatabase()
         {
             try
             {
