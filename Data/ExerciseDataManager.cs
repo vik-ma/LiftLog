@@ -1,6 +1,7 @@
 ﻿using LocalLiftLog.Models;
 using SQLite;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -18,7 +19,6 @@ namespace LocalLiftLog.Data
         public ExerciseDataManager(DatabaseContext context) 
         {
             InitializeExerciseList();
-            LoadCustomExerciseList();
             _context = context;
         }
 
@@ -37,7 +37,7 @@ namespace LocalLiftLog.Data
             };
         }
 
-        private async void LoadCustomExerciseList()
+        private async Task LoadCustomExerciseList()
         {
             CustomExerciseList.Clear();
 
@@ -98,9 +98,13 @@ namespace LocalLiftLog.Data
             return convertedExerciseList;
         }
 
-        public IEnumerable<Exercise> GetExerciseList()
+        public async Task<IEnumerable<Exercise>> GetFullExerciseList()
         {
-            return ExerciseList;
+            await LoadCustomExerciseList();
+
+            IEnumerable<Exercise> combinedExerciseList = ExerciseList.Concat(CustomExerciseList ?? Enumerable.Empty<Exercise>());
+
+            return combinedExerciseList;
         }
 
         public IEnumerable<Exercise> FilterExerciseListByExerciseGroup(int group)
