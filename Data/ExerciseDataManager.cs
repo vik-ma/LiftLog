@@ -20,7 +20,7 @@ namespace LocalLiftLog.Data
             _context = context;
         }
 
-        private void InitializeExerciseList()
+        private async void InitializeExerciseList()
         {
             ExerciseList = new List<Exercise>
             {
@@ -33,6 +33,12 @@ namespace LocalLiftLog.Data
                 new Exercise { Name="Running", ExerciseGroupSet=new HashSet<int>(new[] { 14 }) },
                 new Exercise { Name="Other", ExerciseGroupSet=new HashSet<int>(new[] { 15 }) },
             };
+
+            var customExerciseList = await LoadCustomExercises();
+
+            if (customExerciseList is null || !customExerciseList.Any()) return;
+
+            var convertedCustomExerciseList = ConvertCustomExerciseListToExerciseList(customExerciseList);
         }
 
         private async Task<IEnumerable<CustomExercise>> LoadCustomExercises()
@@ -46,6 +52,43 @@ namespace LocalLiftLog.Data
             {
                 return null;
             }
+        }
+
+        private static List<Exercise> ConvertCustomExerciseListToExerciseList(IEnumerable<CustomExercise> customExerciseList)
+        {
+            var convertedExerciseList = new List<Exercise>();
+
+            foreach (var customExercise in customExerciseList)
+            {
+                var customExerciseGroupSet = new HashSet<int>();
+
+                Type type = customExercise.GetType();
+
+                // Get properties that start with "IsExerciseGroup"
+                var groupProperties = type.GetProperties()
+                                          .Where(prop => prop.PropertyType == typeof(bool) && prop.Name.StartsWith("IsExerciseGroup"))
+                                          .ToList();
+
+                foreach (var property in groupProperties)
+                {
+                    // Extract the number from the property name
+                    if (int.TryParse(property.Name.Substring("IsExerciseGroup".Length), out int groupNumber))
+                    {
+                        bool propertyValue = (bool)property.GetValue(customExercise);
+
+                        if (propertyValue && groupNumber >= 0 && groupNumber <= 15)
+                        {
+                            customExerciseGroupSet.Add(groupNumber);
+                        }
+                    }
+                }
+
+                var convertedExercise = new Exercise { Name = customExercise.Name, ExerciseGroupSet=customExerciseGroupSet };
+                
+                convertedExerciseList.Add(convertedExercise);
+            }
+
+            return convertedExerciseList;
         }
 
         public IEnumerable<Exercise> GetExerciseList()
