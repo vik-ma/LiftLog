@@ -16,10 +16,12 @@ namespace LocalLiftLog.ViewModels
     public partial class CustomExerciseViewModel : ObservableObject
     {
         private readonly DatabaseContext _context;
+        private readonly ExerciseDataManager _exerciseData;
 
-        public CustomExerciseViewModel(DatabaseContext context)
+        public CustomExerciseViewModel(DatabaseContext context, ExerciseDataManager exerciseData)
         {
             _context = context;
+            _exerciseData = exerciseData;
         }
 
         [ObservableProperty]
@@ -82,6 +84,12 @@ namespace LocalLiftLog.ViewModels
 
             if (customExercise is null)
                 return;
+
+            if (await _exerciseData.ValidateUniqueExerciseName(customExercise.Name))
+            {
+                await Shell.Current.DisplayAlert("Error", "Exercise Name must be unique.", "OK");
+                return;
+            }
 
             await ExecuteAsync(async () =>
             {

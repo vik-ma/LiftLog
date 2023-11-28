@@ -39,7 +39,7 @@ namespace LocalLiftLog.Data
 
         private async Task LoadCustomExerciseList()
         {
-            CustomExerciseList.Clear();
+            CustomExerciseList?.Clear();
 
             var customExerciseDatabaseList = await LoadCustomExerciseFromDatabase();
 
@@ -118,7 +118,7 @@ namespace LocalLiftLog.Data
         {
             var exerciseList = await GetFullExerciseList();
 
-            var exerciseNameExists = exerciseList.FirstOrDefault(x => x.Name.Equals(exerciseName));
+            var exerciseNameExists = exerciseList.FirstOrDefault(x => x.Name == exerciseName);
 
             if (exerciseNameExists is null) return false;
 

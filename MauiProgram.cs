@@ -24,6 +24,7 @@ namespace LocalLiftLog
             builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<DatabaseContext>();
+            builder.Services.AddSingleton<ExerciseDataManager>();
 
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<MainViewModel>();
