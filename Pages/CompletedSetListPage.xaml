@@ -60,6 +60,22 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span 
+                                                Text="Exercise Name: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource ProgramSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding ExerciseName}"
+                                                Style="{StaticResource ProgramSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Entry 
+                                    Text="{Binding ExerciseName}"
+                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
                                                 Text="Is Completed: " 
                                                 FontAttributes="Bold"  
                                                 Style="{StaticResource ProgramSpanStyle}" />

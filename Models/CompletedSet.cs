@@ -11,6 +11,7 @@ namespace LocalLiftLog.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+        public string ExerciseName { get; set; }
         public bool IsCompleted { get; set; }
         public string DateCompleted { get; set; }
         public int CompletedWorkoutId { get; set; }
