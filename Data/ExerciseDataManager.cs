@@ -113,5 +113,16 @@ namespace LocalLiftLog.Data
 
             return ExerciseList.Where(item => item.ExerciseGroupSet.Contains(group));
         }
+
+        public async Task<bool> ValidateUniqueExerciseName(string exerciseName)
+        {
+            var exerciseList = await GetFullExerciseList();
+
+            var exerciseNameExists = exerciseList.FirstOrDefault(x => x.Name.Equals(exerciseName));
+
+            if (exerciseNameExists is null) return false;
+
+            return true;
+        } 
     }
 }
