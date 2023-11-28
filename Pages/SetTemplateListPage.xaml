@@ -47,7 +47,7 @@
                                 Text="{Binding SetTemplateCollectionId}"
                                 Style="{StaticResource SmallEntryFieldStyle}" />
                             <Entry 
-                                Text="{Binding ExerciseId}"
+                                Text="{Binding ExerciseName}"
                                 Style="{StaticResource SmallEntryFieldStyle}" />
                             <Entry 
                                 Text="{Binding Note}"
