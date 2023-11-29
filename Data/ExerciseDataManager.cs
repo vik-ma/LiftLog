@@ -15,11 +15,33 @@ namespace LocalLiftLog.Data
         private List<Exercise> ExerciseList;
         private List<Exercise> CustomExerciseList;
 
+        public readonly Dictionary<int, string> ExerciseGroupDict;
+
         private readonly DatabaseContext _context;
         public ExerciseDataManager(DatabaseContext context) 
         {
             InitializeExerciseList();
             _context = context;
+
+            ExerciseGroupDict = new Dictionary<int, string>
+            {
+                { 0, "Chest" },
+                { 1, "Triceps" },
+                { 2, "Biceps" },
+                { 3, "Shoulders" },
+                { 4, "Upper Back" },
+                { 5, "Mid Back (Lats)" },
+                { 6, "Lower Back" },
+                { 7, "Quadriceps" },
+                { 8, "Glutes" },
+                { 9, "Hamstrings" },
+                { 10, "Calves" },
+                { 11, "Forearms" },
+                { 12, "Core (Abs)" },
+                { 13, "Grip" },
+                { 14, "Cardio" },
+                { 15, "Other" },
+            };
         }
 
         private void InitializeExerciseList()
