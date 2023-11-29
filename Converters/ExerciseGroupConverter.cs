@@ -44,6 +44,8 @@ namespace LocalLiftLog.Converters
                     else return "Invalid Group";
                 }
 
+                if (!exerciseGroupStringList.Any()) return "No Exercise Group Added";
+
                 var exerciseGroupsString = String.Join(", ", exerciseGroupStringList);
 
                 return exerciseGroupsString;
