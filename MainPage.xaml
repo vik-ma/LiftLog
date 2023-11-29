@@ -11,38 +11,58 @@
 
     <VerticalStackLayout 
         HorizontalOptions="Center">
-        <Button
-            Text="Program List"
-            Command="{Binding GoToProgramListCommand}"
-            Style="{StaticResource MainPageNavigationButtonStyle}"/>
-        <Button
-            Text="Schedule List"
-            Command="{Binding GoToScheduleListCommand}"
-            Style="{StaticResource MainPageNavigationButtonStyle}"/>
-        <Button
-            Text="Workout Template List"
-            Command="{Binding GoToWorkoutTemplateCommand}"
-            Style="{StaticResource MainPageNavigationButtonStyle}"/>
-        <Button
-            Text="Set Template List"
-            Command="{Binding GoToSetTemplateCommand}"
-            Style="{StaticResource MainPageNavigationButtonStyle}"/>
-        <Button
-            Text="Completed Set List"
-            Command="{Binding GoToCompletedSetCommand}"
-            Style="{StaticResource MainPageNavigationButtonStyle}"/>
-        <Button
-            Text="Completed Workout List"
-            Command="{Binding GoToCompletedWorkoutCommand}"
-            Style="{StaticResource MainPageNavigationButtonStyle}"/>
-        <Button
-            Text="Time Period List"
-            Command="{Binding GoToTimePeriodCommand}"
-            Style="{StaticResource MainPageNavigationButtonStyle}"/>
-        <Button
-            Text="Custom Exercise List"
-            Command="{Binding GoToCustomExerciseCommand}"
-            Style="{StaticResource MainPageNavigationButtonStyle}"/>
+        <Grid
+            RowDefinitions="*, *, *, *, *, *, *"
+            ColumnDefinitions="*, *">
+            <Button
+                Text="Program List"
+                Grid.Row="0"
+                Grid.Column="0"
+                Command="{Binding GoToProgramListCommand}"
+                Style="{StaticResource MainPageNavigationButtonStyle}"/>
+            <Button
+                Text="Schedule List"
+                Grid.Row="1"
+                Grid.Column="0"
+                Command="{Binding GoToScheduleListCommand}"
+                Style="{StaticResource MainPageNavigationButtonStyle}"/>
+            <Button
+                Text="Workout Template List"
+                Grid.Row="2"
+                Grid.Column="0"
+                Command="{Binding GoToWorkoutTemplateCommand}"
+                Style="{StaticResource MainPageNavigationButtonStyle}"/>
+            <Button
+                Text="Set Template List"
+                Grid.Row="3"
+                Grid.Column="0"
+                Command="{Binding GoToSetTemplateCommand}"
+                Style="{StaticResource MainPageNavigationButtonStyle}"/>
+            <Button
+                Text="Completed Set List"
+                Grid.Row="4"
+                Grid.Column="0"
+                Command="{Binding GoToCompletedSetCommand}"
+                Style="{StaticResource MainPageNavigationButtonStyle}"/>
+            <Button
+                Text="Completed Workout List"
+                Grid.Row="5"
+                Grid.Column="0"
+                Command="{Binding GoToCompletedWorkoutCommand}"
+                Style="{StaticResource MainPageNavigationButtonStyle}"/>
+            <Button
+                Text="Time Period List"
+                Grid.Row="6"
+                Grid.Column="0"
+                Command="{Binding GoToTimePeriodCommand}"
+                Style="{StaticResource MainPageNavigationButtonStyle}"/>
+            <Button
+                Text="Custom Exercise List"
+                Grid.Row="0"
+                Grid.Column="1"
+                Command="{Binding GoToCustomExerciseCommand}"
+                Style="{StaticResource MainPageNavigationButtonStyle}"/>
+        </Grid>
     </VerticalStackLayout>
 
 </ContentPage>
