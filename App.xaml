@@ -101,6 +101,7 @@
             <converters:MultiBindingConverter x:Key="MultiBindingConverter" />
             <converters:DayConverter x:Key="DayConverter" />
             <converters:IntAboveThresholdConverter x:Key="IntAboveThresholdConverter" />
+            <converters:ExerciseGroupConverter x:Key="ExerciseGroupConverter" />
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             <toolkit:IndexToArrayItemConverter x:Key="IndexToArrayItemConverter" />
 

@@ -45,7 +45,7 @@
                                             FontAttributes="Bold"  
                                             Style="{StaticResource ProgramSpanStyle}" />
                                         <Span 
-                                            Text="{Binding ExerciseGroupSet}"
+                                            Text="{Binding ExerciseGroupSet, Converter={StaticResource ExerciseGroupConverter}}"
                                             Style="{StaticResource ProgramSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
