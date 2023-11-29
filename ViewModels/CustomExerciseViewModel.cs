@@ -91,6 +91,12 @@ namespace LocalLiftLog.ViewModels
                 return;
             }
 
+            if (!customExercise.ValidateExerciseGroups())
+            {
+                await Shell.Current.DisplayAlert("Error", "At least one Exercise Group must be added.", "OK");
+                return;
+            }
+
             await ExecuteAsync(async () =>
             {
                 if (!await _context.UpdateItemAsync<CustomExercise>(customExercise))
