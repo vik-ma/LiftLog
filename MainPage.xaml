@@ -62,6 +62,12 @@
                 Grid.Column="1"
                 Command="{Binding GoToCustomExerciseCommand}"
                 Style="{StaticResource MainPageNavigationButtonStyle}"/>
+            <Button
+                Text="Exercise List"
+                Grid.Row="1"
+                Grid.Column="1"
+                Command="{Binding GoToExerciseListCommand}"
+                Style="{StaticResource MainPageNavigationButtonStyle}"/>
         </Grid>
     </VerticalStackLayout>
 
