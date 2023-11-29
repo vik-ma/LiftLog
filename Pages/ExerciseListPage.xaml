@@ -7,10 +7,66 @@
              x:DataType="viewmodel:ExerciseListViewModel"
              Title="Exercise List">
     <VerticalStackLayout HorizontalOptions="Center">
-        <Label 
-            Text="Exercise List"
-            FontSize="30"
-            FontAttributes="Bold"
-            Margin="10" />
+        <VerticalStackLayout>
+            <Label 
+                Text="Exercise List"
+                FontSize="30"
+                FontAttributes="Bold"
+                Margin="10" />
+            <CollectionView
+                ItemsSource="{Binding ExerciseList}"
+                HorizontalOptions="Center">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="5"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Exercise">
+                        <HorizontalStackLayout Spacing="10">
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Name: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource ProgramSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding Name}"
+                                            Style="{StaticResource ProgramSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Exercise Groups: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource ProgramSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding ExerciseGroupSet}"
+                                            Style="{StaticResource ProgramSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <VerticalStackLayout
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                            <Label 
+                    Text="No Custom Exercises In List!" 
+                    FontSize="18" 
+                    FontAttributes="Bold" 
+                    HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
