@@ -93,6 +93,8 @@ namespace LocalLiftLog.ViewModels
             var exercises = _exerciseData.FilterExerciseListByExerciseGroups(ExerciseGroupFilterSet);
 
             UpdateExerciseList(exercises);
+
+            OnPropertyChanged(nameof(ExerciseGroupFilterSet));
         }
 
         [RelayCommand]

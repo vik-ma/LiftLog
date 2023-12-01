@@ -69,19 +69,34 @@
             </CollectionView>
         </VerticalStackLayout>
 
-        <HorizontalStackLayout 
+        <VerticalStackLayout
+            HorizontalOptions="Center"
             Margin="50"
-            Spacing="15"
-            HorizontalOptions="Center">
-            <Entry 
-                Text="{Binding ExerciseGroupFilterInput}"
-                Style="{StaticResource SmallEntryFieldStyle}" />
-            <Button 
-                Text="Filter Exercise List"
-                Command="{Binding AddExerciseGroupToFilterListCommand}"
-                CommandParameter="{Binding ExerciseGroupFilterInput}"
-                Style="{StaticResource ProgramButtonStyle}"/>
-        </HorizontalStackLayout>
+            Spacing="5">
+            <Label VerticalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="Filtered Exercise Groups: " 
+                            FontAttributes="Bold"  
+                            Style="{StaticResource ProgramSpanStyle}" />
+                        <Span 
+                            Text="{Binding ExerciseGroupFilterSet, Converter={StaticResource ExerciseGroupConverter}}"
+                            Style="{StaticResource ProgramSpanStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <HorizontalStackLayout Spacing="15">
+                <Entry 
+                    Text="{Binding ExerciseGroupFilterInput}"
+                    Style="{StaticResource SmallEntryFieldStyle}" />
+                <Button 
+                    Text="Filter Exercise List"
+                    Command="{Binding AddExerciseGroupToFilterListCommand}"
+                    CommandParameter="{Binding ExerciseGroupFilterInput}"
+                    Style="{StaticResource ProgramButtonStyle}"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
 
         <VerticalStackLayout>
             <Button 
