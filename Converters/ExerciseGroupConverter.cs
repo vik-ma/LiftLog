@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocalLiftLog.Data;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -11,25 +12,7 @@ namespace LocalLiftLog.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var exerciseGroupDict = new Dictionary<int, string>
-            {
-                { 0, "Chest" },
-                { 1, "Triceps" },
-                { 2, "Biceps" },
-                { 3, "Shoulders" },
-                { 4, "Upper Back" },
-                { 5, "Mid Back (Lats)" },
-                { 6, "Lower Back" },
-                { 7, "Quadriceps" },
-                { 8, "Glutes" },
-                { 9, "Hamstrings" },
-                { 10, "Calves" },
-                { 11, "Forearms" },
-                { 12, "Core (Abs)" },
-                { 13, "Grip" },
-                { 14, "Cardio" },
-                { 15, "Other" },
-            };
+            var exerciseGroupDict = ExerciseGroupDictionary.ExerciseGroupDict;
 
             List<string> exerciseGroupStringList = new();
 
