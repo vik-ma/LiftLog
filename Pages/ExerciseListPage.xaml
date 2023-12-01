@@ -94,7 +94,11 @@
                     Text="Filter Exercise List"
                     Command="{Binding AddExerciseGroupToFilterListCommand}"
                     CommandParameter="{Binding ExerciseGroupFilterInput}"
-                    Style="{StaticResource ProgramButtonStyle}"/>
+                    Style="{StaticResource ProgramButtonStyle}" />
+                <Button 
+                    Text="Reset Exercise List"
+                    Command="{Binding ResetFilterListCommand}"
+                    Style="{StaticResource DeleteButtonStyle}" />
             </HorizontalStackLayout>
         </VerticalStackLayout>
 

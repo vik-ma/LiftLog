@@ -98,6 +98,20 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
+        private async Task ResetFilterList()
+        {
+            if (ExerciseGroupFilterSet.Count == 0) return;
+
+            ExerciseGroupFilterSet.Clear();
+
+            ExerciseList.Clear();
+
+            await LoadExercisesAsync();
+
+            OnPropertyChanged(nameof(ExerciseGroupFilterSet));
+        }
+
+        [RelayCommand]
         static async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
