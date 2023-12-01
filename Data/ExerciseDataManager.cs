@@ -15,19 +15,21 @@ namespace LocalLiftLog.Data
     {
         private List<Exercise> ExerciseList;
         private List<Exercise> CustomExerciseList;
+        private IEnumerable<Exercise> FullExerciseList;
 
         public readonly Dictionary<int, string> ExerciseGroupDict;
 
         private readonly DatabaseContext _context;
         public ExerciseDataManager(DatabaseContext context) 
         {
-            InitializeExerciseList();
             _context = context;
 
             ExerciseGroupDict = ExerciseGroupDictionary.ExerciseGroupDict;
+
+            InitializeExerciseLists();
         }
 
-        private void InitializeExerciseList()
+        private async void InitializeExerciseLists()
         {
             ExerciseList = new List<Exercise>
             {
@@ -40,6 +42,8 @@ namespace LocalLiftLog.Data
                 new Exercise { Name="Running", ExerciseGroupSet=new HashSet<int>(new[] { 14 }) },
                 new Exercise { Name="Other", ExerciseGroupSet=new HashSet<int>(new[] { 15 }) },
             };
+
+            await UpdateFullExerciseList();
         }
 
         private async Task LoadCustomExerciseList()
@@ -103,27 +107,32 @@ namespace LocalLiftLog.Data
             return convertedExerciseList;
         }
 
-        public async Task<IEnumerable<Exercise>> GetFullExerciseList()
+        public async Task UpdateFullExerciseList()
         {
             await LoadCustomExerciseList();
 
-            IEnumerable<Exercise> combinedExerciseList = ExerciseList.Concat(CustomExerciseList ?? Enumerable.Empty<Exercise>());
+            FullExerciseList = ExerciseList.Concat(CustomExerciseList ?? Enumerable.Empty<Exercise>());
+        }
 
-            return combinedExerciseList;
+        public async Task<IEnumerable<Exercise>> GetFullExerciseList()
+        {
+            await UpdateFullExerciseList();
+
+            return FullExerciseList;
         }
 
         public IEnumerable<Exercise> FilterExerciseListByExerciseGroup(HashSet<int> groupSet)
         {
-            if (groupSet is null || groupSet.Count == 0) return ExerciseList;
+            if (groupSet is null || groupSet.Count == 0) return FullExerciseList;
 
             return ExerciseList.Where(item => groupSet.Any(group => item.ExerciseGroupSet.Contains(group)));
         }
 
         public async Task<bool> ValidateUniqueExerciseName(string exerciseName)
         {
-            var exerciseList = await GetFullExerciseList();
+            await UpdateFullExerciseList();
 
-            var exerciseNameExists = exerciseList.FirstOrDefault(x => x.Name == exerciseName);
+            var exerciseNameExists = FullExerciseList.FirstOrDefault(x => x.Name == exerciseName);
 
             if (exerciseNameExists is null) return false;
 
