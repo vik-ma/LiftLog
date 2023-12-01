@@ -83,7 +83,8 @@
                     CommandParameter="{Binding ExerciseGroupFilterInput}"
                     Style="{StaticResource ProgramButtonStyle}" />
                 <Button 
-                    Text="Reset Exercise List"
+                    Text="Reset Exercise List Filter"
+                    IsVisible="{Binding ExerciseGroupFilterSet.Count}"
                     Command="{Binding ResetFilterListCommand}"
                     Style="{StaticResource DeleteButtonStyle}" />
             </HorizontalStackLayout>
