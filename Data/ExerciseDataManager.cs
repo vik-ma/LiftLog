@@ -121,7 +121,7 @@ namespace LocalLiftLog.Data
             return FullExerciseList;
         }
 
-        public IEnumerable<Exercise> FilterExerciseListByExerciseGroup(HashSet<int> groupSet)
+        public IEnumerable<Exercise> FilterExerciseListByExerciseGroups(HashSet<int> groupSet)
         {
             if (groupSet is null || groupSet.Count == 0) return FullExerciseList;
 

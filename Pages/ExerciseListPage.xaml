@@ -74,9 +74,12 @@
             Spacing="15"
             HorizontalOptions="Center">
             <Entry 
+                Text="{Binding ExerciseGroupFilterInput}"
                 Style="{StaticResource SmallEntryFieldStyle}" />
             <Button 
                 Text="Filter Exercise List"
+                Command="{Binding AddExerciseGroupToFilterListCommand}"
+                CommandParameter="{Binding ExerciseGroupFilterInput}"
                 Style="{StaticResource ProgramButtonStyle}"/>
         </HorizontalStackLayout>
 

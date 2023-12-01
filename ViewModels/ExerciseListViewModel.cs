@@ -17,13 +17,22 @@ namespace LocalLiftLog.ViewModels
     {
         private readonly ExerciseDataManager _exerciseData;
 
+        private readonly Dictionary<int, string> exerciseGroupDict;
+
         public ExerciseListViewModel(ExerciseDataManager exerciseData)
         {
             _exerciseData = exerciseData;
+            exerciseGroupDict = ExerciseGroupDictionary.ExerciseGroupDict;
         }
 
         [ObservableProperty]
         private ObservableCollection<Exercise> exerciseList = new();
+
+        [ObservableProperty]
+        private HashSet<int> exerciseGroupFilterSet = new();
+
+        [ObservableProperty]
+        private int exerciseGroupFilterInput;
 
         public async Task LoadExercisesAsync()
         {
@@ -33,16 +42,21 @@ namespace LocalLiftLog.ViewModels
 
                 var exercises = await _exerciseData.GetFullExerciseList();
 
-                if (exercises is not null && exercises.Any())
-                {
-                    exercises ??= new ObservableCollection<Exercise>();
-
-                    foreach (var exercise in exercises)
-                    {
-                        ExerciseList.Add(exercise);
-                    }
-                }
+                UpdateExerciseList(exercises);
             });
+        }
+
+        private void UpdateExerciseList(IEnumerable<Exercise> exercises)
+        {
+            if (exercises is not null && exercises.Any())
+            {
+                exercises ??= new ObservableCollection<Exercise>();
+
+                foreach (var exercise in exercises)
+                {
+                    ExerciseList.Add(exercise);
+                }
+            }
         }
 
         #nullable enable
@@ -61,6 +75,24 @@ namespace LocalLiftLog.ViewModels
             {
 
             }
+        }
+
+        [RelayCommand]
+        private void AddExerciseGroupToFilterList(int exerciseNum)
+        {
+            if (exerciseNum < 0 || exerciseNum > exerciseGroupDict.Count)
+            {
+                Shell.Current.DisplayAlert("Error", "Invalid Exercise Group.", "OK");
+                return;
+            }
+
+            ExerciseGroupFilterSet.Add(exerciseNum);
+
+            ExerciseList.Clear();
+
+            var exercises = _exerciseData.FilterExerciseListByExerciseGroups(ExerciseGroupFilterSet);
+
+            UpdateExerciseList(exercises);
         }
 
         [RelayCommand]
