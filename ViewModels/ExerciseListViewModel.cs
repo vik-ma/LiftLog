@@ -15,12 +15,10 @@ namespace LocalLiftLog.ViewModels
 {
     public partial class ExerciseListViewModel : ObservableObject
     {
-        private readonly DatabaseContext _context;
         private readonly ExerciseDataManager _exerciseData;
 
-        public ExerciseListViewModel(DatabaseContext context, ExerciseDataManager exerciseData)
+        public ExerciseListViewModel(ExerciseDataManager exerciseData)
         {
-            _context = context;
             _exerciseData = exerciseData;
         }
 
