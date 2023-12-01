@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LocalLiftLog.Data
@@ -111,11 +112,11 @@ namespace LocalLiftLog.Data
             return combinedExerciseList;
         }
 
-        public IEnumerable<Exercise> FilterExerciseListByExerciseGroup(int group)
+        public IEnumerable<Exercise> FilterExerciseListByExerciseGroup(HashSet<int> groupSet)
         {
-            if (group < 0 || group > 15) return null;
+            if (groupSet is null || groupSet.Count == 0) return ExerciseList;
 
-            return ExerciseList.Where(item => item.ExerciseGroupSet.Contains(group));
+            return ExerciseList.Where(item => groupSet.Any(group => item.ExerciseGroupSet.Contains(group)));
         }
 
         public async Task<bool> ValidateUniqueExerciseName(string exerciseName)
