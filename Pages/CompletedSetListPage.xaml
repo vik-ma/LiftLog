@@ -76,6 +76,22 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span 
+                                                Text="Note: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource ProgramSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Note}"
+                                                Style="{StaticResource ProgramSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Entry 
+                                    Text="{Binding Note}"
+                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
                                                 Text="Is Completed: " 
                                                 FontAttributes="Bold"  
                                                 Style="{StaticResource ProgramSpanStyle}" />
