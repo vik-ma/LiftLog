@@ -56,17 +56,36 @@
                 <CollectionView.EmptyView>
                     <ContentView>
                         <VerticalStackLayout
-                HorizontalOptions="Center"
-                VerticalOptions="Center">
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
                             <Label 
-                    Text="No Custom Exercises In List!" 
-                    FontSize="18" 
-                    FontAttributes="Bold" 
-                    HorizontalTextAlignment="Center" />
+                                Text="Exercise List Is Empty!" 
+                                FontSize="18" 
+                                FontAttributes="Bold" 
+                                HorizontalTextAlignment="Center" />
                         </VerticalStackLayout>
                     </ContentView>
                 </CollectionView.EmptyView>
             </CollectionView>
+        </VerticalStackLayout>
+
+        <HorizontalStackLayout 
+            Margin="50"
+            Spacing="15"
+            HorizontalOptions="Center">
+            <Entry 
+                Style="{StaticResource SmallEntryFieldStyle}" />
+            <Button 
+                Text="Filter Exercise List"
+                Style="{StaticResource ProgramButtonStyle}"/>
+        </HorizontalStackLayout>
+
+        <VerticalStackLayout>
+            <Button 
+                Text="Go Back"
+                Style="{StaticResource ProgramButtonStyle}"
+                Command="{Binding GoBackCommand}"
+                Margin="50" />
         </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
