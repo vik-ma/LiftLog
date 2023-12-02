@@ -67,7 +67,7 @@
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span 
-                                        Text="Id: " 
+                                        Text="Set Template Id: " 
                                         FontAttributes="Bold"  
                                         Style="{StaticResource ProgramSpanStyle}" />
                                     <Span 
