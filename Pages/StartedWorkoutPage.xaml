@@ -8,6 +8,10 @@
              Title="Started Workout">
     <VerticalStackLayout>
         <VerticalStackLayout>
+            <Label Text="Started Workout" />
+        </VerticalStackLayout>
+        
+        <VerticalStackLayout>
             <Button 
                 Text="Go Back"
                 Style="{StaticResource ProgramButtonStyle}"

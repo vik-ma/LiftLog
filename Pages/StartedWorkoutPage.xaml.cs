@@ -1,6 +1,4 @@
 namespace LocalLiftLog.Pages;
-
-using AndroidX.Lifecycle;
 using LocalLiftLog.ViewModels;
 
 public partial class StartedWorkoutPage : ContentPage
