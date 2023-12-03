@@ -5,6 +5,7 @@ using LocalLiftLog.Models;
 using LocalLiftLog.Pages;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,9 @@ namespace LocalLiftLog.ViewModels
     public partial class StartedWorkoutViewModel : ObservableObject
     {
         private readonly DatabaseContext _context;
+
+        [ObservableProperty]
+        private CompletedWorkout completedWorkout;
 
         public StartedWorkoutViewModel(DatabaseContext context)
         {

@@ -6,10 +6,17 @@
              xmlns:models="clr-namespace:LocalLiftLog.Models"
              x:DataType="viewmodel:StartedWorkoutViewModel"
              Title="Started Workout">
-    <VerticalStackLayout>
-        <VerticalStackLayout>
-            <Label Text="Started Workout" />
-        </VerticalStackLayout>
+    <VerticalStackLayout HorizontalOptions="Center">
+        <HorizontalStackLayout Spacing="15">
+            <Label 
+                Text="Completed Workout ID:"
+                FontSize="30"
+                FontAttributes="Bold" />
+            <Label 
+                Text="{Binding CompletedWorkout.Id}"
+                FontSize="30"
+                FontAttributes="Bold" />
+        </HorizontalStackLayout>
         
         <VerticalStackLayout>
             <Button 
