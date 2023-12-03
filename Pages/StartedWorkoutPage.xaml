@@ -7,17 +7,29 @@
              x:DataType="viewmodel:StartedWorkoutViewModel"
              Title="Started Workout">
     <VerticalStackLayout HorizontalOptions="Center">
-        <HorizontalStackLayout Spacing="15">
-            <Label 
-                Text="Completed Workout ID:"
-                FontSize="30"
-                FontAttributes="Bold" />
-            <Label 
-                Text="{Binding CompletedWorkout.Id}"
-                FontSize="30"
-                FontAttributes="Bold" />
-        </HorizontalStackLayout>
-        
+        <VerticalStackLayout>
+            <HorizontalStackLayout Spacing="15">
+                <Label 
+                    Text="Completed Workout ID:"
+                    FontSize="30"
+                    FontAttributes="Bold" />
+                <Label 
+                    Text="{Binding CompletedWorkout.Id}"
+                    FontSize="30"
+                    FontAttributes="Bold" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="15">
+                <Label 
+                    Text="Workout Template Name:"
+                    FontSize="30"
+                    FontAttributes="Bold" />
+                <Label 
+                    Text="{Binding WorkoutTemplate.Name}"
+                    FontSize="30"
+                    FontAttributes="Bold" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
         <VerticalStackLayout>
             <Button 
                 Text="Go Back"

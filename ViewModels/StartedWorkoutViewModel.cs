@@ -25,6 +25,9 @@ namespace LocalLiftLog.ViewModels
             _context = context;
         }
 
+        [ObservableProperty]
+        private WorkoutTemplate workoutTemplate;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -46,6 +49,21 @@ namespace LocalLiftLog.ViewModels
             finally
             {
 
+            }
+        }
+
+        public async Task LoadWorkoutTemplateAsync()
+        {
+            if (CompletedWorkout is null) return;
+
+            try
+            {
+                WorkoutTemplate = await _context.GetItemByKeyAsync<WorkoutTemplate>(CompletedWorkout.WorkoutTemplateId);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "Error loading Workout Template!", "OK");
+                return;
             }
         }
 
