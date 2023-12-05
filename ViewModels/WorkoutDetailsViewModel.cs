@@ -75,6 +75,8 @@ namespace LocalLiftLog.ViewModels
             });
 
             OnPropertyChanged(nameof(WorkoutTemplate));
+
+            await LoadSetListFromSetTemplateCollectionIdAsync();
         }
 
         [RelayCommand]
