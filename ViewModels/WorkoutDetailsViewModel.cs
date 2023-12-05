@@ -39,6 +39,12 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private bool showStcList = false;
 
+        [ObservableProperty]
+        private bool showExerciseList = false;
+
+        [ObservableProperty]
+        private bool showAddSetMenu = false;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -236,6 +242,12 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
+        private void DisplayAddSetMenu()
+        {
+            ShowAddSetMenu = true;
+        }
+
+        [RelayCommand]
         private async Task AddSetToSetList()
         {
             if (WorkoutTemplate is null) return;
@@ -246,7 +258,6 @@ namespace LocalLiftLog.ViewModels
                 await CreateNewSetListAsync();
             }
 
-            SetList.Clear();
         }
     }
 }
