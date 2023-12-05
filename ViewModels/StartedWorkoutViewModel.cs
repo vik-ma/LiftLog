@@ -56,13 +56,24 @@ namespace LocalLiftLog.ViewModels
         {
             if (CompletedWorkout is null) return;
 
+            bool workoutTemplateExists;
+
             try
             {
-                WorkoutTemplate = await _context.GetItemByKeyAsync<WorkoutTemplate>(CompletedWorkout.WorkoutTemplateId);
+                workoutTemplateExists = await _context.ItemExistsByKeyAsync<WorkoutTemplate>(CompletedWorkout.WorkoutTemplateId);
+
+                if (workoutTemplateExists) 
+                {
+                    WorkoutTemplate = await _context.GetItemByKeyAsync<WorkoutTemplate>(CompletedWorkout.WorkoutTemplateId);
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("Error", "Workout Template does not exist!", "OK");
+                }
             }
             catch
             {
-                await Shell.Current.DisplayAlert("Error", "Error loading Workout Template!", "OK");
+                await Shell.Current.DisplayAlert("Error", "Error loading Workout Template.", "OK");
                 return;
             }
         }
