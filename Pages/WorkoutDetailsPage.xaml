@@ -169,7 +169,8 @@
 
         <VerticalStackLayout 
             Grid.Row="1"
-            IsVisible="{Binding ShowAddSetMenu}">
+            IsVisible="{Binding ShowAddSetMenu}"
+            Style="{StaticResource LightGreyStackLayoutBackground}">
             <BoxView 
                 Color="{DynamicResource Primary}"
                 HeightRequest="1" />

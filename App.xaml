@@ -97,6 +97,9 @@
                 <Setter Property="WidthRequest" Value="70" />
                 <Setter Property="FontSize" Value="18" />
             </Style>
+            <Style x:Key="LightGreyStackLayoutBackground" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="#DDDDDD" />
+            </Style>
             <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyText" />
             <converters:MultiBindingConverter x:Key="MultiBindingConverter" />
             <converters:DayConverter x:Key="DayConverter" />
