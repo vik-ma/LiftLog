@@ -169,10 +169,19 @@
 
         <VerticalStackLayout 
             Grid.Row="1"
-            BackgroundColor="Red"
-            HorizontalOptions="CenterAndExpand"
             IsVisible="{Binding ShowAddSetMenu}">
-            <Label Text="test" />
+            <BoxView 
+                Color="{DynamicResource Primary}"
+                HeightRequest="1" />
+            <Grid 
+                RowDefinitions="*, *"
+                ColumnDefinitions="*, *"
+                HorizontalOptions="Center">
+                <Label 
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="test" />
+            </Grid>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
