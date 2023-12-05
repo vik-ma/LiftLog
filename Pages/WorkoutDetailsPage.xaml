@@ -177,6 +177,7 @@
             <Grid 
                 RowDefinitions="*, *"
                 ColumnDefinitions="*, *"
+                Padding="10"
                 HorizontalOptions="Center">
                 <Label 
                     Grid.Column="0"

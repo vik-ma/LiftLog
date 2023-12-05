@@ -21,13 +21,19 @@ namespace LocalLiftLog.ViewModels
 
         private readonly DatabaseContext _context;
 
+        private readonly ExerciseDataManager _exerciseData;
+
+        private readonly Dictionary<int, string> exerciseGroupDict;
+
         [ObservableProperty]
         private WorkoutTemplate workoutTemplate;
 
-        public WorkoutDetailsViewModel(WorkoutTemplateViewModel workoutTemplateViewModel, DatabaseContext context)
+        public WorkoutDetailsViewModel(WorkoutTemplateViewModel workoutTemplateViewModel, DatabaseContext context, ExerciseDataManager exerciseData)
         {
             _workoutTemplateViewModel = workoutTemplateViewModel;
             _context = context;
+            _exerciseData = exerciseData;
+            exerciseGroupDict = ExerciseGroupDictionary.ExerciseGroupDict;
         }
 
         [ObservableProperty]
