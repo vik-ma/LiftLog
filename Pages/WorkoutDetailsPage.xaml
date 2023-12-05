@@ -94,19 +94,21 @@
             </CollectionView.EmptyView>
         </CollectionView>
 
-        <Button 
-            Text="Create New Set List"
-            Style="{StaticResource AddButtonStyle}"
-            WidthRequest="300"
-            Command="{Binding CreateNewSetListCommand}"
-            Margin="50" />
+        <VerticalStackLayout>
+            <Button 
+                Text="Add Set"
+                Style="{StaticResource AddButtonStyle}"
+                Command="{Binding AddSetToSetListCommand}"/>
+        </VerticalStackLayout>
 
-        <Button 
-            Text="Copy Existing Workout"
-            Style="{StaticResource ProgramButtonStyle}"
-            Command="{Binding ShowExistingWorkoutListCommand}"
-            Margin="50" />
-
+        <VerticalStackLayout>
+            <Button 
+                Text="Copy Existing Workout"
+                Style="{StaticResource ProgramButtonStyle}"
+                Command="{Binding ShowExistingWorkoutListCommand}"
+                Margin="50" />
+        </VerticalStackLayout>
+        
         <CollectionView
             ItemsSource="{Binding WorkoutTemplateList}"
             HorizontalOptions="Center"

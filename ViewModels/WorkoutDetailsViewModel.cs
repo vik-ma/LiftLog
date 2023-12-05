@@ -234,5 +234,19 @@ namespace LocalLiftLog.ViewModels
 
             ShowStcList = false;
         }
+
+        [RelayCommand]
+        private async Task AddSetToSetList()
+        {
+            if (WorkoutTemplate is null) return;
+
+            // Create new Set Template Collection if Workout Template does not have one assigned
+            if (WorkoutTemplate.SetTemplateCollectionId == 0)
+            {
+                await CreateNewSetListAsync();
+            }
+
+            SetList.Clear();
+        }
     }
 }
