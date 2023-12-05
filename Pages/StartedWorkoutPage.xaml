@@ -27,6 +27,10 @@
                     Text="{Binding WorkoutTemplate.Name}"
                     FontSize="30"
                     FontAttributes="Bold" />
+                <Button 
+                    Text="Modify Workout"
+                    Style="{StaticResource GenericButtonStyle}"
+                    Command="{Binding GoToWorkoutTemplateDetailsCommand}" />
             </HorizontalStackLayout>
         </VerticalStackLayout>
 

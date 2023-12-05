@@ -78,6 +78,23 @@ namespace LocalLiftLog.ViewModels
             }
         }
 
+        [RelayCommand]
+        private async Task GoToWorkoutTemplateDetails()
+        {
+            if (WorkoutTemplate is null)
+            {
+                await Shell.Current.DisplayAlert("Error", "Workout does not exist", "OK");
+                return;
+            }
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["WorkoutTemplate"] = WorkoutTemplate
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(WorkoutDetailsPage)}?Id={WorkoutTemplate.Id}", navigationParameter);
+        }
+
     }
 
     
