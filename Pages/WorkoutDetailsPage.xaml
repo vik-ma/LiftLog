@@ -179,10 +179,18 @@
                 ColumnDefinitions="*, *"
                 Padding="10"
                 HorizontalOptions="Center">
-                <Button 
-                    Grid.Column="0"
+                <ListView
                     Grid.Row="0"
-                    Text="test" />
+                    Grid.Column="1"
+                    ItemsSource="{Binding ExerciseList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Exercise">
+                            <ViewCell>
+                                <Label Text="{Binding Name}" />
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </Grid>
         </VerticalStackLayout>
     </Grid>
