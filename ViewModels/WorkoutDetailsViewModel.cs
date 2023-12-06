@@ -282,6 +282,12 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
+        private void DisplayExerciseList()
+        {
+            ShowExerciseList = true;
+        }
+
+        [RelayCommand]
         private async Task AddSetToSetList()
         {
             if (WorkoutTemplate is null) return;
