@@ -43,6 +43,9 @@ namespace LocalLiftLog.ViewModels
         private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
 
         [ObservableProperty]
+        private ObservableCollection<Exercise> exerciseList = new();
+
+        [ObservableProperty]
         private bool showStcList = false;
 
         [ObservableProperty]
@@ -57,7 +60,32 @@ namespace LocalLiftLog.ViewModels
             await Shell.Current.GoToAsync("..");
         }
 
-        #nullable enable
+        public async Task LoadExerciseListAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                ExerciseList.Clear();
+
+                var exercises = await _exerciseData.GetFullExerciseList();
+
+                UpdateExerciseList(exercises);
+            });
+        }
+
+        private void UpdateExerciseList(IEnumerable<Exercise> exercises)
+        {
+            if (exercises is not null && exercises.Any())
+            {
+                exercises ??= new ObservableCollection<Exercise>();
+
+                foreach (var exercise in exercises)
+                {
+                    ExerciseList.Add(exercise);
+                }
+            }
+        }
+
+#nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
             try

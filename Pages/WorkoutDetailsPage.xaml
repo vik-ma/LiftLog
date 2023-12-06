@@ -179,7 +179,7 @@
                 ColumnDefinitions="*, *"
                 Padding="10"
                 HorizontalOptions="Center">
-                <Label 
+                <Button 
                     Grid.Column="0"
                     Grid.Row="0"
                     Text="test" />
