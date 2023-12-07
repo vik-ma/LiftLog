@@ -58,9 +58,9 @@ namespace LocalLiftLog.ViewModels
         {
             await ExecuteAsync(async () =>
             {
-                ExerciseList.Clear();
-
                 var exercises = await _exerciseData.GetFullExerciseList();
+
+                ExerciseList.Clear();
 
                 UpdateExerciseList(exercises);
             });
@@ -79,7 +79,7 @@ namespace LocalLiftLog.ViewModels
             }
         }
 
-#nullable enable
+        #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
             try

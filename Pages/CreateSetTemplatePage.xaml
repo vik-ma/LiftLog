@@ -14,7 +14,6 @@
             ColumnSpacing="20"
             HorizontalOptions="Center">
             <VerticalStackLayout 
-                Grid.Row="0"
                 Grid.Column="0"
                 x:DataType="models:SetTemplate">
                 <HorizontalStackLayout>
@@ -75,13 +74,14 @@
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             <ListView
-                Grid.Row="0"
                 Grid.Column="1"
                 ItemsSource="{Binding ExerciseList}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:Exercise">
                         <ViewCell>
-                            <Label Text="{Binding Name}" />
+                            <Label 
+                                Text="{Binding Name}"
+                                Style="{StaticResource ListViewLabelStyle}"/>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
