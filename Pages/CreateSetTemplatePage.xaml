@@ -16,6 +16,22 @@
             <VerticalStackLayout 
                 Grid.Column="0"
                 x:DataType="models:SetTemplate">
+                <HorizontalStackLayout 
+                    Spacing="10"
+                    Padding="0, 10">
+                    <Label 
+                        Text="Exercise:"
+                        FontAttributes="Bold"
+                        FontSize="22"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="10">
+                    <Label 
+                        Text="Note:"
+                        Style="{StaticResource CheckBoxLabelStyle}" />
+                    <Entry 
+                        WidthRequest="250" />
+                </HorizontalStackLayout>
                 <HorizontalStackLayout>
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}" />
