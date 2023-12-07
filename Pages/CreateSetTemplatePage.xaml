@@ -13,15 +13,84 @@
             Padding="10"
             ColumnSpacing="20"
             HorizontalOptions="Center">
-            <Button 
+            <VerticalStackLayout 
                 Grid.Row="0"
                 Grid.Column="0"
+                x:DataType="models:SetTemplate">
+                <HorizontalStackLayout>
+                    <CheckBox />
+                    <Label 
+                        Text="Track Weight"
+                        VerticalOptions="Center"
+                        FontSize="20"
+                        FontAttributes="Bold" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <CheckBox />
+                    <Label 
+                        Text="Track Reps"
+                        VerticalOptions="Center"
+                        FontSize="20"
+                        FontAttributes="Bold" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <CheckBox />
+                    <Label 
+                        Text="Track RIR"
+                        VerticalOptions="Center"
+                        FontSize="20"
+                        FontAttributes="Bold" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <CheckBox />
+                    <Label 
+                        Text="Track RPE"
+                        VerticalOptions="Center"
+                        FontSize="20"
+                        FontAttributes="Bold" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <CheckBox />
+                    <Label 
+                        Text="Track Time"
+                        VerticalOptions="Center"
+                        FontSize="20"
+                        FontAttributes="Bold" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <CheckBox />
+                    <Label 
+                        Text="Track Distance"
+                        VerticalOptions="Center"
+                        FontSize="20"
+                        FontAttributes="Bold" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <CheckBox />
+                    <Label 
+                        Text="Track Cardio Resistance Level"
+                        VerticalOptions="Center"
+                        FontSize="20"
+                        FontAttributes="Bold" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <CheckBox />
+                    <Label 
+                        Text="Add Body Weight To Weight"
+                        VerticalOptions="Center"
+                        FontSize="20"
+                        FontAttributes="Bold" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+            <Button 
+                Grid.Row="0"
+                Grid.Column="1"
                 Text="Show Exercise List"
-                VerticalOptions="Center"
+                VerticalOptions="Start"
                 Style="{StaticResource GenericButtonStyle}"
                 Command="{Binding DisplayExerciseListCommand}"/>
             <ListView
-                Grid.Row="0"
+                Grid.Row="1"
                 Grid.Column="1"
                 ItemsSource="{Binding ExerciseList}"
                 IsVisible="{Binding ShowExerciseList}">
