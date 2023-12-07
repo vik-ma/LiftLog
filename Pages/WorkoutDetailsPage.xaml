@@ -101,7 +101,7 @@
                 <Button 
                     Text="Add Set"
                     Style="{StaticResource AddButtonStyle}"
-                    Command="{Binding DisplayAddSetMenuCommand}"/>
+                    Command="{Binding GoToCreateSetTemplatePageCommand}"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout>
@@ -111,7 +111,7 @@
                     Command="{Binding ShowExistingWorkoutListCommand}"
                     Margin="50" />
             </VerticalStackLayout>
-        
+
             <CollectionView
                 ItemsSource="{Binding WorkoutTemplateList}"
                 HorizontalOptions="Center"
@@ -165,42 +165,6 @@
                 Style="{StaticResource ProgramButtonStyle}"
                 Command="{Binding GoBackCommand}"
                 Margin="50" />
-        </VerticalStackLayout>
-
-        <VerticalStackLayout 
-            Grid.Row="1"
-            IsVisible="{Binding ShowAddSetMenu}"
-            Style="{StaticResource LightGreyStackLayoutBackground}">
-            <BoxView 
-                Color="{DynamicResource Primary}"
-                HeightRequest="1" />
-            <Grid 
-                RowDefinitions="*, *"
-                ColumnDefinitions="*, Auto"
-                Padding="10"
-                ColumnSpacing="20"
-                HorizontalOptions="Center">
-                <Button 
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Text="Show Exercise List"
-                    VerticalOptions="Center"
-                    Style="{StaticResource GenericButtonStyle}"
-                    Command="{Binding DisplayExerciseListCommand}"/>
-                <ListView
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    ItemsSource="{Binding ExerciseList}"
-                    IsVisible="{Binding ShowExerciseList}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Exercise">
-                            <ViewCell>
-                                <Label Text="{Binding Name}" />
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

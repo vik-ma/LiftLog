@@ -7,9 +7,32 @@
              x:DataType="viewmodel:WorkoutDetailsViewModel"
              Title="Create Set Template">
     <VerticalStackLayout>
-        <Label 
-            Text="Create New Set"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Grid 
+            RowDefinitions="*, *"
+            ColumnDefinitions="*, Auto"
+            Padding="10"
+            ColumnSpacing="20"
+            HorizontalOptions="Center">
+            <Button 
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Show Exercise List"
+                VerticalOptions="Center"
+                Style="{StaticResource GenericButtonStyle}"
+                Command="{Binding DisplayExerciseListCommand}"/>
+            <ListView
+                Grid.Row="0"
+                Grid.Column="1"
+                ItemsSource="{Binding ExerciseList}"
+                IsVisible="{Binding ShowExerciseList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Exercise">
+                        <ViewCell>
+                            <Label Text="{Binding Name}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>
