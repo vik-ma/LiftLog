@@ -51,9 +51,6 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private bool showExerciseList = false;
 
-        [ObservableProperty]
-        private bool showAddSetMenu = false;
-
         [RelayCommand]
         static async Task GoBack()
         {
@@ -276,9 +273,8 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task DisplayAddSetMenu()
+        private async Task GoToCreateSetTemplatePage()
         {
-            //ShowAddSetMenu = true;
             await Shell.Current.GoToAsync(nameof(CreateSetTemplatePage));
         }
 
