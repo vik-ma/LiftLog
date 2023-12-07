@@ -1,9 +1,13 @@
 namespace LocalLiftLog.Pages;
+using LocalLiftLog.ViewModels;
 
 public partial class CreateSetTemplatePage : ContentPage
 {
-	public CreateSetTemplatePage()
+    private readonly WorkoutDetailsViewModel _viewModel;
+    public CreateSetTemplatePage(WorkoutDetailsViewModel viewModel)
 	{
 		InitializeComponent();
-	}
+        _viewModel = viewModel;
+        BindingContext = _viewModel;
+    }
 }

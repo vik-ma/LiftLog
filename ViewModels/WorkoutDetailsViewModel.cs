@@ -276,9 +276,10 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private void DisplayAddSetMenu()
+        private async Task DisplayAddSetMenu()
         {
-            ShowAddSetMenu = true;
+            //ShowAddSetMenu = true;
+            await Shell.Current.GoToAsync(nameof(CreateSetTemplatePage));
         }
 
         [RelayCommand]
