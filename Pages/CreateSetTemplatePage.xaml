@@ -18,68 +18,60 @@
                 Grid.Column="0"
                 x:DataType="models:SetTemplate">
                 <HorizontalStackLayout>
-                    <CheckBox />
+                    <CheckBox 
+                        Style="{StaticResource CheckBoxStyle}" />
                     <Label 
                         Text="Track Weight"
-                        VerticalOptions="Center"
-                        FontSize="20"
-                        FontAttributes="Bold" />
+                        Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
-                    <CheckBox />
+                    <CheckBox 
+                        Style="{StaticResource CheckBoxStyle}" />
                     <Label 
                         Text="Track Reps"
-                        VerticalOptions="Center"
-                        FontSize="20"
-                        FontAttributes="Bold" />
+                        Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
-                    <CheckBox />
+                    <CheckBox 
+                        Style="{StaticResource CheckBoxStyle}" />
                     <Label 
                         Text="Track RIR"
-                        VerticalOptions="Center"
-                        FontSize="20"
-                        FontAttributes="Bold" />
+                        Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
-                    <CheckBox />
+                    <CheckBox 
+                        Style="{StaticResource CheckBoxStyle}" />
                     <Label 
                         Text="Track RPE"
-                        VerticalOptions="Center"
-                        FontSize="20"
-                        FontAttributes="Bold" />
+                        Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
-                    <CheckBox />
+                    <CheckBox 
+                        Style="{StaticResource CheckBoxStyle}" />
                     <Label 
                         Text="Track Time"
-                        VerticalOptions="Center"
-                        FontSize="20"
-                        FontAttributes="Bold" />
+                        Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
-                    <CheckBox />
+                    <CheckBox 
+                        Style="{StaticResource CheckBoxStyle}" />
                     <Label 
                         Text="Track Distance"
-                        VerticalOptions="Center"
-                        FontSize="20"
-                        FontAttributes="Bold" />
+                        Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
-                    <CheckBox />
+                    <CheckBox 
+                        Style="{StaticResource CheckBoxStyle}" />
                     <Label 
                         Text="Track Cardio Resistance Level"
-                        VerticalOptions="Center"
-                        FontSize="20"
-                        FontAttributes="Bold" />
+                        Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
-                    <CheckBox />
+                    <CheckBox 
+                        Style="{StaticResource CheckBoxStyle}" />
                     <Label 
                         Text="Add Body Weight To Weight"
-                        VerticalOptions="Center"
-                        FontSize="20"
-                        FontAttributes="Bold" />
+                        Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             <ListView

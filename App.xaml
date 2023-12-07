@@ -100,6 +100,13 @@
             <Style x:Key="LightGreyStackLayoutBackground" TargetType="StackLayout">
                 <Setter Property="BackgroundColor" Value="#DDDDDD" />
             </Style>
+            <Style x:Key="CheckBoxStyle" TargetType="CheckBox">
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="CheckBoxLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
             <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyText" />
             <converters:MultiBindingConverter x:Key="MultiBindingConverter" />
             <converters:DayConverter x:Key="DayConverter" />
