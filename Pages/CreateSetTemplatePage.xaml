@@ -82,18 +82,10 @@
                         FontAttributes="Bold" />
                 </HorizontalStackLayout>
             </VerticalStackLayout>
-            <Button 
+            <ListView
                 Grid.Row="0"
                 Grid.Column="1"
-                Text="Show Exercise List"
-                VerticalOptions="Start"
-                Style="{StaticResource GenericButtonStyle}"
-                Command="{Binding DisplayExerciseListCommand}"/>
-            <ListView
-                Grid.Row="1"
-                Grid.Column="1"
-                ItemsSource="{Binding ExerciseList}"
-                IsVisible="{Binding ShowExerciseList}">
+                ItemsSource="{Binding ExerciseList}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:Exercise">
                         <ViewCell>

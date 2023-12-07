@@ -48,9 +48,6 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private bool showStcList = false;
 
-        [ObservableProperty]
-        private bool showExerciseList = false;
-
         [RelayCommand]
         static async Task GoBack()
         {
@@ -276,12 +273,6 @@ namespace LocalLiftLog.ViewModels
         private async Task GoToCreateSetTemplatePage()
         {
             await Shell.Current.GoToAsync(nameof(CreateSetTemplatePage));
-        }
-
-        [RelayCommand]
-        private void DisplayExerciseList()
-        {
-            ShowExerciseList = true;
         }
 
         [RelayCommand]
