@@ -11,7 +11,7 @@
             RowDefinitions="*, *"
             ColumnDefinitions="*, Auto"
             Padding="10"
-            ColumnSpacing="20"
+            ColumnSpacing="30"
             HorizontalOptions="Center">
             <VerticalStackLayout 
                 Grid.Column="0"
@@ -24,66 +24,81 @@
                         FontAttributes="Bold"
                         FontSize="22"
                         VerticalOptions="Center" />
+                    <Label 
+                        Text="{Binding ExerciseName}"
+                        FontAttributes="Bold"
+                        FontSize="22"
+                        VerticalOptions="Center"
+                        TextColor="#4287f5" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout Spacing="10">
                     <Label 
                         Text="Note:"
                         Style="{StaticResource CheckBoxLabelStyle}" />
                     <Entry 
-                        WidthRequest="250" />
+                        WidthRequest="250"
+                        Text="{Binding Note}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}" />
+                        Style="{StaticResource CheckBoxStyle}"
+                        IsChecked="{Binding IsTrackingWeight}" />
                     <Label 
                         Text="Track Weight"
                         Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}" />
+                        Style="{StaticResource CheckBoxStyle}" 
+                        IsChecked="{Binding IsTrackingReps}" />
                     <Label 
                         Text="Track Reps"
                         Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}" />
+                        Style="{StaticResource CheckBoxStyle}"
+                        IsChecked="{Binding IsTrackingRir}" />
                     <Label 
                         Text="Track RIR"
                         Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}" />
+                        Style="{StaticResource CheckBoxStyle}"
+                        IsChecked="{Binding IsTrackingRpe}" />
                     <Label 
                         Text="Track RPE"
                         Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}" />
+                        Style="{StaticResource CheckBoxStyle}"
+                        IsChecked="{Binding IsTrackingTime}" />
                     <Label 
                         Text="Track Time"
                         Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}" />
+                        Style="{StaticResource CheckBoxStyle}"
+                        IsChecked="{Binding IsTrackingDistance}" />
                     <Label 
                         Text="Track Distance"
                         Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}" />
+                        Style="{StaticResource CheckBoxStyle}"
+                        IsChecked="{Binding IsTrackingCardioResistance}" />
                     <Label 
                         Text="Track Cardio Resistance Level"
                         Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}" />
+                        Style="{StaticResource CheckBoxStyle}"
+                        IsChecked="{Binding IsUsingBodyWeightAsWeight}" />
                     <Label 
                         Text="Add Body Weight To Weight"
                         Style="{StaticResource CheckBoxLabelStyle}" />

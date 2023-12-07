@@ -48,6 +48,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private bool showStcList = false;
 
+        [ObservableProperty]
+        private SetTemplate operatingSetTemplate = new();
+
         [RelayCommand]
         static async Task GoBack()
         {
