@@ -22,12 +22,12 @@
                     <Label 
                         Text="Exercise:"
                         FontAttributes="Bold"
-                        FontSize="22"
+                        FontSize="24"
                         VerticalOptions="Center" />
                     <Label 
                         Text="{Binding OperatingSetTemplate.ExerciseName}"
                         FontAttributes="Bold"
-                        FontSize="22"
+                        FontSize="24"
                         VerticalOptions="Center"
                         TextColor="#4287f5" />
                 </HorizontalStackLayout>
@@ -46,7 +46,7 @@
                         Text="Note:"
                         Style="{StaticResource CheckBoxLabelStyle}" />
                     <Entry 
-                        WidthRequest="250"
+                        Style="{StaticResource GenericEntryFieldStyle}"
                         Text="{Binding OperatingSetTemplate.Note}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
@@ -118,7 +118,7 @@
             <Label 
                 Text="Exercise List"
                 FontAttributes="Bold"
-                FontSize="22"
+                FontSize="24"
                 VerticalOptions="Center" />
                 <ListView
                     ItemsSource="{Binding ExerciseList}">
