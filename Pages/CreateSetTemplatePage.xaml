@@ -104,19 +104,29 @@
                         Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
             </VerticalStackLayout>
-            <ListView
-                Grid.Column="1"
-                ItemsSource="{Binding ExerciseList}">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Exercise">
-                        <ViewCell>
-                            <Label 
-                                Text="{Binding Name}"
-                                Style="{StaticResource ListViewLabelStyle}"/>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <VerticalStackLayout Grid.Column="1">
+            <Label 
+                Text="Exercise List"
+                FontAttributes="Bold"
+                FontSize="22"
+                VerticalOptions="Center" />
+                <ListView
+                    ItemsSource="{Binding ExerciseList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Exercise">
+                            <ViewCell>
+                                <Label 
+                                    Text="{Binding Name}"
+                                    Style="{StaticResource ListViewLabelStyle}"/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </VerticalStackLayout>
         </Grid>
+        <Button 
+            HorizontalOptions="Center"
+            Text="Save Set"
+            Style="{StaticResource AddButtonStyle}" />
     </VerticalStackLayout>
 </ContentPage>
