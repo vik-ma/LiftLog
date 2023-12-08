@@ -33,6 +33,16 @@
                 </HorizontalStackLayout>
                 <HorizontalStackLayout Spacing="10">
                     <Label 
+                        Text="Number of Sets:"
+                        Style="{StaticResource CheckBoxLabelStyle}" />
+                    <Entry 
+                        Style="{StaticResource SmallEntryFieldStyle}"
+                        Text="{Binding NewSetTemplateNumSets}" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout 
+                    Spacing="10"
+                    Padding="0, 10, 0, 0">
+                    <Label 
                         Text="Note:"
                         Style="{StaticResource CheckBoxLabelStyle}" />
                     <Entry 

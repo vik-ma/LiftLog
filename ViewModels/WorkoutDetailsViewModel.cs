@@ -51,6 +51,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private SetTemplate operatingSetTemplate = new();
 
+        [ObservableProperty]
+        private int newSetTemplateNumSets;
+
         [RelayCommand]
         static async Task GoBack()
         {
