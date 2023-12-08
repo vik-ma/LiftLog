@@ -23,7 +23,7 @@
                         Text="Exercise:"
                         Style="{StaticResource MediumHeaderLabelStyle}" />
                     <Label 
-                        Text="{Binding OperatingSetTemplate.ExerciseName}"
+                        Text="{Binding NewSetTemplateSelectedExerciseName}"
                         Style="{StaticResource MediumHeaderLabelStyle}"
                         TextColor="#4287f5" />
                 </HorizontalStackLayout>
@@ -111,11 +111,13 @@
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Column="1">
-            <Label 
-                Text="Exercise List"
-                Style="{StaticResource MediumHeaderLabelStyle}" />
+                <Label 
+                    Text="Exercise List"
+                    Style="{StaticResource MediumHeaderLabelStyle}" />
                 <ListView
-                    ItemsSource="{Binding ExerciseList}">
+                    SelectionMode="Single"
+                    ItemsSource="{Binding ExerciseList}"
+                    ItemSelected="OnItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:Exercise">
                             <ViewCell>

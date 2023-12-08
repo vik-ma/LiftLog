@@ -1,4 +1,6 @@
 namespace LocalLiftLog.Pages;
+
+using LocalLiftLog.Models;
 using LocalLiftLog.ViewModels;
 
 public partial class CreateSetTemplatePage : ContentPage
@@ -15,5 +17,14 @@ public partial class CreateSetTemplatePage : ContentPage
     {
         base.OnAppearing();
         await _viewModel.LoadExerciseListAsync();
+    }
+
+    void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+    {
+        if (args.SelectedItem != null)
+        {
+            var selectedExercise = (Exercise)args.SelectedItem;
+            _viewModel.NewSetTemplateSelectedExerciseName = selectedExercise.Name;
+        }
     }
 }

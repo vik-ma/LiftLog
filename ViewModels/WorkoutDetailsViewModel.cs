@@ -54,6 +54,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private int newSetTemplateNumSets;
 
+        [ObservableProperty]
+        private string newSetTemplateSelectedExerciseName;
+
         [RelayCommand]
         static async Task GoBack()
         {
