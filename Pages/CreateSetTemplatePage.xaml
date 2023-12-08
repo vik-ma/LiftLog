@@ -21,14 +21,10 @@
                     Padding="0, 10">
                     <Label 
                         Text="Exercise:"
-                        FontAttributes="Bold"
-                        FontSize="24"
-                        VerticalOptions="Center" />
+                        Style="{StaticResource MediumHeaderLabelStyle}" />
                     <Label 
                         Text="{Binding OperatingSetTemplate.ExerciseName}"
-                        FontAttributes="Bold"
-                        FontSize="24"
-                        VerticalOptions="Center"
+                        Style="{StaticResource MediumHeaderLabelStyle}"
                         TextColor="#4287f5" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout Spacing="10">
@@ -117,9 +113,7 @@
             <VerticalStackLayout Grid.Column="1">
             <Label 
                 Text="Exercise List"
-                FontAttributes="Bold"
-                FontSize="24"
-                VerticalOptions="Center" />
+                Style="{StaticResource MediumHeaderLabelStyle}" />
                 <ListView
                     ItemsSource="{Binding ExerciseList}">
                     <ListView.ItemTemplate>
