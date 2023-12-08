@@ -15,7 +15,7 @@
             HorizontalOptions="Center">
             <VerticalStackLayout 
                 Grid.Column="0"
-                x:DataType="models:SetTemplate">
+                x:DataType="viewmodel:WorkoutDetailsViewModel">
                 <HorizontalStackLayout 
                     Spacing="10"
                     Padding="0, 10">
@@ -25,7 +25,7 @@
                         FontSize="22"
                         VerticalOptions="Center" />
                     <Label 
-                        Text="{Binding ExerciseName}"
+                        Text="{Binding OperatingSetTemplate.ExerciseName}"
                         FontAttributes="Bold"
                         FontSize="22"
                         VerticalOptions="Center"
@@ -37,12 +37,12 @@
                         Style="{StaticResource CheckBoxLabelStyle}" />
                     <Entry 
                         WidthRequest="250"
-                        Text="{Binding Note}" />
+                        Text="{Binding OperatingSetTemplate.Note}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
-                        IsChecked="{Binding IsTrackingWeight}" />
+                        IsChecked="{Binding OperatingSetTemplate.IsTrackingWeight}" />
                     <Label 
                         Text="Track Weight"
                         Style="{StaticResource CheckBoxLabelStyle}" />
@@ -50,7 +50,7 @@
                 <HorizontalStackLayout>
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}" 
-                        IsChecked="{Binding IsTrackingReps}" />
+                        IsChecked="{Binding OperatingSetTemplate.IsTrackingReps}" />
                     <Label 
                         Text="Track Reps"
                         Style="{StaticResource CheckBoxLabelStyle}" />
@@ -58,7 +58,7 @@
                 <HorizontalStackLayout>
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
-                        IsChecked="{Binding IsTrackingRir}" />
+                        IsChecked="{Binding OperatingSetTemplate.IsTrackingRir}" />
                     <Label 
                         Text="Track RIR"
                         Style="{StaticResource CheckBoxLabelStyle}" />
@@ -66,7 +66,7 @@
                 <HorizontalStackLayout>
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
-                        IsChecked="{Binding IsTrackingRpe}" />
+                        IsChecked="{Binding OperatingSetTemplate.IsTrackingRpe}" />
                     <Label 
                         Text="Track RPE"
                         Style="{StaticResource CheckBoxLabelStyle}" />
@@ -74,7 +74,7 @@
                 <HorizontalStackLayout>
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
-                        IsChecked="{Binding IsTrackingTime}" />
+                        IsChecked="{Binding OperatingSetTemplate.IsTrackingTime}" />
                     <Label 
                         Text="Track Time"
                         Style="{StaticResource CheckBoxLabelStyle}" />
@@ -82,7 +82,7 @@
                 <HorizontalStackLayout>
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
-                        IsChecked="{Binding IsTrackingDistance}" />
+                        IsChecked="{Binding OperatingSetTemplate.IsTrackingDistance}" />
                     <Label 
                         Text="Track Distance"
                         Style="{StaticResource CheckBoxLabelStyle}" />
@@ -90,7 +90,7 @@
                 <HorizontalStackLayout>
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
-                        IsChecked="{Binding IsTrackingCardioResistance}" />
+                        IsChecked="{Binding OperatingSetTemplate.IsTrackingCardioResistance}" />
                     <Label 
                         Text="Track Cardio Resistance Level"
                         Style="{StaticResource CheckBoxLabelStyle}" />
@@ -98,7 +98,7 @@
                 <HorizontalStackLayout>
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
-                        IsChecked="{Binding IsUsingBodyWeightAsWeight}" />
+                        IsChecked="{Binding OperatingSetTemplate.IsUsingBodyWeightAsWeight}" />
                     <Label 
                         Text="Add Body Weight To Weight"
                         Style="{StaticResource CheckBoxLabelStyle}" />
