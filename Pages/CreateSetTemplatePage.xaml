@@ -130,10 +130,12 @@
                 </ListView>
             </VerticalStackLayout>
         </Grid>
+        
         <Button 
             HorizontalOptions="Center"
             Text="Save Set"
-            Style="{StaticResource AddButtonStyle}" />
+            Style="{StaticResource AddButtonStyle}"
+            Command="{Binding CreateNewSetTemplateCommand}"/>
         
         <Button 
             Text="Go Back"

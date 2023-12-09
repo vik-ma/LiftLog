@@ -28,6 +28,8 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private WorkoutTemplate workoutTemplate;
 
+        private int activeSetCollectionId;
+
         public WorkoutDetailsViewModel(WorkoutTemplateViewModel workoutTemplateViewModel, DatabaseContext context, ExerciseDataManager exerciseData)
         {
             _workoutTemplateViewModel = workoutTemplateViewModel;
@@ -113,8 +115,10 @@ namespace LocalLiftLog.ViewModels
             {
                 SetTemplateCollection newSet = new();
                 await _context.AddItemAsync<SetTemplateCollection>(newSet);
-                WorkoutTemplate.SetTemplateCollectionId = newSet.Id;
+                int newStcId = newSet.Id;
+                WorkoutTemplate.SetTemplateCollectionId = newStcId;
                 await _context.UpdateItemAsync<WorkoutTemplate>(WorkoutTemplate);
+                activeSetCollectionId = newStcId;
             });
 
             OnPropertyChanged(nameof(WorkoutTemplate));
@@ -129,6 +133,8 @@ namespace LocalLiftLog.ViewModels
 
             // Skip function if no SetTemplateCollectionId is set
             if (WorkoutTemplate.SetTemplateCollectionId == 0) return;
+
+            activeSetCollectionId = WorkoutTemplate.SetTemplateCollectionId;
 
             SetList.Clear();
 
@@ -178,6 +184,8 @@ namespace LocalLiftLog.ViewModels
             if (WorkoutTemplate is null) return;
 
             WorkoutTemplate.SetTemplateCollectionId = 0;
+
+            activeSetCollectionId = WorkoutTemplate.SetTemplateCollectionId;
 
             await UpdateWorkoutTemplateAsync();
 
@@ -285,16 +293,49 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task AddSetToSetList()
+        private async Task CreateNewSetTemplate()
         {
-            if (WorkoutTemplate is null) return;
+            if (OperatingSetTemplate is null) return;
 
             // Create new Set Template Collection if Workout Template does not have one assigned
-            if (WorkoutTemplate.SetTemplateCollectionId == 0)
+            if (activeSetCollectionId == 0)
             {
                 await CreateNewSetListAsync();
             }
 
+            SetTemplate newSetTemplate = new()
+            {
+                SetTemplateCollectionId = activeSetCollectionId,
+                ExerciseName = NewSetTemplateSelectedExerciseName,
+                Note = OperatingSetTemplate.Note,
+                IsTrackingWeight = OperatingSetTemplate.IsTrackingWeight,
+                IsTrackingReps = OperatingSetTemplate.IsTrackingReps,
+                IsTrackingRir = OperatingSetTemplate.IsTrackingRir,
+                IsTrackingRpe = OperatingSetTemplate.IsTrackingRpe,
+                IsTrackingTime = OperatingSetTemplate.IsTrackingTime,
+                IsTrackingDistance = OperatingSetTemplate.IsTrackingDistance,
+                IsTrackingCardioResistance = OperatingSetTemplate.IsTrackingCardioResistance,
+                IsUsingBodyWeightAsWeight = OperatingSetTemplate.IsUsingBodyWeightAsWeight
+            };
+
+            int numSets = NewSetTemplateNumSets;
+
+            // Add validation
+
+            await SaveSetTemplateAsync(newSetTemplate, numSets);
+        }
+
+        private async Task SaveSetTemplateAsync(SetTemplate setTemplate, int numSets)
+        {
+            // Check if numSets > 0 and < 20
+
+            if (setTemplate == null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                await _context.AddItemAsync<SetTemplate>(setTemplate);
+                SetList.Add(setTemplate);
+            });
         }
     }
 }
