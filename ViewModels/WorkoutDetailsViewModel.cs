@@ -284,53 +284,5 @@ namespace LocalLiftLog.ViewModels
         {
             await Shell.Current.GoToAsync(nameof(CreateSetTemplatePage));
         }
-
-        [RelayCommand]
-        private async Task CreateNewSetTemplate()
-        {
-            if (OperatingSetTemplate is null) return;
-
-            // Create new Set Template Collection if Workout Template does not have one assigned
-            if (activeSetCollectionId == 0)
-            {
-                await CreateNewSetListAsync();
-            }
-
-            SetTemplate newSetTemplate = new()
-            {
-                SetTemplateCollectionId = activeSetCollectionId,
-                ExerciseName = NewSetTemplateSelectedExerciseName,
-                Note = OperatingSetTemplate.Note,
-                IsTrackingWeight = OperatingSetTemplate.IsTrackingWeight,
-                IsTrackingReps = OperatingSetTemplate.IsTrackingReps,
-                IsTrackingRir = OperatingSetTemplate.IsTrackingRir,
-                IsTrackingRpe = OperatingSetTemplate.IsTrackingRpe,
-                IsTrackingTime = OperatingSetTemplate.IsTrackingTime,
-                IsTrackingDistance = OperatingSetTemplate.IsTrackingDistance,
-                IsTrackingCardioResistance = OperatingSetTemplate.IsTrackingCardioResistance,
-                IsUsingBodyWeightAsWeight = OperatingSetTemplate.IsUsingBodyWeightAsWeight
-            };
-
-            int numSets = NewSetTemplateNumSets;
-
-            // Add validation
-
-            await SaveSetTemplateAsync(newSetTemplate, numSets);
-
-
-        }
-
-        private async Task SaveSetTemplateAsync(SetTemplate setTemplate, int numSets)
-        {
-            // Check if numSets > 0 and < 20
-
-            if (setTemplate == null) return;
-
-            await ExecuteAsync(async () =>
-            {
-                await _context.AddItemAsync<SetTemplate>(setTemplate);
-                SetList.Add(setTemplate);
-            });
-        }
     }
 }

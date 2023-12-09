@@ -5,8 +5,8 @@ using LocalLiftLog.ViewModels;
 
 public partial class CreateSetTemplatePage : ContentPage
 {
-    private readonly WorkoutDetailsViewModel _viewModel;
-    public CreateSetTemplatePage(WorkoutDetailsViewModel viewModel)
+    private readonly CreateSetTemplateViewModel _viewModel;
+    public CreateSetTemplatePage(CreateSetTemplateViewModel viewModel)
 	{
 		InitializeComponent();
         _viewModel = viewModel;

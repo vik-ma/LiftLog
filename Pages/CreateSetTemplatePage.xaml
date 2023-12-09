@@ -4,7 +4,7 @@
              x:Class="LocalLiftLog.Pages.CreateSetTemplatePage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:models="clr-namespace:LocalLiftLog.Models"
-             x:DataType="viewmodel:WorkoutDetailsViewModel"
+             x:DataType="viewmodel:CreateSetTemplateViewModel"
              Title="Create Set Template">
     <VerticalStackLayout>
         <Grid 
@@ -15,7 +15,7 @@
             HorizontalOptions="Center">
             <VerticalStackLayout 
                 Grid.Column="0"
-                x:DataType="viewmodel:WorkoutDetailsViewModel">
+                x:DataType="viewmodel:CreateSetTemplateViewModel">
                 <HorizontalStackLayout 
                     Spacing="10"
                     Padding="0, 10">
