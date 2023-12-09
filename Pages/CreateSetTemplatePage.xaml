@@ -134,5 +134,11 @@
             HorizontalOptions="Center"
             Text="Save Set"
             Style="{StaticResource AddButtonStyle}" />
+        
+        <Button 
+            Text="Go Back"
+            Style="{StaticResource ProgramButtonStyle}"
+            Command="{Binding GoBackCommand}"
+            Margin="20" />
     </VerticalStackLayout>
 </ContentPage>
