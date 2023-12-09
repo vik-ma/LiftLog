@@ -28,8 +28,6 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private WorkoutTemplate workoutTemplate;
 
-        private int activeSetCollectionId;
-
         public WorkoutDetailsViewModel(WorkoutTemplateViewModel workoutTemplateViewModel, DatabaseContext context, ExerciseDataManager exerciseData)
         {
             _workoutTemplateViewModel = workoutTemplateViewModel;
@@ -118,7 +116,6 @@ namespace LocalLiftLog.ViewModels
                 int newStcId = newSet.Id;
                 WorkoutTemplate.SetTemplateCollectionId = newStcId;
                 await _context.UpdateItemAsync<WorkoutTemplate>(WorkoutTemplate);
-                activeSetCollectionId = newStcId;
             });
 
             OnPropertyChanged(nameof(WorkoutTemplate));
@@ -133,8 +130,6 @@ namespace LocalLiftLog.ViewModels
 
             // Skip function if no SetTemplateCollectionId is set
             if (WorkoutTemplate.SetTemplateCollectionId == 0) return;
-
-            activeSetCollectionId = WorkoutTemplate.SetTemplateCollectionId;
 
             SetList.Clear();
 
@@ -184,8 +179,6 @@ namespace LocalLiftLog.ViewModels
             if (WorkoutTemplate is null) return;
 
             WorkoutTemplate.SetTemplateCollectionId = 0;
-
-            activeSetCollectionId = WorkoutTemplate.SetTemplateCollectionId;
 
             await UpdateWorkoutTemplateAsync();
 
@@ -323,6 +316,8 @@ namespace LocalLiftLog.ViewModels
             // Add validation
 
             await SaveSetTemplateAsync(newSetTemplate, numSets);
+
+
         }
 
         private async Task SaveSetTemplateAsync(SetTemplate setTemplate, int numSets)

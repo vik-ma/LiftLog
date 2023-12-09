@@ -75,6 +75,7 @@ namespace LocalLiftLog
             builder.Services.AddTransient<StartedWorkoutViewModel>();
 
             builder.Services.AddTransient<CreateSetTemplatePage>();
+            builder.Services.AddTransient<CreateSetTemplateViewModel>();
 
             return builder.Build();
         }
