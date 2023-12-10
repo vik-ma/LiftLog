@@ -17,6 +17,7 @@ public partial class CreateSetTemplatePage : ContentPage
     {
         base.OnAppearing();
         await _viewModel.LoadExerciseListAsync();
+        _viewModel.InitializeSetWorkoutTemplatePackage();
     }
 
     void OnItemSelected(object sender, SelectedItemChangedEventArgs args)

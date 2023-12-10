@@ -243,9 +243,14 @@ namespace LocalLiftLog.ViewModels
                 await CreateNewSetListAsync();
             }
 
+            SetWorkoutTemplatePackage package = new() { 
+                workoutTemplate = WorkoutTemplate,
+                setTemplate = new()
+            };
+
             var navigationParameter = new Dictionary<string, object>
             {
-                ["WorkoutTemplate"] = WorkoutTemplate
+                ["SetWorkoutTemplatePackage"] = package
             };
 
             await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={WorkoutTemplate.Id}", navigationParameter);

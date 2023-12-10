@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.ViewModels
 {
-    [QueryProperty(nameof(WorkoutTemplate), nameof(WorkoutTemplate))]
+    [QueryProperty(nameof(SetWorkoutTemplatePackage), nameof(SetWorkoutTemplatePackage))]
     public partial class CreateSetTemplateViewModel : ObservableObject
     {
         private readonly DatabaseContext _context;
@@ -22,7 +22,13 @@ namespace LocalLiftLog.ViewModels
         private readonly Dictionary<int, string> exerciseGroupDict;
 
         [ObservableProperty]
-        private WorkoutTemplate workoutTemplate;
+        private SetWorkoutTemplatePackage setWorkoutTemplatePackage;
+
+        [ObservableProperty]
+        private SetTemplate operatingSetTemplate;
+
+        [ObservableProperty]
+        private WorkoutTemplate operatingWorkoutTemplate;
 
         public CreateSetTemplateViewModel(DatabaseContext context, ExerciseDataManager exerciseData)
         {
@@ -33,9 +39,6 @@ namespace LocalLiftLog.ViewModels
 
         [ObservableProperty]
         private ObservableCollection<Exercise> exerciseList = new();
-
-        [ObservableProperty]
-        private SetTemplate operatingSetTemplate = new();
 
         [ObservableProperty]
         private int newSetTemplateNumSets;
@@ -59,6 +62,12 @@ namespace LocalLiftLog.ViewModels
 
                 UpdateExerciseList(exercises);
             });
+        }
+
+        public void InitializeSetWorkoutTemplatePackage()
+        {
+            OperatingSetTemplate = SetWorkoutTemplatePackage.setTemplate;
+            OperatingWorkoutTemplate = SetWorkoutTemplatePackage.workoutTemplate;
         }
 
         private void UpdateExerciseList(IEnumerable<Exercise> exercises)
@@ -95,11 +104,11 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task CreateNewSetTemplate()
         {
-            if (OperatingSetTemplate is null || WorkoutTemplate is null) return;
+            if (OperatingSetTemplate is null || OperatingWorkoutTemplate is null) return;
 
             SetTemplate newSetTemplate = new()
             {
-                SetTemplateCollectionId = WorkoutTemplate.SetTemplateCollectionId,
+                SetTemplateCollectionId = OperatingWorkoutTemplate.SetTemplateCollectionId,
                 ExerciseName = NewSetTemplateSelectedExerciseName,
                 Note = OperatingSetTemplate.Note,
                 IsTrackingWeight = OperatingSetTemplate.IsTrackingWeight,
