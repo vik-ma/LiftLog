@@ -117,20 +117,26 @@ namespace LocalLiftLog.ViewModels
             // Add validation
 
             await SaveSetTemplateAsync(newSetTemplate, numSets);
-
-            await GoBack();
         }
 
         private async Task SaveSetTemplateAsync(SetTemplate setTemplate, int numSets)
         {
-            // Check if numSets > 0 and < 20
+            if (numSets < 1 || numSets > 10)
+            {
+                await Shell.Current.DisplayAlert("Error", "Number of sets must be between 1 and 10!", "OK");
+                return;
+            }
 
             if (setTemplate == null) return;
 
             await ExecuteAsync(async () =>
             {
-                await _context.AddItemAsync<SetTemplate>(setTemplate);
+                for (int i = 0; i < numSets; i++) {
+                    await _context.AddItemAsync<SetTemplate>(setTemplate);
+                }
             });
+
+            await GoBack();
         }
     }
 }
