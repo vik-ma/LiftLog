@@ -97,11 +97,7 @@ namespace LocalLiftLog.ViewModels
         {
             if (OperatingSetTemplate is null) return;
 
-            // Create new Set Template Collection if Workout Template does not have one assigned
-            //if (activeSetCollectionId == 0)
-            //{
-            //    await CreateNewSetListAsync();
-            //}
+
 
             SetTemplate newSetTemplate = new()
             {

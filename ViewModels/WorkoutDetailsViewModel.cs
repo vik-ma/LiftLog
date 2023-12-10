@@ -284,14 +284,18 @@ namespace LocalLiftLog.ViewModels
         {
             if (WorkoutTemplate is null) return;
 
-            int id = WorkoutTemplate.Id;
+            // Create new Set Template Collection if Workout Template does not have one assigned
+            if (WorkoutTemplate.SetTemplateCollectionId == 0)
+            {
+                await CreateNewSetListAsync();
+            }
 
             var navigationParameter = new Dictionary<string, object>
             {
                 ["WorkoutTemplate"] = WorkoutTemplate
             };
 
-            await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={id}", navigationParameter);
+            await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={WorkoutTemplate.Id}", navigationParameter);
         }
     }
 }
