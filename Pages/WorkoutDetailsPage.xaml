@@ -70,11 +70,11 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
-                                            Text="Set Template Id: " 
+                                            Text="Exercise: " 
                                             FontAttributes="Bold"  
                                             Style="{StaticResource ProgramSpanStyle}" />
                                         <Span 
-                                            Text="{Binding Id}"
+                                            Text="{Binding ExerciseName}"
                                             Style="{StaticResource ProgramSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
