@@ -273,5 +273,28 @@ namespace LocalLiftLog.ViewModels
 
             await LoadSetListFromSetTemplateCollectionIdAsync();
         }
+
+        [RelayCommand]
+        private async Task EditSetTemplateAsync(int id)
+        {
+            if (WorkoutTemplate is null) return;
+
+            SetTemplate selectedSetTemplate = SetList.FirstOrDefault(p => p.Id == id);
+
+            if (selectedSetTemplate is null) return;
+
+            SetWorkoutTemplatePackage package = new()
+            {
+                workoutTemplate = WorkoutTemplate,
+                setTemplate = selectedSetTemplate
+            };
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["SetWorkoutTemplatePackage"] = package
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={WorkoutTemplate.Id}", navigationParameter);
+        }
     }
 }
