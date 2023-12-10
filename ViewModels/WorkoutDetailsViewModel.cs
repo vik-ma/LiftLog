@@ -16,24 +16,14 @@ namespace LocalLiftLog.ViewModels
     [QueryProperty(nameof(WorkoutTemplate), nameof(WorkoutTemplate))]
     public partial class WorkoutDetailsViewModel : ObservableObject
     {
-        [ObservableProperty]
-        private WorkoutTemplateViewModel _workoutTemplateViewModel;
-
         private readonly DatabaseContext _context;
-
-        private readonly ExerciseDataManager _exerciseData;
-
-        private readonly Dictionary<int, string> exerciseGroupDict;
 
         [ObservableProperty]
         private WorkoutTemplate workoutTemplate;
 
-        public WorkoutDetailsViewModel(WorkoutTemplateViewModel workoutTemplateViewModel, DatabaseContext context, ExerciseDataManager exerciseData)
+        public WorkoutDetailsViewModel(DatabaseContext context)
         {
-            _workoutTemplateViewModel = workoutTemplateViewModel;
             _context = context;
-            _exerciseData = exerciseData;
-            exerciseGroupDict = ExerciseGroupDictionary.ExerciseGroupDict;
         }
 
         [ObservableProperty]
@@ -43,49 +33,12 @@ namespace LocalLiftLog.ViewModels
         private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
 
         [ObservableProperty]
-        private ObservableCollection<Exercise> exerciseList = new();
-
-        [ObservableProperty]
         private bool showStcList = false;
-
-        [ObservableProperty]
-        private SetTemplate operatingSetTemplate = new();
-
-        [ObservableProperty]
-        private int newSetTemplateNumSets;
-
-        [ObservableProperty]
-        private string newSetTemplateSelectedExerciseName;
 
         [RelayCommand]
         static async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
-        }
-
-        public async Task LoadExerciseListAsync()
-        {
-            await ExecuteAsync(async () =>
-            {
-                var exercises = await _exerciseData.GetFullExerciseList();
-
-                ExerciseList.Clear();
-
-                UpdateExerciseList(exercises);
-            });
-        }
-
-        private void UpdateExerciseList(IEnumerable<Exercise> exercises)
-        {
-            if (exercises is not null && exercises.Any())
-            {
-                exercises ??= new ObservableCollection<Exercise>();
-
-                foreach (var exercise in exercises)
-                {
-                    ExerciseList.Add(exercise);
-                }
-            }
         }
 
         #nullable enable
