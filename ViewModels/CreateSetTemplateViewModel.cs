@@ -95,13 +95,11 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task CreateNewSetTemplate()
         {
-            if (OperatingSetTemplate is null) return;
-
-
+            if (OperatingSetTemplate is null || WorkoutTemplate is null) return;
 
             SetTemplate newSetTemplate = new()
             {
-                //SetTemplateCollectionId = activeSetCollectionId,
+                SetTemplateCollectionId = WorkoutTemplate.SetTemplateCollectionId,
                 ExerciseName = NewSetTemplateSelectedExerciseName,
                 Note = OperatingSetTemplate.Note,
                 IsTrackingWeight = OperatingSetTemplate.IsTrackingWeight,
