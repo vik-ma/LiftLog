@@ -106,6 +106,8 @@ namespace LocalLiftLog.ViewModels
         {
             if (OperatingSetTemplate is null || OperatingWorkoutTemplate is null) return;
 
+            // CHECK IF ID EXISTS
+
             SetTemplate newSetTemplate = new()
             {
                 SetTemplateCollectionId = OperatingWorkoutTemplate.SetTemplateCollectionId,

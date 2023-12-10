@@ -233,20 +233,9 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task GoToCreateSetTemplatePage()
+        private async Task GoToCreateSetTemplatePage(SetWorkoutTemplatePackage package)
         {
-            if (WorkoutTemplate is null) return;
-
-            // Create new Set Template Collection if Workout Template does not have one assigned
-            if (WorkoutTemplate.SetTemplateCollectionId == 0)
-            {
-                await CreateNewSetListAsync();
-            }
-
-            SetWorkoutTemplatePackage package = new() { 
-                workoutTemplate = WorkoutTemplate,
-                setTemplate = new()
-            };
+            if (package is null) return;
 
             var navigationParameter = new Dictionary<string, object>
             {
@@ -275,6 +264,26 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
+        private async Task CreateNewSetTemplate()
+        {
+            if (WorkoutTemplate is null) return;
+
+            // Create new Set Template Collection if Workout Template does not have one assigned
+            if (WorkoutTemplate.SetTemplateCollectionId == 0)
+            {
+                await CreateNewSetListAsync();
+            }
+
+            SetWorkoutTemplatePackage package = new()
+            {
+                workoutTemplate = WorkoutTemplate,
+                setTemplate = new()
+            };
+
+            await GoToCreateSetTemplatePage(package);
+        }
+
+        [RelayCommand]
         private async Task EditSetTemplateAsync(int id)
         {
             if (WorkoutTemplate is null) return;
@@ -289,12 +298,7 @@ namespace LocalLiftLog.ViewModels
                 setTemplate = selectedSetTemplate
             };
 
-            var navigationParameter = new Dictionary<string, object>
-            {
-                ["SetWorkoutTemplatePackage"] = package
-            };
-
-            await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={WorkoutTemplate.Id}", navigationParameter);
+            await GoToCreateSetTemplatePage(package);
         }
     }
 }

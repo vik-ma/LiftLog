@@ -111,7 +111,7 @@
                 <Button 
                     Text="Add Set"
                     Style="{StaticResource AddButtonStyle}"
-                    Command="{Binding GoToCreateSetTemplatePageCommand}"/>
+                    Command="{Binding CreateNewSetTemplateCommand}"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout>
