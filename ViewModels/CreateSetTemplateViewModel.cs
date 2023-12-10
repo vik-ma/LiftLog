@@ -118,7 +118,7 @@ namespace LocalLiftLog.ViewModels
 
             await SaveSetTemplateAsync(newSetTemplate, numSets);
 
-
+            await GoBack();
         }
 
         private async Task SaveSetTemplateAsync(SetTemplate setTemplate, int numSets)
