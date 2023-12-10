@@ -250,5 +250,23 @@ namespace LocalLiftLog.ViewModels
 
             await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={WorkoutTemplate.Id}", navigationParameter);
         }
+
+        [RelayCommand]
+        private async Task DeleteSetTemplateAsync(int id)
+        {
+            SetTemplate setTemplate = SetList.FirstOrDefault(p => p.Id == id);
+
+            if (setTemplate is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<SetTemplate>(setTemplate))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set.", "OK");
+                }
+            });
+
+            await LoadSetListFromSetTemplateCollectionIdAsync();
+        }
     }
 }

@@ -79,6 +79,11 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            <Button 
+                                Text="Remove"
+                                Style="{StaticResource DeleteButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=DeleteSetTemplateCommand}" 
+                                CommandParameter="{Binding Id}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
