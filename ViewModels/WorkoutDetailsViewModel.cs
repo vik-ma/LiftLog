@@ -282,7 +282,16 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task GoToCreateSetTemplatePage()
         {
-            await Shell.Current.GoToAsync(nameof(CreateSetTemplatePage));
+            if (WorkoutTemplate is null) return;
+
+            int id = WorkoutTemplate.Id;
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["WorkoutTemplate"] = WorkoutTemplate
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={id}", navigationParameter);
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.ViewModels
 {
+    [QueryProperty(nameof(WorkoutTemplate), nameof(WorkoutTemplate))]
     public partial class CreateSetTemplateViewModel : ObservableObject
     {
         private readonly DatabaseContext _context;
@@ -19,6 +20,9 @@ namespace LocalLiftLog.ViewModels
         private readonly ExerciseDataManager _exerciseData;
 
         private readonly Dictionary<int, string> exerciseGroupDict;
+
+        [ObservableProperty]
+        private WorkoutTemplate workoutTemplate;
 
         public CreateSetTemplateViewModel(DatabaseContext context, ExerciseDataManager exerciseData)
         {
