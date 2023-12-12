@@ -30,6 +30,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private WorkoutTemplate operatingWorkoutTemplate;
 
+        [ObservableProperty]
+        private bool isEditing;
+
         public CreateSetTemplateViewModel(DatabaseContext context, ExerciseDataManager exerciseData)
         {
             _context = context;
@@ -66,8 +69,9 @@ namespace LocalLiftLog.ViewModels
 
         public void InitializeSetWorkoutTemplatePackage()
         {
-            OperatingSetTemplate = SetWorkoutTemplatePackage.setTemplate;
-            OperatingWorkoutTemplate = SetWorkoutTemplatePackage.workoutTemplate;
+            OperatingSetTemplate = SetWorkoutTemplatePackage.SetTemplate;
+            OperatingWorkoutTemplate = SetWorkoutTemplatePackage.WorkoutTemplate;
+            IsEditing = SetWorkoutTemplatePackage.IsEditing;
         }
 
         private void UpdateExerciseList(IEnumerable<Exercise> exercises)

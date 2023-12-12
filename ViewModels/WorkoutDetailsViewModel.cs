@@ -276,8 +276,9 @@ namespace LocalLiftLog.ViewModels
 
             SetWorkoutTemplatePackage package = new()
             {
-                workoutTemplate = WorkoutTemplate,
-                setTemplate = new()
+                WorkoutTemplate = WorkoutTemplate,
+                SetTemplate = new(),
+                IsEditing = false
             };
 
             await GoToCreateSetTemplatePage(package);
@@ -294,8 +295,9 @@ namespace LocalLiftLog.ViewModels
 
             SetWorkoutTemplatePackage package = new()
             {
-                workoutTemplate = WorkoutTemplate,
-                setTemplate = selectedSetTemplate
+                WorkoutTemplate = WorkoutTemplate,
+                SetTemplate = selectedSetTemplate,
+                IsEditing = true
             };
 
             await GoToCreateSetTemplatePage(package);
