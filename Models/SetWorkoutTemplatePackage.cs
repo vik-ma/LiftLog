@@ -8,7 +8,8 @@ namespace LocalLiftLog.Models
 {
     public class SetWorkoutTemplatePackage
     {
-        public WorkoutTemplate workoutTemplate { get; set; }
-        public SetTemplate setTemplate { get; set; }
+        public WorkoutTemplate WorkoutTemplate { get; set; }
+        public SetTemplate SetTemplate { get; set; }
+        public bool IsEditing { get; set; }
     }
 }
