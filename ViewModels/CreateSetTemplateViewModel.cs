@@ -106,11 +106,9 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task CreateNewSetTemplate()
+        private async Task SaveSetTemplateAsync()
         {
             if (OperatingSetTemplate is null || OperatingWorkoutTemplate is null) return;
-
-            // CHECK IF ID EXISTS
 
             SetTemplate newSetTemplate = new()
             {
@@ -131,10 +129,11 @@ namespace LocalLiftLog.ViewModels
 
             // Add validation
 
-            await SaveSetTemplateAsync(newSetTemplate, numSets);
+            await CreateNewSetTemplateAsync(newSetTemplate, numSets);
         }
 
-        private async Task SaveSetTemplateAsync(SetTemplate setTemplate, int numSets)
+
+        private async Task CreateNewSetTemplateAsync(SetTemplate setTemplate, int numSets)
         {
             if (numSets < 1 || numSets > 10)
             {

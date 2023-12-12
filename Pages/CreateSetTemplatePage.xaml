@@ -135,7 +135,7 @@
             HorizontalOptions="Center"
             Text="Save Set"
             Style="{StaticResource AddButtonStyle}"
-            Command="{Binding CreateNewSetTemplateCommand}"/>
+            Command="{Binding SaveSetTemplateCommand}"/>
         
         <Button 
             Text="Go Back"
