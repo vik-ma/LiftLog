@@ -7,6 +7,8 @@
              x:DataType="viewmodel:CreateSetTemplateViewModel"
              Title="Create Set Template">
     <VerticalStackLayout>
+        <Label 
+            Text="{Binding OperatingWorkoutTemplate.SetTemplateCollectionId}" />
         <Grid 
             RowDefinitions="*, *"
             ColumnDefinitions="*, Auto"

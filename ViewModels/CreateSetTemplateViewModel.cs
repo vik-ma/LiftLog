@@ -72,6 +72,8 @@ namespace LocalLiftLog.ViewModels
             OperatingSetTemplate = SetWorkoutTemplatePackage.SetTemplate;
             OperatingWorkoutTemplate = SetWorkoutTemplatePackage.WorkoutTemplate;
             IsEditing = SetWorkoutTemplatePackage.IsEditing;
+
+            if (IsEditing) NewSetTemplateSelectedExerciseName = OperatingSetTemplate.ExerciseName;
         }
 
         private void UpdateExerciseList(IEnumerable<Exercise> exercises)
@@ -110,28 +112,53 @@ namespace LocalLiftLog.ViewModels
         {
             if (OperatingSetTemplate is null || OperatingWorkoutTemplate is null) return;
 
-            SetTemplate newSetTemplate = new()
+            if (IsEditing)
             {
-                SetTemplateCollectionId = OperatingWorkoutTemplate.SetTemplateCollectionId,
-                ExerciseName = NewSetTemplateSelectedExerciseName,
-                Note = OperatingSetTemplate.Note,
-                IsTrackingWeight = OperatingSetTemplate.IsTrackingWeight,
-                IsTrackingReps = OperatingSetTemplate.IsTrackingReps,
-                IsTrackingRir = OperatingSetTemplate.IsTrackingRir,
-                IsTrackingRpe = OperatingSetTemplate.IsTrackingRpe,
-                IsTrackingTime = OperatingSetTemplate.IsTrackingTime,
-                IsTrackingDistance = OperatingSetTemplate.IsTrackingDistance,
-                IsTrackingCardioResistance = OperatingSetTemplate.IsTrackingCardioResistance,
-                IsUsingBodyWeightAsWeight = OperatingSetTemplate.IsUsingBodyWeightAsWeight
-            };
+                // If editing existing SetTemplate
+                await UpdateSetTemplateAsync();
+            }
+            else
+            {
+                // If creating new SetTemplate(s)
+                SetTemplate newSetTemplate = new()
+                {
+                    SetTemplateCollectionId = OperatingWorkoutTemplate.SetTemplateCollectionId,
+                    ExerciseName = NewSetTemplateSelectedExerciseName,
+                    Note = OperatingSetTemplate.Note,
+                    IsTrackingWeight = OperatingSetTemplate.IsTrackingWeight,
+                    IsTrackingReps = OperatingSetTemplate.IsTrackingReps,
+                    IsTrackingRir = OperatingSetTemplate.IsTrackingRir,
+                    IsTrackingRpe = OperatingSetTemplate.IsTrackingRpe,
+                    IsTrackingTime = OperatingSetTemplate.IsTrackingTime,
+                    IsTrackingDistance = OperatingSetTemplate.IsTrackingDistance,
+                    IsTrackingCardioResistance = OperatingSetTemplate.IsTrackingCardioResistance,
+                    IsUsingBodyWeightAsWeight = OperatingSetTemplate.IsUsingBodyWeightAsWeight
+                };
 
-            int numSets = NewSetTemplateNumSets;
+                int numSets = NewSetTemplateNumSets;
 
-            // Add validation
+                // Add validation
 
-            await CreateNewSetTemplateAsync(newSetTemplate, numSets);
+                await CreateNewSetTemplateAsync(newSetTemplate, numSets);
+            }
         }
 
+        [RelayCommand]
+        private async Task UpdateSetTemplateAsync()
+        {
+            if (OperatingSetTemplate is null) return;
+
+            OperatingSetTemplate.ExerciseName = NewSetTemplateSelectedExerciseName;
+
+            if (!await _context.UpdateItemAsync<SetTemplate>(OperatingSetTemplate))
+            {
+                await Shell.Current.DisplayAlert("Error", "Error occured when updating Set Template.", "OK");
+            }
+            else
+            {
+                await GoBack();
+            }
+        }
 
         private async Task CreateNewSetTemplateAsync(SetTemplate setTemplate, int numSets)
         {
