@@ -119,6 +119,11 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
+            <Style x:Key="LargeHeaderLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="30" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
             <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyText" />
             <converters:MultiBindingConverter x:Key="MultiBindingConverter" />
             <converters:DayConverter x:Key="DayConverter" />
