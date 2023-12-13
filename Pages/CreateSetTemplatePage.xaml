@@ -20,6 +20,16 @@
                 Style="{StaticResource LargeHeaderLabelStyle}"
                 TextColor="#FF33A8" />
         </HorizontalStackLayout>
+        <HorizontalStackLayout 
+            HorizontalOptions="Center"
+            Spacing="10"
+            Padding="0, 5"
+            IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}">
+            <Label 
+                Text="Add Exercise"
+                Style="{StaticResource LargeHeaderLabelStyle}"
+                TextColor="{DynamicResource Primary}"/>
+        </HorizontalStackLayout>
         <Grid 
             RowDefinitions="*, *"
             ColumnDefinitions="*, Auto"
