@@ -50,7 +50,9 @@
                         Style="{StaticResource MediumHeaderLabelStyle}"
                         TextColor="#4287f5" />
                 </HorizontalStackLayout>
-                <HorizontalStackLayout Spacing="10">
+                <HorizontalStackLayout 
+                    Spacing="10"
+                    IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}">
                     <Label 
                         Text="Number of Sets:"
                         Style="{StaticResource CheckBoxLabelStyle}" />
