@@ -7,8 +7,19 @@
              x:DataType="viewmodel:CreateSetTemplateViewModel"
              Title="Create Set Template">
     <VerticalStackLayout>
-        <Label 
-            Text="{Binding OperatingWorkoutTemplate.SetTemplateCollectionId}" />
+        <HorizontalStackLayout 
+            HorizontalOptions="Center"
+            Spacing="10"
+            Padding="0, 5"
+            IsVisible="{Binding IsEditing}">
+            <Label 
+                Text="Editing Set: "
+                Style="{StaticResource LargeHeaderLabelStyle}" />
+            <Label 
+                Text="{Binding OperatingSetTemplate.ExerciseName}"
+                Style="{StaticResource LargeHeaderLabelStyle}"
+                TextColor="#FF33A8" />
+        </HorizontalStackLayout>
         <Grid 
             RowDefinitions="*, *"
             ColumnDefinitions="*, Auto"
@@ -20,7 +31,7 @@
                 x:DataType="viewmodel:CreateSetTemplateViewModel">
                 <HorizontalStackLayout 
                     Spacing="10"
-                    Padding="0, 10">
+                    Padding="0">
                     <Label 
                         Text="Exercise:"
                         Style="{StaticResource MediumHeaderLabelStyle}" />
