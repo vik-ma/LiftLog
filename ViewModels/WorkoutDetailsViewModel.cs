@@ -35,6 +35,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private bool showStcList = false;
 
+        [ObservableProperty]
+        private string setListOrderString;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -109,6 +112,8 @@ namespace LocalLiftLog.ViewModels
                 await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
                 return;
             }
+
+            GenerateSetListOrderString();
         }
 
         private async Task CheckIfSetTemplateCollectionExists()
@@ -301,6 +306,13 @@ namespace LocalLiftLog.ViewModels
             };
 
             await GoToCreateSetTemplatePage(package);
+        }
+
+        public void GenerateSetListOrderString()
+        {
+            IEnumerable<string> setIdList = SetList.Select(set => set.Id.ToString());
+
+            SetListOrderString = string.Join(",", setIdList);
         }
     }
 }

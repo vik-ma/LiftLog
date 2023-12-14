@@ -55,6 +55,10 @@
                     Command="{Binding ResetSetTemplateCollectionIdCommand}" />
             </HorizontalStackLayout>
 
+            <HorizontalStackLayout>
+                <Label Text="{Binding SetListOrderString}" />
+            </HorizontalStackLayout>
+
             <CollectionView
                 ItemsSource="{Binding SetList}"
                 HorizontalOptions="Center">
@@ -66,6 +70,19 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:SetTemplate">
                         <HorizontalStackLayout Spacing="5">
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Id: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource ProgramSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding Id}"
+                                            Style="{StaticResource ProgramSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
