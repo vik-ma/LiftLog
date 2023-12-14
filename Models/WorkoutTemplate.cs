@@ -13,6 +13,7 @@ namespace LocalLiftLog.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int SetTemplateCollectionId { get; set; }
+        public string SetListOrder { get; set; }
     }
 
 }
