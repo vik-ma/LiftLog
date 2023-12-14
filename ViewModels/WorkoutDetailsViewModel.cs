@@ -35,9 +35,6 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private bool showStcList = false;
 
-        [ObservableProperty]
-        private string setListOrderString;
-
         [RelayCommand]
         static async Task GoBack()
         {
@@ -113,7 +110,7 @@ namespace LocalLiftLog.ViewModels
                 return;
             }
 
-            GenerateSetListOrderString();
+            await GenerateSetListOrderString();
         }
 
         private async Task CheckIfSetTemplateCollectionExists()
@@ -308,11 +305,15 @@ namespace LocalLiftLog.ViewModels
             await GoToCreateSetTemplatePage(package);
         }
 
-        public void GenerateSetListOrderString()
+        public async Task GenerateSetListOrderString()
         {
+            if (WorkoutTemplate is null) return;
+
             IEnumerable<string> setIdList = SetList.Select(set => set.Id.ToString());
 
-            SetListOrderString = string.Join(",", setIdList);
+            WorkoutTemplate.SetListOrder = string.Join(",", setIdList);
+
+            await UpdateWorkoutTemplateAsync();
         }
     }
 }
