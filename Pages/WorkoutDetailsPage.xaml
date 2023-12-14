@@ -80,6 +80,16 @@
                                 </Label.FormattedText>
                             </Label>
                             <Button 
+                                ImageSource="small_arrow_up.png"
+                                Padding="9"
+                                WidthRequest="1"
+                                ContentLayout="Top, 0" />
+                            <Button 
+                                ImageSource="small_arrow_down.png"
+                                Padding="9"
+                                WidthRequest="1"
+                                ContentLayout="Top, -5" />
+                            <Button 
                                 Text="Edit"
                                 Style="{StaticResource GenericButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=EditSetTemplateCommand}" 
