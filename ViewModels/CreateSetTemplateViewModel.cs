@@ -160,6 +160,17 @@ namespace LocalLiftLog.ViewModels
             }
         }
 
+        private async Task UpdateWorkoutTemplateAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<WorkoutTemplate>(OperatingWorkoutTemplate))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Workout Template.", "OK");
+                }
+            });
+        }
+
         private async Task CreateNewSetTemplateAsync(SetTemplate setTemplate, int numSets)
         {
             if (numSets < 1 || numSets > 10)
