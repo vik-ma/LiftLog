@@ -100,7 +100,10 @@
                                 ImageSource="small_arrow_up.png"
                                 Padding="9"
                                 WidthRequest="1"
-                                ContentLayout="Top, 0" />
+                                ContentLayout="Top, 0"
+                                IsEnabled="True"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=MoveSetUpCommand}" 
+                                CommandParameter="{Binding Id}" />
                             <Button 
                                 ImageSource="small_arrow_down.png"
                                 Padding="9"

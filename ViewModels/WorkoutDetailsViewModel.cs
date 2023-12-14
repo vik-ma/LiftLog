@@ -315,5 +315,24 @@ namespace LocalLiftLog.ViewModels
 
             await UpdateWorkoutTemplateAsync();
         }
+
+        [RelayCommand]
+        private async Task MoveSetUp(int id)
+        {
+            SetTemplate setTemplate = SetList.Where(p => p.Id == id).FirstOrDefault();
+
+            if (setTemplate is null) return;
+
+            // Get SetList index of current Set
+            int setIndex = SetList.IndexOf(setTemplate);
+
+            // Do nothing if item is already first in list
+            if (setIndex < 1) return;
+
+            // Swap current Set with set at the index before
+            (SetList[setIndex - 1], SetList[setIndex]) = (SetList[setIndex], SetList[setIndex - 1]);
+            
+            await GenerateSetListOrderString();
+        }
     }
 }
