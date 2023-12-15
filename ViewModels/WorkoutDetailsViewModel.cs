@@ -21,6 +21,8 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private WorkoutTemplate workoutTemplate;
 
+        private readonly List<int> SetListIdOrder = new();
+
         public WorkoutDetailsViewModel(DatabaseContext context)
         {
             _context = context;
@@ -76,13 +78,32 @@ namespace LocalLiftLog.ViewModels
             await LoadSetListFromSetTemplateCollectionIdAsync();
         }
 
-        [RelayCommand]
+        private void LoadSetListIdOrder()
+        {
+            if (WorkoutTemplate is null) return;
+
+            if (string.IsNullOrEmpty(WorkoutTemplate.SetListOrder)) return;
+
+            string[] setList = WorkoutTemplate.SetListOrder.Split(',');
+
+            foreach (string s in setList)
+            {
+                if (int.TryParse(s, out int setId))
+                {
+                    SetListIdOrder.Add(setId);
+                }
+            }
+        }
+
         public async Task LoadSetListFromSetTemplateCollectionIdAsync()
         {
             if (WorkoutTemplate is null) return;
 
             // Skip function if no SetTemplateCollectionId is set
             if (WorkoutTemplate.SetTemplateCollectionId == 0) return;
+
+            // Load SetListOrder as List<int>
+            LoadSetListIdOrder();
 
             SetList.Clear();
 
