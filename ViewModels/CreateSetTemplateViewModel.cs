@@ -181,12 +181,21 @@ namespace LocalLiftLog.ViewModels
 
             if (setTemplate == null) return;
 
+            if (OperatingWorkoutTemplate is null) return;
+
+            List<string> newSetList = OperatingWorkoutTemplate.SetListOrder.Split(',').ToList();
+
             await ExecuteAsync(async () =>
             {
                 for (int i = 0; i < numSets; i++) {
                     await _context.AddItemAsync<SetTemplate>(setTemplate);
+                    newSetList.Add(setTemplate.Id.ToString());
                 }
             });
+
+            OperatingWorkoutTemplate.SetListOrder = string.Join(",", newSetList);
+
+            await UpdateWorkoutTemplateAsync();
 
             await GoBack();
         }
