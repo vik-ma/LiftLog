@@ -4,6 +4,7 @@ using LocalLiftLog.Data;
 using LocalLiftLog.Models;
 using LocalLiftLog.Pages;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -107,6 +108,8 @@ namespace LocalLiftLog.ViewModels
 
             SetList.Clear();
 
+            List<SetTemplate> setTemplateList = new();
+
             Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == WorkoutTemplate.SetTemplateCollectionId;
 
             try
@@ -115,7 +118,12 @@ namespace LocalLiftLog.ViewModels
 
                 foreach (var item in filteredList)
                 {
-                    SetList.Add(item);
+                    setTemplateList.Add(item);
+                }
+
+                if (setTemplateList.Any())
+                {
+                    SetList = new ObservableCollection<SetTemplate>(setTemplateList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Id)));
                 }
 
                 if (!filteredList.Any())
@@ -130,8 +138,6 @@ namespace LocalLiftLog.ViewModels
                 await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
                 return;
             }
-
-            await GenerateSetListOrderString();
         }
 
         private async Task CheckIfSetTemplateCollectionExists()
