@@ -290,6 +290,8 @@ namespace LocalLiftLog.ViewModels
             });
 
             await LoadSetListFromSetTemplateCollectionIdAsync();
+
+            await GenerateSetListOrderString();
         }
 
         [RelayCommand]
