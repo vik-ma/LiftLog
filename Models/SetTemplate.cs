@@ -12,6 +12,7 @@ namespace LocalLiftLog.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int SetTemplateCollectionId { get; set; }
+        public int WorkoutTemplateId { get; set; }
         public string ExerciseName { get; set; }
         public string Note { get; set; }
         public bool IsTrackingWeight { get; set; }
