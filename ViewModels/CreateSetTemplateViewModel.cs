@@ -123,6 +123,7 @@ namespace LocalLiftLog.ViewModels
                 SetTemplate newSetTemplate = new()
                 {
                     SetTemplateCollectionId = OperatingWorkoutTemplate.SetTemplateCollectionId,
+                    WorkoutTemplateId = OperatingWorkoutTemplate.Id,
                     ExerciseName = NewSetTemplateSelectedExerciseName,
                     Note = OperatingSetTemplate.Note,
                     IsTrackingWeight = OperatingSetTemplate.IsTrackingWeight,
