@@ -94,6 +94,8 @@ namespace LocalLiftLog.ViewModels
                     SetListIdOrder.Add(setId);
                 }
             }
+
+            OnPropertyChanged(nameof(WorkoutTemplate));
         }
 
         public async Task LoadSetListFromSetTemplateCollectionIdAsync()
