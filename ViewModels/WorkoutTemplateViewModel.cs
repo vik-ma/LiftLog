@@ -200,6 +200,7 @@ namespace LocalLiftLog.ViewModels
 
             await DeleteWorkoutTemplateCollectionsByWorkoutTemplateId(id);
 
+            await DeleteSetTemplatesByWorkoutTemplateId(id);
         }
 
         private async Task DeleteWorkoutTemplateCollectionsByWorkoutTemplateId(int id)
@@ -247,6 +248,34 @@ namespace LocalLiftLog.ViewModels
             };
 
             await Shell.Current.GoToAsync($"{nameof(WorkoutDetailsPage)}?Id={id}", navigationParameter);
+        }
+
+        private async Task DeleteSetTemplatesByWorkoutTemplateId(int id)
+        {
+            Expression<Func<SetTemplate, bool>> predicate = entity => entity.WorkoutTemplateId == id;
+
+            IEnumerable<SetTemplate> filteredList = null;
+            try
+            {
+                filteredList = await _context.GetFilteredAsync<SetTemplate>(predicate);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
+            }
+
+            if (!filteredList.Any()) return;
+
+            foreach (var item in filteredList)
+            {
+                await ExecuteAsync(async () =>
+                {
+                    if (!await _context.DeleteItemAsync<SetTemplate>(item))
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set Template.", "OK");
+                    }
+                });
+            }
         }
     }
 }
