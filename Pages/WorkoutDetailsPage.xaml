@@ -38,23 +38,6 @@
                     Command="{Binding UpdateWorkoutTemplateCommand}" />
             </HorizontalStackLayout>
 
-            <HorizontalStackLayout Spacing="5">
-                <Label 
-                    Text="Set List Id:"
-                    VerticalOptions="Center"
-                    FontSize="20"
-                    FontAttributes="Bold" />
-                <Label 
-                    Text="{Binding WorkoutTemplate.SetTemplateCollectionId}"
-                    VerticalOptions="Center"
-                    FontSize="20"
-                    FontAttributes="Bold" />
-                <Button 
-                    Text="Reset"
-                    Style="{StaticResource DeleteButtonStyle}"
-                    Command="{Binding ResetSetTemplateCollectionIdCommand}" />
-            </HorizontalStackLayout>
-
             <HorizontalStackLayout>
                 <Label Text="{Binding WorkoutTemplate.SetListOrder}" />
             </HorizontalStackLayout>
