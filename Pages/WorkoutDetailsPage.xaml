@@ -140,7 +140,7 @@
             <CollectionView
                 ItemsSource="{Binding WorkoutTemplateList}"
                 HorizontalOptions="Center"
-                IsVisible="{Binding ShowStcList}">
+                IsVisible="{Binding ShowWorkoutTemplateList}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout 
                         ItemSpacing="3"
@@ -166,7 +166,7 @@
                                 Text="Copy"
                                 Style="{StaticResource AddButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=CopyWorkoutCommand}" 
-                                CommandParameter="{Binding SetTemplateCollectionId}" />
+                                CommandParameter="{Binding Id}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

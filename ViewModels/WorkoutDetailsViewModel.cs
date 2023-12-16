@@ -36,7 +36,7 @@ namespace LocalLiftLog.ViewModels
         private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
 
         [ObservableProperty]
-        private bool showStcList = false;
+        private bool showWorkoutTemplateList = false;
 
         [RelayCommand]
         static async Task GoBack()
@@ -153,60 +153,60 @@ namespace LocalLiftLog.ViewModels
         private async Task ShowExistingWorkoutList()
         {
             await LoadWorkoutTemplatesAsync();
-            ShowStcList = true;
+            ShowWorkoutTemplateList = true;
         }
 
         [RelayCommand]
-        private async Task CopyWorkout(int stcId)
+        private async Task CopyWorkout(int existingWorkoutId)
         {
-            //if (WorkoutTemplate is null) return;
+            if (WorkoutTemplate is null) return;
 
-            //if (stcId == WorkoutTemplate.SetTemplateCollectionId)
-            //{
-            //    await Shell.Current.DisplayAlert("Error", "Can not copy the same workout!", "OK");
-            //    return;
-            //}
+            if (SetList.Any())
+            {
+                await Shell.Current.DisplayAlert("Error", "Can only copy workout if Set List is empty!", "OK");
+                return;
+            }
 
-            //Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == stcId;
+            if (existingWorkoutId == WorkoutTemplate.Id)
+            {
+                await Shell.Current.DisplayAlert("Error", "Can not copy the same workout!", "OK");
+                return;
+            }
 
-            //// Get all SetTemplates of old STC id
-            //IEnumerable<SetTemplate> filteredWtcList = null;
-            //try
-            //{
-            //    filteredWtcList = await _context.GetFilteredAsync<SetTemplate>(predicate);
-            //}
-            //catch
-            //{
-            //    await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
-            //}
+            Expression<Func<SetTemplate, bool>> predicate = entity => entity.WorkoutTemplateId == existingWorkoutId;
 
-            //if (!filteredWtcList.Any()) 
-            //{
-            //    await Shell.Current.DisplayAlert("Error", "Set List is empty!", "OK");
-            //    return;
-            //}
+            IEnumerable<SetTemplate> filteredList = null;
+            try
+            {
+                // Get all SetTemplates of old WorkoutTemplate Id
+                filteredList = await _context.GetFilteredAsync<SetTemplate>(predicate);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
+            }
 
-            //// Create New SetTemplateCollection
-            //await CreateNewSetListAsync();
+            if (!filteredList.Any())
+            {
+                await Shell.Current.DisplayAlert("Error", "Workout Set List is empty!", "OK");
+                return;
+            }
 
-            //// Get Id of new SetTemplateCollection
-            //int newStcId = WorkoutTemplate.SetTemplateCollectionId;
+            await ExecuteAsync(async () =>
+            {
+                // Copy old SetTemplates but with new WorkoutTemplateId
+                foreach (var item in filteredList)
+                {
+                    var itemCopy = item.Clone();
+                    itemCopy.WorkoutTemplateId = WorkoutTemplate.Id;
+                    await _context.AddItemAsync<SetTemplate>(itemCopy);
+                    SetList.Add(itemCopy);
+                }
+            });
 
-            //SetList.Clear();
+            await GenerateSetListOrderString();
 
-            //// Copy old SetTemplates but with new SetTemplateCollectionId
-            //foreach (var item in filteredWtcList)
-            //{
-            //    await ExecuteAsync(async () =>
-            //    {
-            //        var itemCopy = item.Clone();
-            //        itemCopy.SetTemplateCollectionId = newStcId;
-            //        await _context.AddItemAsync<SetTemplate>(itemCopy);
-            //        SetList.Add(itemCopy);
-            //    });
-            //}
-
-            //ShowStcList = false;
+            ShowWorkoutTemplateList = false;
         }
 
         [RelayCommand]
