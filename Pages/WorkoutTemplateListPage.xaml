@@ -56,17 +56,6 @@
                             <Entry 
                                 Text="{Binding Name}"
                                 WidthRequest="100" />
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Set List Id: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource ProgramSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Entry Text="{Binding SetTemplateCollectionId}" />
                             <Button
                                 Text="Save"
                                 Style="{StaticResource AddButtonStyle}"
