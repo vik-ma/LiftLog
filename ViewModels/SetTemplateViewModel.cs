@@ -25,9 +25,6 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private ObservableCollection<SetTemplate> setTemplateList = new();
 
-        [ObservableProperty]
-        private ObservableCollection<SetTemplateCollection> setTemplateCollectionList = new();
-
         public async Task LoadSetTemplatesAsync()
         {
             await ExecuteAsync(async () =>
@@ -43,26 +40,6 @@ namespace LocalLiftLog.ViewModels
                     foreach (var set in setTemplates)
                     {
                         SetTemplateList.Add(set);
-                    }
-                }
-            });
-        }
-
-        public async Task LoadSetTemplateCollectionsAsync()
-        {
-            await ExecuteAsync(async () =>
-            {
-                SetTemplateCollectionList.Clear();
-
-                var setTemplatesCollections = await _context.GetAllAsync<SetTemplateCollection>();
-
-                if (setTemplatesCollections is not null && setTemplatesCollections.Any())
-                {
-                    setTemplatesCollections ??= new ObservableCollection<SetTemplateCollection>();
-
-                    foreach (var setCollection in setTemplatesCollections)
-                    {
-                        SetTemplateCollectionList.Add(setCollection);
                     }
                 }
             });
@@ -98,17 +75,6 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task CreateSetTemplateCollectionAsync()
-        {
-            await ExecuteAsync(async () =>
-            {
-                SetTemplateCollection setCollection = new();
-                await _context.AddItemAsync<SetTemplateCollection>(setCollection);
-                SetTemplateCollectionList.Add(setCollection);
-            });
-        }
-
-        [RelayCommand]
         private async Task UpdateSetTemplateAsync(int id)
         {
             SetTemplate setTemplate = SetTemplateList.FirstOrDefault(p => p.Id == id);
@@ -125,46 +91,6 @@ namespace LocalLiftLog.ViewModels
 
                 await LoadSetTemplatesAsync();
             });
-        }
-
-        [RelayCommand]
-        private async Task UpdateSetTemplateCollectionAsync(int id)
-        {
-            SetTemplateCollection setTemplateCollection = SetTemplateCollectionList.FirstOrDefault(p => p.Id == id);
-
-            if (setTemplateCollection is null)
-                return;
-
-            await ExecuteAsync(async () =>
-            {
-                if (!await _context.UpdateItemAsync<SetTemplateCollection>(setTemplateCollection))
-                {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Set Template Collection.", "OK");
-                }
-
-                await LoadSetTemplateCollectionsAsync();
-            });
-        }
-
-        [RelayCommand]
-        private async Task DeleteSetTemplateCollectionAsync(int id)
-        {
-            SetTemplateCollection setTemplateCollection = SetTemplateCollectionList.FirstOrDefault(p => p.Id == id);
-
-            if (setTemplateCollection is null)
-                return;
-
-            await ExecuteAsync(async () =>
-            {
-                if (!await _context.DeleteItemAsync<SetTemplateCollection>(setTemplateCollection))
-                {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set Template Collection.", "OK");
-                }
-            });
-
-            await LoadSetTemplateCollectionsAsync();
-
-            await DeleteSetTemplatesBySetTemplateCollectionId(id);
         }
 
         [RelayCommand]
@@ -186,52 +112,33 @@ namespace LocalLiftLog.ViewModels
             await LoadSetTemplatesAsync();
         }
 
-        private async Task DeleteSetTemplatesBySetTemplateCollectionId(int id)
-        {
-            Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == id;
+        //private async Task DeleteSetTemplatesBySetTemplateCollectionId(int id)
+        //{
+        //    Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == id;
 
-            IEnumerable<SetTemplate> filteredList = null;
-            try
-            {
-                filteredList = await _context.GetFilteredAsync<SetTemplate>(predicate);
-            }
-            catch
-            {
-                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
-            }
+        //    IEnumerable<SetTemplate> filteredList = null;
+        //    try
+        //    {
+        //        filteredList = await _context.GetFilteredAsync<SetTemplate>(predicate);
+        //    }
+        //    catch
+        //    {
+        //        await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
+        //    }
 
-            foreach (var item in filteredList)
-            {
-                await ExecuteAsync(async () =>
-                {
-                    if (!await _context.DeleteItemAsync<SetTemplate>(item))
-                    {
-                        await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set Template.", "OK");
-                    }
-                });
-            }
+        //    foreach (var item in filteredList)
+        //    {
+        //        await ExecuteAsync(async () =>
+        //        {
+        //            if (!await _context.DeleteItemAsync<SetTemplate>(item))
+        //            {
+        //                await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set Template.", "OK");
+        //            }
+        //        });
+        //    }
 
-            await LoadSetTemplatesAsync();
-        }
-
-        [RelayCommand]
-        private async Task GoToSetListDetails(int id)
-        {
-            SetTemplateCollection setTemplateCollection = SetTemplateCollectionList.FirstOrDefault(p => p.Id == id);
-
-            if (setTemplateCollection is null)
-            {
-                await Shell.Current.DisplayAlert("Error", "Set List does not exist", "OK");
-                return;
-            }
-
-            var navigationParameter = new Dictionary<string, object>
-            {
-                ["SetTemplateCollection"] = setTemplateCollection
-            };
-
-            await Shell.Current.GoToAsync($"{nameof(SetListDetailsPage)}?Id={id}", navigationParameter);
-        }
+        //    await LoadSetTemplatesAsync();
+        //}
 
         [RelayCommand]
         static async Task GoBack()
