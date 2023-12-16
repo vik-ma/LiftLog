@@ -62,23 +62,6 @@ namespace LocalLiftLog.ViewModels
             }
         }
 
-        [RelayCommand]
-        private async Task CreateNewSetListAsync()
-        {
-            await ExecuteAsync(async () =>
-            {
-                SetTemplateCollection newSet = new();
-                await _context.AddItemAsync<SetTemplateCollection>(newSet);
-                int newStcId = newSet.Id;
-                WorkoutTemplate.SetTemplateCollectionId = newStcId;
-                await _context.UpdateItemAsync<WorkoutTemplate>(WorkoutTemplate);
-            });
-
-            OnPropertyChanged(nameof(WorkoutTemplate));
-
-            await LoadSetListFromSetTemplateCollectionIdAsync();
-        }
-
         private void LoadSetListIdOrder()
         {
             if (WorkoutTemplate is null) return;
@@ -132,33 +115,6 @@ namespace LocalLiftLog.ViewModels
             }
         }
 
-        private async Task CheckIfSetTemplateCollectionExists()
-        {
-            if (WorkoutTemplate is null) return;
-
-            await ExecuteAsync(async () =>
-            {
-                if (!await _context.ItemExistsByKeyAsync<SetTemplateCollection>(WorkoutTemplate.SetTemplateCollectionId))
-                {
-                    // If no SetTemplateCollection with that Id exists
-                    // Reset SetTemplateCollectionId value for current WorkoutTemplate
-                    await ResetSetTemplateCollectionId();
-                }
-            });
-        }
-
-        [RelayCommand]
-        private async Task ResetSetTemplateCollectionId()
-        {
-            if (WorkoutTemplate is null) return;
-
-            WorkoutTemplate.SetTemplateCollectionId = 0;
-
-            await UpdateWorkoutTemplateAsync();
-
-            SetList.Clear();
-        }
-
         public async Task LoadWorkoutTemplatesAsync()
         {
             await ExecuteAsync(async () =>
@@ -203,54 +159,54 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task CopyWorkout(int stcId)
         {
-            if (WorkoutTemplate is null) return;
+            //if (WorkoutTemplate is null) return;
 
-            if (stcId == WorkoutTemplate.SetTemplateCollectionId)
-            {
-                await Shell.Current.DisplayAlert("Error", "Can not copy the same workout!", "OK");
-                return;
-            }
+            //if (stcId == WorkoutTemplate.SetTemplateCollectionId)
+            //{
+            //    await Shell.Current.DisplayAlert("Error", "Can not copy the same workout!", "OK");
+            //    return;
+            //}
 
-            Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == stcId;
+            //Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == stcId;
 
-            // Get all SetTemplates of old STC id
-            IEnumerable<SetTemplate> filteredWtcList = null;
-            try
-            {
-                filteredWtcList = await _context.GetFilteredAsync<SetTemplate>(predicate);
-            }
-            catch
-            {
-                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
-            }
+            //// Get all SetTemplates of old STC id
+            //IEnumerable<SetTemplate> filteredWtcList = null;
+            //try
+            //{
+            //    filteredWtcList = await _context.GetFilteredAsync<SetTemplate>(predicate);
+            //}
+            //catch
+            //{
+            //    await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
+            //}
 
-            if (!filteredWtcList.Any()) 
-            {
-                await Shell.Current.DisplayAlert("Error", "Set List is empty!", "OK");
-                return;
-            }
+            //if (!filteredWtcList.Any()) 
+            //{
+            //    await Shell.Current.DisplayAlert("Error", "Set List is empty!", "OK");
+            //    return;
+            //}
 
-            // Create New SetTemplateCollection
-            await CreateNewSetListAsync();
+            //// Create New SetTemplateCollection
+            //await CreateNewSetListAsync();
 
-            // Get Id of new SetTemplateCollection
-            int newStcId = WorkoutTemplate.SetTemplateCollectionId;
+            //// Get Id of new SetTemplateCollection
+            //int newStcId = WorkoutTemplate.SetTemplateCollectionId;
 
-            SetList.Clear();
+            //SetList.Clear();
 
-            // Copy old SetTemplates but with new SetTemplateCollectionId
-            foreach (var item in filteredWtcList)
-            {
-                await ExecuteAsync(async () =>
-                {
-                    var itemCopy = item.Clone();
-                    itemCopy.SetTemplateCollectionId = newStcId;
-                    await _context.AddItemAsync<SetTemplate>(itemCopy);
-                    SetList.Add(itemCopy);
-                });
-            }
+            //// Copy old SetTemplates but with new SetTemplateCollectionId
+            //foreach (var item in filteredWtcList)
+            //{
+            //    await ExecuteAsync(async () =>
+            //    {
+            //        var itemCopy = item.Clone();
+            //        itemCopy.SetTemplateCollectionId = newStcId;
+            //        await _context.AddItemAsync<SetTemplate>(itemCopy);
+            //        SetList.Add(itemCopy);
+            //    });
+            //}
 
-            ShowStcList = false;
+            //ShowStcList = false;
         }
 
         [RelayCommand]
@@ -281,7 +237,7 @@ namespace LocalLiftLog.ViewModels
                 }
             });
 
-            await LoadSetListFromSetTemplateCollectionIdAsync();
+            await LoadSetListFromWorkoutTemplateIdAsync();
 
             await GenerateSetListOrderString();
         }
@@ -290,12 +246,6 @@ namespace LocalLiftLog.ViewModels
         private async Task CreateNewSetTemplate()
         {
             if (WorkoutTemplate is null) return;
-
-            // Create new Set Template Collection if Workout Template does not have one assigned
-            if (WorkoutTemplate.SetTemplateCollectionId == 0)
-            {
-                await CreateNewSetListAsync();
-            }
 
             SetWorkoutTemplatePackage package = new()
             {
