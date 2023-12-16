@@ -40,11 +40,11 @@
                                 </Label.FormattedText>
                             </Label>
                             <Label 
-                                Text="CollectionId:"
+                                Text="Workout Id:"
                                 VerticalOptions="Center"
                                 FontAttributes="Bold" />
                             <Entry 
-                                Text="{Binding SetTemplateCollectionId}"
+                                Text="{Binding WorkoutTemplateId}"
                                 Style="{StaticResource SmallEntryFieldStyle}" />
                             <Entry 
                                 Text="{Binding ExerciseName}"
@@ -109,84 +109,6 @@
                 WidthRequest="300"
                 Margin="5"
                 Command="{Binding CreateSetTemplateCommand}" />
-        </VerticalStackLayout>
-
-        <VerticalStackLayout>
-            <Label 
-                Text="Set Template Collections"
-                HorizontalOptions="Center"
-                FontSize="30"
-                FontAttributes="Bold"
-                Margin="10" />
-            <CollectionView
-                ItemsSource="{Binding SetTemplateCollectionList}"
-                HorizontalOptions="Center">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:SetTemplateCollection">
-                        <HorizontalStackLayout
-                            Spacing="5">
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Id: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource ProgramSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding Id}"
-                                            Style="{StaticResource ProgramSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Entry 
-                                Text="{Binding SetTemplateId}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
-                                Text="{Binding SetListIndex}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Button 
-                                Text="Update"
-                                Style="{StaticResource AddButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetTemplateViewModel}}, Path=UpdateSetTemplateCollectionCommand}"
-                                CommandParameter="{Binding Id}" />
-                            <Button 
-                                Text="Delete"
-                                Style="{StaticResource DeleteButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetTemplateViewModel}}, Path=DeleteSetTemplateCollectionCommand}"
-                                CommandParameter="{Binding Id}" />
-                            <Button
-                                Text="Details"
-                                Style="{StaticResource GenericButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetTemplateViewModel}}, Path=GoToSetListDetailsCommand}" 
-                                CommandParameter="{Binding Id}" />
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <VerticalStackLayout
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center">
-                            <Label 
-                                Text="No Set Template Collections In List!" 
-                                FontSize="18" 
-                                FontAttributes="Bold" 
-                                HorizontalTextAlignment="Center" />
-                        </VerticalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
-            <Button 
-                Text="New Set Template Collection"
-                Style="{StaticResource AddButtonStyle}"
-                WidthRequest="300"
-                Margin="5"
-                Command="{Binding CreateSetTemplateCollectionCommand}" />
         </VerticalStackLayout>
 
         <VerticalStackLayout>

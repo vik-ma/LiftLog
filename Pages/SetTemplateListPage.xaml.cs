@@ -16,6 +16,5 @@ public partial class SetTemplateListPage : ContentPage
     {
         base.OnAppearing();
         await _viewModel.LoadSetTemplatesAsync();
-        await _viewModel.LoadSetTemplateCollectionsAsync();
     }
 }
