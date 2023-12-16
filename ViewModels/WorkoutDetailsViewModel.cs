@@ -98,12 +98,9 @@ namespace LocalLiftLog.ViewModels
             OnPropertyChanged(nameof(WorkoutTemplate));
         }
 
-        public async Task LoadSetListFromSetTemplateCollectionIdAsync()
+        public async Task LoadSetListFromWorkoutTemplateIdAsync()
         {
             if (WorkoutTemplate is null) return;
-
-            // Skip function if no SetTemplateCollectionId is set
-            if (WorkoutTemplate.SetTemplateCollectionId == 0) return;
 
             // Load SetListOrder as List<int>
             LoadSetListIdOrder();
@@ -112,7 +109,7 @@ namespace LocalLiftLog.ViewModels
 
             List<SetTemplate> setTemplateList = new();
 
-            Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == WorkoutTemplate.SetTemplateCollectionId;
+            Expression<Func<SetTemplate, bool>> predicate = entity => entity.WorkoutTemplateId == WorkoutTemplate.Id;
 
             try
             {
@@ -126,13 +123,6 @@ namespace LocalLiftLog.ViewModels
                 if (setTemplateList.Any())
                 {
                     SetList = new ObservableCollection<SetTemplate>(setTemplateList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Id)));
-                }
-
-                if (!filteredList.Any())
-                {
-                    // If filteredList is empty
-                    // Check if a SetTemplateCollection with that Id exists
-                    await CheckIfSetTemplateCollectionExists();
                 }
             }
             catch
