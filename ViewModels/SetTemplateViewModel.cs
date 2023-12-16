@@ -112,34 +112,6 @@ namespace LocalLiftLog.ViewModels
             await LoadSetTemplatesAsync();
         }
 
-        //private async Task DeleteSetTemplatesBySetTemplateCollectionId(int id)
-        //{
-        //    Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == id;
-
-        //    IEnumerable<SetTemplate> filteredList = null;
-        //    try
-        //    {
-        //        filteredList = await _context.GetFilteredAsync<SetTemplate>(predicate);
-        //    }
-        //    catch
-        //    {
-        //        await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
-        //    }
-
-        //    foreach (var item in filteredList)
-        //    {
-        //        await ExecuteAsync(async () =>
-        //        {
-        //            if (!await _context.DeleteItemAsync<SetTemplate>(item))
-        //            {
-        //                await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set Template.", "OK");
-        //            }
-        //        });
-        //    }
-
-        //    await LoadSetTemplatesAsync();
-        //}
-
         [RelayCommand]
         static async Task GoBack()
         {

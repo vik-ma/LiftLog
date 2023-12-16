@@ -188,8 +188,6 @@ namespace LocalLiftLog.ViewModels
             if (workoutTemplate is null)
                 return;
 
-            int stcId = workoutTemplate.SetTemplateCollectionId;
-
             await ExecuteAsync(async () =>
             {
                 if (!await _context.DeleteItemAsync<WorkoutTemplate>(workoutTemplate))
@@ -202,11 +200,6 @@ namespace LocalLiftLog.ViewModels
 
             await DeleteWorkoutTemplateCollectionsByWorkoutTemplateId(id);
 
-            if (stcId != 0)
-            {
-                await DeleteSetTemplateCollectionById(stcId);
-                await DeleteSetTemplateByStcId(stcId);
-            }
         }
 
         private async Task DeleteWorkoutTemplateCollectionsByWorkoutTemplateId(int id)
@@ -235,42 +228,6 @@ namespace LocalLiftLog.ViewModels
             }
 
             await LoadWorkoutTemplateCollectionsAsync();
-        }
-
-        private async Task DeleteSetTemplateByStcId(int stcId)
-        {
-            Expression<Func<SetTemplate, bool>> predicate = entity => entity.SetTemplateCollectionId == stcId;
-
-            IEnumerable<SetTemplate> filteredWtcList = null;
-            try
-            {
-                filteredWtcList = await _context.GetFilteredAsync<SetTemplate>(predicate);
-            }
-            catch
-            {
-                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Workout Template Collections.", "OK");
-            }
-
-            if (!filteredWtcList.Any()) return;
-
-            foreach (var item in filteredWtcList)
-            {
-                await ExecuteAsync(async () =>
-                {
-                    if (!await _context.DeleteItemAsync<SetTemplate>(item))
-                    {
-                        await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
-                    }
-                });
-            }
-        }
-
-        private async Task DeleteSetTemplateCollectionById(int id)
-        {
-            await ExecuteAsync(async () =>
-            {
-                await _context.DeleteItemByKeyAsync<SetTemplateCollection>(id);
-            });
         }
 
         [RelayCommand]
