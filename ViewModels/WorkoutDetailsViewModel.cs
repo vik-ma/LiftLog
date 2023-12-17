@@ -22,7 +22,7 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private WorkoutTemplate workoutTemplate;
 
-        private readonly List<int> SetListIdOrder = new();
+        private List<int> SetListIdOrder = new();
 
         public WorkoutDetailsViewModel(DatabaseContext context)
         {
@@ -62,23 +62,23 @@ namespace LocalLiftLog.ViewModels
             }
         }
 
-        private void LoadSetListIdOrder()
+        private static List<int> LoadSetListIdOrder(string setListOrderString)
         {
-            if (WorkoutTemplate is null) return;
+            if (string.IsNullOrEmpty(setListOrderString)) return new();
 
-            if (string.IsNullOrEmpty(WorkoutTemplate.SetListOrder)) return;
+            string[] setList = setListOrderString.Split(',');
 
-            string[] setList = WorkoutTemplate.SetListOrder.Split(',');
+            List<int> setListOrderInt = new();
 
             foreach (string s in setList)
             {
                 if (int.TryParse(s, out int setId))
                 {
-                    SetListIdOrder.Add(setId);
+                    setListOrderInt.Add(setId);
                 }
             }
 
-            OnPropertyChanged(nameof(WorkoutTemplate));
+            return setListOrderInt;
         }
 
         public async Task LoadSetListFromWorkoutTemplateIdAsync()
@@ -86,7 +86,7 @@ namespace LocalLiftLog.ViewModels
             if (WorkoutTemplate is null) return;
 
             // Load SetListOrder as List<int>
-            LoadSetListIdOrder();
+            SetListIdOrder = LoadSetListIdOrder(WorkoutTemplate.SetListOrder);
 
             SetList.Clear();
 
@@ -107,6 +107,8 @@ namespace LocalLiftLog.ViewModels
                 {
                     SetList = new ObservableCollection<SetTemplate>(setTemplateList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Id)));
                 }
+
+                OnPropertyChanged(nameof(WorkoutTemplate));
             }
             catch
             {
@@ -161,6 +163,10 @@ namespace LocalLiftLog.ViewModels
         {
             if (WorkoutTemplate is null) return;
 
+            WorkoutTemplate existingWorkoutTemplate = WorkoutTemplateList.Where(p => p.Id == existingWorkoutId).FirstOrDefault();
+
+            if (existingWorkoutTemplate is null) return;
+
             if (SetList.Any())
             {
                 await Shell.Current.DisplayAlert("Error", "Can only copy workout if Set List is empty!", "OK");
@@ -194,14 +200,20 @@ namespace LocalLiftLog.ViewModels
 
             await ExecuteAsync(async () =>
             {
+                // GET SETLISTORDER OF OLD WORKOUT
+                //var setListOrder = existingWorkoutTemplate.SetListOrder;
+
+                //var orderedFilteredList = filteredList.OrderBy(obj => setListOrder.IndexOf(obj.Id));
+
+
                 // Copy old SetTemplates but with new WorkoutTemplateId
-                foreach (var item in filteredList)
-                {
-                    var itemCopy = item.Clone();
-                    itemCopy.WorkoutTemplateId = WorkoutTemplate.Id;
-                    await _context.AddItemAsync<SetTemplate>(itemCopy);
-                    SetList.Add(itemCopy);
-                }
+                //foreach (var item in orderedFilteredList)
+                //{
+                //    var itemCopy = item.Clone();
+                //    itemCopy.WorkoutTemplateId = WorkoutTemplate.Id;
+                //    await _context.AddItemAsync<SetTemplate>(itemCopy);
+                //    SetList.Add(itemCopy);
+                //}
             });
 
             await GenerateSetListOrderString();
