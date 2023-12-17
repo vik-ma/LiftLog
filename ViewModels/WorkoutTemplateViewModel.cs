@@ -277,5 +277,24 @@ namespace LocalLiftLog.ViewModels
                 });
             }
         }
+
+        [RelayCommand]
+        private async Task StartWorkout(int id)
+        {
+            WorkoutTemplate workout = WorkoutTemplateList.FirstOrDefault(p => p.Id == id);
+
+            if (workout is null)
+            {
+                await Shell.Current.DisplayAlert("Error", "Workout does not exist", "OK");
+                return;
+            }
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["WorkoutTemplate"] = workout
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(StartedWorkoutPage)}?Id={id}", navigationParameter);
+        }
     }
 }

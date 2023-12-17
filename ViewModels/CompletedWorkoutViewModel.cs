@@ -166,31 +166,6 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task StartWorkout(int id)
-        {
-            CompletedWorkout workout = CompletedWorkoutList.FirstOrDefault(p => p.Id == id);
-
-            if (workout is null)
-            {
-                await Shell.Current.DisplayAlert("Error", "Workout does not exist", "OK");
-                return;
-            }
-
-            if (workout.WorkoutTemplateId == 0)
-            {
-                await Shell.Current.DisplayAlert("Error", "No Workout Template ID is set!", "OK");
-                return;
-            }
-
-            var navigationParameter = new Dictionary<string, object>
-            {
-                ["CompletedWorkout"] = workout
-            };
-
-            await Shell.Current.GoToAsync($"{nameof(StartedWorkoutPage)}?Id={id}", navigationParameter);
-        }
-
-        [RelayCommand]
         static async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");

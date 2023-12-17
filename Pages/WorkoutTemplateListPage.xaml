@@ -71,6 +71,11 @@
                                 Style="{StaticResource GenericButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutTemplateViewModel}}, Path=GoToWorkoutTemplateDetailsCommand}" 
                                 CommandParameter="{Binding Id}" />
+                            <Button
+                                Text="Start Workout"
+                                Style="{StaticResource GenericButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutTemplateViewModel}}, Path=StartWorkoutCommand}" 
+                                CommandParameter="{Binding Id}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

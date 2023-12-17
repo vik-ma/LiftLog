@@ -95,11 +95,6 @@
                                 Style="{StaticResource DeleteButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedWorkoutViewModel}}, Path=DeleteCompletedWorkoutCommand}"
                                 CommandParameter="{Binding Id}" />
-                            <Button
-                                Text="Start Workout"
-                                Style="{StaticResource AddButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedWorkoutViewModel}}, Path=StartWorkoutCommand}" 
-                                CommandParameter="{Binding Id}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
