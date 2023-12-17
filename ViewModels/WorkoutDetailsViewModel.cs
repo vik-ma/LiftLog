@@ -200,20 +200,19 @@ namespace LocalLiftLog.ViewModels
 
             await ExecuteAsync(async () =>
             {
-                // GET SETLISTORDER OF OLD WORKOUT
-                //var setListOrder = existingWorkoutTemplate.SetListOrder;
+                var setListOrder = LoadSetListIdOrder(existingWorkoutTemplate.SetListOrder);
 
-                //var orderedFilteredList = filteredList.OrderBy(obj => setListOrder.IndexOf(obj.Id));
-
+                // Order the sets for the new workout the same as the old one
+                var orderedFilteredList = filteredList.OrderBy(obj => setListOrder.IndexOf(obj.Id));
 
                 // Copy old SetTemplates but with new WorkoutTemplateId
-                //foreach (var item in orderedFilteredList)
-                //{
-                //    var itemCopy = item.Clone();
-                //    itemCopy.WorkoutTemplateId = WorkoutTemplate.Id;
-                //    await _context.AddItemAsync<SetTemplate>(itemCopy);
-                //    SetList.Add(itemCopy);
-                //}
+                foreach (var item in orderedFilteredList)
+                {
+                    var itemCopy = item.Clone();
+                    itemCopy.WorkoutTemplateId = WorkoutTemplate.Id;
+                    await _context.AddItemAsync<SetTemplate>(itemCopy);
+                    SetList.Add(itemCopy);
+                }
             });
 
             await GenerateSetListOrderString();
