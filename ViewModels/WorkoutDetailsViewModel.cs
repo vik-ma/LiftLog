@@ -217,6 +217,8 @@ namespace LocalLiftLog.ViewModels
             await GenerateSetListOrderString();
 
             ShowWorkoutTemplateList = false;
+
+            OnPropertyChanged(nameof(SetList));
         }
 
         [RelayCommand]
@@ -364,6 +366,8 @@ namespace LocalLiftLog.ViewModels
             SetListIdOrder = new();
 
             await UpdateWorkoutTemplateAsync();
+
+            OnPropertyChanged(nameof(SetList));
         }
     }
 }

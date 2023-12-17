@@ -44,6 +44,7 @@
 
             <Button 
                 Text="Remove All Sets"
+                IsVisible="{Binding SetList, Converter={StaticResource IsListNotNullOrEmptyConverter}}"
                 Style="{StaticResource DeleteButtonStyle}"
                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=DeleteAllSetsCommand}"/>
 
@@ -137,6 +138,7 @@
             <VerticalStackLayout>
                 <Button 
                     Text="Copy Existing Workout"
+                    IsVisible="{Binding SetList, Converter={StaticResource IsListNullOrEmptyConverter}}"
                     Style="{StaticResource LargeButtonStyle}"
                     Command="{Binding ShowExistingWorkoutListCommand}"
                     Margin="50" />
