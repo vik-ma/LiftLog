@@ -22,7 +22,7 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private WorkoutTemplate workoutTemplate;
 
-        private List<int> SetListIdOrder = new();
+        private readonly List<int> SetListIdOrder = new();
 
         public WorkoutDetailsViewModel(DatabaseContext context)
         {
@@ -62,31 +62,30 @@ namespace LocalLiftLog.ViewModels
             }
         }
 
-        private static List<int> LoadSetListIdOrder(string setListOrderString)
+        private void LoadSetListIdOrder()
         {
-            if (string.IsNullOrEmpty(setListOrderString)) return new();
+            if (WorkoutTemplate is null) return;
 
-            string[] setList = setListOrderString.Split(',');
+            if (string.IsNullOrEmpty(WorkoutTemplate.SetListOrder)) return;
 
-            List<int> setListOrderInt = new();
+            string[] setList = WorkoutTemplate.SetListOrder.Split(',');
 
             foreach (string s in setList)
             {
                 if (int.TryParse(s, out int setId))
                 {
-                    setListOrderInt.Add(setId);
+                    SetListIdOrder.Add(setId);
                 }
             }
 
-            return setListOrderInt;
+            OnPropertyChanged(nameof(WorkoutTemplate));
         }
 
         public async Task LoadSetListFromWorkoutTemplateIdAsync()
         {
             if (WorkoutTemplate is null) return;
 
-            // Load SetListOrder as List<int>
-            SetListIdOrder = LoadSetListIdOrder(WorkoutTemplate.SetListOrder);
+            LoadSetListIdOrder();
 
             SetList.Clear();
 
@@ -107,8 +106,6 @@ namespace LocalLiftLog.ViewModels
                 {
                     SetList = new ObservableCollection<SetTemplate>(setTemplateList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Id)));
                 }
-
-                OnPropertyChanged(nameof(WorkoutTemplate));
             }
             catch
             {
@@ -200,10 +197,12 @@ namespace LocalLiftLog.ViewModels
 
             await ExecuteAsync(async () =>
             {
-                var setListOrder = LoadSetListIdOrder(existingWorkoutTemplate.SetListOrder);
+                WorkoutTemplate.SetListOrder = existingWorkoutTemplate.SetListOrder;
+
+                LoadSetListIdOrder();
 
                 // Order the sets for the new workout the same as the old one
-                var orderedFilteredList = filteredList.OrderBy(obj => setListOrder.IndexOf(obj.Id));
+                var orderedFilteredList = filteredList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Id));
 
                 // Copy old SetTemplates but with new WorkoutTemplateId
                 foreach (var item in orderedFilteredList)
