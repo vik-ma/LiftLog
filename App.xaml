@@ -131,6 +131,8 @@
             <converters:ExerciseGroupConverter x:Key="ExerciseGroupConverter" />
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             <toolkit:IndexToArrayItemConverter x:Key="IndexToArrayItemConverter" />
+            <toolkit:IsListNullOrEmptyConverter x:Key="IsListNullOrEmptyConverter" />
+            <toolkit:IsListNotNullOrEmptyConverter x:Key="IsListNotNullOrEmptyConverter" />
 
             <DataTemplate 
                 x:Key="WeeklyScheduleCollectionViewDataTemplate"
