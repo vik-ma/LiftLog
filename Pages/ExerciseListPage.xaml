@@ -30,10 +30,10 @@
                                         <Span 
                                             Text="Name: " 
                                             FontAttributes="Bold"  
-                                            Style="{StaticResource ProgramSpanStyle}" />
+                                            Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
                                             Text="{Binding Name}"
-                                            Style="{StaticResource ProgramSpanStyle}" />
+                                            Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -43,10 +43,10 @@
                                         <Span 
                                             Text="Exercise Groups: " 
                                             FontAttributes="Bold"  
-                                            Style="{StaticResource ProgramSpanStyle}" />
+                                            Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
                                             Text="{Binding ExerciseGroupSet, Converter={StaticResource ExerciseGroupConverter}}"
-                                            Style="{StaticResource ProgramSpanStyle}" />
+                                            Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -66,10 +66,10 @@
                         <Span 
                             Text="Filtered Exercise Groups: " 
                             FontAttributes="Bold"  
-                            Style="{StaticResource ProgramSpanStyle}" />
+                            Style="{StaticResource SmallSpanStyle}" />
                         <Span 
                             Text="{Binding ExerciseGroupFilterSet, Converter={StaticResource ExerciseGroupConverter}}"
-                            Style="{StaticResource ProgramSpanStyle}" />
+                            Style="{StaticResource SmallSpanStyle}" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -81,7 +81,7 @@
                     Text="Filter Exercise List"
                     Command="{Binding AddExerciseGroupToFilterListCommand}"
                     CommandParameter="{Binding ExerciseGroupFilterInput}"
-                    Style="{StaticResource ProgramButtonStyle}" />
+                    Style="{StaticResource LargeButtonStyle}" />
                 <Button 
                     Text="Reset Exercise List Filter"
                     IsVisible="{Binding ExerciseGroupFilterSet.Count}"
@@ -93,7 +93,7 @@
         <VerticalStackLayout>
             <Button 
                 Text="Go Back"
-                Style="{StaticResource ProgramButtonStyle}"
+                Style="{StaticResource LargeButtonStyle}"
                 Command="{Binding GoBackCommand}"
                 Margin="50" />
         </VerticalStackLayout>

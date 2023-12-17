@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LocalLiftLog.Pages.ProgramDetailsPage"
+             x:Class="LocalLiftLog.Pages.WorkoutRoutineDetailsPage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:models="clr-namespace:LocalLiftLog.Models"
-             x:DataType="viewmodel:ProgramDetailsViewModel"
-             Title="Program Details Page">
+             x:DataType="viewmodel:WorkoutRoutineDetailsViewModel"
+             Title="Workout Routine Details Page">
 
     <VerticalStackLayout 
         HorizontalOptions="Center">
@@ -15,35 +15,34 @@
                 Spacing="15"
                 Padding="15"
                 Grid.Column="0">
-                
                 <Label>
                     <Label.FormattedText>
                         <FormattedString>
                             <Span 
-                                Text="Program: " 
+                                Text="Workout Routine: " 
                                 FontAttributes="Bold"  
-                                Style="{StaticResource ProgramHeaderSpanStyle}" />
+                                Style="{StaticResource LargeHeaderSpanStyle}" />
                             <Span 
-                                Text="{Binding Program.Name}"
-                                Style="{StaticResource ProgramHeaderSpanStyle}" />
+                                Text="{Binding WorkoutRoutine.Name}"
+                                Style="{StaticResource LargeHeaderSpanStyle}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
                 <Entry 
-                    Text="{Binding ProgramListViewModel.OperatingProgram.Name}"
-                    Placeholder="Program Name"
+                    Text="{Binding WorkoutRoutineListViewModel.OperatingWorkoutRoutine.Name}"
+                    Placeholder="Routine Name"
                     FontSize="24"
-                    IsVisible="{Binding ProgramListViewModel.IsEditing}" />
+                    IsVisible="{Binding WorkoutRoutineListViewModel.IsEditing}" />
                 <Label>
                     <Label.FormattedText>
                         <FormattedString>
                             <Span 
                                 Text="Id: " 
                                 FontAttributes="Bold"
-                                Style="{StaticResource ProgramSubSpanStyle}" />
+                                Style="{StaticResource LargeSubSpanStyle}" />
                             <Span 
-                                Text="{Binding Program.Id, Converter={StaticResource NullValueToEmptyText}}"
-                                Style="{StaticResource ProgramSubSpanStyle}" />
+                                Text="{Binding WorkoutRoutine.Id, Converter={StaticResource NullValueToEmptyText}}"
+                                Style="{StaticResource LargeSubSpanStyle}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -53,23 +52,23 @@
                             <Span 
                                 Text="Note: " 
                                 FontAttributes="Bold"
-                                Style="{StaticResource ProgramSubSpanStyle}" />
+                                Style="{StaticResource LargeSubSpanStyle}" />
                             <Span 
-                                Text="{Binding Program.Note, Converter={StaticResource NullValueToEmptyText}, ConverterParameter=Note}"
-                                Style="{StaticResource ProgramSubSpanStyle}" />
+                                Text="{Binding WorkoutRoutine.Note, Converter={StaticResource NullValueToEmptyText}, ConverterParameter=Note}"
+                                Style="{StaticResource LargeSubSpanStyle}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
                 <Entry 
-                    Text="{Binding ProgramListViewModel.OperatingProgram.Note}"
-                    Placeholder="Program Note"
+                    Text="{Binding WorkoutRoutineListViewModel.OperatingWorkoutRoutine.Note}"
+                    Placeholder="Routine Note"
                     FontSize="24"
-                    IsVisible="{Binding ProgramListViewModel.IsEditing}" />
+                    IsVisible="{Binding WorkoutRoutineListViewModel.IsEditing}" />
 
                 <Grid 
                     WidthRequest="300"
                     HorizontalOptions="Center"
-                    IsVisible="{Binding ProgramListViewModel.IsEditing}">
+                    IsVisible="{Binding WorkoutRoutineListViewModel.IsEditing}">
                     <HorizontalStackLayout
                         HorizontalOptions="Center"
                         Spacing="20"
@@ -77,24 +76,24 @@
                         <Button 
                             Grid.Column="0"
                             Text="Cancel"
-                            Style="{StaticResource EditingProgramButtonStyle}"
-                            Command="{Binding ProgramListViewModel.CancelEditingCommand}"
+                            Style="{StaticResource EditingLargeButtonStyle}"
+                            Command="{Binding WorkoutRoutineListViewModel.CancelEditingCommand}"
                             BackgroundColor="#ef4444" />
                         <Button 
                             Grid.Column="1"
                             Text="Save"
-                            Style="{StaticResource EditingProgramButtonStyle}"
-                            Command="{Binding UpdateProgramCommand}"
+                            Style="{StaticResource EditingLargeButtonStyle}"
+                            Command="{Binding UpdateWorkoutRoutineCommand}"
                             BackgroundColor="#22c55e" />
                     </HorizontalStackLayout>
                 </Grid>
                 
                 <Button 
-                    Text="Edit Program"
-                    Style="{StaticResource ProgramButtonStyle}"
-                    Command="{Binding ProgramListViewModel.SetOperatingProgramCommand}" 
-                    CommandParameter="{Binding Program}"
-                    IsVisible="{Binding ProgramListViewModel.IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
+                    Text="Edit Routine"
+                    Style="{StaticResource LargeButtonStyle}"
+                    Command="{Binding WorkoutRoutineListViewModel.SetOperatingWorkoutRoutineCommand}" 
+                    CommandParameter="{Binding WorkoutRoutine}"
+                    IsVisible="{Binding WorkoutRoutineListViewModel.IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
 
 
             </VerticalStackLayout>
@@ -114,10 +113,10 @@
                             <Span 
                                 Text="Schedule Name: " 
                                 FontAttributes="Bold"
-                                Style="{StaticResource ProgramSubSpanStyle}" />
+                                Style="{StaticResource LargeSubSpanStyle}" />
                             <Span 
-                                Text="{Binding ProgramSchedule.Name}"
-                                Style="{StaticResource ProgramSubSpanStyle}" />
+                                Text="{Binding WorkoutRoutineSchedule.Name}"
+                                Style="{StaticResource LargeSubSpanStyle}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -127,10 +126,10 @@
                             <Span 
                                 Text="Weekly Schedule: " 
                                 FontAttributes="Bold"
-                                Style="{StaticResource ProgramSubSpanStyle}" />
+                                Style="{StaticResource LargeSubSpanStyle}" />
                             <Span 
-                                Text="{Binding ProgramSchedule.IsScheduleWeekly}"
-                                Style="{StaticResource ProgramSubSpanStyle}" />
+                                Text="{Binding WorkoutRoutineSchedule.IsScheduleWeekly}"
+                                Style="{StaticResource LargeSubSpanStyle}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -139,7 +138,7 @@
                     Text="Set Schedule"
                     IsVisible="{Binding IsShowingScheduleList, Converter={StaticResource InvertedBoolConverter}}"
                     WidthRequest="300"
-                    Style="{StaticResource EditingProgramButtonStyle}"
+                    Style="{StaticResource EditingLargeButtonStyle}"
                     Command="{Binding ShowScheduleListCommand}" />
                 
                 <CollectionView
@@ -161,10 +160,10 @@
                                             <Span 
                                                 Text="Name: " 
                                                 FontAttributes="Bold"  
-                                                Style="{StaticResource ProgramSpanStyle}" />
+                                                Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
                                                 Text="{Binding Name}"
-                                                Style="{StaticResource ProgramSpanStyle}" />
+                                                Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -173,7 +172,7 @@
                                     Style="{StaticResource AddButtonStyle}"
                                     WidthRequest="50"
                                     Padding="2"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProgramDetailsViewModel}}, Path=SetScheduleCommand}" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineDetailsViewModel}}, Path=SetScheduleCommand}" 
                                     CommandParameter="{Binding .}" />
                             </HorizontalStackLayout>
                         </DataTemplate>
@@ -196,11 +195,11 @@
                 <Button 
                     Text="Go To Schedule"
                     IsVisible="{Binding IsScheduleSet}"
-                    Style="{StaticResource ProgramButtonStyle}"
+                    Style="{StaticResource LargeButtonStyle}"
                     Command="{Binding VisitScheduleCommand}" />
                 <Button 
                     Text="Create New Schedule"
-                    Style="{StaticResource ProgramButtonStyle}"
+                    Style="{StaticResource LargeButtonStyle}"
                     BackgroundColor="#4287f5"
                     Command="{Binding GoToScheduleListCommand}" />
                 
@@ -210,7 +209,7 @@
 
         <Button 
             Text="Go Back"
-            Style="{StaticResource ProgramButtonStyle}"
+            Style="{StaticResource LargeButtonStyle}"
             Command="{Binding GoBackCommand}"
             Margin="50" />
     </VerticalStackLayout>

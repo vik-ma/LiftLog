@@ -33,10 +33,10 @@
                                             <Span 
                                                 Text="Id: " 
                                                 FontAttributes="Bold"  
-                                                Style="{StaticResource ProgramSpanStyle}" />
+                                                Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
                                                 Text="{Binding Id}"
-                                                Style="{StaticResource ProgramSpanStyle}" />
+                                                Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -46,10 +46,10 @@
                                             <Span 
                                                 Text="Workout Id: " 
                                                 FontAttributes="Bold"  
-                                                Style="{StaticResource ProgramSpanStyle}" />
+                                                Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
                                                 Text="{Binding CompletedWorkoutId}"
-                                                Style="{StaticResource ProgramSpanStyle}" />
+                                                Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -62,10 +62,10 @@
                                             <Span 
                                                 Text="Exercise Name: " 
                                                 FontAttributes="Bold"  
-                                                Style="{StaticResource ProgramSpanStyle}" />
+                                                Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
                                                 Text="{Binding ExerciseName}"
-                                                Style="{StaticResource ProgramSpanStyle}" />
+                                                Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -78,10 +78,10 @@
                                             <Span 
                                                 Text="Note: " 
                                                 FontAttributes="Bold"  
-                                                Style="{StaticResource ProgramSpanStyle}" />
+                                                Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
                                                 Text="{Binding Note}"
-                                                Style="{StaticResource ProgramSpanStyle}" />
+                                                Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -94,10 +94,10 @@
                                             <Span 
                                                 Text="Is Completed: " 
                                                 FontAttributes="Bold"  
-                                                Style="{StaticResource ProgramSpanStyle}" />
+                                                Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
                                                 Text="{Binding IsCompleted}"
-                                                Style="{StaticResource ProgramSpanStyle}" />
+                                                Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -107,10 +107,10 @@
                                             <Span 
                                                 Text="Date: " 
                                                 FontAttributes="Bold"  
-                                                Style="{StaticResource ProgramSpanStyle}" />
+                                                Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
                                                 Text="{Binding DateCompleted}"
-                                                Style="{StaticResource ProgramSpanStyle}" />
+                                                Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -184,7 +184,7 @@
         <VerticalStackLayout>
             <Button 
                 Text="Go Back"
-                Style="{StaticResource ProgramButtonStyle}"
+                Style="{StaticResource LargeButtonStyle}"
                 Command="{Binding GoBackCommand}"
                 Margin="50" />
         </VerticalStackLayout>

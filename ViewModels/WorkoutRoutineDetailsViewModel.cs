@@ -12,17 +12,17 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.ViewModels
 {
-    [QueryProperty(nameof(Program), nameof(Program))]
-    public partial class ProgramDetailsViewModel : ObservableObject
+    [QueryProperty(nameof(WorkoutRoutine), nameof(WorkoutRoutine))]
+    public partial class WorkoutRoutineDetailsViewModel : ObservableObject
     {
         [ObservableProperty]
-        private ProgramListViewModel _programListViewModel;
+        private WorkoutRoutineListViewModel _workoutRoutineListViewModel;
 
         private readonly DatabaseContext _context;
 
-        public ProgramDetailsViewModel(ProgramListViewModel programListViewModel, DatabaseContext context)
+        public WorkoutRoutineDetailsViewModel(WorkoutRoutineListViewModel workoutRoutineListViewModel, DatabaseContext context)
         {
-            _programListViewModel = programListViewModel;
+            _workoutRoutineListViewModel = workoutRoutineListViewModel;
             _context = context;
         }
 
@@ -30,13 +30,13 @@ namespace LocalLiftLog.ViewModels
         private bool isShowingScheduleList = false;
 
         [ObservableProperty]
-        private Program program;
+        private WorkoutRoutine workoutRoutine;
 
         [ObservableProperty]
         private ObservableCollection<ScheduleFactory> _scheduleFactoryList = new();
 
         [ObservableProperty]
-        private ScheduleFactory programSchedule;
+        private ScheduleFactory workoutRoutineSchedule;
 
         [ObservableProperty]
         private bool isScheduleSet = false;
@@ -86,30 +86,30 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task UpdateProgram()
+        private async Task UpdateWorkoutRoutine()
         {
-            var (isValid, errorMessage) = Program.Validate();
+            var (isValid, errorMessage) = WorkoutRoutine.Validate();
             if (!isValid)
             {
                 await Shell.Current.DisplayAlert("Validation Error", errorMessage, "OK");
                 return;
             }
 
-            if (!await _context.UpdateItemAsync<Program>(Program))
+            if (!await _context.UpdateItemAsync<WorkoutRoutine>(WorkoutRoutine))
             {
-                await Shell.Current.DisplayAlert("Error", "Error occured when updating Program.", "OK");
+                await Shell.Current.DisplayAlert("Error", "Error occured when updating WorkoutRoutine.", "OK");
                 return;
             }
 
-            OnPropertyChanged(nameof(Program));
+            OnPropertyChanged(nameof(WorkoutRoutine));
 
-            ProgramListViewModel.IsEditing = false;
+            WorkoutRoutineListViewModel.IsEditing = false;
         }
 
         [RelayCommand]
         private async Task VisitSchedule()
         {
-            var ScheduleFactoryId = Program.ScheduleFactoryId;
+            var ScheduleFactoryId = WorkoutRoutine.ScheduleFactoryId;
 
             if (ScheduleFactoryId == 0)
             {
@@ -176,28 +176,28 @@ namespace LocalLiftLog.ViewModels
             IsShowingScheduleList = true;
         }
 
-        public async Task LoadProgramSchedule()
+        public async Task LoadWorkoutRoutineSchedule()
         {
             // Exit function if no ScheduleFactory is set
-            if (Program.ScheduleFactoryId == 0) return;
+            if (WorkoutRoutine.ScheduleFactoryId == 0) return;
 
             ScheduleFactory scheduleFactory = null;
 
             await ExecuteAsync(async () =>
             {
-                scheduleFactory = await _context.GetItemByKeyAsync<ScheduleFactory>(Program.ScheduleFactoryId);
+                scheduleFactory = await _context.GetItemByKeyAsync<ScheduleFactory>(WorkoutRoutine.ScheduleFactoryId);
             });
 
             if (scheduleFactory is null)
             {
-                // Delete ScheduleFactoryId for Program if ScheduleFactory key does not exist
-                Program.ScheduleFactoryId = 0;
-                await UpdateProgram();
+                // Delete ScheduleFactoryId for WorkoutRoutine if ScheduleFactory key does not exist
+                WorkoutRoutine.ScheduleFactoryId = 0;
+                await UpdateWorkoutRoutine();
             }
             else
             {
-                // Set the loaded ScheduleFactory as ProgramSchedule
-                ProgramSchedule = scheduleFactory;
+                // Set the loaded ScheduleFactory as WorkoutRoutineSchedule
+                WorkoutRoutineSchedule = scheduleFactory;
                 IsScheduleSet = true;
             }
         }
@@ -207,10 +207,10 @@ namespace LocalLiftLog.ViewModels
         {
             if (schedule == null) return;
 
-            Program.ScheduleFactoryId = schedule.Id;
+            WorkoutRoutine.ScheduleFactoryId = schedule.Id;
 
-            await UpdateProgram();
-            await LoadProgramSchedule();
+            await UpdateWorkoutRoutine();
+            await LoadWorkoutRoutineSchedule();
 
             IsShowingScheduleList = false;
             IsScheduleSet = true;

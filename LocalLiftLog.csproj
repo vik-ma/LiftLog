@@ -65,14 +65,14 @@
 	  <Compile Update="Pages\CustomSchedulePage.xaml.cs">
 		<DependentUpon>CustomSchedulePage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\ProgramDetailsPage.xaml.cs">
+	  <Compile Update="Pages\WorkoutRoutineDetailsPage.xaml.cs">
 	    <DependentUpon>ProgramDetailsPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\ProgramDetailsPage.xaml.cs">
-	    <DependentUpon>ProgramDetailsPage.xaml</DependentUpon>
+	  <Compile Update="Pages\WorkoutRoutineDetailsPage.xaml.cs">
+	    <DependentUpon>WorkoutRoutineDetailsPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\ProgramListPage.xaml.cs">
-	    <DependentUpon>ProgramListPage.xaml</DependentUpon>
+	  <Compile Update="Pages\WorkoutRoutineListPage.xaml.cs">
+	    <DependentUpon>WorkoutRoutineListPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\ScheduleFactoryPage.xaml.cs">
 	    <DependentUpon>ScheduleFactoryPage.xaml</DependentUpon>
@@ -104,10 +104,10 @@
 	  <MauiXaml Update="Pages\ExerciseListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\ProgramDetailsPage.xaml">
+	  <MauiXaml Update="Pages\WorkoutRoutineDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\ProgramListPage.xaml">
+	  <MauiXaml Update="Pages\WorkoutRoutineListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ScheduleFactoryPage.xaml">

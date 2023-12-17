@@ -15,10 +15,10 @@
             RowDefinitions="*, *, *, *, *, *, *"
             ColumnDefinitions="*, *">
             <Button
-                Text="Program List"
+                Text="Routine List"
                 Grid.Row="0"
                 Grid.Column="0"
-                Command="{Binding GoToProgramListCommand}"
+                Command="{Binding GoToWorkoutRoutineListCommand}"
                 Style="{StaticResource MainPageNavigationButtonStyle}"/>
             <Button
                 Text="Schedule List"

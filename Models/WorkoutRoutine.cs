@@ -8,7 +8,7 @@ using LocalLiftLog.Helpers;
 
 namespace LocalLiftLog.Models
 {
-    public class Program
+    public class WorkoutRoutine
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -17,7 +17,7 @@ namespace LocalLiftLog.Models
         public string Note { get; set; }
         public int ScheduleFactoryId { get; set; }
         
-        public Program Clone() => MemberwiseClone() as Program;
+        public WorkoutRoutine Clone() => MemberwiseClone() as WorkoutRoutine;
 
         #nullable enable
         public (bool IsValid, string? ErrorMessage) Validate()

@@ -64,10 +64,10 @@
                                         <Span 
                                             Text="Id: " 
                                             FontAttributes="Bold"  
-                                            Style="{StaticResource ProgramSpanStyle}" />
+                                            Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
                                             Text="{Binding Id}"
-                                            Style="{StaticResource ProgramSpanStyle}" />
+                                            Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -77,10 +77,10 @@
                                         <Span 
                                             Text="Exercise: " 
                                             FontAttributes="Bold"  
-                                            Style="{StaticResource ProgramSpanStyle}" />
+                                            Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
                                             Text="{Binding ExerciseName}"
-                                            Style="{StaticResource ProgramSpanStyle}" />
+                                            Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -137,7 +137,7 @@
             <VerticalStackLayout>
                 <Button 
                     Text="Copy Existing Workout"
-                    Style="{StaticResource ProgramButtonStyle}"
+                    Style="{StaticResource LargeButtonStyle}"
                     Command="{Binding ShowExistingWorkoutListCommand}"
                     Margin="50" />
             </VerticalStackLayout>
@@ -160,10 +160,10 @@
                                         <Span 
                                             Text="Name: " 
                                             FontAttributes="Bold"  
-                                            Style="{StaticResource ProgramSpanStyle}" />
+                                            Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
                                             Text="{Binding Name}"
-                                            Style="{StaticResource ProgramSpanStyle}" />
+                                            Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -192,7 +192,7 @@
 
             <Button 
                 Text="Go Back"
-                Style="{StaticResource ProgramButtonStyle}"
+                Style="{StaticResource LargeButtonStyle}"
                 Command="{Binding GoBackCommand}"
                 Margin="50" />
         </VerticalStackLayout>

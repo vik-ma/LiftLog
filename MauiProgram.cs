@@ -29,11 +29,11 @@ namespace LocalLiftLog
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<MainViewModel>();
 
-            builder.Services.AddTransient<ProgramListPage>();
-            builder.Services.AddTransient<ProgramListViewModel>();
+            builder.Services.AddTransient<WorkoutRoutineListPage>();
+            builder.Services.AddTransient<WorkoutRoutineListViewModel>();
 
-            builder.Services.AddTransient<ProgramDetailsPage>();
-            builder.Services.AddTransient<ProgramDetailsViewModel>();
+            builder.Services.AddTransient<WorkoutRoutineDetailsPage>();
+            builder.Services.AddTransient<WorkoutRoutineDetailsViewModel>();
 
             builder.Services.AddTransient<ScheduleListPage>();
             builder.Services.AddTransient<ScheduleListViewModel>();
