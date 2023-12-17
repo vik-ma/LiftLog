@@ -42,6 +42,11 @@
                 <Label Text="{Binding WorkoutTemplate.SetListOrder}" />
             </HorizontalStackLayout>
 
+            <Button 
+                Text="Remove All Sets"
+                Style="{StaticResource DeleteButtonStyle}"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=DeleteAllSetsCommand}"/>
+
             <CollectionView
                 ItemsSource="{Binding SetList}"
                 HorizontalOptions="Center">

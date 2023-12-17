@@ -22,7 +22,7 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private WorkoutTemplate workoutTemplate;
 
-        private readonly List<int> SetListIdOrder = new();
+        private List<int> SetListIdOrder = new();
 
         public WorkoutDetailsViewModel(DatabaseContext context)
         {
@@ -333,6 +333,33 @@ namespace LocalLiftLog.ViewModels
             (SetList[setIndex + 1], SetList[setIndex]) = (SetList[setIndex], SetList[setIndex + 1]);
 
             await GenerateSetListOrderString();
+        }
+
+        [RelayCommand]
+        private async Task DeleteAllSets()
+        {
+            if (WorkoutTemplate is null) return;
+
+            try 
+            {
+                foreach (var setTemplate in SetList)
+                {
+                    await _context.DeleteItemAsync<SetTemplate>(setTemplate);
+                }
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set.", "OK");
+            }
+            finally
+            {
+                SetList.Clear();
+            }
+            
+            WorkoutTemplate.SetListOrder = "";
+            SetListIdOrder = new();
+
+            await UpdateWorkoutTemplateAsync();
         }
     }
 }
