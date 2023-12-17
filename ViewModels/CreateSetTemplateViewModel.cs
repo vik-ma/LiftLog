@@ -183,8 +183,19 @@ namespace LocalLiftLog.ViewModels
 
             if (OperatingWorkoutTemplate is null) return;
 
-            List<string> newSetList = OperatingWorkoutTemplate.SetListOrder?.Split(',')?.ToList() ?? new List<string>();
+            List<string> newSetList;
 
+            if (!string.IsNullOrEmpty(OperatingWorkoutTemplate.SetListOrder))
+            {
+                // Create list of Ids from comma separated SetListOrder string if it exists
+                newSetList = OperatingWorkoutTemplate.SetListOrder.Split(',').ToList();
+            }
+            else
+            {
+                // Create empty list if SetListOrder string is null or empty
+                newSetList = new();
+            }
+            
             await ExecuteAsync(async () =>
             {
                 for (int i = 0; i < numSets; i++) {
