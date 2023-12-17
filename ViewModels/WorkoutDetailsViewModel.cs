@@ -340,6 +340,10 @@ namespace LocalLiftLog.ViewModels
         {
             if (WorkoutTemplate is null) return;
 
+            bool userClickedDelete = await Shell.Current.DisplayAlert("Remove All Sets", $"Are you sure you want to delete all sets from the Workout?\nThis can not be undone.", "Delete", "Cancel");
+
+            if (!userClickedDelete) return;
+
             try 
             {
                 foreach (var setTemplate in SetList)
