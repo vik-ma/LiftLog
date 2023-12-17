@@ -135,9 +135,9 @@ namespace LocalLiftLog.ViewModels
                 return;
             };
 
-            bool userClickedCancel = await Shell.Current.DisplayAlert("Delete Program", $"Are you sure you want to delete {Program.Name}?", "Cancel", "Delete");
+            bool userClickedDelete = await Shell.Current.DisplayAlert("Delete Program", $"Are you sure you want to delete {Program.Name}?", "Delete", "Cancel");
 
-            if (userClickedCancel) return;
+            if (!userClickedDelete) return;
 
             await ExecuteAsync(async () =>
             {
