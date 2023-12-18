@@ -35,73 +35,82 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:SetTemplate">
-                        <HorizontalStackLayout Spacing="10">
-                            <Label 
-                                Text="{Binding ExerciseName}"
-                                FontSize="20"
-                                VerticalOptions="Center"
-                                Style="{StaticResource OrangeBoldTextStyle}" />
-                            <Label
-                                Text="{Binding Note}"
-                                TextColor="#575757"
-                                Style="{StaticResource StartedWorkoutLabelStyle}"
-                                IsVisible="{Binding Note}" />
-                            <Label
-                                Text="Weight:"
-                                Style="{StaticResource StartedWorkoutLabelStyle}"
-                                IsVisible="{Binding IsTrackingWeight}" />
-                            <Entry
-                                Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                                IsVisible="{Binding IsTrackingWeight}" />
-                            <Label
-                                Text="Reps:"
-                                Style="{StaticResource StartedWorkoutLabelStyle}"
-                                IsVisible="{Binding IsTrackingReps}" />
-                            <Entry
-                                Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                                IsVisible="{Binding IsTrackingReps}" />
-                            <Label
-                                Text="RIR:"
-                                Style="{StaticResource StartedWorkoutLabelStyle}"
-                                IsVisible="{Binding IsTrackingRir}" />
-                            <Entry
-                                Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                                IsVisible="{Binding IsTrackingRir}" />
-                            <Label
-                                Text="RPE:"
-                                Style="{StaticResource StartedWorkoutLabelStyle}"
-                                IsVisible="{Binding IsTrackingRpe}" />
-                            <Entry
-                                Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                                IsVisible="{Binding IsTrackingRpe}" />
-                            <Label
-                                Text="Time:"
-                                Style="{StaticResource StartedWorkoutLabelStyle}"
-                                IsVisible="{Binding IsTrackingTime}" />
-                            <Entry
-                                Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                                IsVisible="{Binding IsTrackingTime}" />
-                            <Label
-                                Text="Distance:"
-                                Style="{StaticResource StartedWorkoutLabelStyle}"
-                                IsVisible="{Binding IsTrackingDistance}" />
-                            <Entry
-                                Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                                IsVisible="{Binding IsTrackingDistance}" />
-                            <Label
-                                Text="Resistance Level:"
-                                Style="{StaticResource StartedWorkoutLabelStyle}"
-                                IsVisible="{Binding IsTrackingCardioResistance}" />
-                            <Entry
-                                Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                                IsVisible="{Binding IsTrackingCardioResistance}" />
-                            <Label
-                                Text="Includes Body Weight"
-                                TextColor="#575757"
-                                FontAttributes="Italic"
-                                Style="{StaticResource StartedWorkoutLabelStyle}"
-                                IsVisible="{Binding IsUsingBodyWeightAsWeight}" />
-                        </HorizontalStackLayout>
+                        <VerticalStackLayout Spacing="10">
+                            <HorizontalStackLayout Spacing="10">
+                                <Label 
+                                    Text="{Binding ExerciseName}"
+                                    FontSize="20"
+                                    VerticalOptions="Center"
+                                    Style="{StaticResource OrangeBoldTextStyle}" />
+                                <Label
+                                    Text="{Binding Note}"
+                                    TextColor="#575757"
+                                    Style="{StaticResource StartedWorkoutLabelStyle}"
+                                    IsVisible="{Binding Note}" />
+                                <Button 
+                                    Text="Edit Set"
+                                    Style="{StaticResource GenericButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=GoToCreateSetTemplatePageCommand}" 
+                                    CommandParameter="{Binding Id}" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="10">
+                                <Label
+                                    Text="Weight:"
+                                    Style="{StaticResource StartedWorkoutLabelStyle}"
+                                    IsVisible="{Binding IsTrackingWeight}" />
+                                <Entry
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                    IsVisible="{Binding IsTrackingWeight}" />
+                                <Label
+                                    Text="Reps:"
+                                    Style="{StaticResource StartedWorkoutLabelStyle}"
+                                    IsVisible="{Binding IsTrackingReps}" />
+                                <Entry
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                    IsVisible="{Binding IsTrackingReps}" />
+                                <Label
+                                    Text="RIR:"
+                                    Style="{StaticResource StartedWorkoutLabelStyle}"
+                                    IsVisible="{Binding IsTrackingRir}" />
+                                <Entry
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                    IsVisible="{Binding IsTrackingRir}" />
+                                <Label
+                                    Text="RPE:"
+                                    Style="{StaticResource StartedWorkoutLabelStyle}"
+                                    IsVisible="{Binding IsTrackingRpe}" />
+                                <Entry
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                    IsVisible="{Binding IsTrackingRpe}" />
+                                <Label
+                                    Text="Time:"
+                                    Style="{StaticResource StartedWorkoutLabelStyle}"
+                                    IsVisible="{Binding IsTrackingTime}" />
+                                <Entry
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                    IsVisible="{Binding IsTrackingTime}" />
+                                <Label
+                                    Text="Distance:"
+                                    Style="{StaticResource StartedWorkoutLabelStyle}"
+                                    IsVisible="{Binding IsTrackingDistance}" />
+                                <Entry
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                    IsVisible="{Binding IsTrackingDistance}" />
+                                <Label
+                                    Text="Resistance Level:"
+                                    Style="{StaticResource StartedWorkoutLabelStyle}"
+                                    IsVisible="{Binding IsTrackingCardioResistance}" />
+                                <Entry
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                    IsVisible="{Binding IsTrackingCardioResistance}" />
+                                <Label
+                                    Text="Includes Body Weight"
+                                    TextColor="#575757"
+                                    FontAttributes="Italic"
+                                    Style="{StaticResource StartedWorkoutLabelStyle}"
+                                    IsVisible="{Binding IsUsingBodyWeightAsWeight}" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
                 <CollectionView.EmptyView>
