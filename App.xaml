@@ -124,6 +124,14 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
+            <Style x:Key="OrangeBoldTextStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="DarkOrange" />
+            </Style>
+            <Style x:Key="MediumBlueBoldTextStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#4287f5" />
+            </Style>
             <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyText" />
             <converters:MultiBindingConverter x:Key="MultiBindingConverter" />
             <converters:DayConverter x:Key="DayConverter" />

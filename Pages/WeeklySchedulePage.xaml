@@ -207,9 +207,8 @@
                         FontSize="24" />
                     <Label 
                         Text="{Binding SelectedDay, Converter={StaticResource DayConverter}, ConverterParameter=Weekly}"
-                        FontAttributes="Bold"
                         FontSize="28"
-                        TextColor="#4287f5"
+                        Style="{StaticResource MediumBlueBoldTextStyle}"
                         HorizontalOptions="Center"/>
 
                     <CollectionView

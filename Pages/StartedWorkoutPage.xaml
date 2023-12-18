@@ -10,13 +10,13 @@
         <VerticalStackLayout>
             <HorizontalStackLayout Spacing="15">
                 <Label 
-                    Text="Workout Template Name:"
+                    Text="Workout:"
                     FontSize="30"
                     FontAttributes="Bold" />
                 <Label 
                     Text="{Binding WorkoutTemplate.Name}"
                     FontSize="30"
-                    FontAttributes="Bold" />
+                    Style="{StaticResource MediumBlueBoldTextStyle}" />
                 <Button 
                     Text="Modify Workout"
                     Style="{StaticResource GenericButtonStyle}"
@@ -36,7 +36,10 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:SetTemplate">
                         <HorizontalStackLayout Spacing="5">
-                            <Label Text="{Binding ExerciseName}" />
+                            <Label 
+                                Text="{Binding ExerciseName}"
+                                FontSize="20"
+                                Style="{StaticResource OrangeBoldTextStyle}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
