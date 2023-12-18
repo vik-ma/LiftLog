@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,10 +21,15 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private WorkoutTemplate workoutTemplate;
 
+        private readonly List<int> SetListIdOrder = new();
+
         public StartedWorkoutViewModel(DatabaseContext context)
         {
             _context = context;
         }
+
+        [ObservableProperty]
+        private ObservableCollection<SetTemplate> setList = new();
 
         [RelayCommand]
         static async Task GoBack()
@@ -46,6 +52,58 @@ namespace LocalLiftLog.ViewModels
             finally
             {
 
+            }
+        }
+
+        private void LoadSetListIdOrder()
+        {
+            if (WorkoutTemplate is null) return;
+
+            if (string.IsNullOrEmpty(WorkoutTemplate.SetListOrder)) return;
+
+            string[] setList = WorkoutTemplate.SetListOrder.Split(',');
+
+            foreach (string s in setList)
+            {
+                if (int.TryParse(s, out int setId))
+                {
+                    SetListIdOrder.Add(setId);
+                }
+            }
+
+            OnPropertyChanged(nameof(WorkoutTemplate));
+        }
+
+        public async Task LoadSetListFromWorkoutTemplateIdAsync()
+        {
+            if (WorkoutTemplate is null) return;
+
+            LoadSetListIdOrder();
+
+            SetList.Clear();
+
+            List<SetTemplate> setTemplateList = new();
+
+            Expression<Func<SetTemplate, bool>> predicate = entity => entity.WorkoutTemplateId == WorkoutTemplate.Id;
+
+            try
+            {
+                var filteredList = await _context.GetFilteredAsync<SetTemplate>(predicate);
+
+                foreach (var item in filteredList)
+                {
+                    setTemplateList.Add(item);
+                }
+
+                if (setTemplateList.Any())
+                {
+                    SetList = new ObservableCollection<SetTemplate>(setTemplateList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Id)));
+                }
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
+                return;
             }
         }
 
