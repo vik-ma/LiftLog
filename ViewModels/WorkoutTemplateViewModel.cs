@@ -289,9 +289,14 @@ namespace LocalLiftLog.ViewModels
                 return;
             }
 
+            CompletedWorkout newCompletedWorkout = new()
+            {
+                WorkoutTemplateId = workout.Id
+            };
+
             var navigationParameter = new Dictionary<string, object>
             {
-                ["WorkoutTemplate"] = workout
+                ["CompletedWorkout"] = newCompletedWorkout
             };
 
             await Shell.Current.GoToAsync($"{nameof(StartedWorkoutPage)}?Id={id}", navigationParameter);
