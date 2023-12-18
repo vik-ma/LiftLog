@@ -124,6 +124,30 @@ namespace LocalLiftLog.ViewModels
             await Shell.Current.GoToAsync($"{nameof(WorkoutDetailsPage)}?Id={WorkoutTemplate.Id}", navigationParameter);
         }
 
+        [RelayCommand]
+        private async Task GoToCreateSetTemplatePage(int id)
+        {
+            if (WorkoutTemplate is null) return;
+
+            SetTemplate selectedSetTemplate = SetList.FirstOrDefault(p => p.Id == id);
+
+            if (selectedSetTemplate is null) return;
+
+            SetWorkoutTemplatePackage package = new()
+            {
+                WorkoutTemplate = WorkoutTemplate,
+                SetTemplate = selectedSetTemplate,
+                IsEditing = true
+            };
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["SetWorkoutTemplatePackage"] = package
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={WorkoutTemplate.Id}", navigationParameter);
+        }
+
     }
 
     
