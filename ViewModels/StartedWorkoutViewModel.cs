@@ -13,10 +13,13 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.ViewModels
 {
-    [QueryProperty(nameof(WorkoutTemplate), nameof(WorkoutTemplate))]
+    [QueryProperty(nameof(CompletedWorkout), nameof(CompletedWorkout))]
     public partial class StartedWorkoutViewModel : ObservableObject
     {
         private readonly DatabaseContext _context;
+
+        [ObservableProperty]
+        private CompletedWorkout completedWorkout;
 
         [ObservableProperty]
         private WorkoutTemplate workoutTemplate;
@@ -76,6 +79,11 @@ namespace LocalLiftLog.ViewModels
 
         public async Task LoadSetListFromWorkoutTemplateIdAsync()
         {
+            if (CompletedWorkout is null) return;
+
+            // Load WorkoutTemplate from WorkoutTemplateId
+            WorkoutTemplate = await _context.GetItemByKeyAsync<WorkoutTemplate>(CompletedWorkout.WorkoutTemplateId);
+
             if (WorkoutTemplate is null) return;
 
             LoadSetListIdOrder();
