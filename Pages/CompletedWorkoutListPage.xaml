@@ -58,6 +58,22 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
+                                            Text="Workout Template Collection Id: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding WorkoutTemplateCollectionId}"
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Entry 
+                                Text="{Binding WorkoutTemplateCollectionId}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
                                             Text="Is Completed: " 
                                             FontAttributes="Bold"  
                                             Style="{StaticResource SmallSpanStyle}" />
@@ -75,7 +91,7 @@
                                             FontAttributes="Bold"  
                                             Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
-                                            Text="{Binding DateCompleted}"
+                                            Text="{Binding Date}"
                                             Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>

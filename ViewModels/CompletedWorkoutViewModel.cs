@@ -126,7 +126,7 @@ namespace LocalLiftLog.ViewModels
             string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
 
             completedWorkout.IsCompleted = true;
-            completedWorkout.DateCompleted = currentDateTimeString;
+            completedWorkout.Date = currentDateTimeString;
 
             await ExecuteAsync(async () =>
             {
