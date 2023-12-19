@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LocalLiftLog.Pages.SelectWorkoutPage"
+             xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
+             xmlns:models="clr-namespace:LocalLiftLog.Models"
+             x:DataType="viewmodel:SelectWorkoutViewModel"
+             Title="Select Workout">
+
+    <VerticalStackLayout HorizontalOptions="Center">
+        <VerticalStackLayout>
+            <Label 
+                Text="Select Schedule"
+                HorizontalOptions="Center"
+                FontSize="30"
+                FontAttributes="Bold"
+                Margin="10" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label 
+                Text="Select Workout"
+                HorizontalOptions="Center"
+                FontSize="30"
+                FontAttributes="Bold"
+                Margin="10" />
+        </VerticalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>
