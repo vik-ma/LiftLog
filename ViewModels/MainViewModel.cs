@@ -72,5 +72,11 @@ namespace LocalLiftLog.ViewModels
         {
             await Shell.Current.GoToAsync($"{nameof(ExerciseListPage)}");
         }
+
+        [RelayCommand]
+        private async Task GoToSelectWorkout()
+        {
+            await Shell.Current.GoToAsync($"{nameof(SelectWorkoutPage)}");
+        }
     }
 }
