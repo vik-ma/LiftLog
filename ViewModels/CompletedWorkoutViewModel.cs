@@ -121,20 +121,9 @@ namespace LocalLiftLog.ViewModels
             if (completedWorkout is null)
                 return;
 
-            string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
-
             completedWorkout.IsCompleted = true;
-            completedWorkout.Date = currentDateTimeString;
 
-            await ExecuteAsync(async () =>
-            {
-                if (!await _context.UpdateItemAsync<CompletedWorkout>(completedWorkout))
-                {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Completed Set.", "OK");
-                }
-
-                await LoadCompletedWorkoutsAsync();
-            });
+            await UpdateCompletedWorkoutAsync(completedWorkout);
         }
 
         private async Task DeleteCompletedSetsByCompletedWorkoutId(int id)
