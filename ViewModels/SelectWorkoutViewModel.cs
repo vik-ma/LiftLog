@@ -67,5 +67,60 @@ namespace LocalLiftLog.ViewModels
                 }
             });
         }
+
+        [RelayCommand]
+        private async Task GoToSchedulePage(int id)
+        {
+            var schedule = ScheduleList.FirstOrDefault(p => p.Id == id);
+
+            if (schedule is null)
+            {
+                await Shell.Current.DisplayAlert("Error", "Schedule does not exist", "OK");
+                return;
+            }
+
+            if (schedule.IsScheduleWeekly)
+            {
+                WeeklySchedule weeklySchedule;
+
+                try
+                {
+                    weeklySchedule = await _context.GetItemByKeyAsync<WeeklySchedule>(schedule.ScheduleId);
+                }
+                catch
+                {
+                    await Shell.Current.DisplayAlert("Error", "Weekly Schedule ID does not exist!", "OK");
+                    return;
+                }
+
+                var navigationParameter = new Dictionary<string, object>
+                {
+                    ["WeeklySchedule"] = weeklySchedule
+                };
+
+                await Shell.Current.GoToAsync($"{nameof(WeeklySchedulePage)}?Id={id}", navigationParameter);
+            }
+            else
+            {
+                CustomSchedule customSchedule;
+
+                try
+                {
+                    customSchedule = await _context.GetItemByKeyAsync<CustomSchedule>(schedule.ScheduleId);
+                }
+                catch
+                {
+                    await Shell.Current.DisplayAlert("Error", "Custom Schedule ID does not exist!", "OK");
+                    return;
+                }
+
+                var navigationParameter = new Dictionary<string, object>
+                {
+                    ["CustomSchedule"] = customSchedule
+                };
+
+                await Shell.Current.GoToAsync($"{nameof(CustomSchedulePage)}?Id={id}", navigationParameter);
+            }
+        }
     }
 }
