@@ -126,6 +126,21 @@ namespace LocalLiftLog.ViewModels
             await UpdateCompletedWorkoutAsync(completedWorkout);
         }
 
+        [RelayCommand]
+        private async Task SetCompletedWorkoutDate(int id)
+        {
+            CompletedWorkout completedWorkout = CompletedWorkoutList.FirstOrDefault(p => p.Id == id);
+
+            if (completedWorkout is null)
+                return;
+
+            string currentYmdDate = DateTimeHelper.GetCurrentFormattedYmdDate();
+
+            completedWorkout.Date = currentYmdDate;
+
+            await UpdateCompletedWorkoutAsync(completedWorkout);
+        }
+
         private async Task DeleteCompletedSetsByCompletedWorkoutId(int id)
         {
             Expression<Func<CompletedSet, bool>> predicate = entity => entity.CompletedWorkoutId == id;
