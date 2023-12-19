@@ -105,7 +105,7 @@
                                 Text="Update"
                                 Style="{StaticResource AddButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedWorkoutViewModel}}, Path=UpdateCompletedWorkoutCommand}"
-                                CommandParameter="{Binding Id}" />
+                                CommandParameter="{Binding .}" />
                             <Button 
                                 Text="Delete"
                                 Style="{StaticResource DeleteButtonStyle}"

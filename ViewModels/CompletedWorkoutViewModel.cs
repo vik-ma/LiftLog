@@ -76,10 +76,8 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task UpdateCompletedWorkoutAsync(int id)
+        private async Task UpdateCompletedWorkoutAsync(CompletedWorkout completedWorkout)
         {
-            CompletedWorkout completedWorkout = CompletedWorkoutList.FirstOrDefault(p => p.Id == id);
-
             if (completedWorkout is null)
                 return;
 
