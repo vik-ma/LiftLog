@@ -11,7 +11,7 @@ namespace LocalLiftLog.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (parameter is bool context)
+            if (value is bool context)
             {
                 // If IsWeeklySchedule is True
                 if (context) return "Weekly";

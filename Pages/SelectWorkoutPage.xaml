@@ -42,11 +42,11 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
-                                            Text="Weekly Schedule: " 
+                                            Text="Schedule Type: " 
                                             FontAttributes="Bold"
                                             FontSize="18" />
                                         <Span 
-                                            Text="{Binding IsScheduleWeekly}"
+                                            Text="{Binding IsScheduleWeekly, Converter={StaticResource ScheduleTypeConverter}}"
                                             FontSize="18" />
                                     </FormattedString>
                                 </Label.FormattedText>
