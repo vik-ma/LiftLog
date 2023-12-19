@@ -51,6 +51,21 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            <Button
+                                Text="Select"
+                                Style="{StaticResource AddButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=ShowWorkoutsForScheduleCommand}" 
+                                CommandParameter="{Binding Id}" />
+                            <Button
+                                Text="Edit"
+                                Style="{StaticResource GenericButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=GoToSchedulePageCommand}" 
+                                CommandParameter="{Binding Id}" />
+                            <Button
+                                Text="Delete"
+                                Style="{StaticResource DeleteButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=DeleteScheduleCommand}" 
+                                CommandParameter="{Binding Id}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
