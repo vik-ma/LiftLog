@@ -142,7 +142,7 @@
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
-            <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyText" />
+            <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyTextConverter" />
             <converters:MultiBindingConverter x:Key="MultiBindingConverter" />
             <converters:DayConverter x:Key="DayConverter" />
             <converters:IntAboveThresholdConverter x:Key="IntAboveThresholdConverter" />
