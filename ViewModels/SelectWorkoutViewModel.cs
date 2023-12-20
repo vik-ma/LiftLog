@@ -223,14 +223,23 @@ namespace LocalLiftLog.ViewModels
 
             foreach (var item in filteredList)
             {
-                await ExecuteAsync(async () =>
-                {
-                    if (!await _context.DeleteItemAsync<WorkoutTemplateCollection>(item))
-                    {
-                        await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
-                    }
-                });
+                await DeleteWorkoutTemplateCollection(item);
             }
+        }
+
+        [RelayCommand]
+        private async Task DeleteWorkoutTemplateCollection(WorkoutTemplateCollection workoutTemplateCollection)
+        {
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<WorkoutTemplateCollection>(workoutTemplateCollection))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
+                    return;
+                }
+
+                WorkoutList.Remove(workoutTemplateCollection);
+            });
         }
 
         [RelayCommand]
