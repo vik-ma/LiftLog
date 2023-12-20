@@ -203,6 +203,34 @@ namespace LocalLiftLog.ViewModels
                     await Shell.Current.DisplayAlert("Delete Error", "Schedule was not deleted.", "OK");
                 }
             });
+
+            await DeleteWorkoutTemplateCollectionsByScheduleFactoryId(id);
+        }
+
+        private async Task DeleteWorkoutTemplateCollectionsByScheduleFactoryId(int scheduleId)
+        {
+            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.ScheduleFactoryId == scheduleId;
+
+            IEnumerable<WorkoutTemplateCollection> filteredList = null;
+            try
+            {
+                filteredList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Workout Template Collections.", "OK");
+            }
+
+            foreach (var item in filteredList)
+            {
+                await ExecuteAsync(async () =>
+                {
+                    if (!await _context.DeleteItemAsync<WorkoutTemplateCollection>(item))
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
+                    }
+                });
+            }
         }
     }
 }
