@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +24,9 @@ namespace LocalLiftLog.ViewModels
 
         [ObservableProperty]
         private ObservableCollection<ScheduleFactory> _scheduleList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplateCollection> _workoutList = new();
 
         [RelayCommand]
         static async Task GoBack()
@@ -66,6 +70,29 @@ namespace LocalLiftLog.ViewModels
                     }
                 }
             });
+        }
+
+        [RelayCommand]
+        private async Task LoadWorkoutsFromScheduleIdAsync(int scheduleId)
+        {
+            WorkoutList.Clear();
+
+            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.ScheduleFactoryId == scheduleId;
+
+            try
+            {
+                var filteredList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+
+                foreach (var item in filteredList)
+                {
+                    WorkoutList.Add(item);
+                }
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
+                return;
+            }
         }
 
         [RelayCommand]

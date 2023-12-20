@@ -54,7 +54,7 @@
                             <Button
                                 Text="Select"
                                 Style="{StaticResource AddButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=ShowWorkoutsForScheduleCommand}" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=LoadWorkoutsFromScheduleIdCommand}" 
                                 CommandParameter="{Binding Id}" />
                             <Button
                                 Text="Edit"
@@ -92,6 +92,46 @@
                 FontSize="30"
                 FontAttributes="Bold"
                 Margin="10" />
+            <CollectionView 
+                ItemsSource="{Binding WorkoutList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:WorkoutTemplateCollection">
+                        <HorizontalStackLayout Spacing="10">
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Name: " 
+                                            FontAttributes="Bold"
+                                            FontSize="18" />
+                                        <Span 
+                                            Text="{Binding WorkoutTemplateName}"
+                                            FontSize="18" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <VerticalStackLayout
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Label 
+                                Text="No Workouts In Schedule!" 
+                                FontSize="20" 
+                                FontAttributes="Bold" 
+                                HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
         </VerticalStackLayout>
 
     </VerticalStackLayout>
