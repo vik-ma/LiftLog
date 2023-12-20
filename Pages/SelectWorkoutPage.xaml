@@ -83,8 +83,13 @@
                     </ContentView>
                 </CollectionView.EmptyView>
             </CollectionView>
-            
-            
+
+            <Button 
+                Text="Create New Schedule"
+                Style="{StaticResource LargeButtonStyle}"
+                BackgroundColor="#4287f5"
+                Command="{Binding GoToScheduleListPageCommand}"
+                Margin="20" />
         </VerticalStackLayout>
 
         <VerticalStackLayout>
@@ -170,6 +175,6 @@
                 Style="{StaticResource LargeButtonStyle}"
                 Command="{Binding GoBackCommand}"
                 Margin="20" />
-            </VerticalStackLayout>
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

@@ -272,5 +272,11 @@ namespace LocalLiftLog.ViewModels
 
             await Shell.Current.GoToAsync($"{nameof(WorkoutDetailsPage)}?Id={id}", navigationParameter);
         }
+
+        [RelayCommand]
+        private async Task GoToScheduleListPage()
+        {
+            await Shell.Current.GoToAsync(nameof(ScheduleListPage));
+        }
     }
 }
