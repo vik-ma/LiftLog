@@ -54,7 +54,7 @@
                             <Button
                                 Text="Select"
                                 Style="{StaticResource AddButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=LoadWorkoutsFromScheduleIdCommand}" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=SetOperatingScheduleCommand}" 
                                 CommandParameter="{Binding Id}" />
                             <Button
                                 Text="Edit"

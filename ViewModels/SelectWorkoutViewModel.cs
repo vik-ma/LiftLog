@@ -17,6 +17,8 @@ namespace LocalLiftLog.ViewModels
     {
         private readonly DatabaseContext _context;
 
+        private ScheduleFactory OperatingSchedule;
+
         public SelectWorkoutViewModel(DatabaseContext context)
         {
             _context = context;
@@ -72,12 +74,14 @@ namespace LocalLiftLog.ViewModels
             });
         }
 
-        [RelayCommand]
-        private async Task LoadWorkoutsFromScheduleIdAsync(int scheduleId)
+        public async Task LoadWorkoutsFromOperatingScheduleAsync()
         {
+            // Exit function if no OperatingSchedule is set
+            if (OperatingSchedule is null) return;
+
             WorkoutList.Clear();
 
-            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.ScheduleFactoryId == scheduleId;
+            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.ScheduleFactoryId == OperatingSchedule.Id;
 
             try
             {
@@ -93,6 +97,18 @@ namespace LocalLiftLog.ViewModels
                 await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
                 return;
             }
+        }
+
+        [RelayCommand]
+        private async Task SetOperatingSchedule(int id)
+        {
+            var schedule = ScheduleList.FirstOrDefault(p => p.Id == id);
+
+            if (schedule is null) return;
+
+            OperatingSchedule = schedule;
+
+            await LoadWorkoutsFromOperatingScheduleAsync();
         }
 
         [RelayCommand]
