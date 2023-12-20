@@ -33,6 +33,11 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="WidthRequest" Value="140" />
             </Style>
+            <Style x:Key="SmallButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HeightRequest" Value="40" />
+            </Style>
             <Style x:Key="MainPageNavigationButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="24" />
                 <Setter Property="FontAttributes" Value="Bold" />
