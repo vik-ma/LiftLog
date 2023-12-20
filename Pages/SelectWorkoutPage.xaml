@@ -83,6 +83,8 @@
                     </ContentView>
                 </CollectionView.EmptyView>
             </CollectionView>
+            
+            
         </VerticalStackLayout>
 
         <VerticalStackLayout>
@@ -161,6 +163,13 @@
                 </CollectionView.EmptyView>
             </CollectionView>
         </VerticalStackLayout>
-
+            
+        <VerticalStackLayout>
+            <Button 
+                Text="Go Back"
+                Style="{StaticResource LargeButtonStyle}"
+                Command="{Binding GoBackCommand}"
+                Margin="20" />
+            </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
