@@ -232,5 +232,36 @@ namespace LocalLiftLog.ViewModels
                 });
             }
         }
+
+        [RelayCommand]
+        private async Task GoToWorkoutDetailsPage(int id)
+        {
+            WorkoutTemplateCollection workoutTemplateCollection = WorkoutList.FirstOrDefault(p => p.Id == id);
+
+            if (workoutTemplateCollection is null)
+            {
+                await Shell.Current.DisplayAlert("Error", "Workout does not exist", "OK");
+                return;
+            }
+
+            WorkoutTemplate workoutTemplate;
+
+            try
+            {
+                workoutTemplate = await _context.GetItemByKeyAsync<WorkoutTemplate>(workoutTemplateCollection.WorkoutTemplateId);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "Workout Template ID does not exist!", "OK");
+                return;
+            }
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["WorkoutTemplate"] = workoutTemplate
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(WorkoutDetailsPage)}?Id={id}", navigationParameter);
+        }
     }
 }
