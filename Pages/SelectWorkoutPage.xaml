@@ -115,6 +115,34 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Day: " 
+                                            FontAttributes="Bold"
+                                            FontSize="18" />
+                                        <Span 
+                                            Text="{Binding Day}"
+                                            FontSize="18" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Button
+                                Text="Start Workout"
+                                Style="{StaticResource AddButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=StartWorkoutCommand}" 
+                                CommandParameter="{Binding Id}" />
+                            <Button
+                                Text="Edit"
+                                Style="{StaticResource GenericButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=GoToWorkoutDetailsPageCommand}" 
+                                CommandParameter="{Binding Id}" />
+                            <Button
+                                Text="Delete"
+                                Style="{StaticResource DeleteButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=DeleteWorkoutCommand}" 
+                                CommandParameter="{Binding Id}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
