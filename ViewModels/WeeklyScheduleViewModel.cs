@@ -204,8 +204,10 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task AddWorkoutTemplateCollectionToDay(int workoutTemplateId)
+        private async Task AddWorkoutTemplateCollectionToDay(WorkoutTemplate workoutTemplate)
         {
+            if (workoutTemplate is null) return;
+
             int scheduleId = WeeklySchedule.ScheduleFactoryId;
 
             await ExecuteAsync(async () =>
@@ -214,7 +216,8 @@ namespace LocalLiftLog.ViewModels
                 {
                     Day = SelectedDay,
                     ScheduleFactoryId = scheduleId,
-                    WorkoutTemplateId = workoutTemplateId
+                    WorkoutTemplateId = workoutTemplate.Id,
+                    WorkoutTemplateName = workoutTemplate.Name
                 };
                 await _context.AddItemAsync<WorkoutTemplateCollection>(workoutCollection);
             });
