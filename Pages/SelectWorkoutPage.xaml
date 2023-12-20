@@ -93,12 +93,17 @@
         </VerticalStackLayout>
 
         <VerticalStackLayout>
-            <Label 
-                Text="Select Workout"
-                HorizontalOptions="Center"
-                FontSize="30"
-                FontAttributes="Bold"
-                Margin="10" />
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Label 
+                    Text="Select Workout"
+                    HorizontalOptions="Center"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    Margin="10" />
+                <Button 
+                    Text="Set Date"
+                    Style="{StaticResource SmallButtonStyle}" />
+            </HorizontalStackLayout>
             <CollectionView 
                 ItemsSource="{Binding WorkoutList}">
                 <CollectionView.ItemsLayout>
@@ -168,7 +173,7 @@
                 </CollectionView.EmptyView>
             </CollectionView>
         </VerticalStackLayout>
-            
+
         <VerticalStackLayout>
             <Button 
                 Text="Go Back"
