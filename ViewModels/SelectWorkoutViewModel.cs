@@ -165,5 +165,44 @@ namespace LocalLiftLog.ViewModels
                 await Shell.Current.GoToAsync($"{nameof(CustomSchedulePage)}?Id={id}", navigationParameter);
             }
         }
+
+        [RelayCommand]
+        private async Task DeleteScheduleAsync(int id)
+        {
+            var schedule = ScheduleList.FirstOrDefault(p => p.Id == id);
+
+            if (schedule is null)
+            {
+                await Shell.Current.DisplayAlert("Error", "Schedule does not exist.", "OK");
+                return;
+            };
+
+            await ExecuteAsync(async () =>
+            {
+                if (schedule.IsScheduleWeekly)
+                {
+                    if (!await _context.DeleteItemByKeyAsync<WeeklySchedule>(schedule.ScheduleId))
+                    {
+                        await Shell.Current.DisplayAlert("Delete Error", "Weekly Schedule was not deleted.", "OK");
+                    }
+                }
+                else
+                {
+                    if (!await _context.DeleteItemByKeyAsync<CustomSchedule>(schedule.ScheduleId))
+                    {
+                        await Shell.Current.DisplayAlert("Delete Error", "Custom Schedule was not deleted.", "OK");
+                    }
+                }
+
+                if (await _context.DeleteItemByKeyAsync<ScheduleFactory>(id))
+                {
+                    ScheduleList.Remove(schedule);
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("Delete Error", "Schedule was not deleted.", "OK");
+                }
+            });
+        }
     }
 }
