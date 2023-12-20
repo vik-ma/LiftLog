@@ -465,7 +465,7 @@
                                         HorizontalOptions="End"
                                         Style="{StaticResource AddButtonStyle}"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=AddWorkoutTemplateCollectionToDayCommand}"
-                                        CommandParameter="{Binding Id}" />
+                                        CommandParameter="{Binding .}" />
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
