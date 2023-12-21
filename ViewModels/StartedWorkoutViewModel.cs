@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LocalLiftLog.Data;
+using LocalLiftLog.Helpers;
 using LocalLiftLog.Models;
 using LocalLiftLog.Pages;
 using System;
@@ -159,7 +160,31 @@ namespace LocalLiftLog.ViewModels
             await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={WorkoutTemplate.Id}", navigationParameter);
         }
 
-    }
+        private async Task UpdateCompletedWorkoutAsync()
+        {
+            if (CompletedWorkout is null) return;
 
-    
+            if (await _context.ItemExistsByKeyAsync<CompletedWorkout>(CompletedWorkout.Id))
+            {
+                // Update CompletedWorkout if it is already created
+                await ExecuteAsync(async () =>
+                {
+                    if (!await _context.UpdateItemAsync<CompletedWorkout>(CompletedWorkout))
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Error occured when updating Workout.", "OK");
+                    }
+                });
+            }
+            // Create new CompletedWorkout if not created
+            else await CreateCompletedWorkoutAsync(); 
+        }
+
+        private async Task CreateCompletedWorkoutAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                await _context.AddItemAsync<CompletedWorkout>(CompletedWorkout);
+            });
+        }
+    }
 }
