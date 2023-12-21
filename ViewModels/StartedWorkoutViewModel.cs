@@ -32,6 +32,9 @@ namespace LocalLiftLog.ViewModels
         }
 
         [ObservableProperty]
+        private DateTime selectedDate;
+
+        [ObservableProperty]
         private ObservableCollection<SetTemplate> setList = new();
 
         [RelayCommand]
