@@ -303,20 +303,18 @@ namespace LocalLiftLog.ViewModels
                 return;
             }
 
-
-
-            CompletedWorkout newCompletedWorkout = new()
-            {
-                WorkoutTemplateId = workoutTemplate.Id
-            };
+            CompletedWorkout completedWorkout = await GetCompletedWorkoutAtDate(workoutTemplateCollection.Id, workoutTemplate.Id, SelectedDate)
+                                                ?? new() { 
+                                                    WorkoutTemplateId = workoutTemplate.Id,
+                                                    WorkoutTemplateCollectionId = workoutTemplateCollection.Id,
+                                                };
 
             var navigationParameter = new Dictionary<string, object>
             {
-                ["CompletedWorkout"] = newCompletedWorkout
+                ["CompletedWorkout"] = completedWorkout
             };
 
             await Shell.Current.GoToAsync($"{nameof(StartedWorkoutPage)}?Id={id}", navigationParameter);
-
         }
 
         private async Task<CompletedWorkout> GetCompletedWorkoutAtDate(int workoutTemplateCollectionId, int workoutTemplateId, DateTime dateTime)
