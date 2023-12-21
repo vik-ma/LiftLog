@@ -87,22 +87,30 @@
             <Button 
                 Text="Create New Schedule"
                 Style="{StaticResource LargeButtonStyle}"
-                BackgroundColor="#4287f5"
+                BackgroundColor="#035afc"
                 Command="{Binding GoToScheduleListPageCommand}"
                 Margin="20" />
         </VerticalStackLayout>
 
         <VerticalStackLayout>
-            <HorizontalStackLayout HorizontalOptions="Center">
+            <HorizontalStackLayout 
+                HorizontalOptions="Center"
+                Spacing="10">
                 <Label 
                     Text="Select Workout"
                     HorizontalOptions="Center"
                     FontSize="30"
                     FontAttributes="Bold"
                     Margin="10" />
-                <Button 
-                    Text="Set Date"
-                    Style="{StaticResource SmallButtonStyle}" />
+                <DatePicker 
+                    MinimumDate="12/01/2023"
+                    MaximumDate="12/31/2023"
+                    Date="{Binding SelectedDate}" />
+                <Label 
+                    Text="{Binding SelectedDate}"
+                    FontSize="16"
+                    TextColor="#035afc"
+                    VerticalOptions="Center" />
             </HorizontalStackLayout>
             <CollectionView 
                 ItemsSource="{Binding WorkoutList}">

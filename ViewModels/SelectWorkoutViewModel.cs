@@ -30,6 +30,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private ObservableCollection<WorkoutTemplateCollection> _workoutList = new();
 
+        [ObservableProperty]
+        private DateTime selectedDate;
+
         [RelayCommand]
         static async Task GoBack()
         {
