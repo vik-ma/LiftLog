@@ -111,11 +111,11 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span 
-                                Text="Schedule Name: " 
+                                Text="Schedule Id: " 
                                 FontAttributes="Bold"
                                 Style="{StaticResource LargeSubSpanStyle}" />
                             <Span 
-                                Text="{Binding WorkoutRoutineSchedule.Name}"
+                                Text="{Binding WorkoutRoutineSchedule.Id}"
                                 Style="{StaticResource LargeSubSpanStyle}" />
                         </FormattedString>
                     </Label.FormattedText>
@@ -158,11 +158,11 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span 
-                                                Text="Name: " 
+                                                Text="Id: " 
                                                 FontAttributes="Bold"  
                                                 Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
-                                                Text="{Binding Name}"
+                                                Text="{Binding Id}"
                                                 Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>

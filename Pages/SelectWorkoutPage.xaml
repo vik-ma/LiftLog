@@ -29,11 +29,11 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
-                                            Text="Name: " 
+                                            Text="Id: " 
                                             FontAttributes="Bold"
                                             FontSize="18" />
                                         <Span 
-                                            Text="{Binding Name}"
+                                            Text="{Binding Id}"
                                             FontSize="18" />
                                     </FormattedString>
                                 </Label.FormattedText>
