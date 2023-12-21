@@ -303,6 +303,8 @@ namespace LocalLiftLog.ViewModels
                 return;
             }
 
+
+
             CompletedWorkout newCompletedWorkout = new()
             {
                 WorkoutTemplateId = workoutTemplate.Id
@@ -315,6 +317,29 @@ namespace LocalLiftLog.ViewModels
 
             await Shell.Current.GoToAsync($"{nameof(StartedWorkoutPage)}?Id={id}", navigationParameter);
 
+        }
+
+        private async Task<CompletedWorkout> GetCompletedWorkoutAtDate(int workoutTemplateCollectionId, int workoutTemplateId, DateTime dateTime)
+        {
+            string ymdDate = DateTimeHelper.FormatDateTimeToYmdString(dateTime);
+
+            Expression<Func<CompletedWorkout, bool>> predicate = entity => entity.WorkoutTemplateId == workoutTemplateId && entity.WorkoutTemplateCollectionId == workoutTemplateCollectionId && entity.Date == ymdDate;
+
+            try
+            {
+                var filteredList = await _context.GetFilteredAsync<CompletedWorkout>(predicate);
+
+                if (filteredList.Count() == 1)
+                {
+                    return filteredList.Single();
+                }
+                else return null;
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "Error occured when trying to fetch Workout.", "OK");
+                return null;
+            }
         }
     }
 }
