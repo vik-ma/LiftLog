@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LocalLiftLog.Data;
+using LocalLiftLog.Helpers;
 using LocalLiftLog.Models;
 using LocalLiftLog.Pages;
 using System;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -280,6 +282,39 @@ namespace LocalLiftLog.ViewModels
         private async Task GoToScheduleListPage()
         {
             await Shell.Current.GoToAsync(nameof(ScheduleListPage));
+        }
+
+        [RelayCommand]
+        private async Task StartWorkout(int id)
+        {
+            WorkoutTemplateCollection workoutTemplateCollection = WorkoutList.FirstOrDefault(p => p.Id == id);
+
+            if (workoutTemplateCollection is null) return;
+
+            WorkoutTemplate workoutTemplate;
+
+            try
+            {
+                workoutTemplate = await _context.GetItemByKeyAsync<WorkoutTemplate>(workoutTemplateCollection.WorkoutTemplateId);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "Workout Template ID does not exist!", "OK");
+                return;
+            }
+
+            CompletedWorkout newCompletedWorkout = new()
+            {
+                WorkoutTemplateId = workoutTemplate.Id
+            };
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["CompletedWorkout"] = newCompletedWorkout
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(StartedWorkoutPage)}?Id={id}", navigationParameter);
+
         }
     }
 }
