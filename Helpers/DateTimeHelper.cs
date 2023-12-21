@@ -19,6 +19,11 @@ namespace LocalLiftLog.Helpers
             return ymdDateString;
         }
 
+        public static string FormatDateTimeToYmdString(DateTime dateTime)
+        {
+            return dateTime.ToString("yyyyMMdd");
+        }
+
         public static bool ValidateStartAndEndDate(string startDateTime, string endDateTime)
         {
             // Parse the DateTime strings into DateTime objects
