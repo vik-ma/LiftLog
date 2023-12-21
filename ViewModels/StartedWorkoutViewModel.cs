@@ -160,6 +160,20 @@ namespace LocalLiftLog.ViewModels
             await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={WorkoutTemplate.Id}", navigationParameter);
         }
 
+        [RelayCommand]
+        private async Task SaveDate()
+        {
+            if (CompletedWorkout is null) return;
+
+            string ymdDate = DateTimeHelper.FormatDateTimeToYmdString(SelectedDate);
+
+            CompletedWorkout.Date = ymdDate;
+
+            await UpdateCompletedWorkoutAsync();
+
+            OnPropertyChanged(nameof(CompletedWorkout));
+        }
+
         private async Task UpdateCompletedWorkoutAsync()
         {
             if (CompletedWorkout is null) return;

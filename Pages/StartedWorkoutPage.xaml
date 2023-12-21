@@ -21,15 +21,21 @@
                     Text="Modify Workout"
                     Style="{StaticResource GenericButtonStyle}"
                     Command="{Binding GoToWorkoutTemplateDetailsCommand}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="15">
                 <DatePicker 
                     MinimumDate="12/01/2023"
                     MaximumDate="12/31/2023"
                     Date="{Binding SelectedDate}" />
                 <Label 
-                    Text="{Binding SelectedDate}"
+                    Text="{Binding CompletedWorkout.Date}"
                     FontSize="16"
                     TextColor="#035afc"
                     VerticalOptions="Center" />
+                <Button
+                    Text="Set Date"
+                    Style="{StaticResource GenericButtonStyle}"
+                    Command="{Binding SaveDateCommand}" />
             </HorizontalStackLayout>
         </VerticalStackLayout>
 
