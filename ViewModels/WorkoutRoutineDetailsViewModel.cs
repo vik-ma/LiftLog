@@ -153,7 +153,23 @@ namespace LocalLiftLog.ViewModels
 
             if (scheduleType == "Custom")
             {
-                CustomSchedule customSchedule = new() { WorkoutRoutineId = WorkoutRoutine.Id };
+                string enteredNumber = await Shell.Current.DisplayPromptAsync("Number Of Days In Schedule", "How many days should the schedule contain?\n(Must be between 2 and 14)\n", "OK", "Cancel");
+
+                if (enteredNumber == null) return;
+
+                bool validInput = int.TryParse(enteredNumber, out int numberOfDays);
+
+                if (!validInput || numberOfDays < 2 || numberOfDays > 14)
+                {
+                    await Shell.Current.DisplayAlert("Error", "Invalid input.", "OK");
+                    return;
+                }
+
+                CustomSchedule customSchedule = new() 
+                { 
+                    WorkoutRoutineId = WorkoutRoutine.Id,
+                    NumDaysInSchedule = numberOfDays
+                };
 
                 await ExecuteAsync(async () =>
                 {
