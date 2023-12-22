@@ -134,12 +134,40 @@ namespace LocalLiftLog.ViewModels
             {
                 WeeklySchedule weeklySchedule = new();
 
+                await ExecuteAsync(async () =>
+                {
+                    if (!await _context.AddItemAsync<WeeklySchedule>(weeklySchedule))
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Error occured when creating Weekly Schedule.", "OK");
+                    }
+                    else
+                    {
+                        WorkoutRoutine.ScheduleId = weeklySchedule.Id;
+                        WorkoutRoutine.IsScheduleWeekly = true;
+                        await UpdateWorkoutRoutine();
+                    }
+                });
+                
                 await GoToWeeklySchedulePage(weeklySchedule);
             }
 
             if (scheduleType == "Custom")
             {
                 CustomSchedule customSchedule = new();
+
+                await ExecuteAsync(async () =>
+                {
+                    if (!await _context.AddItemAsync<CustomSchedule>(customSchedule))
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Error occured when creating Custom Schedule.", "OK");
+                    }
+                    else
+                    {
+                        WorkoutRoutine.ScheduleId = customSchedule.Id;
+                        WorkoutRoutine.IsScheduleWeekly = false;
+                        await UpdateWorkoutRoutine();
+                    }
+                });
 
                 await GoToCustomSchedulePage(customSchedule);
             }

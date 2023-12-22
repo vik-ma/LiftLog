@@ -101,6 +101,19 @@
             <VerticalStackLayout
                 Grid.Column="1"
                 Spacing="4">
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span 
+                                Text="Schedule Id: " 
+                                FontAttributes="Bold"
+                                Style="{StaticResource LargeSubSpanStyle}" />
+                            <Span 
+                                Text="{Binding WorkoutRoutine.ScheduleId}"
+                                Style="{StaticResource LargeSubSpanStyle}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
                 <!--<Label 
                     IsVisible="{Binding IsScheduleSet, Converter={StaticResource InvertedBoolConverter}}"
                     Text="No Schedule Set"
@@ -137,7 +150,7 @@
                 <Button 
                     Text="Edit Schedule"
                     WidthRequest="300"
-                    Style="{StaticResource EditingLargeButtonStyle}"
+                    Style="{StaticResource LargeButtonStyle}"
                     Command="{Binding VisitScheduleCommand}" />
 
             </VerticalStackLayout>
