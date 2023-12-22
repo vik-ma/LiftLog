@@ -19,16 +19,6 @@
                 VerticalOptions="Center"
                 FontAttributes="Bold"
                 FontSize="36" />
-            <Label 
-                Text="Schedule Factory ID:"
-                VerticalOptions="Center"
-                FontAttributes="Bold"
-                FontSize="36" />
-            <Label 
-                Text="{Binding WeeklySchedule.ScheduleFactoryId}"
-                VerticalOptions="Center"
-                FontAttributes="Bold"
-                FontSize="36" />
         </HorizontalStackLayout>
         <Grid 
             ColumnDefinitions="*, *"
