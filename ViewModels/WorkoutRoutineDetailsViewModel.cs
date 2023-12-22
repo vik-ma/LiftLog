@@ -95,12 +95,7 @@ namespace LocalLiftLog.ViewModels
                     {
                         weeklySchedule = await _context.GetItemByKeyAsync<WeeklySchedule>(WorkoutRoutine.ScheduleId);
 
-                        var navigationParameter = new Dictionary<string, object>
-                        {
-                            ["WeeklySchedule"] = weeklySchedule
-                        };
-
-                        await Shell.Current.GoToAsync($"{nameof(WeeklySchedulePage)}?Id={weeklySchedule.Id}", navigationParameter);
+                        await GoToWeeklySchedulePage(weeklySchedule);
                     }
                     catch
                     {
@@ -116,12 +111,7 @@ namespace LocalLiftLog.ViewModels
                     {
                         customSchedule = await _context.GetItemByKeyAsync<CustomSchedule>(WorkoutRoutine.ScheduleId);
 
-                        var navigationParameter = new Dictionary<string, object>
-                        {
-                            ["CustomSchedule"] = customSchedule
-                        };
-
-                        await Shell.Current.GoToAsync($"{nameof(CustomSchedulePage)}?Id={customSchedule.Id}", navigationParameter);
+                        await GoToCustomSchedulePage(customSchedule);
                     }
                     catch
                     {
@@ -144,26 +134,40 @@ namespace LocalLiftLog.ViewModels
             {
                 WeeklySchedule weeklySchedule = new();
 
-                var navigationParameter = new Dictionary<string, object>
-                {
-                    ["WeeklySchedule"] = weeklySchedule
-                };
-
-                await Shell.Current.GoToAsync($"{nameof(WeeklySchedulePage)}?Id={weeklySchedule.Id}", navigationParameter);
+                await GoToWeeklySchedulePage(weeklySchedule);
             }
 
             if (scheduleType == "Custom")
             {
                 CustomSchedule customSchedule = new();
 
-                var navigationParameter = new Dictionary<string, object>
-                {
-                    ["CustomSchedule"] = customSchedule
-                };
-
-                await Shell.Current.GoToAsync($"{nameof(CustomSchedulePage)}?Id={customSchedule.Id}", navigationParameter);
-
+                await GoToCustomSchedulePage(customSchedule);
             }
+        }
+
+        private async Task GoToWeeklySchedulePage(WeeklySchedule weeklySchedule)
+        {
+            if (weeklySchedule is null) return;
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["WeeklySchedule"] = weeklySchedule
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(WeeklySchedulePage)}?Id={weeklySchedule.Id}", navigationParameter);
+
+        }
+
+        private async Task GoToCustomSchedulePage(CustomSchedule customSchedule)
+        {
+            if (customSchedule is null) return;
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["CustomSchedule"] = customSchedule
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(CustomSchedulePage)}?Id={customSchedule.Id}", navigationParameter);
         }
 
         public async Task LoadWorkoutRoutineSchedule()
