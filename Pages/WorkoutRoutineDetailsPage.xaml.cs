@@ -14,7 +14,6 @@ public partial class WorkoutRoutineDetailsPage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-        await _viewModel.LoadSchedulesAsync();
         await _viewModel.LoadWorkoutRoutineSchedule();
     }
 }

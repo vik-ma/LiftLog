@@ -27,39 +27,7 @@ namespace LocalLiftLog.ViewModels
         }
 
         [ObservableProperty]
-        private bool isShowingScheduleList = false;
-
-        [ObservableProperty]
         private WorkoutRoutine workoutRoutine;
-
-        [ObservableProperty]
-        private ObservableCollection<ScheduleFactory> _scheduleFactoryList = new();
-
-        [ObservableProperty]
-        private ScheduleFactory workoutRoutineSchedule;
-
-        [ObservableProperty]
-        private bool isScheduleSet = false;
-
-        public async Task LoadSchedulesAsync()
-        {
-            await ExecuteAsync(async () =>
-            {
-                ScheduleFactoryList.Clear();
-
-                var schedules = await _context.GetAllAsync<ScheduleFactory>();
-
-                if (schedules is not null && schedules.Any())
-                {
-                    schedules ??= new ObservableCollection<ScheduleFactory>();
-
-                    foreach (var schedule in schedules)
-                    {
-                        ScheduleFactoryList.Add(schedule);
-                    }
-                }
-            });
-        }
 
         #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
@@ -109,25 +77,23 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task VisitSchedule()
         {
-            var ScheduleFactoryId = WorkoutRoutine.ScheduleFactoryId;
+            if (WorkoutRoutine is null) return;
 
-            if (ScheduleFactoryId == 0)
+            if (WorkoutRoutine.ScheduleId == 0)
             {
-                await Shell.Current.DisplayAlert("Error", "No Schedule Is Set!", "OK");
+                await CreateNewSchedule();
                 return;
             }
 
             try
             {
-                var schedule = await _context.GetItemByKeyAsync<ScheduleFactory>(ScheduleFactoryId);
-
-                if (schedule.IsScheduleWeekly)
+                if (WorkoutRoutine.IsScheduleWeekly)
                 {
                     WeeklySchedule weeklySchedule;
 
                     try
                     {
-                        weeklySchedule = await _context.GetItemByKeyAsync<WeeklySchedule>(schedule.ScheduleId);
+                        weeklySchedule = await _context.GetItemByKeyAsync<WeeklySchedule>(WorkoutRoutine.ScheduleId);
 
                         var navigationParameter = new Dictionary<string, object>
                         {
@@ -148,7 +114,7 @@ namespace LocalLiftLog.ViewModels
 
                     try
                     {
-                        customSchedule = await _context.GetItemByKeyAsync<CustomSchedule>(schedule.ScheduleId);
+                        customSchedule = await _context.GetItemByKeyAsync<CustomSchedule>(WorkoutRoutine.ScheduleId);
 
                         var navigationParameter = new Dictionary<string, object>
                         {
@@ -166,60 +132,64 @@ namespace LocalLiftLog.ViewModels
             }
             catch
             {
-                await Shell.Current.DisplayAlert("Error", "Schedule does not exist!", "OK");
+                await Shell.Current.DisplayAlert("Error", "Error Loading Schedule!", "OK");
             }
         }
 
-        [RelayCommand]
-        private void ShowScheduleList()
+        private async Task CreateNewSchedule()
         {
-            IsShowingScheduleList = true;
+            string scheduleType = await Shell.Current.DisplayActionSheet("What type of Schedule?", "Cancel", null, "Weekly", "Custom (2-14 days)");
+        
+            if (scheduleType == "Weekly")
+            {
+                WeeklySchedule weeklySchedule = new();
+
+                var navigationParameter = new Dictionary<string, object>
+                {
+                    ["WeeklySchedule"] = weeklySchedule
+                };
+
+                await Shell.Current.GoToAsync($"{nameof(WeeklySchedulePage)}?Id={weeklySchedule.Id}", navigationParameter);
+            }
+
+            if (scheduleType == "Custom")
+            {
+                CustomSchedule customSchedule = new();
+
+                var navigationParameter = new Dictionary<string, object>
+                {
+                    ["CustomSchedule"] = customSchedule
+                };
+
+                await Shell.Current.GoToAsync($"{nameof(CustomSchedulePage)}?Id={customSchedule.Id}", navigationParameter);
+
+            }
         }
 
         public async Task LoadWorkoutRoutineSchedule()
         {
-            // Exit function if no ScheduleFactory is set
-            if (WorkoutRoutine.ScheduleFactoryId == 0) return;
+            //// Exit function if no Schedule is set
+            //if (WorkoutRoutine.ScheduleId == 0) return;
 
-            ScheduleFactory scheduleFactory = null;
+            //ScheduleFactory scheduleFactory = null;
 
-            await ExecuteAsync(async () =>
-            {
-                scheduleFactory = await _context.GetItemByKeyAsync<ScheduleFactory>(WorkoutRoutine.ScheduleFactoryId);
-            });
+            //await ExecuteAsync(async () =>
+            //{
+            //    scheduleFactory = await _context.GetItemByKeyAsync<ScheduleFactory>(WorkoutRoutine.ScheduleFactoryId);
+            //});
 
-            if (scheduleFactory is null)
-            {
-                // Delete ScheduleFactoryId for WorkoutRoutine if ScheduleFactory key does not exist
-                WorkoutRoutine.ScheduleFactoryId = 0;
-                await UpdateWorkoutRoutine();
-            }
-            else
-            {
-                // Set the loaded ScheduleFactory as WorkoutRoutineSchedule
-                WorkoutRoutineSchedule = scheduleFactory;
-                IsScheduleSet = true;
-            }
-        }
+            //if (scheduleFactory is null)
+            //{
+            //    // Delete ScheduleFactoryId for WorkoutRoutine if ScheduleFactory key does not exist
+            //    WorkoutRoutine.ScheduleFactoryId = 0;
+            //    await UpdateWorkoutRoutine();
+            //}
+            //else
+            //{
+            //    // Set the loaded ScheduleFactory as WorkoutRoutineSchedule
 
-        [RelayCommand]
-        private async Task SetSchedule(ScheduleFactory schedule)
-        {
-            if (schedule == null) return;
-
-            WorkoutRoutine.ScheduleFactoryId = schedule.Id;
-
-            await UpdateWorkoutRoutine();
-            await LoadWorkoutRoutineSchedule();
-
-            IsShowingScheduleList = false;
-            IsScheduleSet = true;
-        }
-
-        [RelayCommand]
-        private async Task GoToScheduleList()
-        {
-            await Shell.Current.GoToAsync($"{nameof(ScheduleListPage)}");
+            //    IsScheduleSet = true;
+            //}
         }
     }
 }

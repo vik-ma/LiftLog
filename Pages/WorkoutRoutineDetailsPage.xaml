@@ -101,7 +101,7 @@
             <VerticalStackLayout
                 Grid.Column="1"
                 Spacing="4">
-                <Label 
+                <!--<Label 
                     IsVisible="{Binding IsScheduleSet, Converter={StaticResource InvertedBoolConverter}}"
                     Text="No Schedule Set"
                     FontAttributes="Bold"
@@ -115,7 +115,7 @@
                                 FontAttributes="Bold"
                                 Style="{StaticResource LargeSubSpanStyle}" />
                             <Span 
-                                Text="{Binding WorkoutRoutineSchedule.Id}"
+                                Text="{Binding WorkoutRoutine.ScheduleId}"
                                 Style="{StaticResource LargeSubSpanStyle}" />
                         </FormattedString>
                     </Label.FormattedText>
@@ -128,81 +128,18 @@
                                 FontAttributes="Bold"
                                 Style="{StaticResource LargeSubSpanStyle}" />
                             <Span 
-                                Text="{Binding WorkoutRoutineSchedule.IsScheduleWeekly}"
+                                Text="{Binding WorkoutRoutine.IsScheduleWeekly}"
                                 Style="{StaticResource LargeSubSpanStyle}" />
                         </FormattedString>
                     </Label.FormattedText>
-                </Label>
-                
+                </Label>-->
+
                 <Button 
-                    Text="Set Schedule"
-                    IsVisible="{Binding IsShowingScheduleList, Converter={StaticResource InvertedBoolConverter}}"
+                    Text="Edit Schedule"
                     WidthRequest="300"
                     Style="{StaticResource EditingLargeButtonStyle}"
-                    Command="{Binding ShowScheduleListCommand}" />
-                
-                <CollectionView
-                    IsVisible="{Binding IsShowingScheduleList}"
-                    ItemsSource="{Binding ScheduleFactoryList}"
-                    HorizontalOptions="Center">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout 
-                            ItemSpacing="3"
-                            Orientation="Horizontal" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:ScheduleFactory">
-                            <HorizontalStackLayout
-                                Spacing="5">
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Id: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Id}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Button
-                                    Text="Set"
-                                    Style="{StaticResource AddButtonStyle}"
-                                    WidthRequest="50"
-                                    Padding="2"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineDetailsViewModel}}, Path=SetScheduleCommand}" 
-                                    CommandParameter="{Binding .}" />
-                            </HorizontalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                    <CollectionView.EmptyView>
-                        <ContentView>
-                            <VerticalStackLayout
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center">
-                                <Label 
-                                    Text="No Schedules In List!" 
-                                    FontSize="18" 
-                                    FontAttributes="Bold" 
-                                    HorizontalTextAlignment="Center" />
-                            </VerticalStackLayout>
-                        </ContentView>
-                    </CollectionView.EmptyView>
-                </CollectionView>
-                
-                <Button 
-                    Text="Go To Schedule"
-                    IsVisible="{Binding IsScheduleSet}"
-                    Style="{StaticResource LargeButtonStyle}"
                     Command="{Binding VisitScheduleCommand}" />
-                <Button 
-                    Text="Create New Schedule"
-                    Style="{StaticResource LargeButtonStyle}"
-                    BackgroundColor="#4287f5"
-                    Command="{Binding GoToScheduleListCommand}" />
-                
+
             </VerticalStackLayout>
 
         </Grid>
