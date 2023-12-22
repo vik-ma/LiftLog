@@ -15,6 +15,7 @@ public partial class SelectWorkoutPage : ContentPage
     {
         base.OnAppearing();
         await _viewModel.LoadSchedulesAsync();
+        await _viewModel.LoadRoutinesAsync();
         await _viewModel.LoadWorkoutsFromOperatingScheduleAsync();
     }
 }

@@ -30,6 +30,9 @@ namespace LocalLiftLog.ViewModels
         private ObservableCollection<ScheduleFactory> _scheduleList = new();
 
         [ObservableProperty]
+        private ObservableCollection<WorkoutRoutine> _workoutRoutineList = new();
+
+        [ObservableProperty]
         private ObservableCollection<WorkoutTemplateCollection> _workoutList = new();
 
         [ObservableProperty]
@@ -57,6 +60,26 @@ namespace LocalLiftLog.ViewModels
             {
 
             }
+        }
+
+        public async Task LoadRoutinesAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                WorkoutRoutineList.Clear();
+
+                var routines = await _context.GetAllAsync<WorkoutRoutine>();
+
+                if (routines is not null && routines.Any())
+                {
+                    routines ??= new ObservableCollection<WorkoutRoutine>();
+
+                    foreach (var routine in routines)
+                    {
+                        WorkoutRoutineList.Add(routine);
+                    }
+                }
+            });
         }
 
         public async Task LoadSchedulesAsync()
