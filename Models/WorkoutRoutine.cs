@@ -16,7 +16,9 @@ namespace LocalLiftLog.Models
         public string LastUpdateDateTime { get; set; }  
         public string Note { get; set; }
         public int ScheduleFactoryId { get; set; }
-        
+        public bool IsScheduleWeekly { get; set; }
+        public int ScheduleId { get; set; }
+
         public WorkoutRoutine Clone() => MemberwiseClone() as WorkoutRoutine;
 
         #nullable enable
