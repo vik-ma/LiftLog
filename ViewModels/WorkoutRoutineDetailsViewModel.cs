@@ -128,7 +128,7 @@ namespace LocalLiftLog.ViewModels
 
         private async Task CreateNewSchedule()
         {
-            string scheduleType = await Shell.Current.DisplayActionSheet("What type of Schedule?", "Cancel", null, "Weekly", "Custom (2-14 days)");
+            string scheduleType = await Shell.Current.DisplayActionSheet("What type of Schedule?", "Cancel", null, "Weekly", "Custom");
         
             if (scheduleType == "Weekly")
             {

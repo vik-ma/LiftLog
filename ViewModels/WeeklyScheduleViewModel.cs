@@ -102,7 +102,7 @@ namespace LocalLiftLog.ViewModels
 
         public async Task LoadWorkoutTemplateCollectionsAsync()
         {
-            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.ScheduleFactoryId == WeeklySchedule.ScheduleFactoryId;
+            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutRoutineId == WeeklySchedule.WorkoutRoutineId;
             
             IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
             try 
@@ -210,14 +210,14 @@ namespace LocalLiftLog.ViewModels
 
             if (workoutTemplate is null) return;
 
-            int scheduleId = WeeklySchedule.ScheduleFactoryId;
+            int scheduleId = WeeklySchedule.WorkoutRoutineId;
 
             await ExecuteAsync(async () =>
             {
                 WorkoutTemplateCollection workoutCollection = new()
                 {
                     Day = SelectedDay,
-                    ScheduleFactoryId = scheduleId,
+                    WorkoutRoutineId = scheduleId,
                     WorkoutTemplateId = workoutTemplate.Id,
                     WorkoutTemplateName = workoutTemplate.Name
                 };
