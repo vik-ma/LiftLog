@@ -22,23 +22,39 @@ namespace LocalLiftLog.ViewModels
         }
 
         [ObservableProperty]
-        private ObservableCollection<ScheduleFactory> _scheduleFactoryList = new();
+        private ObservableCollection<WeeklySchedule> _weeklyScheduleList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<CustomSchedule> _customScheduleList = new();
 
         public async Task LoadSchedulesAsync()
         {
             await ExecuteAsync(async () =>
             {
-                ScheduleFactoryList.Clear();
+                WeeklyScheduleList.Clear();
+                CustomScheduleList.Clear();
 
-                var schedules = await _context.GetAllAsync<ScheduleFactory>();
+                var weeklySchedules = await _context.GetAllAsync<WeeklySchedule>();
 
-                if (schedules is not null && schedules.Any())
+                if (weeklySchedules is not null && weeklySchedules.Any())
                 {
-                    schedules ??= new ObservableCollection<ScheduleFactory>();
+                    weeklySchedules ??= new ObservableCollection<WeeklySchedule>();
 
-                    foreach (var schedule in schedules)
+                    foreach (var weeklySchedule in weeklySchedules)
                     {
-                        ScheduleFactoryList.Add(schedule);
+                        WeeklyScheduleList.Add(weeklySchedule);
+                    }
+                }
+
+                var customSchedules = await _context.GetAllAsync<CustomSchedule>();
+
+                if (customSchedules is not null && customSchedules.Any())
+                {
+                    customSchedules ??= new ObservableCollection<CustomSchedule>();
+
+                    foreach (var customSchedule in customSchedules)
+                    {
+                        CustomScheduleList.Add(customSchedule);
                     }
                 }
             });
@@ -52,18 +68,7 @@ namespace LocalLiftLog.ViewModels
                 WeeklySchedule weeklySchedule = new();
                 await _context.AddItemAsync<WeeklySchedule>(weeklySchedule);
 
-                ScheduleFactory schedule = new()
-                {
-                    ScheduleId = weeklySchedule.Id,
-                    IsScheduleWeekly = true
-                };
-
-                await _context.AddItemAsync<ScheduleFactory>(schedule);
-
-                weeklySchedule.ScheduleFactoryId = schedule.Id;
-                await _context.UpdateItemAsync<WeeklySchedule>(weeklySchedule);
-
-                ScheduleFactoryList.Add(schedule);
+                WeeklyScheduleList.Add(weeklySchedule);
             });
         }
 
@@ -84,22 +89,10 @@ namespace LocalLiftLog.ViewModels
 
             await ExecuteAsync(async () =>
             {
-                CustomSchedule customSchedule = new();
+                CustomSchedule customSchedule = new() { NumDaysInSchedule = numberOfDays };
                 await _context.AddItemAsync<CustomSchedule>(customSchedule);
 
-                ScheduleFactory schedule = new()
-                {
-                    ScheduleId = customSchedule.Id,
-                    IsScheduleWeekly = false
-                };
-
-                await _context.AddItemAsync<ScheduleFactory>(schedule);
-
-                customSchedule.ScheduleFactoryId = schedule.Id;
-                customSchedule.NumDaysInSchedule = numberOfDays;
-                await _context.UpdateItemAsync<CustomSchedule>(customSchedule);
-
-                ScheduleFactoryList.Add(schedule);
+                CustomScheduleList.Add(customSchedule);
             });
         }
 
@@ -122,43 +115,39 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task DeleteScheduleAsync(int id)
+        private async Task DeleteWeeklyScheduleAsync(int id)
         {
-            var schedule = ScheduleFactoryList.FirstOrDefault(p => p.Id == id);
+            var schedule = WeeklyScheduleList.FirstOrDefault(p => p.Id == id);
 
-            if (schedule is null)
-            {
-                await Shell.Current.DisplayAlert("Error", "Schedule does not exist.", "OK");
-                return;
-            };
+            if (schedule is null) return;
 
             await ExecuteAsync(async () =>
             {
-                if (schedule.IsScheduleWeekly)
+                if (!await _context.DeleteItemByKeyAsync<WeeklySchedule>(id))
                 {
-                    if (!await _context.DeleteItemByKeyAsync<WeeklySchedule>(schedule.ScheduleId))
-                    {
-                        await Shell.Current.DisplayAlert("Delete Error", "Weekly Schedule was not deleted.", "OK");
-                    }
-                }
-                else
-                {
-                    if (!await _context.DeleteItemByKeyAsync<CustomSchedule>(schedule.ScheduleId))
-                    {
-                        await Shell.Current.DisplayAlert("Delete Error", "Custom Schedule was not deleted.", "OK");
-                    }
-                }
-
-
-                if (await _context.DeleteItemByKeyAsync<ScheduleFactory>(id))
-                {
-                    ScheduleFactoryList.Remove(schedule);
-                }
-                else
-                {
-                    await Shell.Current.DisplayAlert("Delete Error", "Schedule was not deleted.", "OK");
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Weekly Schedule.", "OK");
                 }
             });
+
+            await LoadSchedulesAsync();
+        }
+
+        [RelayCommand]
+        private async Task DeleteCustomScheduleAsync(int id)
+        {
+            var schedule = CustomScheduleList.FirstOrDefault(p => p.Id == id);
+
+            if (schedule is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemByKeyAsync<CustomSchedule>(id))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Custom Schedule.", "OK");
+                }
+            });
+
+            await LoadSchedulesAsync();
         }
 
         [RelayCommand]
@@ -168,58 +157,57 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task ViewSchedule(int id)
+        private async Task ViewWeeklySchedule(int id)
         {
-            var schedule = ScheduleFactoryList.FirstOrDefault(p => p.Id == id);
+            var schedule = WeeklyScheduleList.FirstOrDefault(p => p.Id == id);
 
-            if (schedule is null)
+            if (schedule is null) return;
+
+            WeeklySchedule weeklySchedule;
+
+            try
             {
-                await Shell.Current.DisplayAlert("Error", "Schedule does not exist", "OK");
+                weeklySchedule = await _context.GetItemByKeyAsync<WeeklySchedule>(id);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "Weekly Schedule ID does not exist!", "OK");
                 return;
             }
 
-            if (schedule.IsScheduleWeekly)
+            var navigationParameter = new Dictionary<string, object>
             {
-                WeeklySchedule weeklySchedule;
+                ["WeeklySchedule"] = weeklySchedule
+            };
 
-                try
-                {
-                    weeklySchedule = await _context.GetItemByKeyAsync<WeeklySchedule>(schedule.ScheduleId);
-                }
-                catch
-                {
-                    await Shell.Current.DisplayAlert("Error", "Weekly Schedule ID does not exist!", "OK");
-                    return;
-                }
+            await Shell.Current.GoToAsync($"{nameof(WeeklySchedulePage)}?Id={id}", navigationParameter);
+        }
 
-                var navigationParameter = new Dictionary<string, object>
-                {
-                    ["WeeklySchedule"] = weeklySchedule
-                };
+        [RelayCommand]
+        private async Task ViewCustomSchedule(int id)
+        {
+            var schedule = CustomScheduleList.FirstOrDefault(p => p.Id == id);
 
-                await Shell.Current.GoToAsync($"{nameof(WeeklySchedulePage)}?Id={id}", navigationParameter);
-            }
-            else
+            if (schedule is null) return;
+
+            CustomSchedule customSchedule;
+
+            try
             {
-                CustomSchedule customSchedule;
-
-                try
-                {
-                    customSchedule = await _context.GetItemByKeyAsync<CustomSchedule>(schedule.ScheduleId);
-                }
-                catch
-                {
-                    await Shell.Current.DisplayAlert("Error", "Custom Schedule ID does not exist!", "OK");
-                    return;
-                }
-
-                var navigationParameter = new Dictionary<string, object>
-                {
-                    ["CustomSchedule"] = customSchedule
-                };
-
-                await Shell.Current.GoToAsync($"{nameof(CustomSchedulePage)}?Id={id}", navigationParameter);
+                customSchedule = await _context.GetItemByKeyAsync<CustomSchedule>(id);
             }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "Custom Schedule ID does not exist!", "OK");
+                return;
+            }
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["CustomSchedule"] = customSchedule
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(CustomSchedulePage)}?Id={id}", navigationParameter);
         }
     }
 }

@@ -7,117 +7,196 @@
              x:DataType="viewmodel:ScheduleListViewModel"
              Title="Schedule List">
 
-    <VerticalStackLayout
-        Margin="10">
-        <CollectionView 
-            ItemsSource="{Binding ScheduleFactoryList}">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout 
-                    ItemSpacing="3"
-                    Orientation="Vertical" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:ScheduleFactory">
-                    <Grid 
-                        RowDefinitions="Auto, Auto"
-                        ColumnDefinitions="*, Auto"
-                        Padding="10"
-                        BackgroundColor="#ECECEC">
-                        <VerticalStackLayout 
-                            Grid.Row="0" 
-                            Grid.Column="0"
-                            Spacing="3">
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Id: " 
-                                            FontAttributes="Bold"
-                                            FontSize="26" />
-                                        <Span 
-                                            Text="{Binding Id}"
-                                            FontSize="26" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Schedule Id: " 
-                                            FontAttributes="Bold"
-                                            FontSize="26" />
-                                        <Span 
-                                            Text="{Binding ScheduleId}"
-                                            FontSize="26" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Weekly Schedule: " 
-                                            FontAttributes="Bold"
-                                            FontSize="26" />
-                                        <Span 
-                                            Text="{Binding IsScheduleWeekly}"
-                                            FontSize="26" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                        </VerticalStackLayout>
-                        <HorizontalStackLayout
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Spacing="10"
+    <VerticalStackLayout>
+        <VerticalStackLayout Spacing="5">
+            <Label 
+                Text="Weekly Schedules"
+                VerticalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="36" />
+            <CollectionView 
+                ItemsSource="{Binding WeeklyScheduleList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:WeeklySchedule">
+                        <Grid 
+                            RowDefinitions="Auto, Auto"
+                            ColumnDefinitions="*, Auto"
+                            Padding="10"
+                            BackgroundColor="#ECECEC">
+                            <VerticalStackLayout 
+                                Grid.Row="0" 
+                                Grid.Column="0"
+                                Spacing="3">
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Id: " 
+                                                FontAttributes="Bold"
+                                                FontSize="26" />
+                                            <Span 
+                                                Text="{Binding Id}"
+                                                FontSize="26" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Workout Routine Id: " 
+                                                FontAttributes="Bold"
+                                                FontSize="26" />
+                                            <Span 
+                                                Text="{Binding WorkoutRoutineId}"
+                                                FontSize="26" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Spacing="10"
+                                VerticalOptions="Center">
+                                <Button 
+                                    Text="View Details"
+                                    Style="{StaticResource GenericButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleListViewModel}}, Path=ViewWeeklyScheduleCommand}" 
+                                    CommandParameter="{Binding Id}"/>
+                                <Button 
+                                    Text="Delete"
+                                    Style="{StaticResource DeleteButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleListViewModel}}, Path=DeleteWeeklyScheduleCommand}" 
+                                    CommandParameter="{Binding Id}"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <VerticalStackLayout
+                            HorizontalOptions="Center"
                             VerticalOptions="Center">
-                            <Button 
-                                Text="Change Name"
-                                Padding="20, 10"
-                                FontSize="18"
-                                FontAttributes="Bold"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleListViewModel}}, Path=ChangeScheduleNameCommand}" 
-                                CommandParameter="{Binding Id}"/>
-                            <Button 
-                                Text="View Details"
-                                Padding="20, 10"
-                                FontSize="18"
-                                FontAttributes="Bold"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleListViewModel}}, Path=ViewScheduleCommand}" 
-                                CommandParameter="{Binding Id}"/>
-                            <Button 
-                                Text="Delete"
-                                Padding="20, 10"
-                                FontSize="18"
+                            <Label 
+                                Text="No Weekly Schedules In List!" 
+                                FontSize="20" 
                                 FontAttributes="Bold" 
-                                BackgroundColor="#ef4444"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleListViewModel}}, Path=DeleteScheduleCommand}" 
-                                CommandParameter="{Binding Id}"/>
-                        </HorizontalStackLayout>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-            <CollectionView.EmptyView>
-                <ContentView>
-                    <VerticalStackLayout
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center">
-                        <Label 
-                            Text="No Schedules In List!" 
-                            FontSize="20" 
-                            FontAttributes="Bold" 
-                            HorizontalTextAlignment="Center" />
-                    </VerticalStackLayout>
-                </ContentView>
-            </CollectionView.EmptyView>
-        </CollectionView>
+                                HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
 
-        <VerticalStackLayout>
             <Button 
                 Text="Create Weekly Schedule"
                 Style="{StaticResource MainPageNavigationButtonStyle}"
                 Command="{Binding CreateWeeklyScheduleCommand}" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Spacing="5">
+            <Label 
+                Text="Custom Schedules"
+                VerticalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="36" />
+            <CollectionView 
+                ItemsSource="{Binding CustomScheduleList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:CustomSchedule">
+                        <Grid 
+                            RowDefinitions="Auto, Auto"
+                            ColumnDefinitions="*, Auto"
+                            Padding="10"
+                            BackgroundColor="#ECECEC">
+                            <VerticalStackLayout 
+                                Grid.Row="0" 
+                                Grid.Column="0"
+                                Spacing="3">
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Id: " 
+                                                FontAttributes="Bold"
+                                                FontSize="26" />
+                                            <Span 
+                                                Text="{Binding Id}"
+                                                FontSize="26" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Workout Routine Id: " 
+                                                FontAttributes="Bold"
+                                                FontSize="26" />
+                                            <Span 
+                                                Text="{Binding WorkoutRoutineId}"
+                                                FontSize="26" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Number of Days: " 
+                                                FontAttributes="Bold"
+                                                FontSize="26" />
+                                            <Span 
+                                                Text="{Binding NumDaysInSchedule}"
+                                                FontSize="26" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Spacing="10"
+                                VerticalOptions="Center">
+                                <Button 
+                                    Text="View Details"
+                                    Style="{StaticResource GenericButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleListViewModel}}, Path=ViewCustomScheduleCommand}" 
+                                    CommandParameter="{Binding Id}"/>
+                                <Button 
+                                    Text="Delete"
+                                    Style="{StaticResource DeleteButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleListViewModel}}, Path=DeleteCustomScheduleCommand}" 
+                                    CommandParameter="{Binding Id}"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <VerticalStackLayout
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Label 
+                                Text="No Weekly Schedules In List!" 
+                                FontSize="20" 
+                                FontAttributes="Bold" 
+                                HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
+
             <Button 
                 Text="Create Custom Schedule"
                 Style="{StaticResource MainPageNavigationButtonStyle}"
