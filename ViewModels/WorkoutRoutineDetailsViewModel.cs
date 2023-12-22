@@ -132,7 +132,7 @@ namespace LocalLiftLog.ViewModels
         
             if (scheduleType == "Weekly")
             {
-                WeeklySchedule weeklySchedule = new();
+                WeeklySchedule weeklySchedule = new() { WorkoutRoutineId = WorkoutRoutine.Id };
 
                 await ExecuteAsync(async () =>
                 {
@@ -153,7 +153,7 @@ namespace LocalLiftLog.ViewModels
 
             if (scheduleType == "Custom")
             {
-                CustomSchedule customSchedule = new();
+                CustomSchedule customSchedule = new() { WorkoutRoutineId = WorkoutRoutine.Id };
 
                 await ExecuteAsync(async () =>
                 {

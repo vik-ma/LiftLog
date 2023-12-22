@@ -19,6 +19,16 @@
                 VerticalOptions="Center"
                 FontAttributes="Bold"
                 FontSize="36" />
+            <Label 
+                Text="Workout Routine ID:"
+                VerticalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="36" />
+            <Label 
+                Text="{Binding WeeklySchedule.WorkoutRoutineId}"
+                VerticalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="36" />
         </HorizontalStackLayout>
         <Grid 
             ColumnDefinitions="*, *"

@@ -21,6 +21,16 @@
                 FontAttributes="Bold"
                 FontSize="26" />
             <Label 
+                Text="Workout Routine ID:"
+                VerticalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="36" />
+            <Label 
+                Text="{Binding CustomSchedule.WorkoutRoutineId}"
+                VerticalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="36" />
+            <Label 
                 Text="Days In Schedule:"
                 VerticalOptions="Center"
                 FontAttributes="Bold"

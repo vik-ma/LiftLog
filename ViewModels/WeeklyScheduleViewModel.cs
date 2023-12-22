@@ -206,6 +206,8 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task AddWorkoutTemplateCollectionToDay(WorkoutTemplate workoutTemplate)
         {
+            if (WeeklySchedule is null) return;
+
             if (workoutTemplate is null) return;
 
             int scheduleId = WeeklySchedule.ScheduleFactoryId;
