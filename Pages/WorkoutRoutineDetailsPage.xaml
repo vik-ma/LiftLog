@@ -87,15 +87,13 @@
                             BackgroundColor="#22c55e" />
                     </HorizontalStackLayout>
                 </Grid>
-                
+
                 <Button 
                     Text="Edit Routine"
                     Style="{StaticResource LargeButtonStyle}"
                     Command="{Binding WorkoutRoutineListViewModel.SetOperatingWorkoutRoutineCommand}" 
                     CommandParameter="{Binding WorkoutRoutine}"
                     IsVisible="{Binding WorkoutRoutineListViewModel.IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
-
-
             </VerticalStackLayout>
             
             <VerticalStackLayout
@@ -114,45 +112,12 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <!--<Label 
-                    IsVisible="{Binding IsScheduleSet, Converter={StaticResource InvertedBoolConverter}}"
-                    Text="No Schedule Set"
-                    FontAttributes="Bold"
-                    FontSize="26"
-                    TextColor="Red" />
-                <Label IsVisible="{Binding IsScheduleSet}">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span 
-                                Text="Schedule Id: " 
-                                FontAttributes="Bold"
-                                Style="{StaticResource LargeSubSpanStyle}" />
-                            <Span 
-                                Text="{Binding WorkoutRoutine.ScheduleId}"
-                                Style="{StaticResource LargeSubSpanStyle}" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label IsVisible="{Binding IsScheduleSet}">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span 
-                                Text="Weekly Schedule: " 
-                                FontAttributes="Bold"
-                                Style="{StaticResource LargeSubSpanStyle}" />
-                            <Span 
-                                Text="{Binding WorkoutRoutine.IsScheduleWeekly}"
-                                Style="{StaticResource LargeSubSpanStyle}" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>-->
 
                 <Button 
                     Text="Edit Schedule"
                     WidthRequest="300"
                     Style="{StaticResource LargeButtonStyle}"
                     Command="{Binding VisitScheduleCommand}" />
-
             </VerticalStackLayout>
 
         </Grid>

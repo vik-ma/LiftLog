@@ -213,31 +213,5 @@ namespace LocalLiftLog.ViewModels
 
             await Shell.Current.GoToAsync($"{nameof(CustomSchedulePage)}?Id={customSchedule.Id}", navigationParameter);
         }
-
-        public async Task LoadWorkoutRoutineSchedule()
-        {
-            //// Exit function if no Schedule is set
-            //if (WorkoutRoutine.ScheduleId == 0) return;
-
-            //ScheduleFactory scheduleFactory = null;
-
-            //await ExecuteAsync(async () =>
-            //{
-            //    scheduleFactory = await _context.GetItemByKeyAsync<ScheduleFactory>(WorkoutRoutine.ScheduleFactoryId);
-            //});
-
-            //if (scheduleFactory is null)
-            //{
-            //    // Delete ScheduleFactoryId for WorkoutRoutine if ScheduleFactory key does not exist
-            //    WorkoutRoutine.ScheduleFactoryId = 0;
-            //    await UpdateWorkoutRoutine();
-            //}
-            //else
-            //{
-            //    // Set the loaded ScheduleFactory as WorkoutRoutineSchedule
-
-            //    IsScheduleSet = true;
-            //}
-        }
     }
 }
