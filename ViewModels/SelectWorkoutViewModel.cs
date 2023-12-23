@@ -347,6 +347,12 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
+        private async Task GoToWorkoutRoutineListPage()
+        {
+            await Shell.Current.GoToAsync(nameof(WorkoutRoutineListPage));
+        }
+
+        [RelayCommand]
         private async Task StartWorkout(int id)
         {
             WorkoutTemplateCollection workoutTemplateCollection = WorkoutList.FirstOrDefault(p => p.Id == id);

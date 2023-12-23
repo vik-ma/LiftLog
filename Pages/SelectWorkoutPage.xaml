@@ -70,6 +70,13 @@
                     </ContentView>
                 </CollectionView.EmptyView>
             </CollectionView>
+
+            <Button 
+                Text="Create New Routine"
+                Style="{StaticResource LargeButtonStyle}"
+                BackgroundColor="#035afc"
+                Command="{Binding GoToWorkoutRoutineListPageCommand}"
+                Margin="20" />
         </VerticalStackLayout>
 
         <VerticalStackLayout>
@@ -148,12 +155,7 @@
                 </CollectionView.EmptyView>
             </CollectionView>
 
-            <Button 
-                Text="Create New Schedule"
-                Style="{StaticResource LargeButtonStyle}"
-                BackgroundColor="#035afc"
-                Command="{Binding GoToScheduleListPageCommand}"
-                Margin="20" />
+
         </VerticalStackLayout>
 
         <VerticalStackLayout>
