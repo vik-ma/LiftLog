@@ -21,6 +21,8 @@ namespace LocalLiftLog.ViewModels
 
         private ScheduleFactory OperatingSchedule;
 
+        private WorkoutRoutine OperatingRoutine;
+
         public SelectWorkoutViewModel(DatabaseContext context)
         {
             _context = context;
@@ -137,6 +139,43 @@ namespace LocalLiftLog.ViewModels
             OperatingSchedule = schedule;
 
             await LoadWorkoutsFromOperatingScheduleAsync();
+        }
+
+        public async Task LoadWorkoutsFromOperatingRoutineAsync()
+        {
+            // Exit function if no OperatingRoutine is set
+            if (OperatingRoutine is null) return;
+
+            WorkoutList.Clear();
+
+            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutRoutineId == OperatingRoutine.Id;
+
+            try
+            {
+                var filteredList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+
+                foreach (var item in filteredList)
+                {
+                    WorkoutList.Add(item);
+                }
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
+                return;
+            }
+        }
+
+        [RelayCommand]
+        private async Task SetOperatingRoutine(int id)
+        {
+            var routine = WorkoutRoutineList.FirstOrDefault(p => p.Id == id);
+
+            if (routine is null) return;
+
+            OperatingRoutine = routine;
+
+            await LoadWorkoutsFromOperatingRoutineAsync();
         }
 
         [RelayCommand]
