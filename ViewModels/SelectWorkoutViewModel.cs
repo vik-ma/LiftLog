@@ -19,8 +19,8 @@ namespace LocalLiftLog.ViewModels
     {
         private readonly DatabaseContext _context;
 
-        private WorkoutRoutine OperatingRoutine;
-
+        [ObservableProperty]
+        private WorkoutRoutine operatingRoutine;
         public SelectWorkoutViewModel(DatabaseContext context)
         {
             _context = context;

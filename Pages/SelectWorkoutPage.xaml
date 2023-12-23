@@ -80,15 +80,21 @@
         </VerticalStackLayout>
 
         <VerticalStackLayout>
+            <Label 
+                Text="Select Workout"
+                HorizontalOptions="Center"
+                FontSize="30"
+                FontAttributes="Bold"
+                Margin="10" />
             <HorizontalStackLayout 
                 HorizontalOptions="Center"
                 Spacing="10">
                 <Label 
-                    Text="Select Workout"
+                    Text="{Binding OperatingRoutine.Name}"
                     HorizontalOptions="Center"
                     FontSize="30"
                     FontAttributes="Bold"
-                    Margin="10" />
+                    TextColor="#035afc" />
                 <DatePicker 
                     MinimumDate="12/01/2023"
                     MaximumDate="12/31/2023"
@@ -99,6 +105,7 @@
                     TextColor="#035afc"
                     VerticalOptions="Center" />
             </HorizontalStackLayout>
+
             <CollectionView 
                 ItemsSource="{Binding WorkoutList}">
                 <CollectionView.ItemsLayout>
