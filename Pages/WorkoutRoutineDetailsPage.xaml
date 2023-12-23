@@ -76,13 +76,13 @@
                         <Button 
                             Grid.Column="0"
                             Text="Cancel"
-                            Style="{StaticResource EditingLargeButtonStyle}"
+                            Style="{StaticResource LargeButtonStyle}"
                             Command="{Binding DisableEditingCommand}"
                             BackgroundColor="#ef4444" />
                         <Button 
                             Grid.Column="1"
                             Text="Save"
-                            Style="{StaticResource EditingLargeButtonStyle}"
+                            Style="{StaticResource LargeButtonStyle}"
                             Command="{Binding UpdateWorkoutRoutineCommand}"
                             BackgroundColor="#22c55e" />
                     </HorizontalStackLayout>
@@ -91,11 +91,10 @@
                 <Button 
                     Text="Edit Routine"
                     Style="{StaticResource LargeButtonStyle}"
-                    Command="{Binding EnableEditingCommand}" 
-                    CommandParameter="{Binding WorkoutRoutine}"
+                    Command="{Binding EnableEditingCommand}"
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
             </VerticalStackLayout>
-            
+
             <VerticalStackLayout
                 Grid.Column="1"
                 Spacing="4">
@@ -119,7 +118,6 @@
                     Style="{StaticResource LargeButtonStyle}"
                     Command="{Binding VisitScheduleCommand}" />
             </VerticalStackLayout>
-
         </Grid>
 
         <Button 

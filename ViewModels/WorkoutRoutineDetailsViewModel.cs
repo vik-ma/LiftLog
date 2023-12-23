@@ -17,13 +17,13 @@ namespace LocalLiftLog.ViewModels
     {
         private readonly DatabaseContext _context;
 
+        [ObservableProperty]
+        private WorkoutRoutine workoutRoutine;
+
         public WorkoutRoutineDetailsViewModel(DatabaseContext context)
         {
             _context = context;
         }
-
-        [ObservableProperty]
-        private WorkoutRoutine workoutRoutine;
 
         [ObservableProperty]
         private bool isEditing;
