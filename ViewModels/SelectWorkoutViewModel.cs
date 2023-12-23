@@ -130,6 +130,12 @@ namespace LocalLiftLog.ViewModels
                 if (await _context.DeleteItemByKeyAsync<WorkoutRoutine>(id))
                 {
                     WorkoutRoutineList.Remove(routine);
+
+                    if (routine == OperatingRoutine)
+                    {
+                        OperatingRoutine = new();
+                        WorkoutList.Clear();
+                    }
                 }
                 else
                 {
