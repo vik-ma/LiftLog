@@ -274,6 +274,33 @@ namespace LocalLiftLog.ViewModels
             await DeleteWorkoutTemplateCollectionsByScheduleFactoryId(id);
         }
 
+        [RelayCommand]
+        private async Task DeleteRoutineAsync(int id)
+        {
+            var routine = WorkoutRoutineList.FirstOrDefault(p => p.Id == id);
+
+            if (routine is null) return;
+
+            bool isScheduleWeekly = routine.IsScheduleWeekly;
+
+            await ExecuteAsync(async () =>
+            {
+                if (await _context.DeleteItemByKeyAsync<WorkoutRoutine>(id))
+                {
+                    WorkoutRoutineList.Remove(routine);
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("Error", "An error occured when trying to delete Workout Routine.", "OK");
+                }
+            });
+
+            await DeleteWorkoutTemplateCollectionsByWorkoutRoutineId(id);
+
+            if (isScheduleWeekly) await DeleteWeeklyScheduleByWorkoutRoutineId(id);
+            else await DeleteCustomScheduleByWorkoutRoutineId(id);
+        }
+
         private async Task DeleteWorkoutTemplateCollectionsByScheduleFactoryId(int scheduleId)
         {
             Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.ScheduleFactoryId == scheduleId;
@@ -291,6 +318,78 @@ namespace LocalLiftLog.ViewModels
             foreach (var item in filteredList)
             {
                 await DeleteWorkoutTemplateCollection(item);
+            }
+        }
+
+        private async Task DeleteWorkoutTemplateCollectionsByWorkoutRoutineId(int routineId)
+        {
+            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutRoutineId == routineId;
+
+            IEnumerable<WorkoutTemplateCollection> filteredList = null;
+            try
+            {
+                filteredList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Workout Template Collections.", "OK");
+            }
+
+            foreach (var item in filteredList)
+            {
+                await DeleteWorkoutTemplateCollection(item);
+            }
+        }
+
+        private async Task DeleteWeeklyScheduleByWorkoutRoutineId(int routineId)
+        {
+            Expression<Func<WeeklySchedule, bool>> predicate = entity => entity.WorkoutRoutineId == routineId;
+
+            IEnumerable<WeeklySchedule> filteredList = null;
+            try
+            {
+                filteredList = await _context.GetFilteredAsync<WeeklySchedule>(predicate);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Weekly Schedules.", "OK");
+            }
+
+            foreach (var item in filteredList)
+            {
+                await ExecuteAsync(async () =>
+                {
+                    if (!await _context.DeleteItemAsync<WeeklySchedule>(item))
+                    {
+                        await Shell.Current.DisplayAlert("Error", "An error occured when trying to delete Weekly Schedule.", "OK");
+                    }
+                });
+            }
+        }
+
+        private async Task DeleteCustomScheduleByWorkoutRoutineId(int routineId)
+        {
+            Expression<Func<CustomSchedule, bool>> predicate = entity => entity.WorkoutRoutineId == routineId;
+
+            IEnumerable<CustomSchedule> filteredList = null;
+            try
+            {
+                filteredList = await _context.GetFilteredAsync<CustomSchedule>(predicate);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Custom Schedules.", "OK");
+            }
+
+            foreach (var item in filteredList)
+            {
+                await ExecuteAsync(async () =>
+                {
+                    if (!await _context.DeleteItemAsync<CustomSchedule>(item))
+                    {
+                        await Shell.Current.DisplayAlert("Error", "An error occured when trying to delete Custom Schedule.", "OK");
+                    }
+                });
             }
         }
 
