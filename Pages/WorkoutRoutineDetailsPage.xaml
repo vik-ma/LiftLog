@@ -29,10 +29,10 @@
                     </Label.FormattedText>
                 </Label>
                 <Entry 
-                    Text="{Binding WorkoutRoutineListViewModel.OperatingWorkoutRoutine.Name}"
+                    Text="{Binding WorkoutRoutine.Name}"
                     Placeholder="Routine Name"
                     FontSize="24"
-                    IsVisible="{Binding WorkoutRoutineListViewModel.IsEditing}" />
+                    IsVisible="{Binding IsEditing}" />
                 <Label>
                     <Label.FormattedText>
                         <FormattedString>
@@ -60,15 +60,15 @@
                     </Label.FormattedText>
                 </Label>
                 <Entry 
-                    Text="{Binding WorkoutRoutineListViewModel.OperatingWorkoutRoutine.Note}"
+                    Text="{Binding WorkoutRoutine.Note}"
                     Placeholder="Routine Note"
                     FontSize="24"
-                    IsVisible="{Binding WorkoutRoutineListViewModel.IsEditing}" />
+                    IsVisible="{Binding IsEditing}" />
 
                 <Grid 
                     WidthRequest="300"
                     HorizontalOptions="Center"
-                    IsVisible="{Binding WorkoutRoutineListViewModel.IsEditing}">
+                    IsVisible="{Binding IsEditing}">
                     <HorizontalStackLayout
                         HorizontalOptions="Center"
                         Spacing="20"
@@ -77,7 +77,7 @@
                             Grid.Column="0"
                             Text="Cancel"
                             Style="{StaticResource EditingLargeButtonStyle}"
-                            Command="{Binding WorkoutRoutineListViewModel.CancelEditingCommand}"
+                            Command="{Binding DisableEditingCommand}"
                             BackgroundColor="#ef4444" />
                         <Button 
                             Grid.Column="1"
@@ -91,9 +91,9 @@
                 <Button 
                     Text="Edit Routine"
                     Style="{StaticResource LargeButtonStyle}"
-                    Command="{Binding WorkoutRoutineListViewModel.SetOperatingWorkoutRoutineCommand}" 
+                    Command="{Binding EnableEditingCommand}" 
                     CommandParameter="{Binding WorkoutRoutine}"
-                    IsVisible="{Binding WorkoutRoutineListViewModel.IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
+                    IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
             </VerticalStackLayout>
             
             <VerticalStackLayout

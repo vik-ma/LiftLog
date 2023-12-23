@@ -15,19 +15,18 @@ namespace LocalLiftLog.ViewModels
     [QueryProperty(nameof(WorkoutRoutine), nameof(WorkoutRoutine))]
     public partial class WorkoutRoutineDetailsViewModel : ObservableObject
     {
-        [ObservableProperty]
-        private WorkoutRoutineListViewModel _workoutRoutineListViewModel;
-
         private readonly DatabaseContext _context;
 
-        public WorkoutRoutineDetailsViewModel(WorkoutRoutineListViewModel workoutRoutineListViewModel, DatabaseContext context)
+        public WorkoutRoutineDetailsViewModel(DatabaseContext context)
         {
-            _workoutRoutineListViewModel = workoutRoutineListViewModel;
             _context = context;
         }
 
         [ObservableProperty]
         private WorkoutRoutine workoutRoutine;
+
+        [ObservableProperty]
+        private bool isEditing;
 
         #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
@@ -70,8 +69,7 @@ namespace LocalLiftLog.ViewModels
             }
 
             OnPropertyChanged(nameof(WorkoutRoutine));
-
-            WorkoutRoutineListViewModel.IsEditing = false;
+            IsEditing = false;
         }
 
         [RelayCommand]
@@ -212,6 +210,18 @@ namespace LocalLiftLog.ViewModels
             };
 
             await Shell.Current.GoToAsync($"{nameof(CustomSchedulePage)}?Id={customSchedule.Id}", navigationParameter);
+        }
+
+        [RelayCommand]
+        private void EnableEditing()
+        {
+            IsEditing = true;
+        }
+
+        [RelayCommand]
+        private void DisableEditing()
+        {
+            IsEditing = false;
         }
     }
 }

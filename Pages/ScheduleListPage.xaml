@@ -84,7 +84,7 @@
                             HorizontalOptions="Center"
                             VerticalOptions="Center">
                             <Label 
-                                Text="No Weekly Schedules In List!" 
+                                Text="No Schedules In List!" 
                                 FontSize="20" 
                                 FontAttributes="Bold" 
                                 HorizontalTextAlignment="Center" />
@@ -188,7 +188,7 @@
                             HorizontalOptions="Center"
                             VerticalOptions="Center">
                             <Label 
-                                Text="No Weekly Schedules In List!" 
+                                Text="No Schedules In List!" 
                                 FontSize="20" 
                                 FontAttributes="Bold" 
                                 HorizontalTextAlignment="Center" />

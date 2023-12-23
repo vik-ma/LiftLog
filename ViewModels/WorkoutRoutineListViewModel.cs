@@ -191,7 +191,6 @@ namespace LocalLiftLog.ViewModels
             };
 
             IsEditing = false;
-            OperatingWorkoutRoutine = WorkoutRoutine;
 
             await Shell.Current.GoToAsync($"{nameof(WorkoutRoutineDetailsPage)}?Id={id}", navigationParameter);
         }
