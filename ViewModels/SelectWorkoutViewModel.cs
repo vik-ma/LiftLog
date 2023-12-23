@@ -136,37 +136,19 @@ namespace LocalLiftLog.ViewModels
                         OperatingRoutine = new();
                         WorkoutList.Clear();
                     }
+
+                    // Delete WorkoutTemplateCollection objects referencing the WorkoutRoutine
+                    await DeleteWorkoutTemplateCollectionsByWorkoutRoutineId(id);
+
+                    // Delete Schedule objects referencing the WorkoutRoutine
+                    if (isScheduleWeekly) await DeleteWeeklyScheduleByWorkoutRoutineId(id);
+                    else await DeleteCustomScheduleByWorkoutRoutineId(id);
                 }
                 else
                 {
                     await Shell.Current.DisplayAlert("Error", "An error occured when trying to delete Workout Routine.", "OK");
                 }
             });
-
-            await DeleteWorkoutTemplateCollectionsByWorkoutRoutineId(id);
-
-            if (isScheduleWeekly) await DeleteWeeklyScheduleByWorkoutRoutineId(id);
-            else await DeleteCustomScheduleByWorkoutRoutineId(id);
-        }
-
-        private async Task DeleteWorkoutTemplateCollectionsByScheduleFactoryId(int scheduleId)
-        {
-            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.ScheduleFactoryId == scheduleId;
-
-            IEnumerable<WorkoutTemplateCollection> filteredList = null;
-            try
-            {
-                filteredList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
-            }
-            catch
-            {
-                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Workout Template Collections.", "OK");
-            }
-
-            foreach (var item in filteredList)
-            {
-                await DeleteWorkoutTemplateCollection(item);
-            }
         }
 
         private async Task DeleteWorkoutTemplateCollectionsByWorkoutRoutineId(int routineId)
