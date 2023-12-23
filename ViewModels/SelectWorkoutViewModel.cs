@@ -440,6 +440,21 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
+        private async Task GoToWorkoutRoutineDetailsPage(int id)
+        {
+            WorkoutRoutine workoutRoutine = WorkoutRoutineList.FirstOrDefault(p => p.Id == id);
+
+            if (workoutRoutine is null) return;
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["WorkoutRoutine"] = workoutRoutine
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(WorkoutRoutineDetailsPage)}?Id={id}", navigationParameter);
+        }
+
+        [RelayCommand]
         private async Task GoToScheduleListPage()
         {
             await Shell.Current.GoToAsync(nameof(ScheduleListPage));
