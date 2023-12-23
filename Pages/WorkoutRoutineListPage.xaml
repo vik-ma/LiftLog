@@ -19,17 +19,6 @@
                 FontSize="36"
                 />
         </VerticalStackLayout>
-        <VerticalStackLayout
-            Grid.Row="0"
-            Grid.Column="1"
-            HorizontalOptions="End"
-            VerticalOptions="Center"
-            MaximumWidthRequest="400">
-            <Button 
-                Text="Go Back"
-                Style="{StaticResource GoBackTopRightButtonStyle}"
-                Command="{Binding GoBackCommand}" />
-        </VerticalStackLayout>
         <VerticalStackLayout 
             Grid.RowSpan="2"
             VerticalOptions="Center"
@@ -288,6 +277,11 @@
                     Command="{Binding SetOperatingWorkoutRoutineCommand}"
                     Margin="50"
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
+                <Button 
+                    Text="Go Back"
+                    Style="{StaticResource LargeButtonStyle}"
+                    Command="{Binding GoBackCommand}"
+                    Margin="20" />
             </VerticalStackLayout>
         </Grid>
     </Grid>
