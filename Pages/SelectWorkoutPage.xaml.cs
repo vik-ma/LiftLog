@@ -14,8 +14,7 @@ public partial class SelectWorkoutPage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-        await _viewModel.LoadSchedulesAsync();
         await _viewModel.LoadRoutinesAsync();
-        await _viewModel.LoadWorkoutsFromOperatingScheduleAsync();
+        await _viewModel.LoadWorkoutsFromOperatingRoutineAsync();
     }
 }
