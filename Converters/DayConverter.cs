@@ -16,7 +16,7 @@ namespace LocalLiftLog.Converters
             {
                 if (context == "Weekly")
                 {
-                    var weekdayDictionary = WeekdayDictionary.WeekdayDict;
+                    var weekdayDictionary = WeekdayHelper.WeekdayDict;
 
                     if (value is int selectedDay && weekdayDictionary.ContainsKey(selectedDay))
                     {

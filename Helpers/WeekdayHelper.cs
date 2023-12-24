@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.Helpers
 {
-    public static class WeekdayDictionary
+    public static class WeekdayHelper
     {
         public static Dictionary<int, string> WeekdayDict { get; } = new()
         {
@@ -18,5 +18,16 @@ namespace LocalLiftLog.Helpers
             { 5, "Saturday" },
             { 6, "Sunday" }
         };
-    };
+
+        public static List<string> WeekdayList { get; } = new()
+        {
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+        };
+    }
 }
