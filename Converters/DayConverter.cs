@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LocalLiftLog.Helpers;
 
 namespace LocalLiftLog.Converters
 {
@@ -15,16 +16,7 @@ namespace LocalLiftLog.Converters
             {
                 if (context == "Weekly")
                 {
-                    Dictionary<int, string> weekdayDictionary = new()
-                    {
-                        { 0, "Monday" },
-                        { 1, "Tuesday" },
-                        { 2, "Wednesday" },
-                        { 3, "Thursday" },
-                        { 4, "Friday" },
-                        { 5, "Saturday" },
-                        { 6, "Sunday" }
-                    };
+                    var weekdayDictionary = WeekdayDictionary.WeekdayDict;
 
                     if (value is int selectedDay && weekdayDictionary.ContainsKey(selectedDay))
                     {
