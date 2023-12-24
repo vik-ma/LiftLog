@@ -98,33 +98,52 @@
             <VerticalStackLayout
                 Grid.Column="1"
                 Spacing="4">
-                <CollectionView
-                    ItemsSource="{Binding WorkoutScheduleList}"
-                    HorizontalOptions="Center">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout 
-                            ItemSpacing="3"
-                            Orientation="Vertical" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="x:String">
-                            <Label Text="{Binding .}" />
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                    <CollectionView.EmptyView>
-                        <ContentView>
-                            <VerticalStackLayout
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center">
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <CollectionView
+                        ItemsSource="{Binding DayNameList}"
+                        HorizontalOptions="Center">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout 
+                                ItemSpacing="2"
+                                Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
                                 <Label 
-                                    Text="No Schedule Added!" 
-                                    FontSize="18" 
-                                    FontAttributes="Bold" 
-                                    HorizontalTextAlignment="Center" />
-                            </VerticalStackLayout>
-                        </ContentView>
-                    </CollectionView.EmptyView>
-                </CollectionView>
+                                    Text="{Binding .}"
+                                    FontAttributes="Bold" />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    
+                    <CollectionView
+                        ItemsSource="{Binding WorkoutScheduleList}"
+                        HorizontalOptions="Center">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout 
+                                ItemSpacing="2"
+                                Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <Label Text="{Binding .}" />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        <CollectionView.EmptyView>
+                            <ContentView>
+                                <VerticalStackLayout
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Label 
+                                        Text="No Schedule Added!" 
+                                        FontSize="18" 
+                                        FontAttributes="Bold" 
+                                        HorizontalTextAlignment="Center" />
+                                </VerticalStackLayout>
+                            </ContentView>
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </HorizontalStackLayout>
 
                 <Button 
                     Text="Edit Schedule"

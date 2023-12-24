@@ -35,23 +35,37 @@ namespace LocalLiftLog.ViewModels
         private ObservableCollection<string> workoutScheduleList = new();
 
         [ObservableProperty]
+        private ObservableCollection<string> dayNameList = new();
+
+        [ObservableProperty]
         private int numDaysInSchedule;
 
         public async Task LoadNumDaysInSchedule()
         {
             if (WorkoutRoutine is null) return;
 
-            if (WorkoutRoutine.IsScheduleWeekly) NumDaysInSchedule = 7;
+            if (WorkoutRoutine.IsScheduleWeekly) 
+            {
+                NumDaysInSchedule = 7;
+                DayNameList = new(WeekdayHelper.WeekdayList);
+            } 
             else
             {
                 await ExecuteAsync(async () =>
                 {
                     var schedule = await _context.GetItemByKeyAsync<CustomSchedule>(WorkoutRoutine.ScheduleId);
 
-                    // TODO: RESET SCHEDULEID IF IT DOES NOT EXIST
+                    // TODO: RESET SCHEDULEID IF NONE WERE FOUND
                     if (schedule is null) return;
 
                     NumDaysInSchedule = schedule.NumDaysInSchedule;
+
+                    DayNameList.Clear();
+
+                    for (int i = 0; i < NumDaysInSchedule; i++) 
+                    {
+                        DayNameList.Add($"Day {i+1}");
+                    }
                 });
             }
         }
