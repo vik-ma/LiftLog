@@ -153,6 +153,7 @@
             <converters:IntAboveThresholdConverter x:Key="IntAboveThresholdConverter" />
             <converters:ExerciseGroupConverter x:Key="ExerciseGroupConverter" />
             <converters:ScheduleTypeConverter x:Key="ScheduleTypeConverter" />
+            <converters:IsInt0Converter x:Key="IsInt0Converter" />
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             <toolkit:IndexToArrayItemConverter x:Key="IndexToArrayItemConverter" />
             <toolkit:IsListNullOrEmptyConverter x:Key="IsListNullOrEmptyConverter" />

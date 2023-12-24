@@ -7,19 +7,16 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.Converters
 {
-    public class NullValueToEmptyTextConverter : IValueConverter
+    public class IsInt0Converter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null || (value is string stringValue && string.IsNullOrEmpty(stringValue)) || (value is int intValue && intValue == 0))
+            if (value is int intValue)
             {
-                if (parameter is string context && !string.IsNullOrEmpty(context))
-                {
-                    return $"No {context} Set";
-                }
-                return "Empty";
+                return intValue == 0;
             }
-            return value;
+
+            return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
