@@ -15,7 +15,6 @@ namespace LocalLiftLog.Models
         public string Name { get; set; }
         public string LastUpdateDateTime { get; set; }  
         public string Note { get; set; }
-        public int ScheduleFactoryId { get; set; }
         public bool IsScheduleWeekly { get; set; }
         public int ScheduleId { get; set; }
 

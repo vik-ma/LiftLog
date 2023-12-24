@@ -153,17 +153,17 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
-                                            Text="Schedule Factory Id: " 
+                                            Text="Workout Routine Id: " 
                                             FontAttributes="Bold"  
                                             Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
-                                            Text="{Binding ScheduleFactoryId}"
+                                            Text="{Binding WorkoutRoutineId}"
                                             Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
                             <Entry 
-                                Text="{Binding ScheduleFactoryId}"
+                                Text="{Binding WorkoutRoutineId}"
                                 WidthRequest="100" />
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
