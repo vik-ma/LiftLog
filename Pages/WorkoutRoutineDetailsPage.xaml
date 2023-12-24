@@ -98,19 +98,33 @@
             <VerticalStackLayout
                 Grid.Column="1"
                 Spacing="4">
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span 
-                                Text="Schedule Id: " 
-                                FontAttributes="Bold"
-                                Style="{StaticResource LargeSubSpanStyle}" />
-                            <Span 
-                                Text="{Binding WorkoutRoutine.ScheduleId}"
-                                Style="{StaticResource LargeSubSpanStyle}" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
+                <CollectionView
+                    ItemsSource="{Binding WorkoutScheduleList}"
+                    HorizontalOptions="Center">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout 
+                            ItemSpacing="3"
+                            Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <Label Text="{Binding .}" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <ContentView>
+                            <VerticalStackLayout
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Label 
+                                    Text="No Schedule Added!" 
+                                    FontSize="18" 
+                                    FontAttributes="Bold" 
+                                    HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </ContentView>
+                    </CollectionView.EmptyView>
+                </CollectionView>
 
                 <Button 
                     Text="Edit Schedule"

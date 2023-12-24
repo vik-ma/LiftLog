@@ -1,12 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LocalLiftLog.Data;
+using LocalLiftLog.Helpers;
 using LocalLiftLog.Models;
 using LocalLiftLog.Pages;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,7 +31,62 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private bool isEditing;
 
-        #nullable enable
+        [ObservableProperty]
+        private ObservableCollection<string> workoutScheduleList = new();
+
+
+        public async Task LoadWorkoutScheduleList()
+        {
+            if (WorkoutRoutine is null) return;
+
+            // Exit function if no Schedule is set
+            if (WorkoutRoutine.ScheduleId == 0) return;
+
+            WorkoutScheduleList.Clear();
+
+            if (WorkoutRoutine.IsScheduleWeekly) await LoadWeeklyScheduleList();
+        }
+
+        private async Task LoadWeeklyScheduleList()
+        {
+            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutRoutineId == WorkoutRoutine.Id;
+
+            IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
+            try
+            {
+                filteredWtcList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+            }
+            catch
+            {
+                // TODO: RESET SCHEDULEID IF NONE WERE FOUND
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
+                return;
+            }
+
+            Dictionary<int, List<WorkoutTemplateCollection>> wtcByDayDictionary = filteredWtcList
+               .GroupBy(item => item.Day)
+               .ToDictionary(group => group.Key, group => group.ToList());
+
+            var weekdayDict = WeekdayDictionary.WeekdayDict;
+
+            for (int i = 0; i < 7; i++)
+            {
+                string dayString;
+
+                if (wtcByDayDictionary.TryGetValue(i, out List<WorkoutTemplateCollection> value))
+                {
+                    dayString = string.Join(", ", value.Select(item => item.WorkoutTemplateName));
+                }
+                else
+                {
+                    dayString = "No Workout";
+                }
+
+                WorkoutScheduleList.Add(dayString);
+            }
+        }
+
+#nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
             try
