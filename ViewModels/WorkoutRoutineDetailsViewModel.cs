@@ -55,9 +55,11 @@ namespace LocalLiftLog.ViewModels
                 {
                     var schedule = await _context.GetItemByKeyAsync<CustomSchedule>(WorkoutRoutine.ScheduleId);
 
-                    // TODO: RESET SCHEDULEID IF NONE WERE FOUND
-                    if (schedule is null) return;
-
+                    if (schedule is null)
+                    {
+                        await ResetScheduleId();
+                        return;
+                    } 
                     NumDaysInSchedule = schedule.NumDaysInSchedule;
 
                     DayNameList.Clear();
@@ -88,8 +90,7 @@ namespace LocalLiftLog.ViewModels
             }
             catch
             {
-                // TODO: RESET SCHEDULEID IF NONE WERE FOUND
-                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
+                await ResetScheduleId();
                 return;
             }
 
@@ -130,6 +131,15 @@ namespace LocalLiftLog.ViewModels
             {
 
             }
+        }
+
+        private async Task ResetScheduleId()
+        {
+            WorkoutRoutine.ScheduleId = 0;
+
+            await UpdateWorkoutRoutine();
+
+            await Shell.Current.DisplayAlert("Schedule Not Found", "Schedule could not be found and has been reset.", "OK");
         }
 
         [RelayCommand]
