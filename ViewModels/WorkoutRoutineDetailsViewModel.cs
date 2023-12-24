@@ -34,6 +34,27 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private ObservableCollection<string> workoutScheduleList = new();
 
+        [ObservableProperty]
+        private int numDaysInSchedule;
+
+        public async Task LoadNumDaysInSchedule()
+        {
+            if (WorkoutRoutine is null) return;
+
+            if (WorkoutRoutine.IsScheduleWeekly) NumDaysInSchedule = 7;
+            else
+            {
+                await ExecuteAsync(async () =>
+                {
+                    var schedule = await _context.GetItemByKeyAsync<CustomSchedule>(WorkoutRoutine.ScheduleId);
+
+                    // TODO: RESET SCHEDULEID IF IT DOES NOT EXIST
+                    if (schedule is null) return;
+
+                    NumDaysInSchedule = schedule.NumDaysInSchedule;
+                });
+            }
+        }
 
         public async Task LoadWorkoutScheduleList()
         {
@@ -44,11 +65,6 @@ namespace LocalLiftLog.ViewModels
 
             WorkoutScheduleList.Clear();
 
-            if (WorkoutRoutine.IsScheduleWeekly) await LoadWeeklyScheduleList();
-        }
-
-        private async Task LoadWeeklyScheduleList()
-        {
             Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutRoutineId == WorkoutRoutine.Id;
 
             IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
@@ -67,9 +83,7 @@ namespace LocalLiftLog.ViewModels
                .GroupBy(item => item.Day)
                .ToDictionary(group => group.Key, group => group.ToList());
 
-            var weekdayDict = WeekdayDictionary.WeekdayDict;
-
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < NumDaysInSchedule; i++)
             {
                 string dayString;
 
@@ -86,7 +100,7 @@ namespace LocalLiftLog.ViewModels
             }
         }
 
-#nullable enable
+        #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
             try
