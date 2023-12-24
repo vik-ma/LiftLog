@@ -154,6 +154,7 @@
             <converters:ExerciseGroupConverter x:Key="ExerciseGroupConverter" />
             <converters:ScheduleTypeConverter x:Key="ScheduleTypeConverter" />
             <converters:IsInt0Converter x:Key="IsInt0Converter" />
+            <converters:IsIntNot0Converter x:Key="IsIntNot0Converter" />
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             <toolkit:IndexToArrayItemConverter x:Key="IndexToArrayItemConverter" />
             <toolkit:IsListNullOrEmptyConverter x:Key="IsListNullOrEmptyConverter" />
