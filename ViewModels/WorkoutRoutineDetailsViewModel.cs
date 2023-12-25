@@ -62,7 +62,7 @@ namespace LocalLiftLog.ViewModels
 
                     if (schedule is null)
                     {
-                        await ResetScheduleId();
+                        await ResetScheduleId(true);
                         return;
                     } 
                     NumDaysInSchedule = schedule.NumDaysInSchedule;
@@ -138,7 +138,7 @@ namespace LocalLiftLog.ViewModels
             }
         }
 
-        private async Task ResetScheduleId()
+        private async Task ResetScheduleId(bool scheduleNotFound)
         {
             WorkoutRoutine.ScheduleId = 0;
             WorkoutRoutine.IsScheduleWeekly = false;
@@ -149,7 +149,7 @@ namespace LocalLiftLog.ViewModels
             WorkoutScheduleList.Clear();
             DayNameList.Clear();
 
-            await Shell.Current.DisplayAlert("Schedule Not Found", "Schedule could not be found and has been reset.", "OK");
+            if (scheduleNotFound) await Shell.Current.DisplayAlert("Schedule Not Found", "Schedule could not be found and has been reset.", "OK");
         }
 
         private async Task DeleteWorkoutTemplateCollectionsByWorkoutRoutineId()
@@ -229,7 +229,7 @@ namespace LocalLiftLog.ViewModels
 
                         if (weeklySchedule is null)
                         {
-                            await ResetScheduleId();
+                            await ResetScheduleId(true);
                             return;
                         }
 
@@ -251,7 +251,7 @@ namespace LocalLiftLog.ViewModels
 
                         if (customSchedule is null)
                         {
-                            await ResetScheduleId();
+                            await ResetScheduleId(true);
                             return;
                         }
 
@@ -356,6 +356,14 @@ namespace LocalLiftLog.ViewModels
             };
 
             await Shell.Current.GoToAsync($"{nameof(CustomSchedulePage)}?Id={customSchedule.Id}", navigationParameter);
+        }
+
+        [RelayCommand]
+        private async Task DeleteSchedule()
+        {
+            bool userClickedDelete = await Shell.Current.DisplayAlert("Delete Schedule", $"Are you sure you want to delete Schedule?\nThis can not be undone.", "Delete", "Cancel");
+
+            if (userClickedDelete) await ResetScheduleId(false);
         }
 
         [RelayCommand]
