@@ -349,7 +349,17 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task CreateWorkoutTemplateAsync()
         {
-            WorkoutTemplate workout = new();
+            string enteredName = await Shell.Current.DisplayPromptAsync("Workout Name", "Enter a name for the Workout", "OK", "Cancel");
+
+            if (enteredName is null) return;
+
+            if (string.IsNullOrWhiteSpace(enteredName))
+            {
+                await Shell.Current.DisplayAlert("Error", "Name can not be empty.", "OK");
+                return;
+            }
+
+            WorkoutTemplate workout = new() { Name = enteredName };
 
             await ExecuteAsync(async () =>
             {
