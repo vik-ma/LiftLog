@@ -76,21 +76,19 @@
                         <Button 
                             Grid.Column="0"
                             Text="Cancel"
-                            Style="{StaticResource LargeButtonStyle}"
-                            Command="{Binding DisableEditingCommand}"
-                            BackgroundColor="#ef4444" />
+                            Style="{StaticResource DeleteButtonStyle}"
+                            Command="{Binding DisableEditingCommand}" />
                         <Button 
                             Grid.Column="1"
                             Text="Save"
-                            Style="{StaticResource LargeButtonStyle}"
-                            Command="{Binding UpdateWorkoutRoutineCommand}"
-                            BackgroundColor="#22c55e" />
+                            Style="{StaticResource AddButtonStyle}"
+                            Command="{Binding UpdateWorkoutRoutineCommand}" />
                     </HorizontalStackLayout>
                 </Grid>
 
                 <Button 
                     Text="Edit Routine"
-                    Style="{StaticResource LargeButtonStyle}"
+                    Style="{StaticResource GenericButtonStyle}"
                     Command="{Binding EnableEditingCommand}"
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
             </VerticalStackLayout>
@@ -146,18 +144,23 @@
                 </HorizontalStackLayout>
 
                 <Button 
-                    Text="Edit Schedule"
-                    WidthRequest="300"
-                    IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsIntNot0Converter}}"
-                    Style="{StaticResource LargeButtonStyle}"
+                    Text="Create Schedule"
+                    WidthRequest="250"
+                    IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsInt0Converter}}"
+                    Style="{StaticResource AddButtonStyle}"
                     Command="{Binding VisitScheduleCommand}" />
                 <Button 
-                    Text="Create Schedule"
-                    WidthRequest="300"
-                    BackgroundColor="#22c55e"
-                    IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsInt0Converter}}"
-                    Style="{StaticResource LargeButtonStyle}"
+                    Text="Edit Schedule"
+                    WidthRequest="250"
+                    IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsIntNot0Converter}}"
+                    Style="{StaticResource GenericButtonStyle}"
                     Command="{Binding VisitScheduleCommand}" />
+                <Button 
+                    Text="Delete Schedule"
+                    WidthRequest="250"
+                    IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsIntNot0Converter}}"
+                    Style="{StaticResource DeleteButtonStyle}"
+                    Command="{Binding DeleteScheduleCommand}" />
             </VerticalStackLayout>
         </Grid>
 
