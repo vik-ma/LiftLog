@@ -60,6 +60,7 @@ namespace LocalLiftLog.ViewModels
 
                     if (schedule is null)
                     {
+                        await DeleteWorkoutTemplateCollectionsByWorkoutRoutineId();
                         await ResetScheduleId();
                         return;
                     } 
@@ -79,10 +80,10 @@ namespace LocalLiftLog.ViewModels
         {
             if (WorkoutRoutine is null) return;
 
+            WorkoutScheduleList.Clear();
+
             // Exit function if no Schedule is set
             if (WorkoutRoutine.ScheduleId == 0) return;
-
-            WorkoutScheduleList.Clear();
 
             Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutRoutineId == WorkoutRoutine.Id;
 
@@ -93,7 +94,7 @@ namespace LocalLiftLog.ViewModels
             }
             catch
             {
-                await ResetScheduleId();
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Schedule.", "OK");
                 return;
             }
 
@@ -139,10 +140,9 @@ namespace LocalLiftLog.ViewModels
         private async Task ResetScheduleId()
         {
             WorkoutRoutine.ScheduleId = 0;
+            WorkoutRoutine.IsScheduleWeekly = false;
 
             await UpdateWorkoutRoutine();
-
-            await DeleteWorkoutTemplateCollectionsByWorkoutRoutineId();
 
             await Shell.Current.DisplayAlert("Schedule Not Found", "Schedule could not be found and has been reset.", "OK");
         }

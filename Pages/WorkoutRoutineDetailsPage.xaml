@@ -98,6 +98,7 @@
             <VerticalStackLayout
                 Grid.Column="1"
                 Spacing="4">
+                <Label Text="{Binding WorkoutRoutine.ScheduleId}" />
                 <HorizontalStackLayout HorizontalOptions="Center">
                     <CollectionView
                         ItemsSource="{Binding DayNameList}"
