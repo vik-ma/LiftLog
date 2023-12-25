@@ -7,8 +7,8 @@
              x:DataType="viewmodel:SelectWorkoutViewModel"
              Title="Select Workout">
 
-    <VerticalStackLayout HorizontalOptions="Center">
-        <VerticalStackLayout>
+    <VerticalStackLayout>
+        <VerticalStackLayout HorizontalOptions="Center">
             <Label 
                 Text="Select Routine"
                 HorizontalOptions="Center"
@@ -79,7 +79,7 @@
                 Margin="20" />
         </VerticalStackLayout>
 
-        <VerticalStackLayout>
+        <VerticalStackLayout HorizontalOptions="Center">
             <Label 
                 Text="Select Workout"
                 HorizontalOptions="Center"

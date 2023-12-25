@@ -259,7 +259,7 @@ namespace LocalLiftLog.ViewModels
 
             ShowWorkoutTemplateList = false;
 
-            OnPropertyChanged(nameof(SetList));
+            OnPropertyChanged(nameof(WorkoutTemplate));
         }
 
         [RelayCommand]
@@ -408,7 +408,7 @@ namespace LocalLiftLog.ViewModels
 
             await UpdateWorkoutTemplateAsync();
 
-            OnPropertyChanged(nameof(SetList));
+            OnPropertyChanged(nameof(WorkoutTemplate));
         }
     }
 }
