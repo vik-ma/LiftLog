@@ -139,7 +139,37 @@ namespace LocalLiftLog.ViewModels
 
             await UpdateWorkoutRoutine();
 
+            await DeleteWorkoutTemplateCollectionsByWorkoutRoutineId();
+
             await Shell.Current.DisplayAlert("Schedule Not Found", "Schedule could not be found and has been reset.", "OK");
+        }
+
+        private async Task DeleteWorkoutTemplateCollectionsByWorkoutRoutineId()
+        {
+            if (WorkoutRoutine is null) return;
+
+            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutRoutineId == WorkoutRoutine.Id;
+
+            IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
+            try
+            {
+                filteredWtcList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Workout Template Collections.", "OK");
+            }
+
+            foreach (var item in filteredWtcList)
+            {
+                await ExecuteAsync(async () =>
+                {
+                    if (!await _context.DeleteItemAsync<WorkoutTemplateCollection>(item))
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
+                    }
+                });
+            }
         }
 
         [RelayCommand]
