@@ -345,5 +345,23 @@ namespace LocalLiftLog.ViewModels
                 return null;
             }
         }
+
+        [RelayCommand]
+        private async Task CreateWorkoutTemplateAsync()
+        {
+            WorkoutTemplate workout = new();
+
+            await ExecuteAsync(async () =>
+            {
+                await _context.AddItemAsync<WorkoutTemplate>(workout);
+            });
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["WorkoutTemplate"] = workout
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(WorkoutDetailsPage)}?Id={workout.Id}", navigationParameter);
+        }
     }
 }

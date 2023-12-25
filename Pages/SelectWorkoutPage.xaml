@@ -77,6 +77,12 @@
                 BackgroundColor="#035afc"
                 Command="{Binding GoToWorkoutRoutineListPageCommand}"
                 Margin="20" />
+            <Button 
+                Text="Create New Workout"
+                Style="{StaticResource LargeButtonStyle}"
+                BackgroundColor="#035afc"
+                Command="{Binding CreateWorkoutTemplateCommand}"
+                Margin="20" />
         </VerticalStackLayout>
 
         <VerticalStackLayout HorizontalOptions="Center">
