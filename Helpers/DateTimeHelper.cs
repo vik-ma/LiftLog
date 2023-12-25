@@ -56,5 +56,10 @@ namespace LocalLiftLog.Helpers
             // Handle parsing errors if necessary
             return false;
         }
+
+        public static string GetWeekdayOfDate(DateTime date)
+        {
+            return date.DayOfWeek.ToString();
+        }
     }
 }
