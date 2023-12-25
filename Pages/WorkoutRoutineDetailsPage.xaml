@@ -148,6 +148,14 @@
                 <Button 
                     Text="Edit Schedule"
                     WidthRequest="300"
+                    IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsIntNot0Converter}}"
+                    Style="{StaticResource LargeButtonStyle}"
+                    Command="{Binding VisitScheduleCommand}" />
+                <Button 
+                    Text="Create Schedule"
+                    WidthRequest="300"
+                    BackgroundColor="#22c55e"
+                    IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsInt0Converter}}"
                     Style="{StaticResource LargeButtonStyle}"
                     Command="{Binding VisitScheduleCommand}" />
             </VerticalStackLayout>
