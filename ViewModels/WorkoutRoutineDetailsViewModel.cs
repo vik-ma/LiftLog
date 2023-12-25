@@ -44,6 +44,8 @@ namespace LocalLiftLog.ViewModels
         {
             if (WorkoutRoutine is null) return;
 
+            DayNameList.Clear();
+
             // Exit function if no Schedule is set
             if (WorkoutRoutine.ScheduleId == 0) return;
 
@@ -60,7 +62,6 @@ namespace LocalLiftLog.ViewModels
 
                     if (schedule is null)
                     {
-                        await DeleteWorkoutTemplateCollectionsByWorkoutRoutineId();
                         await ResetScheduleId();
                         return;
                     } 
@@ -143,6 +144,10 @@ namespace LocalLiftLog.ViewModels
             WorkoutRoutine.IsScheduleWeekly = false;
 
             await UpdateWorkoutRoutine();
+            await DeleteWorkoutTemplateCollectionsByWorkoutRoutineId();
+
+            WorkoutScheduleList.Clear();
+            DayNameList.Clear();
 
             await Shell.Current.DisplayAlert("Schedule Not Found", "Schedule could not be found and has been reset.", "OK");
         }
@@ -222,11 +227,17 @@ namespace LocalLiftLog.ViewModels
                     {
                         weeklySchedule = await _context.GetItemByKeyAsync<WeeklySchedule>(WorkoutRoutine.ScheduleId);
 
+                        if (weeklySchedule is null)
+                        {
+                            await ResetScheduleId();
+                            return;
+                        }
+
                         await GoToWeeklySchedulePage(weeklySchedule);
                     }
                     catch
                     {
-                        await Shell.Current.DisplayAlert("Error", "Weekly Schedule ID does not exist!", "OK");
+                        await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Schedule.", "OK");
                         return;
                     }
                 } 
@@ -238,11 +249,17 @@ namespace LocalLiftLog.ViewModels
                     {
                         customSchedule = await _context.GetItemByKeyAsync<CustomSchedule>(WorkoutRoutine.ScheduleId);
 
+                        if (customSchedule is null)
+                        {
+                            await ResetScheduleId();
+                            return;
+                        }
+
                         await GoToCustomSchedulePage(customSchedule);
                     }
                     catch
                     {
-                        await Shell.Current.DisplayAlert("Error", "Custom Schedule ID does not exist!", "OK");
+                        await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Schedule.", "OK");
                         return;
                     }
                 }
