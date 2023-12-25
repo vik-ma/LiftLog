@@ -44,6 +44,9 @@ namespace LocalLiftLog.ViewModels
         {
             if (WorkoutRoutine is null) return;
 
+            // Exit function if no Schedule is set
+            if (WorkoutRoutine.ScheduleId == 0) return;
+
             if (WorkoutRoutine.IsScheduleWeekly) 
             {
                 NumDaysInSchedule = 7;
