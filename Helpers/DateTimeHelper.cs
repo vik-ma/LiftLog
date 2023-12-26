@@ -19,6 +19,12 @@ namespace LocalLiftLog.Helpers
             return ymdDateString;
         }
 
+        public static string GetCurrentFormattedTime()
+        {
+            string timeString = DateTime.Now.ToString("HH:mm:ss");
+            return timeString;
+        }
+
         public static string FormatDateTimeToYmdString(DateTime dateTime)
         {
             return dateTime.ToString("yyyyMMdd");
