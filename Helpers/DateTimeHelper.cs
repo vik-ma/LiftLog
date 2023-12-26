@@ -10,12 +10,12 @@ namespace LocalLiftLog.Helpers
     {
         public static string GetCurrentFormattedDateTime()
         {
-            string dateTimeString = DateTime.UtcNow.ToString();
+            string dateTimeString = DateTime.Now.ToString();
             return dateTimeString;
         }
         public static string GetCurrentFormattedYmdDate()
         {
-            string ymdDateString = DateTime.UtcNow.ToString("yyyyMMdd");
+            string ymdDateString = DateTime.Now.ToString("yyyyMMdd");
             return ymdDateString;
         }
 
