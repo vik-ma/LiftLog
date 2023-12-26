@@ -123,7 +123,7 @@ namespace LocalLiftLog.ViewModels
             string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
 
             completedSet.IsCompleted = true;
-            completedSet.DateCompleted = currentDateTimeString;
+            completedSet.TimeCompleted = currentDateTimeString;
 
             await ExecuteAsync(async () =>
             {

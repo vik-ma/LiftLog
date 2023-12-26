@@ -14,7 +14,7 @@ namespace LocalLiftLog.Models
         public string ExerciseName { get; set; }
         public string Note { get; set; }
         public bool IsCompleted { get; set; }
-        public string DateCompleted { get; set; }
+        public string TimeCompleted { get; set; }
         public int CompletedWorkoutId { get; set; }
         public int Weight { get; set; }
         public int Reps { get; set; }

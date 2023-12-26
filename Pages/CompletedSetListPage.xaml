@@ -105,11 +105,11 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span 
-                                                Text="Date: " 
+                                                Text="Time Completed: " 
                                                 FontAttributes="Bold"  
                                                 Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
-                                                Text="{Binding DateCompleted}"
+                                                Text="{Binding TimeCompleted}"
                                                 Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
