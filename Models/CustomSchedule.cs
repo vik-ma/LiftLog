@@ -14,6 +14,5 @@ namespace LocalLiftLog.Models
         public int ScheduleFactoryId { get; set; }
         public int WorkoutRoutineId { get; set; }
         public int NumDaysInSchedule { get; set; }
-        public string ScheduleStartDate { get; set; }
     }
 }

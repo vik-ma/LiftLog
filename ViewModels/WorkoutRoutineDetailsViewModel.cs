@@ -142,6 +142,7 @@ namespace LocalLiftLog.ViewModels
         {
             WorkoutRoutine.ScheduleId = 0;
             WorkoutRoutine.IsScheduleWeekly = false;
+            WorkoutRoutine.CustomScheduleStartDate = null;
 
             await UpdateWorkoutRoutine();
             await DeleteWorkoutTemplateCollectionsByWorkoutRoutineId();
