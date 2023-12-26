@@ -14,6 +14,7 @@ namespace LocalLiftLog.Models
         public int WorkoutTemplateId { get; set; }
         public string ExerciseName { get; set; }
         public string Note { get; set; }
+        public bool IsWarmupSet { get; set; }
         public bool IsTrackingWeight { get; set; }
         public bool IsTrackingReps { get; set; }
         public bool IsTrackingRir {  get; set; }

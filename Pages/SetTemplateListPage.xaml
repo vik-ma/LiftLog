@@ -53,6 +53,9 @@
                                 Text="{Binding Note}"
                                 Style="{StaticResource SmallEntryFieldStyle}" />
                             <Entry 
+                                Text="{Binding IsWarmupSet}"
+                                Style="{StaticResource SmallEntryFieldStyle}" />
+                            <Entry 
                                 Text="{Binding IsTrackingWeight}"
                                 Style="{StaticResource SmallEntryFieldStyle}" />
                             <Entry 
