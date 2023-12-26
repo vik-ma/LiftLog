@@ -119,6 +119,12 @@
                                     Style="{StaticResource ExtraSmallEntryFieldStyle}"
                                     IsVisible="{Binding IsTrackingCardioResistance}" />
                                 <Label
+                                    Text="Warmup Set"
+                                    TextColor="#575757"
+                                    FontAttributes="Italic"
+                                    Style="{StaticResource StartedWorkoutLabelStyle}"
+                                    IsVisible="{Binding IsWarmupSet}" />
+                                <Label
                                     Text="Includes Body Weight"
                                     TextColor="#575757"
                                     FontAttributes="Italic"

@@ -10,7 +10,6 @@
         <HorizontalStackLayout 
             HorizontalOptions="Center"
             Spacing="10"
-            Padding="0, 5"
             IsVisible="{Binding IsEditing}">
             <Label 
                 Text="Editing Set: "
@@ -23,7 +22,6 @@
         <HorizontalStackLayout 
             HorizontalOptions="Center"
             Spacing="10"
-            Padding="0, 5"
             IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}">
             <Label 
                 Text="Add Exercise"
@@ -33,11 +31,11 @@
         <Grid 
             RowDefinitions="*, *"
             ColumnDefinitions="*, Auto"
-            Padding="10"
             ColumnSpacing="30"
             HorizontalOptions="Center">
             <VerticalStackLayout 
                 Grid.Column="0"
+                Spacing="0"
                 x:DataType="viewmodel:CreateSetTemplateViewModel">
                 <HorizontalStackLayout 
                     Spacing="10"
@@ -61,7 +59,7 @@
                         Text="{Binding NewSetTemplateNumSets}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout 
-                    Spacing="10"
+                    Spacing="5"
                     Padding="0, 10, 0, 0">
                     <Label 
                         Text="Note:"
@@ -124,6 +122,14 @@
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingCardioResistance}" />
                     <Label 
                         Text="Track Cardio Resistance Level"
+                        Style="{StaticResource CheckBoxLabelStyle}" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <CheckBox 
+                        Style="{StaticResource CheckBoxStyle}"
+                        IsChecked="{Binding OperatingSetTemplate.IsWarmupSet}" />
+                    <Label 
+                        Text="Is Warmup Set"
                         Style="{StaticResource CheckBoxLabelStyle}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
