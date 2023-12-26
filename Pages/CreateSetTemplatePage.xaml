@@ -37,9 +37,7 @@
                 Grid.Column="0"
                 Spacing="0"
                 x:DataType="viewmodel:CreateSetTemplateViewModel">
-                <HorizontalStackLayout 
-                    Spacing="10"
-                    Padding="0">
+                <Grid>
                     <Label 
                         Text="Exercise:"
                         Style="{StaticResource MediumHeaderLabelStyle}" />
@@ -47,27 +45,31 @@
                         Text="{Binding NewSetTemplateSelectedExerciseName}"
                         Style="{StaticResource MediumHeaderLabelStyle}"
                         TextColor="#4287f5" />
-                </HorizontalStackLayout>
-                <HorizontalStackLayout 
-                    Spacing="5"
+                </Grid>
+                <Grid 
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}">
                     <Label 
                         Text="Number of Sets:"
+                        HorizontalOptions="Start"
                         Style="{StaticResource CheckBoxLabelStyle}" />
                     <Entry 
+                        HorizontalOptions="End"
                         Style="{StaticResource SmallEntryFieldStyle}"
                         Text="{Binding NewSetTemplateNumSets}" />
-                </HorizontalStackLayout>
-                <HorizontalStackLayout 
-                    Spacing="5"
-                    Padding="0, 10, 0, 0">
+                </Grid>
+                <Grid 
+                    Padding="0, 10, 0, 0"
+                    WidthRequest="320">
                     <Label 
                         Text="Note:"
+                        HorizontalOptions="Start"
                         Style="{StaticResource CheckBoxLabelStyle}" />
                     <Entry 
+                        HorizontalOptions="End"
+                        WidthRequest="260"
                         Style="{StaticResource GenericEntryFieldStyle}"
                         Text="{Binding OperatingSetTemplate.Note}" />
-                </HorizontalStackLayout>
+                </Grid>
                 <Grid>
                     <Label
                         Text="Track Weight"

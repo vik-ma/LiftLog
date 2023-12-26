@@ -122,7 +122,7 @@
             <Style x:Key="CheckBoxLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="18" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
-                <Setter Property="WidthRequest" Value="250" />
+                <Setter Property="WidthRequest" Value="150" />
             </Style>
             <Style x:Key="ListViewLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="18" />
