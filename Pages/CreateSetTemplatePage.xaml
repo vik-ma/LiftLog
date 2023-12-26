@@ -49,7 +49,7 @@
                         TextColor="#4287f5" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout 
-                    Spacing="10"
+                    Spacing="5"
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}">
                     <Label 
                         Text="Number of Sets:"
@@ -68,78 +68,78 @@
                         Style="{StaticResource GenericEntryFieldStyle}"
                         Text="{Binding OperatingSetTemplate.Note}" />
                 </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}"
-                        IsChecked="{Binding OperatingSetTemplate.IsTrackingWeight}" />
-                    <Label 
+                <Grid>
+                    <Label
                         Text="Track Weight"
                         Style="{StaticResource CheckBoxLabelStyle}" />
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}" 
-                        IsChecked="{Binding OperatingSetTemplate.IsTrackingReps}" />
+                    <CheckBox
+                        Style="{StaticResource CheckBoxStyle}"
+                        IsChecked="{Binding OperatingSetTemplate.IsTrackingWeight}" />
+                </Grid>
+                <Grid>
                     <Label 
                         Text="Track Reps"
                         Style="{StaticResource CheckBoxLabelStyle}" />
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}"
-                        IsChecked="{Binding OperatingSetTemplate.IsTrackingRir}" />
+                        Style="{StaticResource CheckBoxStyle}" 
+                        IsChecked="{Binding OperatingSetTemplate.IsTrackingReps}" />
+                </Grid>
+                <Grid>
                     <Label 
                         Text="Track RIR"
                         Style="{StaticResource CheckBoxLabelStyle}" />
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
-                        IsChecked="{Binding OperatingSetTemplate.IsTrackingRpe}" />
+                        IsChecked="{Binding OperatingSetTemplate.IsTrackingRir}" />
+                </Grid>
+                <Grid>
                     <Label 
                         Text="Track RPE"
                         Style="{StaticResource CheckBoxLabelStyle}" />
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
-                        IsChecked="{Binding OperatingSetTemplate.IsTrackingTime}" />
+                        IsChecked="{Binding OperatingSetTemplate.IsTrackingRpe}" />
+                </Grid>
+                <Grid>
                     <Label 
                         Text="Track Time"
                         Style="{StaticResource CheckBoxLabelStyle}" />
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
-                        IsChecked="{Binding OperatingSetTemplate.IsTrackingDistance}" />
+                        IsChecked="{Binding OperatingSetTemplate.IsTrackingTime}" />
+                </Grid>
+                <Grid>
                     <Label 
                         Text="Track Distance"
                         Style="{StaticResource CheckBoxLabelStyle}" />
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
-                        IsChecked="{Binding OperatingSetTemplate.IsTrackingCardioResistance}" />
+                        IsChecked="{Binding OperatingSetTemplate.IsTrackingDistance}" />
+                </Grid>
+                <Grid>
                     <Label 
                         Text="Track Cardio Resistance Level"
                         Style="{StaticResource CheckBoxLabelStyle}" />
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
-                        IsChecked="{Binding OperatingSetTemplate.IsWarmupSet}" />
+                        IsChecked="{Binding OperatingSetTemplate.IsTrackingCardioResistance}" />
+                </Grid>
+                <Grid>
                     <Label 
                         Text="Is Warmup Set"
                         Style="{StaticResource CheckBoxLabelStyle}" />
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
-                        IsChecked="{Binding OperatingSetTemplate.IsUsingBodyWeightAsWeight}" />
+                        IsChecked="{Binding OperatingSetTemplate.IsWarmupSet}" />
+                </Grid>
+                <Grid>
                     <Label 
                         Text="Add Body Weight To Weight"
                         Style="{StaticResource CheckBoxLabelStyle}" />
-                </HorizontalStackLayout>
+                    <CheckBox 
+                        Style="{StaticResource CheckBoxStyle}"
+                        IsChecked="{Binding OperatingSetTemplate.IsUsingBodyWeightAsWeight}" />
+                </Grid>
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Column="1">
                 <Label 
