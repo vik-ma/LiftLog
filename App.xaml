@@ -116,10 +116,14 @@
             </Style>
             <Style x:Key="CheckBoxStyle" TargetType="CheckBox">
                 <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Scale" Value="1.2" />
+                <Setter Property="WidthRequest" Value="180" />
             </Style>
             <Style x:Key="CheckBoxLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="18" />
-                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="WidthRequest" Value="180" />
             </Style>
             <Style x:Key="ListViewLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="18" />
