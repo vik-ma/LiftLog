@@ -15,7 +15,7 @@ namespace LocalLiftLog.Helpers
         }
         public static string GetCurrentFormattedYmdDate()
         {
-            string ymdDateString = DateTime.Now.ToString("yyyyMMdd");
+            string ymdDateString = DateTime.Now.ToString("yyyy-MM-dd");
             return ymdDateString;
         }
 
@@ -27,7 +27,7 @@ namespace LocalLiftLog.Helpers
 
         public static string FormatDateTimeToYmdString(DateTime dateTime)
         {
-            return dateTime.ToString("yyyyMMdd");
+            return dateTime.ToString("yyyy-MM-dd");
         }
 
         public static bool ValidateStartAndEndDate(string startDateTime, string endDateTime)
@@ -48,7 +48,7 @@ namespace LocalLiftLog.Helpers
         public static bool ValidateStartAndEndYmdDate(string startYmdDate, string endYmdDate)
         {
             // Define the expected date format
-            string dateFormat = "yyyyMMdd";
+            string dateFormat = "yyyy-MM-dd";
 
             // Parse the DateTime strings into DateTime objects
             if (DateTime.TryParseExact(startYmdDate, dateFormat, null, System.Globalization.DateTimeStyles.None, out DateTime start) &&
