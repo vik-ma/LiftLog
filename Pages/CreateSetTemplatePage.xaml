@@ -54,7 +54,8 @@
                         Style="{StaticResource CheckBoxLabelStyle}" />
                     <Entry 
                         HorizontalOptions="End"
-                        Style="{StaticResource SmallEntryFieldStyle}"
+                        WidthRequest="30"
+                        Style="{StaticResource ExtraSmallEntryFieldStyle}"
                         Text="{Binding NewSetTemplateNumSets}" />
                 </Grid>
                 <Grid 
@@ -66,7 +67,7 @@
                         Style="{StaticResource CheckBoxLabelStyle}" />
                     <Entry 
                         HorizontalOptions="End"
-                        WidthRequest="260"
+                        WidthRequest="240"
                         Style="{StaticResource GenericEntryFieldStyle}"
                         Text="{Binding OperatingSetTemplate.Note}" />
                 </Grid>

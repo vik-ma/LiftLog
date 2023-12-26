@@ -44,7 +44,7 @@ namespace LocalLiftLog.ViewModels
         private ObservableCollection<Exercise> exerciseList = new();
 
         [ObservableProperty]
-        private int newSetTemplateNumSets;
+        private int newSetTemplateNumSets = 1;
 
         [ObservableProperty]
         private string newSetTemplateSelectedExerciseName;
