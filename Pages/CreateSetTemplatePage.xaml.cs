@@ -2,6 +2,7 @@ namespace LocalLiftLog.Pages;
 
 using LocalLiftLog.Models;
 using LocalLiftLog.ViewModels;
+using System.Collections.ObjectModel;
 
 public partial class CreateSetTemplatePage : ContentPage
 {
@@ -26,6 +27,27 @@ public partial class CreateSetTemplatePage : ContentPage
         {
             var selectedExercise = (Exercise)args.SelectedItem;
             _viewModel.NewSetTemplateSelectedExerciseName = selectedExercise.Name;
+        }
+    }
+
+    void OnFilterTextChanged(object sender, TextChangedEventArgs args) 
+    {
+        string filterText = args.NewTextValue.ToLowerInvariant();
+
+        _viewModel.FilteredExerciseList.Clear();
+
+        if (string.IsNullOrWhiteSpace(filterText))
+        {
+            _viewModel.FilteredExerciseList = new(_viewModel.ExerciseList);
+        }
+        else
+        {
+            // Filter the list based on the user input
+            var filteredItems = _viewModel.ExerciseList.Where(item => item.Name.ToLowerInvariant().StartsWith(filterText));
+            foreach (var item in filteredItems)
+            {
+                _viewModel.FilteredExerciseList.Add(item);
+            }
         }
     }
 }

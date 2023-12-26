@@ -148,9 +148,14 @@
                 <Label 
                     Text="Exercise List"
                     Style="{StaticResource MediumHeaderLabelStyle}" />
+                <SearchBar 
+                    Placeholder="Filter exercises..."
+                    WidthRequest="220"
+                    TextChanged="OnFilterTextChanged" />
                 <ListView
+                    Margin="0, 10"
                     SelectionMode="Single"
-                    ItemsSource="{Binding ExerciseList}"
+                    ItemsSource="{Binding FilteredExerciseList}"
                     ItemSelected="OnItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:Exercise">

@@ -41,7 +41,10 @@ namespace LocalLiftLog.ViewModels
         }
 
         [ObservableProperty]
-        private ObservableCollection<Exercise> exerciseList = new();
+        public List<Exercise> exerciseList = new();
+
+        [ObservableProperty]
+        public ObservableCollection<Exercise> filteredExerciseList = new();
 
         [ObservableProperty]
         private int newSetTemplateNumSets = 1;
@@ -86,6 +89,8 @@ namespace LocalLiftLog.ViewModels
                 {
                     ExerciseList.Add(exercise);
                 }
+
+                FilteredExerciseList = new(ExerciseList);
             }
         }
 
