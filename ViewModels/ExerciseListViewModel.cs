@@ -100,7 +100,6 @@ namespace LocalLiftLog.ViewModels
             }
         }
 
-        [RelayCommand]
         public void AddExerciseGroupToFilterList(int exerciseNum)
         {
             if (exerciseNum < 0 || exerciseNum > exerciseGroupDict.Count)

@@ -65,7 +65,9 @@
                 </CollectionView>
             </VerticalStackLayout>
 
-            <VerticalStackLayout Grid.Column="1">
+            <VerticalStackLayout 
+                Grid.Column="1"
+                WidthRequest="240">
                 <ListView
                     SelectionMode="Single"
                     ItemsSource="{Binding ExerciseGroupIntList}"
@@ -82,37 +84,21 @@
                 </ListView>
 
                 <VerticalStackLayout
-                    HorizontalOptions="Center"
-                    Spacing="10"
-                    Margin="0, 20">
-                    <Label VerticalOptions="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span 
-                                    Text="Filtered Exercise Groups: " 
-                                    FontAttributes="Bold"  
-                                    Style="{StaticResource SmallSpanStyle}" />
-                                <Span 
-                                    Text="{Binding ExerciseGroupFilterSet, Converter={StaticResource ExerciseGroupConverter}}"
-                                    Style="{StaticResource SmallSpanStyle}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <HorizontalStackLayout Spacing="10">
-                        <Entry 
-                            Text="{Binding ExerciseGroupFilterInput}"
-                            Style="{StaticResource ExtraSmallEntryFieldStyle}" />
-                        <Button 
-                            Text="Filter"
-                            Command="{Binding AddExerciseGroupToFilterListCommand}"
-                            CommandParameter="{Binding ExerciseGroupFilterInput}"
-                            Style="{StaticResource GenericButtonStyle}" />
-                        <Button 
-                            Text="Reset"
-                            IsVisible="{Binding ExerciseGroupFilterSet.Count}"
-                            Command="{Binding ResetFilterListCommand}"
-                            Style="{StaticResource DeleteButtonStyle}" />
-                    </HorizontalStackLayout>
+                    Spacing="5"
+                    Margin="0, 10">
+                    <Label
+                        Text="Filtered Exercise Groups" 
+                        FontAttributes="Bold"  
+                        Style="{StaticResource SmallSpanStyle}" />
+                    <Label 
+                        Text="{Binding ExerciseGroupFilterSet, Converter={StaticResource ExerciseGroupConverter}}"
+                        Style="{StaticResource SmallSpanStyle}" />
+                    <Button 
+                        HorizontalOptions="Center"
+                        Text="Reset"
+                        IsVisible="{Binding ExerciseGroupFilterSet.Count}"
+                        Command="{Binding ResetFilterListCommand}"
+                        Style="{StaticResource DeleteButtonStyle}" />
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </Grid>
