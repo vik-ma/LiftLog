@@ -45,22 +45,32 @@ namespace LocalLiftLog.ViewModels
 
                 ExerciseList.Clear();
 
-                UpdateExerciseList(exercises);
+                if (exercises is not null && exercises.Any())
+                {
+                    exercises ??= new ObservableCollection<Exercise>();
+
+                    foreach (var exercise in exercises)
+                    {
+                        ExerciseList.Add(exercise);
+                    }
+                }
+
+                FilteredExerciseList = new(ExerciseList);
             });
         }
 
-        private void UpdateExerciseList(IEnumerable<Exercise> exercises)
+        private void UpdateFilteredExerciseList(IEnumerable<Exercise> exercises)
         {
+            FilteredExerciseList.Clear();
+
             if (exercises is not null && exercises.Any())
             {
                 exercises ??= new ObservableCollection<Exercise>();
 
                 foreach (var exercise in exercises)
                 {
-                    ExerciseList.Add(exercise);
+                    FilteredExerciseList.Add(exercise);
                 }
-
-                FilteredExerciseList = new(ExerciseList);
             }
         }
 
@@ -93,25 +103,21 @@ namespace LocalLiftLog.ViewModels
 
             ExerciseGroupFilterSet.Add(exerciseNum);
 
-            ExerciseList.Clear();
-
             var exercises = _exerciseData.FilterExerciseListByExerciseGroups(ExerciseGroupFilterSet);
 
-            UpdateExerciseList(exercises);
+            UpdateFilteredExerciseList(exercises);
 
             OnPropertyChanged(nameof(ExerciseGroupFilterSet));
         }
 
         [RelayCommand]
-        private async Task ResetFilterList()
+        private void ResetFilterList()
         {
             if (ExerciseGroupFilterSet.Count == 0) return;
 
             ExerciseGroupFilterSet.Clear();
 
-            ExerciseList.Clear();
-
-            await LoadExercisesAsync();
+            FilteredExerciseList = new(ExerciseList);
 
             OnPropertyChanged(nameof(ExerciseGroupFilterSet));
         }
