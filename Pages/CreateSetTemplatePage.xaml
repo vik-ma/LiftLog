@@ -37,7 +37,7 @@
                 Grid.Column="0"
                 Spacing="0"
                 x:DataType="viewmodel:CreateSetTemplateViewModel">
-                <Grid>
+                <HorizontalStackLayout Spacing="10">
                     <Label 
                         Text="Exercise:"
                         Style="{StaticResource MediumHeaderLabelStyle}" />
@@ -45,7 +45,7 @@
                         Text="{Binding NewSetTemplateSelectedExerciseName}"
                         Style="{StaticResource MediumHeaderLabelStyle}"
                         TextColor="#4287f5" />
-                </Grid>
+                </HorizontalStackLayout>
                 <Grid 
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}">
                     <Label 
