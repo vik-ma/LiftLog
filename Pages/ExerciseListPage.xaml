@@ -74,7 +74,7 @@
                         <DataTemplate x:DataType="x:Int32">
                             <ViewCell>
                                 <Label 
-                                    Text="{Binding .}"
+                                    Text="{Binding ., Converter={StaticResource ExerciseGroupConverter}}"
                                     Style="{StaticResource ListViewLabelStyle}"/>
                             </ViewCell>
                         </DataTemplate>

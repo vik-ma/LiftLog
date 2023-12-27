@@ -14,15 +14,15 @@ namespace LocalLiftLog.Converters
         {
             var exerciseGroupDict = ExerciseGroupDictionary.ExerciseGroupDict;
 
-            List<string> exerciseGroupStringList = new();
-
             if (value is HashSet<int> exerciseGroups)
             {
+                List<string> exerciseGroupStringList = new();
+
                 foreach (var group in exerciseGroups) 
                 {
-                    if (exerciseGroupDict.ContainsKey(group))
+                    if (exerciseGroupDict.TryGetValue(group, out string exercise))
                     {
-                        exerciseGroupStringList.Add(exerciseGroupDict[group]);
+                        exerciseGroupStringList.Add(exercise);
                     }
                     else return "Invalid Group";
                 }
@@ -32,6 +32,14 @@ namespace LocalLiftLog.Converters
                 var exerciseGroupsString = String.Join(", ", exerciseGroupStringList);
 
                 return exerciseGroupsString;
+            }
+
+            if (value is int exerciseGroup)
+            {
+                if (exerciseGroupDict.TryGetValue(exerciseGroup, out string exercise))
+                {
+                    return exercise;
+                }
             }
 
             return "Invalid Group";
