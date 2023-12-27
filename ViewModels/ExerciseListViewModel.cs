@@ -37,6 +37,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private int exerciseGroupFilterInput;
 
+        [ObservableProperty]
+        private List<int> exerciseGroupIntList = new();
+
         public async Task LoadExercisesAsync()
         {
             await ExecuteAsync(async () =>
@@ -57,6 +60,11 @@ namespace LocalLiftLog.ViewModels
 
                 FilteredExerciseList = new(ExerciseList);
             });
+        }
+
+        public void LoadExerciseGroupIntList()
+        {
+            ExerciseGroupIntList = new(ExerciseGroupDictionary.ExerciseGroupDict.Keys);
         }
 
         private void UpdateFilteredExerciseList(IEnumerable<Exercise> exercises)

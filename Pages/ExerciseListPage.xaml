@@ -68,13 +68,13 @@
             <VerticalStackLayout Grid.Column="1">
                 <ListView
                     SelectionMode="Single"
-                    ItemsSource="{Binding FilteredExerciseList}"
+                    ItemsSource="{Binding ExerciseGroupIntList}"
                     >
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Exercise">
+                        <DataTemplate x:DataType="x:Int32">
                             <ViewCell>
                                 <Label 
-                                    Text="{Binding Name}"
+                                    Text="{Binding .}"
                                     Style="{StaticResource ListViewLabelStyle}"/>
                             </ViewCell>
                         </DataTemplate>
