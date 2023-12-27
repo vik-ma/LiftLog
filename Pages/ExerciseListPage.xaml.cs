@@ -17,4 +17,13 @@ public partial class ExerciseListPage : ContentPage
         _viewModel.LoadExerciseGroupIntList();
         await _viewModel.LoadExercisesAsync();
     }
+
+    void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+    {
+        if (args.SelectedItem != null)
+        {
+            var selectedExercise = (int)args.SelectedItem;
+            _viewModel.AddExerciseGroupToFilterList(selectedExercise);
+        }
+    }
 }

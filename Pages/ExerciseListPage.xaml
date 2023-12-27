@@ -69,7 +69,7 @@
                 <ListView
                     SelectionMode="Single"
                     ItemsSource="{Binding ExerciseGroupIntList}"
-                    >
+                    ItemSelected="OnItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="x:Int32">
                             <ViewCell>
