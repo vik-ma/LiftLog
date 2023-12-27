@@ -43,7 +43,8 @@ public partial class CreateSetTemplatePage : ContentPage
         else
         {
             // Filter the list based on the user input
-            var filteredItems = _viewModel.ExerciseList.Where(item => item.Name.ToLowerInvariant().StartsWith(filterText));
+            var filteredItems = _viewModel.ExerciseList.Where(item => item.Name.ToLowerInvariant().Contains(filterText));
+            
             foreach (var item in filteredItems)
             {
                 _viewModel.FilteredExerciseList.Add(item);

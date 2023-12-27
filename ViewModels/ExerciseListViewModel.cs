@@ -26,7 +26,10 @@ namespace LocalLiftLog.ViewModels
         }
 
         [ObservableProperty]
-        private ObservableCollection<Exercise> exerciseList = new();
+        public List<Exercise> exerciseList = new();
+
+        [ObservableProperty]
+        public ObservableCollection<Exercise> filteredExerciseList = new();
 
         [ObservableProperty]
         private HashSet<int> exerciseGroupFilterSet = new();
@@ -38,9 +41,9 @@ namespace LocalLiftLog.ViewModels
         {
             await ExecuteAsync(async () =>
             {
-                ExerciseList.Clear();
-
                 var exercises = await _exerciseData.GetFullExerciseList();
+
+                ExerciseList.Clear();
 
                 UpdateExerciseList(exercises);
             });
@@ -56,6 +59,8 @@ namespace LocalLiftLog.ViewModels
                 {
                     ExerciseList.Add(exercise);
                 }
+
+                FilteredExerciseList = new(ExerciseList);
             }
         }
 
