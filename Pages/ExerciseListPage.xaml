@@ -17,10 +17,18 @@
             HorizontalOptions="Center"
             ColumnDefinitions="Auto, Auto"
             ColumnSpacing="10">
-            <VerticalStackLayout Grid.Column="0">
+            <VerticalStackLayout
+                Grid.Column="0"
+                WidthRequest="330"
+                Spacing="10">
+                <SearchBar 
+                    Placeholder="Filter exercises..."
+                    WidthRequest="330"
+                    HorizontalOptions="Center"
+                    TextChanged="OnFilterTextChanged" />
                 <CollectionView
                     ItemsSource="{Binding FilteredExerciseList}"
-                    HorizontalOptions="Center">
+                    HorizontalOptions="Start">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout 
                             ItemSpacing="0"
@@ -45,7 +53,6 @@
                                 </Label>
                                 <Label 
                                     VerticalOptions="Center"
-                                    WidthRequest="330"
                                     HorizontalOptions="Start">
                                     <Label.FormattedText>
                                         <FormattedString>

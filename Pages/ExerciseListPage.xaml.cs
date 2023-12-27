@@ -26,4 +26,26 @@ public partial class ExerciseListPage : ContentPage
             _viewModel.AddExerciseGroupToFilterList(selectedExercise);
         }
     }
+
+    void OnFilterTextChanged(object sender, TextChangedEventArgs args)
+    {
+        string filterText = args.NewTextValue.ToLowerInvariant();
+
+        _viewModel.FilteredExerciseList.Clear();
+
+        if (string.IsNullOrWhiteSpace(filterText))
+        {
+            _viewModel.FilteredExerciseList = new(_viewModel.ExerciseList);
+        }
+        else
+        {
+            // Filter the list based on the user input
+            var filteredItems = _viewModel.ExerciseList.Where(item => item.Name.ToLowerInvariant().Contains(filterText));
+
+            foreach (var item in filteredItems)
+            {
+                _viewModel.FilteredExerciseList.Add(item);
+            }
+        }
+    }
 }
