@@ -82,5 +82,38 @@ namespace LocalLiftLog.ViewModels
                 UserPreferencesList.Add(userPreferences);
             });
         }
+
+        [RelayCommand]
+        private async Task UpdateUserPreferencesAsync(UserPreferences userPreferences)
+        {
+            if (userPreferences is null)
+                return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<UserPreferences>(userPreferences))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating User Preferences.", "OK");
+                }
+            });
+
+            await LoadUserPreferencesAsync();
+        }
+
+        [RelayCommand]
+        private async Task ToggleIsUsingMetricUnits(UserPreferences userPreferences)
+        {
+            userPreferences.IsUsingMetricUnits = !userPreferences.IsUsingMetricUnits;
+
+            await UpdateUserPreferencesAsync(userPreferences);
+        }
+
+        [RelayCommand]
+        private async Task ToggleShowCompletedSetTimestamp(UserPreferences userPreferences)
+        {
+            userPreferences.ShowCompletedSetTimestamp = !userPreferences.ShowCompletedSetTimestamp;
+
+            await UpdateUserPreferencesAsync(userPreferences);
+        }
     }
 }
