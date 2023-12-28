@@ -74,6 +74,12 @@
                 Grid.Column="1"
                 Command="{Binding GoToSelectWorkoutCommand}"
                 Style="{StaticResource MainPageNavigationButtonStyle}"/>
+            <Button
+                Text="User Prefences"
+                Grid.Row="3"
+                Grid.Column="1"
+                Command="{Binding GoToUserPreferencesCommand}"
+                Style="{StaticResource MainPageNavigationButtonStyle}"/>
         </Grid>
     </VerticalStackLayout>
 
