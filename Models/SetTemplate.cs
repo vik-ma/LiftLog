@@ -32,15 +32,15 @@ namespace LocalLiftLog.Models
             List<string> isTrackingList = new();
             List<string> isNotTrackingList = new();
 
-            (this.IsWarmupSet ? isTrackingList : isNotTrackingList).Add("Warmup");
-            (this.IsTrackingWeight ? isTrackingList : isNotTrackingList).Add("Weight");
-            (this.IsTrackingReps ? isTrackingList : isNotTrackingList).Add("Reps");
-            (this.IsTrackingRir ? isTrackingList : isNotTrackingList).Add("RIR");
-            (this.IsTrackingRpe ? isTrackingList : isNotTrackingList).Add("RPE");
-            (this.IsTrackingTime ? isTrackingList : isNotTrackingList).Add("Time");
-            (this.IsTrackingDistance ? isTrackingList : isNotTrackingList).Add("Distance");
-            (this.IsTrackingCardioResistance ? isTrackingList : isNotTrackingList).Add("Cardio Resistance");
-            (this.IsUsingBodyWeightAsWeight ? isTrackingList : isNotTrackingList).Add("Count Body Weight");
+            (IsWarmupSet ? isTrackingList : isNotTrackingList).Add("Warmup");
+            (IsTrackingWeight ? isTrackingList : isNotTrackingList).Add("Weight");
+            (IsTrackingReps ? isTrackingList : isNotTrackingList).Add("Reps");
+            (IsTrackingRir ? isTrackingList : isNotTrackingList).Add("RIR");
+            (IsTrackingRpe ? isTrackingList : isNotTrackingList).Add("RPE");
+            (IsTrackingTime ? isTrackingList : isNotTrackingList).Add("Time");
+            (IsTrackingDistance ? isTrackingList : isNotTrackingList).Add("Distance");
+            (IsTrackingCardioResistance ? isTrackingList : isNotTrackingList).Add("Cardio Resistance");
+            (IsUsingBodyWeightAsWeight ? isTrackingList : isNotTrackingList).Add("Count Body Weight");
 
             Dictionary<bool, List<string>> setTrackingDict = new()
             {
