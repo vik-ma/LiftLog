@@ -13,6 +13,49 @@
             FontSize="30"
             FontAttributes="Bold" />
 
+        <CollectionView
+            ItemsSource="{Binding UserPreferencesList}"
+            HorizontalOptions="Center">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout 
+                    ItemSpacing="3"
+                    Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:UserPreferences">
+                    <VerticalStackLayout>
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Id: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding Id}"
+                                        FontAttributes="Bold"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <ContentView>
+                    <VerticalStackLayout
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Label 
+                            Text="No User Preferences Added!" 
+                            FontSize="18" 
+                            FontAttributes="Bold" 
+                            HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </ContentView>
+            </CollectionView.EmptyView>
+        </CollectionView>
+
         <Button 
             Text="Go Back"
             Style="{StaticResource LargeButtonStyle}"
