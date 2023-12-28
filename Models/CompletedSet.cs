@@ -26,5 +26,15 @@ namespace LocalLiftLog.Models
         public int Distance { get; set; }
         public int CardioResistance { get; set; }
         public bool IsUsingBodyWeightAsWeight { get; set; }
+
+        #nullable enable
+        public (bool IsValid, string? ErrorMessage) ValidatePercentCompletedValue()
+        {
+            if (PercentCompleted < 0 || PercentCompleted > 100)
+            {
+                return (false, "Invalid Percent Value.");
+            }
+            return (true, null);
+        }
     }
 }
