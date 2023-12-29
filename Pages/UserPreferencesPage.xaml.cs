@@ -10,10 +10,4 @@ public partial class UserPreferencesPage : ContentPage
         _viewModel = viewModel;
         BindingContext = _viewModel;
     }
-
-    protected async override void OnAppearing()
-    {
-        base.OnAppearing();
-        await _viewModel.LoadUserPreferencesAsync();
-    }
 }

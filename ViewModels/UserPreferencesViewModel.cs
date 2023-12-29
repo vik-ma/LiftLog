@@ -23,6 +23,12 @@ namespace LocalLiftLog.ViewModels
         public UserPreferencesViewModel(DatabaseContext context)
         {
             _context = context;
+            InitializeUserSettings();
+        }
+
+        private async void InitializeUserSettings()
+        {
+            await LoadUserPreferencesAsync();
         }
 
 
