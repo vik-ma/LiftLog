@@ -165,6 +165,8 @@
             <toolkit:IndexToArrayItemConverter x:Key="IndexToArrayItemConverter" />
             <toolkit:IsListNullOrEmptyConverter x:Key="IsListNullOrEmptyConverter" />
             <toolkit:IsListNotNullOrEmptyConverter x:Key="IsListNotNullOrEmptyConverter" />
+            <toolkit:IsNullConverter x:Key="IsNullConverter" />
+            <toolkit:IsNotNullConverter x:Key="IsNotNullConverter" />
 
             <DataTemplate 
                 x:Key="WeeklyScheduleCollectionViewDataTemplate"
