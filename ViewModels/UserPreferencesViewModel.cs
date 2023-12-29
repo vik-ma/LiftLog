@@ -17,13 +17,14 @@ namespace LocalLiftLog.ViewModels
     {
         private readonly DatabaseContext _context;
 
+        [ObservableProperty]
+        private UserPreferences userSettings;
+
         public UserPreferencesViewModel(DatabaseContext context)
         {
             _context = context;
         }
 
-        [ObservableProperty]
-        private ObservableCollection<UserPreferences> userPreferencesList = new();
 
         #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
@@ -53,18 +54,11 @@ namespace LocalLiftLog.ViewModels
         {
             await ExecuteAsync(async () =>
             {
-                UserPreferencesList.Clear();
-
                 var userPreferences = await _context.GetAllAsync<UserPreferences>();
 
                 if (userPreferences is not null && userPreferences.Any())
                 {
-                    userPreferences ??= new ObservableCollection<UserPreferences>();
-
-                    foreach (var userPreference in userPreferences)
-                    {
-                        UserPreferencesList.Add(userPreference);
-                    }
+                    UserSettings = userPreferences.FirstOrDefault();
                 }
                 else
                 {
@@ -79,7 +73,7 @@ namespace LocalLiftLog.ViewModels
             {
                 UserPreferences userPreferences = new();
                 await _context.AddItemAsync<UserPreferences>(userPreferences);
-                UserPreferencesList.Add(userPreferences);
+                UserSettings = userPreferences;
             });
         }
 

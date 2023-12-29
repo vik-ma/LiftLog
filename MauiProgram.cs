@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using LocalLiftLog.Data;
 using LocalLiftLog.Pages;
+using LocalLiftLog.Models;
 using LocalLiftLog.ViewModels;
 using Microsoft.Extensions.Logging;
 
@@ -78,7 +79,7 @@ namespace LocalLiftLog
             builder.Services.AddTransient<SelectWorkoutViewModel>();
 
             builder.Services.AddTransient<UserPreferencesPage>();
-            builder.Services.AddTransient<UserPreferencesViewModel>();
+            builder.Services.AddSingleton<UserPreferencesViewModel>();
             
 
             return builder.Build();
