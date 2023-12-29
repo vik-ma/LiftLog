@@ -130,5 +130,15 @@ namespace LocalLiftLog.ViewModels
 
             OnPropertyChanged(nameof(UserSettings));
         }
+
+        [RelayCommand]
+        private async Task ResetUserPreferencesAsync()
+        {
+            if (UserSettings is null) return;
+
+            UserSettings.ResetUserPreferences();
+
+            await UpdateUserPreferencesAsync();
+        }
     }
 }

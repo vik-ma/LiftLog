@@ -17,5 +17,15 @@ namespace LocalLiftLog.Models
         public bool ShowCompletedSetTimestamp { get; set; } = true;
         public int DefaultBarbellWeight { get; set; }
         public int DefaultDumbellWeight { get; set; }
+
+        public void ResetUserPreferences()
+        {
+            IsUsingMetricUnits = true;
+            ActiveWorkoutRoutineId = 0;
+            ActiveTimePeriodId = 0;
+            ShowCompletedSetTimestamp = true;
+            DefaultBarbellWeight = 0;
+            DefaultDumbellWeight = 0;
+        }
     }
 }
