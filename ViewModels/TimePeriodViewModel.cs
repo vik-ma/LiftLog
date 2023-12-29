@@ -116,10 +116,10 @@ namespace LocalLiftLog.ViewModels
             if (timePeriod is null)
                 return;
 
-            string currentDateTimeString = DateTimeHelper.FormatDateTimeToYmdString(SelectedDate);
+            string selectedDateTimeString = DateTimeHelper.FormatDateTimeToYmdString(SelectedDate);
 
             timePeriod.IsPeriodOngoing = true;
-            timePeriod.StartDate = currentDateTimeString;
+            timePeriod.StartDate = selectedDateTimeString;
             timePeriod.EndDate = null;
 
             await UpdateTimePeriodObjectAsync(timePeriod);
@@ -139,17 +139,16 @@ namespace LocalLiftLog.ViewModels
                 return;
             }
 
-            string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
+            string selectedDateTimeString = DateTimeHelper.FormatDateTimeToYmdString(SelectedDate);
 
-            if (DateTimeHelper.ValidateStartAndEndDate(timePeriod.StartDate, currentDateTimeString))
+            if (DateTimeHelper.ValidateStartAndEndDate(timePeriod.StartDate, selectedDateTimeString))
             {
-                timePeriod.EndDate = currentDateTimeString;
+                timePeriod.EndDate = selectedDateTimeString;
             }
             else
             {
-                timePeriod.StartDate = null;
-                timePeriod.EndDate = null;
-                await Shell.Current.DisplayAlert("Error", "Invalid Start Date.\nDates have been reset.", "OK");
+                await Shell.Current.DisplayAlert("Error", "Invalid Start and/or End Date.", "OK");
+                return;
             }
 
             timePeriod.IsPeriodOngoing = false;
