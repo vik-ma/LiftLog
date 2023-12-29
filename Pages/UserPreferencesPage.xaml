@@ -109,7 +109,7 @@
                 </Label>
             </HorizontalStackLayout>
 
-            <!--<VerticalStackLayout
+            <VerticalStackLayout
                 WidthRequest="400"
                 HorizontalOptions="Center">
                 <Grid>
@@ -120,8 +120,7 @@
                         Text="Change"
                         Style="{StaticResource GenericButtonStyle}"
                         HorizontalOptions="End"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserPreferencesViewModel}}, Path=ToggleIsUsingMetricUnitsCommand}" 
-                        CommandParameter="{Binding .}" />
+                        Command="{Binding ToggleIsUsingMetricUnitsCommand}" />
                 </Grid>
                 <Grid>
                     <Label 
@@ -131,10 +130,9 @@
                         Text="Change"
                         Style="{StaticResource GenericButtonStyle}"
                         HorizontalOptions="End"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserPreferencesViewModel}}, Path=ToggleShowCompletedSetTimestampCommand}" 
-                        CommandParameter="{Binding .}" />
+                        Command="{Binding ToggleShowCompletedSetTimestampCommand}" />
                 </Grid>
-            </VerticalStackLayout>-->
+            </VerticalStackLayout>
         </VerticalStackLayout>
 
 

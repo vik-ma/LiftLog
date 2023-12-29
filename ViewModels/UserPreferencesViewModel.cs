@@ -78,36 +78,39 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task UpdateUserPreferencesAsync(UserPreferences userPreferences)
+        private async Task UpdateUserPreferencesAsync()
         {
-            if (userPreferences is null)
-                return;
+            if (UserSettings is null) return;
 
             await ExecuteAsync(async () =>
             {
-                if (!await _context.UpdateItemAsync<UserPreferences>(userPreferences))
+                if (!await _context.UpdateItemAsync<UserPreferences>(UserSettings))
                 {
                     await Shell.Current.DisplayAlert("Error", "Error occured when updating User Preferences.", "OK");
                 }
             });
 
-            await LoadUserPreferencesAsync();
+            OnPropertyChanged(nameof(UserSettings));
         }
 
         [RelayCommand]
-        private async Task ToggleIsUsingMetricUnits(UserPreferences userPreferences)
+        private async Task ToggleIsUsingMetricUnits()
         {
-            userPreferences.IsUsingMetricUnits = !userPreferences.IsUsingMetricUnits;
+            if (UserSettings is null) return;
 
-            await UpdateUserPreferencesAsync(userPreferences);
+            UserSettings.IsUsingMetricUnits = !UserSettings.IsUsingMetricUnits;
+
+            await UpdateUserPreferencesAsync();
         }
 
         [RelayCommand]
-        private async Task ToggleShowCompletedSetTimestamp(UserPreferences userPreferences)
+        private async Task ToggleShowCompletedSetTimestamp()
         {
-            userPreferences.ShowCompletedSetTimestamp = !userPreferences.ShowCompletedSetTimestamp;
+            if (UserSettings is null) return;
 
-            await UpdateUserPreferencesAsync(userPreferences);
+            UserSettings.ShowCompletedSetTimestamp = !UserSettings.ShowCompletedSetTimestamp;
+
+            await UpdateUserPreferencesAsync();
         }
     }
 }
