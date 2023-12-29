@@ -116,7 +116,7 @@ namespace LocalLiftLog.ViewModels
             if (timePeriod is null)
                 return;
 
-            string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
+            string currentDateTimeString = DateTimeHelper.FormatDateTimeToYmdString(SelectedDate);
 
             timePeriod.IsPeriodOngoing = true;
             timePeriod.StartDate = currentDateTimeString;
