@@ -11,10 +11,10 @@ namespace LocalLiftLog.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public bool IsUsingMetricUnits { get; set; }
+        public bool IsUsingMetricUnits { get; set; } = true;
         public int ActiveWorkoutRoutineId { get; set; }
         public int ActiveTimePeriodId { get; set; }
-        public bool ShowCompletedSetTimestamp { get; set; }
+        public bool ShowCompletedSetTimestamp { get; set; } = true;
         public int DefaultBarbellWeight { get; set; }
         public int DefaultDumbellWeight { get; set; }
     }
