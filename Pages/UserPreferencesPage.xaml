@@ -15,7 +15,9 @@
             Margin="0, 10" />
 
         <VerticalStackLayout Spacing="20">
-            <HorizontalStackLayout Spacing="10">
+            <HorizontalStackLayout 
+                Spacing="10"
+                IsVisible="{Binding UserSettings, Converter={StaticResource IsNotNullConverter}}">
                 <Label VerticalOptions="Center">
                     <Label.FormattedText>
                         <FormattedString>
@@ -132,6 +134,10 @@
                         HorizontalOptions="End"
                         Command="{Binding ToggleShowCompletedSetTimestampCommand}" />
                 </Grid>
+                <Button 
+                    Text="Delete User Settings"
+                    Style="{StaticResource DeleteButtonStyle}"
+                    Command="{Binding DeleteUserPreferencesCommand}" />
             </VerticalStackLayout>
         </VerticalStackLayout>
 

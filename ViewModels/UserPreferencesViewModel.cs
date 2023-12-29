@@ -112,5 +112,23 @@ namespace LocalLiftLog.ViewModels
 
             await UpdateUserPreferencesAsync();
         }
+
+        [RelayCommand]
+        private async Task DeleteUserPreferencesAsync()
+        {
+            if (UserSettings is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<UserPreferences>(UserSettings))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating User Preferences.", "OK");
+                }
+            });
+
+            UserSettings = null;
+
+            OnPropertyChanged(nameof(UserSettings));
+        }
     }
 }
