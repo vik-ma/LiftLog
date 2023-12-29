@@ -26,6 +26,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private ObservableCollection<TimePeriod> timePeriodList = new();
 
+        [ObservableProperty]
+        private DateTime selectedDate;
+
         public async Task LoadTimePeriodsAsync()
         {
             await ExecuteAsync(async () =>

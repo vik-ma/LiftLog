@@ -6,14 +6,27 @@
              xmlns:models="clr-namespace:LocalLiftLog.Models"
              x:DataType="viewmodel:TimePeriodViewModel"
              Title="Time Period List">
-    <VerticalStackLayout HorizontalOptions="Center">
-        <VerticalStackLayout>
+    <VerticalStackLayout>
+        <VerticalStackLayout Spacing="10">
             <Label 
                 Text="Time Periods"
                 HorizontalOptions="Center"
                 FontSize="30"
-                FontAttributes="Bold"
-                Margin="10" />
+                FontAttributes="Bold" />
+            <HorizontalStackLayout 
+                HorizontalOptions="Center"
+                Spacing="20">
+                <DatePicker 
+                    MinimumDate="12/01/2023"
+                    MaximumDate="12/31/2023"
+                    Date="{Binding SelectedDate}" />
+                <Label 
+                    Text="{Binding SelectedDate}"
+                    FontSize="16"
+                    TextColor="#035afc"
+                    VerticalOptions="Center" />
+            </HorizontalStackLayout>
+
             <CollectionView
                 ItemsSource="{Binding TimePeriodList}"
                 HorizontalOptions="Center">
