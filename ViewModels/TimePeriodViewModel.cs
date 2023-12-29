@@ -156,6 +156,44 @@ namespace LocalLiftLog.ViewModels
             await UpdateTimePeriodObjectAsync(timePeriod);
         }
 
+        [RelayCommand]
+        private async Task ResetStartDate(int id)
+        {
+            TimePeriod timePeriod = TimePeriodList.FirstOrDefault(p => p.Id == id);
+
+            if (timePeriod is null) return;
+
+            if (timePeriod.StartDate is null) return;
+
+            if (timePeriod.EndDate is not null) 
+            {
+                bool userClickedReset = await Shell.Current.DisplayAlert("Reset Dates", "To reset Start Date, the End Date must also be reset.\nContinue?", "Reset", "Cancel");
+
+                if (!userClickedReset) return;
+
+                timePeriod.EndDate = null;
+            }
+
+            timePeriod.IsPeriodOngoing = false;
+            timePeriod.StartDate = null;
+
+            await UpdateTimePeriodObjectAsync(timePeriod);
+        }
+
+        [RelayCommand]
+        private async Task ResetEndDate(int id)
+        {
+            TimePeriod timePeriod = TimePeriodList.FirstOrDefault(p => p.Id == id);
+
+            if (timePeriod is null) return;
+
+            if (timePeriod.EndDate is null) return;
+
+            timePeriod.EndDate = null;
+
+            await UpdateTimePeriodObjectAsync(timePeriod);
+        }
+
         private async Task UpdateTimePeriodObjectAsync(TimePeriod timePeriod)
         {
             if (timePeriod is null) return;

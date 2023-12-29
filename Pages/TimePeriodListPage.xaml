@@ -133,6 +133,16 @@
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=SetTimePeriodEndDateCommand}"
                                 CommandParameter="{Binding Id}" />
                             <Button 
+                                Text="Reset Start"
+                                Style="{StaticResource DeleteButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=ResetStartDateCommand}"
+                                CommandParameter="{Binding Id}" />
+                            <Button 
+                                Text="Reset End"
+                                Style="{StaticResource DeleteButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=ResetEndDateCommand}"
+                                CommandParameter="{Binding Id}" />
+                            <Button 
                                 Text="Update"
                                 Style="{StaticResource AddButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=UpdateTimePeriodCommand}"
