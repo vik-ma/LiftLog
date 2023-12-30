@@ -40,6 +40,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private int numDaysInSchedule;
 
+        [ObservableProperty]
+        private bool isShowingDatePicker;
+
         public async Task LoadNumDaysInSchedule()
         {
             if (WorkoutRoutine is null) return;
@@ -377,6 +380,12 @@ namespace LocalLiftLog.ViewModels
         private void DisableEditing()
         {
             IsEditing = false;
+        }
+
+        [RelayCommand]
+        private void ShowDatePicker()
+        {
+            IsShowingDatePicker = false;
         }
     }
 }

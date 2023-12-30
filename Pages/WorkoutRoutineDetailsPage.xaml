@@ -91,6 +91,11 @@
                     Style="{StaticResource GenericButtonStyle}"
                     Command="{Binding EnableEditingCommand}"
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
+
+                <Label
+                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
+                    Text="asd" />
+
             </VerticalStackLayout>
 
             <VerticalStackLayout
