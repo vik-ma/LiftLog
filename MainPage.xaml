@@ -11,6 +11,7 @@
 
     <VerticalStackLayout 
         HorizontalOptions="Center">
+        <Label Text="{Binding UserSettings.Id}" />
         <Grid
             RowDefinitions="*, *, *, *, *, *, *"
             ColumnDefinitions="*, *">

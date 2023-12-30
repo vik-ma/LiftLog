@@ -1,12 +1,14 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LocalLiftLog.Data;
+using LocalLiftLog.ViewModels;
 using LocalLiftLog.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LocalLiftLog.Models;
 
 namespace LocalLiftLog.ViewModels
 {
@@ -14,9 +16,22 @@ namespace LocalLiftLog.ViewModels
     {
         private readonly DatabaseContext _context;
 
-        public MainViewModel(DatabaseContext context)
+        private readonly UserPreferencesViewModel _userSettings;
+
+        public MainViewModel(DatabaseContext context, UserPreferencesViewModel userSettings)
         {
             _context = context;
+            _userSettings = userSettings;
+        }
+
+        [ObservableProperty]
+        private UserPreferences userSettings;
+
+        public async Task LoadUserPreferences()
+        {
+            await _userSettings.LoadUserPreferencesAsync();
+
+            UserSettings = _userSettings.UserSettings;
         }
 
         [RelayCommand]
