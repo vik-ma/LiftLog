@@ -112,23 +112,23 @@ namespace LocalLiftLog.ViewModels
             await UpdateUserPreferencesAsync();
         }
 
-        [RelayCommand]
-        private async Task DeleteUserPreferencesAsync()
-        {
-            if (UserSettings is null) return;
+        //[RelayCommand]
+        //private async Task DeleteUserPreferencesAsync()
+        //{
+        //    if (UserSettings is null) return;
 
-            await ExecuteAsync(async () =>
-            {
-                if (!await _context.DeleteItemAsync<UserPreferences>(UserSettings))
-                {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when updating User Preferences.", "OK");
-                }
-            });
+        //    await ExecuteAsync(async () =>
+        //    {
+        //        if (!await _context.DeleteItemAsync<UserPreferences>(UserSettings))
+        //        {
+        //            await Shell.Current.DisplayAlert("Error", "Error occured when updating User Preferences.", "OK");
+        //        }
+        //    });
 
-            UserSettings = null;
+        //    UserSettings = null;
 
-            OnPropertyChanged(nameof(UserSettings));
-        }
+        //    OnPropertyChanged(nameof(UserSettings));
+        //}
 
         [RelayCommand]
         private async Task ResetUserPreferencesAsync()

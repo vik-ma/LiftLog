@@ -14,6 +14,6 @@ public partial class MainPage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-        _viewModel.LoadUserPreferences();
+        await _viewModel.LoadUserPreferences();
     }
 }

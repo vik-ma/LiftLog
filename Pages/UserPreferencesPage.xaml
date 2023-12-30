@@ -151,10 +151,10 @@
                     Text="Reset User Settings"
                     Style="{StaticResource GenericButtonStyle}"
                     Command="{Binding ResetUserPreferencesCommand}" />
-                <Button 
+                <!--<Button 
                     Text="Delete User Settings"
                     Style="{StaticResource DeleteButtonStyle}"
-                    Command="{Binding DeleteUserPreferencesCommand}" />
+                    Command="{Binding DeleteUserPreferencesCommand}" />-->
             </VerticalStackLayout>
         </VerticalStackLayout>
 
