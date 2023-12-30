@@ -43,6 +43,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private bool isShowingDatePicker;
 
+        [ObservableProperty]
+        private DateTime selectedDate;
+
         public async Task LoadNumDaysInSchedule()
         {
             if (WorkoutRoutine is null) return;
@@ -385,7 +388,7 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private void ShowDatePicker()
         {
-            IsShowingDatePicker = false;
+            IsShowingDatePicker = true;
         }
     }
 }

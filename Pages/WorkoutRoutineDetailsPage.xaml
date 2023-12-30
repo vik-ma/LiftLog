@@ -92,10 +92,6 @@
                     Command="{Binding EnableEditingCommand}"
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
 
-                <Label
-                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
-                    Text="asd" />
-
             </VerticalStackLayout>
 
             <VerticalStackLayout
@@ -166,6 +162,19 @@
                     IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsIntNot0Converter}}"
                     Style="{StaticResource DeleteButtonStyle}"
                     Command="{Binding DeleteScheduleCommand}" />
+
+                <VerticalStackLayout 
+                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}">
+                    <Button
+                        Text="Select Start Day"
+                        Style="{StaticResource GenericButtonStyle}"
+                        Command="{Binding ShowDatePickerCommand}" />
+                    <DatePicker 
+                        MinimumDate="12/01/2023"
+                        MaximumDate="12/31/2023"
+                        Date="{Binding SelectedDate}"
+                        IsVisible="{Binding IsShowingDatePicker}"/>
+                </VerticalStackLayout>
             </VerticalStackLayout>
         </Grid>
 
