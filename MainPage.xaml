@@ -11,7 +11,8 @@
 
     <VerticalStackLayout 
         HorizontalOptions="Center">
-        <HorizontalStackLayout Spacing="10">
+        <HorizontalStackLayout 
+            Spacing="10">
             <Label VerticalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>
@@ -20,7 +21,7 @@
                             FontAttributes="Bold"  
                             Style="{StaticResource SmallSpanStyle}" />
                         <Span 
-                            Text="{Binding UserSettings.Id}"
+                            Text="{Binding UserSettingsViewModel.UserSettings.Id}"
                             Style="{StaticResource SmallSpanStyle}" />
                     </FormattedString>
                 </Label.FormattedText>
@@ -33,7 +34,7 @@
                             FontAttributes="Bold"  
                             Style="{StaticResource SmallSpanStyle}" />
                         <Span 
-                            Text="{Binding UserSettings.IsUsingMetricUnits}"
+                            Text="{Binding UserSettingsViewModel.UserSettings.IsUsingMetricUnits}"
                             Style="{StaticResource SmallSpanStyle}" />
                     </FormattedString>
                 </Label.FormattedText>
@@ -46,7 +47,7 @@
                             FontAttributes="Bold"  
                             Style="{StaticResource SmallSpanStyle}" />
                         <Span 
-                            Text="{Binding UserSettings.ActiveWorkoutRoutineId}"
+                            Text="{Binding UserSettingsViewModel.UserSettings.ActiveWorkoutRoutineId}"
                             Style="{StaticResource SmallSpanStyle}" />
                     </FormattedString>
                 </Label.FormattedText>
@@ -59,7 +60,7 @@
                             FontAttributes="Bold"  
                             Style="{StaticResource SmallSpanStyle}" />
                         <Span 
-                            Text="{Binding UserSettings.ActiveTimePeriodId}"
+                            Text="{Binding UserSettingsViewModel.UserSettings.ActiveTimePeriodId}"
                             Style="{StaticResource SmallSpanStyle}" />
                     </FormattedString>
                 </Label.FormattedText>
@@ -72,7 +73,7 @@
                             FontAttributes="Bold"  
                             Style="{StaticResource SmallSpanStyle}" />
                         <Span 
-                            Text="{Binding UserSettings.ShowCompletedSetTimestamp}"
+                            Text="{Binding UserSettingsViewModel.UserSettings.ShowCompletedSetTimestamp}"
                             Style="{StaticResource SmallSpanStyle}" />
                     </FormattedString>
                 </Label.FormattedText>
@@ -85,7 +86,7 @@
                             FontAttributes="Bold"  
                             Style="{StaticResource SmallSpanStyle}" />
                         <Span 
-                            Text="{Binding UserSettings.DefaultBarbellWeight}"
+                            Text="{Binding UserSettingsViewModel.UserSettings.DefaultBarbellWeight}"
                             Style="{StaticResource SmallSpanStyle}" />
                     </FormattedString>
                 </Label.FormattedText>
@@ -98,7 +99,7 @@
                             FontAttributes="Bold"  
                             Style="{StaticResource SmallSpanStyle}" />
                         <Span 
-                            Text="{Binding UserSettings.DefaultDumbellWeight}"
+                            Text="{Binding UserSettingsViewModel.UserSettings.DefaultDumbellWeight}"
                             Style="{StaticResource SmallSpanStyle}" />
                     </FormattedString>
                 </Label.FormattedText>

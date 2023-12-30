@@ -16,22 +16,18 @@ namespace LocalLiftLog.ViewModels
     {
         private readonly DatabaseContext _context;
 
-        private readonly UserPreferencesViewModel _userSettings;
+        [ObservableProperty]
+        private UserPreferencesViewModel userSettingsViewModel;
 
         public MainViewModel(DatabaseContext context, UserPreferencesViewModel userSettings)
         {
             _context = context;
-            _userSettings = userSettings;
+            userSettingsViewModel = userSettings;
         }
-
-        [ObservableProperty]
-        private UserPreferences userSettings;
 
         public async Task LoadUserPreferences()
         {
-            await _userSettings.LoadUserPreferencesAsync();
-
-            UserSettings = _userSettings.UserSettings;
+            await UserSettingsViewModel.LoadUserPreferencesAsync();
         }
 
         [RelayCommand]
