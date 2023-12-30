@@ -11,9 +11,13 @@ namespace LocalLiftLog.ViewModels
     {
         private readonly DatabaseContext _context;
 
-        public WorkoutRoutineListViewModel(DatabaseContext context)
+        [ObservableProperty]
+        private UserPreferencesViewModel userSettingsViewModel;
+
+        public WorkoutRoutineListViewModel(DatabaseContext context, UserPreferencesViewModel userSettings)
         {
             _context = context;
+            userSettingsViewModel = userSettings;
         }
 
         [ObservableProperty]
@@ -193,6 +197,18 @@ namespace LocalLiftLog.ViewModels
             IsEditing = false;
 
             await Shell.Current.GoToAsync($"{nameof(WorkoutRoutineDetailsPage)}?Id={id}", navigationParameter);
+        }
+
+        [RelayCommand]
+        private async Task SetActiveWorkoutRoutine(int id)
+        {
+            var WorkoutRoutine = WorkoutRoutineList.FirstOrDefault(p => p.Id == id);
+
+            if (WorkoutRoutine is null) return;
+
+            UserSettingsViewModel.UserSettings.ActiveWorkoutRoutineId = id;
+
+            await UserSettingsViewModel.UpdateUserPreferencesAsync();
         }
     }
 }

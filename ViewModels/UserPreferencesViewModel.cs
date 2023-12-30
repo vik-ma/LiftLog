@@ -77,7 +77,7 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task UpdateUserPreferencesAsync()
+        public async Task UpdateUserPreferencesAsync()
         {
             if (UserSettings is null) return;
 
