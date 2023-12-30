@@ -264,7 +264,7 @@
                         Grid.Row="1"
                         Text="Create Workout"
                         Style="{StaticResource ScheduleButtonStyle}"
-                        BackgroundColor="#4287f5"
+                        BackgroundColor="{DynamicResource MediumBlue}"
                         Command="{Binding GoToWorkoutTemplateCommand}" />
                     <Button 
                         Style="{StaticResource ScheduleButtonStyle}"

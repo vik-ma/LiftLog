@@ -17,7 +17,7 @@
         <Label 
             Text="No User Preferences Available!"
             HorizontalOptions="Center"
-            TextColor="#ef4444"
+            TextColor="{DynamicResource MediumRed}"
             FontSize="30"
             FontAttributes="Bold"
             Margin="0, 10"

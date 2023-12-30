@@ -44,7 +44,7 @@
                     <Label 
                         Text="{Binding NewSetTemplateSelectedExerciseName}"
                         Style="{StaticResource MediumHeaderLabelStyle}"
-                        TextColor="#4287f5" />
+                        TextColor="{DynamicResource MediumBlue}" />
                 </HorizontalStackLayout>
                 <Grid 
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}">

@@ -140,7 +140,7 @@
                                     Padding="20, 10"
                                     FontSize="18"
                                     FontAttributes="Bold" 
-                                    BackgroundColor="#ef4444"
+                                    BackgroundColor="{DynamicResource MediumRed}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=DeleteWorkoutRoutineCommand}" 
                                     CommandParameter="{Binding Id}" />
                             </VerticalStackLayout>
@@ -201,7 +201,7 @@
                             FontSize="18"
                             FontAttributes="Bold"
                             CornerRadius="6"
-                            BackgroundColor="#ef4444"
+                            BackgroundColor="{DynamicResource MediumRed}"
                             Command="{Binding CancelEditingCommand}" >
                         </Button>
                         <Button 
@@ -211,7 +211,7 @@
                             FontSize="18"
                             FontAttributes="Bold"
                             CornerRadius="6"
-                            BackgroundColor="#22c55e"
+                            BackgroundColor="{DynamicResource MediumGreen}"
                             Command="{Binding SaveWorkoutRoutineCommand}" >
                         </Button>
                     </HorizontalStackLayout>

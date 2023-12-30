@@ -100,7 +100,7 @@
                 <Setter Property="FontSize" Value="16" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="#9e9e9e" />
+                <Setter Property="TextColor" Value="{DynamicResource MediumGray}" />
             </Style>
             <Style x:Key="SmallEntryFieldStyle" TargetType="Entry">
                 <Setter Property="WidthRequest" Value="70" />
@@ -116,7 +116,7 @@
                 <Setter Property="FontSize" Value="18" />
             </Style>
             <Style x:Key="LightGreyStackLayoutBackground" TargetType="StackLayout">
-                <Setter Property="BackgroundColor" Value="#DDDDDD" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource LightGray}" />
             </Style>
             <Style x:Key="CheckBoxStyle" TargetType="CheckBox">
                 <Setter Property="Scale" Value="1.2" />
@@ -142,11 +142,11 @@
             </Style>
             <Style x:Key="OrangeBoldTextStyle" TargetType="Label">
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="TextColor" Value="DarkOrange" />
+                <Setter Property="TextColor" Value="{DynamicResource MediumOrange}" />
             </Style>
             <Style x:Key="MediumBlueBoldTextStyle" TargetType="Label">
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="TextColor" Value="#4287f5" />
+                <Setter Property="TextColor" Value="{DynamicResource MediumBlue}" />
             </Style>
             <Style x:Key="StartedWorkoutLabelStyle" TargetType="Label">
                 <Setter Property="FontAttributes" Value="Bold" />
