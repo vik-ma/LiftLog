@@ -18,9 +18,13 @@ namespace LocalLiftLog.ViewModels
     {
         private readonly DatabaseContext _context;
 
-        public TimePeriodViewModel(DatabaseContext context)
+        [ObservableProperty]
+        private UserPreferencesViewModel userSettingsViewModel;
+
+        public TimePeriodViewModel(DatabaseContext context, UserPreferencesViewModel userSettings)
         {
             _context = context;
+            userSettingsViewModel = userSettings;
         }
 
         [ObservableProperty]
@@ -213,6 +217,18 @@ namespace LocalLiftLog.ViewModels
         static async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
+        }
+
+        [RelayCommand]
+        private async Task SetActiveTimePeriod(int id)
+        {
+            var TimePeriod = TimePeriodList.FirstOrDefault(p => p.Id == id);
+
+            if (TimePeriod is null) return;
+
+            UserSettingsViewModel.UserSettings.ActiveTimePeriodId = id;
+
+            await UserSettingsViewModel.UpdateUserPreferencesAsync();
         }
     }
 }

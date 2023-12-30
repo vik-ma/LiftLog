@@ -152,6 +152,11 @@
                                 Style="{StaticResource DeleteButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=DeleteTimePeriodCommand}"
                                 CommandParameter="{Binding Id}" />
+                            <Button 
+                                Text="Set Active"
+                                Style="{StaticResource GenericButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=SetActiveTimePeriodCommand}"
+                                CommandParameter="{Binding Id}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
