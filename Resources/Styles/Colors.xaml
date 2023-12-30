@@ -43,5 +43,12 @@
 
     <Color x:Key="MediumRed">#ef4444</Color>
     <Color x:Key="MediumGreen">#22c55e</Color>
+    <Color x:Key="VeryLightGray">#ECECEC</Color>
+    <Color x:Key="LightGray">#DDDDDD</Color>
+    <Color x:Key="MediumGray">#9e9e9e</Color>
+    <Color x:Key="MediumOrange">#ffa51f</Color>
+    <Color x:Key="MediumBlue">#4287f5</Color>
+    
+    
 
 </ResourceDictionary>
