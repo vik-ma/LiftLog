@@ -396,5 +396,17 @@ namespace LocalLiftLog.ViewModels
         {
             IsShowingDatePicker = false;
         }
+
+        [RelayCommand]
+        private async Task SaveStartDay()
+        {
+            if (WorkoutRoutine is null) return;
+
+            WorkoutRoutine.CustomScheduleStartDate = DateTimeHelper.FormatDateTimeToYmdString(SelectedDate);
+
+            await UpdateWorkoutRoutine();
+
+            IsShowingDatePicker = false;
+        }
     }
 }

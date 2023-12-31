@@ -14,12 +14,15 @@ namespace LocalLiftLog.Converters
         {
             if (value is string dateString)
             {
-                if (string.IsNullOrWhiteSpace(dateString)) return "No Date Set";
+                if (parameter is string parameterString && parameterString == "IncludeDate")
+                {
+                    return $"{dateString} ({DateTimeHelper.GetWeekdayOfYmdDateString(dateString)})";
+                }
 
                 return DateTimeHelper.GetWeekdayOfYmdDateString(dateString);
             }
 
-            return "Unknown";
+            return "No Date Set";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

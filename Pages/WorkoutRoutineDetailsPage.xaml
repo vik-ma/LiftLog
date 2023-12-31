@@ -153,28 +153,53 @@
 
                 <VerticalStackLayout 
                     IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsIntNot0Converter}}">
-
                     <VerticalStackLayout 
                         Margin="0, 5, 0, 10"
                         Spacing="5"
                         IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}">
+                        <VerticalStackLayout>
+                            <Label
+                                HorizontalOptions="Center"
+                                Text="Start Day" 
+                                FontAttributes="Bold"
+                                Style="{StaticResource MediumLabelStyle}" />
+                            <Label
+                                HorizontalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="{Binding WorkoutRoutine.CustomScheduleStartDate, Converter={StaticResource DateToWeekdayConverter}, ConverterParameter=IncludeDate}"
+                                            TextColor="{DynamicResource DeepBlue}"
+                                            Style="{StaticResource LargeSubSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
                         <Button
                             Text="Select Start Day"
+                            IsVisible="{Binding IsShowingDatePicker, Converter={StaticResource InvertedBoolConverter}}"
                             Style="{StaticResource GenericButtonStyle}"
                             Command="{Binding ShowDatePickerCommand}" />
-                        <HorizontalStackLayout 
-                            Spacing="5" 
+                        <VerticalStackLayout 
+                            Spacing="5"      
                             HorizontalOptions="Center"
                             IsVisible="{Binding IsShowingDatePicker}">
                             <DatePicker 
+                                HorizontalOptions="Center"
                                 MinimumDate="12/01/2023"
                                 MaximumDate="12/31/2023"
                                 Date="{Binding SelectedDate}" />
-                            <Button 
-                                Text="Hide"
-                                Style="{StaticResource DeleteButtonStyle}"
-                                Command="{Binding HideDatePickerCommand}" />
-                        </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="5">
+                                <Button 
+                                    Text="Cancel"
+                                    Style="{StaticResource DeleteButtonStyle}"
+                                    Command="{Binding HideDatePickerCommand}" />
+                                <Button 
+                                    Text="Save"
+                                    Style="{StaticResource AddButtonStyle}"
+                                    Command="{Binding SaveStartDayCommand}" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
                     </VerticalStackLayout>
                     
                     <Button 
