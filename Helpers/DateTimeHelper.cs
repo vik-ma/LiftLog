@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,8 +52,8 @@ namespace LocalLiftLog.Helpers
             string dateFormat = "yyyy-MM-dd";
 
             // Parse the DateTime strings into DateTime objects
-            if (DateTime.TryParseExact(startYmdDate, dateFormat, null, System.Globalization.DateTimeStyles.None, out DateTime start) &&
-                DateTime.TryParseExact(endYmdDate, dateFormat, null, System.Globalization.DateTimeStyles.None, out DateTime end))
+            if (DateTime.TryParseExact(startYmdDate, dateFormat, null, DateTimeStyles.None, out DateTime start) &&
+                DateTime.TryParseExact(endYmdDate, dateFormat, null, DateTimeStyles.None, out DateTime end))
             {
                 // Compare the DateTime objects
                 // Returns true if End DateTime occurs after Start DateTime
@@ -66,6 +67,16 @@ namespace LocalLiftLog.Helpers
         public static string GetWeekdayOfDate(DateTime date)
         {
             return date.DayOfWeek.ToString();
+        }
+
+        public static string GetWeekdayOfYmdDateString(string ymdDateString)
+        {
+            if (DateTime.TryParseExact(ymdDateString, "yyyy-MM-dd", null, DateTimeStyles.None, out DateTime parsedDate))
+            {
+                return parsedDate.DayOfWeek.ToString();
+            }
+
+            return "Invalid Date";
         }
     }
 }
