@@ -8,6 +8,7 @@
              Title="Workout Routine List">
 
     <Grid RowDefinitions="Auto, *">
+        <Label x:Name="sourceLabel" Text="{Binding UserSettingsViewModel.UserSettings.ActiveWorkoutRoutineId}" />
         <VerticalStackLayout
             Grid.Row="0"
             Grid.Column="0"
@@ -76,6 +77,7 @@
                                                 FontAttributes="Bold"
                                                 Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
+                                                x:Name="idLabel"
                                                 Text="{Binding Id}"
                                                 Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
@@ -103,6 +105,23 @@
                                                 Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
                                                 Text="{Binding LastUpdateDateTime, Converter={StaticResource NullValueToEmptyTextConverter}}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label>
+                                    <Label.IsVisible>
+                                        <MultiBinding Converter="{StaticResource AreStringsEqualMultiBindingConverter}">
+                                            <Binding Source="{x:Reference idLabel}" Path="Text" />
+                                            <Binding Source="{x:Reference sourceLabel}" Path="Text" />
+                                        </MultiBinding>
+                                    </Label.IsVisible>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Active Routine" 
+                                                FontAttributes="Bold"
+                                                TextColor="{DynamicResource MediumGreen}"
                                                 Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
