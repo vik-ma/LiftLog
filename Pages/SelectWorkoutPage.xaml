@@ -74,13 +74,13 @@
             <Button 
                 Text="Create New Routine"
                 Style="{StaticResource LargeButtonStyle}"
-                BackgroundColor="#035afc"
+                BackgroundColor="{DynamicResource DeepBlue}"
                 Command="{Binding GoToWorkoutRoutineListPageCommand}"
                 Margin="20" />
             <Button 
                 Text="Create New Workout"
                 Style="{StaticResource LargeButtonStyle}"
-                BackgroundColor="#035afc"
+                BackgroundColor="{DynamicResource DeepBlue}"
                 Command="{Binding CreateWorkoutTemplateCommand}"
                 Margin="20" />
         </VerticalStackLayout>
@@ -100,7 +100,7 @@
                     HorizontalOptions="Center"
                     FontSize="30"
                     FontAttributes="Bold"
-                    TextColor="#035afc" />
+                    TextColor="{DynamicResource DeepBlue}" />
                 <DatePicker 
                     MinimumDate="12/01/2023"
                     MaximumDate="12/31/2023"
@@ -108,7 +108,7 @@
                 <Label 
                     Text="{Binding SelectedDate}"
                     FontSize="16"
-                    TextColor="#035afc"
+                    TextColor="{DynamicResource DeepBlue}"
                     VerticalOptions="Center" />
             </HorizontalStackLayout>
 

@@ -17,7 +17,7 @@
             <Label 
                 Text="{Binding OperatingSetTemplate.ExerciseName}"
                 Style="{StaticResource LargeHeaderLabelStyle}"
-                TextColor="#FF33A8" />
+                TextColor="{DynamicResource DeepPink}" />
         </HorizontalStackLayout>
         <HorizontalStackLayout 
             HorizontalOptions="Center"

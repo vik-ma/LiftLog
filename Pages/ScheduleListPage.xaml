@@ -27,7 +27,7 @@
                             RowDefinitions="Auto, Auto"
                             ColumnDefinitions="*, Auto"
                             Padding="10"
-                            BackgroundColor="#ECECEC">
+                            BackgroundColor="{DynamicResource VeryLightGray}">
                             <VerticalStackLayout 
                                 Grid.Row="0" 
                                 Grid.Column="0"
@@ -118,7 +118,7 @@
                             RowDefinitions="Auto, Auto"
                             ColumnDefinitions="*, Auto"
                             Padding="10"
-                            BackgroundColor="#ECECEC">
+                            BackgroundColor="{DynamicResource VeryLightGray}">
                             <VerticalStackLayout 
                                 Grid.Row="0" 
                                 Grid.Column="0"

@@ -50,7 +50,7 @@
                             RowDefinitions="Auto, Auto"
                             ColumnDefinitions="*, Auto"
                             Padding="10"
-                            BackgroundColor="#ECECEC">
+                            BackgroundColor="{DynamicResource VeryLightGray}">
                             <VerticalStackLayout 
                                 Grid.Row="0" 
                                 Grid.Column="0"
@@ -175,7 +175,7 @@
                     ColumnDefinitions="*, *"
                     Padding="10"
                     ColumnSpacing="15"
-                    BackgroundColor="#ECECEC"
+                    BackgroundColor="{DynamicResource VeryLightGray}"
                     IsVisible="{Binding IsEditing}">
                     <VerticalStackLayout 
                         Grid.Row="0"
@@ -242,7 +242,7 @@
                             Text="{Binding OperatingWorkoutRoutine.Name}"
                             Placeholder="Name"
                             Margin="0, 5"
-                            BackgroundColor="#FFFFFF"
+                            BackgroundColor="{DynamicResource White}"
                             FontSize="20"/>
                     </VerticalStackLayout>
                     <VerticalStackLayout 
@@ -272,7 +272,7 @@
                             Text="{Binding OperatingWorkoutRoutine.Note}"
                             Placeholder="Note"
                             Margin="0, 5"
-                            BackgroundColor="#FFFFFF"
+                            BackgroundColor="{DynamicResource White}"
                             FontSize="20" />
                     </VerticalStackLayout>
                 </Grid>

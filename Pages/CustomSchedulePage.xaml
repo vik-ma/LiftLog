@@ -427,7 +427,7 @@
                 HorizontalOptions="End"
                 IsVisible="{Binding ShowWorkoutTemplateList}"
                 Padding="10"
-                BackgroundColor="#ECECEC">
+                BackgroundColor="{DynamicResource VeryLightGray}">
                 <VerticalStackLayout>
                     <Label 
                         Text="Add Workout To:"
@@ -477,7 +477,7 @@
                                         Text="No Workouts Created!" 
                                         FontSize="18" 
                                         FontAttributes="Bold" 
-                                        TextColor="#707070" />
+                                        TextColor="{DynamicResource MediumDarkGray}" />
                                 </VerticalStackLayout>
                             </ContentView>
                         </CollectionView.EmptyView>

@@ -30,7 +30,7 @@
                 <Label 
                     Text="{Binding CompletedWorkout.Date}"
                     FontSize="16"
-                    TextColor="#035afc"
+                    TextColor="{DynamicResource DeepBlue}"
                     VerticalOptions="Center" />
                 <Button
                     Text="Set Date"
@@ -59,7 +59,7 @@
                                     Style="{StaticResource OrangeBoldTextStyle}" />
                                 <Label
                                     Text="{Binding Note}"
-                                    TextColor="#575757"
+                                    TextColor="{DynamicResource DarkGray}"
                                     Style="{StaticResource StartedWorkoutLabelStyle}"
                                     IsVisible="{Binding Note}" />
                                 <Button 
@@ -120,13 +120,13 @@
                                     IsVisible="{Binding IsTrackingCardioResistance}" />
                                 <Label
                                     Text="Warmup Set"
-                                    TextColor="#575757"
+                                    TextColor="{DynamicResource DarkGray}"
                                     FontAttributes="Italic"
                                     Style="{StaticResource StartedWorkoutLabelStyle}"
                                     IsVisible="{Binding IsWarmupSet}" />
                                 <Label
                                     Text="Includes Body Weight"
-                                    TextColor="#575757"
+                                    TextColor="{DynamicResource DarkGray}"
                                     FontAttributes="Italic"
                                     Style="{StaticResource StartedWorkoutLabelStyle}"
                                     IsVisible="{Binding IsUsingBodyWeightAsWeight}" />
