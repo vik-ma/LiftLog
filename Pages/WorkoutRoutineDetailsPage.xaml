@@ -153,6 +153,30 @@
 
                 <VerticalStackLayout 
                     IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsIntNot0Converter}}">
+
+                    <VerticalStackLayout 
+                        Margin="0, 5, 0, 10"
+                        Spacing="5"
+                        IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}">
+                        <Button
+                            Text="Select Start Day"
+                            Style="{StaticResource GenericButtonStyle}"
+                            Command="{Binding ShowDatePickerCommand}" />
+                        <HorizontalStackLayout 
+                            Spacing="5" 
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding IsShowingDatePicker}">
+                            <DatePicker 
+                                MinimumDate="12/01/2023"
+                                MaximumDate="12/31/2023"
+                                Date="{Binding SelectedDate}" />
+                            <Button 
+                                Text="Hide"
+                                Style="{StaticResource DeleteButtonStyle}"
+                                Command="{Binding HideDatePickerCommand}" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                    
                     <Button 
                         Text="Edit Schedule"
                         WidthRequest="250"
@@ -164,18 +188,7 @@
                         Style="{StaticResource DeleteButtonStyle}"
                         Command="{Binding DeleteScheduleCommand}" />
 
-                    <VerticalStackLayout 
-                        IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}">
-                        <Button
-                            Text="Select Start Day"
-                            Style="{StaticResource GenericButtonStyle}"
-                            Command="{Binding ShowDatePickerCommand}" />
-                        <DatePicker 
-                            MinimumDate="12/01/2023"
-                            MaximumDate="12/31/2023"
-                            Date="{Binding SelectedDate}"
-                            IsVisible="{Binding IsShowingDatePicker}"/>
-                    </VerticalStackLayout>
+                    
                     
                 </VerticalStackLayout>
                 

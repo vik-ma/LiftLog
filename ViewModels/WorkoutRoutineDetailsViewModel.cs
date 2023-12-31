@@ -390,5 +390,11 @@ namespace LocalLiftLog.ViewModels
         {
             IsShowingDatePicker = true;
         }
+
+        [RelayCommand]
+        private void HideDatePicker()
+        {
+            IsShowingDatePicker = false;
+        }
     }
 }
