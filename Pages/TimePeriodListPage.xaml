@@ -37,127 +37,131 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:TimePeriod">
-                        <HorizontalStackLayout Spacing="5">
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Id: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding Id}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Name: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding Name}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Entry 
-                                Text="{Binding Note}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Note: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding Note}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Entry 
-                                Text="{Binding Note}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Ongoing: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding IsPeriodOngoing}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Start: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding StartDate}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="End: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding EndDate}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Button 
-                                Text="Set Start"
-                                Style="{StaticResource GenericButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=SetTimePeriodStartDateCommand}"
-                                CommandParameter="{Binding Id}" />
-                            <Button 
-                                Text="Set End"
-                                Style="{StaticResource GenericButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=SetTimePeriodEndDateCommand}"
-                                CommandParameter="{Binding Id}" />
-                            <Button 
-                                Text="Reset Start"
-                                Style="{StaticResource DeleteButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=ResetStartDateCommand}"
-                                CommandParameter="{Binding Id}" />
-                            <Button 
-                                Text="Reset End"
-                                Style="{StaticResource DeleteButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=ResetEndDateCommand}"
-                                CommandParameter="{Binding Id}" />
-                            <Button 
-                                Text="Update"
-                                Style="{StaticResource AddButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=UpdateTimePeriodCommand}"
-                                CommandParameter="{Binding Id}" />
-                            <Button 
-                                Text="Delete"
-                                Style="{StaticResource DeleteButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=DeleteTimePeriodCommand}"
-                                CommandParameter="{Binding Id}" />
-                            <Button 
-                                Text="Set Active"
-                                Style="{StaticResource GenericButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=SetActiveTimePeriodCommand}"
-                                CommandParameter="{Binding Id}" />
-                        </HorizontalStackLayout>
+                        <VerticalStackLayout Spacing="5">
+                            <HorizontalStackLayout Spacing="5">
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Id: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Id}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Name: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Name}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Entry 
+                                    Text="{Binding Note}"
+                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Note: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Note}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Entry 
+                                    Text="{Binding Note}"
+                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Ongoing: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding IsPeriodOngoing}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Start: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding StartDate}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="End: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding EndDate}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="5">
+                                <Button 
+                                    Text="Set Start"
+                                    Style="{StaticResource GenericButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=SetTimePeriodStartDateCommand}"
+                                    CommandParameter="{Binding Id}" />
+                                <Button 
+                                    Text="Set End"
+                                    Style="{StaticResource GenericButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=SetTimePeriodEndDateCommand}"
+                                    CommandParameter="{Binding Id}" />
+                                <Button 
+                                    Text="Reset Start"
+                                    Style="{StaticResource DeleteButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=ResetStartDateCommand}"
+                                    CommandParameter="{Binding Id}" />
+                                <Button 
+                                    Text="Reset End"
+                                    Style="{StaticResource DeleteButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=ResetEndDateCommand}"
+                                    CommandParameter="{Binding Id}" />
+                                <Button 
+                                    Text="Update"
+                                    Style="{StaticResource AddButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=UpdateTimePeriodCommand}"
+                                    CommandParameter="{Binding Id}" />
+                                <Button 
+                                    Text="Delete"
+                                    Style="{StaticResource DeleteButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=DeleteTimePeriodCommand}"
+                                    CommandParameter="{Binding Id}" />
+                                <Button 
+                                    Text="Set Active"
+                                    Style="{StaticResource GenericButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=SetActiveTimePeriodCommand}"
+                                    CommandParameter="{Binding Id}" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
                 <CollectionView.EmptyView>
