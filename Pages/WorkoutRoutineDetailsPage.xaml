@@ -150,31 +150,35 @@
                     IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsInt0Converter}}"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding VisitScheduleCommand}" />
-                <Button 
-                    Text="Edit Schedule"
-                    WidthRequest="250"
-                    IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsIntNot0Converter}}"
-                    Style="{StaticResource GenericButtonStyle}"
-                    Command="{Binding VisitScheduleCommand}" />
-                <Button 
-                    Text="Delete Schedule"
-                    WidthRequest="250"
-                    IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsIntNot0Converter}}"
-                    Style="{StaticResource DeleteButtonStyle}"
-                    Command="{Binding DeleteScheduleCommand}" />
 
                 <VerticalStackLayout 
-                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}">
-                    <Button
-                        Text="Select Start Day"
+                    IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsIntNot0Converter}}">
+                    <Button 
+                        Text="Edit Schedule"
+                        WidthRequest="250"
                         Style="{StaticResource GenericButtonStyle}"
-                        Command="{Binding ShowDatePickerCommand}" />
-                    <DatePicker 
-                        MinimumDate="12/01/2023"
-                        MaximumDate="12/31/2023"
-                        Date="{Binding SelectedDate}"
-                        IsVisible="{Binding IsShowingDatePicker}"/>
+                        Command="{Binding VisitScheduleCommand}" />
+                    <Button 
+                        Text="Delete Schedule"
+                        WidthRequest="250"
+                        Style="{StaticResource DeleteButtonStyle}"
+                        Command="{Binding DeleteScheduleCommand}" />
+
+                    <VerticalStackLayout 
+                        IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}">
+                        <Button
+                            Text="Select Start Day"
+                            Style="{StaticResource GenericButtonStyle}"
+                            Command="{Binding ShowDatePickerCommand}" />
+                        <DatePicker 
+                            MinimumDate="12/01/2023"
+                            MaximumDate="12/31/2023"
+                            Date="{Binding SelectedDate}"
+                            IsVisible="{Binding IsShowingDatePicker}"/>
+                    </VerticalStackLayout>
+                    
                 </VerticalStackLayout>
+                
             </VerticalStackLayout>
         </Grid>
 
