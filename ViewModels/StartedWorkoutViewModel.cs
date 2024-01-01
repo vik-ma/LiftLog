@@ -216,5 +216,13 @@ namespace LocalLiftLog.ViewModels
 
             setPackage.IsEditingSetProperties = true;
         }
+
+        [RelayCommand]
+        private static void HideEditSetProperties(SetPackage setPackage)
+        {
+            if (setPackage is null) return;
+
+            setPackage.IsEditingSetProperties = false;
+        }
     }
 }

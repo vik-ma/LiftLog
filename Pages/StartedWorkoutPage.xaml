@@ -74,6 +74,7 @@
                                 <Button 
                                     Text="Add Or Remove Field"
                                     Style="{StaticResource GenericButtonStyle}"
+                                    IsVisible="{Binding IsEditingSetProperties, Converter={StaticResource InvertedBoolConverter}}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=ShowEditSetPropertiesCommand}" 
                                     CommandParameter="{Binding .}" />
                             </HorizontalStackLayout>
@@ -153,7 +154,11 @@
                                 Grid.Row="2"
                                 Spacing="10"
                                 IsVisible="{Binding IsEditingSetProperties}">
-                                <Label Text="test" />
+                                <Button 
+                                    Text="Cancel"
+                                    Style="{StaticResource DeleteButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=HideEditSetPropertiesCommand}" 
+                                    CommandParameter="{Binding .}" />
                             </HorizontalStackLayout>
                         </Grid>
                     </DataTemplate>
