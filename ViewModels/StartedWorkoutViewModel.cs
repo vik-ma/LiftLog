@@ -226,19 +226,20 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task SaveSetAsync(CompletedSet completedSet)
+        private async Task SaveSetAsync(SetPackage setPackage)
         {
-            if (completedSet is null) return;
+            if (setPackage is null) return;
 
-            completedSet.IsCompleted = true;
-            completedSet.TimeCompleted = DateTimeHelper.GetCurrentFormattedDateTime();
+            setPackage.CompletedSet.IsCompleted = true;
+            setPackage.CompletedSet.TimeCompleted = DateTimeHelper.GetCurrentFormattedDateTime();
 
             await ExecuteAsync(async () =>
             {
-                if (!await _context.AddItemAsync<CompletedSet>(completedSet))
+                if (!await _context.AddItemAsync<CompletedSet>(setPackage.CompletedSet))
                 {
                     await Shell.Current.DisplayAlert("Error", "Error occured when trying to save Set.", "OK");
                 }
+                else setPackage.IsSetCompleted = true;
             });
         }
 

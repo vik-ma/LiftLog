@@ -152,13 +152,15 @@
                                 <Button 
                                     Text="Update Set"
                                     Style="{StaticResource AddButtonStyle}"
+                                    IsVisible="{Binding IsSetCompleted}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=UpdateSetCommand}" 
                                     CommandParameter="{Binding CompletedSet}"/>
                                 <Button 
                                     Text="Save Set"
                                     Style="{StaticResource AddButtonStyle}"
+                                    IsVisible="{Binding IsSetCompleted, Converter={StaticResource InvertedBoolConverter}}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=SaveSetCommand}" 
-                                    CommandParameter="{Binding CompletedSet}"/>
+                                    CommandParameter="{Binding .}"/>
                             </HorizontalStackLayout>
                             <HorizontalStackLayout 
                                 Grid.Row="2"
