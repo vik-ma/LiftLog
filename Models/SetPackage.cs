@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.Models
 {
-    public class SetPackage
+    public partial class SetPackage : ObservableObject
     {
         public SetTemplate SetTemplate { get; set; }
         public CompletedSet CompletedSet { get; set; }
-        public bool IsEditingSetProperties { get; set; }
+
+        [ObservableProperty]
+        public bool isEditingSetProperties;
     }
 }
