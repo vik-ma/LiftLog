@@ -150,6 +150,11 @@
                                     Style="{StaticResource StartedWorkoutLabelStyle}"
                                     IsVisible="{Binding SetTemplate.IsUsingBodyWeightAsWeight}" />
                                 <Button 
+                                    Text="Update Set"
+                                    Style="{StaticResource AddButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=UpdateSetCommand}" 
+                                    CommandParameter="{Binding CompletedSet}"/>
+                                <Button 
                                     Text="Save Set"
                                     Style="{StaticResource AddButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=SaveSetCommand}" 

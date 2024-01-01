@@ -241,5 +241,21 @@ namespace LocalLiftLog.ViewModels
                 }
             });
         }
+
+        [RelayCommand]
+        private async Task UpdateSetAsync(CompletedSet completedSet)
+        {
+            if (completedSet is null) return;
+
+            if (!completedSet.IsCompleted) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<CompletedSet>(completedSet))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when trying to update Set.", "OK");
+                }
+            });
+        }
     }
 }
