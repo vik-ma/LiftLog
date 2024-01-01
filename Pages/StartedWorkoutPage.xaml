@@ -149,6 +149,11 @@
                                     FontAttributes="Italic"
                                     Style="{StaticResource StartedWorkoutLabelStyle}"
                                     IsVisible="{Binding SetTemplate.IsUsingBodyWeightAsWeight}" />
+                                <Button 
+                                    Text="Save Set"
+                                    Style="{StaticResource AddButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=SaveSetCommand}" 
+                                    CommandParameter="{Binding CompletedSet}"/>
                             </HorizontalStackLayout>
                             <HorizontalStackLayout 
                                 Grid.Row="2"

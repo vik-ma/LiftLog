@@ -224,5 +224,22 @@ namespace LocalLiftLog.ViewModels
 
             setPackage.IsEditingSetProperties = false;
         }
+
+        [RelayCommand]
+        private async Task SaveSetAsync(CompletedSet completedSet)
+        {
+            if (completedSet is null) return;
+
+            completedSet.IsCompleted = true;
+            completedSet.TimeCompleted = DateTimeHelper.GetCurrentFormattedDateTime();
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.AddItemAsync<CompletedSet>(completedSet))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when trying to save Set.", "OK");
+                }
+            });
+        }
     }
 }
