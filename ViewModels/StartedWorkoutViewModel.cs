@@ -39,7 +39,7 @@ namespace LocalLiftLog.ViewModels
         private DateTime selectedDate;
 
         [ObservableProperty]
-        private ObservableCollection<SetTemplate> setList = new();
+        private ObservableCollection<SetPackage> setList = new();
 
         [RelayCommand]
         static async Task GoBack()
@@ -97,7 +97,7 @@ namespace LocalLiftLog.ViewModels
 
             SetList.Clear();
 
-            List<SetTemplate> setTemplateList = new();
+            List<SetPackage> setPackageList = new();
 
             Expression<Func<SetTemplate, bool>> predicate = entity => entity.WorkoutTemplateId == WorkoutTemplate.Id;
 
@@ -107,12 +107,21 @@ namespace LocalLiftLog.ViewModels
 
                 foreach (var item in filteredList)
                 {
-                    setTemplateList.Add(item);
+                    SetPackage setPackage = new() 
+                    { 
+                        SetTemplate = item,
+                        CompletedSet = new() 
+                        { 
+                            ExerciseName = item.ExerciseName,
+                            CompletedWorkoutId = CompletedWorkout.Id
+                        }
+                    };
+                    setPackageList.Add(setPackage);
                 }
 
-                if (setTemplateList.Any())
+                if (setPackageList.Any())
                 {
-                    SetList = new ObservableCollection<SetTemplate>(setTemplateList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Id)));
+                    SetList = new ObservableCollection<SetPackage>(setPackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.SetTemplate.Id)));
                 }
             }
             catch
@@ -142,25 +151,25 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task GoToCreateSetTemplatePage(int id)
         {
-            if (WorkoutTemplate is null) return;
+            //if (WorkoutTemplate is null) return;
 
-            SetTemplate selectedSetTemplate = SetList.FirstOrDefault(p => p.Id == id);
+            //SetTemplate selectedSetTemplate = SetList.FirstOrDefault(p => p.Id == id);
 
-            if (selectedSetTemplate is null) return;
+            //if (selectedSetTemplate is null) return;
 
-            SetWorkoutTemplatePackage package = new()
-            {
-                WorkoutTemplate = WorkoutTemplate,
-                SetTemplate = selectedSetTemplate,
-                IsEditing = true
-            };
+            //SetWorkoutTemplatePackage package = new()
+            //{
+            //    WorkoutTemplate = WorkoutTemplate,
+            //    SetTemplate = selectedSetTemplate,
+            //    IsEditing = true
+            //};
 
-            var navigationParameter = new Dictionary<string, object>
-            {
-                ["SetWorkoutTemplatePackage"] = package
-            };
+            //var navigationParameter = new Dictionary<string, object>
+            //{
+            //    ["SetWorkoutTemplatePackage"] = package
+            //};
 
-            await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={WorkoutTemplate.Id}", navigationParameter);
+            //await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={WorkoutTemplate.Id}", navigationParameter);
         }
 
         [RelayCommand]
