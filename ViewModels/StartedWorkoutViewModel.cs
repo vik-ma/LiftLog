@@ -208,5 +208,13 @@ namespace LocalLiftLog.ViewModels
                 await _context.AddItemAsync<CompletedWorkout>(CompletedWorkout);
             });
         }
+
+        [RelayCommand]
+        private static void ShowEditSetProperties(SetPackage setPackage)
+        {
+            if (setPackage is null) return;
+
+            setPackage.IsEditingSetProperties = true;
+        }
     }
 }

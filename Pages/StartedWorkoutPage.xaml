@@ -50,8 +50,12 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:SetPackage">
-                        <VerticalStackLayout Spacing="10">
-                            <HorizontalStackLayout Spacing="10">
+                        <Grid
+                            RowDefinitions="*, *, *"
+                            RowSpacing="10">
+                            <HorizontalStackLayout 
+                                Grid.Row="0"
+                                Spacing="10">
                                 <Label 
                                     Text="{Binding SetTemplate.ExerciseName}"
                                     FontSize="20"
@@ -63,12 +67,19 @@
                                     Style="{StaticResource StartedWorkoutLabelStyle}"
                                     IsVisible="{Binding SetTemplate.Note}" />
                                 <Button 
-                                    Text="Edit Set"
+                                    Text="Edit Set Template"
                                     Style="{StaticResource GenericButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=GoToCreateSetTemplatePageCommand}" 
                                     CommandParameter="{Binding SetTemplate}" />
+                                <Button 
+                                    Text="Add Or Remove Field"
+                                    Style="{StaticResource GenericButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=ShowEditSetPropertiesCommand}" 
+                                    CommandParameter="{Binding .}" />
                             </HorizontalStackLayout>
-                            <HorizontalStackLayout Spacing="10">
+                            <HorizontalStackLayout 
+                                Grid.Row="1"
+                                Spacing="10">
                                 <Label
                                     Text="Weight:"
                                     Style="{StaticResource StartedWorkoutLabelStyle}"
@@ -138,7 +149,13 @@
                                     Style="{StaticResource StartedWorkoutLabelStyle}"
                                     IsVisible="{Binding SetTemplate.IsUsingBodyWeightAsWeight}" />
                             </HorizontalStackLayout>
-                        </VerticalStackLayout>
+                            <HorizontalStackLayout 
+                                Grid.Row="2"
+                                Spacing="10"
+                                IsVisible="{Binding IsEditingSetProperties}">
+                                <Label Text="test" />
+                            </HorizontalStackLayout>
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
                 <CollectionView.EmptyView>
