@@ -10,5 +10,6 @@ namespace LocalLiftLog.Models
     {
         public SetTemplate SetTemplate { get; set; }
         public CompletedSet CompletedSet { get; set; }
+        public bool IsEditingSetProperties { get; set; }
     }
 }
