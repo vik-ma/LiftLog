@@ -109,6 +109,7 @@ namespace LocalLiftLog.ViewModels
                 IEnumerable<CompletedSet> filteredCompletedSetList = null;
                 if (CompletedWorkout.Id != 0)
                 {
+                    // Get any CompletedSets if CompletedWorkout has been saved
                     filteredCompletedSetList = await _context.GetFilteredAsync<CompletedSet>(predicateCompletedSet);
                 }
 
@@ -117,6 +118,8 @@ namespace LocalLiftLog.ViewModels
                     SetPackage setPackage = new() 
                     { 
                         SetTemplate = item,
+                        // Set the saved CompletedSet to the corresponding SetTemplate if it exists
+                        // Otherwise create a new CompletedSet object
                         CompletedSet = filteredCompletedSetList?.FirstOrDefault(c => c.SetTemplateId == item.Id) ?? new CompletedSet
                         {
                             ExerciseName = item.ExerciseName,
@@ -131,6 +134,7 @@ namespace LocalLiftLog.ViewModels
 
                 if (setPackageList.Any())
                 {
+                    // Sort the SetList by its SetListIdOrder
                     SetList = new ObservableCollection<SetPackage>(setPackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.SetTemplate.Id)));
                 }
             }
