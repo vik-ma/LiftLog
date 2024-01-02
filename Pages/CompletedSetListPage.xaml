@@ -20,13 +20,15 @@
                 HorizontalOptions="Center">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout 
-                        ItemSpacing="3"
+                        ItemSpacing="8"
                         Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:CompletedSet">
                         <VerticalStackLayout Spacing="5">
-                            <HorizontalStackLayout Spacing="5">
+                            <HorizontalStackLayout 
+                                HorizontalOptions="Center"
+                                Spacing="5">
                                 <Label VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -55,7 +57,23 @@
                                 </Label>
                                 <Entry 
                                     Text="{Binding CompletedWorkoutId}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Set Template Id: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding SetTemplateId}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Entry 
+                                    Text="{Binding SetTemplateId}"
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
                                 <Label VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -69,9 +87,6 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Entry 
-                                    Text="{Binding ExerciseName}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
                                 <Label VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -87,7 +102,7 @@
                                 </Label>
                                 <Entry 
                                     Text="{Binding Note}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
                                 <Label VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -101,6 +116,10 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout 
+                                HorizontalOptions="Center"
+                                Spacing="5">
                                 <Label VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -133,31 +152,33 @@
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=MarkCompletedSetAsCompleteCommand}"
                                     CommandParameter="{Binding Id}" />
                             </HorizontalStackLayout>
-                            <HorizontalStackLayout Spacing="5">
+                            <HorizontalStackLayout 
+                                HorizontalOptions="Center"
+                                Spacing="5">
                                 <Entry 
                                     Text="{Binding Weight}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
                                 <Entry 
                                     Text="{Binding Reps}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
                                 <Entry 
                                     Text="{Binding Rir}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
                                 <Entry 
                                     Text="{Binding Rpe}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
                                 <Entry 
                                     Text="{Binding Time}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
                                 <Entry 
                                     Text="{Binding Distance}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
                                 <Entry 
                                     Text="{Binding CardioResistance}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
                                 <Entry 
                                     Text="{Binding IsUsingBodyWeightAsWeight}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
                                 <Button 
                                     Text="Update"
                                     Style="{StaticResource AddButtonStyle}"
