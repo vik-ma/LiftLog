@@ -105,14 +105,19 @@ namespace LocalLiftLog.ViewModels
             try
             {
                 var filteredSetTemplateList = await _context.GetFilteredAsync<SetTemplate>(predicateSetTemplate);
-                var filteredCompletedSetList = await _context.GetFilteredAsync<CompletedSet>(predicateCompletedSet);
+
+                IEnumerable<CompletedSet> filteredCompletedSetList = null;
+                if (CompletedWorkout.Id != 0)
+                {
+                    filteredCompletedSetList = await _context.GetFilteredAsync<CompletedSet>(predicateCompletedSet);
+                }
 
                 foreach (var item in filteredSetTemplateList)
                 {
                     SetPackage setPackage = new() 
                     { 
                         SetTemplate = item,
-                        CompletedSet = filteredCompletedSetList.FirstOrDefault(c => c.SetTemplateId == item.Id) ?? new CompletedSet
+                        CompletedSet = filteredCompletedSetList?.FirstOrDefault(c => c.SetTemplateId == item.Id) ?? new CompletedSet
                         {
                             ExerciseName = item.ExerciseName,
                             CompletedWorkoutId = CompletedWorkout.Id
