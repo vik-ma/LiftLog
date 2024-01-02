@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.Models
 {
-    public class CompletedSet
+    public partial class CompletedSet : ObservableObject
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -16,7 +17,8 @@ namespace LocalLiftLog.Models
         public bool IsCompleted { get; set; }
         public int PercentCompleted { get; set; }
         public bool IsWarmupSet { get; set; }
-        public string TimeCompleted { get; set; }
+        [ObservableProperty]
+        public string timeCompleted;
         public int SetTemplateId { get; set; }
         public int CompletedWorkoutId { get; set; }
         public int Weight { get; set; }

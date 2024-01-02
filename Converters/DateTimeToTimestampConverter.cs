@@ -22,7 +22,7 @@ namespace LocalLiftLog.Converters
                 return DateTimeHelper.FormatDateTimeStringToTimestamp(dateString);
             }
 
-            return value;
+            return "Invalid DateTime";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

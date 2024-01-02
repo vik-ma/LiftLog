@@ -256,6 +256,8 @@ namespace LocalLiftLog.ViewModels
                 }
                 else setPackage.IsSetCompleted = true;
             });
+
+            OnPropertyChanged(nameof(setPackage.CompletedSet));
         }
 
         [RelayCommand]
