@@ -99,23 +99,28 @@ namespace LocalLiftLog.ViewModels
 
             List<SetPackage> setPackageList = new();
 
-            Expression<Func<SetTemplate, bool>> predicate = entity => entity.WorkoutTemplateId == WorkoutTemplate.Id;
+            Expression<Func<SetTemplate, bool>> predicateSetTemplate = entity => entity.WorkoutTemplateId == WorkoutTemplate.Id;
+            Expression<Func<CompletedSet, bool>> predicateCompletedSet = entity => entity.CompletedWorkoutId == CompletedWorkout.Id;
 
             try
             {
-                var filteredList = await _context.GetFilteredAsync<SetTemplate>(predicate);
+                var filteredSetTemplateList = await _context.GetFilteredAsync<SetTemplate>(predicateSetTemplate);
+                var filteredCompletedSetList = await _context.GetFilteredAsync<CompletedSet>(predicateCompletedSet);
 
-                foreach (var item in filteredList)
+                foreach (var item in filteredSetTemplateList)
                 {
                     SetPackage setPackage = new() 
                     { 
                         SetTemplate = item,
-                        CompletedSet = new() 
-                        { 
+                        CompletedSet = filteredCompletedSetList.FirstOrDefault(c => c.SetTemplateId == item.Id) ?? new CompletedSet
+                        {
                             ExerciseName = item.ExerciseName,
                             CompletedWorkoutId = CompletedWorkout.Id
                         }
                     };
+
+                    if (setPackage.CompletedSet.IsCompleted) setPackage.IsSetCompleted = true;
+
                     setPackageList.Add(setPackage);
                 }
 
