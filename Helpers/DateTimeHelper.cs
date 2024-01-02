@@ -31,6 +31,11 @@ namespace LocalLiftLog.Helpers
             return dateTime.ToString("yyyy-MM-dd");
         }
 
+        public static string FormatDateTimeToTimeStamp(DateTime dateTime)
+        {
+            return dateTime.ToString("HH:mm:ss");
+        }
+
         public static bool ValidateStartAndEndDate(string startDateTime, string endDateTime)
         {
             // Parse the DateTime strings into DateTime objects
