@@ -17,6 +17,7 @@ namespace LocalLiftLog.Models
         public int PercentCompleted { get; set; }
         public bool IsWarmupSet { get; set; }
         public string TimeCompleted { get; set; }
+        public int SetTemplateId { get; set; }
         public int CompletedWorkoutId { get; set; }
         public int Weight { get; set; }
         public int Reps { get; set; }
