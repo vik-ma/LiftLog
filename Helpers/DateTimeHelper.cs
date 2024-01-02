@@ -31,9 +31,18 @@ namespace LocalLiftLog.Helpers
             return dateTime.ToString("yyyy-MM-dd");
         }
 
-        public static string FormatDateTimeToTimeStamp(DateTime dateTime)
+        public static string FormatDateTimeToTimestampString(DateTime dateTime)
         {
             return dateTime.ToString("HH:mm:ss");
+        }
+
+        public static string FormatDateTimeStringToTimestamp(string dateTimeString)
+        {
+            if (DateTime.TryParse(dateTimeString, out DateTime dateTime))
+            {
+                return FormatDateTimeToTimestampString(dateTime);
+            }
+            return "Invalid Date";
         }
 
         public static bool ValidateStartAndEndDate(string startDateTime, string endDateTime)
