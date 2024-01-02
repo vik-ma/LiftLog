@@ -232,6 +232,7 @@ namespace LocalLiftLog.ViewModels
 
             setPackage.CompletedSet.IsCompleted = true;
             setPackage.CompletedSet.TimeCompleted = DateTimeHelper.GetCurrentFormattedDateTime();
+            setPackage.CompletedSet.SetTemplateId = setPackage.SetTemplate.Id;
 
             await ExecuteAsync(async () =>
             {
