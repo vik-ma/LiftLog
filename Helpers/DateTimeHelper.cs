@@ -36,11 +36,25 @@ namespace LocalLiftLog.Helpers
             return dateTime.ToString("HH:mm:ss");
         }
 
+        public static string FormatDateTimeToYmdDateAndTimestampString(DateTime dateTime)
+        {
+            return dateTime.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
         public static string FormatDateTimeStringToTimestamp(string dateTimeString)
         {
             if (DateTime.TryParse(dateTimeString, out DateTime dateTime))
             {
                 return FormatDateTimeToTimestampString(dateTime);
+            }
+            return "Invalid Date";
+        }
+
+        public static string FormatDateTimeStringToYmdDateAndTimestampString(string dateTimeString)
+        {
+            if (DateTime.TryParse(dateTimeString, out DateTime dateTime))
+            {
+                return FormatDateTimeToYmdDateAndTimestampString(dateTime);
             }
             return "Invalid Date";
         }
