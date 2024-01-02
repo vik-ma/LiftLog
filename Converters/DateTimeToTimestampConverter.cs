@@ -12,17 +12,17 @@ namespace LocalLiftLog.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            //if (value is string dateString)
-            //{
-            //    if (parameter is string parameterString && parameterString == "IncludeDate")
-            //    {
-            //        return DateTimeHelper.fpr
-            //    }
+            if (value is string dateString)
+            {
+                if (parameter is string parameterString && parameterString == "IncludeDate")
+                {
+                    return DateTimeHelper.FormatDateTimeStringToYmdDateAndTimestampString(dateString);
+                }
 
-            //    return DateTimeHelper.FormatDateTimeStringToTimestamp(dateString);
-            //}
+                return DateTimeHelper.FormatDateTimeStringToTimestamp(dateString);
+            }
 
-            return "Invalid DateTime";
+            return value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

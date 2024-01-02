@@ -77,6 +77,16 @@
                                     IsVisible="{Binding IsEditingSetProperties, Converter={StaticResource InvertedBoolConverter}}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=ShowEditSetPropertiesCommand}" 
                                     CommandParameter="{Binding .}" />
+                                <Label 
+                                    Text="Completed At"
+                                    TextColor="{DynamicResource MediumGreen}"
+                                    Style="{StaticResource StartedWorkoutLabelStyle}"
+                                    IsVisible="{Binding IsSetCompleted}" />
+                                <Label 
+                                    Text="{Binding CompletedSet.TimeCompleted, Converter={StaticResource DateTimeToTimestampConverter}}"
+                                    TextColor="{DynamicResource MediumGreen}"
+                                    Style="{StaticResource StartedWorkoutLabelStyle}"
+                                    IsVisible="{Binding IsSetCompleted}" />
                             </HorizontalStackLayout>
                             <HorizontalStackLayout 
                                 Grid.Row="1"

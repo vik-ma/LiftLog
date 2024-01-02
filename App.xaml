@@ -163,6 +163,7 @@
             <converters:IsIntNot0Converter x:Key="IsIntNot0Converter" />
             <converters:AreStringsOrIntsEqualMultiBindingConverter x:Key="AreStringsOrIntsEqualMultiBindingConverter" />
             <converters:DateToWeekdayConverter x:Key="DateToWeekdayConverter" />
+            <converters:DateTimeToTimestampConverter x:Key="DateTimeToTimestampConverter" />
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             <toolkit:IndexToArrayItemConverter x:Key="IndexToArrayItemConverter" />
             <toolkit:IsListNullOrEmptyConverter x:Key="IsListNullOrEmptyConverter" />
