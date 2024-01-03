@@ -4,6 +4,7 @@
              x:Class="LocalLiftLog.Pages.StartedWorkoutPage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:models="clr-namespace:LocalLiftLog.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:StartedWorkoutViewModel"
              Title="Started Workout">
     <VerticalStackLayout HorizontalOptions="Center">
@@ -50,129 +51,132 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:SetPackage">
-                        <Grid
-                            RowDefinitions="*, *, *"
-                            RowSpacing="10">
-                            <HorizontalStackLayout 
+                        <toolkit:Expander>
+                            <toolkit:Expander.Header>
+                                <HorizontalStackLayout 
                                 Grid.Row="0"
                                 Spacing="10">
-                                <Label 
+                                    <Label 
                                     Text="{Binding SetTemplate.ExerciseName}"
                                     FontSize="20"
                                     VerticalOptions="Center"
                                     Style="{StaticResource OrangeBoldTextStyle}" />
-                                <Label
+                                    <Label
                                     Text="{Binding SetTemplate.Note}"
                                     TextColor="{DynamicResource DarkGray}"
                                     Style="{StaticResource StartedWorkoutLabelStyle}"
                                     IsVisible="{Binding SetTemplate.Note}" />
-                                <Button 
-                                    Text="Edit Set Template"
-                                    Style="{StaticResource GenericButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=GoToCreateSetTemplatePageCommand}" 
-                                    CommandParameter="{Binding SetTemplate}" />
-                                <Button 
-                                    Text="Add Or Remove Field"
-                                    Style="{StaticResource GenericButtonStyle}"
-                                    IsVisible="{Binding IsEditingSetProperties, Converter={StaticResource InvertedBoolConverter}}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=ShowEditSetPropertiesCommand}" 
-                                    CommandParameter="{Binding .}" />
-                                <Label 
-                                    Text="Completed At"
-                                    TextColor="{DynamicResource MediumGreen}"
-                                    Style="{StaticResource StartedWorkoutLabelStyle}"
-                                    IsVisible="{Binding CompletedSet.IsCompleted}" />
-                                <Label 
-                                    Text="{Binding CompletedSet.TimeCompleted, Converter={StaticResource DateTimeToTimestampConverter}}"
-                                    TextColor="{DynamicResource MediumGreen}"
-                                    Style="{StaticResource StartedWorkoutLabelStyle}"
-                                    IsVisible="{Binding CompletedSet.IsCompleted}" />
-                            </HorizontalStackLayout>
-                            <HorizontalStackLayout 
-                                Grid.Row="1"
-                                Spacing="10">
-                                <Label
-                                    Text="Weight:"
-                                    Style="{StaticResource StartedWorkoutLabelStyle}"
-                                    IsVisible="{Binding SetTemplate.IsTrackingWeight}" />
-                                <Entry
-                                    Text="{Binding CompletedSet.Weight}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                                    IsVisible="{Binding SetTemplate.IsTrackingWeight}" />
-                                <Label
-                                    Text="Reps:"
-                                    Style="{StaticResource StartedWorkoutLabelStyle}"
-                                    IsVisible="{Binding SetTemplate.IsTrackingReps}" />
-                                <Entry
-                                    Text="{Binding CompletedSet.Reps}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                                    IsVisible="{Binding SetTemplate.IsTrackingReps}" />
-                                <Label
-                                    Text="RIR:"
-                                    Style="{StaticResource StartedWorkoutLabelStyle}"
-                                    IsVisible="{Binding SetTemplate.IsTrackingRir}" />
-                                <Entry
-                                    Text="{Binding CompletedSet.Rir}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                                    IsVisible="{Binding SetTemplate.IsTrackingRir}" />
-                                <Label
-                                    Text="RPE:"
-                                    Style="{StaticResource StartedWorkoutLabelStyle}"
-                                    IsVisible="{Binding SetTemplate.IsTrackingRpe}" />
-                                <Entry
-                                    Text="{Binding CompletedSet.Rpe}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                                    IsVisible="{Binding SetTemplate.IsTrackingRpe}" />
-                                <Label
-                                    Text="Time:"
-                                    Style="{StaticResource StartedWorkoutLabelStyle}"
-                                    IsVisible="{Binding SetTemplate.IsTrackingTime}" />
-                                <Entry
-                                    Text="{Binding CompletedSet.Time}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                                    IsVisible="{Binding SetTemplate.IsTrackingTime}" />
-                                <Label
-                                    Text="Distance:"
-                                    Style="{StaticResource StartedWorkoutLabelStyle}"
-                                    IsVisible="{Binding SetTemplate.IsTrackingDistance}" />
-                                <Entry
-                                    Text="{Binding CompletedSet.Distance}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                                    IsVisible="{Binding SetTemplate.IsTrackingDistance}" />
-                                <Label
-                                    Text="Resistance Level:"
-                                    Style="{StaticResource StartedWorkoutLabelStyle}"
-                                    IsVisible="{Binding SetTemplate.IsTrackingCardioResistance}" />
-                                <Entry
-                                    Text="{Binding CompletedSet.CardioResistance}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                                    IsVisible="{Binding SetTemplate.IsTrackingCardioResistance}" />
-                                <Label
-                                    Text="Warmup Set"
-                                    TextColor="{DynamicResource DarkGray}"
-                                    FontAttributes="Italic"
-                                    Style="{StaticResource StartedWorkoutLabelStyle}"
-                                    IsVisible="{Binding SetTemplate.IsWarmupSet}" />
-                                <Label
-                                    Text="Includes Body Weight"
-                                    TextColor="{DynamicResource DarkGray}"
-                                    FontAttributes="Italic"
-                                    Style="{StaticResource StartedWorkoutLabelStyle}"
-                                    IsVisible="{Binding SetTemplate.IsUsingBodyWeightAsWeight}" />
-                                <Button 
-                                    Text="Update Set"
-                                    Style="{StaticResource AddButtonStyle}"
-                                    IsVisible="{Binding CompletedSet.IsCompleted}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=UpdateSetCommand}" 
-                                    CommandParameter="{Binding CompletedSet}"/>
-                                <Button 
-                                    Text="Save Set"
-                                    Style="{StaticResource AddButtonStyle}"
-                                    IsVisible="{Binding CompletedSet.IsCompleted, Converter={StaticResource InvertedBoolConverter}}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=SaveSetCommand}" 
-                                    CommandParameter="{Binding .}"/>
-                            </HorizontalStackLayout>
-                            <HorizontalStackLayout 
+                                </HorizontalStackLayout>
+                            </toolkit:Expander.Header>
+                            <VerticalStackLayout>
+                                <HorizontalStackLayout Padding="10">
+                                    <Button 
+                                        Text="Edit Set Template"
+                                        Style="{StaticResource GenericButtonStyle}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=GoToCreateSetTemplatePageCommand}" 
+                                        CommandParameter="{Binding SetTemplate}" />
+                                    <Button 
+                                        Text="Add Or Remove Field"
+                                        Style="{StaticResource GenericButtonStyle}"
+                                        IsVisible="{Binding IsEditingSetProperties, Converter={StaticResource InvertedBoolConverter}}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=ShowEditSetPropertiesCommand}" 
+                                        CommandParameter="{Binding .}" />
+                                    <Label 
+                                        Text="Completed At"
+                                        TextColor="{DynamicResource MediumGreen}"
+                                        Style="{StaticResource StartedWorkoutLabelStyle}"
+                                        IsVisible="{Binding CompletedSet.IsCompleted}" />
+                                    <Label 
+                                        Text="{Binding CompletedSet.TimeCompleted, Converter={StaticResource DateTimeToTimestampConverter}}"
+                                        TextColor="{DynamicResource MediumGreen}"
+                                        Style="{StaticResource StartedWorkoutLabelStyle}"
+                                        IsVisible="{Binding CompletedSet.IsCompleted}" />
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label
+                                        Text="Weight:"
+                                        Style="{StaticResource StartedWorkoutLabelStyle}"
+                                        IsVisible="{Binding SetTemplate.IsTrackingWeight}" />
+                                    <Entry
+                                        Text="{Binding CompletedSet.Weight}"
+                                        Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                        IsVisible="{Binding SetTemplate.IsTrackingWeight}" />
+                                    <Label
+                                        Text="Reps:"
+                                        Style="{StaticResource StartedWorkoutLabelStyle}"
+                                        IsVisible="{Binding SetTemplate.IsTrackingReps}" />
+                                    <Entry
+                                        Text="{Binding CompletedSet.Reps}"
+                                        Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                        IsVisible="{Binding SetTemplate.IsTrackingReps}" />
+                                    <Label
+                                        Text="RIR:"
+                                        Style="{StaticResource StartedWorkoutLabelStyle}"
+                                        IsVisible="{Binding SetTemplate.IsTrackingRir}" />
+                                    <Entry
+                                        Text="{Binding CompletedSet.Rir}"
+                                        Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                        IsVisible="{Binding SetTemplate.IsTrackingRir}" />
+                                    <Label
+                                        Text="RPE:"
+                                        Style="{StaticResource StartedWorkoutLabelStyle}"
+                                        IsVisible="{Binding SetTemplate.IsTrackingRpe}" />
+                                    <Entry
+                                        Text="{Binding CompletedSet.Rpe}"
+                                        Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                        IsVisible="{Binding SetTemplate.IsTrackingRpe}" />
+                                    <Label
+                                        Text="Time:"
+                                        Style="{StaticResource StartedWorkoutLabelStyle}"
+                                        IsVisible="{Binding SetTemplate.IsTrackingTime}" />
+                                    <Entry
+                                        Text="{Binding CompletedSet.Time}"
+                                        Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                        IsVisible="{Binding SetTemplate.IsTrackingTime}" />
+                                    <Label
+                                        Text="Distance:"
+                                        Style="{StaticResource StartedWorkoutLabelStyle}"
+                                        IsVisible="{Binding SetTemplate.IsTrackingDistance}" />
+                                    <Entry
+                                        Text="{Binding CompletedSet.Distance}"
+                                        Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                        IsVisible="{Binding SetTemplate.IsTrackingDistance}" />
+                                    <Label
+                                        Text="Resistance Level:"
+                                        Style="{StaticResource StartedWorkoutLabelStyle}"
+                                        IsVisible="{Binding SetTemplate.IsTrackingCardioResistance}" />
+                                    <Entry
+                                        Text="{Binding CompletedSet.CardioResistance}"
+                                        Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                        IsVisible="{Binding SetTemplate.IsTrackingCardioResistance}" />
+                                    <Label
+                                        Text="Warmup Set"
+                                        TextColor="{DynamicResource DarkGray}"
+                                        FontAttributes="Italic"
+                                        Style="{StaticResource StartedWorkoutLabelStyle}"
+                                        IsVisible="{Binding SetTemplate.IsWarmupSet}" />
+                                    <Label
+                                        Text="Includes Body Weight"
+                                        TextColor="{DynamicResource DarkGray}"
+                                        FontAttributes="Italic"
+                                        Style="{StaticResource StartedWorkoutLabelStyle}"
+                                        IsVisible="{Binding SetTemplate.IsUsingBodyWeightAsWeight}" />
+                                    <Button 
+                                        Text="Update Set"
+                                        Style="{StaticResource AddButtonStyle}"
+                                        IsVisible="{Binding CompletedSet.IsCompleted}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=UpdateSetCommand}" 
+                                        CommandParameter="{Binding CompletedSet}"/>
+                                    <Button 
+                                        Text="Save Set"
+                                        Style="{StaticResource AddButtonStyle}"
+                                        IsVisible="{Binding CompletedSet.IsCompleted, Converter={StaticResource InvertedBoolConverter}}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=SaveSetCommand}" 
+                                        CommandParameter="{Binding .}"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </toolkit:Expander>
+                        <!--<HorizontalStackLayout 
                                 Grid.Row="2"
                                 Spacing="10"
                                 IsVisible="{Binding IsEditingSetProperties}">
@@ -181,8 +185,7 @@
                                     Style="{StaticResource DeleteButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=HideEditSetPropertiesCommand}" 
                                     CommandParameter="{Binding .}" />
-                            </HorizontalStackLayout>
-                        </Grid>
+                            </HorizontalStackLayout>-->
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
                 <CollectionView.EmptyView>
