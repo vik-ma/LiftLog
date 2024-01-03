@@ -14,8 +14,5 @@ namespace LocalLiftLog.Models
 
         [ObservableProperty]
         public bool isEditingSetProperties;
-
-        [ObservableProperty]
-        public bool isSetCompleted;
     }
 }

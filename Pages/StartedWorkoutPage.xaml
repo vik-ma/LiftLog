@@ -81,12 +81,12 @@
                                     Text="Completed At"
                                     TextColor="{DynamicResource MediumGreen}"
                                     Style="{StaticResource StartedWorkoutLabelStyle}"
-                                    IsVisible="{Binding IsSetCompleted}" />
+                                    IsVisible="{Binding CompletedSet.IsCompleted}" />
                                 <Label 
                                     Text="{Binding CompletedSet.TimeCompleted, Converter={StaticResource DateTimeToTimestampConverter}}"
                                     TextColor="{DynamicResource MediumGreen}"
                                     Style="{StaticResource StartedWorkoutLabelStyle}"
-                                    IsVisible="{Binding IsSetCompleted}" />
+                                    IsVisible="{Binding CompletedSet.IsCompleted}" />
                             </HorizontalStackLayout>
                             <HorizontalStackLayout 
                                 Grid.Row="1"
@@ -162,13 +162,13 @@
                                 <Button 
                                     Text="Update Set"
                                     Style="{StaticResource AddButtonStyle}"
-                                    IsVisible="{Binding IsSetCompleted}"
+                                    IsVisible="{Binding CompletedSet.IsCompleted}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=UpdateSetCommand}" 
                                     CommandParameter="{Binding CompletedSet}"/>
                                 <Button 
                                     Text="Save Set"
                                     Style="{StaticResource AddButtonStyle}"
-                                    IsVisible="{Binding IsSetCompleted, Converter={StaticResource InvertedBoolConverter}}"
+                                    IsVisible="{Binding CompletedSet.IsCompleted, Converter={StaticResource InvertedBoolConverter}}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=SaveSetCommand}" 
                                     CommandParameter="{Binding .}"/>
                             </HorizontalStackLayout>

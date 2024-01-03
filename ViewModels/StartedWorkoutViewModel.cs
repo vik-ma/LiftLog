@@ -127,8 +127,6 @@ namespace LocalLiftLog.ViewModels
                         }
                     };
 
-                    if (setPackage.CompletedSet.IsCompleted) setPackage.IsSetCompleted = true;
-
                     setPackageList.Add(setPackage);
                 }
 
@@ -254,7 +252,6 @@ namespace LocalLiftLog.ViewModels
                 {
                     await Shell.Current.DisplayAlert("Error", "Error occured when trying to save Set.", "OK");
                 }
-                else setPackage.IsSetCompleted = true;
             });
 
             OnPropertyChanged(nameof(setPackage.CompletedSet));
