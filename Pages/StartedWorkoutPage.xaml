@@ -54,22 +54,28 @@
                         <toolkit:Expander>
                             <toolkit:Expander.Header>
                                 <HorizontalStackLayout 
-                                Grid.Row="0"
-                                Spacing="10">
+                                    Spacing="10"
+                                    Padding="10"
+                                    BackgroundColor="{DynamicResource Gray100}">
                                     <Label 
-                                    Text="{Binding SetTemplate.ExerciseName}"
-                                    FontSize="20"
-                                    VerticalOptions="Center"
-                                    Style="{StaticResource OrangeBoldTextStyle}" />
+                                        Text="{Binding SetTemplate.ExerciseName}"
+                                        FontSize="20"
+                                        VerticalOptions="Center"
+                                        Style="{StaticResource OrangeBoldTextStyle}" />
                                     <Label
-                                    Text="{Binding SetTemplate.Note}"
-                                    TextColor="{DynamicResource DarkGray}"
-                                    Style="{StaticResource StartedWorkoutLabelStyle}"
-                                    IsVisible="{Binding SetTemplate.Note}" />
+                                        Text="{Binding SetTemplate.Note}"
+                                        TextColor="{DynamicResource DarkGray}"
+                                        Style="{StaticResource StartedWorkoutLabelStyle}"
+                                        IsVisible="{Binding SetTemplate.Note}" />
                                 </HorizontalStackLayout>
                             </toolkit:Expander.Header>
-                            <VerticalStackLayout>
-                                <HorizontalStackLayout Padding="10">
+                            <Grid
+                                RowDefinitions="*, *, *"
+                                RowSpacing="10"
+                                Padding="10">
+                                <HorizontalStackLayout
+                                    Grid.Row="0"
+                                    Spacing="10">
                                     <Button 
                                         Text="Edit Set Template"
                                         Style="{StaticResource GenericButtonStyle}"
@@ -92,7 +98,9 @@
                                         Style="{StaticResource StartedWorkoutLabelStyle}"
                                         IsVisible="{Binding CompletedSet.IsCompleted}" />
                                 </HorizontalStackLayout>
-                                <HorizontalStackLayout Spacing="10">
+                                <HorizontalStackLayout
+                                    Grid.Row="1"
+                                    Spacing="10">
                                     <Label
                                         Text="Weight:"
                                         Style="{StaticResource StartedWorkoutLabelStyle}"
@@ -174,7 +182,7 @@
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=SaveSetCommand}" 
                                         CommandParameter="{Binding .}"/>
                                 </HorizontalStackLayout>
-                            </VerticalStackLayout>
+                            </Grid>
                         </toolkit:Expander>
                         <!--<HorizontalStackLayout 
                                 Grid.Row="2"
