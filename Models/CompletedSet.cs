@@ -14,7 +14,8 @@ namespace LocalLiftLog.Models
         public int Id { get; set; }
         public string ExerciseName { get; set; }
         public string Note { get; set; }
-        public bool IsCompleted { get; set; }
+        [ObservableProperty]
+        public bool isCompleted;
         public int PercentCompleted { get; set; }
         public bool IsWarmupSet { get; set; }
         [ObservableProperty]
