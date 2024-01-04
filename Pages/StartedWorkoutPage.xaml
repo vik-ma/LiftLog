@@ -82,27 +82,14 @@
                             </toolkit:Expander.Header>
                             <Grid
                                 RowDefinitions="*, *, *"
+                                ColumnDefinitions="Auto, Auto"
                                 RowSpacing="10"
-                                Padding="10">
-                                <HorizontalStackLayout
-                                    Grid.Row="0"
-                                    Spacing="10">
-                                    <Button 
-                                        Text="Edit Set Template"
-                                        Style="{StaticResource GenericButtonStyle}"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=GoToCreateSetTemplatePageCommand}" 
-                                        CommandParameter="{Binding SetTemplate}" />
-                                    <Button 
-                                        Text="Add Or Remove Field"
-                                        Style="{StaticResource GenericButtonStyle}"
-                                        IsVisible="{Binding IsEditingSetProperties, Converter={StaticResource InvertedBoolConverter}}"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=ShowEditSetPropertiesCommand}" 
-                                        CommandParameter="{Binding .}" />
-                                </HorizontalStackLayout>
+                                Padding="0, 10">
                                 <FlexLayout 
-                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.Row="0"
                                     Wrap="Wrap"
-                                    MaximumWidthRequest="600"
+                                    MaximumWidthRequest="460"
                                     JustifyContent="SpaceBetween">
                                     <Label
                                         Text="Weight:"
@@ -172,19 +159,38 @@
                                         FontAttributes="Italic"
                                         Style="{StaticResource StartedWorkoutLabelStyle}"
                                         IsVisible="{Binding SetTemplate.IsUsingBodyWeightAsWeight}" />
-                                    <Button 
-                                        Text="Update Set"
-                                        Style="{StaticResource AddButtonStyle}"
-                                        IsVisible="{Binding CompletedSet.IsCompleted}"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=UpdateSetCommand}" 
-                                        CommandParameter="{Binding CompletedSet}"/>
-                                    <Button 
-                                        Text="Save Set"
-                                        Style="{StaticResource AddButtonStyle}"
-                                        IsVisible="{Binding CompletedSet.IsCompleted, Converter={StaticResource InvertedBoolConverter}}"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=SaveSetCommand}" 
-                                        CommandParameter="{Binding .}"/>
                                 </FlexLayout>
+                                <Button 
+                                    Grid.Column="1"
+                                    HeightRequest="50"
+                                    Text="Update Set"
+                                    Style="{StaticResource AddButtonStyle}"
+                                    IsVisible="{Binding CompletedSet.IsCompleted}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=UpdateSetCommand}" 
+                                    CommandParameter="{Binding CompletedSet}"/>
+                                <Button 
+                                    Grid.Column="1"
+                                    HeightRequest="50"
+                                    Text="Save Set"
+                                    Style="{StaticResource AddButtonStyle}"
+                                    IsVisible="{Binding CompletedSet.IsCompleted, Converter={StaticResource InvertedBoolConverter}}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=SaveSetCommand}" 
+                                    CommandParameter="{Binding .}"/>
+                                <HorizontalStackLayout
+                                    Grid.Row="1"
+                                    Spacing="10">
+                                    <Button 
+                                        Text="Edit Set Template"
+                                        Style="{StaticResource GenericButtonStyle}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=GoToCreateSetTemplatePageCommand}" 
+                                        CommandParameter="{Binding SetTemplate}" />
+                                    <Button 
+                                        Text="Add Or Remove Field"
+                                        Style="{StaticResource GenericButtonStyle}"
+                                        IsVisible="{Binding IsEditingSetProperties, Converter={StaticResource InvertedBoolConverter}}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=ShowEditSetPropertiesCommand}" 
+                                        CommandParameter="{Binding .}" />
+                                </HorizontalStackLayout>
                             </Grid>
                         </toolkit:Expander>
                         <!--<HorizontalStackLayout 
