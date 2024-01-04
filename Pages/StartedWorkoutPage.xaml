@@ -98,9 +98,11 @@
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=ShowEditSetPropertiesCommand}" 
                                         CommandParameter="{Binding .}" />
                                 </HorizontalStackLayout>
-                                <HorizontalStackLayout
+                                <FlexLayout 
                                     Grid.Row="1"
-                                    Spacing="10">
+                                    Wrap="Wrap"
+                                    MaximumWidthRequest="600"
+                                    JustifyContent="SpaceBetween">
                                     <Label
                                         Text="Weight:"
                                         Style="{StaticResource StartedWorkoutLabelStyle}"
@@ -181,7 +183,7 @@
                                         IsVisible="{Binding CompletedSet.IsCompleted, Converter={StaticResource InvertedBoolConverter}}"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=SaveSetCommand}" 
                                         CommandParameter="{Binding .}"/>
-                                </HorizontalStackLayout>
+                                </FlexLayout>
                             </Grid>
                         </toolkit:Expander>
                         <!--<HorizontalStackLayout 
