@@ -117,14 +117,15 @@
             </Style>
             <Style x:Key="StartedWorkoutEntryFieldStyle" TargetType="Entry">
                 <Setter Property="WidthRequest" Value="52" />
-                <Setter Property="MinimumHeightRequest" Value="38" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="MinimumHeightRequest" Value="40" />
                 <Setter Property="MaxLength" Value="3" />
                 <Setter Property="Margin" Value="0, 5" />
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="HorizontalTextAlignment" Value="End" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="Keyboard" Value="Numeric" />
-                <Setter Property="TextColor" Value="{StaticResource MediumBlue}" />
+                <Setter Property="TextColor" Value="{DynamicResource MediumBlue}" />
             </Style>
             <Style x:Key="StartedWorkoutExpanderHeaderLabelStyle" TargetType="Label">
                 <Setter Property="FontAttributes" Value="Bold" />
@@ -135,7 +136,7 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="FontSize" Value="18" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="{StaticResource DarkGray}" />
+                <Setter Property="TextColor" Value="{DynamicResource DarkGray}" />
             </Style>
             <Style x:Key="StartedWorkoutLabelEntryLayoutStyle" TargetType="HorizontalStackLayout">
                 <Setter Property="Spacing" Value="12" />
