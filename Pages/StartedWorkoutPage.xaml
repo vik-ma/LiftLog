@@ -94,13 +94,14 @@
                             <Grid
                                 RowDefinitions="*, *, *"
                                 ColumnDefinitions="Auto, Auto"
+                                ColumnSpacing="20"
                                 RowSpacing="10"
-                                Padding="0, 10">
+                                Padding="5, 10">
                                 <FlexLayout 
                                     Grid.Column="0"
                                     Grid.Row="0"
                                     Wrap="Wrap"
-                                    MaximumWidthRequest="460"
+                                    MaximumWidthRequest="440"
                                     JustifyContent="SpaceBetween">
                                     <HorizontalStackLayout Spacing="10">
                                         <Label
