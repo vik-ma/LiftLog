@@ -52,6 +52,7 @@
     <Color x:Key="MediumBlue">#4287f5</Color>
     <Color x:Key="DeepBlue">#035afc</Color>
     <Color x:Key="DeepPink">#FF33A8</Color>
-
+    <Color x:Key="VeryLightOrange">#faeac8</Color>
+    <Color x:Key="MediumBrown">#9e7231</Color>
 
 </ResourceDictionary>

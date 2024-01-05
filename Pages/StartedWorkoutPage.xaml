@@ -57,12 +57,13 @@
                                     ColumnSpacing="10"
                                     Padding="10"
                                     WidthRequest="600"
-                                    BackgroundColor="{DynamicResource Gray100}">
+                                    BackgroundColor="{DynamicResource VeryLightOrange}">
                                     <HorizontalStackLayout Spacing="5">
                                         <Label 
                                             Text="{Binding SetTemplate.ExerciseName}"
                                             FontSize="20"
                                             VerticalOptions="Center"
+                                            TextColor="{DynamicResource MediumBrown}"
                                             Style="{StaticResource OrangeBoldTextStyle}" />
                                         <Label
                                             Text="{Binding SetTemplate.Note}"
