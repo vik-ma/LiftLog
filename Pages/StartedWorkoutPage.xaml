@@ -110,7 +110,7 @@
                                             IsVisible="{Binding SetTemplate.IsTrackingWeight}" />
                                         <Entry
                                             Text="{Binding CompletedSet.Weight}"
-                                            Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingWeight}" />
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="10">
@@ -120,7 +120,7 @@
                                             IsVisible="{Binding SetTemplate.IsTrackingReps}" />
                                         <Entry
                                             Text="{Binding CompletedSet.Reps}"
-                                            Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingReps}" />
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="10">
@@ -130,7 +130,7 @@
                                             IsVisible="{Binding SetTemplate.IsTrackingRir}" />
                                         <Entry
                                             Text="{Binding CompletedSet.Rir}"
-                                            Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingRir}" />
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="10">
@@ -140,7 +140,7 @@
                                             IsVisible="{Binding SetTemplate.IsTrackingRpe}" />
                                         <Entry
                                             Text="{Binding CompletedSet.Rpe}"
-                                            Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingRpe}" />
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="10">
@@ -150,7 +150,7 @@
                                             IsVisible="{Binding SetTemplate.IsTrackingTime}" />
                                         <Entry
                                             Text="{Binding CompletedSet.Time}"
-                                            Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingTime}" />
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="10">
@@ -160,7 +160,7 @@
                                             IsVisible="{Binding SetTemplate.IsTrackingDistance}" />
                                         <Entry
                                             Text="{Binding CompletedSet.Distance}"
-                                            Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingDistance}" />
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="10">
@@ -170,7 +170,7 @@
                                             IsVisible="{Binding SetTemplate.IsTrackingCardioResistance}" />
                                         <Entry
                                             Text="{Binding CompletedSet.CardioResistance}"
-                                            Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingCardioResistance}" />
                                     </HorizontalStackLayout>
                                     <Label
