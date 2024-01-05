@@ -47,8 +47,8 @@
     <Color x:Key="LightGray">#DDDDDD</Color>
     <Color x:Key="MediumGray">#9e9e9e</Color>
     <Color x:Key="MediumDarkGray">#707070</Color>
-    <Color x:Key="DarkGray">#575757</Color>
-    <Color x:Key="VeryDarkGray">#242424</Color>
+    <Color x:Key="DarkGray">#606060</Color>
+    <Color x:Key="VeryDarkGray">#333333</Color>
     <Color x:Key="MediumOrange">#ffa51f</Color>
     <Color x:Key="MediumBlue">#4287f5</Color>
     <Color x:Key="DeepBlue">#035afc</Color>

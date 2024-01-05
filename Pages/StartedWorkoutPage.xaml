@@ -63,7 +63,7 @@
                                             Text="{Binding SetTemplate.ExerciseName}"
                                             FontSize="20"
                                             VerticalOptions="Center"
-                                            TextColor="{DynamicResource MediumBrown}"
+                                            TextColor="{Binding CompletedSet.IsCompleted, Converter={StaticResource WarmupSetColorConverter}}"
                                             Style="{StaticResource OrangeBoldTextStyle}" />
                                         <Label
                                             Text="{Binding SetTemplate.Note}"
