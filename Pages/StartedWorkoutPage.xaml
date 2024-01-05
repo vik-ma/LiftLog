@@ -67,7 +67,7 @@
                                         <Label
                                             Text="{Binding SetTemplate.Note}"
                                             TextColor="{DynamicResource DarkGray}"
-                                            Style="{StaticResource StartedWorkoutLabelStyle}"
+                                            Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}"
                                             IsVisible="{Binding SetTemplate.Note}" />
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout 
@@ -76,17 +76,17 @@
                                         <Label 
                                             Text="Not Completed"
                                             TextColor="{DynamicResource MediumRed}"
-                                            Style="{StaticResource StartedWorkoutLabelStyle}"
+                                            Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}"
                                             IsVisible="{Binding CompletedSet.IsCompleted, Converter={StaticResource InvertedBoolConverter}}" />
                                         <Label 
                                             Text="Completed at"
                                             TextColor="{DynamicResource MediumGreen}"
-                                            Style="{StaticResource StartedWorkoutLabelStyle}"
+                                            Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}"
                                             IsVisible="{Binding CompletedSet.IsCompleted}" />
                                         <Label 
                                             Text="{Binding CompletedSet.TimeCompleted, Converter={StaticResource DateTimeToTimestampConverter}}"
                                             TextColor="{DynamicResource MediumGreen}"
-                                            Style="{StaticResource StartedWorkoutLabelStyle}"
+                                            Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}"
                                             IsVisible="{Binding CompletedSet.IsCompleted}" />
                                     </HorizontalStackLayout>
                                 </Grid>
@@ -103,70 +103,70 @@
                                     Wrap="Wrap"
                                     MaximumWidthRequest="440"
                                     JustifyContent="SpaceBetween">
-                                    <HorizontalStackLayout Spacing="10">
+                                    <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
                                         <Label
                                             Text="Weight"
-                                            Style="{StaticResource StartedWorkoutLabelStyle}"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingWeight}" />
                                         <Entry
                                             Text="{Binding CompletedSet.Weight}"
                                             Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingWeight}" />
                                     </HorizontalStackLayout>
-                                    <HorizontalStackLayout Spacing="10">
+                                    <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
                                         <Label
                                             Text="Reps"
-                                            Style="{StaticResource StartedWorkoutLabelStyle}"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingReps}" />
                                         <Entry
                                             Text="{Binding CompletedSet.Reps}"
                                             Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingReps}" />
                                     </HorizontalStackLayout>
-                                    <HorizontalStackLayout Spacing="10">
+                                    <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
                                         <Label
                                             Text="RIR"
-                                            Style="{StaticResource StartedWorkoutLabelStyle}"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingRir}" />
                                         <Entry
                                             Text="{Binding CompletedSet.Rir}"
                                             Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingRir}" />
                                     </HorizontalStackLayout>
-                                    <HorizontalStackLayout Spacing="10">
+                                    <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
                                          <Label
                                             Text="RPE"
-                                            Style="{StaticResource StartedWorkoutLabelStyle}"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingRpe}" />
                                         <Entry
                                             Text="{Binding CompletedSet.Rpe}"
                                             Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingRpe}" />
                                     </HorizontalStackLayout>
-                                    <HorizontalStackLayout Spacing="10">
+                                    <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
                                         <Label
                                             Text="Time"
-                                            Style="{StaticResource StartedWorkoutLabelStyle}"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingTime}" />
                                         <Entry
                                             Text="{Binding CompletedSet.Time}"
                                             Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingTime}" />
                                     </HorizontalStackLayout>
-                                    <HorizontalStackLayout Spacing="10">
+                                    <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
                                          <Label
                                             Text="Distance"
-                                            Style="{StaticResource StartedWorkoutLabelStyle}"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingDistance}" />
                                         <Entry
                                             Text="{Binding CompletedSet.Distance}"
                                             Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingDistance}" />
                                     </HorizontalStackLayout>
-                                    <HorizontalStackLayout Spacing="10">
+                                    <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
                                         <Label
                                             Text="Resistance Level"
-                                            Style="{StaticResource StartedWorkoutLabelStyle}"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingCardioResistance}" />
                                         <Entry
                                             Text="{Binding CompletedSet.CardioResistance}"
@@ -177,13 +177,13 @@
                                         Text="Warmup Set"
                                         TextColor="{DynamicResource DarkGray}"
                                         FontAttributes="Italic"
-                                        Style="{StaticResource StartedWorkoutLabelStyle}"
+                                        Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
                                         IsVisible="{Binding SetTemplate.IsWarmupSet}" />
                                     <Label
                                         Text="Includes Body Weight"
                                         TextColor="{DynamicResource DarkGray}"
                                         FontAttributes="Italic"
-                                        Style="{StaticResource StartedWorkoutLabelStyle}"
+                                        Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
                                         IsVisible="{Binding SetTemplate.IsUsingBodyWeightAsWeight}" />
                                 </FlexLayout>
                                 <Button 

@@ -116,9 +116,30 @@
                 <Setter Property="FontSize" Value="18" />
             </Style>
             <Style x:Key="StartedWorkoutEntryFieldStyle" TargetType="Entry">
-                <Setter Property="WidthRequest" Value="60" />
-                <Setter Property="FontSize" Value="18" />
+                <Setter Property="WidthRequest" Value="52" />
+                <Setter Property="MinimumHeightRequest" Value="38" />
+                <Setter Property="MaxLength" Value="3" />
+                <Setter Property="Margin" Value="0, 5" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="Keyboard" Value="Numeric" />
+                <Setter Property="TextColor" Value="{StaticResource MediumBlue}" />
+            </Style>
+            <Style x:Key="StartedWorkoutExpanderHeaderLabelStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="StartedWorkoutExpanderContentLabelStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="{StaticResource DarkGray}" />
+            </Style>
+            <Style x:Key="StartedWorkoutLabelEntryLayoutStyle" TargetType="HorizontalStackLayout">
+                <Setter Property="Spacing" Value="12" />
+                <Setter Property="Margin" Value="0, 0, 5, 0" />
             </Style>
             <Style x:Key="LightGreyStackLayoutBackground" TargetType="StackLayout">
                 <Setter Property="BackgroundColor" Value="{DynamicResource LightGray}" />
@@ -152,11 +173,6 @@
             <Style x:Key="MediumBlueBoldTextStyle" TargetType="Label">
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="TextColor" Value="{DynamicResource MediumBlue}" />
-            </Style>
-            <Style x:Key="StartedWorkoutLabelStyle" TargetType="Label">
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="FontSize" Value="20" />
-                <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyTextConverter" />
             <converters:MultiBindingConverter x:Key="MultiBindingConverter" />
