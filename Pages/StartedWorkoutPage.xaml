@@ -57,13 +57,13 @@
                                     ColumnSpacing="10"
                                     Padding="10"
                                     WidthRequest="600"
-                                    BackgroundColor="{Binding CompletedSet.IsCompleted, Converter={StaticResource WarmupSetColorConverter}, ConverterParameter=Background}">
+                                    BackgroundColor="{Binding SetTemplate.IsWarmupSet, Converter={StaticResource WarmupSetColorConverter}, ConverterParameter=Background}">
                                     <HorizontalStackLayout Spacing="5">
                                         <Label 
                                             Text="{Binding SetTemplate.ExerciseName}"
                                             FontSize="20"
                                             VerticalOptions="Center"
-                                            TextColor="{Binding CompletedSet.IsCompleted, Converter={StaticResource WarmupSetColorConverter}}"
+                                            TextColor="{Binding SetTemplate.IsWarmupSet, Converter={StaticResource WarmupSetColorConverter}}"
                                             Style="{StaticResource OrangeBoldTextStyle}" />
                                         <Label
                                             Text="{Binding SetTemplate.Note}"
@@ -74,7 +74,7 @@
                                     <Label
                                         HorizontalOptions="Center"
                                         Text="Warmup"
-                                        TextColor="{DynamicResource MediumBrown}"
+                                        TextColor="{Binding SetTemplate.IsWarmupSet, Converter={StaticResource WarmupSetColorConverter}}"
                                         FontAttributes="Italic"
                                         Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}"
                                         IsVisible="{Binding SetTemplate.IsWarmupSet}" />
