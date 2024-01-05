@@ -105,7 +105,7 @@
                                     JustifyContent="SpaceBetween">
                                     <HorizontalStackLayout Spacing="10">
                                         <Label
-                                            Text="Weight:"
+                                            Text="Weight"
                                             Style="{StaticResource StartedWorkoutLabelStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingWeight}" />
                                         <Entry
@@ -115,7 +115,7 @@
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="10">
                                         <Label
-                                            Text="Reps:"
+                                            Text="Reps"
                                             Style="{StaticResource StartedWorkoutLabelStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingReps}" />
                                         <Entry
@@ -125,7 +125,7 @@
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="10">
                                         <Label
-                                            Text="RIR:"
+                                            Text="RIR"
                                             Style="{StaticResource StartedWorkoutLabelStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingRir}" />
                                         <Entry
@@ -135,7 +135,7 @@
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="10">
                                          <Label
-                                            Text="RPE:"
+                                            Text="RPE"
                                             Style="{StaticResource StartedWorkoutLabelStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingRpe}" />
                                         <Entry
@@ -145,7 +145,7 @@
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="10">
                                         <Label
-                                            Text="Time:"
+                                            Text="Time"
                                             Style="{StaticResource StartedWorkoutLabelStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingTime}" />
                                         <Entry
@@ -155,7 +155,7 @@
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="10">
                                          <Label
-                                            Text="Distance:"
+                                            Text="Distance"
                                             Style="{StaticResource StartedWorkoutLabelStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingDistance}" />
                                         <Entry
@@ -165,7 +165,7 @@
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="10">
                                         <Label
-                                            Text="Resistance Level:"
+                                            Text="Resistance Level"
                                             Style="{StaticResource StartedWorkoutLabelStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingCardioResistance}" />
                                         <Entry
