@@ -53,22 +53,26 @@
                     <DataTemplate x:DataType="models:SetPackage">
                         <toolkit:Expander>
                             <toolkit:Expander.Header>
-                                <HorizontalStackLayout 
-                                    Spacing="10"
+                                <Grid 
+                                    ColumnSpacing="10"
                                     Padding="10"
                                     WidthRequest="600"
                                     BackgroundColor="{DynamicResource Gray100}">
-                                    <Label 
-                                        Text="{Binding SetTemplate.ExerciseName}"
-                                        FontSize="20"
-                                        VerticalOptions="Center"
-                                        Style="{StaticResource OrangeBoldTextStyle}" />
-                                    <Label
-                                        Text="{Binding SetTemplate.Note}"
-                                        TextColor="{DynamicResource DarkGray}"
-                                        Style="{StaticResource StartedWorkoutLabelStyle}"
-                                        IsVisible="{Binding SetTemplate.Note}" />
                                     <HorizontalStackLayout Spacing="5">
+                                        <Label 
+                                            Text="{Binding SetTemplate.ExerciseName}"
+                                            FontSize="20"
+                                            VerticalOptions="Center"
+                                            Style="{StaticResource OrangeBoldTextStyle}" />
+                                        <Label
+                                            Text="{Binding SetTemplate.Note}"
+                                            TextColor="{DynamicResource DarkGray}"
+                                            Style="{StaticResource StartedWorkoutLabelStyle}"
+                                            IsVisible="{Binding SetTemplate.Note}" />
+                                    </HorizontalStackLayout>
+                                    <HorizontalStackLayout 
+                                        HorizontalOptions="End"
+                                        Spacing="5">
                                         <Label 
                                             Text="Not Completed"
                                             TextColor="{DynamicResource MediumRed}"
@@ -85,7 +89,7 @@
                                             Style="{StaticResource StartedWorkoutLabelStyle}"
                                             IsVisible="{Binding CompletedSet.IsCompleted}" />
                                     </HorizontalStackLayout>
-                                </HorizontalStackLayout>
+                                </Grid>
                             </toolkit:Expander.Header>
                             <Grid
                                 RowDefinitions="*, *, *"
