@@ -57,7 +57,7 @@
                                     ColumnSpacing="10"
                                     Padding="10"
                                     WidthRequest="600"
-                                    BackgroundColor="{DynamicResource VeryLightOrange}">
+                                    BackgroundColor="{Binding CompletedSet.IsCompleted, Converter={StaticResource WarmupSetColorConverter}, ConverterParameter=Background}">
                                     <HorizontalStackLayout Spacing="5">
                                         <Label 
                                             Text="{Binding SetTemplate.ExerciseName}"
