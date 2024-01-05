@@ -71,6 +71,13 @@
                                             Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}"
                                             IsVisible="{Binding SetTemplate.Note}" />
                                     </HorizontalStackLayout>
+                                    <Label
+                                        HorizontalOptions="Center"
+                                        Text="Warmup"
+                                        TextColor="{DynamicResource MediumBrown}"
+                                        FontAttributes="Italic"
+                                        Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}"
+                                        IsVisible="{Binding SetTemplate.IsWarmupSet}" />
                                     <HorizontalStackLayout 
                                         HorizontalOptions="End"
                                         Spacing="5">
@@ -80,7 +87,7 @@
                                             Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}"
                                             IsVisible="{Binding CompletedSet.IsCompleted, Converter={StaticResource InvertedBoolConverter}}" />
                                         <Label 
-                                            Text="Completed at"
+                                            Text="Completed"
                                             TextColor="{DynamicResource MediumGreen}"
                                             Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}"
                                             IsVisible="{Binding CompletedSet.IsCompleted}" />
@@ -97,13 +104,13 @@
                                 ColumnDefinitions="Auto, Auto"
                                 ColumnSpacing="20"
                                 RowSpacing="10"
-                                Padding="5, 10">
+                                Padding="5">
                                 <FlexLayout 
                                     Grid.Column="0"
                                     Grid.Row="0"
                                     Wrap="Wrap"
                                     MaximumWidthRequest="440"
-                                    JustifyContent="SpaceBetween">
+                                    JustifyContent="Start">
                                     <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
                                         <Label
                                             Text="Weight"
@@ -174,12 +181,6 @@
                                             Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingCardioResistance}" />
                                     </HorizontalStackLayout>
-                                    <Label
-                                        Text="Warmup Set"
-                                        TextColor="{DynamicResource DarkGray}"
-                                        FontAttributes="Italic"
-                                        Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
-                                        IsVisible="{Binding SetTemplate.IsWarmupSet}" />
                                     <Label
                                         Text="Includes Body Weight"
                                         TextColor="{DynamicResource DarkGray}"
