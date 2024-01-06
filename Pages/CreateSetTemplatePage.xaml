@@ -76,11 +76,30 @@
                     <CheckBox
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingWeight}" />
-                    <Button
+                    <HorizontalStackLayout
                         HorizontalOptions="End"
-                        Style="{StaticResource SmallGreenButtonStyle}"
-                        IsVisible="{Binding OperatingSetTemplate.IsTrackingWeight}"
-                        Text="Set Default Value"/>
+                        Spacing="10">
+                        <Label 
+                            VerticalOptions="Center"
+                            IsVisible="{Binding OperatingSetTemplate.IsTrackingWeight}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Default Value: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding OperatingSetTemplate.DefaultWeightValue}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button
+                            Style="{StaticResource SmallGreenButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.IsTrackingWeight}"
+                            Command="{Binding AddDefaultPropertyValueCommand}"
+                            Text="Set Default Value"/>
+                    </HorizontalStackLayout>
                 </Grid>
                 <Grid>
                     <Label 
@@ -89,10 +108,30 @@
                     <CheckBox 
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}" 
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingReps}" />
-                    <Button
+                    <HorizontalStackLayout
                         HorizontalOptions="End"
-                        Style="{StaticResource SmallGreenButtonStyle}"
-                        Text="Set Default Value"/>
+                        Spacing="10">
+                        <Label 
+                            VerticalOptions="Center"
+                            IsVisible="{Binding OperatingSetTemplate.IsTrackingReps}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Default Value: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding OperatingSetTemplate.DefaultRepsValue}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button
+                            Style="{StaticResource SmallGreenButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.IsTrackingReps}"
+                            Command="{Binding AddDefaultPropertyValueCommand}"
+                            Text="Set Default Value"/>
+                    </HorizontalStackLayout>
                 </Grid>
                 <Grid>
                     <Label 
@@ -101,10 +140,30 @@
                     <CheckBox 
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingRir}" />
-                    <Button
+                    <HorizontalStackLayout
                         HorizontalOptions="End"
-                        Style="{StaticResource SmallGreenButtonStyle}"
-                        Text="Set Default Value"/>
+                        Spacing="10">
+                        <Label 
+                            VerticalOptions="Center"
+                            IsVisible="{Binding OperatingSetTemplate.IsTrackingRir}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Default Value: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding OperatingSetTemplate.DefaultRirValue}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button
+                            Style="{StaticResource SmallGreenButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.IsTrackingRir}"
+                            Command="{Binding AddDefaultPropertyValueCommand}"
+                            Text="Set Default Value"/>
+                    </HorizontalStackLayout>
                 </Grid>
                 <Grid>
                     <Label 
@@ -113,10 +172,30 @@
                     <CheckBox 
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingRpe}" />
-                    <Button
+                    <HorizontalStackLayout
                         HorizontalOptions="End"
-                        Style="{StaticResource SmallGreenButtonStyle}"
-                        Text="Set Default Value"/>
+                        Spacing="10">
+                        <Label 
+                            VerticalOptions="Center"
+                            IsVisible="{Binding OperatingSetTemplate.IsTrackingRpe}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Default Value: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding OperatingSetTemplate.DefaultRpeValue}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button
+                            Style="{StaticResource SmallGreenButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.IsTrackingRpe}"
+                            Command="{Binding AddDefaultPropertyValueCommand}"
+                            Text="Set Default Value"/>
+                    </HorizontalStackLayout>
                 </Grid>
                 <Grid>
                     <Label 
@@ -125,10 +204,30 @@
                     <CheckBox 
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingTime}" />
-                    <Button
+                    <HorizontalStackLayout
                         HorizontalOptions="End"
-                        Style="{StaticResource SmallGreenButtonStyle}"
-                        Text="Set Default Value"/>
+                        Spacing="10">
+                        <Label 
+                            VerticalOptions="Center"
+                            IsVisible="{Binding OperatingSetTemplate.IsTrackingTime}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Default Value: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding OperatingSetTemplate.DefaultTimeValue}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button
+                            Style="{StaticResource SmallGreenButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.IsTrackingTime}"
+                            Command="{Binding AddDefaultPropertyValueCommand}"
+                            Text="Set Default Value"/>
+                    </HorizontalStackLayout>
                 </Grid>
                 <Grid>
                     <Label 
@@ -137,10 +236,30 @@
                     <CheckBox 
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingDistance}" />
-                    <Button
+                    <HorizontalStackLayout
                         HorizontalOptions="End"
-                        Style="{StaticResource SmallGreenButtonStyle}"
-                        Text="Set Default Value"/>
+                        Spacing="10">
+                        <Label 
+                            VerticalOptions="Center"
+                            IsVisible="{Binding OperatingSetTemplate.IsTrackingDistance}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Default Value: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding OperatingSetTemplate.DefaultDistanceValue}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button
+                            Style="{StaticResource SmallGreenButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.IsTrackingDistance}"
+                            Command="{Binding AddDefaultPropertyValueCommand}"
+                            Text="Set Default Value"/>
+                    </HorizontalStackLayout>
                 </Grid>
                 <Grid>
                     <Label 
@@ -149,14 +268,35 @@
                     <CheckBox 
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingCardioResistance}" />
-                    <Button
+                    <HorizontalStackLayout
                         HorizontalOptions="End"
-                        Style="{StaticResource SmallGreenButtonStyle}"
-                        Text="Set Default Value"/>
+                        Spacing="10">
+                        <Label 
+                            VerticalOptions="Center"
+                            IsVisible="{Binding OperatingSetTemplate.IsTrackingCardioResistance}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Default Value: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding OperatingSetTemplate.DefaultCardioResistanceValue}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button
+                            Style="{StaticResource SmallGreenButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.IsTrackingCardioResistance}"
+                            Command="{Binding AddDefaultPropertyValueCommand}"
+                            Text="Set Default Value"/>
+                    </HorizontalStackLayout>
                 </Grid>
                 <Grid>
                     <Label 
                         Text="Is Warmup Set"
+                        TextColor="{DynamicResource MediumBrown}"
                         Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
                     <CheckBox 
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
@@ -165,6 +305,7 @@
                 <Grid>
                     <Label 
                         Text="Add Body Weight To Weight"
+                        TextColor="{DynamicResource MediumDarkGray}"
                         Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
                     <CheckBox 
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"

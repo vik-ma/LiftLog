@@ -215,5 +215,11 @@ namespace LocalLiftLog.ViewModels
 
             await GoBack();
         }
+
+        [RelayCommand]
+        private async Task AddDefaultPropertyValue()
+        {
+            OperatingSetTemplate.DefaultWeightValue = 20;
+        }
     }
 }
