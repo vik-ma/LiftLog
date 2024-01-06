@@ -24,6 +24,13 @@ namespace LocalLiftLog.Models
         public bool IsTrackingDistance { get; set; }
         public bool IsTrackingCardioResistance { get; set; }
         public bool IsUsingBodyWeightAsWeight { get; set; }
+        public int DefaultWeightValue { get; set; }
+        public int DefaultWeightReps { get; set; }
+        public int DefaultWeightRir { get; set; }
+        public int DefaultWeightRpe { get; set; }
+        public int DefaultWeightTime { get; set; }
+        public int DefaultWeightDistance { get; set; }
+        public int DefaultWeightCardioResistance { get; set; }
 
         public SetTemplate Clone() => MemberwiseClone() as SetTemplate;
 
