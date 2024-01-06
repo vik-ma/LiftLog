@@ -31,7 +31,7 @@
         <Grid 
             RowDefinitions="*, *"
             ColumnDefinitions="*, Auto"
-            ColumnSpacing="30"
+            ColumnSpacing="20"
             HorizontalOptions="Center">
             <VerticalStackLayout 
                 Grid.Column="0"
@@ -59,8 +59,8 @@
                         Text="{Binding NewSetTemplateNumSets}" />
                 </Grid>
                 <Grid 
-                    Padding="0, 10, 0, 0"
-                    WidthRequest="320">
+                    Padding="0, 10, 0, 5"
+                    WidthRequest="470">
                     <Label 
                         Text="Note:"
                         HorizontalOptions="Start"
@@ -78,6 +78,10 @@
                     <CheckBox
                         Style="{StaticResource CheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingWeight}" />
+                    <Button
+                        HorizontalOptions="End"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Text="Set Default Value"/>
                 </Grid>
                 <Grid>
                     <Label 
@@ -86,6 +90,10 @@
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}" 
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingReps}" />
+                    <Button
+                        HorizontalOptions="End"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Text="Set Default Value"/>
                 </Grid>
                 <Grid>
                     <Label 
@@ -94,6 +102,10 @@
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingRir}" />
+                    <Button
+                        HorizontalOptions="End"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Text="Set Default Value"/>
                 </Grid>
                 <Grid>
                     <Label 
@@ -102,6 +114,10 @@
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingRpe}" />
+                    <Button
+                        HorizontalOptions="End"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Text="Set Default Value"/>
                 </Grid>
                 <Grid>
                     <Label 
@@ -110,6 +126,10 @@
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingTime}" />
+                    <Button
+                        HorizontalOptions="End"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Text="Set Default Value"/>
                 </Grid>
                 <Grid>
                     <Label 
@@ -118,6 +138,10 @@
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingDistance}" />
+                    <Button
+                        HorizontalOptions="End"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Text="Set Default Value"/>
                 </Grid>
                 <Grid>
                     <Label 
@@ -126,6 +150,10 @@
                     <CheckBox 
                         Style="{StaticResource CheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingCardioResistance}" />
+                    <Button
+                        HorizontalOptions="End"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Text="Set Default Value"/>
                 </Grid>
                 <Grid>
                     <Label 
