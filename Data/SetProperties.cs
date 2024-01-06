@@ -8,7 +8,7 @@ namespace LocalLiftLog.Data
 {
     public static class SetProperties
     {
-        public static readonly List<string> SetPropertyList = new()
+        public static readonly HashSet<string> SetPropertyHashSet = new()
         {
             "Warmup",
             "Weight",

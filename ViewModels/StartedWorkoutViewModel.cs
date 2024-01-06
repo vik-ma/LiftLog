@@ -27,12 +27,12 @@ namespace LocalLiftLog.ViewModels
 
         private readonly List<int> SetListIdOrder = new();
 
-        private readonly List<string> SetPropertyList;
+        private readonly HashSet<string> SetPropertyHashSet;
 
         public StartedWorkoutViewModel(DatabaseContext context)
         {
             _context = context;
-            SetPropertyList = SetProperties.SetPropertyList;
+            SetPropertyHashSet = SetProperties.SetPropertyHashSet;
         }
 
         [ObservableProperty]
