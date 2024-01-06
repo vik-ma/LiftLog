@@ -91,6 +91,18 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="Padding" Value="20, 10" />
             </Style>
+            <Style x:Key="SmallGreenButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Padding" Value="12, 10" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource MediumGreen}" />
+            </Style>
+            <Style x:Key="SmallRedButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Padding" Value="12, 10" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource MediumRed}" />
+            </Style>
             <Style x:Key="TemplateIdListLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="24" />
                 <Setter Property="FontAttributes" Value="Bold" />
