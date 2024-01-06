@@ -16,8 +16,7 @@ namespace LocalLiftLog.Models
         public int WorkoutTemplateId { get; set; }
         public string ExerciseName { get; set; }
         public string Note { get; set; }
-        [ObservableProperty]
-        public bool isWarmupSet;
+        public bool IsWarmupSet { get; set; }
         [ObservableProperty]
         public bool isTrackingWeight;
         [ObservableProperty]
@@ -33,13 +32,20 @@ namespace LocalLiftLog.Models
         [ObservableProperty]
         public bool isTrackingCardioResistance;
         public bool IsUsingBodyWeightAsWeight { get; set; }
-        public int DefaultWeightValue { get; set; }
-        public int DefaultWeightReps { get; set; }
-        public int DefaultWeightRir { get; set; }
-        public int DefaultWeightRpe { get; set; }
-        public int DefaultWeightTime { get; set; }
-        public int DefaultWeightDistance { get; set; }
-        public int DefaultWeightCardioResistance { get; set; }
+        [ObservableProperty]
+        public int defaultWeightValue;
+        [ObservableProperty]
+        public int defaultRepsValue;
+        [ObservableProperty]
+        public int defaultRirValue;
+        [ObservableProperty]
+        public int defaultRpeValue;
+        [ObservableProperty]
+        public int defaultTimeValue;
+        [ObservableProperty]
+        public int defaultDistanceValue;
+        [ObservableProperty]
+        public int defaultCardioResistanceValue;
 
         public SetTemplate Clone() => MemberwiseClone() as SetTemplate;
 
