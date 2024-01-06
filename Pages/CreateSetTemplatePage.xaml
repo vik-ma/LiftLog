@@ -51,20 +51,18 @@
                     <Label 
                         Text="Number of Sets:"
                         HorizontalOptions="Start"
-                        Style="{StaticResource CheckBoxLabelStyle}" />
+                        Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
                     <Entry 
                         HorizontalOptions="End"
                         WidthRequest="30"
                         Style="{StaticResource ExtraSmallEntryFieldStyle}"
                         Text="{Binding NewSetTemplateNumSets}" />
                 </Grid>
-                <Grid 
-                    Padding="0, 10, 0, 5"
-                    WidthRequest="470">
+                <Grid Style="{StaticResource CreateSetTemplateNoteGridStyle}">
                     <Label 
                         Text="Note:"
                         HorizontalOptions="Start"
-                        Style="{StaticResource CheckBoxLabelStyle}" />
+                        Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
                     <Entry 
                         HorizontalOptions="End"
                         WidthRequest="240"
@@ -74,9 +72,9 @@
                 <Grid>
                     <Label
                         Text="Track Weight"
-                        Style="{StaticResource CheckBoxLabelStyle}" />
+                        Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
                     <CheckBox
-                        Style="{StaticResource CheckBoxStyle}"
+                        Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingWeight}" />
                     <Button
                         HorizontalOptions="End"
@@ -86,9 +84,9 @@
                 <Grid>
                     <Label 
                         Text="Track Reps"
-                        Style="{StaticResource CheckBoxLabelStyle}" />
+                        Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}" 
+                        Style="{StaticResource CreateSetTemplateCheckBoxStyle}" 
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingReps}" />
                     <Button
                         HorizontalOptions="End"
@@ -98,9 +96,9 @@
                 <Grid>
                     <Label 
                         Text="Track RIR"
-                        Style="{StaticResource CheckBoxLabelStyle}" />
+                        Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}"
+                        Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingRir}" />
                     <Button
                         HorizontalOptions="End"
@@ -110,9 +108,9 @@
                 <Grid>
                     <Label 
                         Text="Track RPE"
-                        Style="{StaticResource CheckBoxLabelStyle}" />
+                        Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}"
+                        Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingRpe}" />
                     <Button
                         HorizontalOptions="End"
@@ -122,9 +120,9 @@
                 <Grid>
                     <Label 
                         Text="Track Time"
-                        Style="{StaticResource CheckBoxLabelStyle}" />
+                        Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}"
+                        Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingTime}" />
                     <Button
                         HorizontalOptions="End"
@@ -134,9 +132,9 @@
                 <Grid>
                     <Label 
                         Text="Track Distance"
-                        Style="{StaticResource CheckBoxLabelStyle}" />
+                        Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}"
+                        Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingDistance}" />
                     <Button
                         HorizontalOptions="End"
@@ -146,9 +144,9 @@
                 <Grid>
                     <Label 
                         Text="Track Cardio Resistance Level"
-                        Style="{StaticResource CheckBoxLabelStyle}" />
+                        Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}"
+                        Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingCardioResistance}" />
                     <Button
                         HorizontalOptions="End"
@@ -158,17 +156,17 @@
                 <Grid>
                     <Label 
                         Text="Is Warmup Set"
-                        Style="{StaticResource CheckBoxLabelStyle}" />
+                        Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}"
+                        Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsWarmupSet}" />
                 </Grid>
                 <Grid>
                     <Label 
                         Text="Add Body Weight To Weight"
-                        Style="{StaticResource CheckBoxLabelStyle}" />
+                        Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
                     <CheckBox 
-                        Style="{StaticResource CheckBoxStyle}"
+                        Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsUsingBodyWeightAsWeight}" />
                 </Grid>
             </VerticalStackLayout>

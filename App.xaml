@@ -163,11 +163,15 @@
             <Style x:Key="LightGreyStackLayoutBackground" TargetType="StackLayout">
                 <Setter Property="BackgroundColor" Value="{DynamicResource LightGray}" />
             </Style>
-            <Style x:Key="CheckBoxStyle" TargetType="CheckBox">
+            <Style x:Key="CreateSetTemplateNoteGridStyle" TargetType="Grid">
+                <Setter Property="Padding" Value="0, 10, 0, 5" />
+                <Setter Property="WidthRequest" Value="470" />
+            </Style>
+            <Style x:Key="CreateSetTemplateCheckBoxStyle" TargetType="CheckBox">
                 <Setter Property="Scale" Value="1.2" />
                 <Setter Property="WidthRequest" Value="400" />
             </Style>
-            <Style x:Key="CheckBoxLabelStyle" TargetType="Label">
+            <Style x:Key="CreateSetTemplateCheckBoxLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="18" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="WidthRequest" Value="400" />
