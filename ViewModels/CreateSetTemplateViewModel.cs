@@ -221,5 +221,11 @@ namespace LocalLiftLog.ViewModels
         {
             OperatingSetTemplate.DefaultWeightValue = 20;
         }
+
+        [RelayCommand]
+        private async Task RemoveDefaultPropertyValue()
+        {
+            OperatingSetTemplate.DefaultWeightValue = 0;
+        }
     }
 }
