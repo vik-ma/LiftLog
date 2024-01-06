@@ -78,10 +78,11 @@
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingWeight}" />
                     <HorizontalStackLayout
                         HorizontalOptions="End"
-                        Spacing="10">
+                        Spacing="10"
+                        IsVisible="{Binding OperatingSetTemplate.IsTrackingWeight}">
                         <Label 
-                            VerticalOptions="Center"
-                            IsVisible="{Binding OperatingSetTemplate.IsTrackingWeight}">
+                            IsVisible="{Binding OperatingSetTemplate.DefaultWeightValue, Converter={StaticResource IsIntNot0Converter}}"
+                            VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span 
@@ -96,7 +97,7 @@
                         </Label>
                         <Button
                             Style="{StaticResource SmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSetTemplate.IsTrackingWeight}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultWeightValue, Converter={StaticResource IsInt0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
                             Text="Set Default Value"/>
                     </HorizontalStackLayout>
@@ -110,10 +111,11 @@
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingReps}" />
                     <HorizontalStackLayout
                         HorizontalOptions="End"
-                        Spacing="10">
+                        Spacing="10"
+                        IsVisible="{Binding OperatingSetTemplate.IsTrackingReps}">
                         <Label 
-                            VerticalOptions="Center"
-                            IsVisible="{Binding OperatingSetTemplate.IsTrackingReps}">
+                            IsVisible="{Binding OperatingSetTemplate.DefaultRepsValue, Converter={StaticResource IsIntNot0Converter}}"
+                            VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span 
@@ -128,7 +130,7 @@
                         </Label>
                         <Button
                             Style="{StaticResource SmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSetTemplate.IsTrackingReps}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultRepsValue, Converter={StaticResource IsInt0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
                             Text="Set Default Value"/>
                     </HorizontalStackLayout>
@@ -142,10 +144,11 @@
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingRir}" />
                     <HorizontalStackLayout
                         HorizontalOptions="End"
-                        Spacing="10">
+                        Spacing="10"
+                        IsVisible="{Binding OperatingSetTemplate.IsTrackingRir}">
                         <Label 
-                            VerticalOptions="Center"
-                            IsVisible="{Binding OperatingSetTemplate.IsTrackingRir}">
+                            IsVisible="{Binding OperatingSetTemplate.DefaultRirValue, Converter={StaticResource IsIntNot0Converter}}"
+                            VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span 
@@ -160,7 +163,7 @@
                         </Label>
                         <Button
                             Style="{StaticResource SmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSetTemplate.IsTrackingRir}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultRirValue, Converter={StaticResource IsInt0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
                             Text="Set Default Value"/>
                     </HorizontalStackLayout>
@@ -174,10 +177,11 @@
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingRpe}" />
                     <HorizontalStackLayout
                         HorizontalOptions="End"
-                        Spacing="10">
+                        Spacing="10"
+                        IsVisible="{Binding OperatingSetTemplate.IsTrackingRpe}">
                         <Label 
-                            VerticalOptions="Center"
-                            IsVisible="{Binding OperatingSetTemplate.IsTrackingRpe}">
+                            IsVisible="{Binding OperatingSetTemplate.DefaultRpeValue, Converter={StaticResource IsIntNot0Converter}}"
+                            VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span 
@@ -192,7 +196,7 @@
                         </Label>
                         <Button
                             Style="{StaticResource SmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSetTemplate.IsTrackingRpe}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultRpeValue, Converter={StaticResource IsInt0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
                             Text="Set Default Value"/>
                     </HorizontalStackLayout>
@@ -206,10 +210,11 @@
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingTime}" />
                     <HorizontalStackLayout
                         HorizontalOptions="End"
-                        Spacing="10">
+                        Spacing="10"
+                        IsVisible="{Binding OperatingSetTemplate.IsTrackingTime}">
                         <Label 
-                            VerticalOptions="Center"
-                            IsVisible="{Binding OperatingSetTemplate.IsTrackingTime}">
+                            IsVisible="{Binding OperatingSetTemplate.DefaultTimeValue, Converter={StaticResource IsIntNot0Converter}}"
+                            VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span 
@@ -224,7 +229,7 @@
                         </Label>
                         <Button
                             Style="{StaticResource SmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSetTemplate.IsTrackingTime}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultTimeValue, Converter={StaticResource IsInt0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
                             Text="Set Default Value"/>
                     </HorizontalStackLayout>
@@ -238,10 +243,11 @@
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingDistance}" />
                     <HorizontalStackLayout
                         HorizontalOptions="End"
-                        Spacing="10">
+                        Spacing="10"
+                        IsVisible="{Binding OperatingSetTemplate.IsTrackingDistance}">
                         <Label 
-                            VerticalOptions="Center"
-                            IsVisible="{Binding OperatingSetTemplate.IsTrackingDistance}">
+                            IsVisible="{Binding OperatingSetTemplate.DefaultDistanceValue, Converter={StaticResource IsIntNot0Converter}}"
+                            VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span 
@@ -256,7 +262,7 @@
                         </Label>
                         <Button
                             Style="{StaticResource SmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSetTemplate.IsTrackingDistance}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultDistanceValue, Converter={StaticResource IsInt0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
                             Text="Set Default Value"/>
                     </HorizontalStackLayout>
@@ -270,10 +276,11 @@
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingCardioResistance}" />
                     <HorizontalStackLayout
                         HorizontalOptions="End"
-                        Spacing="10">
+                        Spacing="10"
+                        IsVisible="{Binding OperatingSetTemplate.IsTrackingCardioResistance}">
                         <Label 
-                            VerticalOptions="Center"
-                            IsVisible="{Binding OperatingSetTemplate.IsTrackingCardioResistance}">
+                            IsVisible="{Binding OperatingSetTemplate.DefaultCardioResistanceValue, Converter={StaticResource IsIntNot0Converter}}"
+                            VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span 
@@ -288,7 +295,7 @@
                         </Label>
                         <Button
                             Style="{StaticResource SmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSetTemplate.IsTrackingCardioResistance}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultCardioResistanceValue, Converter={StaticResource IsInt0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
                             Text="Set Default Value"/>
                     </HorizontalStackLayout>
