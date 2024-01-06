@@ -1,4 +1,5 @@
-﻿using Microsoft.Maui;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.Maui;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -8,21 +9,29 @@ using System.Threading.Tasks;
 
 namespace LocalLiftLog.Models
 {
-    public class SetTemplate
+    public partial class SetTemplate : ObservableObject
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int WorkoutTemplateId { get; set; }
         public string ExerciseName { get; set; }
         public string Note { get; set; }
-        public bool IsWarmupSet { get; set; }
-        public bool IsTrackingWeight { get; set; }
-        public bool IsTrackingReps { get; set; }
-        public bool IsTrackingRir {  get; set; }
-        public bool IsTrackingRpe { get; set; }
-        public bool IsTrackingTime { get; set; }
-        public bool IsTrackingDistance { get; set; }
-        public bool IsTrackingCardioResistance { get; set; }
+        [ObservableProperty]
+        public bool isWarmupSet;
+        [ObservableProperty]
+        public bool isTrackingWeight;
+        [ObservableProperty]
+        public bool isTrackingReps;
+        [ObservableProperty]
+        public bool isTrackingRir;
+        [ObservableProperty]
+        public bool isTrackingRpe;
+        [ObservableProperty]
+        public bool isTrackingTime;
+        [ObservableProperty]
+        public bool isTrackingDistance;
+        [ObservableProperty]
+        public bool isTrackingCardioResistance;
         public bool IsUsingBodyWeightAsWeight { get; set; }
         public int DefaultWeightValue { get; set; }
         public int DefaultWeightReps { get; set; }

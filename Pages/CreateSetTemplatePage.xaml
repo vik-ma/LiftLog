@@ -79,6 +79,7 @@
                     <Button
                         HorizontalOptions="End"
                         Style="{StaticResource SmallGreenButtonStyle}"
+                        IsVisible="{Binding OperatingSetTemplate.IsTrackingWeight}"
                         Text="Set Default Value"/>
                 </Grid>
                 <Grid>
