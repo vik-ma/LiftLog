@@ -96,6 +96,11 @@
                             </Label.FormattedText>
                         </Label>
                         <Button
+                            Style="{StaticResource SmallRedButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultWeightValue, Converter={StaticResource IsIntNot0Converter}}"
+                            Command="{Binding AddDefaultPropertyValueCommand}"
+                            Text="Remove"/>
+                        <Button
                             Style="{StaticResource SmallGreenButtonStyle}"
                             IsVisible="{Binding OperatingSetTemplate.DefaultWeightValue, Converter={StaticResource IsInt0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
@@ -128,6 +133,11 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
+                        <Button
+                            Style="{StaticResource SmallRedButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultRepsValue, Converter={StaticResource IsIntNot0Converter}}"
+                            Command="{Binding AddDefaultPropertyValueCommand}"
+                            Text="Remove"/>
                         <Button
                             Style="{StaticResource SmallGreenButtonStyle}"
                             IsVisible="{Binding OperatingSetTemplate.DefaultRepsValue, Converter={StaticResource IsInt0Converter}}"
@@ -162,6 +172,11 @@
                             </Label.FormattedText>
                         </Label>
                         <Button
+                            Style="{StaticResource SmallRedButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultRirValue, Converter={StaticResource IsIntNot0Converter}}"
+                            Command="{Binding AddDefaultPropertyValueCommand}"
+                            Text="Remove"/>
+                        <Button
                             Style="{StaticResource SmallGreenButtonStyle}"
                             IsVisible="{Binding OperatingSetTemplate.DefaultRirValue, Converter={StaticResource IsInt0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
@@ -194,6 +209,11 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
+                        <Button
+                            Style="{StaticResource SmallRedButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultRpeValue, Converter={StaticResource IsIntNot0Converter}}"
+                            Command="{Binding AddDefaultPropertyValueCommand}"
+                            Text="Remove"/>
                         <Button
                             Style="{StaticResource SmallGreenButtonStyle}"
                             IsVisible="{Binding OperatingSetTemplate.DefaultRpeValue, Converter={StaticResource IsInt0Converter}}"
@@ -228,6 +248,11 @@
                             </Label.FormattedText>
                         </Label>
                         <Button
+                            Style="{StaticResource SmallRedButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultTimeValue, Converter={StaticResource IsIntNot0Converter}}"
+                            Command="{Binding AddDefaultPropertyValueCommand}"
+                            Text="Remove"/>
+                        <Button
                             Style="{StaticResource SmallGreenButtonStyle}"
                             IsVisible="{Binding OperatingSetTemplate.DefaultTimeValue, Converter={StaticResource IsInt0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
@@ -261,6 +286,11 @@
                             </Label.FormattedText>
                         </Label>
                         <Button
+                            Style="{StaticResource SmallRedButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultDistanceValue, Converter={StaticResource IsIntNot0Converter}}"
+                            Command="{Binding AddDefaultPropertyValueCommand}"
+                            Text="Remove"/>
+                        <Button
                             Style="{StaticResource SmallGreenButtonStyle}"
                             IsVisible="{Binding OperatingSetTemplate.DefaultDistanceValue, Converter={StaticResource IsInt0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
@@ -293,6 +323,11 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
+                        <Button
+                            Style="{StaticResource SmallRedButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultCardioResistanceValue, Converter={StaticResource IsIntNot0Converter}}"
+                            Command="{Binding AddDefaultPropertyValueCommand}"
+                            Text="Remove"/>
                         <Button
                             Style="{StaticResource SmallGreenButtonStyle}"
                             IsVisible="{Binding OperatingSetTemplate.DefaultCardioResistanceValue, Converter={StaticResource IsInt0Converter}}"
