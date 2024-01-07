@@ -55,27 +55,76 @@
                             <Label 
                                 Text="{Binding IsWarmupSet}"
                                 VerticalOptions="Center" />
-                            <Label 
-                                Text="{Binding IsTrackingWeight}"
-                                VerticalOptions="Center" />
-                            <Label 
-                                Text="{Binding IsTrackingReps}"
-                                VerticalOptions="Center" />
-                            <Label 
-                                Text="{Binding IsTrackingRir}"
-                                VerticalOptions="Center" />
-                            <Label 
-                                Text="{Binding IsTrackingRpe}"
-                                VerticalOptions="Center" />
-                            <Label 
-                                Text="{Binding IsTrackingTime}"
-                                VerticalOptions="Center" />
-                            <Label 
-                                Text="{Binding IsTrackingDistance}"
-                                VerticalOptions="Center" />
-                            <Label 
-                                Text="{Binding IsTrackingCardioResistance}"
-                                VerticalOptions="Center" />
+                            <Grid 
+                                Margin="5, 0"
+                                ColumnDefinitions="*, *, *, *, *, *, *"
+                                RowDefinitions="*, *"
+                                RowSpacing="2"
+                                ColumnSpacing="6">
+                                <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Text="{Binding IsTrackingWeight}" />
+                                <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="{Binding IsTrackingReps}" />
+                                <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Text="{Binding IsTrackingRir}" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="3"
+                                    Text="{Binding IsTrackingRpe}" />
+                                <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="4"
+                                    Text="{Binding IsTrackingTime}" />
+                                <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="5"
+                                    Text="{Binding IsTrackingDistance}" />
+                                <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="6"
+                                    Text="{Binding IsTrackingCardioResistance}" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding DefaultWeightValue}" />
+                                <Label 
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding DefaultRepsValue}" />
+                                <Label 
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding DefaultRirValue}" />
+                                <Label 
+                                    Grid.Row="1"
+                                    Grid.Column="3"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding DefaultRpeValue}" />
+                                <Label 
+                                    Grid.Row="1"
+                                    Grid.Column="4"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding DefaultTimeValue}" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="5"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding DefaultDistanceValue}" />
+                                <Label 
+                                    Grid.Row="1"
+                                    Grid.Column="6"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding DefaultCardioResistanceValue}" />
+                            </Grid>
                             <Label 
                                 Text="{Binding IsUsingBodyWeightAsWeight}"
                                 VerticalOptions="Center" />
