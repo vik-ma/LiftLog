@@ -20,6 +20,9 @@ namespace LocalLiftLog.ViewModels
         private readonly DatabaseContext _context;
 
         [ObservableProperty]
+        private UserPreferencesViewModel userSettingsViewModel;
+
+        [ObservableProperty]
         private CompletedWorkout completedWorkout;
 
         [ObservableProperty]
@@ -29,9 +32,10 @@ namespace LocalLiftLog.ViewModels
 
         private readonly HashSet<string> SetPropertyHashSet;
 
-        public StartedWorkoutViewModel(DatabaseContext context)
+        public StartedWorkoutViewModel(DatabaseContext context, UserPreferencesViewModel userSettings)
         {
             _context = context;
+            userSettingsViewModel = userSettings;
             SetPropertyHashSet = SetProperties.SetPropertyHashSet;
         }
 
