@@ -219,11 +219,23 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task AddDefaultPropertyValue(string property)
         {
-            ChangeSetTemplatePropertyValue(property, 20);
+            string enteredNumber = await Shell.Current.DisplayPromptAsync("Default Value", "Enter Default Value\n", "OK", "Cancel");
+
+            if (enteredNumber == null) return;
+
+            bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
+
+            if (!validInput || enteredNumberInt < 1 || enteredNumberInt > 999)
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid input.", "OK");
+                return;
+            }
+
+            ChangeSetTemplatePropertyValue(property, enteredNumberInt);
         }
 
         [RelayCommand]
-        private async Task RemoveDefaultPropertyValue(string property)
+        private void RemoveDefaultPropertyValue(string property)
         {
             ChangeSetTemplatePropertyValue(property, 0);
         }
