@@ -165,16 +165,16 @@
             </Style>
             <Style x:Key="CreateSetTemplateNoteGridStyle" TargetType="Grid">
                 <Setter Property="Padding" Value="0, 10, 0, 5" />
-                <Setter Property="WidthRequest" Value="470" />
+                <Setter Property="WidthRequest" Value="530" />
             </Style>
             <Style x:Key="CreateSetTemplateCheckBoxStyle" TargetType="CheckBox">
                 <Setter Property="Scale" Value="1.2" />
-                <Setter Property="WidthRequest" Value="400" />
+                <Setter Property="WidthRequest" Value="450" />
             </Style>
             <Style x:Key="CreateSetTemplateCheckBoxLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="18" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
-                <Setter Property="WidthRequest" Value="400" />
+                <Setter Property="WidthRequest" Value="460" />
             </Style>
             <Style x:Key="ListViewLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="18" />

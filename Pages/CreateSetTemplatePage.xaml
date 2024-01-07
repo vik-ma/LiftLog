@@ -65,7 +65,7 @@
                         Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
                     <Entry 
                         HorizontalOptions="End"
-                        WidthRequest="240"
+                        WidthRequest="370"
                         Style="{StaticResource GenericEntryFieldStyle}"
                         Text="{Binding OperatingSetTemplate.Note}" />
                 </Grid>
@@ -318,7 +318,7 @@
                         IsChecked="{Binding OperatingSetTemplate.IsTrackingCardioResistance}" />
                     <HorizontalStackLayout
                         HorizontalOptions="End"
-                        Spacing="10"
+                        Spacing="5"
                         IsVisible="{Binding OperatingSetTemplate.IsTrackingCardioResistance}">
                         <Label 
                             IsVisible="{Binding OperatingSetTemplate.DefaultCardioResistanceValue, Converter={StaticResource IsIntNot0Converter}}"
