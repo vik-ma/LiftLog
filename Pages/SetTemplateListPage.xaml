@@ -129,10 +129,15 @@
                                 Text="{Binding IsUsingBodyWeightAsWeight}"
                                 VerticalOptions="Center" />
                             <Button 
+                                Text="Details"
+                                Style="{StaticResource GenericButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetTemplateViewModel}}, Path=GoToCreateSetTemplatePageCommand}"
+                                CommandParameter="{Binding .}" />
+                            <!--<Button 
                                 Text="Update"
                                 Style="{StaticResource AddButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetTemplateViewModel}}, Path=UpdateSetTemplateCommand}"
-                                CommandParameter="{Binding Id}" />
+                                CommandParameter="{Binding Id}" />-->
                             <Button 
                                 Text="Delete"
                                 Style="{StaticResource DeleteButtonStyle}"
