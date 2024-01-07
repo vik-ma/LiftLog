@@ -219,45 +219,50 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task AddDefaultPropertyValue(string property)
         {
-            switch (property)
-            {
-                case "Weight":
-                    OperatingSetTemplate.DefaultWeightValue = 20;
-                    break;
-
-                case "Reps":
-                    OperatingSetTemplate.DefaultRepsValue = 20;
-                    break;
-
-                case "RIR":
-                    OperatingSetTemplate.DefaultRirValue = 20;
-                    break;
-
-                case "RPE":
-                    OperatingSetTemplate.DefaultRpeValue = 20;
-                    break;
-
-                case "Time":
-                    OperatingSetTemplate.DefaultTimeValue = 20;
-                    break;
-
-                case "Distance":
-                    OperatingSetTemplate.DefaultDistanceValue = 20;
-                    break;
-
-                case "CardioResistance":
-                    OperatingSetTemplate.DefaultCardioResistanceValue = 20;
-                    break;
-
-                default:
-                    return;
-            }
+            ChangeSetTemplatePropertyValue(property, 20);
         }
 
         [RelayCommand]
         private async Task RemoveDefaultPropertyValue()
         {
             OperatingSetTemplate.DefaultWeightValue = 0;
+        }
+
+        private void ChangeSetTemplatePropertyValue(string property, int propertyValue)
+        {
+            switch (property)
+            {
+                case "Weight":
+                    OperatingSetTemplate.DefaultWeightValue = propertyValue;
+                    break;
+
+                case "Reps":
+                    OperatingSetTemplate.DefaultRepsValue = propertyValue;
+                    break;
+
+                case "Rir":
+                    OperatingSetTemplate.DefaultRirValue = propertyValue;
+                    break;
+
+                case "Rpe":
+                    OperatingSetTemplate.DefaultRpeValue = propertyValue;
+                    break;
+
+                case "Time":
+                    OperatingSetTemplate.DefaultTimeValue = propertyValue;
+                    break;
+
+                case "Distance":
+                    OperatingSetTemplate.DefaultDistanceValue = propertyValue;
+                    break;
+
+                case "CardioResistance":
+                    OperatingSetTemplate.DefaultCardioResistanceValue = propertyValue;
+                    break;
+
+                default:
+                    return;
+            }
         }
     }
 }
