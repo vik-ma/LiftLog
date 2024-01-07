@@ -176,6 +176,10 @@
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="WidthRequest" Value="460" />
             </Style>
+            <Style x:Key="CreateSetTemplateDefaultValueLayoutStyle" TargetType="HorizontalStackLayout">
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="Spacing" Value="7" />
+            </Style>
             <Style x:Key="ListViewLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="18" />
             </Style>
