@@ -43,42 +43,42 @@
                                 Text="Workout Id:"
                                 VerticalOptions="Center"
                                 FontAttributes="Bold" />
-                            <Entry 
+                            <Label 
                                 Text="{Binding WorkoutTemplateId}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
+                                VerticalOptions="Center" />
+                            <Label 
                                 Text="{Binding ExerciseName}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
+                                VerticalOptions="Center" />
+                            <Label 
                                 Text="{Binding Note}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
+                                VerticalOptions="Center" />
+                            <Label 
                                 Text="{Binding IsWarmupSet}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
+                                VerticalOptions="Center" />
+                            <Label 
                                 Text="{Binding IsTrackingWeight}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
+                                VerticalOptions="Center" />
+                            <Label 
                                 Text="{Binding IsTrackingReps}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
+                                VerticalOptions="Center" />
+                            <Label 
                                 Text="{Binding IsTrackingRir}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
+                                VerticalOptions="Center" />
+                            <Label 
                                 Text="{Binding IsTrackingRpe}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
+                                VerticalOptions="Center" />
+                            <Label 
                                 Text="{Binding IsTrackingTime}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
+                                VerticalOptions="Center" />
+                            <Label 
                                 Text="{Binding IsTrackingDistance}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
+                                VerticalOptions="Center" />
+                            <Label 
                                 Text="{Binding IsTrackingCardioResistance}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
-                            <Entry 
+                                VerticalOptions="Center" />
+                            <Label 
                                 Text="{Binding IsUsingBodyWeightAsWeight}"
-                                Style="{StaticResource SmallEntryFieldStyle}" />
+                                VerticalOptions="Center" />
                             <Button 
                                 Text="Update"
                                 Style="{StaticResource AddButtonStyle}"
