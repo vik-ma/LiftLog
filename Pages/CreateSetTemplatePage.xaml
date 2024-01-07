@@ -104,6 +104,7 @@
                             Style="{StaticResource SmallGreenButtonStyle}"
                             IsVisible="{Binding OperatingSetTemplate.DefaultWeightValue, Converter={StaticResource IsInt0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
+                            CommandParameter="Weight"
                             Text="Set Default Value"/>
                     </HorizontalStackLayout>
                 </Grid>

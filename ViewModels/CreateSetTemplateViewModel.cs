@@ -217,9 +217,41 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task AddDefaultPropertyValue()
+        private async Task AddDefaultPropertyValue(string property)
         {
-            OperatingSetTemplate.DefaultWeightValue = 20;
+            switch (property)
+            {
+                case "Weight":
+                    OperatingSetTemplate.DefaultWeightValue = 20;
+                    break;
+
+                case "Reps":
+                    OperatingSetTemplate.DefaultRepsValue = 20;
+                    break;
+
+                case "RIR":
+                    OperatingSetTemplate.DefaultRirValue = 20;
+                    break;
+
+                case "RPE":
+                    OperatingSetTemplate.DefaultRpeValue = 20;
+                    break;
+
+                case "Time":
+                    OperatingSetTemplate.DefaultTimeValue = 20;
+                    break;
+
+                case "Distance":
+                    OperatingSetTemplate.DefaultDistanceValue = 20;
+                    break;
+
+                case "CardioResistance":
+                    OperatingSetTemplate.DefaultCardioResistanceValue = 20;
+                    break;
+
+                default:
+                    return;
+            }
         }
 
         [RelayCommand]
