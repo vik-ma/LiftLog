@@ -223,9 +223,9 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        private async Task RemoveDefaultPropertyValue()
+        private async Task RemoveDefaultPropertyValue(string property)
         {
-            OperatingSetTemplate.DefaultWeightValue = 0;
+            ChangeSetTemplatePropertyValue(property, 0);
         }
 
         private void ChangeSetTemplatePropertyValue(string property, int propertyValue)
