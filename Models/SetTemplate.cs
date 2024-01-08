@@ -102,13 +102,26 @@ namespace LocalLiftLog.Models
         #nullable enable
         public (bool IsValid, string? ErrorMessage) ValidateDefaultValues()
         {
-            if (DefaultWeightValue < 0 || DefaultWeightValue > 999) return (false, "Invalid Default Weight Value.");
-            if (DefaultRepsValue < 0 || DefaultRepsValue > 999) return (false, "Invalid Default Reps Value.");
-            if (DefaultRirValue < 0 || DefaultRirValue > 999) return (false, "Invalid Default RIR Value.");
-            if (DefaultRpeValue < 0 || DefaultRpeValue > 999) return (false, "Invalid Default RPE Value.");
-            if (DefaultTimeValue < 0 || DefaultTimeValue > 999) return (false, "Invalid Default Time Value.");
-            if (DefaultDistanceValue < 0 || DefaultDistanceValue > 999) return (false, "Invalid Default Distance Value.");
-            if (DefaultCardioResistanceValue < 0 || DefaultCardioResistanceValue > 999) return (false, "Invalid Default Cardio Resistance Value.");
+            if (DefaultWeightValue < 0 || DefaultWeightValue > 999) return (false, "Weight");
+            if (DefaultRepsValue < 0 || DefaultRepsValue > 999) return (false, "Reps");
+            if (DefaultRirValue < 0 || DefaultRirValue > 999) return (false, "RIR");
+            if (DefaultRpeValue < 0 || DefaultRpeValue > 999) return (false, "RPE");
+            if (DefaultTimeValue < 0 || DefaultTimeValue > 999) return (false, "Time");
+            if (DefaultDistanceValue < 0 || DefaultDistanceValue > 999) return (false, "Distance");
+            if (DefaultCardioResistanceValue < 0 || DefaultCardioResistanceValue > 999) return (false, "Cardio Resistance");
+
+            return (true, null);
+        }
+
+        #nullable enable
+        public (bool IsValid, string? ErrorMessage) ValidateSetTemplate()
+        {
+            // Validate that at least one Set Property tracked
+            if (!ValidateAtLeastOnePropertyTracked()) return (false, "At least one property must be tracked!");
+
+            // Validate that all Default Values are between 0 and 999
+            var validateDefaultValuesResult = ValidateDefaultValues();
+            if (!validateDefaultValuesResult.IsValid) return (false, $"Invalid Default {validateDefaultValuesResult.ErrorMessage} Value!");
 
             return (true, null);
         }
