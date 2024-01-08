@@ -9,6 +9,24 @@
              Title="Started Workout">
     <VerticalStackLayout HorizontalOptions="Center">
         <VerticalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <Label VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span 
+                                Text="Show Timestamp: " 
+                                FontAttributes="Bold"  
+                                Style="{StaticResource SmallSpanStyle}" />
+                            <Span 
+                                Text="{Binding UserSettingsViewModel.UserSettings.ShowCompletedSetTimestamp}"
+                                Style="{StaticResource SmallSpanStyle}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button
+                    Text="Change"
+                    Style="{StaticResource VerySmallButtonStyle}"/>
+            </HorizontalStackLayout>
             <HorizontalStackLayout Spacing="15">
                 <Label 
                     Text="Workout:"
