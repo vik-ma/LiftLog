@@ -97,24 +97,25 @@
                                         FontAttributes="Italic"
                                         Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}"
                                         IsVisible="{Binding SetTemplate.IsWarmupSet}" />
-                                    <HorizontalStackLayout 
-                                        HorizontalOptions="End"
-                                        Spacing="5">
+                                    <HorizontalStackLayout HorizontalOptions="End">
                                         <Label 
                                             Text="Not Completed"
                                             TextColor="{DynamicResource MediumRed}"
                                             Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}"
                                             IsVisible="{Binding CompletedSet.IsCompleted, Converter={StaticResource InvertedBoolConverter}}" />
-                                        <Label 
-                                            Text="Completed"
-                                            TextColor="{DynamicResource MediumGreen}"
-                                            Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}"
-                                            IsVisible="{Binding CompletedSet.IsCompleted}" />
-                                        <Label 
-                                            Text="{Binding CompletedSet.TimeCompleted, Converter={StaticResource DateTimeToTimestampConverter}}"
-                                            TextColor="{DynamicResource MediumGreen}"
-                                            Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}"
-                                            IsVisible="{Binding CompletedSet.IsCompleted}" />
+                                        <HorizontalStackLayout 
+                                            Spacing="5"
+                                            IsVisible="{Binding CompletedSet.IsCompleted}">
+                                            <Label 
+                                                Text="Completed"
+                                                TextColor="{DynamicResource MediumGreen}"
+                                                Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}" />
+                                            <Label 
+                                                Text="{Binding CompletedSet.TimeCompleted, Converter={StaticResource DateTimeToTimestampConverter}}"
+                                                TextColor="{DynamicResource MediumGreen}"
+                                                Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}"
+                                                IsVisible="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=UserSettingsViewModel.UserSettings.ShowCompletedSetTimestamp}" />
+                                        </HorizontalStackLayout>
                                     </HorizontalStackLayout>
                                 </Grid>
                             </toolkit:Expander.Header>
