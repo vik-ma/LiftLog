@@ -142,7 +142,13 @@ namespace LocalLiftLog.ViewModels
 
                 int numSets = NewSetTemplateNumSets;
 
-                // Add validation
+                // Validate SetTemplate properties
+                var validateResult = newSetTemplate.ValidateSetTemplate();
+                if (!validateResult.IsValid)
+                {
+                    await Shell.Current.DisplayAlert("Error", validateResult.ErrorMessage, "OK");
+                    return;
+                }
 
                 await CreateNewSetTemplateAsync(newSetTemplate, numSets);
             }
@@ -154,6 +160,14 @@ namespace LocalLiftLog.ViewModels
             if (OperatingSetTemplate is null) return;
 
             OperatingSetTemplate.ExerciseName = NewSetTemplateSelectedExerciseName;
+
+            // Validate SetTemplate properties
+            var validateResult = OperatingSetTemplate.ValidateSetTemplate();
+            if (!validateResult.IsValid)
+            {
+                await Shell.Current.DisplayAlert("Error", validateResult.ErrorMessage, "OK");
+                return;
+            }
 
             if (!await _context.UpdateItemAsync<SetTemplate>(OperatingSetTemplate))
             {
