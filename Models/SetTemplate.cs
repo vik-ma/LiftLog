@@ -84,5 +84,19 @@ namespace LocalLiftLog.Models
             if (!IsTrackingDistance && DefaultDistanceValue != 0) DefaultDistanceValue = 0;
             if (!IsTrackingCardioResistance && DefaultCardioResistanceValue != 0) DefaultCardioResistanceValue = 0;
         }
+
+        public bool ValidateAtLeastOnePropertyTracked()
+        {
+            // Returns true if any Set Property is tracked, otherwise false
+            if (IsTrackingWeight) return true;
+            if (IsTrackingReps) return true;
+            if (IsTrackingRir) return true;
+            if (IsTrackingRpe) return true;
+            if (IsTrackingTime) return true;
+            if (IsTrackingDistance) return true;
+            if (IsTrackingCardioResistance) return true;
+
+            return false;
+        }
     }
 }
