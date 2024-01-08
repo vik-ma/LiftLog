@@ -98,5 +98,20 @@ namespace LocalLiftLog.Models
 
             return false;
         }
+
+        #nullable enable
+        public (bool IsValid, string? ErrorMessage) ValidateDefaultValues()
+        {
+            if (DefaultWeightValue < 0 || DefaultWeightValue > 999) return (false, "Invalid Default Weight Value.");
+            if (DefaultRepsValue < 0 || DefaultRepsValue > 999) return (false, "Invalid Default Reps Value.");
+            if (DefaultRirValue < 0 || DefaultRirValue > 999) return (false, "Invalid Default RIR Value.");
+            if (DefaultRpeValue < 0 || DefaultRpeValue > 999) return (false, "Invalid Default RPE Value.");
+            if (DefaultTimeValue < 0 || DefaultTimeValue > 999) return (false, "Invalid Default Time Value.");
+            if (DefaultDistanceValue < 0 || DefaultDistanceValue > 999) return (false, "Invalid Default Distance Value.");
+            if (DefaultCardioResistanceValue < 0 || DefaultCardioResistanceValue > 999) return (false, "Invalid Default Cardio Resistance Value.");
+
+            return (true, null);
+        }
+
     }
 }
