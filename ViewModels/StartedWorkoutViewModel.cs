@@ -276,5 +276,13 @@ namespace LocalLiftLog.ViewModels
                 }
             });
         }
+
+        [RelayCommand]
+        private async Task ToggleShowCompletedSetTimeStamp()
+        {
+            UserSettingsViewModel.UserSettings.ShowCompletedSetTimestamp = !UserSettingsViewModel.UserSettings.ShowCompletedSetTimestamp;
+
+            await UserSettingsViewModel.UpdateUserPreferencesAsync();
+        }
     }
 }

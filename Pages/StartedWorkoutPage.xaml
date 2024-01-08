@@ -25,7 +25,8 @@
                 </Label>
                 <Button
                     Text="Change"
-                    Style="{StaticResource VerySmallButtonStyle}"/>
+                    Style="{StaticResource VerySmallButtonStyle}"
+                    Command="{Binding ToggleShowCompletedSetTimeStampCommand}" />
             </HorizontalStackLayout>
             <HorizontalStackLayout Spacing="15">
                 <Label 
