@@ -116,6 +116,8 @@ namespace LocalLiftLog.Models
         #nullable enable
         public (bool IsValid, string? ErrorMessage) ValidateSetTemplate()
         {
+            if (string.IsNullOrEmpty(ExerciseName)) return (false, "No Exercise Selected!");
+
             // Validate that at least one Set Property tracked
             if (!ValidateAtLeastOnePropertyTracked()) return (false, "At least one property must be tracked!");
 
