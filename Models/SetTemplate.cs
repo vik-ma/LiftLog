@@ -72,5 +72,17 @@ namespace LocalLiftLog.Models
 
             return setTrackingDict;
         }
+
+        public void ResetDefaultValuesIfNotTracking()
+        {
+            // Reset Default Values to 0 if tracking is turned off
+            if (!IsTrackingWeight && DefaultWeightValue != 0) DefaultWeightValue = 0;
+            if (!IsTrackingReps && DefaultRepsValue != 0) DefaultRepsValue = 0;
+            if (!IsTrackingRir && DefaultRirValue != 0) DefaultRirValue = 0;
+            if (!IsTrackingRpe && DefaultRpeValue != 0) DefaultRpeValue = 0;
+            if (!IsTrackingTime && DefaultTimeValue != 0) DefaultTimeValue = 0;
+            if (!IsTrackingDistance && DefaultDistanceValue != 0) DefaultDistanceValue = 0;
+            if (!IsTrackingCardioResistance && DefaultCardioResistanceValue != 0) DefaultCardioResistanceValue = 0;
+        }
     }
 }
