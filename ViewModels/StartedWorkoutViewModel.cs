@@ -131,6 +131,9 @@ namespace LocalLiftLog.ViewModels
                         }
                     };
 
+                    // Load SetTemplate Default Values if Set is not completed
+                    if (!setPackage.CompletedSet.IsCompleted) setPackage = LoadSetTemplateDefaultValues(setPackage);
+
                     setPackageList.Add(setPackage);
                 }
 
@@ -145,6 +148,20 @@ namespace LocalLiftLog.ViewModels
                 await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
                 return;
             }
+        }
+
+        private static SetPackage LoadSetTemplateDefaultValues(SetPackage setPackage)
+        {
+            // Assign SetTemplate Default Values to CompletedSet if any are set
+            if (setPackage.SetTemplate.DefaultWeightValue != 0) setPackage.CompletedSet.Weight = setPackage.SetTemplate.DefaultWeightValue;
+            if (setPackage.SetTemplate.DefaultRepsValue != 0) setPackage.CompletedSet.Reps = setPackage.SetTemplate.DefaultRepsValue;
+            if (setPackage.SetTemplate.DefaultRirValue != 0) setPackage.CompletedSet.Rir = setPackage.SetTemplate.DefaultRirValue;
+            if (setPackage.SetTemplate.DefaultRpeValue != 0) setPackage.CompletedSet.Rpe = setPackage.SetTemplate.DefaultRpeValue;
+            if (setPackage.SetTemplate.DefaultTimeValue != 0) setPackage.CompletedSet.Time = setPackage.SetTemplate.DefaultTimeValue;
+            if (setPackage.SetTemplate.DefaultDistanceValue != 0) setPackage.CompletedSet.Distance = setPackage.SetTemplate.DefaultDistanceValue;
+            if (setPackage.SetTemplate.DefaultCardioResistanceValue != 0) setPackage.CompletedSet.CardioResistance = setPackage.SetTemplate.DefaultCardioResistanceValue;
+
+            return setPackage;
         }
 
         [RelayCommand]
