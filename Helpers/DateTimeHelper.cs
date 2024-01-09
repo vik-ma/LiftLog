@@ -20,10 +20,13 @@ namespace LocalLiftLog.Helpers
             return ymdDateString;
         }
 
-        public static string GetCurrentFormattedTime()
+        public static string GetCurrentFormattedTime(bool is24HourFormat)
         {
-            string timeString = DateTime.Now.ToString("HH:mm:ss");
-            return timeString;
+            // 24 Hour Clock Format
+            if (is24HourFormat) return DateTime.Now.ToString("HH:mm:ss");
+
+            // 12 Hour Clock Format
+            return DateTime.Now.ToString("hh:mm:ss tt");
         }
 
         public static string FormatDateTimeToYmdString(DateTime dateTime)
@@ -31,30 +34,38 @@ namespace LocalLiftLog.Helpers
             return dateTime.ToString("yyyy-MM-dd");
         }
 
-        public static string FormatDateTimeToTimestampString(DateTime dateTime)
+        public static string FormatDateTimeToTimestampString(DateTime dateTime, bool is24HourFormat)
         {
-            return dateTime.ToString("HH:mm:ss");
+            // 24 Hour Clock Format
+            if (is24HourFormat) return dateTime.ToString("HH:mm:ss");
+
+            // 12 Hour Clock Format
+            return dateTime.ToString("hh:mm:ss tt");
         }
 
-        public static string FormatDateTimeToYmdDateAndTimestampString(DateTime dateTime)
+        public static string FormatDateTimeToYmdDateAndTimestampString(DateTime dateTime, bool is24HourFormat)
         {
-            return dateTime.ToString("yyyy-MM-dd HH:mm:ss");
+            // 24 Hour Clock Format
+            if (is24HourFormat) return dateTime.ToString("yyyy-MM-dd HH:mm:ss");
+
+            // 12 Hour Clock Format
+            return dateTime.ToString("yyyy-MM-dd hh:mm:ss tt");
         }
 
-        public static string FormatDateTimeStringToTimestamp(string dateTimeString)
+        public static string FormatDateTimeStringToTimestamp(string dateTimeString, bool is24HourFormat)
         {
             if (DateTime.TryParse(dateTimeString, out DateTime dateTime))
             {
-                return FormatDateTimeToTimestampString(dateTime);
+                return FormatDateTimeToTimestampString(dateTime, is24HourFormat);
             }
             return "Invalid Date";
         }
 
-        public static string FormatDateTimeStringToYmdDateAndTimestampString(string dateTimeString)
+        public static string FormatDateTimeStringToYmdDateAndTimestampString(string dateTimeString, bool is24HourFormat)
         {
             if (DateTime.TryParse(dateTimeString, out DateTime dateTime))
             {
-                return FormatDateTimeToYmdDateAndTimestampString(dateTime);
+                return FormatDateTimeToYmdDateAndTimestampString(dateTime, is24HourFormat);
             }
             return "Invalid Date";
         }
