@@ -111,10 +111,18 @@
                                                 TextColor="{DynamicResource MediumGreen}"
                                                 Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}" />
                                             <Label 
-                                                Text="{Binding CompletedSet.TimeCompleted, Converter={StaticResource DateTimeToTimestampConverter}}"
                                                 TextColor="{DynamicResource MediumGreen}"
                                                 Style="{StaticResource StartedWorkoutExpanderHeaderLabelStyle}"
-                                                IsVisible="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=UserSettingsViewModel.UserSettings.ShowCompletedSetTimestamp}" />
+                                                IsVisible="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}, Path=UserSettingsViewModel.UserSettings.ShowCompletedSetTimestamp}">
+                                                <Label.Text>
+                                                    <MultiBinding Converter="{StaticResource DateTimeToTimestampConverter}">
+                                                        <MultiBinding.Bindings>
+                                                            <Binding Path="CompletedSet.TimeCompleted" />
+                                                            <Binding Path="UserSettingsViewModel.UserSettings.IsUsing24HourClock" Source="{RelativeSource AncestorType={x:Type viewmodel:StartedWorkoutViewModel}}" />
+                                                        </MultiBinding.Bindings>
+                                                    </MultiBinding>
+                                                </Label.Text>
+                                            </Label>
                                         </HorizontalStackLayout>
                                     </HorizontalStackLayout>
                                 </Grid>
