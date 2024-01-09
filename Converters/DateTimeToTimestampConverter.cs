@@ -8,24 +8,24 @@ using LocalLiftLog.Helpers;
 
 namespace LocalLiftLog.Converters
 {
-    public class DateTimeToTimestampConverter : IValueConverter
+    public class DateTimeToTimestampConverter : IMultiValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is string dateString)
+            if (values[0] is string dateString && values[1] is bool is24HourFormat)
             {
                 if (parameter is string parameterString && parameterString == "IncludeDate")
                 {
-                    return DateTimeHelper.FormatDateTimeStringToYmdDateAndTimestampString(dateString);
+                    return DateTimeHelper.FormatDateTimeStringToYmdDateAndTimestampString(dateString, is24HourFormat);
                 }
 
-                return DateTimeHelper.FormatDateTimeStringToTimestamp(dateString);
+                return DateTimeHelper.FormatDateTimeStringToTimestamp(dateString, is24HourFormat);
             }
 
             return "Invalid DateTime";
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object[] ConvertBack(object value, Type[] targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
