@@ -27,6 +27,23 @@
                     Text="Change"
                     Style="{StaticResource VerySmallButtonStyle}"
                     Command="{Binding ToggleShowCompletedSetTimeStampCommand}" />
+                <Label VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span 
+                                Text="24 Hour Clock: " 
+                                FontAttributes="Bold"  
+                                Style="{StaticResource SmallSpanStyle}" />
+                            <Span 
+                                Text="{Binding UserSettingsViewModel.UserSettings.IsUsing24HourClock}"
+                                Style="{StaticResource SmallSpanStyle}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button
+                    Text="Change"
+                    Style="{StaticResource VerySmallButtonStyle}"
+                    Command="{Binding Toggle24HourClockCommand}" />
             </HorizontalStackLayout>
             <HorizontalStackLayout Spacing="15">
                 <Label 

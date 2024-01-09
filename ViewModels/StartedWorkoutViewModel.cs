@@ -301,5 +301,13 @@ namespace LocalLiftLog.ViewModels
 
             await UserSettingsViewModel.UpdateUserPreferencesAsync();
         }
+
+        [RelayCommand]
+        private async Task Toggle24HourClock()
+        {
+            UserSettingsViewModel.UserSettings.IsUsing24HourClock = !UserSettingsViewModel.UserSettings.IsUsing24HourClock;
+
+            await UserSettingsViewModel.UpdateUserPreferencesAsync();
+        }
     }
 }
