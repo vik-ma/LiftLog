@@ -240,7 +240,7 @@ namespace LocalLiftLog.ViewModels
 
             bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
 
-            if (!validInput || enteredNumberInt < ConstantsHelper.SetTemplateDefaultInputMinValue || enteredNumberInt > ConstantsHelper.CompletedSetMaxValue)
+            if (!validInput || enteredNumberInt < ConstantsHelper.SetTemplateDefaultInputMinValue || enteredNumberInt > ConstantsHelper.SetTemplateDefaultMaxValue)
             {
                 await Shell.Current.DisplayAlert("Error", "Invalid Input Value.", "OK");
                 return;

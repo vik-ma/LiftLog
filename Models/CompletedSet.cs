@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using LocalLiftLog.Helpers;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,22 @@ namespace LocalLiftLog.Models
             {
                 return (false, "Invalid Percent Value.");
             }
+            return (true, null);
+        }
+
+        public (bool IsValid, string? ErrorMessage) ValidateTrackingValues()
+        {
+            int minValue = ConstantsHelper.CompletedSetMinValue;
+            int maxValue = ConstantsHelper.CompletedSetMaxValue;
+
+            if (Weight < minValue || Weight > maxValue) return (false, "Weight");
+            if (Reps < minValue || Reps > maxValue) return (false, "Reps");
+            if (Rir < minValue || Rir > maxValue) return (false, "RIR");
+            if (Rpe < minValue || Rpe > maxValue) return (false, "RPE");
+            if (Time < minValue || Time > maxValue) return (false, "Time");
+            if (Distance < minValue || Distance > maxValue) return (false, "Distance");
+            if (CardioResistance < minValue || CardioResistance > maxValue) return (false, "Cardio Resistance");
+
             return (true, null);
         }
     }

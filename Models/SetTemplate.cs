@@ -103,8 +103,8 @@ namespace LocalLiftLog.Models
         #nullable enable
         public (bool IsValid, string? ErrorMessage) ValidateDefaultValues()
         {
-            int minValue = ConstantsHelper.CompletedSetMinValue;
-            int maxValue = ConstantsHelper.CompletedSetMaxValue;
+            int minValue = ConstantsHelper.SetTemplateDefaultMinValue;
+            int maxValue = ConstantsHelper.SetTemplateDefaultMaxValue;
 
             if (DefaultWeightValue < minValue || DefaultWeightValue > maxValue) return (false, "Weight");
             if (DefaultRepsValue < minValue || DefaultRepsValue > maxValue) return (false, "Reps");
