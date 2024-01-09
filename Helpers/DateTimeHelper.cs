@@ -26,7 +26,7 @@ namespace LocalLiftLog.Helpers
             if (is24HourFormat) return DateTime.Now.ToString("HH:mm:ss");
 
             // 12 Hour Clock Format
-            return DateTime.Now.ToString("hh:mm:ss tt");
+            return DateTime.Now.ToString("hh:mm:ss tt", CultureInfo.InvariantCulture);
         }
 
         public static string FormatDateTimeToYmdString(DateTime dateTime)
@@ -40,7 +40,7 @@ namespace LocalLiftLog.Helpers
             if (is24HourFormat) return dateTime.ToString("HH:mm:ss");
 
             // 12 Hour Clock Format
-            return dateTime.ToString("hh:mm:ss tt");
+            return dateTime.ToString("hh:mm:ss tt", CultureInfo.InvariantCulture);
         }
 
         public static string FormatDateTimeToYmdDateAndTimestampString(DateTime dateTime, bool is24HourFormat)
@@ -49,7 +49,7 @@ namespace LocalLiftLog.Helpers
             if (is24HourFormat) return dateTime.ToString("yyyy-MM-dd HH:mm:ss");
 
             // 12 Hour Clock Format
-            return dateTime.ToString("yyyy-MM-dd hh:mm:ss tt");
+            return dateTime.ToString("yyyy-MM-dd hh:mm:ss tt", CultureInfo.InvariantCulture);
         }
 
         public static string FormatDateTimeStringToTimestamp(string dateTimeString, bool is24HourFormat)
