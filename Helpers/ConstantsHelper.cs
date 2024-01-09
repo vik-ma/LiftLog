@@ -10,6 +10,7 @@ namespace LocalLiftLog.Helpers
     {
         public static readonly int SetTemplateDefaultMinValue = 0;
         public static readonly int SetTemplateDefaultMaxValue = 999;
+        public static readonly int SetTemplateDefaultInputMinValue = 1;
 
         public static readonly int CompletedSetMinValue = 0;
         public static readonly int CompletedSetMaxValue = 999;

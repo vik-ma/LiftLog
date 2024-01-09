@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using LocalLiftLog.Data;
 using LocalLiftLog.Models;
 using LocalLiftLog.Pages;
+using LocalLiftLog.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -239,9 +240,9 @@ namespace LocalLiftLog.ViewModels
 
             bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
 
-            if (!validInput || enteredNumberInt < 1 || enteredNumberInt > 999)
+            if (!validInput || enteredNumberInt < ConstantsHelper.SetTemplateDefaultInputMinValue || enteredNumberInt > ConstantsHelper.CompletedSetMaxValue)
             {
-                await Shell.Current.DisplayAlert("Error", "Invalid input.", "OK");
+                await Shell.Current.DisplayAlert("Error", "Invalid Input Value.", "OK");
                 return;
             }
 
