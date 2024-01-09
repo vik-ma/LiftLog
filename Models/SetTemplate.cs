@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using LocalLiftLog.Helpers;
 using Microsoft.Maui;
 using SQLite;
 using System;
@@ -102,13 +103,16 @@ namespace LocalLiftLog.Models
         #nullable enable
         public (bool IsValid, string? ErrorMessage) ValidateDefaultValues()
         {
-            if (DefaultWeightValue < 0 || DefaultWeightValue > 999) return (false, "Weight");
-            if (DefaultRepsValue < 0 || DefaultRepsValue > 999) return (false, "Reps");
-            if (DefaultRirValue < 0 || DefaultRirValue > 999) return (false, "RIR");
-            if (DefaultRpeValue < 0 || DefaultRpeValue > 999) return (false, "RPE");
-            if (DefaultTimeValue < 0 || DefaultTimeValue > 999) return (false, "Time");
-            if (DefaultDistanceValue < 0 || DefaultDistanceValue > 999) return (false, "Distance");
-            if (DefaultCardioResistanceValue < 0 || DefaultCardioResistanceValue > 999) return (false, "Cardio Resistance");
+            int minValue = ConstantsHelper.CompletedSetMinValue;
+            int maxValue = ConstantsHelper.CompletedSetMaxValue;
+
+            if (DefaultWeightValue < minValue || DefaultWeightValue > maxValue) return (false, "Weight");
+            if (DefaultRepsValue < minValue || DefaultRepsValue > maxValue) return (false, "Reps");
+            if (DefaultRirValue < minValue || DefaultRirValue > maxValue) return (false, "RIR");
+            if (DefaultRpeValue < minValue || DefaultRpeValue > maxValue) return (false, "RPE");
+            if (DefaultTimeValue < minValue || DefaultTimeValue > maxValue) return (false, "Time");
+            if (DefaultDistanceValue < minValue || DefaultDistanceValue > maxValue) return (false, "Distance");
+            if (DefaultCardioResistanceValue < minValue || DefaultCardioResistanceValue > maxValue) return (false, "Cardio Resistance");
 
             return (true, null);
         }
