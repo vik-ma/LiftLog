@@ -103,6 +103,16 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
+        private async Task ToggleIsUsing24HourClock()
+        {
+            if (UserSettings is null) return;
+
+            UserSettings.IsUsing24HourClock = !UserSettings.IsUsing24HourClock;
+
+            await UpdateUserPreferencesAsync();
+        }
+
+        [RelayCommand]
         private async Task ToggleShowCompletedSetTimestamp()
         {
             if (UserSettings is null) return;

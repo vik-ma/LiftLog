@@ -160,6 +160,16 @@
                 </Grid>
                 <Grid>
                     <Label 
+                        Text="24 Hour Clock"
+                        Style="{StaticResource MediumLabelStyle}" />
+                    <Button 
+                        Text="Change"
+                        Style="{StaticResource GenericButtonStyle}"
+                        HorizontalOptions="End"
+                        Command="{Binding ToggleIsUsing24HourClockCommand}" />
+                </Grid>
+                <Grid>
+                    <Label 
                         Text="Show Completed Set Timestamp"
                         Style="{StaticResource MediumLabelStyle}" />
                     <Button 
