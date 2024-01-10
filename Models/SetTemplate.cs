@@ -32,6 +32,8 @@ namespace LocalLiftLog.Models
         public bool isTrackingDistance;
         [ObservableProperty]
         public bool isTrackingCardioResistance;
+        [ObservableProperty]
+        public bool isTrackingPercentCompleted;
         public bool IsUsingBodyWeightAsWeight { get; set; }
         [ObservableProperty]
         public int defaultWeightValue;
@@ -47,6 +49,8 @@ namespace LocalLiftLog.Models
         public int defaultDistanceValue;
         [ObservableProperty]
         public int defaultCardioResistanceValue;
+        [ObservableProperty]
+        public int defaultPercentCompletedValue;
 
         public SetTemplate Clone() => MemberwiseClone() as SetTemplate;
 
@@ -63,6 +67,7 @@ namespace LocalLiftLog.Models
             (IsTrackingTime ? isTrackingList : isNotTrackingList).Add("Time");
             (IsTrackingDistance ? isTrackingList : isNotTrackingList).Add("Distance");
             (IsTrackingCardioResistance ? isTrackingList : isNotTrackingList).Add("Cardio Resistance");
+            (IsTrackingPercentCompleted ? isTrackingList : isNotTrackingList).Add("Percent Completed");
             (IsUsingBodyWeightAsWeight ? isTrackingList : isNotTrackingList).Add("Count Body Weight");
 
             Dictionary<bool, List<string>> setTrackingDict = new()
@@ -84,6 +89,7 @@ namespace LocalLiftLog.Models
             if (!IsTrackingTime && DefaultTimeValue != 0) DefaultTimeValue = 0;
             if (!IsTrackingDistance && DefaultDistanceValue != 0) DefaultDistanceValue = 0;
             if (!IsTrackingCardioResistance && DefaultCardioResistanceValue != 0) DefaultCardioResistanceValue = 0;
+            if (!IsTrackingPercentCompleted && DefaultPercentCompletedValue != 0) DefaultPercentCompletedValue = 0;
         }
 
         public bool ValidateAtLeastOnePropertyTracked()
@@ -96,6 +102,7 @@ namespace LocalLiftLog.Models
             if (IsTrackingTime) return true;
             if (IsTrackingDistance) return true;
             if (IsTrackingCardioResistance) return true;
+            if (IsTrackingPercentCompleted) return true;
 
             return false;
         }
@@ -113,6 +120,7 @@ namespace LocalLiftLog.Models
             if (DefaultTimeValue < minValue || DefaultTimeValue > maxValue) return (false, "Time");
             if (DefaultDistanceValue < minValue || DefaultDistanceValue > maxValue) return (false, "Distance");
             if (DefaultCardioResistanceValue < minValue || DefaultCardioResistanceValue > maxValue) return (false, "Cardio Resistance");
+            if (DefaultPercentCompletedValue < minValue || DefaultPercentCompletedValue > maxValue) return (false, "Percent Completed");
 
             return (true, null);
         }
