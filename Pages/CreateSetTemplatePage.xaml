@@ -344,6 +344,45 @@
                 </Grid>
                 <Grid>
                     <Label 
+                        Text="Track Percent Completed"
+                        Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
+                    <CheckBox 
+                        Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
+                        IsChecked="{Binding OperatingSetTemplate.IsTrackingPercentCompleted}" />
+                    <HorizontalStackLayout
+                        Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
+                        IsVisible="{Binding OperatingSetTemplate.IsTrackingPercentCompleted}">
+                        <Label 
+                            IsVisible="{Binding OperatingSetTemplate.DefaultPercentCompletedValue, Converter={StaticResource IsIntNot0Converter}}"
+                            VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Default Value: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding OperatingSetTemplate.DefaultPercentCompletedValue}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button
+                            Style="{StaticResource VerySmallRedButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultPercentCompletedValue, Converter={StaticResource IsIntNot0Converter}}"
+                            Command="{Binding RemoveDefaultPropertyValueCommand}"
+                            CommandParameter="PercentCompleted"
+                            Text="Remove"/>
+                        <Button
+                            Style="{StaticResource VerySmallGreenButtonStyle}"
+                            IsVisible="{Binding OperatingSetTemplate.DefaultPercentCompletedValue, Converter={StaticResource IsInt0Converter}}"
+                            Command="{Binding AddDefaultPropertyValueCommand}"
+                            CommandParameter="PercentCompleted"
+                            Text="Set Default Value"/>
+                    </HorizontalStackLayout>
+                </Grid>
+                <Grid>
+                    <Label 
                         Text="Is Warmup Set"
                         TextColor="{DynamicResource MediumBrown}"
                         Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
