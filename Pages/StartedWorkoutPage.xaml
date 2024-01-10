@@ -226,6 +226,16 @@
                                             Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingCardioResistance}" />
                                     </HorizontalStackLayout>
+                                    <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
+                                        <Label
+                                            Text="Resistance Level"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
+                                            IsVisible="{Binding SetTemplate.IsTrackingPercentCompleted}" />
+                                        <Entry
+                                            Text="{Binding CompletedSet.CardioResistance}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
+                                            IsVisible="{Binding SetTemplate.IsTrackingPercentCompleted}" />
+                                    </HorizontalStackLayout>
                                     <Label
                                         Text="Includes Body Weight"
                                         TextColor="{DynamicResource DarkGray}"
