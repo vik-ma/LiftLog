@@ -117,7 +117,6 @@ namespace LocalLiftLog.Models
             return (true, null);
         }
 
-        #nullable enable
         public (bool IsValid, string? ErrorMessage) ValidateSetTemplate()
         {
             if (string.IsNullOrEmpty(ExerciseName)) return (false, "No Exercise Selected!");
@@ -126,8 +125,8 @@ namespace LocalLiftLog.Models
             if (!ValidateAtLeastOnePropertyTracked()) return (false, "At least one property must be tracked!");
 
             // Validate that all Default Values are between 0 and 999
-            var validateDefaultValuesResult = ValidateDefaultValues();
-            if (!validateDefaultValuesResult.IsValid) return (false, $"Invalid Default {validateDefaultValuesResult.ErrorMessage} Value!");
+            var (isDefaultValuesValid, errorMessage) = ValidateDefaultValues();
+            if (!isDefaultValuesValid) return (false, $"Invalid Default {errorMessage} Value!");
 
             return (true, null);
         }
