@@ -33,14 +33,6 @@ namespace LocalLiftLog.Models
         public bool IsUsingBodyWeightAsWeight { get; set; }
 
         #nullable enable
-        public (bool IsValid, string? ErrorMessage) ValidatePercentCompletedValue()
-        {
-            if (PercentCompleted < 0 || PercentCompleted > 100)
-            {
-                return (false, "Invalid Percent Value.");
-            }
-            return (true, null);
-        }
 
         public (bool IsValid, string? ErrorMessage) ValidateTrackingValues()
         {
@@ -56,6 +48,13 @@ namespace LocalLiftLog.Models
             if (CardioResistance < minValue || CardioResistance > maxValue) return (false, "Cardio Resistance");
 
             return (true, null);
+        }
+
+        public bool ValidatePercentCompletedValue()
+        {
+            if (PercentCompleted < 0 || PercentCompleted > 100) return false;
+
+            return true;
         }
     }
 }
