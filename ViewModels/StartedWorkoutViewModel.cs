@@ -160,6 +160,7 @@ namespace LocalLiftLog.ViewModels
             if (setPackage.SetTemplate.DefaultTimeValue != 0) setPackage.CompletedSet.Time = setPackage.SetTemplate.DefaultTimeValue;
             if (setPackage.SetTemplate.DefaultDistanceValue != 0) setPackage.CompletedSet.Distance = setPackage.SetTemplate.DefaultDistanceValue;
             if (setPackage.SetTemplate.DefaultCardioResistanceValue != 0) setPackage.CompletedSet.CardioResistance = setPackage.SetTemplate.DefaultCardioResistanceValue;
+            if (setPackage.SetTemplate.DefaultPercentCompletedValue != 0) setPackage.CompletedSet.PercentCompleted = setPackage.SetTemplate.DefaultPercentCompletedValue;
 
             return setPackage;
         }

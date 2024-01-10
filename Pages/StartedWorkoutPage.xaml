@@ -228,11 +228,11 @@
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
                                         <Label
-                                            Text="Resistance Level"
+                                            Text="Percent Completed"
                                             Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingPercentCompleted}" />
                                         <Entry
-                                            Text="{Binding CompletedSet.CardioResistance}"
+                                            Text="{Binding CompletedSet.PercentCompleted}"
                                             Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding SetTemplate.IsTrackingPercentCompleted}" />
                                     </HorizontalStackLayout>
