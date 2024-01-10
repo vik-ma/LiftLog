@@ -125,9 +125,19 @@ namespace LocalLiftLog.Models
             return (true, null);
         }
 
+        public bool ValidatePercentCompletedValue()
+        {
+            if (DefaultPercentCompletedValue < 0 || DefaultPercentCompletedValue > 100) return false;
+
+            return true;
+        }
+
         public (bool IsValid, string? ErrorMessage) ValidateSetTemplate()
         {
             if (string.IsNullOrEmpty(ExerciseName)) return (false, "No Exercise Selected!");
+
+            // Validate that Percent value is between 0 and 100
+            if (!ValidatePercentCompletedValue()) return (false, "Invalid Percent Value.");
 
             // Validate that at least one Set Property tracked
             if (!ValidateAtLeastOnePropertyTracked()) return (false, "At least one property must be tracked!");
