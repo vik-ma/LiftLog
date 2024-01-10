@@ -18,6 +18,7 @@ namespace LocalLiftLog.Data
             "Time",
             "Distance",
             "Cardio Resistance",
+            "Percent Completed",
             "Count Body Weight"
         };
     }

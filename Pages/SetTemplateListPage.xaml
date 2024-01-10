@@ -57,7 +57,7 @@
                                 VerticalOptions="Center" />
                             <Grid 
                                 Margin="5, 0"
-                                ColumnDefinitions="*, *, *, *, *, *, *"
+                                ColumnDefinitions="*, *, *, *, *, *, *, *"
                                 RowDefinitions="*, *"
                                 RowSpacing="2"
                                 ColumnSpacing="6">
@@ -89,6 +89,10 @@
                                     Grid.Row="0"
                                     Grid.Column="6"
                                     Text="{Binding IsTrackingCardioResistance}" />
+                                <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="7"
+                                    Text="{Binding IsTrackingPercentCompleted}" />
                                 <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
@@ -124,6 +128,11 @@
                                     Grid.Column="6"
                                     HorizontalOptions="Center"
                                     Text="{Binding DefaultCardioResistanceValue}" />
+                                <Label 
+                                    Grid.Row="1"
+                                    Grid.Column="7"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding DefaultPercentCompletedValue}" />
                             </Grid>
                             <Label 
                                 Text="{Binding IsUsingBodyWeightAsWeight}"
