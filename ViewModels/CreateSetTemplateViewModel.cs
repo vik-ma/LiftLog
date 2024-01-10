@@ -234,7 +234,7 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task AddDefaultPropertyValue(string property)
         {
-            string enteredNumber = await Shell.Current.DisplayPromptAsync("Default Value", "Enter Default Value\n", "OK", "Cancel");
+            string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Default Value", $"Value must be between {ConstantsHelper.SetTemplateDefaultInputMinValue} and {ConstantsHelper.SetTemplateDefaultMaxValue}.\n", "OK", "Cancel");
 
             if (enteredNumber == null) return;
 
@@ -242,7 +242,7 @@ namespace LocalLiftLog.ViewModels
 
             if (!validInput || enteredNumberInt < ConstantsHelper.SetTemplateDefaultInputMinValue || enteredNumberInt > ConstantsHelper.SetTemplateDefaultMaxValue)
             {
-                await Shell.Current.DisplayAlert("Error", "Invalid Input Value.", "OK");
+                await Shell.Current.DisplayAlert("Error", "Invalid Input Value.\n", "OK");
                 return;
             }
 
@@ -258,7 +258,7 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         private async Task AddPercentCompletedDefaultValue()
         {
-            string enteredNumber = await Shell.Current.DisplayPromptAsync("Default Value", "Enter Default Value\n", "OK", "Cancel");
+            string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Default Value", $"Value must be between {ConstantsHelper.PercentInputMinValue} and {ConstantsHelper.PercentInputMaxValue}.\n", "OK", "Cancel");
 
             if (enteredNumber == null) return;
 
@@ -266,7 +266,7 @@ namespace LocalLiftLog.ViewModels
 
             if (!validInput || enteredNumberInt < ConstantsHelper.PercentInputMinValue || enteredNumberInt > ConstantsHelper.PercentInputMaxValue)
             {
-                await Shell.Current.DisplayAlert("Error", $"Invalid Input Value.\nValue must be between {ConstantsHelper.PercentInputMinValue} and {ConstantsHelper.PercentInputMaxValue}.", "OK");
+                await Shell.Current.DisplayAlert("Error", "Invalid Input Value.\n", "OK");
                 return;
             }
 
