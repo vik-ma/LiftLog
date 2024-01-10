@@ -120,7 +120,6 @@ namespace LocalLiftLog.Models
             if (DefaultTimeValue < minValue || DefaultTimeValue > maxValue) return (false, "Time");
             if (DefaultDistanceValue < minValue || DefaultDistanceValue > maxValue) return (false, "Distance");
             if (DefaultCardioResistanceValue < minValue || DefaultCardioResistanceValue > maxValue) return (false, "Cardio Resistance");
-            if (DefaultPercentCompletedValue < minValue || DefaultPercentCompletedValue > maxValue) return (false, "Percent Completed");
 
             return (true, null);
         }

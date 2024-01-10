@@ -14,7 +14,8 @@ namespace LocalLiftLog.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string ExerciseName { get; set; }
-        public string Note { get; set; }
+        [ObservableProperty]
+        public string note;
         [ObservableProperty]
         public bool isCompleted;
         public bool IsWarmupSet { get; set; }
