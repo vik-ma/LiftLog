@@ -17,5 +17,8 @@ namespace LocalLiftLog.Helpers
 
         public static readonly int CompletedSetMinValue = 0;
         public static readonly int CompletedSetMaxValue = 999;
+
+        public static readonly int BodyWeightMinValue = 0;
+        public static readonly int BodyWeightMaxValue = 999;
     }
 }
