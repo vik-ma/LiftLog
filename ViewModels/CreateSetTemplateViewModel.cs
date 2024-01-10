@@ -255,6 +255,24 @@ namespace LocalLiftLog.ViewModels
             ChangeSetTemplatePropertyValue(property, 0);
         }
 
+        [RelayCommand]
+        private async Task AddPercentCompletedDefaultValue()
+        {
+            string enteredNumber = await Shell.Current.DisplayPromptAsync("Default Value", "Enter Default Value\n", "OK", "Cancel");
+
+            if (enteredNumber == null) return;
+
+            bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
+
+            if (!validInput || enteredNumberInt < ConstantsHelper.PercentInputMinValue || enteredNumberInt > ConstantsHelper.PercentInputMaxValue)
+            {
+                await Shell.Current.DisplayAlert("Error", $"Invalid Input Value.\nValue must be between {ConstantsHelper.PercentInputMinValue} and {ConstantsHelper.PercentInputMaxValue}.", "OK");
+                return;
+            }
+
+            ChangeSetTemplatePropertyValue("PercentCompleted", enteredNumberInt);
+        }
+
         private void ChangeSetTemplatePropertyValue(string property, int propertyValue)
         {
             switch (property)
@@ -285,6 +303,10 @@ namespace LocalLiftLog.ViewModels
 
                 case "CardioResistance":
                     OperatingSetTemplate.DefaultCardioResistanceValue = propertyValue;
+                    break;
+
+                case "PercentCompleted":
+                    OperatingSetTemplate.DefaultPercentCompletedValue = propertyValue;
                     break;
 
                 default:

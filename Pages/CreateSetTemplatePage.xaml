@@ -376,8 +376,7 @@
                         <Button
                             Style="{StaticResource VerySmallGreenButtonStyle}"
                             IsVisible="{Binding OperatingSetTemplate.DefaultPercentCompletedValue, Converter={StaticResource IsInt0Converter}}"
-                            Command="{Binding AddDefaultPropertyValueCommand}"
-                            CommandParameter="PercentCompleted"
+                            Command="{Binding AddPercentCompletedDefaultValueCommand}"
                             Text="Set Default Value"/>
                     </HorizontalStackLayout>
                 </Grid>
