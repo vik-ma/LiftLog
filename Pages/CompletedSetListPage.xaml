@@ -177,6 +177,9 @@
                                     Text="{Binding CardioResistance}"
                                     Style="{StaticResource ExtraSmallEntryFieldStyle}" />
                                 <Entry 
+                                    Text="{Binding PercentCompleted}"
+                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
+                                <Entry 
                                     Text="{Binding IsUsingBodyWeightAsWeight}"
                                     Style="{StaticResource ExtraSmallEntryFieldStyle}" />
                                 <Button 

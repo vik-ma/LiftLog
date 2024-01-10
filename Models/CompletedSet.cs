@@ -17,7 +17,6 @@ namespace LocalLiftLog.Models
         public string Note { get; set; }
         [ObservableProperty]
         public bool isCompleted;
-        public int PercentCompleted { get; set; }
         public bool IsWarmupSet { get; set; }
         [ObservableProperty]
         public string timeCompleted;
@@ -30,6 +29,7 @@ namespace LocalLiftLog.Models
         public int Time { get; set; }
         public int Distance { get; set; }
         public int CardioResistance { get; set; }
+        public int PercentCompleted { get; set; }
         public bool IsUsingBodyWeightAsWeight { get; set; }
 
         #nullable enable
