@@ -28,6 +28,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         public string newWeightInput;
 
+        [ObservableProperty]
+        public UserWeight latestWeight;
+
         #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
@@ -68,7 +71,10 @@ namespace LocalLiftLog.ViewModels
                     {
                         UserWeightList.Add(set);
                     }
+
+                    LatestWeight = weightList.OrderByDescending(n => n.Id).FirstOrDefault();
                 }
+                else LatestWeight = null;
             });
         }
 

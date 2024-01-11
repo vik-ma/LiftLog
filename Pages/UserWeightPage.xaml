@@ -11,8 +11,30 @@
             Text="User Weight"
             HorizontalOptions="Center"
             FontSize="30"
-            FontAttributes="Bold"
-            Margin="10" />
+            FontAttributes="Bold" />
+        <VerticalStackLayout 
+            HorizontalOptions="Center">
+            <Label 
+                Text="Latest Weight"
+                HorizontalOptions="Center"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="{DynamicResource VeryDarkGray}"/>
+            <HorizontalStackLayout Spacing="10">
+                <Label 
+                    Text="{Binding LatestWeight.BodyWeight}"
+                    HorizontalOptions="Center"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    TextColor="{DynamicResource MediumBlue}" />
+                <Label 
+                    Text="{Binding LatestWeight.DateTime}"
+                    HorizontalOptions="Center"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    TextColor="{DynamicResource DarkGray}" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
         <CollectionView
             ItemsSource="{Binding UserWeightList}"
             HorizontalOptions="Center">
