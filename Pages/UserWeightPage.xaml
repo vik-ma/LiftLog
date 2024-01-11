@@ -6,18 +6,19 @@
              xmlns:models="clr-namespace:LocalLiftLog.Models"
              x:DataType="viewmodel:UserWeightViewModel"
              Title="User Weight">
-    <VerticalStackLayout Spacing="20">
+    <VerticalStackLayout Spacing="10">
         <Label 
             Text="User Weight"
             HorizontalOptions="Center"
             FontSize="30"
             FontAttributes="Bold" />
         <VerticalStackLayout 
-            HorizontalOptions="Center">
+            HorizontalOptions="Center"
+            IsVisible="{Binding LatestWeight, Converter={StaticResource IsNotNullConverter}}">
             <Label 
                 Text="Latest Weight"
                 HorizontalOptions="Center"
-                FontSize="20"
+                FontSize="24"
                 FontAttributes="Bold"
                 TextColor="{DynamicResource VeryDarkGray}"/>
             <HorizontalStackLayout Spacing="10">
