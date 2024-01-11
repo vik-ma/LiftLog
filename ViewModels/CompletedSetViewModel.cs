@@ -105,7 +105,7 @@ namespace LocalLiftLog.ViewModels
             {
                 if (!await _context.DeleteItemAsync<CompletedSet>(completedSet))
                 {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Completed Set.", "OK");
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Completed Set.", "OK");
                 }
             });
 

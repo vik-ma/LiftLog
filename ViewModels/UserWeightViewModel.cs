@@ -108,5 +108,21 @@ namespace LocalLiftLog.ViewModels
 
             NewWeightInput = "";
         }
+
+        [RelayCommand]
+        private async Task DeleteWeightAsync(UserWeight userWeight)
+        {
+            if (userWeight is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<UserWeight>(userWeight))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Weight.", "OK");
+                }
+            });
+
+            await LoadUserWeightListAsync();
+        }
     }
 }
