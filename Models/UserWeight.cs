@@ -14,12 +14,5 @@ namespace LocalLiftLog.Models
         public int Id { get; set; }
         public int BodyWeight { get; set; }
         public string DateTime { get; set; }
-
-        public bool ValidateBodyWeight()
-        {
-            if (BodyWeight < ConstantsHelper.BodyWeightMinValue || BodyWeight > ConstantsHelper.BodyWeightMaxValue) return false;
-
-            return true;
-        }
     }
 }

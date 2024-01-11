@@ -25,6 +25,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         public ObservableCollection<UserWeight> userWeightList = new();
 
+        [ObservableProperty]
+        public string newWeightInput;
+
         #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
@@ -67,6 +70,43 @@ namespace LocalLiftLog.ViewModels
                     }
                 }
             });
+        }
+
+        private async Task CreateUserWeightAsync(UserWeight userWeight)
+        {
+            await ExecuteAsync(async () =>
+            {
+                await _context.AddItemAsync<UserWeight>(userWeight);
+                UserWeightList.Add(userWeight);
+            });
+        }
+
+        [RelayCommand]
+        private async Task AddWeight()
+        {
+            if (string.IsNullOrWhiteSpace(NewWeightInput)) return;
+
+            bool validInput = int.TryParse(NewWeightInput, out int weightInputInt);
+
+            if (!validInput || weightInputInt < ConstantsHelper.BodyWeightInputMinValue || weightInputInt > ConstantsHelper.BodyWeightMaxValue)
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid Weight Input.\n", "OK");
+                return;
+            }
+
+            string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
+
+            UserWeight userWeight = new()
+            {
+                BodyWeight = weightInputInt,
+                DateTime = currentDateTimeString
+            };
+
+            await CreateUserWeightAsync(userWeight);
+
+            await LoadUserWeightListAsync();
+
+            NewWeightInput = "";
         }
     }
 }
