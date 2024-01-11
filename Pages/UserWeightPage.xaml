@@ -6,90 +6,97 @@
              xmlns:models="clr-namespace:LocalLiftLog.Models"
              x:DataType="viewmodel:UserWeightViewModel"
              Title="User Weight">
-    <VerticalStackLayout HorizontalOptions="Center">
-        <VerticalStackLayout>
-            <Label 
-                Text="User Weight"
-                HorizontalOptions="Center"
-                FontSize="30"
-                FontAttributes="Bold"
-                Margin="10" />
-            <CollectionView
-                ItemsSource="{Binding UserWeightList}"
-                HorizontalOptions="Center">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:UserWeight">
-                        <HorizontalStackLayout Spacing="5">
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Id: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding Id}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Weight: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding BodyWeight}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Date: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding DateTime}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <VerticalStackLayout
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center">
-                            <Label 
-                                Text="No Body Weight Value Added!" 
-                                FontSize="18" 
-                                FontAttributes="Bold" 
-                                HorizontalTextAlignment="Center" />
-                        </VerticalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
-        </VerticalStackLayout>
-
-
-        <VerticalStackLayout>
+    <VerticalStackLayout Spacing="20">
+        <Label 
+            Text="User Weight"
+            HorizontalOptions="Center"
+            FontSize="30"
+            FontAttributes="Bold"
+            Margin="10" />
+        <CollectionView
+            ItemsSource="{Binding UserWeightList}"
+            HorizontalOptions="Center">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout 
+                    ItemSpacing="3"
+                    Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:UserWeight">
+                    <HorizontalStackLayout Spacing="5">
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Id: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding Id}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Weight: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding BodyWeight}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Date: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding DateTime}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <ContentView>
+                    <VerticalStackLayout
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                        <Label 
+                            Text="No Body Weight Value Added!" 
+                            FontSize="18" 
+                            FontAttributes="Bold" 
+                            HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </ContentView>
+            </CollectionView.EmptyView>
+        </CollectionView>
+        
+        <HorizontalStackLayout
+            Spacing="20"
+            HorizontalOptions="Center">
+            <Entry
+                Text="{Binding NewWeightInput}"
+                Style="{StaticResource ExtraSmallEntryFieldStyle}" />
             <Button 
-                Text="Go Back"
-                Style="{StaticResource LargeButtonStyle}"
-                Command="{Binding GoBackCommand}"
-                Margin="50" />
-        </VerticalStackLayout>
+                Text="Add New Weight"
+                Style="{StaticResource AddButtonStyle}"
+                Command="{Binding AddWeightCommand}" />
+        </HorizontalStackLayout>
+
+        <Button 
+            Text="Go Back"
+            Style="{StaticResource LargeButtonStyle}"
+            Command="{Binding GoBackCommand}"
+            Margin="50" />
     </VerticalStackLayout>
 </ContentPage>
