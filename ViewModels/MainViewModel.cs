@@ -95,5 +95,11 @@ namespace LocalLiftLog.ViewModels
         {
             await Shell.Current.GoToAsync($"{nameof(UserPreferencesPage)}");
         }
+
+        [RelayCommand]
+        private async Task GoToUserWeight()
+        {
+            await Shell.Current.GoToAsync($"{nameof(UserWeightPage)}");
+        }
     }
 }

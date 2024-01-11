@@ -80,7 +80,10 @@ namespace LocalLiftLog
 
             builder.Services.AddTransient<UserPreferencesPage>();
             builder.Services.AddSingleton<UserPreferencesViewModel>();
-            
+
+            builder.Services.AddTransient<UserWeightPage>();
+            builder.Services.AddSingleton<UserWeightViewModel>();
+
 
             return builder.Build();
         }
