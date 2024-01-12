@@ -18,6 +18,7 @@ namespace LocalLiftLog.Models
         public bool ShowCompletedSetTimestamp { get; set; } = true;
         public int DefaultBarbellWeight { get; set; }
         public int DefaultDumbellWeight { get; set; }
+        public int ActiveUserWeightId { get; set; }
 
         public void ResetUserPreferences()
         {
@@ -28,6 +29,7 @@ namespace LocalLiftLog.Models
             ShowCompletedSetTimestamp = true;
             DefaultBarbellWeight = 0;
             DefaultDumbellWeight = 0;
+            ActiveUserWeightId = 0; 
         }
     }
 }
