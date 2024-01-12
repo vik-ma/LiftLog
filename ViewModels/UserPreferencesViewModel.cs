@@ -84,7 +84,14 @@ namespace LocalLiftLog.ViewModels
             await ExecuteAsync(async () =>
             {
                 UserWeight userWeight = await _context.GetItemByKeyAsync<UserWeight>(UserSettings.ActiveUserWeightId);
-                UserWeight = userWeight;
+                
+                if (userWeight is null)
+                {
+                    // Reset ActiveUserWeightId if Id does not exist
+                    UserSettings.ActiveUserWeightId = 0;
+                    await UpdateUserPreferencesAsync();
+                }
+                else { UserWeight = userWeight; }
             });
         }
 
