@@ -58,7 +58,7 @@ namespace LocalLiftLog.ViewModels
             await LoadActiveUserWeightAsync();
         }
 
-        public async Task LoadUserPreferencesAsync()
+        private async Task LoadUserPreferencesAsync()
         {
             await ExecuteAsync(async () =>
             {

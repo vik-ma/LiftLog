@@ -96,8 +96,10 @@ namespace LocalLiftLog.ViewModels
         private async Task UpdateActiveUserWeightId(int id)
         {
             UserSettingsViewModel.UserSettings.ActiveUserWeightId = id;
+            UserSettingsViewModel.UserWeight = LatestWeight;
 
             await UserSettingsViewModel.UpdateUserPreferencesAsync();
+            await UserSettingsViewModel.LoadActiveUserWeightAsync();
         }
 
         private async Task CreateUserWeightAsync(UserWeight userWeight)
