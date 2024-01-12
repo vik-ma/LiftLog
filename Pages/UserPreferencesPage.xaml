@@ -154,6 +154,49 @@
                         </Label.FormattedText>
                     </Label>
                 </HorizontalStackLayout>
+                <Label 
+                    Text="User Weight"
+                    HorizontalOptions="Center"
+                    FontSize="26"
+                    FontAttributes="Bold" />
+                <Label 
+                    Text="No User Weight Added"
+                    HorizontalOptions="Center"
+                    TextColor="{DynamicResource MediumRed}"
+                    FontSize="22"
+                    FontAttributes="Bold"
+                    IsVisible="{Binding UserWeight, Converter={StaticResource IsNullConverter}}" />
+                <HorizontalStackLayout 
+                    HorizontalOptions="Center"
+                    Spacing="10"
+                    IsVisible="{Binding UserWeight, Converter={StaticResource IsNotNullConverter}}">
+                    <Label VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span 
+                                    Text="Weight: " 
+                                    FontAttributes="Bold"  
+                                    Style="{StaticResource SmallSpanStyle}" />
+                                <Span 
+                                    Text="{Binding UserWeight.BodyWeight}"
+                                    Style="{StaticResource SmallSpanStyle}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span 
+                                    Text="Date: " 
+                                    FontAttributes="Bold"  
+                                    Style="{StaticResource SmallSpanStyle}" />
+                                <Span 
+                                    Text="{Binding UserWeight.DateTime}"
+                                    Style="{StaticResource SmallSpanStyle}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </HorizontalStackLayout>
             </VerticalStackLayout>
 
             <VerticalStackLayout
