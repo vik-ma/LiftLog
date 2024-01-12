@@ -20,6 +20,9 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private UserPreferences userSettings;
 
+        [ObservableProperty]
+        private UserWeight userWeight;
+
         public UserPreferencesViewModel(DatabaseContext context)
         {
             _context = context;
@@ -63,6 +66,19 @@ namespace LocalLiftLog.ViewModels
                 {
                     await CreateUserPreferencesAsync();
                 }
+            });
+        }
+
+        public async Task LoadActiveUserWeightAsync()
+        {
+            if (UserSettings is null) return;
+
+            if (UserSettings.ActiveUserWeightId == 0) return;
+
+            await ExecuteAsync(async () =>
+            {
+                UserWeight userWeight = await _context.GetItemByKeyAsync<UserWeight>(UserSettings.ActiveUserWeightId);
+                UserWeight = userWeight;
             });
         }
 
