@@ -123,6 +123,19 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
+                <Label VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span 
+                                Text="Active User Weight Id: " 
+                                FontAttributes="Bold"  
+                                Style="{StaticResource SmallSpanStyle}" />
+                            <Span 
+                                Text="{Binding UserSettingsViewModel.UserSettings.ActiveUserWeightId}"
+                                Style="{StaticResource SmallSpanStyle}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </HorizontalStackLayout>
         </VerticalStackLayout>
         <Grid

@@ -75,12 +75,12 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span 
-                            Text="Is Using 24 Hour Clock: " 
-                            FontAttributes="Bold"  
-                            Style="{StaticResource SmallSpanStyle}" />
+                                    Text="Is Using 24 Hour Clock: " 
+                                    FontAttributes="Bold"  
+                                    Style="{StaticResource SmallSpanStyle}" />
                                 <Span 
-                            Text="{Binding UserSettings.IsUsing24HourClock}"
-                            Style="{StaticResource SmallSpanStyle}" />
+                                    Text="{Binding UserSettings.IsUsing24HourClock}"
+                                    Style="{StaticResource SmallSpanStyle}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -88,12 +88,12 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span 
-                                Text="Active Time Period Id: " 
-                                FontAttributes="Bold"  
-                                Style="{StaticResource SmallSpanStyle}" />
+                                    Text="Active Time Period Id: " 
+                                    FontAttributes="Bold"  
+                                    Style="{StaticResource SmallSpanStyle}" />
                                 <Span 
-                                Text="{Binding UserSettings.ActiveTimePeriodId}"
-                                Style="{StaticResource SmallSpanStyle}" />
+                                    Text="{Binding UserSettings.ActiveTimePeriodId}"
+                                    Style="{StaticResource SmallSpanStyle}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -105,12 +105,12 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span 
-                                Text="Show Set Timestamp: " 
-                                FontAttributes="Bold"  
-                                Style="{StaticResource SmallSpanStyle}" />
+                                    Text="Show Set Timestamp: " 
+                                    FontAttributes="Bold"  
+                                    Style="{StaticResource SmallSpanStyle}" />
                                 <Span 
-                                Text="{Binding UserSettings.ShowCompletedSetTimestamp}"
-                                Style="{StaticResource SmallSpanStyle}" />
+                                    Text="{Binding UserSettings.ShowCompletedSetTimestamp}"
+                                    Style="{StaticResource SmallSpanStyle}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -118,12 +118,12 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span 
-                                Text="Default Barbell Weight: " 
-                                FontAttributes="Bold"  
-                                Style="{StaticResource SmallSpanStyle}" />
+                                    Text="Default Barbell Weight: " 
+                                    FontAttributes="Bold"  
+                                    Style="{StaticResource SmallSpanStyle}" />
                                 <Span 
-                                Text="{Binding UserSettings.DefaultBarbellWeight}"
-                                Style="{StaticResource SmallSpanStyle}" />
+                                    Text="{Binding UserSettings.DefaultBarbellWeight}"
+                                    Style="{StaticResource SmallSpanStyle}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -131,12 +131,25 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span 
-                                Text="Default Dumbell Weight: " 
-                                FontAttributes="Bold"  
-                                Style="{StaticResource SmallSpanStyle}" />
+                                    Text="Default Dumbell Weight: " 
+                                    FontAttributes="Bold"  
+                                    Style="{StaticResource SmallSpanStyle}" />
                                 <Span 
-                                Text="{Binding UserSettings.DefaultDumbellWeight}"
-                                Style="{StaticResource SmallSpanStyle}" />
+                                    Text="{Binding UserSettings.DefaultDumbellWeight}"
+                                    Style="{StaticResource SmallSpanStyle}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span 
+                                    Text="Active User Weight Id: " 
+                                    FontAttributes="Bold"  
+                                    Style="{StaticResource SmallSpanStyle}" />
+                                <Span 
+                                    Text="{Binding UserSettings.ActiveUserWeightId}"
+                                    Style="{StaticResource SmallSpanStyle}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
