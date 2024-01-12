@@ -17,9 +17,13 @@ namespace LocalLiftLog.ViewModels
     {
         private readonly DatabaseContext _context;
 
-        public UserWeightViewModel(DatabaseContext context)
+        [ObservableProperty]
+        private UserPreferencesViewModel userSettingsViewModel;
+
+        public UserWeightViewModel(DatabaseContext context, UserPreferencesViewModel userSettings)
         {
             _context = context;
+            userSettingsViewModel = userSettings;
         }
 
         [ObservableProperty]
@@ -73,9 +77,27 @@ namespace LocalLiftLog.ViewModels
                     }
 
                     LatestWeight = weightList.OrderByDescending(n => n.Id).FirstOrDefault();
+                    
+                    await UpdateActiveUserWeightId(LatestWeight.Id);
                 }
-                else LatestWeight = null;
+                else 
+                {
+                    LatestWeight = null;
+
+                    if (UserSettingsViewModel.UserSettings.ActiveUserWeightId != 0)
+                    {
+                        // Reset ActiveUserWeightId if one was set
+                        await UpdateActiveUserWeightId(0);
+                    }
+                }
             });
+        }
+
+        private async Task UpdateActiveUserWeightId(int id)
+        {
+            UserSettingsViewModel.UserSettings.ActiveUserWeightId = id;
+
+            await UserSettingsViewModel.UpdateUserPreferencesAsync();
         }
 
         private async Task CreateUserWeightAsync(UserWeight userWeight)
