@@ -23,6 +23,9 @@ namespace LocalLiftLog.ViewModels
         private readonly Dictionary<int, string> exerciseGroupDict;
 
         [ObservableProperty]
+        private UserPreferencesViewModel userSettingsViewModel;
+
+        [ObservableProperty]
         private SetWorkoutTemplatePackage setWorkoutTemplatePackage;
 
         [ObservableProperty]
@@ -34,11 +37,12 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private bool isEditing;
 
-        public CreateSetTemplateViewModel(DatabaseContext context, ExerciseDataManager exerciseData)
+        public CreateSetTemplateViewModel(DatabaseContext context, ExerciseDataManager exerciseData, UserPreferencesViewModel userSettings)
         {
             _context = context;
             _exerciseData = exerciseData;
             exerciseGroupDict = ExerciseGroupDictionary.ExerciseGroupDict;
+            userSettingsViewModel = userSettings;
         }
 
         [ObservableProperty]
@@ -151,8 +155,65 @@ namespace LocalLiftLog.ViewModels
                     return;
                 }
 
+                // If no Active UserWeight is set, but IsUsingBodyWeightAsWeight has been checked
+                if (newSetTemplate.IsUsingBodyWeightAsWeight && UserSettingsViewModel.UserSettings.ActiveUserWeightId == 0)
+                {
+                    bool userUpdatedUserWeight = await ShowUpdateWeightPrompt();
+
+                    // Exit function if user did not enter a valid weight
+                    if (!userUpdatedUserWeight) return;
+                }
+
                 await CreateNewSetTemplateAsync(newSetTemplate, numSets);
             }
+        }
+
+        private async Task<bool> ShowUpdateWeightPrompt()
+        {
+            bool userClickedSetBodyWeight = await Shell.Current.DisplayAlert("No Body Weight Set", "A body weight needs to be set in order to add body weight to total weight.\n\nDo you want to set a body weight?", "Set Body Weight", "Cancel");
+
+            if (!userClickedSetBodyWeight) return false;
+
+            int userInputInt = 0;
+
+            // Keep asking for input until valid input has been entered or user clicks Cancel
+            while (userInputInt == 0)
+            {
+                string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Body Weight", "Enter your current body weight:\n", "OK", "Cancel");
+
+                // Return false if user clicked Cancel
+                if (enteredNumber == null) return false;
+
+                bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
+
+                if (!validInput || enteredNumberInt < ConstantsHelper.BodyWeightInputMinValue || enteredNumberInt > ConstantsHelper.BodyWeightMaxValue)
+                {
+                    await Shell.Current.DisplayAlert("Error", "Invalid Input Value.\n", "OK");
+                }
+                else
+                {
+                    // Exit loop if user entered valid input
+                    userInputInt = enteredNumberInt;
+                }
+            }
+
+            string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
+
+            UserWeight userWeight = new()
+            {
+                BodyWeight = userInputInt,
+                DateTime = currentDateTimeString
+            };
+
+            try
+            {
+                await UserSettingsViewModel.CreateUserWeightAsync(userWeight);
+
+                // Return true if UserWeight was sucessfully updated
+                return true;
+            }
+            // Return false if there was an error when saving to database
+            catch { return false; }
         }
 
         [RelayCommand]
