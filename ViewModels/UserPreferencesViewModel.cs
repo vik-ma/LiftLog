@@ -92,6 +92,18 @@ namespace LocalLiftLog.ViewModels
             OnPropertyChanged(nameof(UserSettings));
         }
 
+        public async Task CreateUserWeightAsync(UserWeight userWeight)
+        {
+            if (userWeight is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                await _context.AddItemAsync<UserWeight>(userWeight);
+                UserSettings.ActiveUserWeightId = userWeight.Id;
+                await UpdateUserPreferencesAsync();
+            });
+        }
+
         [RelayCommand]
         private async Task ToggleIsUsingMetricUnits()
         {
