@@ -52,6 +52,12 @@ namespace LocalLiftLog.ViewModels
             await Shell.Current.GoToAsync("..");
         }
 
+        public async Task InitializeUserPreferencesAsync()
+        {
+            await LoadUserPreferencesAsync();
+            await LoadActiveUserWeightAsync();
+        }
+
         public async Task LoadUserPreferencesAsync()
         {
             await ExecuteAsync(async () =>

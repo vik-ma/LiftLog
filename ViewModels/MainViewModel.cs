@@ -25,9 +25,9 @@ namespace LocalLiftLog.ViewModels
             userSettingsViewModel = userSettings;
         }
 
-        public async Task LoadUserPreferences()
+        public async Task InitializeUserPreferences()
         {
-            await UserSettingsViewModel.LoadUserPreferencesAsync();
+            await UserSettingsViewModel.InitializeUserPreferencesAsync();
         }
 
         [RelayCommand]
