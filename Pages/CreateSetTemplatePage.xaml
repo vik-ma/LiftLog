@@ -389,7 +389,7 @@
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSetTemplate.IsWarmupSet}" />
                 </Grid>
-                <Grid>
+                <Grid IsVisible="{Binding OperatingSetTemplate.IsTrackingWeight}">
                     <Label 
                         Text="Add Body Weight To Weight"
                         TextColor="{DynamicResource MediumDarkGray}"

@@ -155,6 +155,12 @@ namespace LocalLiftLog.ViewModels
                     return;
                 }
 
+                if (newSetTemplate.IsUsingBodyWeightAsWeight && !newSetTemplate.IsTrackingWeight)
+                {
+                    // Set IsUsingBodyWeightAsWeight to false if it is checked even if Weight is not tracked
+                    newSetTemplate.IsUsingBodyWeightAsWeight = false;
+                }
+
                 // If no Active UserWeight is set, but IsUsingBodyWeightAsWeight has been checked
                 if (newSetTemplate.IsUsingBodyWeightAsWeight && UserSettingsViewModel.UserSettings.ActiveUserWeightId == 0)
                 {
