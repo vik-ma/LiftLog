@@ -302,8 +302,22 @@
             // if user clicked Remove Body Weight Property
             // or if user canceled Body Weight input dialog
 
+            setPackage.SetTemplate.IsUsingBodyWeightAsWeight = false;
 
+            await UpdateSetTemplateAsync(setPackage.SetTemplate);
+        }
 
+        private async Task UpdateSetTemplateAsync(SetTemplate setTemplate)
+        {
+            if (setTemplate is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<SetTemplate>(setTemplate))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when trying to update Set.", "OK");
+                }
+            });
         }
 
         [RelayCommand]
