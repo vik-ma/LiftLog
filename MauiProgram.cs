@@ -1,8 +1,9 @@
-﻿using CommunityToolkit.Maui;
-using LocalLiftLog.Data;
-using LocalLiftLog.Pages;
-using LocalLiftLog.Models;
-using LocalLiftLog.ViewModels;
+﻿global using CommunityToolkit.Maui;
+global using LocalLiftLog.Data;
+global using LocalLiftLog.Pages;
+global using LocalLiftLog.Models;
+global using LocalLiftLog.ViewModels;
+global using LocalLiftLog.Helpers;
 using Microsoft.Extensions.Logging;
 
 namespace LocalLiftLog
