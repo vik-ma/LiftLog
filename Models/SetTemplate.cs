@@ -24,7 +24,8 @@
         public bool isTrackingCardioResistance;
         [ObservableProperty]
         public bool isTrackingPercentCompleted;
-        public bool IsUsingBodyWeightAsWeight { get; set; }
+        [ObservableProperty]
+        public bool isUsingBodyWeightAsWeight;
         [ObservableProperty]
         public int defaultWeightValue;
         [ObservableProperty]
