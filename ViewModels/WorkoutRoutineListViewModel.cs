@@ -1,11 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using LocalLiftLog.Data;
-using LocalLiftLog.Models;
-using LocalLiftLog.Pages;
-using System.Collections.ObjectModel;
-
-namespace LocalLiftLog.ViewModels
+﻿namespace LocalLiftLog.ViewModels
 {
     public partial class WorkoutRoutineListViewModel : ObservableObject
     {

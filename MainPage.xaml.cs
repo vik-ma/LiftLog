@@ -1,5 +1,4 @@
 ﻿namespace LocalLiftLog;
-using LocalLiftLog.ViewModels;
 
 public partial class MainPage : ContentPage
 {

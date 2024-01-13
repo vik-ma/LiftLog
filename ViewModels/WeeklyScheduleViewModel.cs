@@ -1,22 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using LocalLiftLog.Data;
-using LocalLiftLog.Models;
-using LocalLiftLog.Pages;
-using Microsoft.Maui.Controls;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading.Tasks.Sources;
-
-namespace LocalLiftLog.ViewModels
+﻿namespace LocalLiftLog.ViewModels
 {
     [QueryProperty(nameof(WeeklySchedule), nameof(WeeklySchedule))]
     public partial class WeeklyScheduleViewModel : ObservableObject

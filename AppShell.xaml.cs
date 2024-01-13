@@ -1,6 +1,4 @@
-﻿using LocalLiftLog.Pages;
-
-namespace LocalLiftLog
+﻿namespace LocalLiftLog
 {
     public partial class AppShell : Shell
     {

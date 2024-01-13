@@ -1,18 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using LocalLiftLog.Data;
-using LocalLiftLog.Models;
-using LocalLiftLog.Pages;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LocalLiftLog.ViewModels
+﻿namespace LocalLiftLog.ViewModels
 {
     [QueryProperty(nameof(WorkoutTemplate), nameof(WorkoutTemplate))]
     public partial class WorkoutDetailsViewModel : ObservableObject

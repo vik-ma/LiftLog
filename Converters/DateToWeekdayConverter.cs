@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LocalLiftLog.Helpers;
-
-namespace LocalLiftLog.Converters
+﻿namespace LocalLiftLog.Converters
 {
     public class DateToWeekdayConverter : IValueConverter
     {

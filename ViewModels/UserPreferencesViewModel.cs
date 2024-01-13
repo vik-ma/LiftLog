@@ -1,17 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using LocalLiftLog.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LocalLiftLog.Models;
-using LocalLiftLog.Pages;
-using LocalLiftLog.Helpers;
-using System.Collections.ObjectModel;
-
-namespace LocalLiftLog.ViewModels
+﻿namespace LocalLiftLog.ViewModels
 {
     public partial class UserPreferencesViewModel : ObservableObject
     {
