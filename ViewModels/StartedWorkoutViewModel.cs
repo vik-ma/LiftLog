@@ -254,14 +254,12 @@
             return true;
         }
         
-        private async Task<bool> ShowUpdateWeightPrompt()
+        private async Task<bool> ShowUpdateWeightPrompt(SetPackage setPackage)
         {
             bool userClickedSetBodyWeight = await Shell.Current.DisplayAlert("No Body Weight Set", "This Set is configured to add Body Weight to total Weight, but no Body Weight has been set!\n\nYou must either set your Body Weight or remove the property from the Set.", "Set Body Weight", "Remove Body Weight Property");
         
             if (userClickedSetBodyWeight)
             {
-                // Update the Body Weight
-
                 int userInputInt = 0;
 
                 // Keep asking for input until valid input has been entered or user clicks Cancel
@@ -298,9 +296,12 @@
                 // Return true if Body Weight was updated
                 return true;
             }
-            // Return false if user clicked Remove Body Weight Property
-            // or if user canceled Body Weight input dialog
-            return false;
+
+            // Update IsUsingBodyWeightAsWeight property in SetTemplate to false
+            setPackage.SetTemplate.IsUsingBodyWeightAsWeight = false;
+            await UpdateSetTemplateAsync(setPackage.SetTemplate);
+
+            return true;
         }
 
         private async Task UpdateSetTemplateAsync(SetTemplate setTemplate)
@@ -323,12 +324,8 @@
 
             if (setPackage.SetTemplate.IsUsingBodyWeightAsWeight && !ValidateUserWeightExists())
             {
-                bool wasWeightUpdated = await ShowUpdateWeightPrompt();
-                if (!wasWeightUpdated)
-                {
-                    setPackage.SetTemplate.IsUsingBodyWeightAsWeight = false;
-                    await UpdateSetTemplateAsync(setPackage.SetTemplate);
-                }
+                // Exit function if user clicked cancel in ShowUpdateWeightPrompt function
+                if (!await ShowUpdateWeightPrompt(setPackage)) return;
             }
 
             setPackage.CompletedSet.IsCompleted = true;
