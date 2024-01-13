@@ -144,18 +144,18 @@
 
                 if (newSetTemplate.IsUsingBodyWeightAsWeight)
                 {
+                    // If no Active UserWeight is set, but IsUsingBodyWeightAsWeight has been checked
+                    if (UserSettingsViewModel.UserSettings.ActiveUserWeightId == 0)
+                    {
+                        bool userUpdatedUserWeight = await ShowUpdateWeightPrompt();
+
+                        // Exit function if user did not enter a valid weight
+                        if (!userUpdatedUserWeight) return;
+                    }
+
                     newSetTemplate = DisableBodyWeightTrackingIfNotTrackingWeight(newSetTemplate);
                 }
                 
-                // If no Active UserWeight is set, but IsUsingBodyWeightAsWeight has been checked
-                if (newSetTemplate.IsUsingBodyWeightAsWeight && UserSettingsViewModel.UserSettings.ActiveUserWeightId == 0)
-                {
-                    bool userUpdatedUserWeight = await ShowUpdateWeightPrompt();
-
-                    // Exit function if user did not enter a valid weight
-                    if (!userUpdatedUserWeight) return;
-                }
-
                 await CreateNewSetTemplateAsync(newSetTemplate, numSets);
             }
         }
@@ -235,16 +235,16 @@
 
             if (OperatingSetTemplate.IsUsingBodyWeightAsWeight)
             {
+                // If no Active UserWeight is set, but IsUsingBodyWeightAsWeight has been checked
+                if (UserSettingsViewModel.UserSettings.ActiveUserWeightId == 0)
+                {
+                    bool userUpdatedUserWeight = await ShowUpdateWeightPrompt();
+
+                    // Exit function if user did not enter a valid weight
+                    if (!userUpdatedUserWeight) return;
+                }
+
                 OperatingSetTemplate = DisableBodyWeightTrackingIfNotTrackingWeight(OperatingSetTemplate);
-            }
-
-            // If no Active UserWeight is set, but IsUsingBodyWeightAsWeight has been checked
-            if (OperatingSetTemplate.IsUsingBodyWeightAsWeight && UserSettingsViewModel.UserSettings.ActiveUserWeightId == 0)
-            {
-                bool userUpdatedUserWeight = await ShowUpdateWeightPrompt();
-
-                // Exit function if user did not enter a valid weight
-                if (!userUpdatedUserWeight) return;
             }
 
             if (!await _context.UpdateItemAsync<SetTemplate>(OperatingSetTemplate))
