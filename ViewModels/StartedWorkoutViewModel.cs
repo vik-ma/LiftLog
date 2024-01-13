@@ -245,10 +245,25 @@
             setPackage.IsEditingSetProperties = false;
         }
 
+        private bool ValidateUserWeightExists()
+        {
+            if (UserSettingsViewModel.UserWeight is null) return false;
+
+            if (UserSettingsViewModel.UserWeight.BodyWeight == 0) return false;
+
+            return true;
+        }
+
         [RelayCommand]
         private async Task SaveSetAsync(SetPackage setPackage)
         {
             if (setPackage is null) return;
+
+            if (setPackage.SetTemplate.IsUsingBodyWeightAsWeight && !ValidateUserWeightExists())
+            {
+                await Shell.Current.DisplayAlert("Error", "No User Weight Added!", "OK");
+                return;
+            }
 
             setPackage.CompletedSet.IsCompleted = true;
             setPackage.CompletedSet.TimeCompleted = DateTimeHelper.GetCurrentFormattedDateTime();
