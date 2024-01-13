@@ -254,7 +254,7 @@
             return true;
         }
         
-        private async Task ShowUpdateWeightPrompt(SetPackage setPackage)
+        private async Task<bool> ShowUpdateWeightPrompt()
         {
             bool userClickedSetBodyWeight = await Shell.Current.DisplayAlert("No Body Weight Set", "This Set is configured to add Body Weight to total Weight, but no Body Weight has been set!\n\nYou must either set your Body Weight or remove the property from the Set.", "Set Body Weight", "Remove Body Weight Property");
         
@@ -269,8 +269,8 @@
                 {
                     string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Body Weight", "Enter your current body weight:\n", "OK", "Cancel");
 
-                    // Break loop if user clicked Cancel
-                    if (enteredNumber == null) break;
+                    // Return false if user clicks Cancel
+                    if (enteredNumber == null) return false;
 
                     bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
 
@@ -294,17 +294,13 @@
                 };
 
                 await UserSettingsViewModel.CreateUserWeightAsync(userWeight);
-                // Exit function after updating User Weight
-                return;
+
+                // Return true if Body Weight was updated
+                return true;
             }
-
-            // Remove IsUsingBodyWeightAsWeight from SetTemplate either
-            // if user clicked Remove Body Weight Property
+            // Return false if user clicked Remove Body Weight Property
             // or if user canceled Body Weight input dialog
-
-            setPackage.SetTemplate.IsUsingBodyWeightAsWeight = false;
-
-            await UpdateSetTemplateAsync(setPackage.SetTemplate);
+            return false;
         }
 
         private async Task UpdateSetTemplateAsync(SetTemplate setTemplate)
@@ -327,13 +323,18 @@
 
             if (setPackage.SetTemplate.IsUsingBodyWeightAsWeight && !ValidateUserWeightExists())
             {
-                await ShowUpdateWeightPrompt(setPackage);
+                bool wasWeightUpdated = await ShowUpdateWeightPrompt();
+                if (!wasWeightUpdated)
+                {
+                    setPackage.SetTemplate.IsUsingBodyWeightAsWeight = false;
+                    await UpdateSetTemplateAsync(setPackage.SetTemplate);
+                }
             }
 
             setPackage.CompletedSet.IsCompleted = true;
             setPackage.CompletedSet.TimeCompleted = DateTimeHelper.GetCurrentFormattedDateTime();
             setPackage.CompletedSet.SetTemplateId = setPackage.SetTemplate.Id;
-
+            
             await ExecuteAsync(async () =>
             {
                 if (!await _context.AddItemAsync<CompletedSet>(setPackage.CompletedSet))
@@ -341,8 +342,6 @@
                     await Shell.Current.DisplayAlert("Error", "Error occured when trying to save Set.", "OK");
                 }
             });
-
-            OnPropertyChanged(nameof(setPackage.CompletedSet));
         }
 
         [RelayCommand]
