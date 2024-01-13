@@ -238,6 +238,15 @@
                 OperatingSetTemplate = DisableBodyWeightTrackingIfNotTrackingWeight(OperatingSetTemplate);
             }
 
+            // If no Active UserWeight is set, but IsUsingBodyWeightAsWeight has been checked
+            if (OperatingSetTemplate.IsUsingBodyWeightAsWeight && UserSettingsViewModel.UserSettings.ActiveUserWeightId == 0)
+            {
+                bool userUpdatedUserWeight = await ShowUpdateWeightPrompt();
+
+                // Exit function if user did not enter a valid weight
+                if (!userUpdatedUserWeight) return;
+            }
+
             if (!await _context.UpdateItemAsync<SetTemplate>(OperatingSetTemplate))
             {
                 await Shell.Current.DisplayAlert("Error", "Error occured when updating Set Template.", "OK");
