@@ -155,12 +155,11 @@ namespace LocalLiftLog.ViewModels
                     return;
                 }
 
-                if (newSetTemplate.IsUsingBodyWeightAsWeight && !newSetTemplate.IsTrackingWeight)
+                if (newSetTemplate.IsUsingBodyWeightAsWeight)
                 {
-                    // Set IsUsingBodyWeightAsWeight to false if it is checked even if Weight is not tracked
-                    newSetTemplate.IsUsingBodyWeightAsWeight = false;
+                    newSetTemplate = DisableBodyWeightTrackingIfNotTrackingWeight(newSetTemplate);
                 }
-
+                
                 // If no Active UserWeight is set, but IsUsingBodyWeightAsWeight has been checked
                 if (newSetTemplate.IsUsingBodyWeightAsWeight && UserSettingsViewModel.UserSettings.ActiveUserWeightId == 0)
                 {
@@ -172,6 +171,16 @@ namespace LocalLiftLog.ViewModels
 
                 await CreateNewSetTemplateAsync(newSetTemplate, numSets);
             }
+        }
+
+        private static SetTemplate DisableBodyWeightTrackingIfNotTrackingWeight(SetTemplate setTemplate) 
+        {
+            if (!setTemplate.IsTrackingWeight)
+            {
+                // Set IsUsingBodyWeightAsWeight to false if it is checked even if Weight is not tracked
+                setTemplate.IsUsingBodyWeightAsWeight = false;
+            }
+            return setTemplate;
         }
 
         private async Task<bool> ShowUpdateWeightPrompt()
@@ -235,6 +244,11 @@ namespace LocalLiftLog.ViewModels
             {
                 await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
                 return;
+            }
+
+            if (OperatingSetTemplate.IsUsingBodyWeightAsWeight)
+            {
+                OperatingSetTemplate = DisableBodyWeightTrackingIfNotTrackingWeight(OperatingSetTemplate);
             }
 
             if (!await _context.UpdateItemAsync<SetTemplate>(OperatingSetTemplate))
