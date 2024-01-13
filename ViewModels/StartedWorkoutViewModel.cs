@@ -253,6 +253,58 @@
 
             return true;
         }
+        
+        private async Task ShowUpdateWeightPrompt(SetPackage setPackage)
+        {
+            bool userClickedSetBodyWeight = await Shell.Current.DisplayAlert("No Body Weight Set", "This Set is configured to add Body Weight to total Weight, but no Body Weight has been set!\n\nYou must either set your Body Weight or remove the property from the Set.", "Set Body Weight", "Remove Body Weight Property");
+        
+            if (userClickedSetBodyWeight)
+            {
+                // Update the Body Weight
+
+                int userInputInt = 0;
+
+                // Keep asking for input until valid input has been entered or user clicks Cancel
+                while (userInputInt == 0)
+                {
+                    string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Body Weight", "Enter your current body weight:\n", "OK", "Cancel");
+
+                    // Break loop if user clicked Cancel
+                    if (enteredNumber == null) break;
+
+                    bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
+
+                    if (!validInput || enteredNumberInt < ConstantsHelper.BodyWeightInputMinValue || enteredNumberInt > ConstantsHelper.BodyWeightMaxValue)
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Invalid Input Value.\n", "OK");
+                    }
+                    else
+                    {
+                        // Exit loop if user entered valid input
+                        userInputInt = enteredNumberInt;
+                    }
+                }
+
+                string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
+
+                UserWeight userWeight = new()
+                {
+                    BodyWeight = userInputInt,
+                    DateTime = currentDateTimeString
+                };
+
+                await UserSettingsViewModel.CreateUserWeightAsync(userWeight);
+                // Exit function after updating User Weight
+                return;
+            }
+
+            // Remove IsUsingBodyWeightAsWeight from SetTemplate either
+            // if user clicked Remove Body Weight Property
+            // or if user canceled Body Weight input dialog
+
+
+
+        }
 
         [RelayCommand]
         private async Task SaveSetAsync(SetPackage setPackage)
@@ -261,8 +313,7 @@
 
             if (setPackage.SetTemplate.IsUsingBodyWeightAsWeight && !ValidateUserWeightExists())
             {
-                await Shell.Current.DisplayAlert("Error", "No User Weight Added!", "OK");
-                return;
+                await ShowUpdateWeightPrompt(setPackage);
             }
 
             setPackage.CompletedSet.IsCompleted = true;
