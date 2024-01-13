@@ -1,4 +1,10 @@
 ﻿global using CommunityToolkit.Maui;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using System.Collections.ObjectModel;
+global using CommunityToolkit.Mvvm.Input;
+global using SQLite;
+global using System.Globalization;
+global using System.Linq.Expressions;
 global using LocalLiftLog.Data;
 global using LocalLiftLog.Pages;
 global using LocalLiftLog.Models;
