@@ -40,5 +40,33 @@
 
             }
         }
+
+        [RelayCommand]
+        private async Task UpdateWorkoutAsync()
+        {
+            if (Workout is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<Workout>(Workout))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Workout.", "OK");
+                }
+            });
+        }
+
+        [RelayCommand]
+        private async Task SetWorkoutName()
+        {
+            if (Workout is null) return;
+
+            string enteredName = await Shell.Current.DisplayPromptAsync("Workout Name", "Enter a name for the Workout", "OK", "Cancel");
+
+            if (enteredName is null || string.IsNullOrWhiteSpace(enteredName)) return;
+
+            Workout.Name = enteredName;
+
+            await UpdateWorkoutAsync();
+        }
     }
 }

@@ -6,35 +6,50 @@
              xmlns:models="clr-namespace:LocalLiftLog.Models"
              x:DataType="viewmodel:WorkoutViewModel"
              Title="Workout">
-    <VerticalStackLayout Spacing="10">
-        <HorizontalStackLayout 
+    
+    <VerticalStackLayout 
+        Margin="0, 10" 
+        Spacing="10">
+        <HorizontalStackLayout
             HorizontalOptions="Center"
             Spacing="10">
             <Label 
                 Text="Workout ID:"
                 VerticalOptions="Center"
                 FontAttributes="Bold"
-                FontSize="26" />
+                FontSize="20" />
             <Label 
                 Text="{Binding Workout.Id}"
                 VerticalOptions="Center"
+                TextColor="{DynamicResource MediumGreen}"
                 FontAttributes="Bold"
-                FontSize="26" />
-        </HorizontalStackLayout>
-        <HorizontalStackLayout 
-            HorizontalOptions="Center"
-            Spacing="10">
+                FontSize="20" />
+            <Label 
+                Text="Name:"
+                VerticalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="20" />
+            <Label 
+                Text="{Binding Workout.Name, Converter={StaticResource NullValueToEmptyTextConverter}, ConverterParameter=Name}"
+                VerticalOptions="Center"
+                TextColor="{DynamicResource MediumOrange}"
+                FontAttributes="Bold"
+                FontSize="20" />
             <Label 
                 Text="Date:"
                 VerticalOptions="Center"
                 FontAttributes="Bold"
-                FontSize="26" />
+                FontSize="20" />
             <Label 
                 Text="{Binding Workout.Date}"
                 VerticalOptions="Center"
                 TextColor="{DynamicResource MediumBlue}"
                 FontAttributes="Bold"
-                FontSize="26" />
+                FontSize="20" />
+            <Button 
+                Text="Change Name"
+                Style="{StaticResource VerySmallButtonStyle}"
+                Command="{Binding SetWorkoutNameCommand}" />
         </HorizontalStackLayout>
 
         <Button 

@@ -1,11 +1,13 @@
 ﻿namespace LocalLiftLog.Models
 {
-    public class Workout
+    public partial class Workout : ObservableObject
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string Name { get; set; }
+        [ObservableProperty]
+        public string name;
         public int WorkoutTemplateId { get; set; }
-        public string Date { get; set; }
+        [ObservableProperty]
+        public string date;
     }
 }
