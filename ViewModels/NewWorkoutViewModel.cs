@@ -37,7 +37,6 @@
             }
         }
 
-        [RelayCommand]
         private async Task CreateWorkoutAsync(Workout workout)
         {
             if (workout is null) return;
@@ -49,16 +48,23 @@
         }
 
         [RelayCommand]
-        static async Task GoToNewWorkout()
+        private async Task GoToNewWorkout()
         {
-            Workout workout = new();
+            string currentYmdDateString = DateTimeHelper.GetCurrentFormattedYmdDate();
+
+            Workout newWorkout = new()
+            {
+                Date = currentYmdDateString,
+            };
+
+            await CreateWorkoutAsync(newWorkout);
 
             var navigationParameter = new Dictionary<string, object>
             {
-                ["Workout"] = workout
+                ["Workout"] = newWorkout
             };
 
-            await Shell.Current.GoToAsync($"{nameof(WorkoutPage)}?Id={workout.Id}", navigationParameter);
+            await Shell.Current.GoToAsync($"{nameof(WorkoutPage)}?Id={newWorkout.Id}", navigationParameter);
         }
     }
 }
