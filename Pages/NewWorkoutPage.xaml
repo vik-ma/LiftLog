@@ -6,12 +6,17 @@
              xmlns:models="clr-namespace:LocalLiftLog.Models"
              x:DataType="viewmodel:NewWorkoutViewModel"
              Title="New Workout">
-    <VerticalStackLayout>
+    <VerticalStackLayout Spacing="10">
         <Label 
             Text="New Workout"
             HorizontalOptions="Center"
             FontSize="30"
             FontAttributes="Bold" />
+
+        <Button 
+            Text="New Empty Workout"
+            Style="{StaticResource LargeButtonStyle}"
+            Command="{Binding GoToNewWorkoutCommand}" />
 
         <Button 
             Text="Go Back"

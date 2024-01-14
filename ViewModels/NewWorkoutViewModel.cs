@@ -36,5 +36,29 @@
 
             }
         }
+
+        [RelayCommand]
+        private async Task CreateWorkoutAsync(Workout workout)
+        {
+            if (workout is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                await _context.AddItemAsync<Workout>(workout);
+            });
+        }
+
+        [RelayCommand]
+        static async Task GoToNewWorkout()
+        {
+            Workout workout = new();
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["Workout"] = workout
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(WorkoutPage)}?Id={workout.Id}", navigationParameter);
+        }
     }
 }
