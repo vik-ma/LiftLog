@@ -76,6 +76,16 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            <Button 
+                                Text="Go To Workout"
+                                Style="{StaticResource VerySmallButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutListViewModel}}, Path=GoToWorkoutCommand}"
+                                CommandParameter="{Binding .}" />
+                            <Button 
+                                Text="Delete"
+                                Style="{StaticResource VerySmallRedButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutListViewModel}}, Path=DeleteWorkoutCommand}"
+                                CommandParameter="{Binding .}" />
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
                 </DataTemplate>

@@ -55,5 +55,34 @@
         {
             await Shell.Current.GoToAsync("..");
         }
+
+        [RelayCommand]
+        private async Task DeleteWorkoutAsync(Workout workout)
+        {
+            if (workout is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<Workout>(workout))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout.", "OK");
+                }
+            });
+
+            await LoadWorkoutsAsync();
+        }
+
+        [RelayCommand]
+        private async Task GoToWorkout(Workout workout)
+        {
+            if (workout is null) return;
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["Workout"] = workout
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(WorkoutPage)}?Id={workout.Id}", navigationParameter);
+        }
     }
 }
