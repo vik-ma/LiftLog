@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LocalLiftLog.Pages.WorkoutPage"
+             xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
+             xmlns:models="clr-namespace:LocalLiftLog.Models"
+             x:DataType="viewmodel:WorkoutViewModel"
+             Title="Workout">
+    <VerticalStackLayout>
+        <Label 
+            Text="Workout"
+            HorizontalOptions="Center"
+            FontSize="30"
+            FontAttributes="Bold" />
+
+        <Button 
+            Text="Go Back"
+            Style="{StaticResource LargeButtonStyle}"
+            Command="{Binding GoBackCommand}" />
+    </VerticalStackLayout>
+</ContentPage>
