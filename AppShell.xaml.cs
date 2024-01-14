@@ -24,6 +24,7 @@
             Routing.RegisterRoute(nameof(SelectWorkoutPage), typeof(SelectWorkoutPage));
             Routing.RegisterRoute(nameof(UserPreferencesPage), typeof(UserPreferencesPage));
             Routing.RegisterRoute(nameof(UserWeightPage), typeof(UserWeightPage));
+            Routing.RegisterRoute(nameof(NewWorkoutPage), typeof(NewWorkoutPage));
         }
     }
 }

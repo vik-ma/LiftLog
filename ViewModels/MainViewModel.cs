@@ -89,5 +89,11 @@
         {
             await Shell.Current.GoToAsync($"{nameof(UserWeightPage)}");
         }
+
+        [RelayCommand]
+        private async Task GoToNewWorkout()
+        {
+            await Shell.Current.GoToAsync($"{nameof(NewWorkoutPage)}");
+        }
     }
 }

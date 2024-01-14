@@ -91,6 +91,9 @@ namespace LocalLiftLog
             builder.Services.AddTransient<UserWeightPage>();
             builder.Services.AddSingleton<UserWeightViewModel>();
 
+            builder.Services.AddTransient<NewWorkoutPage>();
+            builder.Services.AddSingleton<NewWorkoutViewModel>();
+
 
             return builder.Build();
         }

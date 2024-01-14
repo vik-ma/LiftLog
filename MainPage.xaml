@@ -213,6 +213,12 @@
                 Grid.Column="1"
                 Command="{Binding GoToUserWeightCommand}"
                 Style="{StaticResource MainPageNavigationButtonStyle}"/>
+            <Button
+                Text="New Workout"
+                Grid.Row="5"
+                Grid.Column="1"
+                Command="{Binding GoToNewWorkoutCommand}"
+                Style="{StaticResource MainPageNavigationButtonStyle}"/>
         </Grid>
     </VerticalStackLayout>
 
