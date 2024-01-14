@@ -219,6 +219,12 @@
                 Grid.Column="1"
                 Command="{Binding GoToNewWorkoutCommand}"
                 Style="{StaticResource MainPageNavigationButtonStyle}"/>
+            <Button
+                Text="Workout List"
+                Grid.Row="6"
+                Grid.Column="1"
+                Command="{Binding GoToWorkoutListCommand}"
+                Style="{StaticResource MainPageNavigationButtonStyle}"/>
         </Grid>
     </VerticalStackLayout>
 

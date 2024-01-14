@@ -15,8 +15,14 @@
 
         <Button 
             Text="New Empty Workout"
+            BackgroundColor="{DynamicResource MediumGreen}"
             Style="{StaticResource LargeButtonStyle}"
             Command="{Binding GoToNewWorkoutCommand}" />
+
+        <Button 
+            Text="Workout List"
+            Style="{StaticResource LargeButtonStyle}"
+            Command="{Binding GoToWorkoutListCommand}" />
 
         <Button 
             Text="Go Back"

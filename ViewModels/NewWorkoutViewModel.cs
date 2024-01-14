@@ -19,6 +19,12 @@
             await Shell.Current.GoToAsync("..");
         }
 
+        [RelayCommand]
+        private async Task GoToWorkoutList()
+        {
+            await Shell.Current.GoToAsync($"{nameof(WorkoutListPage)}");
+        }
+
         #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {

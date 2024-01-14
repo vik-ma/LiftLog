@@ -95,5 +95,11 @@
         {
             await Shell.Current.GoToAsync($"{nameof(NewWorkoutPage)}");
         }
+
+        [RelayCommand]
+        private async Task GoToWorkoutList()
+        {
+            await Shell.Current.GoToAsync($"{nameof(WorkoutListPage)}");
+        }
     }
 }
