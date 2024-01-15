@@ -1,5 +1,4 @@
 namespace LocalLiftLog.Pages;
-
 public partial class TimePeriodListPage : ContentPage
 {
 	private readonly TimePeriodViewModel _viewModel;

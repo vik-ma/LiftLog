@@ -1,6 +1,4 @@
 namespace LocalLiftLog.Pages;
-using LocalLiftLog.ViewModels;
-
 public partial class UserWeightPage : ContentPage
 {
     private readonly UserWeightViewModel _viewModel;

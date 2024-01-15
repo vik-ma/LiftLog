@@ -1,9 +1,4 @@
 namespace LocalLiftLog.Pages;
-
-using LocalLiftLog.Models;
-using LocalLiftLog.ViewModels;
-using System.Collections.ObjectModel;
-
 public partial class CreateSetTemplatePage : ContentPage
 {
     private readonly CreateSetTemplateViewModel _viewModel;

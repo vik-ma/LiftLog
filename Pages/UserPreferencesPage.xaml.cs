@@ -1,6 +1,4 @@
 namespace LocalLiftLog.Pages;
-using LocalLiftLog.ViewModels;
-
 public partial class UserPreferencesPage : ContentPage
 {
 	private readonly UserPreferencesViewModel _viewModel;

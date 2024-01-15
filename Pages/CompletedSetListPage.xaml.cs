@@ -1,7 +1,5 @@
 namespace LocalLiftLog.Pages;
-using LocalLiftLog.ViewModels;
-
-public partial class CompletedSetListPage : ContentPage
+partial class CompletedSetListPage : ContentPage
 {
 	private readonly CompletedSetViewModel _viewModel;
 	public CompletedSetListPage(CompletedSetViewModel viewModel)

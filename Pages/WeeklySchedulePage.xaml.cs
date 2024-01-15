@@ -1,6 +1,4 @@
 namespace LocalLiftLog.Pages;
-using LocalLiftLog.ViewModels;
-
 public partial class WeeklySchedulePage : ContentPage
 {
     private readonly WeeklyScheduleViewModel _viewModel;

@@ -1,7 +1,4 @@
 namespace LocalLiftLog.Pages;
-using LocalLiftLog.ViewModels;
-
-
 public partial class SetTemplateListPage : ContentPage
 {
 	private readonly SetTemplateViewModel _viewModel;

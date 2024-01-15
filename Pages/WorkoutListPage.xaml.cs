@@ -1,5 +1,4 @@
 namespace LocalLiftLog.Pages;
-
 public partial class WorkoutListPage : ContentPage
 {
     private readonly WorkoutListViewModel _viewModel;
