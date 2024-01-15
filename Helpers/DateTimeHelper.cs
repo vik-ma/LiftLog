@@ -63,6 +63,13 @@
             return "Invalid Date";
         }
 
+        public static DateTime FormatDateTimeYmdStringToDateTime(string dateTimeString)
+        {
+            return DateTime.TryParseExact(dateTimeString, "yyyy-MM-dd", null, DateTimeStyles.None, out DateTime parsedDateTime)
+                ? parsedDateTime     // Return DateTime object if parse was successful
+                : DateTime.MinValue; // Fallback DateTime if invalid dateTimeString
+        }
+
         public static bool ValidateStartAndEndDate(string startDateTime, string endDateTime)
         {
             // Parse the DateTime strings into DateTime objects
