@@ -8,5 +8,7 @@
         public string name;
         [ObservableProperty]
         public int weight;
+        [ObservableProperty]
+        public string weightUnit;
     }
 }
