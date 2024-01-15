@@ -58,6 +58,8 @@
                 FontAttributes="Bold"
                 FontSize="20" />
             <DatePicker
+                Format="yyyy-MM-dd"
+                Date="{Binding SelectedDateTime}"
                 DateSelected="OnDateSelected" />
         </HorizontalStackLayout>
 

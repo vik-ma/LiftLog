@@ -17,6 +17,9 @@
             userSettingsViewModel = userSettings;
         }
 
+        [ObservableProperty]
+        private DateTime selectedDateTime;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -39,6 +42,13 @@
             {
 
             }
+        }
+
+        public void LoadSelectedDateTime()
+        {
+            if (Workout is null) return;
+
+            SelectedDateTime = DateTimeHelper.FormatDateTimeYmdStringToDateTime(Workout.Date);
         }
 
         [RelayCommand]

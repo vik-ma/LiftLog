@@ -12,6 +12,7 @@ public partial class WorkoutPage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
+        _viewModel.LoadSelectedDateTime();
     }
 
     private async void OnDateSelected(object sender, DateChangedEventArgs e)
