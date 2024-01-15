@@ -68,5 +68,22 @@
 
             await UpdateWorkoutAsync();
         }
+
+        [RelayCommand]
+        private async Task ResetWorkoutName()
+        {
+            if (Workout is null) return;
+
+            if (Workout.Name is null) return;
+
+            bool userClickedReset = await Shell.Current.DisplayAlert("Reset Name", "Do you really want to reset Workout Name?", "Reset", "Cancel");
+
+            if (!userClickedReset) return;
+
+            Workout.Name = null;
+
+            await UpdateWorkoutAsync();
+        }
+
     }
 }

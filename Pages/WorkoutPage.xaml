@@ -50,6 +50,10 @@
                 Text="Change Name"
                 Style="{StaticResource VerySmallButtonStyle}"
                 Command="{Binding SetWorkoutNameCommand}" />
+            <Button 
+                Text="Reset Name"
+                Style="{StaticResource VerySmallRedButtonStyle}"
+                Command="{Binding ResetWorkoutNameCommand}" />
         </HorizontalStackLayout>
 
         <Button 
