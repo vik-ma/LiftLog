@@ -15,6 +15,9 @@
             _context = context;
         }
 
+        [ObservableProperty]
+        private ObservableCollection<DefaultEquipmentWeight> defaultEquipmentWeightList = new();
+
         #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
@@ -43,6 +46,7 @@
         {
             await LoadUserPreferencesAsync();
             await LoadActiveUserWeightAsync();
+            await LoadDefaultEquipmentWeightsAsync();
         }
 
         private async Task LoadUserPreferencesAsync()
@@ -80,6 +84,26 @@
                     await UpdateUserPreferencesAsync();
                 }
                 else { UserWeight = userWeight; }
+            });
+        }
+
+        public async Task LoadDefaultEquipmentWeightsAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                DefaultEquipmentWeightList.Clear();
+
+                var defaultWeights = await _context.GetAllAsync<DefaultEquipmentWeight>();
+
+                if (defaultWeights is not null && defaultWeights.Any())
+                {
+                    defaultWeights ??= new ObservableCollection<DefaultEquipmentWeight>();
+
+                    foreach (var weight in defaultWeights)
+                    {
+                        DefaultEquipmentWeightList.Add(weight);
+                    }
+                }
             });
         }
 
