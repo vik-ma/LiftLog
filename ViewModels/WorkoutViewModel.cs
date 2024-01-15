@@ -82,5 +82,16 @@
 
             await UpdateWorkoutAsync();
         }
+
+        public async Task UpdateWorkoutDate(DateTime selectedDate)
+        {
+            if (Workout is null) return;
+
+            string ymdDateString = DateTimeHelper.FormatDateTimeToYmdString(selectedDate);
+        
+            Workout.Date = ymdDateString;
+
+            await UpdateWorkoutAsync();
+        }
     }
 }
