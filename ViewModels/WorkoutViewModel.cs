@@ -17,9 +17,6 @@
             userSettingsViewModel = userSettings;
         }
 
-        [ObservableProperty]
-        private bool displayDatePicker;
-
         [RelayCommand]
         static async Task GoBack()
         {
@@ -85,12 +82,5 @@
 
             await UpdateWorkoutAsync();
         }
-
-        [RelayCommand]
-        private void ShowDatePicker()
-        {
-            DisplayDatePicker = true;
-        }
-
     }
 }
