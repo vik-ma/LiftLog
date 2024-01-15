@@ -101,32 +101,6 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span 
-                                Text="Default Barbell Weight: " 
-                                FontAttributes="Bold"  
-                                Style="{StaticResource SmallSpanStyle}" />
-                            <Span 
-                                Text="{Binding UserSettingsViewModel.UserSettings.DefaultBarbellWeight}"
-                                Style="{StaticResource SmallSpanStyle}" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label VerticalOptions="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span 
-                                Text="Default Dumbell Weight: " 
-                                FontAttributes="Bold"  
-                                Style="{StaticResource SmallSpanStyle}" />
-                            <Span 
-                                Text="{Binding UserSettingsViewModel.UserSettings.DefaultDumbellWeight}"
-                                Style="{StaticResource SmallSpanStyle}" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label VerticalOptions="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span 
                                 Text="Active User Weight Id: " 
                                 FontAttributes="Bold"  
                                 Style="{StaticResource SmallSpanStyle}" />
