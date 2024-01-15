@@ -17,6 +17,9 @@
             userSettingsViewModel = userSettings;
         }
 
+        [ObservableProperty]
+        private bool displayDatePicker;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -72,9 +75,7 @@
         [RelayCommand]
         private async Task ResetWorkoutName()
         {
-            if (Workout is null) return;
-
-            if (Workout.Name is null) return;
+            if (Workout is null || Workout.Name is null) return;
 
             bool userClickedReset = await Shell.Current.DisplayAlert("Reset Name", "Do you really want to reset Workout Name?", "Reset", "Cancel");
 
@@ -83,6 +84,12 @@
             Workout.Name = null;
 
             await UpdateWorkoutAsync();
+        }
+
+        [RelayCommand]
+        private void ShowDatePicker()
+        {
+            DisplayDatePicker = true;
         }
 
     }

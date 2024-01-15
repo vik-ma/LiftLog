@@ -57,6 +57,14 @@
                 TextColor="{DynamicResource MediumBlue}"
                 FontAttributes="Bold"
                 FontSize="20" />
+            <Button 
+                Text="Change Date"
+                IsVisible="{Binding DisplayDatePicker, Converter={StaticResource InvertedBoolConverter}}"
+                Style="{StaticResource VerySmallButtonStyle}"
+                Command="{Binding ShowDatePickerCommand}" />
+            <DatePicker
+                IsVisible="{Binding DisplayDatePicker}"
+                DateSelected="OnDateSelected" />
         </HorizontalStackLayout>
 
         

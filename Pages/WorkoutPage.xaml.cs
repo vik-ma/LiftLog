@@ -13,4 +13,11 @@ public partial class WorkoutPage : ContentPage
     {
         base.OnAppearing();
     }
+
+    private void OnDateSelected(object sender, DateChangedEventArgs e)
+    {
+        DateTime selectedDate = e.NewDate;
+
+        Shell.Current.DisplayAlert("Date", selectedDate.ToString(), "OK");
+    }
 }
