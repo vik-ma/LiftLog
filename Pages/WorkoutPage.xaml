@@ -9,10 +9,9 @@
     
     <VerticalStackLayout 
         Margin="0, 10" 
-        Spacing="10">
-        <HorizontalStackLayout
-            HorizontalOptions="Center"
-            Spacing="10">
+        Spacing="10"
+        HorizontalOptions="Center">
+        <HorizontalStackLayout Spacing="10">
             <Label 
                 Text="Workout ID:"
                 VerticalOptions="Center"
@@ -24,6 +23,8 @@
                 TextColor="{DynamicResource MediumGreen}"
                 FontAttributes="Bold"
                 FontSize="20" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="10">
             <Label 
                 Text="Name:"
                 VerticalOptions="Center"
@@ -35,6 +36,16 @@
                 TextColor="{DynamicResource MediumOrange}"
                 FontAttributes="Bold"
                 FontSize="20" />
+            <Button 
+                Text="Change Name"
+                Style="{StaticResource VerySmallButtonStyle}"
+                Command="{Binding SetWorkoutNameCommand}" />
+            <Button 
+                Text="Reset Name"
+                Style="{StaticResource VerySmallRedButtonStyle}"
+                Command="{Binding ResetWorkoutNameCommand}" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="10">
             <Label 
                 Text="Date:"
                 VerticalOptions="Center"
@@ -46,15 +57,9 @@
                 TextColor="{DynamicResource MediumBlue}"
                 FontAttributes="Bold"
                 FontSize="20" />
-            <Button 
-                Text="Change Name"
-                Style="{StaticResource VerySmallButtonStyle}"
-                Command="{Binding SetWorkoutNameCommand}" />
-            <Button 
-                Text="Reset Name"
-                Style="{StaticResource VerySmallRedButtonStyle}"
-                Command="{Binding ResetWorkoutNameCommand}" />
         </HorizontalStackLayout>
+
+        
 
         <Button 
             Text="Go Back"
