@@ -6,347 +6,354 @@
              xmlns:models="clr-namespace:LocalLiftLog.Models"
              x:DataType="viewmodel:UserPreferencesViewModel"
              Title="User Preferences Page">
-    <VerticalStackLayout>
-        <Label 
-            Text="User Preferences"
-            HorizontalOptions="Center"
-            FontSize="30"
-            FontAttributes="Bold"
-            Margin="0, 5" />
-
-        <Label 
-            Text="No User Preferences Available!"
-            HorizontalOptions="Center"
-            TextColor="{DynamicResource MediumRed}"
-            FontSize="30"
-            FontAttributes="Bold"
-            Margin="0, 5"
-            IsVisible="{Binding UserSettings, Converter={StaticResource IsNullConverter}}" />
-
-        <VerticalStackLayout 
-            Spacing="20"
-            HorizontalOptions="Center">
-            <VerticalStackLayout 
-                Spacing="2"
-                IsVisible="{Binding UserSettings, Converter={StaticResource IsNotNullConverter}}">
-                <HorizontalStackLayout 
-                    HorizontalOptions="Center"
-                    Spacing="10">
-                    <Label VerticalOptions="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span 
-                                Text="Id: " 
-                                FontAttributes="Bold"  
-                                Style="{StaticResource SmallSpanStyle}" />
-                                <Span 
-                                Text="{Binding UserSettings.Id}"
-                                Style="{StaticResource SmallSpanStyle}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label VerticalOptions="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span 
-                                Text="Is Using Metric Units: " 
-                                FontAttributes="Bold"  
-                                Style="{StaticResource SmallSpanStyle}" />
-                                <Span 
-                                Text="{Binding UserSettings.IsUsingMetricUnits}"
-                                Style="{StaticResource SmallSpanStyle}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label VerticalOptions="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span 
-                                Text="Active Routine Id: " 
-                                FontAttributes="Bold"  
-                                Style="{StaticResource SmallSpanStyle}" />
-                                <Span 
-                                Text="{Binding UserSettings.ActiveWorkoutRoutineId}"
-                                Style="{StaticResource SmallSpanStyle}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label VerticalOptions="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span 
-                                    Text="Is Using 24 Hour Clock: " 
-                                    FontAttributes="Bold"  
-                                    Style="{StaticResource SmallSpanStyle}" />
-                                <Span 
-                                    Text="{Binding UserSettings.IsUsing24HourClock}"
-                                    Style="{StaticResource SmallSpanStyle}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label VerticalOptions="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span 
-                                    Text="Active Time Period Id: " 
-                                    FontAttributes="Bold"  
-                                    Style="{StaticResource SmallSpanStyle}" />
-                                <Span 
-                                    Text="{Binding UserSettings.ActiveTimePeriodId}"
-                                    Style="{StaticResource SmallSpanStyle}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout 
-                    HorizontalOptions="Center"
-                    Spacing="10">
-                    <Label VerticalOptions="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span 
-                                    Text="Show Set Timestamp: " 
-                                    FontAttributes="Bold"  
-                                    Style="{StaticResource SmallSpanStyle}" />
-                                <Span 
-                                    Text="{Binding UserSettings.ShowCompletedSetTimestamp}"
-                                    Style="{StaticResource SmallSpanStyle}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label VerticalOptions="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span 
-                                    Text="Active User Weight Id: " 
-                                    FontAttributes="Bold"  
-                                    Style="{StaticResource SmallSpanStyle}" />
-                                <Span 
-                                    Text="{Binding UserSettings.ActiveUserWeightId}"
-                                    Style="{StaticResource SmallSpanStyle}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </HorizontalStackLayout>
-            </VerticalStackLayout>
-            
-            <VerticalStackLayout Spacing="5">
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout>
                 <Label 
-                    Text="User Weight"
+                    Text="User Preferences"
                     HorizontalOptions="Center"
-                    FontSize="26"
-                    FontAttributes="Bold" />
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    Margin="0, 5" />
+
                 <Label 
-                    Text="No Active User Weight"
+                    Text="No User Preferences Available!"
                     HorizontalOptions="Center"
                     TextColor="{DynamicResource MediumRed}"
-                    FontSize="22"
+                    FontSize="30"
                     FontAttributes="Bold"
-                    IsVisible="{Binding UserWeight, Converter={StaticResource IsNullConverter}}" />
-                <HorizontalStackLayout 
-                    HorizontalOptions="Center"
-                    Spacing="10"
-                    IsVisible="{Binding UserWeight, Converter={StaticResource IsNotNullConverter}}">
-                    <Label VerticalOptions="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span 
-                                    Text="Weight: " 
-                                    FontAttributes="Bold"  
-                                    Style="{StaticResource SmallSpanStyle}" />
-                                <Span 
-                                    Text="{Binding UserWeight.BodyWeight}"
-                                    Style="{StaticResource SmallSpanStyle}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label VerticalOptions="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span 
-                                    Text="Date: " 
-                                    FontAttributes="Bold"  
-                                    Style="{StaticResource SmallSpanStyle}" />
-                                <Span 
-                                    Text="{Binding UserWeight.DateTime}"
-                                    Style="{StaticResource SmallSpanStyle}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </HorizontalStackLayout>
-            </VerticalStackLayout>
+                    Margin="0, 5"
+                    IsVisible="{Binding UserSettings, Converter={StaticResource IsNullConverter}}" />
 
-            <VerticalStackLayout Spacing="5">
-                <Label 
-                    Text="Default Equipment Weights"
-                    HorizontalOptions="Center"
-                    FontSize="26"
-                    FontAttributes="Bold" />
-                <CollectionView
-                    ItemsSource="{Binding DefaultEquipmentWeightList}"
+                <VerticalStackLayout 
+                    Spacing="20"
                     HorizontalOptions="Center">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout 
-                            ItemSpacing="3"
-                            Orientation="Vertical" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:DefaultEquipmentWeight">
-                            <HorizontalStackLayout Spacing="5">
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Id: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Id}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Name: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Name}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Weight: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Weight}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Unit: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding WeightUnit}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Button 
-                                    IsVisible="{Binding Id, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
-                                    Text="Delete"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserPreferencesViewModel}}, Path=DeleteDefaultEquipmentWeightCommand}"
-                                    CommandParameter="{Binding .}"
-                                    Style="{StaticResource VerySmallRedButtonStyle}" />
-                            </HorizontalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                    <CollectionView.EmptyView>
-                        <ContentView>
-                            <VerticalStackLayout
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center">
-                                <Label 
-                                    Text="No Default Equipment Weights Added!" 
-                                    FontSize="18" 
-                                    FontAttributes="Bold" 
-                                    HorizontalTextAlignment="Center" />
-                            </VerticalStackLayout>
-                        </ContentView>
-                    </CollectionView.EmptyView>
-                </CollectionView>
-                <HorizontalStackLayout 
-                    HorizontalOptions="Center"
-                    Spacing="10">
-                    <Label 
-                        Text="Name"
-                        FontAttributes="Bold"
-                        Style="{StaticResource MediumLabelStyle}" />
-                    <Entry 
-                        Text="{Binding OperatingDefaultEquipmentWeight.Name}"
-                        Style="{StaticResource StartedWorkoutEntryFieldStyle}" />
-                    <Label 
-                        Text="Weight"
-                        FontAttributes="Bold"
-                        Style="{StaticResource MediumLabelStyle}" />
-                    <Entry 
-                        Text="{Binding OperatingDefaultEquipmentWeight.Weight}"
-                        Style="{StaticResource StartedWorkoutEntryFieldStyle}" />
-                    <Label 
-                        Text="Unit"
-                        FontAttributes="Bold"
-                        Style="{StaticResource MediumLabelStyle}" />
-                    <Button 
-                        Text="Add New"
-                        Command="{Binding AddNewDefaultEquipmentWeightCommand}"
-                        Style="{StaticResource VerySmallGreenButtonStyle}" />
-                </HorizontalStackLayout>
-            </VerticalStackLayout>
+                    <VerticalStackLayout 
+                        Spacing="2"
+                        IsVisible="{Binding UserSettings, Converter={StaticResource IsNotNullConverter}}">
+                        <HorizontalStackLayout 
+                            HorizontalOptions="Center"
+                            Spacing="10">
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                        Text="Id: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                        <Span 
+                                        Text="{Binding UserSettings.Id}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                        Text="Is Using Metric Units: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                        <Span 
+                                        Text="{Binding UserSettings.IsUsingMetricUnits}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                        Text="Active Routine Id: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                        <Span 
+                                        Text="{Binding UserSettings.ActiveWorkoutRoutineId}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Is Using 24 Hour Clock: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding UserSettings.IsUsing24HourClock}"
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Active Time Period Id: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding UserSettings.ActiveTimePeriodId}"
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout 
+                            HorizontalOptions="Center"
+                            Spacing="10">
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Show Set Timestamp: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding UserSettings.ShowCompletedSetTimestamp}"
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Active User Weight Id: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding UserSettings.ActiveUserWeightId}"
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
 
-            <VerticalStackLayout
-                WidthRequest="400"
-                HorizontalOptions="Center"
-                Spacing="10"
-                IsVisible="{Binding UserSettings, Converter={StaticResource IsNotNullConverter}}">
-                <Grid>
-                    <Label 
-                        Text="Metric Units"
-                        Style="{StaticResource MediumLabelStyle}" />
-                    <Button 
-                        Text="Change"
-                        Style="{StaticResource GenericButtonStyle}"
-                        HorizontalOptions="End"
-                        Command="{Binding ToggleIsUsingMetricUnitsCommand}" />
-                </Grid>
-                <Grid>
-                    <Label 
-                        Text="24 Hour Clock"
-                        Style="{StaticResource MediumLabelStyle}" />
-                    <Button 
-                        Text="Change"
-                        Style="{StaticResource GenericButtonStyle}"
-                        HorizontalOptions="End"
-                        Command="{Binding ToggleIsUsing24HourClockCommand}" />
-                </Grid>
-                <Grid>
-                    <Label 
-                        Text="Show Completed Set Timestamp"
-                        Style="{StaticResource MediumLabelStyle}" />
-                    <Button 
-                        Text="Change"
-                        Style="{StaticResource GenericButtonStyle}"
-                        HorizontalOptions="End"
-                        Command="{Binding ToggleShowCompletedSetTimestampCommand}" />
-                </Grid>
+                    <VerticalStackLayout Spacing="5">
+                        <Label 
+                            Text="User Weight"
+                            HorizontalOptions="Center"
+                            FontSize="26"
+                            FontAttributes="Bold" />
+                        <Label 
+                            Text="No Active User Weight"
+                            HorizontalOptions="Center"
+                            TextColor="{DynamicResource MediumRed}"
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            IsVisible="{Binding UserWeight, Converter={StaticResource IsNullConverter}}" />
+                        <HorizontalStackLayout 
+                            HorizontalOptions="Center"
+                            Spacing="10"
+                            IsVisible="{Binding UserWeight, Converter={StaticResource IsNotNullConverter}}">
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Weight: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding UserWeight.BodyWeight}"
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Date: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding UserWeight.DateTime}"
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="5">
+                        <Label 
+                            Text="Default Equipment Weights"
+                            HorizontalOptions="Center"
+                            FontSize="26"
+                            FontAttributes="Bold" />
+                        <CollectionView
+                            ItemsSource="{Binding DefaultEquipmentWeightList}"
+                            HorizontalOptions="Center">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout 
+                                    ItemSpacing="3"
+                                    Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:DefaultEquipmentWeight">
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="Id: " 
+                                                        FontAttributes="Bold"  
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    <Span 
+                                                        Text="{Binding Id}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="Name: " 
+                                                        FontAttributes="Bold"  
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    <Span 
+                                                        Text="{Binding Name}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="Weight: " 
+                                                        FontAttributes="Bold"  
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    <Span 
+                                                        Text="{Binding Weight}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="Unit: " 
+                                                        FontAttributes="Bold"  
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    <Span 
+                                                        Text="{Binding WeightUnit}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Button 
+                                            Text="Edit Weight"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserPreferencesViewModel}}, Path=EditDefaultEquipmentWeightCommand}"
+                                            Style="{StaticResource VerySmallButtonStyle}" />
+                                        <Button 
+                                            IsVisible="{Binding Id, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
+                                            Text="Delete"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserPreferencesViewModel}}, Path=DeleteDefaultEquipmentWeightCommand}"
+                                            CommandParameter="{Binding .}"
+                                            Style="{StaticResource VerySmallRedButtonStyle}" />
+                                    </HorizontalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                            <CollectionView.EmptyView>
+                                <ContentView>
+                                    <VerticalStackLayout
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                                        <Label 
+                                            Text="No Default Equipment Weights Added!" 
+                                            FontSize="18" 
+                                            FontAttributes="Bold" 
+                                            HorizontalTextAlignment="Center" />
+                                    </VerticalStackLayout>
+                                </ContentView>
+                            </CollectionView.EmptyView>
+                        </CollectionView>
+                        <HorizontalStackLayout 
+                            HorizontalOptions="Center"
+                            Spacing="10">
+                            <Label 
+                                Text="Name"
+                                FontAttributes="Bold"
+                                Style="{StaticResource MediumLabelStyle}" />
+                            <Entry 
+                                Text="{Binding OperatingDefaultEquipmentWeight.Name}"
+                                Style="{StaticResource StartedWorkoutEntryFieldStyle}" />
+                            <Label 
+                                Text="Weight"
+                                FontAttributes="Bold"
+                                Style="{StaticResource MediumLabelStyle}" />
+                            <Entry 
+                                Text="{Binding OperatingDefaultEquipmentWeight.Weight}"
+                                Style="{StaticResource StartedWorkoutEntryFieldStyle}" />
+                            <Label 
+                                Text="Unit"
+                                FontAttributes="Bold"
+                                Style="{StaticResource MediumLabelStyle}" />
+                            <Button 
+                                Text="Add New"
+                                Command="{Binding AddNewDefaultEquipmentWeightCommand}"
+                                Style="{StaticResource VerySmallGreenButtonStyle}" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout
+                        WidthRequest="400"
+                        HorizontalOptions="Center"
+                        Spacing="10"
+                        IsVisible="{Binding UserSettings, Converter={StaticResource IsNotNullConverter}}">
+                        <Grid>
+                            <Label 
+                                Text="Metric Units"
+                                Style="{StaticResource MediumLabelStyle}" />
+                            <Button 
+                                Text="Change"
+                                Style="{StaticResource GenericButtonStyle}"
+                                HorizontalOptions="End"
+                                Command="{Binding ToggleIsUsingMetricUnitsCommand}" />
+                        </Grid>
+                        <Grid>
+                            <Label 
+                                Text="24 Hour Clock"
+                                Style="{StaticResource MediumLabelStyle}" />
+                            <Button 
+                                Text="Change"
+                                Style="{StaticResource GenericButtonStyle}"
+                                HorizontalOptions="End"
+                                Command="{Binding ToggleIsUsing24HourClockCommand}" />
+                        </Grid>
+                        <Grid>
+                            <Label 
+                                Text="Show Completed Set Timestamp"
+                                Style="{StaticResource MediumLabelStyle}" />
+                            <Button 
+                                Text="Change"
+                                Style="{StaticResource GenericButtonStyle}"
+                                HorizontalOptions="End"
+                                Command="{Binding ToggleShowCompletedSetTimestampCommand}" />
+                        </Grid>
+                        <Button 
+                            Text="Reset User Settings"
+                            Style="{StaticResource GenericButtonStyle}"
+                            Command="{Binding ResetUserPreferencesCommand}" />
+                        <!--<Button 
+                            Text="Delete User Settings"
+                            Style="{StaticResource DeleteButtonStyle}"
+                            Command="{Binding DeleteUserPreferencesCommand}" />-->
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
                 <Button 
-                    Text="Reset User Settings"
-                    Style="{StaticResource GenericButtonStyle}"
-                    Command="{Binding ResetUserPreferencesCommand}" />
-                <!--<Button 
-                    Text="Delete User Settings"
-                    Style="{StaticResource DeleteButtonStyle}"
-                    Command="{Binding DeleteUserPreferencesCommand}" />-->
+                    Text="Go Back"
+                    Style="{StaticResource LargeButtonStyle}"
+                    Command="{Binding GoBackCommand}"
+                    Margin="20" />
             </VerticalStackLayout>
-        </VerticalStackLayout>
-
-
-        <Button 
-            Text="Go Back"
-            Style="{StaticResource LargeButtonStyle}"
-            Command="{Binding GoBackCommand}"
-            Margin="20" />
-    </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>
