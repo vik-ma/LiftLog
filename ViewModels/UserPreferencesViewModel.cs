@@ -62,7 +62,7 @@
                 else
                 {
                     await CreateUserPreferencesAsync();
-                    await CreateDefaultEquipmentWeightsAsync();
+                    await PopulateDefaultEquipmentWeightsAsync();
                 }
             });
         }
@@ -117,7 +117,7 @@
             });
         }
 
-        private async Task CreateDefaultEquipmentWeightsAsync()
+        private async Task PopulateDefaultEquipmentWeightsAsync()
         {
             // Default Equipment Weight Values
             DefaultEquipmentWeight defaultBarbellWeight = new()
@@ -133,10 +133,18 @@
                 WeightUnit = "kg"
             };
 
+            await CreateDefaultEquipmentWeightsAsync(defaultBarbellWeight);
+            await CreateDefaultEquipmentWeightsAsync(defaultDumbbellWeight);
+        }
+
+        private async Task CreateDefaultEquipmentWeightsAsync(DefaultEquipmentWeight defaultEquipmentWeight)
+        {
+            if (defaultEquipmentWeight is null) return;
+
             await ExecuteAsync(async () =>
             {
-                await _context.AddItemAsync<DefaultEquipmentWeight>(defaultBarbellWeight);
-                await _context.AddItemAsync<DefaultEquipmentWeight>(defaultDumbbellWeight);
+                await _context.AddItemAsync<DefaultEquipmentWeight>(defaultEquipmentWeight);
+                DefaultEquipmentWeightList.Add(defaultEquipmentWeight);
             });
         }
 
