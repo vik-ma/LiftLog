@@ -262,6 +262,32 @@
                         </ContentView>
                     </CollectionView.EmptyView>
                 </CollectionView>
+                <HorizontalStackLayout 
+                    HorizontalOptions="Center"
+                    Spacing="10">
+                    <Label 
+                        Text="Name"
+                        FontAttributes="Bold"
+                        Style="{StaticResource MediumLabelStyle}" />
+                    <Entry 
+                        Text="{Binding OperatingDefaultEquipmentWeight.Name}"
+                        Style="{StaticResource StartedWorkoutEntryFieldStyle}" />
+                    <Label 
+                        Text="Weight"
+                        FontAttributes="Bold"
+                        Style="{StaticResource MediumLabelStyle}" />
+                    <Entry 
+                        Text="{Binding OperatingDefaultEquipmentWeight.Weight}"
+                        Style="{StaticResource StartedWorkoutEntryFieldStyle}" />
+                    <Label 
+                        Text="Unit"
+                        FontAttributes="Bold"
+                        Style="{StaticResource MediumLabelStyle}" />
+                    <Button 
+                        Text="Add New"
+                        Command="{Binding AddNewDefaultEquipmentWeightCommand}"
+                        Style="{StaticResource VerySmallGreenButtonStyle}" />
+                </HorizontalStackLayout>
             </VerticalStackLayout>
 
             <VerticalStackLayout

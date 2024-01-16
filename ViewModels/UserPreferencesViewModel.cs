@@ -18,6 +18,9 @@
         [ObservableProperty]
         private ObservableCollection<DefaultEquipmentWeight> defaultEquipmentWeightList = new();
 
+        [ObservableProperty]
+        private DefaultEquipmentWeight operatingDefaultEquipmentWeight = new();
+
         #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
@@ -133,11 +136,11 @@
                 WeightUnit = "kg"
             };
 
-            await CreateDefaultEquipmentWeightsAsync(defaultBarbellWeight);
-            await CreateDefaultEquipmentWeightsAsync(defaultDumbbellWeight);
+            await CreateDefaultEquipmentWeightAsync(defaultBarbellWeight);
+            await CreateDefaultEquipmentWeightAsync(defaultDumbbellWeight);
         }
 
-        private async Task CreateDefaultEquipmentWeightsAsync(DefaultEquipmentWeight defaultEquipmentWeight)
+        private async Task CreateDefaultEquipmentWeightAsync(DefaultEquipmentWeight defaultEquipmentWeight)
         {
             if (defaultEquipmentWeight is null) return;
 
@@ -146,6 +149,18 @@
                 await _context.AddItemAsync<DefaultEquipmentWeight>(defaultEquipmentWeight);
                 DefaultEquipmentWeightList.Add(defaultEquipmentWeight);
             });
+        }
+
+        [RelayCommand]
+        private async Task AddNewDefaultEquipmentWeightAsync()
+        {
+            if (OperatingDefaultEquipmentWeight is null) return;
+
+            OperatingDefaultEquipmentWeight.WeightUnit = "kg";
+
+            await CreateDefaultEquipmentWeightAsync(OperatingDefaultEquipmentWeight);
+
+            OperatingDefaultEquipmentWeight = new();
         }
 
         [RelayCommand]
