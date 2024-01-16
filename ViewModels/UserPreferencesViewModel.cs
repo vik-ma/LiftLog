@@ -156,6 +156,14 @@
         {
             if (OperatingDefaultEquipmentWeight is null) return;
 
+            var (isValid, errorMessage) = OperatingDefaultEquipmentWeight.Validate();
+
+            if (!isValid)
+            {
+                await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
+                return;
+            }
+
             OperatingDefaultEquipmentWeight.WeightUnit = "kg";
 
             await CreateDefaultEquipmentWeightAsync(OperatingDefaultEquipmentWeight);
