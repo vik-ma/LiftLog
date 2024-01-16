@@ -21,6 +21,9 @@
         [ObservableProperty]
         private DefaultEquipmentWeight operatingDefaultEquipmentWeight = new();
 
+        [ObservableProperty]
+        private bool isEditingDefaultEquipmentWeight;
+
         #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
@@ -187,7 +190,7 @@
             await LoadDefaultEquipmentWeightsAsync();
         }
 
-            [RelayCommand]
+        [RelayCommand]
         public async Task UpdateUserPreferencesAsync()
         {
             if (UserSettings is null) return;
@@ -271,6 +274,18 @@
             UserSettings.ResetUserPreferences();
 
             await UpdateUserPreferencesAsync();
+        }
+
+        [RelayCommand]
+        private void ShowEditingDefaultEquipmentWeight()
+        {
+            IsEditingDefaultEquipmentWeight = true;
+        }
+
+        [RelayCommand]
+        private void CancelEditingDefaultEquipmentWeight()
+        {
+            IsEditingDefaultEquipmentWeight = false;
         }
     }
 }

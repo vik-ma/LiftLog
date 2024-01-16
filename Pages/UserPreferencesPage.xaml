@@ -38,12 +38,12 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
-                                        Text="Id: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource SmallSpanStyle}" />
+                                            Text="Id: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
-                                        Text="{Binding UserSettings.Id}"
-                                        Style="{StaticResource SmallSpanStyle}" />
+                                            Text="{Binding UserSettings.Id}"
+                                            Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -51,12 +51,12 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
-                                        Text="Is Using Metric Units: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource SmallSpanStyle}" />
+                                            Text="Is Using Metric Units: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
-                                        Text="{Binding UserSettings.IsUsingMetricUnits}"
-                                        Style="{StaticResource SmallSpanStyle}" />
+                                            Text="{Binding UserSettings.IsUsingMetricUnits}"
+                                            Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -64,12 +64,12 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
-                                        Text="Active Routine Id: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource SmallSpanStyle}" />
+                                            Text="Active Routine Id: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
-                                        Text="{Binding UserSettings.ActiveWorkoutRoutineId}"
-                                        Style="{StaticResource SmallSpanStyle}" />
+                                            Text="{Binding UserSettings.ActiveWorkoutRoutineId}"
+                                            Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -249,7 +249,7 @@
                                         </Label>
                                         <Button 
                                             Text="Edit Weight"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserPreferencesViewModel}}, Path=EditDefaultEquipmentWeightCommand}"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserPreferencesViewModel}}, Path=ShowEditingDefaultEquipmentWeightCommand}"
                                             Style="{StaticResource VerySmallButtonStyle}" />
                                         <Button 
                                             IsVisible="{Binding Id, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
@@ -355,5 +355,109 @@
                     Margin="20" />
             </VerticalStackLayout>
         </ScrollView>
+
+        <VerticalStackLayout VerticalOptions="End">
+            <BoxView 
+                Color="{DynamicResource Primary}"
+                HeightRequest="1" />
+            <Grid
+                RowDefinitions="*, *"
+                ColumnDefinitions="*, *"
+                Padding="10"
+                ColumnSpacing="15"
+                BackgroundColor="{DynamicResource VeryLightGray}"
+                IsVisible="{Binding IsEditingDefaultEquipmentWeight}">
+                <VerticalStackLayout 
+                    Grid.Row="0"
+                    Grid.Column="0">
+                    <Label 
+                        Grid.Column="0"
+                        Text="Default Equipment Weight" 
+                        FontAttributes="Bold"
+                        FontSize="32"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center" >
+                    </Label>
+                </VerticalStackLayout>
+                <HorizontalStackLayout 
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HorizontalOptions="End"
+                    Spacing="12">
+                    <Button 
+                        Grid.Column="1"
+                        Text="Cancel"
+                        Style="{StaticResource DeleteButtonStyle}"
+                        Command="{Binding CancelEditingDefaultEquipmentWeightCommand}" >
+                    </Button>
+                    <Button 
+                        Grid.Column="1"
+                        Text="Save"
+                        Style="{StaticResource AddButtonStyle}"
+                        Command="{Binding AddNewDefaultEquipmentWeightCommand}" >
+                    </Button>
+                </HorizontalStackLayout>
+                <VerticalStackLayout 
+                    Grid.Row="1"
+                    Grid.Column="0">
+                    <Label 
+                        Text="Name" 
+                        FontAttributes="Bold" 
+                        Margin="2, 0"
+                        FontSize="20" />
+                    <Label 
+                        Text="{Binding OperatingDefaultEquipmentWeight.Name}" 
+                        Margin="2, 0"
+                        FontSize="20">
+                        <Label.Triggers>
+                            <DataTrigger 
+                                TargetType="Label"        
+                                Binding="{Binding OperatingDefaultEquipmentWeight.Id}"                
+                                Value="0">
+                                <Setter 
+                                    Property="IsVisible" 
+                                    Value="False" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Entry 
+                        Text="{Binding OperatingDefaultEquipmentWeight.Name}"
+                        Placeholder="Name"
+                        Margin="0, 5"
+                        BackgroundColor="{DynamicResource White}"
+                        FontSize="20"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout 
+                    Grid.Row="1"
+                    Grid.Column="1">
+                    <Label 
+                        Text="Weight" 
+                        FontAttributes="Bold" 
+                        Margin="2, 0"
+                        FontSize="20" />
+                    <Label 
+                        Text="{Binding OperatingDefaultEquipmentWeight.Weight}" 
+                        Margin="2, 0"
+                        FontSize="20">
+                        <Label.Triggers>
+                            <DataTrigger 
+                                TargetType="Label" 
+                                Binding="{Binding OperatingDefaultEquipmentWeight.Id}" 
+                                Value="0">
+                                <Setter 
+                                    Property="IsVisible" 
+                                    Value="False" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Entry 
+                        Text="{Binding OperatingDefaultEquipmentWeight.Weight}"
+                        Placeholder="Weight"
+                        Margin="0, 5"
+                        BackgroundColor="{DynamicResource White}"
+                        FontSize="20" />
+                </VerticalStackLayout>
+            </Grid>
+        </VerticalStackLayout>
     </Grid>
 </ContentPage>
