@@ -253,7 +253,6 @@
                                             CommandParameter="{Binding .}"
                                             Style="{StaticResource VerySmallButtonStyle}" />
                                         <Button 
-                                            IsVisible="{Binding Id, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
                                             Text="Delete"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserPreferencesViewModel}}, Path=DeleteDefaultEquipmentWeightCommand}"
                                             CommandParameter="{Binding .}"
@@ -275,11 +274,18 @@
                                 </ContentView>
                             </CollectionView.EmptyView>
                         </CollectionView>
-                        <Button 
+                        <HorizontalStackLayout
                             HorizontalOptions="Center"
+                            Spacing="10">
+                        <Button 
+                            Text="Restore Default Weights"
+                            Command="{Binding PopulateDefaultEquipmentWeightsCommand}"
+                            Style="{StaticResource GenericButtonStyle}" />
+                        <Button 
                             Text="Add New"
                             Command="{Binding ShowEditingDefaultEquipmentWeightCommand}"
                             Style="{StaticResource AddButtonStyle}" />
+                        </HorizontalStackLayout>
                     </VerticalStackLayout>
 
                     <VerticalStackLayout

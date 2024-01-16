@@ -123,6 +123,7 @@
             });
         }
 
+        [RelayCommand]
         private async Task PopulateDefaultEquipmentWeightsAsync()
         {
             // Default Equipment Weight Values
@@ -187,6 +188,8 @@
             }
 
             OperatingDefaultEquipmentWeight = new();
+
+            CancelEditingDefaultEquipmentWeight();
         }
 
         [RelayCommand]
