@@ -172,6 +172,22 @@
         }
 
         [RelayCommand]
+        private async Task DeleteDefaultEquipmentWeightAsync(DefaultEquipmentWeight defaultEquipmentWeight)
+        {
+            if (defaultEquipmentWeight is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<DefaultEquipmentWeight>(defaultEquipmentWeight))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Default Equipment Weight.", "OK");
+                }
+            });
+
+            await LoadDefaultEquipmentWeightsAsync();
+        }
+
+            [RelayCommand]
         public async Task UpdateUserPreferencesAsync()
         {
             if (UserSettings is null) return;

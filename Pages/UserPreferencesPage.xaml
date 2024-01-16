@@ -245,6 +245,11 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
+                                <Button 
+                                    Text="Delete"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserPreferencesViewModel}}, Path=DeleteDefaultEquipmentWeightCommand}"
+                                    CommandParameter="{Binding .}"
+                                    Style="{StaticResource VerySmallRedButtonStyle}" />
                             </HorizontalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
