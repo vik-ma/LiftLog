@@ -187,8 +187,8 @@
                                 FontSize="26"
                                 FontAttributes="Bold" />
                             <Button 
-                                Text="Show List"
-                                Style="{StaticResource GenericButtonStyle}"
+                                Text="{Binding DisplayDefaultEquipmentWeightList, Converter={StaticResource BoolToShowOrHideTextConverter}, ConverterParameter=List}"
+                                Style="{StaticResource VerySmallButtonStyle}"
                                 Command="{Binding ToggleDefaultEquipmentWeightListCommand}"/>
                         </HorizontalStackLayout>
                         <VerticalStackLayout 
