@@ -221,6 +221,7 @@
             <converters:DateToWeekdayConverter x:Key="DateToWeekdayConverter" />
             <converters:DateTimeToTimestampConverter x:Key="DateTimeToTimestampConverter" />
             <converters:WarmupSetColorConverter x:Key="WarmupSetColorConverter" />
+            <converters:BoolToShowOrHideTextConverter x:Key="BoolToShowOrHideTextConverter" />
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             <toolkit:IndexToArrayItemConverter x:Key="IndexToArrayItemConverter" />
             <toolkit:IsListNullOrEmptyConverter x:Key="IsListNullOrEmptyConverter" />
