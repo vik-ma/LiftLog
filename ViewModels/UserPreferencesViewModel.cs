@@ -24,7 +24,10 @@
         [ObservableProperty]
         private bool isEditingDefaultEquipmentWeight;
 
-        #nullable enable
+        [ObservableProperty]
+        private bool displayDefaultEquipmentWeightList;
+
+#nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
             try
@@ -308,6 +311,12 @@
         private void CancelEditingDefaultEquipmentWeight()
         {
             IsEditingDefaultEquipmentWeight = false;
+        }
+
+        [RelayCommand]
+        private void ToggleDefaultEquipmentWeightList()
+        {
+            DisplayDefaultEquipmentWeightList = !DisplayDefaultEquipmentWeightList;
         }
     }
 }
