@@ -169,7 +169,22 @@
 
             OperatingDefaultEquipmentWeight.WeightUnit = "kg";
 
-            await CreateDefaultEquipmentWeightAsync(OperatingDefaultEquipmentWeight);
+            if (OperatingDefaultEquipmentWeight.Id == 0)
+            {
+                // Create New Default Equipment Weight
+                await CreateDefaultEquipmentWeightAsync(OperatingDefaultEquipmentWeight);
+            }
+            else
+            {
+                // Update Existing Default Equipment Weight
+                await ExecuteAsync(async () =>
+                {
+                    if (!await _context.UpdateItemAsync<DefaultEquipmentWeight>(OperatingDefaultEquipmentWeight))
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Error occured when updating Default Equipment Weight.", "OK");
+                    }
+                });
+            }
 
             OperatingDefaultEquipmentWeight = new();
         }
@@ -276,11 +291,15 @@
             await UpdateUserPreferencesAsync();
         }
 
+        #nullable enable
         [RelayCommand]
-        private void ShowEditingDefaultEquipmentWeight()
+        private void ShowEditingDefaultEquipmentWeight(DefaultEquipmentWeight? defaultEquipmentWeight)
         {
+            OperatingDefaultEquipmentWeight = defaultEquipmentWeight ?? new();
+
             IsEditingDefaultEquipmentWeight = true;
         }
+
 
         [RelayCommand]
         private void CancelEditingDefaultEquipmentWeight()

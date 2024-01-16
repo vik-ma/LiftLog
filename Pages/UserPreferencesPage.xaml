@@ -250,6 +250,7 @@
                                         <Button 
                                             Text="Edit Weight"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserPreferencesViewModel}}, Path=ShowEditingDefaultEquipmentWeightCommand}"
+                                            CommandParameter="{Binding .}"
                                             Style="{StaticResource VerySmallButtonStyle}" />
                                         <Button 
                                             IsVisible="{Binding Id, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
@@ -274,32 +275,11 @@
                                 </ContentView>
                             </CollectionView.EmptyView>
                         </CollectionView>
-                        <HorizontalStackLayout 
+                        <Button 
                             HorizontalOptions="Center"
-                            Spacing="10">
-                            <Label 
-                                Text="Name"
-                                FontAttributes="Bold"
-                                Style="{StaticResource MediumLabelStyle}" />
-                            <Entry 
-                                Text="{Binding OperatingDefaultEquipmentWeight.Name}"
-                                Style="{StaticResource StartedWorkoutEntryFieldStyle}" />
-                            <Label 
-                                Text="Weight"
-                                FontAttributes="Bold"
-                                Style="{StaticResource MediumLabelStyle}" />
-                            <Entry 
-                                Text="{Binding OperatingDefaultEquipmentWeight.Weight}"
-                                Style="{StaticResource StartedWorkoutEntryFieldStyle}" />
-                            <Label 
-                                Text="Unit"
-                                FontAttributes="Bold"
-                                Style="{StaticResource MediumLabelStyle}" />
-                            <Button 
-                                Text="Add New"
-                                Command="{Binding AddNewDefaultEquipmentWeightCommand}"
-                                Style="{StaticResource VerySmallGreenButtonStyle}" />
-                        </HorizontalStackLayout>
+                            Text="Add New"
+                            Command="{Binding ShowEditingDefaultEquipmentWeightCommand}"
+                            Style="{StaticResource AddButtonStyle}" />
                     </VerticalStackLayout>
 
                     <VerticalStackLayout
