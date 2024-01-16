@@ -246,6 +246,7 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <Button 
+                                    IsVisible="{Binding Id, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
                                     Text="Delete"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserPreferencesViewModel}}, Path=DeleteDefaultEquipmentWeightCommand}"
                                     CommandParameter="{Binding .}"
