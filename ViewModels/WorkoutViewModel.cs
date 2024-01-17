@@ -20,6 +20,15 @@
         [ObservableProperty]
         private DateTime selectedDateTime;
 
+        [ObservableProperty]
+        private bool displayWorkoutTemplateList;
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
+
+        [ObservableProperty]
+        private WorkoutTemplate operatingWorkoutTemplate = new();
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -49,6 +58,26 @@
             if (Workout is null) return;
 
             SelectedDateTime = DateTimeHelper.FormatDateTimeYmdStringToDateTime(Workout.Date);
+        }
+
+        public async Task LoadWorkoutTemplatesAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                WorkoutTemplateList.Clear();
+
+                var workoutTemplates = await _context.GetAllAsync<WorkoutTemplate>();
+
+                if (workoutTemplates is not null && workoutTemplates.Any())
+                {
+                    workoutTemplates ??= new ObservableCollection<WorkoutTemplate>();
+
+                    foreach (var workout in workoutTemplates)
+                    {
+                        WorkoutTemplateList.Add(workout);
+                    }
+                }
+            });
         }
 
         [RelayCommand]
@@ -102,6 +131,53 @@
             Workout.Date = ymdDateString;
 
             await UpdateWorkoutAsync();
+        }
+
+        public async Task LoadWorkoutTemplateAsync()
+        {
+            if (Workout is null) return;
+
+            if (Workout.WorkoutTemplateId == 0) return;
+
+            WorkoutTemplate workoutTemplate = null;
+
+            await ExecuteAsync(async () =>
+            {
+                workoutTemplate = await _context.GetItemByKeyAsync<WorkoutTemplate>(Workout.WorkoutTemplateId);
+            });
+
+            if (workoutTemplate is null) return;
+
+            OperatingWorkoutTemplate = workoutTemplate;
+        }
+
+        public async Task UpdateOperatingWorkoutTemplate(int workoutTemplateId)
+        {
+            if (workoutTemplateId < 1) return;
+
+            Workout.WorkoutTemplateId = workoutTemplateId;
+
+            await UpdateWorkoutAsync();
+
+            await LoadWorkoutTemplateAsync();
+
+            HideWorkoutTemplateList();
+        }
+
+        [RelayCommand]
+        private void HideWorkoutTemplateList()
+        {
+            DisplayWorkoutTemplateList = false;
+        }
+
+        [RelayCommand]
+        private async Task ShowWorkoutTemplateList()
+        {
+            if (Workout is null) return;
+
+            await LoadWorkoutTemplatesAsync();
+
+            DisplayWorkoutTemplateList = true;
         }
     }
 }
