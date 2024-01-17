@@ -128,20 +128,22 @@
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="{DynamicResource MediumGray}" />
             </Style>
-            <Style x:Key="SmallEntryFieldStyle" TargetType="Entry">
-                <Setter Property="WidthRequest" Value="90" />
-                <Setter Property="HeightRequest" Value="38" />
-                <Setter Property="MinimumHeightRequest" Value="38" />
-                <Setter Property="FontSize" Value="18" />
-            </Style>
             <Style x:Key="ExtraSmallEntryFieldStyle" TargetType="Entry">
                 <Setter Property="WidthRequest" Value="60" />
                 <Setter Property="HeightRequest" Value="38" />
                 <Setter Property="MinimumHeightRequest" Value="38" />
                 <Setter Property="FontSize" Value="18" />
             </Style>
-            <Style x:Key="GenericEntryFieldStyle" TargetType="Entry">
-                <Setter Property="WidthRequest" Value="250" />
+            <Style x:Key="SmallEntryFieldStyle" TargetType="Entry">
+                <Setter Property="WidthRequest" Value="90" />
+                <Setter Property="HeightRequest" Value="38" />
+                <Setter Property="MinimumHeightRequest" Value="38" />
+                <Setter Property="FontSize" Value="18" />
+            </Style>
+            <Style x:Key="MediumEntryFieldStyle" TargetType="Entry">
+                <Setter Property="WidthRequest" Value="180" />
+                <Setter Property="HeightRequest" Value="38" />
+                <Setter Property="MinimumHeightRequest" Value="38" />
                 <Setter Property="FontSize" Value="18" />
             </Style>
             <Style x:Key="StartedWorkoutEntryFieldStyle" TargetType="Entry">
