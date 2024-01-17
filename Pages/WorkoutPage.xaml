@@ -61,7 +61,7 @@
                 Style="{StaticResource MediumBoldLabelStyle}" />
             <HorizontalStackLayout
                 IsVisible="{Binding Workout.WorkoutTemplateId, Converter={StaticResource IsIntNot0Converter}}"
-                Spacing="10"> 
+                Spacing="10">
                 <Label 
                     Text="Workout Template:"
                     Style="{StaticResource MediumBoldLabelStyle}" />
@@ -72,34 +72,33 @@
             </HorizontalStackLayout>
             <Button 
                 Text="Set Workout Template"
+                IsVisible="{Binding DisplayWorkoutTemplateList, Converter={StaticResource InvertedBoolConverter}}"
                 Command="{Binding ShowWorkoutTemplateListCommand}"
                 Style="{StaticResource ExtraSmallButtonStyle}" />
+            <HorizontalStackLayout
+                Spacing="10"
+                IsVisible="{Binding DisplayWorkoutTemplateList}">
+                <ListView
+                    Margin="0, 10"
+                    SelectionMode="Single"
+                    ItemsSource="{Binding WorkoutTemplateList}"
+                    ItemSelected="OnWorkoutTemplateItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:WorkoutTemplate">
+                            <ViewCell>
+                                <Label 
+                                    Text="{Binding Name}"
+                                    Style="{StaticResource ListViewLabelStyle}"/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button 
+                    Text="Cancel"
+                    Command="{Binding HideWorkoutTemplateListCommand}"
+                    Style="{StaticResource ExtraSmallRedButtonStyle}" />
+            </HorizontalStackLayout>
         </HorizontalStackLayout>
-        <HorizontalStackLayout
-            Spacing="10"
-            IsVisible="{Binding DisplayWorkoutTemplateList}">
-            <ListView
-                Margin="0, 10"
-                SelectionMode="Single"
-                ItemsSource="{Binding WorkoutTemplateList}"
-                ItemSelected="OnWorkoutTemplateItemSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="models:WorkoutTemplate">
-                        <ViewCell>
-                            <Label 
-                                Text="{Binding Name}"
-                                Style="{StaticResource ListViewLabelStyle}"/>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button 
-                Text="Cancel"
-                Command="{Binding HideWorkoutTemplateListCommand}"
-                Style="{StaticResource ExtraSmallRedButtonStyle}" />
-        </HorizontalStackLayout>
-
-
 
         <Button 
             Text="Go Back"
