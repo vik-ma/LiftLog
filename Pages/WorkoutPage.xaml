@@ -38,11 +38,11 @@
                 FontSize="20" />
             <Button 
                 Text="Change Name"
-                Style="{StaticResource VerySmallButtonStyle}"
+                Style="{StaticResource ExtraSmallButtonStyle}"
                 Command="{Binding SetWorkoutNameCommand}" />
             <Button 
                 Text="Reset Name"
-                Style="{StaticResource VerySmallRedButtonStyle}"
+                Style="{StaticResource ExtraSmallRedButtonStyle}"
                 Command="{Binding ResetWorkoutNameCommand}" />
         </HorizontalStackLayout>
         <HorizontalStackLayout Spacing="10">

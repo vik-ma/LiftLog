@@ -25,7 +25,7 @@
                 </Label>
                 <Button
                     Text="Change"
-                    Style="{StaticResource VerySmallButtonStyle}"
+                    Style="{StaticResource ExtraSmallButtonStyle}"
                     Command="{Binding ToggleShowCompletedSetTimeStampCommand}" />
                 <Label VerticalOptions="Center">
                     <Label.FormattedText>
@@ -42,7 +42,7 @@
                 </Label>
                 <Button
                     Text="Change"
-                    Style="{StaticResource VerySmallButtonStyle}"
+                    Style="{StaticResource ExtraSmallButtonStyle}"
                     Command="{Binding Toggle24HourClockCommand}" />
             </HorizontalStackLayout>
             <HorizontalStackLayout Spacing="15">

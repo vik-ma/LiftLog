@@ -78,12 +78,12 @@
                             </Label>
                             <Button 
                                 Text="Go To Workout"
-                                Style="{StaticResource VerySmallButtonStyle}"
+                                Style="{StaticResource ExtraSmallButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutListViewModel}}, Path=GoToWorkoutCommand}"
                                 CommandParameter="{Binding .}" />
                             <Button 
                                 Text="Delete"
-                                Style="{StaticResource VerySmallRedButtonStyle}"
+                                Style="{StaticResource ExtraSmallRedButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutListViewModel}}, Path=DeleteWorkoutCommand}"
                                 CommandParameter="{Binding .}" />
                         </HorizontalStackLayout>
