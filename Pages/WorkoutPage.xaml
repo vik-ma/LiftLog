@@ -14,28 +14,21 @@
         <HorizontalStackLayout Spacing="10">
             <Label 
                 Text="Workout ID:"
-                VerticalOptions="Center"
-                FontAttributes="Bold"
-                FontSize="20" />
+                Style="{StaticResource MediumBoldLabelStyle}" />
             <Label 
                 Text="{Binding Workout.Id}"
-                VerticalOptions="Center"
                 TextColor="{DynamicResource MediumGreen}"
-                FontAttributes="Bold"
-                FontSize="20" />
+                Style="{StaticResource MediumBoldLabelStyle}" />
         </HorizontalStackLayout>
+        
         <HorizontalStackLayout Spacing="10">
             <Label 
                 Text="Name:"
-                VerticalOptions="Center"
-                FontAttributes="Bold"
-                FontSize="20" />
+                Style="{StaticResource MediumBoldLabelStyle}" />
             <Label 
                 Text="{Binding Workout.Name, Converter={StaticResource NullValueToEmptyTextConverter}, ConverterParameter=Name}"
-                VerticalOptions="Center"
                 TextColor="{DynamicResource MediumOrange}"
-                FontAttributes="Bold"
-                FontSize="20" />
+                Style="{StaticResource MediumBoldLabelStyle}" />
             <Button 
                 Text="Change Name"
                 Style="{StaticResource ExtraSmallButtonStyle}"
@@ -45,25 +38,44 @@
                 Style="{StaticResource ExtraSmallRedButtonStyle}"
                 Command="{Binding ResetWorkoutNameCommand}" />
         </HorizontalStackLayout>
+        
         <HorizontalStackLayout Spacing="10">
             <Label 
                 Text="Date:"
-                VerticalOptions="Center"
-                FontAttributes="Bold"
-                FontSize="20" />
+                Style="{StaticResource MediumBoldLabelStyle}" />
             <Label 
                 Text="{Binding Workout.Date}"
-                VerticalOptions="Center"
                 TextColor="{DynamicResource MediumBlue}"
-                FontAttributes="Bold"
-                FontSize="20" />
+                Style="{StaticResource MediumBoldLabelStyle}" />
             <DatePicker
                 Format="yyyy-MM-dd"
                 Date="{Binding SelectedDateTime}"
                 DateSelected="OnDateSelected" />
         </HorizontalStackLayout>
 
-        
+        <HorizontalStackLayout Spacing="10">
+            <Label 
+                IsVisible="{Binding Workout.WorkoutTemplateId, Converter={StaticResource IsInt0Converter}}"
+                Text="No Workout Template Set"
+                TextColor="{DynamicResource MediumRed}"
+                Style="{StaticResource MediumBoldLabelStyle}" />
+            <HorizontalStackLayout
+                IsVisible="{Binding Workout.WorkoutTemplateId, Converter={StaticResource IsIntNot0Converter}}"
+                Spacing="10"> 
+                <Label 
+                    Text="Workout Template:"
+                    Style="{StaticResource MediumBoldLabelStyle}" />
+                <Label 
+                    Text="{Binding Workout.WorkoutTemplateId}"
+                    TextColor="{DynamicResource MediumDarkGray}"
+                    Style="{StaticResource MediumBoldLabelStyle}" />
+            </HorizontalStackLayout>
+            <Button 
+                Text="Set Workout Template"
+                Style="{StaticResource ExtraSmallButtonStyle}"/>
+        </HorizontalStackLayout>
+
+
 
         <Button 
             Text="Go Back"
