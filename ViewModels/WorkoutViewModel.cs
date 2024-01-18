@@ -21,9 +21,6 @@
         private DateTime selectedDateTime;
 
         [ObservableProperty]
-        private bool displayWorkoutTemplateList;
-
-        [ObservableProperty]
         private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
 
         [ObservableProperty]
@@ -162,18 +159,10 @@
             await UpdateWorkoutAsync();
 
             await LoadWorkoutTemplateAsync();
-
-            HideWorkoutTemplateList();
         }
 
         [RelayCommand]
-        private void HideWorkoutTemplateList()
-        {
-            DisplayWorkoutTemplateList = false;
-        }
-
-        [RelayCommand]
-        private async Task ShowWorkoutTemplateList()
+        private async Task ShowWorkoutTemplateListPopup()
         {
             if (Workout is null) return;
 
@@ -181,12 +170,6 @@
 
             Popup = new WorkoutTemplateListPopupPage(this);
             await Shell.Current.ShowPopupAsync(Popup);
-        }
-
-        [RelayCommand]
-        private async Task ShowWorkoutTemplateListPopupPage()
-        {
-            
         }
 
         [RelayCommand]

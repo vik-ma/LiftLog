@@ -72,24 +72,9 @@
             </HorizontalStackLayout>
             <Button 
                 Text="Set Workout Template"
-                IsVisible="{Binding DisplayWorkoutTemplateList, Converter={StaticResource InvertedBoolConverter}}"
-                Command="{Binding ShowWorkoutTemplateListCommand}"
+                Command="{Binding ShowWorkoutTemplateListPopupCommand}"
                 Style="{StaticResource ExtraSmallButtonStyle}" />
-            <HorizontalStackLayout
-                Spacing="5"
-                IsVisible="{Binding DisplayWorkoutTemplateList}">
-                
-                <Button 
-                    Text="Cancel"
-                    Command="{Binding HideWorkoutTemplateListCommand}"
-                    Style="{StaticResource ExtraSmallRedButtonStyle}" />
-            </HorizontalStackLayout>
         </HorizontalStackLayout>
-
-        <Button 
-    Text="Test"
-    Style="{StaticResource LargeButtonStyle}"
-    Command="{Binding ShowWorkoutTemplateListPopupPageCommand}" />
 
         <Button 
             Text="Go Back"
