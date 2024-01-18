@@ -133,49 +133,6 @@
         }
 
         [RelayCommand]
-        private async Task UpdateWorkoutTemplateName()
-        {
-            if (WorkoutTemplate is null) return;
-
-            await UpdateWorkoutTemplateAsync();
-
-            await UpdateNameInWorkoutTemplateCollectionsForWorkoutTemplateIdAsync();
-
-            OnPropertyChanged(nameof(WorkoutTemplate));
-        }
-
-        [RelayCommand]
-        private async Task UpdateNameInWorkoutTemplateCollectionsForWorkoutTemplateIdAsync()
-        {
-            if (WorkoutTemplate is null) return;
-
-            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutTemplateId == WorkoutTemplate.Id;
-
-            IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
-            try
-            {
-                filteredWtcList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
-            }
-            catch
-            {
-                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Workout Template Collections.", "OK");
-            }
-
-            foreach (var item in filteredWtcList)
-            {
-                item.WorkoutTemplateName = WorkoutTemplate.Name;
-
-                await ExecuteAsync(async () =>
-                {
-                    if (!await _context.UpdateItemAsync<WorkoutTemplateCollection>(item))
-                    {
-                        await Shell.Current.DisplayAlert("Error", "Error occured when trying to update Workout Template name.", "OK");
-                    }
-                });
-            }
-        }
-
-        [RelayCommand]
         private async Task ShowExistingWorkoutList()
         {
             await LoadWorkoutTemplatesAsync();

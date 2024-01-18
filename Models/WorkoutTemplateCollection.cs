@@ -6,7 +6,6 @@
         public int Id { get; set; }
         public int Day { get; set; }
         public int WorkoutTemplateId { get; set; }
-        public string WorkoutTemplateName { get; set; }
         public int WorkoutRoutineId { get; set; }
     }
 

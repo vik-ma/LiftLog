@@ -126,11 +126,11 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
-                                            Text="Name: " 
+                                            Text="Workout Template Id: " 
                                             FontAttributes="Bold"
                                             FontSize="18" />
                                         <Span 
-                                            Text="{Binding WorkoutTemplateName}"
+                                            Text="{Binding WorkoutTemplateId}"
                                             FontSize="18" />
                                     </FormattedString>
                                 </Label.FormattedText>

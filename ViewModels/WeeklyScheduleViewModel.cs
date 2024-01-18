@@ -205,7 +205,6 @@
                     Day = SelectedDay,
                     WorkoutRoutineId = scheduleId,
                     WorkoutTemplateId = workoutTemplate.Id,
-                    WorkoutTemplateName = workoutTemplate.Name
                 };
                 await _context.AddItemAsync<WorkoutTemplateCollection>(workoutCollection);
             });

@@ -100,7 +100,8 @@
 
                 if (wtcByDayDictionary.TryGetValue(i, out List<WorkoutTemplateCollection> value))
                 {
-                    dayString = string.Join(", ", value.Select(item => item.WorkoutTemplateName));
+                    // TODO: FIX NAME BEING DISPLAYED INSTEAD
+                    dayString = string.Join(", ", value.Select(item => item.WorkoutTemplateId));
                 }
                 else
                 {

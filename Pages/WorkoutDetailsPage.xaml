@@ -32,10 +32,6 @@
                 <Entry 
                     Text="{Binding WorkoutTemplate.Name}"
                     WidthRequest="150" />
-                <Button 
-                    Text="Update"
-                    Style="{StaticResource AddButtonStyle}"
-                    Command="{Binding UpdateWorkoutTemplateNameCommand}" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout>
