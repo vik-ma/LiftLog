@@ -32,7 +32,8 @@
             <Button 
                 Text="Create New"
                 BackgroundColor="{DynamicResource MediumGreen}"
-                Style="{StaticResource SmallButtonStyle}" />
+                Style="{StaticResource SmallButtonStyle}"
+                Command="{Binding GoToWorkoutTemplateDetailsCommand}" />
             <Button 
                 Text="Close" 
                 Style="{StaticResource SmallButtonStyle}"

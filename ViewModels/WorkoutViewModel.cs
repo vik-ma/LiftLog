@@ -175,7 +175,24 @@
         [RelayCommand]
         public void ClosePopup()
         {
+            if (Popup is null) return;
+
             Popup.Close();
+        }
+
+        [RelayCommand]
+        private async Task GoToWorkoutTemplateDetails()
+        {
+            ClosePopup();
+
+            WorkoutTemplate workoutTemplate = new();
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["WorkoutTemplate"] = workoutTemplate
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(WorkoutDetailsPage)}?Id={workoutTemplate.Id}", navigationParameter);
         }
     }
 }
