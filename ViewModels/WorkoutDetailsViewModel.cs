@@ -120,9 +120,39 @@
             });
         }
 
+        private async Task CreateWorkoutTemplateAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.AddItemAsync<WorkoutTemplate>(WorkoutTemplate))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when saving Workout Template.", "OK");
+                }
+            });
+        }
+
+        [RelayCommand]
+        private async Task SaveWorkoutTemplateAsync()
+        {
+            if (WorkoutTemplate.Id == 0)
+            {
+                // Create new WorkoutTemplate if it does not exist
+                await CreateWorkoutTemplateAsync();
+            }
+            else
+            {
+                // Update WorkoutTemplate it has already been created
+                await UpdateWorkoutTemplateAsync();
+            }
+
+            await GoBack();
+        }
+
         [RelayCommand]
         private async Task UpdateWorkoutTemplateAsync()
         {
+            if (WorkoutTemplate is null) return;
+
             await ExecuteAsync(async () =>
             {
                 if (!await _context.UpdateItemAsync<WorkoutTemplate>(WorkoutTemplate))

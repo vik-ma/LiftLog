@@ -189,6 +189,12 @@
             </CollectionView>
 
             <Button 
+                Text="Save Workout Template"
+                Style="{StaticResource AddButtonStyle}"
+                Command="{Binding SaveWorkoutTemplateCommand}"
+                Margin="50" />
+
+            <Button 
                 Text="Go Back"
                 Style="{StaticResource LargeButtonStyle}"
                 Command="{Binding GoBackCommand}"
