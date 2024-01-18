@@ -179,5 +179,12 @@
 
             DisplayWorkoutTemplateList = true;
         }
+
+        [RelayCommand]
+        private void ShowWorkoutTemplateListPopupPage()
+        {
+            var popup = new WorkoutTemplateListPopupPage(this);
+            Shell.Current.ShowPopup(popup);
+        }
     }
 }

@@ -2,6 +2,7 @@
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using System.Collections.ObjectModel;
 global using CommunityToolkit.Mvvm.Input;
+global using CommunityToolkit.Maui.Views;
 global using SQLite;
 global using System.Globalization;
 global using System.Linq.Expressions;
@@ -89,16 +90,16 @@ namespace LocalLiftLog
             builder.Services.AddSingleton<UserPreferencesViewModel>();
 
             builder.Services.AddTransient<UserWeightPage>();
-            builder.Services.AddSingleton<UserWeightViewModel>();
+            builder.Services.AddTransient<UserWeightViewModel>();
 
             builder.Services.AddTransient<NewWorkoutPage>();
-            builder.Services.AddSingleton<NewWorkoutViewModel>();
+            builder.Services.AddTransient<NewWorkoutViewModel>();
 
             builder.Services.AddTransient<WorkoutPage>();
-            builder.Services.AddSingleton<WorkoutViewModel>();
+            builder.Services.AddTransient<WorkoutViewModel>();
 
             builder.Services.AddTransient<WorkoutListPage>();
-            builder.Services.AddSingleton<WorkoutListViewModel>();
+            builder.Services.AddTransient<WorkoutListViewModel>();
 
 
             return builder.Build();

@@ -76,7 +76,7 @@
                 Command="{Binding ShowWorkoutTemplateListCommand}"
                 Style="{StaticResource ExtraSmallButtonStyle}" />
             <HorizontalStackLayout
-                Spacing="10"
+                Spacing="5"
                 IsVisible="{Binding DisplayWorkoutTemplateList}">
                 <ListView
                     Margin="0, 10"
@@ -99,6 +99,11 @@
                     Style="{StaticResource ExtraSmallRedButtonStyle}" />
             </HorizontalStackLayout>
         </HorizontalStackLayout>
+
+        <Button 
+    Text="Test"
+    Style="{StaticResource LargeButtonStyle}"
+    Command="{Binding ShowWorkoutTemplateListPopupPageCommand}" />
 
         <Button 
             Text="Go Back"
