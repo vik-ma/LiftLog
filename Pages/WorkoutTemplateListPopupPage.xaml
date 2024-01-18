@@ -11,5 +11,6 @@
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Button Text="Close" Command="{Binding ClosePopupCommand}" />
     </VerticalStackLayout>
 </toolkit:Popup>

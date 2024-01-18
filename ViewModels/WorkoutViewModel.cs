@@ -29,6 +29,8 @@
         [ObservableProperty]
         private WorkoutTemplate operatingWorkoutTemplate = new();
 
+        private WorkoutTemplateListPopupPage Popup;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -181,10 +183,16 @@
         }
 
         [RelayCommand]
-        private void ShowWorkoutTemplateListPopupPage()
+        private async Task ShowWorkoutTemplateListPopupPage()
         {
-            var popup = new WorkoutTemplateListPopupPage(this);
-            Shell.Current.ShowPopup(popup);
+            Popup = new WorkoutTemplateListPopupPage(this);
+            await Shell.Current.ShowPopupAsync(Popup);
+        }
+
+        [RelayCommand]
+        private void ClosePopup()
+        {
+            Popup.Close();
         }
     }
 }
