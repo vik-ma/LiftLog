@@ -134,6 +134,16 @@
         [RelayCommand]
         private async Task SaveWorkoutTemplateAsync()
         {
+            if (WorkoutTemplate is null) return;
+
+            var (isValid, errorMessage) = WorkoutTemplate.Validate();
+
+            if (!isValid ) 
+            {
+                await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
+                return;
+            }
+
             if (WorkoutTemplate.Id == 0)
             {
                 // Create new WorkoutTemplate if it does not exist

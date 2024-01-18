@@ -6,5 +6,13 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public string SetListOrder { get; set; }
+
+        #nullable enable
+        public (bool IsValid, string? ErrorMessage) Validate()
+        {
+            if (string.IsNullOrEmpty(Name)) return (false, "Workout Name is empty!");
+
+            return (true, null);
+        }
     }
 }
