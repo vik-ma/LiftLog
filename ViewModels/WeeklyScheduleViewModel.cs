@@ -14,25 +14,25 @@
         }
 
         [ObservableProperty]
-        private ObservableCollection<WorkoutTemplateCollection> day1WorkoutTemplateCollectionList = new();
+        private ObservableCollection<WorkoutTemplatePackage> day1WorkoutTemplatePackageList = new();
 
         [ObservableProperty]
-        private ObservableCollection<WorkoutTemplateCollection> day2WorkoutTemplateCollectionList = new();
+        private ObservableCollection<WorkoutTemplatePackage> day2WorkoutTemplatePackageList = new();
 
         [ObservableProperty]
-        private ObservableCollection<WorkoutTemplateCollection> day3WorkoutTemplateCollectionList = new();
+        private ObservableCollection<WorkoutTemplatePackage> day3WorkoutTemplatePackageList = new();
 
         [ObservableProperty]
-        private ObservableCollection<WorkoutTemplateCollection> day4WorkoutTemplateCollectionList = new();
+        private ObservableCollection<WorkoutTemplatePackage> day4WorkoutTemplatePackageList = new();
 
         [ObservableProperty]
-        private ObservableCollection<WorkoutTemplateCollection> day5WorkoutTemplateCollectionList = new();
+        private ObservableCollection<WorkoutTemplatePackage> day5WorkoutTemplatePackageList = new();
 
         [ObservableProperty]
-        private ObservableCollection<WorkoutTemplateCollection> day6WorkoutTemplateCollectionList = new();
+        private ObservableCollection<WorkoutTemplatePackage> day6WorkoutTemplatePackageList = new();
 
         [ObservableProperty]
-        private ObservableCollection<WorkoutTemplateCollection> day7WorkoutTemplateCollectionList = new();
+        private ObservableCollection<WorkoutTemplatePackage> day7WorkoutTemplatePackageList = new();
 
         [ObservableProperty]
         private bool showWorkoutTemplateList = false;
@@ -100,13 +100,13 @@
 
         private async void LoadWorkoutTemplateCollectionsForEachDay(IEnumerable<WorkoutTemplateCollection> filteredWtcList)
         {
-            Day1WorkoutTemplateCollectionList.Clear();
-            Day2WorkoutTemplateCollectionList.Clear();
-            Day3WorkoutTemplateCollectionList.Clear();
-            Day4WorkoutTemplateCollectionList.Clear();
-            Day5WorkoutTemplateCollectionList.Clear();
-            Day6WorkoutTemplateCollectionList.Clear();
-            Day7WorkoutTemplateCollectionList.Clear();
+            Day1WorkoutTemplatePackageList.Clear();
+            Day2WorkoutTemplatePackageList.Clear();
+            Day3WorkoutTemplatePackageList.Clear();
+            Day4WorkoutTemplatePackageList.Clear();
+            Day5WorkoutTemplatePackageList.Clear();
+            Day6WorkoutTemplatePackageList.Clear();
+            Day7WorkoutTemplatePackageList.Clear();
 
             foreach (var item in filteredWtcList)
             {
@@ -130,38 +130,42 @@
                     return;
                 }
 
-                item.WorkoutTemplateName = workoutTemplate.Name;
-
                 int day = item.Day;
+
+                WorkoutTemplatePackage workoutTemplatePackage = new()
+                {
+                    WorkoutTemplate = workoutTemplate,
+                    WorkoutTemplateCollection = item
+                };
 
                 switch (day)
                 {
                     case 0:
-                        Day1WorkoutTemplateCollectionList.Add(item);
+                        Day1WorkoutTemplatePackageList.Add(workoutTemplatePackage);
                         break;
 
                     case 1:
-                        Day2WorkoutTemplateCollectionList.Add(item);
+                        Day2WorkoutTemplatePackageList.Add(workoutTemplatePackage);
                         break;
 
                     case 2:
-                        Day3WorkoutTemplateCollectionList.Add(item);
+                        Day3WorkoutTemplatePackageList.Add(workoutTemplatePackage);
                         break;
 
                     case 3:
-                        Day4WorkoutTemplateCollectionList.Add(item);
+                        Day4WorkoutTemplatePackageList.Add(workoutTemplatePackage);
                         break;
 
                     case 4:
-                        Day5WorkoutTemplateCollectionList.Add(item);
+                        Day5WorkoutTemplatePackageList.Add(workoutTemplatePackage);
                         break;
 
                     case 5:
-                        Day6WorkoutTemplateCollectionList.Add(item);
+                        Day6WorkoutTemplatePackageList.Add(workoutTemplatePackage);
                         break;
 
                     case 6:
-                        Day7WorkoutTemplateCollectionList.Add(item);
+                        Day7WorkoutTemplatePackageList.Add(workoutTemplatePackage);
                         break;
 
                     default:
