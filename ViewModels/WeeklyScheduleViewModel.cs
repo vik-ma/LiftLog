@@ -130,13 +130,13 @@
                     return;
                 }
 
-                int day = item.Day;
-
                 WorkoutTemplatePackage workoutTemplatePackage = new()
                 {
                     WorkoutTemplate = workoutTemplate,
                     WorkoutTemplateCollection = item
                 };
+
+                int day = item.Day;
 
                 switch (day)
                 {

@@ -84,7 +84,7 @@
                     CommandParameter="0" />
                 <CollectionView
                     Grid.Row="1"
-                    ItemsSource="{Binding Day1WorkoutTemplateCollectionList}"
+                    ItemsSource="{Binding Day1WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
@@ -105,7 +105,7 @@
                     CommandParameter="1" />
                 <CollectionView
                     Grid.Row="3"
-                    ItemsSource="{Binding Day2WorkoutTemplateCollectionList}"
+                    ItemsSource="{Binding Day2WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
@@ -130,7 +130,7 @@
                 <CollectionView
                     Grid.Row="5"
                     IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
-                    ItemsSource="{Binding Day3WorkoutTemplateCollectionList}"
+                    ItemsSource="{Binding Day3WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
@@ -155,7 +155,7 @@
                 <CollectionView
                     Grid.Row="7"
                     IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=3}"
-                    ItemsSource="{Binding Day4WorkoutTemplateCollectionList}"
+                    ItemsSource="{Binding Day4WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
@@ -180,7 +180,7 @@
                 <CollectionView
                     Grid.Row="9"
                     IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=4}"
-                    ItemsSource="{Binding Day5WorkoutTemplateCollectionList}"
+                    ItemsSource="{Binding Day5WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
@@ -205,7 +205,7 @@
                 <CollectionView
                     Grid.Row="11"
                     IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=5}"
-                    ItemsSource="{Binding Day6WorkoutTemplateCollectionList}"
+                    ItemsSource="{Binding Day6WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
@@ -230,7 +230,7 @@
                 <CollectionView
                     Grid.Row="13"
                     IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=6}"
-                    ItemsSource="{Binding Day7WorkoutTemplateCollectionList}"
+                    ItemsSource="{Binding Day7WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
@@ -256,7 +256,7 @@
                     Grid.Row="1"
                     Grid.Column="2"
                     IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=7}"
-                    ItemsSource="{Binding Day8WorkoutTemplateCollectionList}"
+                    ItemsSource="{Binding Day8WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
@@ -282,7 +282,7 @@
                     Grid.Row="3"
                     Grid.Column="2"
                     IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=8}"
-                    ItemsSource="{Binding Day9WorkoutTemplateCollectionList}"
+                    ItemsSource="{Binding Day9WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
@@ -308,7 +308,7 @@
                     Grid.Row="5"
                     Grid.Column="2"
                     IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=9}"
-                    ItemsSource="{Binding Day10WorkoutTemplateCollectionList}"
+                    ItemsSource="{Binding Day10WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
@@ -334,7 +334,7 @@
                     Grid.Row="7"
                     Grid.Column="2"
                     IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=10}"
-                    ItemsSource="{Binding Day11WorkoutTemplateCollectionList}"
+                    ItemsSource="{Binding Day11WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
@@ -360,7 +360,7 @@
                     Grid.Row="9"
                     Grid.Column="2"
                     IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=11}"
-                    ItemsSource="{Binding Day12WorkoutTemplateCollectionList}"
+                    ItemsSource="{Binding Day12WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
@@ -386,7 +386,7 @@
                     Grid.Row="11"
                     Grid.Column="2"
                     IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=12}"
-                    ItemsSource="{Binding Day13WorkoutTemplateCollectionList}"
+                    ItemsSource="{Binding Day13WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
@@ -412,7 +412,7 @@
                     Grid.Row="13"
                     Grid.Column="2"
                     IsVisible="{Binding CustomSchedule.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=13}"
-                    ItemsSource="{Binding Day14WorkoutTemplateCollectionList}"
+                    ItemsSource="{Binding Day14WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                     ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>

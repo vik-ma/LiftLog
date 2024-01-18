@@ -280,16 +280,16 @@
             </DataTemplate>
             <DataTemplate 
                 x:Key="CustomScheduleCollectionViewDataTemplate"
-                x:DataType="models:WorkoutTemplateCollection">
+                x:DataType="models:WorkoutTemplatePackage">
                 <HorizontalStackLayout Spacing="10">
                     <Label 
-                        Text="{Binding WorkoutTemplateName}"
+                        Text="{Binding WorkoutTemplate.Name}"
                         Style="{StaticResource ScheduleWTLabelStyle}" />
                     <Button 
                         Text="Delete"
                         Style="{StaticResource ScheduleDeleteButtonStyle}"
                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomScheduleViewModel}}, Path=RemoveWorkoutTemplateCollectionCommand}" 
-                        CommandParameter="{Binding Id}" />
+                        CommandParameter="{Binding WorkoutTemplateCollection.Id}" />
                 </HorizontalStackLayout>
             </DataTemplate>
             <LinearItemsLayout 
