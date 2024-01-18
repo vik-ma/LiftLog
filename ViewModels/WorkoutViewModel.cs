@@ -179,18 +179,18 @@
 
             await LoadWorkoutTemplatesAsync();
 
-            DisplayWorkoutTemplateList = true;
-        }
-
-        [RelayCommand]
-        private async Task ShowWorkoutTemplateListPopupPage()
-        {
             Popup = new WorkoutTemplateListPopupPage(this);
             await Shell.Current.ShowPopupAsync(Popup);
         }
 
         [RelayCommand]
-        private void ClosePopup()
+        private async Task ShowWorkoutTemplateListPopupPage()
+        {
+            
+        }
+
+        [RelayCommand]
+        public void ClosePopup()
         {
             Popup.Close();
         }

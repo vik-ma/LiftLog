@@ -9,4 +9,14 @@ public partial class WorkoutTemplateListPopupPage : Popup
         _viewModel = viewModel;
         BindingContext = _viewModel;
     }
+
+    private async void OnWorkoutTemplateItemSelected(object sender, SelectedItemChangedEventArgs args)
+    {
+        if (args.SelectedItem != null)
+        {
+            var selectedWorkoutTemplate = (WorkoutTemplate)args.SelectedItem;
+            await _viewModel.UpdateOperatingWorkoutTemplate(selectedWorkoutTemplate.Id);
+            _viewModel.ClosePopup();
+        }
+    }
 }
