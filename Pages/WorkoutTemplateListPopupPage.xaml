@@ -10,10 +10,12 @@
     <Border 
         BackgroundColor="White">
         <VerticalStackLayout 
-            Spacing="20"
-            Padding="30">
+            Spacing="15"
+            Padding="30, 20">
+            <Label 
+                Text="Workout Templates"
+                Style="{StaticResource LargeBoldLabelStyle}" />
             <ListView
-                Margin="0, 10"
                 SelectionMode="Single"
                 ItemsSource="{Binding WorkoutTemplateList}"
                 ItemSelected="OnWorkoutTemplateItemSelected">
@@ -22,13 +24,18 @@
                         <ViewCell>
                             <Label 
                                 Text="{Binding Name}"
-                                Style="{StaticResource ListViewLabelStyle}"/>
+                                Style="{StaticResource WorkoutTemplateListViewLabelStyle}"/>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <Button 
+                Text="Create New"
+                BackgroundColor="{DynamicResource MediumGreen}"
+                Style="{StaticResource SmallButtonStyle}" />
+            <Button 
                 Text="Close" 
+                Style="{StaticResource SmallButtonStyle}"
                 Command="{Binding ClosePopupCommand}" />
         </VerticalStackLayout>
     </Border>
