@@ -135,7 +135,7 @@
                 <Button 
                     Text="Copy Existing Workout"
                     IsVisible="{Binding SetList, Converter={StaticResource IsListNullOrEmptyConverter}}"
-                    Style="{StaticResource LargeButtonStyle}"
+                    Style="{StaticResource GenericButtonStyle}"
                     Command="{Binding ShowExistingWorkoutListCommand}" />
             </VerticalStackLayout>
 
@@ -187,15 +187,21 @@
                 </CollectionView.EmptyView>
             </CollectionView>
 
+            <VerticalStackLayout
+                Margin="0, 20"
+                Spacing="10">
             <Button 
                 Text="Save Workout Template"
-                Style="{StaticResource AddButtonStyle}"
+                BackgroundColor="{DynamicResource MediumGreen}"
+                WidthRequest="320"
+                Style="{StaticResource LargeButtonStyle}"
                 Command="{Binding SaveWorkoutTemplateCommand}" />
 
             <Button 
                 Text="Go Back"
                 Style="{StaticResource LargeButtonStyle}"
                 Command="{Binding GoBackCommand}" />
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
