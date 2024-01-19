@@ -255,6 +255,7 @@
             ShowWorkoutTemplateList = false;
 
             OnPropertyChanged(nameof(WorkoutTemplate));
+            OnPropertyChanged(nameof(SetList));
         }
 
         [RelayCommand]
@@ -404,6 +405,7 @@
             await UpdateWorkoutTemplateAsync();
 
             OnPropertyChanged(nameof(WorkoutTemplate));
+            OnPropertyChanged(nameof(SetList));
         }
     }
 }
