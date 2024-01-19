@@ -124,14 +124,13 @@
                 </CollectionView.EmptyView>
             </CollectionView>
 
-            <VerticalStackLayout>
+            <VerticalStackLayout
+                Margin="0, 20"
+                Spacing="10">
                 <Button 
                     Text="Add Set"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding CreateNewSetTemplateCommand}"/>
-            </VerticalStackLayout>
-
-            <VerticalStackLayout>
                 <Button 
                     Text="Copy Existing Workout"
                     IsVisible="{Binding SetList, Converter={StaticResource IsListNullOrEmptyConverter}}"
@@ -190,17 +189,16 @@
             <VerticalStackLayout
                 Margin="0, 20"
                 Spacing="10">
-            <Button 
-                Text="Save Workout Template"
-                BackgroundColor="{DynamicResource MediumGreen}"
-                WidthRequest="320"
-                Style="{StaticResource LargeButtonStyle}"
-                Command="{Binding SaveWorkoutTemplateCommand}" />
-
-            <Button 
-                Text="Go Back"
-                Style="{StaticResource LargeButtonStyle}"
-                Command="{Binding GoBackCommand}" />
+                <Button 
+                    Text="Save Workout Template"
+                    BackgroundColor="{DynamicResource MediumGreen}"
+                    WidthRequest="320"
+                    Style="{StaticResource LargeButtonStyle}"
+                    Command="{Binding SaveWorkoutTemplateCommand}" />
+                <Button 
+                    Text="Go Back"
+                    Style="{StaticResource LargeButtonStyle}"
+                    Command="{Binding GoBackCommand}" />
             </VerticalStackLayout>
         </VerticalStackLayout>
     </Grid>
