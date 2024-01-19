@@ -296,6 +296,18 @@
         {
             if (WorkoutTemplate is null) return;
 
+            if (string.IsNullOrWhiteSpace(WorkoutTemplate.Name))
+            {
+                // Set default name for Workout Template if one is not set
+                WorkoutTemplate.Name = "New Workout Template";
+            }
+
+            if (WorkoutTemplate.Id == 0)
+            {
+                // Create new WorkoutTemplate if it does not exist
+                await CreateWorkoutTemplateAsync();
+            }
+
             SetWorkoutTemplatePackage package = new()
             {
                 WorkoutTemplate = WorkoutTemplate,
