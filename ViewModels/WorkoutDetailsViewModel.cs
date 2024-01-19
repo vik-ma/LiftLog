@@ -219,6 +219,18 @@
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(WorkoutTemplate.Name))
+            {
+                // Copy existing Workout Template Name if no Name is set
+                WorkoutTemplate.Name = $"{existingWorkoutTemplate.Name} (Copy)";
+            }
+
+            if (WorkoutTemplate.Id == 0)
+            {
+                // Save current Workout Template if it does not exist
+                await CreateWorkoutTemplateAsync();
+            }
+
             await ExecuteAsync(async () =>
             {
                 WorkoutTemplate.SetListOrder = existingWorkoutTemplate.SetListOrder;
