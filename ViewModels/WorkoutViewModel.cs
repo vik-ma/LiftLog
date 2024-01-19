@@ -31,6 +31,11 @@
 
         private WorkoutTemplateListPopupPage Popup;
 
+        private readonly List<int> SetListIdOrder = new();
+
+        [ObservableProperty]
+        private ObservableCollection<SetTemplate> setList = new();
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -153,6 +158,59 @@
             if (workoutTemplate is null) return;
 
             OperatingWorkoutTemplate = workoutTemplate;
+
+            await LoadSetListFromWorkoutTemplateIdAsync();
+        }
+
+        private void LoadSetListIdOrder()
+        {
+            if (OperatingWorkoutTemplate is null) return;
+
+            if (string.IsNullOrEmpty(OperatingWorkoutTemplate.SetListOrder)) return;
+
+            string[] setList = OperatingWorkoutTemplate.SetListOrder.Split(',');
+
+            foreach (string s in setList)
+            {
+                if (int.TryParse(s, out int setId))
+                {
+                    SetListIdOrder.Add(setId);
+                }
+            }
+        }
+
+        public async Task LoadSetListFromWorkoutTemplateIdAsync()
+        {
+            if (OperatingWorkoutTemplate is null) return;
+
+            LoadSetListIdOrder();
+
+            SetList.Clear();
+
+            List<SetTemplate> setTemplateList = new();
+
+            Expression<Func<SetTemplate, bool>> predicateSetTemplate = entity => entity.WorkoutTemplateId == OperatingWorkoutTemplate.Id;
+
+            try
+            {
+                var filteredSetTemplateList = await _context.GetFilteredAsync<SetTemplate>(predicateSetTemplate);
+
+                foreach (var item in filteredSetTemplateList)
+                {
+                    setTemplateList.Add(item);
+                }
+
+                if (setTemplateList.Any())
+                {
+                    // Sort the SetList by its SetListIdOrder
+                    SetList = new ObservableCollection<SetTemplate>(setTemplateList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Id)));
+                }
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
+                return;
+            }
         }
 
         public async Task UpdateOperatingWorkoutTemplate(int workoutTemplateId)
