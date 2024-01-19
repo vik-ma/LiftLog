@@ -39,6 +39,14 @@
             return (true, null);
         }
 
+        public (bool IsValid, string? ErrorMessage) ValidateUnits()
+        {
+            if (!ConstantsHelper.ValidWeightUnits.Contains(WeightUnit)) return (false, "Weight");
+            if (!ConstantsHelper.ValidDistanceUnits.Contains(DistanceUnit)) return (false, "Distance");
+
+            return (true, null);
+        }
+
         public (bool IsValid, string? ErrorMessage) ValidateSet()
         {
             if (string.IsNullOrWhiteSpace(ExerciseName)) return (false, "Invalid Exercise Name");
@@ -47,12 +55,12 @@
 
             if (PercentCompleted < 0 || PercentCompleted > 100) return (false, "Invalid Percent Value");
 
-            var (isTrackingValueValid, errorMessage) = ValidateTrackingValues();
+            var (isTrackingValueValid, TrackingValueErrorMessage) = ValidateTrackingValues();
+            if (!isTrackingValueValid) return (false, $"Invalid {TrackingValueErrorMessage} Value");
 
-            if (!isTrackingValueValid) return (false, $"Invalid {errorMessage} Value");
+            var (isUnitValueValid, UnitValueErrorMessage) = ValidateTrackingValues();
+            if (!isUnitValueValid) return (false, $"Invalid {UnitValueErrorMessage} Unit Value");
 
-            // ADD UNIT VALIDATION
-            
             return (true, null);
         }
 
