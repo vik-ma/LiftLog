@@ -15,5 +15,8 @@
         public static readonly int BodyWeightMinValue = 0;
         public static readonly int BodyWeightMaxValue = 999;
         public static readonly int BodyWeightInputMinValue = 0;
+
+        public static readonly HashSet<string> ValidWeightUnits = new() { "kg", "lbs" };
+        public static readonly HashSet<string> ValidDistanceUnits = new() { "km", "m", "mi", "ft", "yd" };
     }
 }
