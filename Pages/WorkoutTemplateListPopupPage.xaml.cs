@@ -19,4 +19,26 @@ public partial class WorkoutTemplateListPopupPage : Popup
             _viewModel.ClosePopup();
         }
     }
+
+    private void OnFilterTextChanged(object sender, TextChangedEventArgs args)
+    {
+        string filterText = args.NewTextValue.ToLowerInvariant();
+
+        _viewModel.FilteredWorkoutTemplateList.Clear();
+
+        if (string.IsNullOrWhiteSpace(filterText))
+        {
+            _viewModel.FilteredWorkoutTemplateList = new(_viewModel.WorkoutTemplateList);
+        }
+        else
+        {
+            // Filter the list based on the user input
+            var filteredItems = _viewModel.WorkoutTemplateList.Where(item => item.Name.ToLowerInvariant().Contains(filterText));
+
+            foreach (var item in filteredItems)
+            {
+                _viewModel.FilteredWorkoutTemplateList.Add(item);
+            }
+        }
+    }
 }

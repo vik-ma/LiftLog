@@ -24,6 +24,9 @@
         private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
 
         [ObservableProperty]
+        private ObservableCollection<WorkoutTemplate> filteredWorkoutTemplateList = new();
+
+        [ObservableProperty]
         private WorkoutTemplate operatingWorkoutTemplate = new();
 
         private WorkoutTemplateListPopupPage Popup;
@@ -76,6 +79,8 @@
                         WorkoutTemplateList.Add(workout);
                     }
                 }
+
+                FilteredWorkoutTemplateList = new(WorkoutTemplateList);
             });
         }
 

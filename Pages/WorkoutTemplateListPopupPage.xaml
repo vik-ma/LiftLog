@@ -15,9 +15,12 @@
             <Label 
                 Text="Workout Templates"
                 Style="{StaticResource LargeBoldLabelStyle}" />
+            <SearchBar 
+                Placeholder="Search Workouts..."
+                TextChanged="OnFilterTextChanged" />
             <ListView
                 SelectionMode="Single"
-                ItemsSource="{Binding WorkoutTemplateList}"
+                ItemsSource="{Binding FilteredWorkoutTemplateList}"
                 ItemSelected="OnWorkoutTemplateItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
