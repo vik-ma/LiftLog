@@ -50,6 +50,13 @@
                                 Text="{Binding ExerciseName}"
                                 VerticalOptions="Center" />
                             <Label 
+                                Text="Exercise Id:"
+                                VerticalOptions="Center"
+                                FontAttributes="Bold" />
+                            <Label 
+                                Text="{Binding ExerciseId}"
+                                VerticalOptions="Center" />
+                            <Label 
                                 Text="{Binding Note}"
                                 VerticalOptions="Center" />
                             <Label 

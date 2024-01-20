@@ -5,6 +5,7 @@
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int WorkoutTemplateId { get; set; }
+        public int ExerciseId { get; set; }
         public string ExerciseName { get; set; }
         public string Note { get; set; }
         public bool IsWarmupSet { get; set; }
@@ -135,6 +136,8 @@
         public (bool IsValid, string? ErrorMessage) ValidateSetTemplate()
         {
             if (string.IsNullOrEmpty(ExerciseName)) return (false, "No Exercise Selected!");
+
+            if (ExerciseId < 1) return (false, "Invalid Exercise Id");
 
             // Validate that Percent value is between 0 and 100
             if (!ValidatePercentCompletedValue()) return (false, "Invalid Percent Value.");
