@@ -12,6 +12,6 @@ public partial class CustomExerciseListPage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-        await _viewModel.LoadCustomExercisesAsync();
+        await _viewModel.LoadExercisesAsync();
     }
 }

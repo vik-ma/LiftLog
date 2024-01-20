@@ -5,7 +5,6 @@
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Name { get; set; }
-        public HashSet<int> ExerciseGroupSet { get; set; }
         public string ExerciseGroupSetString { get; set; }
 
         public HashSet<int> GetExerciseGroupHashSet()

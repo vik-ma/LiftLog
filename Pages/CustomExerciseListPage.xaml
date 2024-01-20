@@ -9,13 +9,13 @@
     <VerticalStackLayout>
         <VerticalStackLayout>
             <Label 
-                Text="Custom Exercises"
+                Text="Exercises"
                 HorizontalOptions="Center"
                 FontSize="30"
                 FontAttributes="Bold"
                 Margin="10" />
             <CollectionView
-                ItemsSource="{Binding CustomExerciseList}"
+                ItemsSource="{Binding ExerciseList}"
                 HorizontalOptions="Center">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout 
@@ -23,7 +23,7 @@
                         Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:CustomExercise">
+                    <DataTemplate x:DataType="models:Exercise">
                         <VerticalStackLayout Spacing="5">
                             <HorizontalStackLayout 
                                 Spacing="10"
@@ -41,74 +41,37 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label 
-                                    VerticalOptions="Center"
-                                    Text="Name"
-                                    FontAttributes="Bold"  
-                                    Style="{StaticResource SmallSpanStyle}"/>
-                                <Entry 
-                                    Text="{Binding Name}"
-                                    WidthRequest="200" />
-                                <Button 
-                                    Text="Update"
-                                    Style="{StaticResource AddButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=UpdateCustomExerciseCommand}"
-                                    CommandParameter="{Binding Id}" />
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Name: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Name}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Exercise Group Set String: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding ExerciseGroupSetString}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
                                 <Button 
                                     Text="Delete"
                                     Style="{StaticResource DeleteButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=DeleteCustomExerciseCommand}"
-                                    CommandParameter="{Binding Id}" />
-                            </HorizontalStackLayout>
-                            <HorizontalStackLayout Spacing="5">
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup0}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup1}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup2}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup3}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup4}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup5}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup6}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup7}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup8}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup9}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup10}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup11}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup12}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup13}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup14}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsExerciseGroup15}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=DeleteExerciseCommand}"
+                                    CommandParameter="{Binding .}" />
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
                     </DataTemplate>
@@ -119,7 +82,7 @@
                             HorizontalOptions="Center"
                             VerticalOptions="Center">
                             <Label 
-                                Text="No Custom Exercises In List!" 
+                                Text="No Exercises In List!" 
                                 FontSize="18" 
                                 FontAttributes="Bold" 
                                 HorizontalTextAlignment="Center" />
@@ -128,11 +91,11 @@
                 </CollectionView.EmptyView>
             </CollectionView>
             <Button 
-                Text="New Custom Exercise"
+                Text="New Exercise"
                 Style="{StaticResource AddButtonStyle}"
                 WidthRequest="300"
                 Margin="5"
-                Command="{Binding CreateCustomExerciseCommand}" />
+                Command="{Binding CreateExerciseCommand}" />
         </VerticalStackLayout>
 
         <VerticalStackLayout>

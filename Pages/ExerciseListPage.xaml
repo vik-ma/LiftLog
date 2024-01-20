@@ -51,21 +51,21 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label 
+                                <!--<Label 
                                     VerticalOptions="Center"
                                     HorizontalOptions="Start">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <!--<Span 
+                                            --><!--<Span 
                                                 Text="Exercise Groups: " 
                                                 FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />-->
+                                                Style="{StaticResource SmallSpanStyle}" />--><!--
                                             <Span 
                                                 Text="{Binding ExerciseGroupSet, Converter={StaticResource ExerciseGroupConverter}}"
                                                 Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
-                                </Label>
+                                </Label>-->
                             </VerticalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
