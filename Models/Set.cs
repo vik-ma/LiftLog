@@ -4,11 +4,34 @@
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+        public int WorkoutId { get; set; }
         public int ExerciseId { get; set; }
-        public string ExerciseName { get; set; }
+        public int SetTemplateId { get; set; }
+        public string Note { get; set; }
         [ObservableProperty]
-        public string note;
-        public bool IsWarmupSet { get; set; }
+        public string comment;
+        [ObservableProperty]
+        public bool isWarmupSet;
+        [ObservableProperty]
+        public bool isTrackingWeight;
+        [ObservableProperty]
+        public bool isTrackingReps;
+        [ObservableProperty]
+        public bool isTrackingRir;
+        [ObservableProperty]
+        public bool isTrackingRpe;
+        [ObservableProperty]
+        public bool isTrackingTime;
+        [ObservableProperty]
+        public bool isTrackingDistance;
+        [ObservableProperty]
+        public bool isTrackingCardioResistance;
+        [ObservableProperty]
+        public bool isTrackingPercentCompleted;
+        [ObservableProperty]
+        public bool isUsingBodyWeightAsWeight;
+        [ObservableProperty]
+        public bool isCompleted;
         [ObservableProperty]
         public string timeCompleted;
         public double Weight { get; set; }
@@ -49,8 +72,6 @@
 
         public (bool IsValid, string? ErrorMessage) ValidateSet()
         {
-            if (string.IsNullOrWhiteSpace(ExerciseName)) return (false, "Invalid Exercise Name");
-
             if (ExerciseId < 1) return (false, "Invalid Exercise Id");
 
             if (PercentCompleted < 0 || PercentCompleted > 100) return (false, "Invalid Percent Value");
