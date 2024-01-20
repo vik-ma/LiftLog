@@ -14,6 +14,9 @@
         [ObservableProperty]
         private ObservableCollection<CustomExercise> customExerciseList = new();
 
+        [ObservableProperty]
+        private ObservableCollection<Exercise> exerciseList = new();
+
         public async Task LoadCustomExercisesAsync()
         {
             await ExecuteAsync(async () =>
@@ -29,6 +32,26 @@
                     foreach (var exercise in customExercise)
                     {
                         CustomExerciseList.Add(exercise);
+                    }
+                }
+            });
+        }
+
+        public async Task LoadExercisesAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                ExerciseList.Clear();
+
+                var exercises = await _context.GetAllAsync<Exercise>();
+
+                if (exercises is not null && exercises.Any())
+                {
+                    exercises ??= new ObservableCollection<Exercise>();
+
+                    foreach (var exercise in exercises)
+                    {
+                        ExerciseList.Add(exercise);
                     }
                 }
             });
@@ -52,6 +75,32 @@
             }
         }
 
+        [RelayCommand]
+        private async Task CreateExerciseAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                Exercise exercise = new();
+                await _context.AddItemAsync<Exercise>(exercise);
+                ExerciseList.Add(exercise);
+            });
+        }
+
+        [RelayCommand]
+        private async Task DeleteExerciseAsync(Exercise exercise)
+        {
+            if (exercise is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<Exercise>(exercise))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when trying to delete Exercise.", "OK");
+                }
+            });
+
+            await LoadExercisesAsync();
+        }
 
         [RelayCommand]
         private async Task CreateCustomExerciseAsync()
