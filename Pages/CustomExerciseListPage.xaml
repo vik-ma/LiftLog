@@ -68,8 +68,18 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <Button 
+                                    Text="Add Group"
+                                    Style="{StaticResource ExtraSmallButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=AddExerciseGroupToExerciseCommand}"
+                                    CommandParameter="{Binding .}" />
+                                <Button 
+                                    Text="Remove Group"
+                                    Style="{StaticResource ExtraSmallButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=RemoveExerciseGroupToExerciseCommand}"
+                                    CommandParameter="{Binding .}" />
+                                <Button 
                                     Text="Delete"
-                                    Style="{StaticResource DeleteButtonStyle}"
+                                    Style="{StaticResource ExtraSmallRedButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=DeleteExerciseCommand}"
                                     CommandParameter="{Binding .}" />
                             </HorizontalStackLayout>

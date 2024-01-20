@@ -11,6 +11,9 @@
         {
             HashSet<int> exerciseGroupHashSet = new();
 
+            // Return empty HashSet if ExerciseGroupSetString is not set
+            if (string.IsNullOrEmpty(ExerciseGroupSetString)) return exerciseGroupHashSet;
+
             string[] groupStrings = ExerciseGroupSetString.Split(',');
 
             foreach (var group in groupStrings)
@@ -29,8 +32,14 @@
 
         public void SetExerciseGroupSetString(HashSet<int> exerciseGroupHashSet)
         {
-            // Do not update empty HashSets
-            if (exerciseGroupHashSet is null || !exerciseGroupHashSet.Any()) return;
+            if (exerciseGroupHashSet is null) return;
+
+            // If HashSet is empty
+            if (!exerciseGroupHashSet.Any()) 
+            {
+                ExerciseGroupSetString = null;
+                return; 
+            }
 
             if (!IsHashSetValid(exerciseGroupHashSet)) return;
 
@@ -59,6 +68,8 @@
             if (!IsExerciseGroupIntValid(exerciseGroupInt)) return false;
 
             HashSet<int> exerciseGroupHashSet = GetExerciseGroupHashSet();
+
+            if (exerciseGroupHashSet.Contains(exerciseGroupInt)) return false;
 
             exerciseGroupHashSet.Add(exerciseGroupInt);
 

@@ -3,12 +3,10 @@
     public partial class CustomExerciseViewModel : ObservableObject
     {
         private readonly DatabaseContext _context;
-        //private readonly ExerciseDataManager _exerciseData;
 
         public CustomExerciseViewModel(DatabaseContext context)
         {
             _context = context;
-            //_exerciseData = exerciseData;
         }
 
         [ObservableProperty]
@@ -55,9 +53,17 @@
         [RelayCommand]
         private async Task CreateExerciseAsync()
         {
+            string enteredName = await Shell.Current.DisplayPromptAsync("Enter Name", "Enter Exercise Name", "OK", "Cancel");
+
+            if (string.IsNullOrWhiteSpace(enteredName)) return;
+
+            Exercise exercise = new()
+            {
+                Name = enteredName
+            };
+
             await ExecuteAsync(async () =>
             {
-                Exercise exercise = new();
                 await _context.AddItemAsync<Exercise>(exercise);
                 ExerciseList.Add(exercise);
             });
@@ -77,6 +83,77 @@
             });
 
             await LoadExercisesAsync();
+        }
+
+        private async Task UpdateExerciseAsync(Exercise exercise)
+        {
+            if (exercise is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<Exercise>(exercise))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when trying to update Exercise.", "OK");
+                }
+            });
+
+            await LoadExercisesAsync();
+        }
+
+        [RelayCommand]
+        private async Task AddExerciseGroupToExercise(Exercise exercise)
+        {
+            if (exercise is null) return;
+
+            string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Exercise Group", "Enter Exercise Group Int To Add", "OK", "Cancel");
+
+            if (enteredNumber == null) return;
+
+            bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
+
+            if (!validInput)
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid Input Value.", "OK");
+                return;
+            }
+
+            bool success = exercise.AddExerciseGroup(enteredNumberInt);
+
+            if (!success)
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid Exercise Group Int.", "OK");
+                return;
+            }
+
+            await UpdateExerciseAsync(exercise);
+        }
+
+        [RelayCommand]
+        private async Task RemoveExerciseGroupToExercise(Exercise exercise)
+        {
+            if (exercise is null) return;
+
+            string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Exercise Group", "Enter Exercise Group Int To Remove", "OK", "Cancel");
+
+            if (enteredNumber == null) return;
+
+            bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
+
+            if (!validInput)
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid Input Value.", "OK");
+                return;
+            }
+
+            bool success = exercise.RemoveExerciseGroup(enteredNumberInt);
+
+            if (!success)
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid Exercise Group Int.", "OK");
+                return;
+            }
+
+            await UpdateExerciseAsync(exercise);
         }
 
         [RelayCommand]
