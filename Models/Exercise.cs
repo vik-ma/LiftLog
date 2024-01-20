@@ -50,5 +50,37 @@
             // Returns true if int is within the bounds of valid Exercise Groups
             return exerciseGroupInt >= ConstantsHelper.ExerciseGroupMinValue && exerciseGroupInt <= ConstantsHelper.ExerciseGroupMaxValue;
         }
+
+        public bool AddExerciseGroup(int exerciseGroupInt)
+        {
+            // Returns true if value was successfully changed, false if not
+
+            if (!IsExerciseGroupIntValid(exerciseGroupInt)) return false;
+
+            HashSet<int> exerciseGroupHashSet = GetExerciseGroupHashSet();
+
+            exerciseGroupHashSet.Add(exerciseGroupInt);
+
+            SetExerciseGroupSetString(exerciseGroupHashSet);
+
+            return true;
+        }
+
+        public bool RemoveExerciseGroup(int exerciseGroupInt)
+        {
+            // Returns true if value was successfully changed, false if not
+
+            if (!IsExerciseGroupIntValid(exerciseGroupInt)) return false;
+
+            HashSet<int> exerciseGroupHashSet = GetExerciseGroupHashSet();
+
+            if (!exerciseGroupHashSet.Contains(exerciseGroupInt)) return false; 
+
+            exerciseGroupHashSet.Remove(exerciseGroupInt);
+
+            SetExerciseGroupSetString(exerciseGroupHashSet);
+
+            return true;
+        }
     }
 }
