@@ -16,7 +16,10 @@
             {
                 if (int.TryParse(group.Trim(), out int groupInt))
                 {
-                    exerciseGroupHashSet.Add(groupInt);
+                    if (groupInt >= ConstantsHelper.ExerciseGroupMinValue && groupInt <= ConstantsHelper.ExerciseGroupMaxValue)
+                    {
+                        exerciseGroupHashSet.Add(groupInt);
+                    }
                 }
             }
 
@@ -27,6 +30,9 @@
         {
             // Do not update empty HashSets
             if (exerciseGroupHashSet is null || !exerciseGroupHashSet.Any()) return;
+
+            // Ensure that all HashSet values are within bounds
+            if (!exerciseGroupHashSet.All(x => x >= ConstantsHelper.ExerciseGroupMinValue && x <= ConstantsHelper.ExerciseGroupMaxValue)) return;
 
             // Create string of HashSet with comma separated values
             string hashSetString = string.Join(",", exerciseGroupHashSet);
