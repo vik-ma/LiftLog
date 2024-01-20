@@ -22,5 +22,8 @@
             { 15, "Cardio" },
             { 16, "Other" },
         };
+
+        // Change the value of this property when adding/removing ExerciseGroupDict key(s) to the new max value
+        public static int ExerciseGroupMaxValue { get; } = 16;
     }
 }

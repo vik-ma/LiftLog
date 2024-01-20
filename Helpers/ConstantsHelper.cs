@@ -20,7 +20,7 @@
         public static readonly HashSet<string> ValidDistanceUnits = new() { "km", "m", "mi", "ft", "yd" };
 
         public static readonly int ExerciseGroupMinValue = 0;
-        public static readonly int ExerciseGroupMaxValue = 16;
+        public static readonly int ExerciseGroupMaxValue = ExerciseGroupDictionary.ExerciseGroupMaxValue;
 
     }
 }
