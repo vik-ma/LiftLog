@@ -79,7 +79,7 @@
             var (isTrackingValueValid, TrackingValueErrorMessage) = ValidateTrackingValues();
             if (!isTrackingValueValid) return (false, $"Invalid {TrackingValueErrorMessage} Value");
 
-            var (isUnitValueValid, UnitValueErrorMessage) = ValidateTrackingValues();
+            var (isUnitValueValid, UnitValueErrorMessage) = ValidateUnits();
             if (!isUnitValueValid) return (false, $"Invalid {UnitValueErrorMessage} Unit Value");
 
             return (true, null);

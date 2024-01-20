@@ -42,6 +42,8 @@
         public int defaultCardioResistanceValue;
         [ObservableProperty]
         public int defaultPercentCompletedValue;
+        public string WeightUnit { get; set; }
+        public string DistanceUnit { get; set; }
 
         public SetTemplate Clone() => MemberwiseClone() as SetTemplate;
 
@@ -122,6 +124,14 @@
             return true;
         }
 
+        public (bool IsValid, string? ErrorMessage) ValidateUnits()
+        {
+            if (!ConstantsHelper.ValidWeightUnits.Contains(WeightUnit)) return (false, "Weight");
+            if (!ConstantsHelper.ValidDistanceUnits.Contains(DistanceUnit)) return (false, "Distance");
+
+            return (true, null);
+        }
+
         public (bool IsValid, string? ErrorMessage) ValidateSetTemplate()
         {
             if (string.IsNullOrEmpty(ExerciseName)) return (false, "No Exercise Selected!");
@@ -133,8 +143,11 @@
             if (!ValidateAtLeastOnePropertyTracked()) return (false, "At least one property must be tracked!");
 
             // Validate that all Default Values are between 0 and 999
-            var (isDefaultValuesValid, errorMessage) = ValidateDefaultValues();
-            if (!isDefaultValuesValid) return (false, $"Invalid Default {errorMessage} Value!");
+            var (isDefaultValueValid, errorMessage) = ValidateDefaultValues();
+            if (!isDefaultValueValid) return (false, $"Invalid Default {errorMessage} Value!");
+
+            var (isUnitValueValid, UnitValueErrorMessage) = ValidateUnits();
+            if (!isUnitValueValid) return (false, $"Invalid {UnitValueErrorMessage} Unit Value");
 
             return (true, null);
         }
