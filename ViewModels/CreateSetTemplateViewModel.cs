@@ -7,8 +7,6 @@
 
         private readonly ExerciseDataManager _exerciseData;
 
-        private readonly Dictionary<int, string> exerciseGroupDict;
-
         [ObservableProperty]
         private UserPreferencesViewModel userSettingsViewModel;
 
@@ -28,7 +26,6 @@
         {
             _context = context;
             _exerciseData = exerciseData;
-            exerciseGroupDict = ExerciseGroupDictionary.ExerciseGroupDict;
             userSettingsViewModel = userSettings;
         }
 
@@ -63,21 +60,6 @@
             IsEditing = SetWorkoutTemplatePackage.IsEditing;
 
             if (IsEditing) NewSetTemplateSelectedExerciseName = OperatingSetTemplate.ExerciseName;
-        }
-
-        private void UpdateExerciseList(IEnumerable<Exercise> exercises)
-        {
-            if (exercises is not null && exercises.Any())
-            {
-                exercises ??= new ObservableCollection<Exercise>();
-
-                foreach (var exercise in exercises)
-                {
-                    ExerciseList.Add(exercise);
-                }
-
-                FilteredExerciseList = new(ExerciseList);
-            }
         }
 
         #nullable enable
