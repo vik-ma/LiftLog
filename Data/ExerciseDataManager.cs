@@ -51,8 +51,10 @@
             }
         }
 
-        private async Task CreateExerciseAsync(Exercise exercise)
+        public async Task CreateExerciseAsync(Exercise exercise)
         {
+            if (exercise is null) return;
+
             await ExecuteAsync(async () =>
             {
                 await _context.AddItemAsync<Exercise>(exercise);
@@ -89,6 +91,36 @@
                     }
                 }
             });
+        }
+
+        public async Task UpdateExerciseAsync(Exercise exercise)
+        {
+            if (exercise is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<Exercise>(exercise))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when trying to update Exercise.", "OK");
+                }
+            });
+
+            await LoadExercisesAsync();
+        }
+
+        public async Task DeleteExerciseAsync(Exercise exercise)
+        {
+            if (exercise is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<Exercise>(exercise))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when trying to delete Exercise.", "OK");
+                }
+            });
+
+            await LoadExercisesAsync();
         }
 
         //private async Task<IEnumerable<CustomExercise>> LoadCustomExerciseFromDatabase()

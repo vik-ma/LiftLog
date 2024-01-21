@@ -4,32 +4,20 @@
     {
         private readonly DatabaseContext _context;
 
-        public CustomExerciseViewModel(DatabaseContext context)
-        {
-            _context = context;
-        }
+        private readonly ExerciseDataManager _exerciseData;
 
         [ObservableProperty]
         private ObservableCollection<Exercise> exerciseList = new();
 
-        public async Task LoadExercisesAsync()
+        public CustomExerciseViewModel(DatabaseContext context, ExerciseDataManager exerciseData)
         {
-            await ExecuteAsync(async () =>
-            {
-                ExerciseList.Clear();
+            _context = context;
+            _exerciseData = exerciseData;
+        }
 
-                var exercises = await _context.GetAllAsync<Exercise>();
-
-                if (exercises is not null && exercises.Any())
-                {
-                    exercises ??= new ObservableCollection<Exercise>();
-
-                    foreach (var exercise in exercises)
-                    {
-                        ExerciseList.Add(exercise);
-                    }
-                }
-            });
+        public void LoadExerciseList()
+        {
+            ExerciseList = new ObservableCollection<Exercise>(_exerciseData.ExerciseList);
         }
 
         #nullable enable
@@ -62,11 +50,7 @@
                 Name = enteredName
             };
 
-            await ExecuteAsync(async () =>
-            {
-                await _context.AddItemAsync<Exercise>(exercise);
-                ExerciseList.Add(exercise);
-            });
+            await _exerciseData.CreateExerciseAsync(exercise);
         }
 
         [RelayCommand]
@@ -74,30 +58,18 @@
         {
             if (exercise is null) return;
 
-            await ExecuteAsync(async () =>
-            {
-                if (!await _context.DeleteItemAsync<Exercise>(exercise))
-                {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when trying to delete Exercise.", "OK");
-                }
-            });
+            await _exerciseData.DeleteExerciseAsync(exercise);
 
-            await LoadExercisesAsync();
+            LoadExerciseList();
         }
 
         private async Task UpdateExerciseAsync(Exercise exercise)
         {
             if (exercise is null) return;
 
-            await ExecuteAsync(async () =>
-            {
-                if (!await _context.UpdateItemAsync<Exercise>(exercise))
-                {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when trying to update Exercise.", "OK");
-                }
-            });
+            await _exerciseData.UpdateExerciseAsync(exercise);
 
-            await LoadExercisesAsync();
+            LoadExerciseList();
         }
 
         [RelayCommand]
