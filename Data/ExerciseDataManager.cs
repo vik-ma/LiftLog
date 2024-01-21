@@ -4,7 +4,7 @@
     {
         private readonly DatabaseContext _context;
 
-        private readonly List<Exercise> ExerciseList = new();
+        public readonly List<Exercise> ExerciseList = new();
         public ExerciseDataManager(DatabaseContext context) 
         {
             _context = context;

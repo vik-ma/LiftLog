@@ -50,16 +50,10 @@
             await Shell.Current.GoToAsync("..");
         }
 
-        public async Task LoadExerciseListAsync()
+        public void LoadExerciseList()
         {
-            await ExecuteAsync(async () =>
-            {
-                var exercises = await _exerciseData.GetFullExerciseList();
-
-                ExerciseList.Clear();
-
-                UpdateExerciseList(exercises);
-            });
+            ExerciseList = _exerciseData.ExerciseList;
+            FilteredExerciseList = new(ExerciseList);
         }
 
         public void InitializeSetWorkoutTemplatePackage()

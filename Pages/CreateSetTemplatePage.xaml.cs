@@ -12,7 +12,7 @@ public partial class CreateSetTemplatePage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-        await _viewModel.LoadExerciseListAsync();
+        _viewModel.LoadExerciseList();
         _viewModel.InitializeSetWorkoutTemplatePackage();
     }
 

@@ -27,46 +27,10 @@
         [ObservableProperty]
         private List<int> exerciseGroupIntList = new();
 
-        public async Task LoadExercisesAsync()
+        public void LoadExerciseList()
         {
-            await ExecuteAsync(async () =>
-            {
-                var exercises = await _exerciseData.GetFullExerciseList();
-
-                ExerciseList.Clear();
-
-                if (exercises is not null && exercises.Any())
-                {
-                    exercises ??= new ObservableCollection<Exercise>();
-
-                    foreach (var exercise in exercises)
-                    {
-                        ExerciseList.Add(exercise);
-                    }
-                }
-
-                FilteredExerciseList = new(ExerciseList);
-            });
-        }
-
-        public void LoadExerciseGroupIntList()
-        {
-            ExerciseGroupIntList = new(ExerciseGroupDictionary.ExerciseGroupDict.Keys);
-        }
-
-        private void UpdateFilteredExerciseList(IEnumerable<Exercise> exercises)
-        {
-            FilteredExerciseList.Clear();
-
-            if (exercises is not null && exercises.Any())
-            {
-                exercises ??= new ObservableCollection<Exercise>();
-
-                foreach (var exercise in exercises)
-                {
-                    FilteredExerciseList.Add(exercise);
-                }
-            }
+            ExerciseList = _exerciseData.ExerciseList;
+            FilteredExerciseList = new(ExerciseList);
         }
 
         #nullable enable
@@ -89,7 +53,7 @@
 
         public void AddExerciseGroupToFilterList(int exerciseNum)
         {
-            if (exerciseNum < 0 || exerciseNum > exerciseGroupDict.Count)
+            if (exerciseNum < ConstantsHelper.ExerciseGroupMinValue || exerciseNum > ConstantsHelper.ExerciseGroupMaxValue)
             {
                 Shell.Current.DisplayAlert("Error", "Invalid Exercise Group.", "OK");
                 return;
@@ -97,9 +61,9 @@
 
             ExerciseGroupFilterSet.Add(exerciseNum);
 
-            var exercises = _exerciseData.FilterExerciseListByExerciseGroups(ExerciseGroupFilterSet);
+            //var exercises = _exerciseData.FilterExerciseListByExerciseGroups(ExerciseGroupFilterSet);
 
-            UpdateFilteredExerciseList(exercises);
+            //UpdateFilteredExerciseList(exercises);
 
             OnPropertyChanged(nameof(ExerciseGroupFilterSet));
         }
