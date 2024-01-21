@@ -51,6 +51,8 @@
             };
 
             await _exerciseData.CreateExerciseAsync(exercise);
+
+            LoadExerciseList();
         }
 
         [RelayCommand]

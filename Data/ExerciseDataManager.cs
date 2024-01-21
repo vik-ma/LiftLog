@@ -187,13 +187,12 @@
         //    return FullExerciseList;
         //}
 
-        //public IEnumerable<Exercise> FilterExerciseListByExerciseGroups(HashSet<int> groupSet)
-        //{
-        //    return null;
-        //    //if (groupSet is null || groupSet.Count == 0) return FullExerciseList;
+        public ObservableCollection<Exercise> FilterExerciseListByExerciseGroups(HashSet<int> groupSet)
+        {
+            if (groupSet is null || groupSet.Count == 0) return new ObservableCollection<Exercise>(ExerciseList);
 
-        //    //return ExerciseList.Where(item => groupSet.Any(group => item.ExerciseGroupSet.Contains(group)));
-        //}
+            return new ObservableCollection<Exercise>(ExerciseList.Where(item => groupSet.Any(group => item.GetExerciseGroupHashSet().Contains(group))));
+        }
 
         //public async Task<bool> ValidateUniqueExerciseName(string exerciseName)
         //{

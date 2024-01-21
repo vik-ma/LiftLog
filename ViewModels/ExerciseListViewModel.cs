@@ -63,9 +63,7 @@
 
             ExerciseGroupFilterSet.Add(exerciseNum);
 
-            //var exercises = _exerciseData.FilterExerciseListByExerciseGroups(ExerciseGroupFilterSet);
-
-            //UpdateFilteredExerciseList(exercises);
+            FilteredExerciseList = _exerciseData.FilterExerciseListByExerciseGroups(ExerciseGroupFilterSet);
 
             OnPropertyChanged(nameof(ExerciseGroupFilterSet));
         }
