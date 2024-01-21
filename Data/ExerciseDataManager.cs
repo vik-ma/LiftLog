@@ -4,10 +4,12 @@
     {
         private readonly DatabaseContext _context;
 
-        private List<Exercise> ExerciseList = new();
+        private readonly List<Exercise> ExerciseList = new();
         public ExerciseDataManager(DatabaseContext context) 
         {
             _context = context;
+
+            LoadExerciseList();
         }
 
         #nullable enable
@@ -58,16 +60,36 @@
             });
         }
 
-        //private async Task LoadCustomExerciseList()
-        //{
-        //    CustomExerciseList?.Clear();
+        private async void LoadExerciseList()
+        {
+            await LoadExercisesAsync();
 
-        //    var customExerciseDatabaseList = await LoadCustomExerciseFromDatabase();
+            if (!ExerciseList.Any())
+            {
+                // Add default Exercises if ExerciseList is empty
+                await CreateDefaultExerciseList();
+            }
+        }
 
-        //    if (customExerciseDatabaseList is null || !customExerciseDatabaseList.Any()) return;
+        private async Task LoadExercisesAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                ExerciseList.Clear();
 
-        //    CustomExerciseList = ConvertCustomExerciseListToExerciseList(customExerciseDatabaseList);
-        //}
+                var exercises = await _context.GetAllAsync<Exercise>();
+
+                if (exercises is not null && exercises.Any())
+                {
+                    exercises ??= new ObservableCollection<Exercise>();
+
+                    foreach (var exercise in exercises)
+                    {
+                        ExerciseList.Add(exercise);
+                    }
+                }
+            });
+        }
 
         //private async Task<IEnumerable<CustomExercise>> LoadCustomExerciseFromDatabase()
         //{
@@ -112,7 +134,7 @@
         //    //    }
 
         //    //    var convertedExercise = new Exercise { Name = customExercise.Name, ExerciseGroupSet=customExerciseGroupSet };
-                
+
         //    //    convertedExerciseList.Add(convertedExercise);
         //    //}
 
