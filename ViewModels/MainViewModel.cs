@@ -4,12 +4,15 @@
     {
         private readonly DatabaseContext _context;
 
+        private readonly ExerciseDataManager _exerciseData;
+
         [ObservableProperty]
         private UserPreferencesViewModel userSettingsViewModel;
 
-        public MainViewModel(DatabaseContext context, UserPreferencesViewModel userSettings)
+        public MainViewModel(DatabaseContext context, ExerciseDataManager exerciseData, UserPreferencesViewModel userSettings)
         {
             _context = context;
+            _exerciseData = exerciseData;
             userSettingsViewModel = userSettings;
         }
 
