@@ -30,6 +30,7 @@ public partial class ExerciseListPage : ContentPage
         string filterText = args.NewTextValue.ToLowerInvariant();
 
         _viewModel.FilteredExerciseList.Clear();
+        _viewModel.ResetFilterList();
 
         if (string.IsNullOrWhiteSpace(filterText))
         {

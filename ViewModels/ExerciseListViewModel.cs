@@ -69,7 +69,7 @@
         }
 
         [RelayCommand]
-        private void ResetFilterList()
+        public void ResetFilterList()
         {
             if (ExerciseGroupFilterSet.Count == 0) return;
 
