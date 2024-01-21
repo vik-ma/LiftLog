@@ -79,27 +79,9 @@
         {
             if (exercise is null) return;
 
-            string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Exercise Group", "Enter Exercise Group Int To Add", "OK", "Cancel");
+            await _exerciseData.AddExerciseGroupToExercise(exercise);
 
-            if (enteredNumber == null) return;
-
-            bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
-
-            if (!validInput)
-            {
-                await Shell.Current.DisplayAlert("Error", "Invalid Input Value.", "OK");
-                return;
-            }
-
-            bool success = exercise.AddExerciseGroup(enteredNumberInt);
-
-            if (!success)
-            {
-                await Shell.Current.DisplayAlert("Error", "Invalid Exercise Group Int.", "OK");
-                return;
-            }
-
-            await UpdateExerciseAsync(exercise);
+            LoadExerciseList();
         }
 
         [RelayCommand]
@@ -107,27 +89,9 @@
         {
             if (exercise is null) return;
 
-            string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Exercise Group", "Enter Exercise Group Int To Remove", "OK", "Cancel");
+            await _exerciseData.RemoveExerciseGroupFromExercise(exercise);
 
-            if (enteredNumber == null) return;
-
-            bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
-
-            if (!validInput)
-            {
-                await Shell.Current.DisplayAlert("Error", "Invalid Input Value.", "OK");
-                return;
-            }
-
-            bool success = exercise.RemoveExerciseGroup(enteredNumberInt);
-
-            if (!success)
-            {
-                await Shell.Current.DisplayAlert("Error", "Invalid Exercise Group Int.", "OK");
-                return;
-            }
-
-            await UpdateExerciseAsync(exercise);
+            LoadExerciseList();
         }
 
         [RelayCommand]
