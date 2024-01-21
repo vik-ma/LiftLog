@@ -10,7 +10,7 @@
             {
                 List<string> exerciseGroupStringList = new();
 
-                foreach (var group in exerciseGroups) 
+                foreach (var group in exerciseGroups)
                 {
                     if (exerciseGroupDict.TryGetValue(group, out string exercise))
                     {
@@ -20,6 +20,31 @@
                 }
 
                 if (!exerciseGroupStringList.Any()) return "None";
+
+                var exerciseGroupsString = String.Join(", ", exerciseGroupStringList);
+
+                return exerciseGroupsString;
+            }
+
+            if (value is string exerciseGroupString)
+            {
+                if (string.IsNullOrEmpty(exerciseGroupString)) return "None";
+
+                List<string> exerciseGroupStringList = new();
+
+                string[] groupStrings = exerciseGroupString.Split(",");
+
+                foreach (var group in groupStrings)
+                {
+                    if (int.TryParse(group.Trim(), out int exerciseGroupInt))
+                    {
+                        if (exerciseGroupDict.TryGetValue(exerciseGroupInt, out string exercise))
+                        {
+                            exerciseGroupStringList.Add(exercise);
+                        }
+                        else return "Invalid group";
+                    }
+                }
 
                 var exerciseGroupsString = String.Join(", ", exerciseGroupStringList);
 

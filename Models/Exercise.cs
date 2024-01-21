@@ -14,7 +14,7 @@
             // Return empty HashSet if ExerciseGroupSetString is not set
             if (string.IsNullOrEmpty(ExerciseGroupSetString)) return exerciseGroupHashSet;
 
-            string[] groupStrings = ExerciseGroupSetString.Split(',');
+            string[] groupStrings = ExerciseGroupSetString.Split(",");
 
             foreach (var group in groupStrings)
             {
