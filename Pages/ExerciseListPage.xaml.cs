@@ -12,6 +12,7 @@ public partial class ExerciseListPage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
+        _viewModel.LoadExerciseGroupIntList();
         _viewModel.LoadExerciseList();
     }
 

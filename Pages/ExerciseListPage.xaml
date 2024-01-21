@@ -56,10 +56,10 @@
                                     HorizontalOptions="Start">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            --><!--<Span 
+                                            <Span 
                                                 Text="Exercise Groups: " 
                                                 FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />--><!--
+                                                Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
                                                 Text="{Binding ExerciseGroupSet, Converter={StaticResource ExerciseGroupConverter}}"
                                                 Style="{StaticResource SmallSpanStyle}" />

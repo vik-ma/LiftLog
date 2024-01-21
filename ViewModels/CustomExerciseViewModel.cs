@@ -101,7 +101,7 @@
         }
 
         [RelayCommand]
-        private async Task RemoveExerciseGroupToExercise(Exercise exercise)
+        private async Task RemoveExerciseGroupFromExercise(Exercise exercise)
         {
             if (exercise is null) return;
 

@@ -4,12 +4,9 @@
     {
         private readonly ExerciseDataManager _exerciseData;
 
-        private readonly Dictionary<int, string> exerciseGroupDict;
-
         public ExerciseListViewModel(ExerciseDataManager exerciseData)
         {
             _exerciseData = exerciseData;
-            exerciseGroupDict = ExerciseGroupDictionary.ExerciseGroupDict;
         }
 
         [ObservableProperty]
@@ -31,6 +28,11 @@
         {
             ExerciseList = _exerciseData.ExerciseList;
             FilteredExerciseList = new(ExerciseList);
+        }
+
+        public void LoadExerciseGroupIntList()
+        {
+            ExerciseGroupIntList = new(ExerciseGroupDictionary.ExerciseGroupDict.Keys);
         }
 
         #nullable enable

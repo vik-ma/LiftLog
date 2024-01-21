@@ -75,7 +75,7 @@
                                 <Button 
                                     Text="Remove Group"
                                     Style="{StaticResource ExtraSmallButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=RemoveExerciseGroupToExerciseCommand}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=RemoveExerciseGroupFromExerciseCommand}"
                                     CommandParameter="{Binding .}" />
                                 <Button 
                                     Text="Delete"
