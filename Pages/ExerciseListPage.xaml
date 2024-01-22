@@ -110,12 +110,16 @@
             </VerticalStackLayout>
         </Grid>
 
-        <VerticalStackLayout>
-            <Button 
-                Text="Go Back"
-                Style="{StaticResource LargeButtonStyle}"
-                Command="{Binding GoBackCommand}"
-                Margin="50" />
-        </VerticalStackLayout>
+        <Button 
+            Text="Add New Exercise"
+            BackgroundColor="{DynamicResource MediumGreen}"
+            Style="{StaticResource LargeButtonStyle}"
+            Command="{Binding ShowCreateExercisePopupCommand}" />
+
+        <Button 
+            Text="Go Back"
+            Style="{StaticResource LargeButtonStyle}"
+            Command="{Binding GoBackCommand}"
+            Margin="0, 5" />
     </VerticalStackLayout>
 </ContentPage>

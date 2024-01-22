@@ -24,6 +24,11 @@
         [ObservableProperty]
         private List<int> exerciseGroupIntList = new();
 
+        [ObservableProperty]
+        private Exercise newExercise = new();
+
+        private CreateExercisePopupPage Popup;
+
         public void LoadExerciseList()
         {
             ExerciseList = _exerciseData.ExerciseList;
@@ -84,6 +89,21 @@
         static async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
+        }
+
+        [RelayCommand]
+        private async Task ShowCreateExercisePopup()
+        {
+            Popup = new CreateExercisePopupPage(this);
+            await Shell.Current.ShowPopupAsync(Popup);
+        }
+
+        [RelayCommand]
+        public void ClosePopup()
+        {
+            if (Popup is null) return;
+
+            Popup.Close();
         }
     }
 }
