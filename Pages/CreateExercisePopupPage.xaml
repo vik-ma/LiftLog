@@ -82,6 +82,11 @@
                     </CollectionView.EmptyView>
                 </CollectionView>
                 <Button 
+                    Text="Save" 
+                    BackgroundColor="{DynamicResource MediumGreen}"
+                    Style="{StaticResource SmallButtonStyle}"
+                    Command="{Binding CreateNewExerciseCommand}" />
+                <Button 
                     Text="Close" 
                     Style="{StaticResource SmallButtonStyle}"
                     Command="{Binding ClosePopupCommand}" />

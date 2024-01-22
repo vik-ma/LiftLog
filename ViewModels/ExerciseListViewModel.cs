@@ -125,5 +125,28 @@
             NewExercise.RemoveExerciseGroup(selectedIndex);
             NewExerciseExerciseGroupIntList.Remove(selectedIndex);
         }
+
+        [RelayCommand]
+        private async Task CreateNewExercise()
+        {
+            if (NewExercise is null) return;
+
+            var (isExerciseValid, errorMessage) = NewExercise.Validate();
+
+            if (!isExerciseValid)
+            {
+                await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
+                return;
+            }
+
+            await _exerciseData.CreateExerciseAsync(NewExercise);
+
+            NewExercise = new();
+            NewExerciseExerciseGroupIntList = new();
+
+            Popup.Close();
+
+            LoadExerciseList();
+        }
     }
 }

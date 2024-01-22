@@ -102,7 +102,7 @@
 
             if (string.IsNullOrEmpty(ExerciseGroupSetString)) return (false, "At least one Exercise Group must be added!");
 
-            if (IsHashSetValid(GetExerciseGroupHashSet())) return (false, "Invalid Exercise Group!");
+            if (!IsHashSetValid(GetExerciseGroupHashSet())) return (false, "Invalid Exercise Group!");
 
             return (true, null);
         }
