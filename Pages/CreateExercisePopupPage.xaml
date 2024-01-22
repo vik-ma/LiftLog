@@ -4,7 +4,8 @@
              x:Class="LocalLiftLog.Pages.CreateExercisePopupPage"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
-             xmlns:models="clr-namespace:LocalLiftLog.Models">
+             xmlns:models="clr-namespace:LocalLiftLog.Models"
+             x:DataType="viewmodel:ExerciseListViewModel">
     
     <Border 
         BackgroundColor="White">
@@ -14,6 +15,11 @@
             <Label 
                 Text="New Exercise"
                 Style="{StaticResource LargeBoldLabelStyle}" />
+            <Picker 
+                WidthRequest="200"
+                HeightRequest="40"
+                SelectedIndexChanged="OnPickerSelectedIndexChanged"
+                ItemsSource="{Binding ExerciseGroupIntList, Converter={StaticResource ExerciseGroupConverter}}" />
             <Button 
                 Text="Close" 
                 Style="{StaticResource SmallButtonStyle}"

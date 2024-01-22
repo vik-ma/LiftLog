@@ -9,4 +9,15 @@ public partial class CreateExercisePopupPage : Popup
         _viewModel = viewModel;
         BindingContext = _viewModel;
     }
+
+    private void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+    {
+        var picker = (Picker)sender;
+        int selectedIndex = picker.SelectedIndex;
+
+        if (selectedIndex != -1)
+        {
+            Shell.Current.DisplayAlert("Index", selectedIndex.ToString(), "OK");
+        }
+    }
 }
