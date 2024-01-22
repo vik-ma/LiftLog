@@ -15,11 +15,21 @@
             <Label 
                 Text="New Exercise"
                 Style="{StaticResource LargeBoldLabelStyle}" />
+            <Label 
+                Text="Name" 
+                Style="{StaticResource MediumBoldLabelStyle}" />
+            <Entry Text="{Binding NewExercise.Name}" />
+            <Label 
+                Text="Exercise Group" 
+                Style="{StaticResource MediumBoldLabelStyle}" />
             <Picker 
                 WidthRequest="200"
                 HeightRequest="40"
                 SelectedIndexChanged="OnPickerSelectedIndexChanged"
                 ItemsSource="{Binding ExerciseGroupIntList, Converter={StaticResource ExerciseGroupConverter}}" />
+            <Label 
+                Text="{Binding NewExercise.ExerciseGroupSetString, ConverterParameter={StaticResource ExerciseGroupConverter}}"
+                Style="{StaticResource ExtraSmallLabelStyle}"/>
             <Button 
                 Text="Close" 
                 Style="{StaticResource SmallButtonStyle}"

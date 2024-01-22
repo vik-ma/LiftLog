@@ -17,7 +17,7 @@ public partial class CreateExercisePopupPage : Popup
 
         if (selectedIndex != -1)
         {
-            Shell.Current.DisplayAlert("Index", selectedIndex.ToString(), "OK");
+            _viewModel.AddExerciseGroupToNewExercise(selectedIndex);
         }
     }
 }

@@ -105,5 +105,12 @@
 
             Popup.Close();
         }
+
+        public void AddExerciseGroupToNewExercise(int selectedIndex)
+        {
+            NewExercise.AddExerciseGroup(selectedIndex);
+
+            OnPropertyChanged(nameof(NewExercise));
+        }
     }
 }
