@@ -27,9 +27,20 @@
                 HeightRequest="40"
                 SelectedIndexChanged="OnPickerSelectedIndexChanged"
                 ItemsSource="{Binding ExerciseGroupIntList, Converter={StaticResource ExerciseGroupConverter}}" />
-            <Label 
-                Text="{Binding NewExercise.ExerciseGroupSetString, ConverterParameter={StaticResource ExerciseGroupConverter}}"
-                Style="{StaticResource ExtraSmallLabelStyle}"/>
+            <ListView
+                SelectionMode="Single"
+                ItemsSource="{Binding NewExerciseExerciseGroupIntList}"
+                ItemSelected="OnExerciseListViewItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="x:Int32">
+                        <ViewCell>
+                            <Label 
+                                Text="{Binding ., Converter={StaticResource ExerciseGroupConverter}}"
+                                Style="{StaticResource ListViewLabelStyle}"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <Button 
                 Text="Close" 
                 Style="{StaticResource SmallButtonStyle}"

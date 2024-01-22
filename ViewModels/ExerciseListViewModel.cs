@@ -27,6 +27,9 @@
         [ObservableProperty]
         private Exercise newExercise = new();
 
+        [ObservableProperty]
+        private ObservableCollection<int> newExerciseExerciseGroupIntList = new();
+
         private CreateExercisePopupPage Popup;
 
         public void LoadExerciseList()
@@ -108,9 +111,10 @@
 
         public void AddExerciseGroupToNewExercise(int selectedIndex)
         {
-            NewExercise.AddExerciseGroup(selectedIndex);
+            if (NewExerciseExerciseGroupIntList.Contains(selectedIndex)) return;
 
-            OnPropertyChanged(nameof(NewExercise));
+            NewExercise.AddExerciseGroup(selectedIndex);
+            NewExerciseExerciseGroupIntList.Add(selectedIndex);
         }
     }
 }

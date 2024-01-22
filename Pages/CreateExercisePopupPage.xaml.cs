@@ -20,4 +20,12 @@ public partial class CreateExercisePopupPage : Popup
             _viewModel.AddExerciseGroupToNewExercise(selectedIndex);
         }
     }
+
+    private void OnExerciseListViewItemSelected(object sender, SelectedItemChangedEventArgs args)
+    {
+        if (args.SelectedItem != null)
+        {
+            var selectedExerciseGroup = (int)args.SelectedItem;
+        }
+    }
 }
