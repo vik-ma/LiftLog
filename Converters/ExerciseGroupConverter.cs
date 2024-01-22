@@ -26,6 +26,25 @@
                 return exerciseGroupsString;
             }
 
+            if (value is List<int> exerciseGroupIntList)
+            {
+                List<string> exerciseGroupStringList = new();
+
+                foreach (var group in exerciseGroupIntList)
+                {
+                    if (exerciseGroupDict.TryGetValue(group, out string exercise))
+                    {
+                        exerciseGroupStringList.Add(exercise);
+                    } 
+                    else
+                    {
+                        exerciseGroupStringList.Add("Invalid Group");
+                    }
+                }
+
+                return exerciseGroupStringList;
+            }
+
             if (value is string exerciseGroupString)
             {
                 if (string.IsNullOrEmpty(exerciseGroupString)) return "None";
