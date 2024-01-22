@@ -116,5 +116,14 @@
             NewExercise.AddExerciseGroup(selectedIndex);
             NewExerciseExerciseGroupIntList.Add(selectedIndex);
         }
+
+        [RelayCommand]
+        private void RemoveExerciseGroupFromNewExercise(int selectedIndex)
+        {
+            if (!NewExerciseExerciseGroupIntList.Contains(selectedIndex)) return;
+
+            NewExercise.RemoveExerciseGroup(selectedIndex);
+            NewExerciseExerciseGroupIntList.Remove(selectedIndex);
+        }
     }
 }
