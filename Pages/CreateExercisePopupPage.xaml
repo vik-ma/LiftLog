@@ -27,20 +27,55 @@
                 HeightRequest="40"
                 SelectedIndexChanged="OnPickerSelectedIndexChanged"
                 ItemsSource="{Binding ExerciseGroupIntList, Converter={StaticResource ExerciseGroupConverter}}" />
-            <ListView
-                SelectionMode="Single"
+            <CollectionView
                 ItemsSource="{Binding NewExerciseExerciseGroupIntList}"
-                ItemSelected="OnExerciseListViewItemSelected">
-                <ListView.ItemTemplate>
+                HorizontalOptions="Start">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="2"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="x:Int32">
-                        <ViewCell>
+                        <Grid
+                            ColumnSpacing="3"
+                            ColumnDefinitions="Auto, *">
                             <Label 
-                                Text="{Binding ., Converter={StaticResource ExerciseGroupConverter}}"
-                                Style="{StaticResource ListViewLabelStyle}"/>
-                        </ViewCell>
+                                Grid.Column="0"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="{Binding ., Converter={StaticResource ExerciseGroupConverter}}"
+                                            FontAttributes="Bold"
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Button 
+                                Grid.Column="1"
+                                HorizontalOptions="End"
+                                Text="Remove"
+                                Style="{StaticResource ExtraSmallRedButtonStyle}" />
+                        </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <VerticalStackLayout
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Label 
+                                Text="No Exercise Group Added" 
+                                FontSize="16" 
+                                FontAttributes="Bold" 
+                                TextColor="{DynamicResource MediumRed}"
+                                HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
             <Button 
                 Text="Close" 
                 Style="{StaticResource SmallButtonStyle}"
