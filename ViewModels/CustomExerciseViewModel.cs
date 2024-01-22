@@ -95,6 +95,18 @@
         }
 
         [RelayCommand]
+        private async Task ResetExerciseList()
+        {
+            bool userClickedDelete = await Shell.Current.DisplayAlert("Reset All Exercises", "This will delete all added Exercises and restore only the default Exercises.\nThis can not be reversed. Are you sure you want to delete all Exercises?", "Delete", "Cancel");
+
+            if (!userClickedDelete) return;
+
+            await _exerciseData.ResetExerciseListToDefault();
+
+            LoadExerciseList();
+        }
+
+        [RelayCommand]
         static async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");

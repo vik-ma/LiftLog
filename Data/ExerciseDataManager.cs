@@ -122,6 +122,21 @@
             await LoadExercisesAsync();
         }
 
+        public async Task ResetExerciseListToDefault()
+        {
+            await ExecuteAsync(async () =>
+            {
+                foreach (var exercise in ExerciseList)
+                {
+                    await _context.DeleteItemAsync<Exercise>(exercise);
+                }
+            });
+
+            await CreateDefaultExerciseList();
+
+            await LoadExercisesAsync();
+        }
+
         public ObservableCollection<Exercise> FilterExerciseListByExerciseGroups(HashSet<int> groupSet)
         {
             if (groupSet is null || groupSet.Count == 0) return new ObservableCollection<Exercise>(ExerciseList);

@@ -106,6 +106,12 @@
                 WidthRequest="300"
                 Margin="5"
                 Command="{Binding CreateExerciseCommand}" />
+            <Button 
+                Text="Reset Exercise List"
+                Style="{StaticResource DeleteButtonStyle}"
+                WidthRequest="300"
+                Margin="5"
+                Command="{Binding ResetExerciseListCommand}" />
         </VerticalStackLayout>
 
         <VerticalStackLayout>
