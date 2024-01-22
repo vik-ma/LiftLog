@@ -94,5 +94,17 @@
 
             return true;
         }
+
+        #nullable enable
+        public (bool IsValid, string? ErrorMessage) Validate()
+        {
+            if (string.IsNullOrWhiteSpace(Name)) return (false, "Name can't be empty!");
+
+            if (string.IsNullOrEmpty(ExerciseGroupSetString)) return (false, "At least one Exercise Group must be added!");
+
+            if (IsHashSetValid(GetExerciseGroupHashSet())) return (false, "Invalid Exercise Group!");
+
+            return (true, null);
+        }
     }
 }
