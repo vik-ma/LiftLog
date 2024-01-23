@@ -17,7 +17,7 @@ public partial class CreateExercisePopupPage : Popup
 
         if (selectedIndex != -1)
         {
-            _viewModel.AddExerciseGroupToNewExercise(selectedIndex);
+            _viewModel.AddExerciseGroupToOperatingExercise(selectedIndex);
         }
     }
 }

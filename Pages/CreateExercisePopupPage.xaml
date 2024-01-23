@@ -21,7 +21,7 @@
                 <Label 
                     Text="Name" 
                     Style="{StaticResource MediumBoldLabelStyle}" />
-                <Entry Text="{Binding NewExercise.Name}" />
+                <Entry Text="{Binding OperatingExercise.Name}" />
                 <Label 
                     Text="Exercise Group" 
                     Style="{StaticResource MediumBoldLabelStyle}" />
@@ -31,7 +31,7 @@
                     SelectedIndexChanged="OnPickerSelectedIndexChanged"
                     ItemsSource="{Binding ExerciseGroupIntList, Converter={StaticResource ExerciseGroupConverter}}" />
                 <CollectionView
-                    ItemsSource="{Binding NewExerciseExerciseGroupIntList}"
+                    ItemsSource="{Binding OperatingExerciseExerciseGroupIntList}"
                     HorizontalOptions="Center">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout 
@@ -85,7 +85,7 @@
                     Text="Save" 
                     BackgroundColor="{DynamicResource MediumGreen}"
                     Style="{StaticResource SmallButtonStyle}"
-                    Command="{Binding CreateNewExerciseCommand}" />
+                    Command="{Binding SaveExerciseCommand}" />
                 <Button 
                     Text="Close" 
                     Style="{StaticResource SmallButtonStyle}"

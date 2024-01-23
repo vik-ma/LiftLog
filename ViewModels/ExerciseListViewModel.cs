@@ -25,12 +25,15 @@
         private List<int> exerciseGroupIntList = new();
 
         [ObservableProperty]
-        private Exercise newExercise = new();
+        private Exercise operatingExercise = new();
 
         [ObservableProperty]
-        private ObservableCollection<int> newExerciseExerciseGroupIntList = new();
+        private ObservableCollection<int> operatingExerciseExerciseGroupIntList = new();
 
         private CreateExercisePopupPage Popup;
+
+        [ObservableProperty]
+        private bool isEditingExercise;
 
         public void LoadExerciseList()
         {
@@ -109,29 +112,56 @@
             Popup.Close();
         }
 
-        public void AddExerciseGroupToNewExercise(int selectedIndex)
+        public void AddExerciseGroupToOperatingExercise(int selectedIndex)
         {
-            if (NewExerciseExerciseGroupIntList.Contains(selectedIndex)) return;
+            if (OperatingExerciseExerciseGroupIntList.Contains(selectedIndex)) return;
 
-            NewExercise.AddExerciseGroup(selectedIndex);
-            NewExerciseExerciseGroupIntList.Add(selectedIndex);
+            OperatingExercise.AddExerciseGroup(selectedIndex);
+            OperatingExerciseExerciseGroupIntList.Add(selectedIndex);
         }
 
         [RelayCommand]
-        private void RemoveExerciseGroupFromNewExercise(int selectedIndex)
+        private void RemoveExerciseGroupFromOperatingExercise(int selectedIndex)
         {
-            if (!NewExerciseExerciseGroupIntList.Contains(selectedIndex)) return;
+            if (!OperatingExerciseExerciseGroupIntList.Contains(selectedIndex)) return;
 
-            NewExercise.RemoveExerciseGroup(selectedIndex);
-            NewExerciseExerciseGroupIntList.Remove(selectedIndex);
+            OperatingExercise.RemoveExerciseGroup(selectedIndex);
+            OperatingExerciseExerciseGroupIntList.Remove(selectedIndex);
+        }
+
+        [RelayCommand]
+        private async Task EditExercise(Exercise exercise)
+        {
+            if (exercise is null) return;
+
+            OperatingExercise = exercise;
+            OperatingExerciseExerciseGroupIntList = exercise.GetExerciseGroupIntList();
+
+            IsEditingExercise = true;
+
+            await ShowCreateExercisePopup();
         }
 
         [RelayCommand]
         private async Task CreateNewExercise()
         {
-            if (NewExercise is null) return;
+            if (IsEditingExercise) 
+            { 
+                // Create brand new objects only if last Exercise was edited
+                OperatingExercise = new();
+                OperatingExerciseExerciseGroupIntList = new();
+                IsEditingExercise = false;
+            }
 
-            var (isExerciseValid, errorMessage) = NewExercise.Validate();
+            await ShowCreateExercisePopup();
+        }
+
+        [RelayCommand]
+        private async Task SaveExercise()
+        {
+            if (OperatingExercise is null) return;
+
+            var (isExerciseValid, errorMessage) = OperatingExercise.Validate();
 
             if (!isExerciseValid)
             {
@@ -139,10 +169,16 @@
                 return;
             }
 
-            await _exerciseData.CreateExerciseAsync(NewExercise);
-
-            NewExercise = new();
-            NewExerciseExerciseGroupIntList = new();
+            if (IsEditingExercise) 
+            {
+                // Update existing Exercise
+                await _exerciseData.UpdateExerciseAsync(OperatingExercise);
+            }
+            else
+            {
+                // Create new Exercise
+                await _exerciseData.CreateExerciseAsync(OperatingExercise);
+            }
 
             Popup.Close();
 

@@ -77,7 +77,9 @@
                                             Grid.RowSpan="2"
                                             Grid.Column="1"
                                             Text="Edit"
-                                            Style="{StaticResource ExtraSmallButtonStyle}" />
+                                            Style="{StaticResource ExtraSmallButtonStyle}"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseListViewModel}}, Path=EditExerciseCommand}"
+                                            CommandParameter="{Binding .}" />
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
@@ -128,7 +130,7 @@
             Text="Add New Exercise"
             BackgroundColor="{DynamicResource MediumGreen}"
             Style="{StaticResource LargeButtonStyle}"
-            Command="{Binding ShowCreateExercisePopupCommand}" />
+            Command="{Binding CreateNewExerciseCommand}" />
 
         <Button 
             Text="Go Back"
