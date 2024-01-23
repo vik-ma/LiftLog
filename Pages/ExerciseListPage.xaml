@@ -26,68 +26,64 @@
                     WidthRequest="330"
                     HorizontalOptions="Center"
                     TextChanged="OnFilterTextChanged" />
-                <CollectionView
-                    ItemsSource="{Binding FilteredExerciseList}"
-                    HorizontalOptions="Start"
-                    VerticalOptions="FillAndExpand">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout 
-                            ItemSpacing="0"
-                            Orientation="Vertical" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Exercise">
-                            <Grid
-                                WidthRequest="330"
-                                RowDefinitions="*, *"
-                                ColumnDefinitions="*, *">
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Start">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <!--<Span 
-                                                Text="Name: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />-->
-                                            <Span 
-                                                Text="{Binding Name}"
-                                                FontAttributes="Bold"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label 
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Start">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <!--<Span 
-                                                Text="Exercise Groups: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />-->
-                                            <Span 
-                                                Text="{Binding ExerciseGroupSetString, Converter={StaticResource ExerciseGroupConverter}}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Button
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="End"
-                                    Grid.Row="0"
-                                    Grid.RowSpan="2"
-                                    Grid.Column="1"
-                                    Text="Edit"
-                                    Style="{StaticResource ExtraSmallButtonStyle}" />
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                <ScrollView>
+                    <Grid HeightRequest="440">
+                        <CollectionView
+                            ItemsSource="{Binding FilteredExerciseList}"
+                            HorizontalOptions="Start">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout 
+                                    ItemSpacing="0"
+                                    Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Exercise">
+                                    <Grid
+                                        WidthRequest="330"
+                                        RowDefinitions="*, *"
+                                        ColumnDefinitions="*, *">
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Start">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="{Binding Name}"
+                                                        FontAttributes="Bold"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label 
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Start">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                    Text="{Binding ExerciseGroupSetString, Converter={StaticResource ExerciseGroupConverter}}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Button
+                                            Margin="0, 0, 15, 0"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="End"
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            Grid.Column="1"
+                                            Text="Edit"
+                                            Style="{StaticResource ExtraSmallButtonStyle}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>   
+                    </Grid>
+                </ScrollView>
             </VerticalStackLayout>
 
             <VerticalStackLayout 
