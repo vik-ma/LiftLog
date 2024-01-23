@@ -87,6 +87,12 @@
                     Style="{StaticResource SmallButtonStyle}"
                     Command="{Binding SaveExerciseCommand}" />
                 <Button 
+                    IsVisible="{Binding IsEditingExercise}"
+                    Text="Delete" 
+                    BackgroundColor="{DynamicResource MediumRed}"
+                    Style="{StaticResource SmallButtonStyle}"
+                    Command="{Binding DeleteExerciseCommand}" />
+                <Button 
                     Text="Close" 
                     Style="{StaticResource SmallButtonStyle}"
                     Command="{Binding ClosePopupCommand}" />

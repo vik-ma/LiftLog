@@ -157,10 +157,24 @@
         }
 
         [RelayCommand]
-        private async Task SaveExercise()
+        private async Task DeleteExercise()
         {
             if (OperatingExercise is null) return;
 
+            bool userClickedDelete = await Shell.Current.DisplayAlert("Delete Exercise", "Are you sure you want to delete Exercise?", "Delete", "Cancel");
+
+            if (!userClickedDelete) return;
+
+            await _exerciseData.DeleteExerciseAsync(OperatingExercise);
+
+            Popup.Close();
+
+            LoadExerciseList();
+        }
+
+        [RelayCommand]
+        private async Task SaveExercise()
+        {
             var (isExerciseValid, errorMessage) = OperatingExercise.Validate();
 
             if (!isExerciseValid)
