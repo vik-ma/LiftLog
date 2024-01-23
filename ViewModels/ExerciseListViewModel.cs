@@ -135,7 +135,7 @@
             if (exercise is null) return;
 
             OperatingExercise = exercise;
-            OperatingExerciseExerciseGroupIntList = exercise.GetExerciseGroupIntList();
+            OperatingExerciseExerciseGroupIntList = new(exercise.GetExerciseGroupIntList());
 
             IsEditingExercise = true;
 

@@ -61,7 +61,7 @@
                                     HorizontalOptions="End"
                                     Text="Remove"
                                     Style="{StaticResource ExtraSmallRedButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseListViewModel}}, Path=RemoveExerciseGroupFromNewExerciseCommand}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseListViewModel}}, Path=RemoveExerciseGroupFromOperatingExerciseCommand}"
                                     CommandParameter="{Binding .}" />
                             </Grid>
                         </DataTemplate>

@@ -30,11 +30,11 @@
             return exerciseGroupHashSet;
         }
 
-        public ObservableCollection<int> GetExerciseGroupIntList()
+        public List<int> GetExerciseGroupIntList()
         {
-            ObservableCollection<int> exerciseGroupIntList = new();
+            List<int> exerciseGroupIntList = new();
 
-            // Return empty ObservableCollection if ExerciseGroupSetString is not set
+            // Return empty List if ExerciseGroupSetString is not set
             if (string.IsNullOrEmpty(ExerciseGroupSetString)) return exerciseGroupIntList;
 
             string[] groupStrings = ExerciseGroupSetString.Split(",");
