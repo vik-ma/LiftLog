@@ -279,6 +279,11 @@
                     <HorizontalStackLayout
                         Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
                         IsVisible="{Binding OperatingSetTemplate.IsTrackingDistance}">
+                        <Picker 
+                            WidthRequest="80"
+                            HeightRequest="40"
+                            ItemsSource="{Binding ValidDistanceUnitList}"
+                            SelectedItem="{Binding DefaultDistanceUnit}" />
                         <Label 
                             IsVisible="{Binding OperatingSetTemplate.DefaultDistanceValue, Converter={StaticResource IsIntNot0Converter}}"
                             VerticalOptions="Center">

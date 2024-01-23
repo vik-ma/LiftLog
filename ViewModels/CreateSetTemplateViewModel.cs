@@ -25,12 +25,15 @@
         [ObservableProperty]
         private string defaultWeightUnit;
 
+        [ObservableProperty]
+        private string defaultDistanceUnit;
+
         public CreateSetTemplateViewModel(DatabaseContext context, ExerciseDataManager exerciseData, UserPreferencesViewModel userSettings)
         {
             _context = context;
             _exerciseData = exerciseData;
             userSettingsViewModel = userSettings;
-            defaultWeightUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits ? "kg" : "lbs";
+            SetDefaultUnitValues();
         }
 
         [ObservableProperty]
@@ -70,6 +73,12 @@
             IsEditing = SetWorkoutTemplatePackage.IsEditing;
 
             if (IsEditing) NewSetTemplateSelectedExerciseName = OperatingSetTemplate.ExerciseName;
+        }
+
+        private void SetDefaultUnitValues()
+        {
+            DefaultWeightUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits ? ConstantsHelper.DefaultWeightUnitMetricTrue : ConstantsHelper.DefaultWeightUnitMetricFalse;
+            DefaultDistanceUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits ? ConstantsHelper.DefaultDistanceUnitMetricTrue : ConstantsHelper.DefaultDistanceUnitMetricFalse;
         }
 
         #nullable enable
