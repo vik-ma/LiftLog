@@ -30,6 +30,29 @@
             return exerciseGroupHashSet;
         }
 
+        public ObservableCollection<int> GetExerciseGroupIntList()
+        {
+            ObservableCollection<int> exerciseGroupIntList = new();
+
+            // Return empty ObservableCollection if ExerciseGroupSetString is not set
+            if (string.IsNullOrEmpty(ExerciseGroupSetString)) return exerciseGroupIntList;
+
+            string[] groupStrings = ExerciseGroupSetString.Split(",");
+
+            foreach (var group in groupStrings)
+            {
+                if (int.TryParse(group.Trim(), out int exerciseGroupInt))
+                {
+                    if (IsExerciseGroupIntValid(exerciseGroupInt))
+                    {
+                        exerciseGroupIntList.Add(exerciseGroupInt);
+                    }
+                }
+            }
+
+            return exerciseGroupIntList;
+        }
+
         public void SetExerciseGroupSetString(HashSet<int> exerciseGroupHashSet)
         {
             if (exerciseGroupHashSet is null) return;
