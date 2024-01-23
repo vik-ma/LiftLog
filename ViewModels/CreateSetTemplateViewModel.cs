@@ -41,6 +41,12 @@
         [ObservableProperty]
         private string newSetTemplateSelectedExerciseName;
 
+        [ObservableProperty]
+        private List<string> validWeightUnitList = new(ConstantsHelper.ValidWeightUnits);
+
+        [ObservableProperty]
+        private List<string> validDistanceUnitList = new(ConstantsHelper.ValidDistanceUnits);
+
         [RelayCommand]
         static async Task GoBack()
         {

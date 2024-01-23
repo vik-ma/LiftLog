@@ -79,6 +79,11 @@
                     <HorizontalStackLayout
                         Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
                         IsVisible="{Binding OperatingSetTemplate.IsTrackingWeight}">
+                        <Picker 
+                            WidthRequest="80"
+                            HeightRequest="40"
+                            
+                            ItemsSource="{Binding ValidWeightUnitList}" />
                         <Label 
                             IsVisible="{Binding OperatingSetTemplate.DefaultWeightValue, Converter={StaticResource IsIntNot0Converter}}"
                             VerticalOptions="Center">
