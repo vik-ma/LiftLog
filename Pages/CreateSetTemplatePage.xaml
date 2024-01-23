@@ -82,8 +82,8 @@
                         <Picker 
                             WidthRequest="80"
                             HeightRequest="40"
-                            
-                            ItemsSource="{Binding ValidWeightUnitList}" />
+                            ItemsSource="{Binding ValidWeightUnitList}"
+                            SelectedItem="{Binding DefaultWeightUnit}" />
                         <Label 
                             IsVisible="{Binding OperatingSetTemplate.DefaultWeightValue, Converter={StaticResource IsIntNot0Converter}}"
                             VerticalOptions="Center">

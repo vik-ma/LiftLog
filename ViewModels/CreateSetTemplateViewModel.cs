@@ -22,11 +22,15 @@
         [ObservableProperty]
         private bool isEditing;
 
+        [ObservableProperty]
+        private string defaultWeightUnit;
+
         public CreateSetTemplateViewModel(DatabaseContext context, ExerciseDataManager exerciseData, UserPreferencesViewModel userSettings)
         {
             _context = context;
             _exerciseData = exerciseData;
             userSettingsViewModel = userSettings;
+            defaultWeightUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits ? "kg" : "lbs";
         }
 
         [ObservableProperty]
