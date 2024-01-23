@@ -9,5 +9,6 @@
         public int WorkoutTemplateId { get; set; }
         [ObservableProperty]
         public string date;
+        public bool IsWorkoutTemplateLoaded { get; set; }
     }
 }
