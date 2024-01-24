@@ -86,7 +86,7 @@
                         Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:SetTemplate">
+                    <DataTemplate x:DataType="models:SetTemplateExercisePackage">
                         <HorizontalStackLayout Spacing="10">
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
@@ -96,7 +96,7 @@
                                             FontAttributes="Bold"  
                                             Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
-                                            Text="{Binding ExerciseName}"
+                                            Text="{Binding Exercise.Name}"
                                             Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>

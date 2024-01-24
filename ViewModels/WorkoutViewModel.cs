@@ -34,7 +34,7 @@
         private readonly List<int> SetListIdOrder = new();
 
         [ObservableProperty]
-        private ObservableCollection<SetTemplate> setList = new();
+        private ObservableCollection<SetTemplateExercisePackage> setList = new();
 
         [RelayCommand]
         static async Task GoBack()
@@ -187,7 +187,7 @@
 
             SetList.Clear();
 
-            List<SetTemplate> setTemplateList = new();
+            List<SetTemplateExercisePackage> setTemplateExercisePackageList = new();
 
             Expression<Func<SetTemplate, bool>> predicateSetTemplate = entity => entity.WorkoutTemplateId == OperatingWorkoutTemplate.Id;
 
@@ -197,13 +197,26 @@
 
                 foreach (var item in filteredSetTemplateList)
                 {
-                    setTemplateList.Add(item);
+                    Exercise exercise = await _context.GetItemByKeyAsync<Exercise>(item.ExerciseId);
+
+                    if (exercise is not null) 
+                    {
+                        await Shell.Current.DisplayAlert("Error", "test", "OK");
+                        SetTemplateExercisePackage setTemplateExercisePackage = new()
+                        {
+                            SetTemplate = item,
+                            Exercise = exercise
+                        };
+
+                        setTemplateExercisePackageList.Add(setTemplateExercisePackage);
+                    }
+                    // ELSE DELETE SETTEMPLATE
                 }
 
-                if (setTemplateList.Any())
+                if (setTemplateExercisePackageList.Any())
                 {
                     // Sort the SetList by its SetListIdOrder
-                    SetList = new ObservableCollection<SetTemplate>(setTemplateList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Id)));
+                    SetList = new ObservableCollection<SetTemplateExercisePackage>(setTemplateExercisePackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.SetTemplate.Id)));
                 }
             }
             catch
