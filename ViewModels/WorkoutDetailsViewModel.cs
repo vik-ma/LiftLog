@@ -16,7 +16,7 @@
         }
 
         [ObservableProperty]
-        private ObservableCollection<SetTemplate> setList = new();
+        private ObservableCollection<SetTemplateExercisePackage> setList = new();
 
         [ObservableProperty]
         private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
@@ -75,27 +75,36 @@
 
             SetList.Clear();
 
-            List<SetTemplate> setTemplateList = new();
+            List<SetTemplateExercisePackage> setTemplateExercisePackageList = new();
 
             Expression<Func<SetTemplate, bool>> predicate = entity => entity.WorkoutTemplateId == WorkoutTemplate.Id;
 
             try
             {
-                var filteredList = await _context.GetFilteredAsync<SetTemplate>(predicate);
+                var filteredSetTemplateList = await _context.GetFilteredAsync<SetTemplate>(predicate);
 
-                foreach (var item in filteredList)
+                foreach (var item in filteredSetTemplateList)
                 {
-                    setTemplateList.Add(item);
+                    Exercise exercise = await _context.GetItemByKeyAsync<Exercise>(item.ExerciseId);
+
+                    SetTemplateExercisePackage setTemplateExercisePackage = new()
+                    {
+                        SetTemplate = item,
+                        Exercise = exercise ?? new() { Name = "Invalid Exercise" }
+                    };
+
+                    setTemplateExercisePackageList.Add(setTemplateExercisePackage);
                 }
 
-                if (setTemplateList.Any())
+                if (setTemplateExercisePackageList.Any())
                 {
-                    SetList = new ObservableCollection<SetTemplate>(setTemplateList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Id)));
+                    // Sort the SetList by its SetListIdOrder
+                    SetList = new ObservableCollection<SetTemplateExercisePackage>(setTemplateExercisePackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.SetTemplate.Id)));
                 }
             }
             catch
             {
-                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load workouts.", "OK");
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
                 return;
             }
         }

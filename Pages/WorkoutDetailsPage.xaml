@@ -53,17 +53,17 @@
                         Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:SetTemplate">
+                    <DataTemplate x:DataType="models:SetTemplateExercisePackage">
                         <HorizontalStackLayout Spacing="5">
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
-                                            Text="Id: " 
+                                            Text="Set Template Id: " 
                                             FontAttributes="Bold"  
                                             Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
-                                            Text="{Binding Id}"
+                                            Text="{Binding SetTemplate.Id}"
                                             Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -76,7 +76,7 @@
                                             FontAttributes="Bold"  
                                             Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
-                                            Text="{Binding ExerciseId}"
+                                            Text="{Binding Exercise.Name}"
                                             Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
