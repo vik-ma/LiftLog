@@ -66,14 +66,34 @@
             FilteredExerciseList = new(ExerciseList);
         }
 
-        public void InitializeSetWorkoutTemplatePackage()
+        public async void InitializeSetWorkoutTemplatePackage()
         {
             OperatingSetTemplate = SetWorkoutTemplatePackage.SetTemplate;
             OperatingWorkoutTemplate = SetWorkoutTemplatePackage.WorkoutTemplate;
             IsEditing = SetWorkoutTemplatePackage.IsEditing;
 
-            // TODO: LOAD EXERCISE FROM ID + HANDLE NOT EXIST
-            //if (IsEditing) NewSetTemplateSelectedExerciseName = OperatingSetTemplate.ExerciseName;
+            if (IsEditing)
+            {
+                await LoadExerciseAsync();
+
+                if (SelectedExercise.Id == 0)
+                {
+                    // Reset ExerciseId if Exercise does not exist
+                    OperatingSetTemplate.ExerciseId = 0;
+
+                    await Shell.Current.DisplayAlert("Invalid Exercise", "This Set references an Exercise that no longer exist.\nUpdate the Exercise or Set won't appear in Workout.", "OK");
+                }
+            }
+        }
+
+        private async Task LoadExerciseAsync()
+        {
+            if (OperatingSetTemplate is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                SelectedExercise = await _context.GetItemByKeyAsync<Exercise>(OperatingSetTemplate.ExerciseId) ?? new();
+            });
         }
 
         private void SetDefaultUnitValues()
@@ -220,6 +240,8 @@
         private async Task UpdateSetTemplateAsync()
         {
             if (OperatingSetTemplate is null) return;
+
+            OperatingSetTemplate.ExerciseId = SelectedExercise?.Id ?? 0;
 
             // Validate SetTemplate properties
             var (isSetTemplateValid, errorMessage) = OperatingSetTemplate.ValidateSetTemplate();

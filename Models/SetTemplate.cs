@@ -134,7 +134,7 @@
 
         public (bool IsValid, string? ErrorMessage) ValidateSetTemplate()
         {
-            if (ExerciseId < 1) return (false, "Invalid Exercise Id");
+            if (ExerciseId < 1) return (false, $"Invalid Exercise Id {ExerciseId}");
 
             // Validate that Percent value is between 0 and 100
             if (!ValidatePercentCompletedValue()) return (false, "Invalid Percent Value.");
