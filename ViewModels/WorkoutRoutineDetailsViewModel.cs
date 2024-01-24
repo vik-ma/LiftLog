@@ -98,7 +98,13 @@
                         };
                         workoutTemplatePackages.Add(workoutTemplatePackage);
                     }
-                    // ELSE DELETE WTC
+                    else
+                    {
+                        // Delete WTC if WorkoutTemplate with that Id does not exist
+                        await _context.DeleteItemAsync<WorkoutTemplateCollection>(wtc);
+                            
+                        await Shell.Current.DisplayAlert("Workout Removed", "This Routine's Schedule contained a reference to a Workout Template that no longer exists.\nThis workout has been removed from the Schedule.", "OK");
+                    }
                 }
             }
             catch
