@@ -211,11 +211,14 @@
                 return;
             }
 
-            if (!await _context.UpdateItemAsync<WorkoutRoutine>(WorkoutRoutine))
+            await ExecuteAsync(async () =>
             {
-                await Shell.Current.DisplayAlert("Error", "Error occured when updating WorkoutRoutine.", "OK");
-                return;
-            }
+                if (!await _context.UpdateItemAsync<WorkoutRoutine>(WorkoutRoutine))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating WorkoutRoutine.", "OK");
+                    return;
+                }
+            });
 
             OnPropertyChanged(nameof(WorkoutRoutine));
             IsEditing = false;
