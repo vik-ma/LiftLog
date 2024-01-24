@@ -408,5 +408,25 @@
                     return;
             }
         }
+
+        [RelayCommand]
+        private async Task DeleteSetTemplateAsync()
+        {
+            if (OperatingSetTemplate is null) return;
+
+            bool userClickedDelete = await Shell.Current.DisplayAlert("Delete Set", "Are you sure you want to delete Set?\nThis can not be undone.", "Delete", "Cancel");
+
+            if (!userClickedDelete) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<SetTemplate>(OperatingSetTemplate))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when trying to delete Set Template.", "OK");
+                }
+            });
+
+            await GoBack();
+        }
     }
 }

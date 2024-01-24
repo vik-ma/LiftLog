@@ -436,13 +436,24 @@
                 </ListView>
             </VerticalStackLayout>
         </Grid>
-        
-        <Button 
-            HorizontalOptions="Center"
-            Text="Save Set"
-            Style="{StaticResource AddButtonStyle}"
-            Command="{Binding SaveSetTemplateCommand}"/>
-        
+
+        <HorizontalStackLayout 
+            Spacing="15"
+            HorizontalOptions="Center">
+            <Button 
+                IsVisible="{Binding IsEditing}"
+                HorizontalOptions="Center"
+                Text="Delete Set"
+                Style="{StaticResource DeleteButtonStyle}"
+                Command="{Binding DeleteSetTemplateCommand}"/>
+
+            <Button 
+                HorizontalOptions="Center"
+                Text="Save Set"
+                Style="{StaticResource AddButtonStyle}"
+                Command="{Binding SaveSetTemplateCommand}"/>
+        </HorizontalStackLayout>
+
         <Button 
             Text="Go Back"
             Style="{StaticResource LargeButtonStyle}"
