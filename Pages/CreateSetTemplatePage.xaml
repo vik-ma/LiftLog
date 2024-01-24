@@ -15,7 +15,7 @@
                 Text="Editing Set: "
                 Style="{StaticResource LargeHeaderLabelStyle}" />
             <Label 
-                Text="{Binding OperatingSetTemplate.ExerciseName}"
+                Text="{Binding SelectedExercise.Name}"
                 Style="{StaticResource LargeHeaderLabelStyle}"
                 TextColor="{DynamicResource DeepPink}" />
         </HorizontalStackLayout>
@@ -84,7 +84,7 @@
                             HeightRequest="40"
                             SelectedIndexChanged="OnWeightUnitPickerSelectedIndexChanged"
                             ItemsSource="{Binding ValidWeightUnitList}"
-                            SelectedItem="{Binding DefaultWeightUnit}" />
+                            SelectedItem="{Binding SelectedWeightUnit}" />
                         <Label 
                             IsVisible="{Binding OperatingSetTemplate.DefaultWeightValue, Converter={StaticResource IsIntNot0Converter}}"
                             VerticalOptions="Center">
@@ -285,7 +285,7 @@
                             HeightRequest="40"
                             SelectedIndexChanged="OnDistanceUnitPickerSelectedIndexChanged"
                             ItemsSource="{Binding ValidDistanceUnitList}"
-                            SelectedItem="{Binding DefaultDistanceUnit}" />
+                            SelectedItem="{Binding SelectedDistanceUnit}" />
                         <Label 
                             IsVisible="{Binding OperatingSetTemplate.DefaultDistanceValue, Converter={StaticResource IsIntNot0Converter}}"
                             VerticalOptions="Center">

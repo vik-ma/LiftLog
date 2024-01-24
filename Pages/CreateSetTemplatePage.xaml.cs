@@ -31,7 +31,7 @@ public partial class CreateSetTemplatePage : ContentPage
 
         if (selectedIndex != -1)
         {
-            _viewModel.OperatingSetTemplate.WeightUnit = (string)picker.SelectedItem;
+            _viewModel.SelectedWeightUnit = (string)picker.SelectedItem;
         }
     }
 
@@ -42,7 +42,7 @@ public partial class CreateSetTemplatePage : ContentPage
 
         if (selectedIndex != -1)
         {
-            _viewModel.OperatingSetTemplate.DistanceUnit = (string)picker.SelectedItem;
+            _viewModel.SelectedDistanceUnit = (string)picker.SelectedItem;
         }
     }
 

@@ -97,7 +97,7 @@
                                     BackgroundColor="{Binding SetTemplate.IsWarmupSet, Converter={StaticResource WarmupSetColorConverter}, ConverterParameter=Background}">
                                     <HorizontalStackLayout Spacing="5">
                                         <Label 
-                                            Text="{Binding SetTemplate.ExerciseName}"
+                                            Text="{Binding SetTemplate.ExerciseId}"
                                             FontSize="20"
                                             VerticalOptions="Center"
                                             TextColor="{Binding SetTemplate.IsWarmupSet, Converter={StaticResource WarmupSetColorConverter}}"

@@ -47,9 +47,6 @@
                                 Text="{Binding WorkoutTemplateId}"
                                 VerticalOptions="Center" />
                             <Label 
-                                Text="{Binding ExerciseName}"
-                                VerticalOptions="Center" />
-                            <Label 
                                 Text="Exercise Id:"
                                 VerticalOptions="Center"
                                 FontAttributes="Bold" />

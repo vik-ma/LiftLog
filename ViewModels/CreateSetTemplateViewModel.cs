@@ -23,10 +23,10 @@
         private bool isEditing;
 
         [ObservableProperty]
-        private string defaultWeightUnit;
+        private string selectedWeightUnit;
 
         [ObservableProperty]
-        private string defaultDistanceUnit;
+        private string selectedDistanceUnit;
 
         public CreateSetTemplateViewModel(DatabaseContext context, ExerciseDataManager exerciseData, UserPreferencesViewModel userSettings)
         {
@@ -78,8 +78,8 @@
 
         private void SetDefaultUnitValues()
         {
-            DefaultWeightUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits ? ConstantsHelper.DefaultWeightUnitMetricTrue : ConstantsHelper.DefaultWeightUnitMetricFalse;
-            DefaultDistanceUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits ? ConstantsHelper.DefaultDistanceUnitMetricTrue : ConstantsHelper.DefaultDistanceUnitMetricFalse;
+            SelectedWeightUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits ? ConstantsHelper.DefaultWeightUnitMetricTrue : ConstantsHelper.DefaultWeightUnitMetricFalse;
+            SelectedDistanceUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits ? ConstantsHelper.DefaultDistanceUnitMetricTrue : ConstantsHelper.DefaultDistanceUnitMetricFalse;
         }
 
         #nullable enable
@@ -126,6 +126,8 @@
                     IsTrackingDistance = OperatingSetTemplate.IsTrackingDistance,
                     IsTrackingCardioResistance = OperatingSetTemplate.IsTrackingCardioResistance,
                     IsUsingBodyWeightAsWeight = OperatingSetTemplate.IsUsingBodyWeightAsWeight,
+                    WeightUnit = SelectedWeightUnit,
+                    DistanceUnit = SelectedDistanceUnit,
                 };
 
                 int numSets = NewSetTemplateNumSets;

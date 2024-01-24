@@ -112,7 +112,6 @@
                         // Otherwise create a new CompletedSet object
                         CompletedSet = filteredCompletedSetList?.FirstOrDefault(c => c.SetTemplateId == item.Id) ?? new CompletedSet
                         {
-                            ExerciseName = item.ExerciseName,
                             CompletedWorkoutId = CompletedWorkout.Id
                         }
                     };
