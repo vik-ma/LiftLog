@@ -80,9 +80,26 @@
             Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutRoutineId == WorkoutRoutine.Id;
 
             IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
+            List<WorkoutTemplatePackage> workoutTemplatePackages = new();
             try
             {
                 filteredWtcList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+
+                foreach (var wtc in filteredWtcList)
+                {
+                    WorkoutTemplate workoutTemplate = await _context.GetItemByKeyAsync<WorkoutTemplate>(wtc.WorkoutTemplateId);
+
+                    if (workoutTemplate is not null) 
+                    {
+                        WorkoutTemplatePackage workoutTemplatePackage = new()
+                        {
+                            WorkoutTemplate = workoutTemplate,
+                            WorkoutTemplateCollection = wtc
+                        };
+                        workoutTemplatePackages.Add(workoutTemplatePackage);
+                    }
+                    // ELSE DELETE WTC
+                }
             }
             catch
             {
@@ -90,18 +107,17 @@
                 return;
             }
 
-            Dictionary<int, List<WorkoutTemplateCollection>> wtcByDayDictionary = filteredWtcList
-               .GroupBy(item => item.Day)
+            Dictionary<int, List<WorkoutTemplatePackage>> wtcByDayDictionary = workoutTemplatePackages
+               .GroupBy(item => item.WorkoutTemplateCollection.Day)
                .ToDictionary(group => group.Key, group => group.ToList());
 
             for (int i = 0; i < NumDaysInSchedule; i++)
             {
                 string dayString;
 
-                if (wtcByDayDictionary.TryGetValue(i, out List<WorkoutTemplateCollection> value))
+                if (wtcByDayDictionary.TryGetValue(i, out List<WorkoutTemplatePackage> value))
                 {
-                    // TODO: FIX NAME BEING DISPLAYED INSTEAD
-                    dayString = string.Join(", ", value.Select(item => item.WorkoutTemplateId));
+                    dayString = string.Join(", ", value.Select(item => item.WorkoutTemplate.Name));
                 }
                 else
                 {
