@@ -46,7 +46,7 @@
         private int newSetTemplateNumSets = 1;
 
         [ObservableProperty]
-        private string newSetTemplateSelectedExerciseName;
+        private Exercise selectedExercise;
 
         [ObservableProperty]
         private List<string> validWeightUnitList = new(ConstantsHelper.ValidWeightUnits);
@@ -72,7 +72,8 @@
             OperatingWorkoutTemplate = SetWorkoutTemplatePackage.WorkoutTemplate;
             IsEditing = SetWorkoutTemplatePackage.IsEditing;
 
-            if (IsEditing) NewSetTemplateSelectedExerciseName = OperatingSetTemplate.ExerciseName;
+            // TODO: LOAD EXERCISE FROM ID + HANDLE NOT EXIST
+            //if (IsEditing) NewSetTemplateSelectedExerciseName = OperatingSetTemplate.ExerciseName;
         }
 
         private void SetDefaultUnitValues()
@@ -115,7 +116,7 @@
                 SetTemplate newSetTemplate = new()
                 {
                     WorkoutTemplateId = OperatingWorkoutTemplate.Id,
-                    ExerciseName = NewSetTemplateSelectedExerciseName,
+                    ExerciseId = SelectedExercise.Id,
                     Note = OperatingSetTemplate.Note,
                     IsTrackingWeight = OperatingSetTemplate.IsTrackingWeight,
                     IsTrackingReps = OperatingSetTemplate.IsTrackingReps,
@@ -217,8 +218,6 @@
         private async Task UpdateSetTemplateAsync()
         {
             if (OperatingSetTemplate is null) return;
-
-            OperatingSetTemplate.ExerciseName = NewSetTemplateSelectedExerciseName;
 
             // Validate SetTemplate properties
             var (isSetTemplateValid, errorMessage) = OperatingSetTemplate.ValidateSetTemplate();

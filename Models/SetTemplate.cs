@@ -135,8 +135,6 @@
 
         public (bool IsValid, string? ErrorMessage) ValidateSetTemplate()
         {
-            if (string.IsNullOrEmpty(ExerciseName)) return (false, "No Exercise Selected!");
-
             if (ExerciseId < 1) return (false, "Invalid Exercise Id");
 
             // Validate that Percent value is between 0 and 100

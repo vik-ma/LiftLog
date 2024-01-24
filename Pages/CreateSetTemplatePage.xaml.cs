@@ -21,7 +21,7 @@ public partial class CreateSetTemplatePage : ContentPage
         if (args.SelectedItem != null)
         {
             var selectedExercise = (Exercise)args.SelectedItem;
-            _viewModel.NewSetTemplateSelectedExerciseName = selectedExercise.Name;
+            _viewModel.SelectedExercise = selectedExercise;
         }
     }
 

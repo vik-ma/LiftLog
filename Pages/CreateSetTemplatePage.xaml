@@ -42,7 +42,7 @@
                         Text="Exercise:"
                         Style="{StaticResource MediumHeaderLabelStyle}" />
                     <Label 
-                        Text="{Binding NewSetTemplateSelectedExerciseName}"
+                        Text="{Binding SelectedExercise.Name}"
                         Style="{StaticResource MediumHeaderLabelStyle}"
                         TextColor="{DynamicResource MediumBlue}" />
                 </HorizontalStackLayout>

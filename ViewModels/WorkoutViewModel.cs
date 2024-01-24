@@ -210,7 +210,7 @@
 
                         setTemplateExercisePackageList.Add(setTemplateExercisePackage);
                     }
-                    // ELSE DELETE SETTEMPLATE
+                    // TODO: ELSE DELETE SETTEMPLATE
                 }
 
                 if (setTemplateExercisePackageList.Any())
