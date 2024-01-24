@@ -199,18 +199,13 @@
                 {
                     Exercise exercise = await _context.GetItemByKeyAsync<Exercise>(item.ExerciseId);
 
-                    if (exercise is not null) 
+                    SetTemplateExercisePackage setTemplateExercisePackage = new()
                     {
-                        await Shell.Current.DisplayAlert("Error", "test", "OK");
-                        SetTemplateExercisePackage setTemplateExercisePackage = new()
-                        {
-                            SetTemplate = item,
-                            Exercise = exercise
-                        };
+                        SetTemplate = item,
+                        Exercise = exercise ?? new() { Name = "Invalid Exercise" } 
+                    };
 
-                        setTemplateExercisePackageList.Add(setTemplateExercisePackage);
-                    }
-                    // TODO: ELSE DELETE SETTEMPLATE
+                    setTemplateExercisePackageList.Add(setTemplateExercisePackage);
                 }
 
                 if (setTemplateExercisePackageList.Any())
