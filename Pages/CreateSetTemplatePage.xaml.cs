@@ -16,12 +16,33 @@ public partial class CreateSetTemplatePage : ContentPage
         _viewModel.InitializeSetWorkoutTemplatePackage();
     }
 
-    void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+    private void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
     {
         if (args.SelectedItem != null)
         {
             var selectedExercise = (Exercise)args.SelectedItem;
             _viewModel.SelectedExercise = selectedExercise;
+        }
+    }
+    private void OnWeightUnitPickerSelectedIndexChanged(object sender, EventArgs e)
+    {
+        var picker = (Picker)sender;
+        int selectedIndex = picker.SelectedIndex;
+
+        if (selectedIndex != -1)
+        {
+            _viewModel.OperatingSetTemplate.WeightUnit = (string)picker.SelectedItem;
+        }
+    }
+
+    private void OnDistanceUnitPickerSelectedIndexChanged(object sender, EventArgs e)
+    {
+        var picker = (Picker)sender;
+        int selectedIndex = picker.SelectedIndex;
+
+        if (selectedIndex != -1)
+        {
+            _viewModel.OperatingSetTemplate.DistanceUnit = (string)picker.SelectedItem;
         }
     }
 

@@ -125,7 +125,7 @@
                     IsTrackingTime = OperatingSetTemplate.IsTrackingTime,
                     IsTrackingDistance = OperatingSetTemplate.IsTrackingDistance,
                     IsTrackingCardioResistance = OperatingSetTemplate.IsTrackingCardioResistance,
-                    IsUsingBodyWeightAsWeight = OperatingSetTemplate.IsUsingBodyWeightAsWeight
+                    IsUsingBodyWeightAsWeight = OperatingSetTemplate.IsUsingBodyWeightAsWeight,
                 };
 
                 int numSets = NewSetTemplateNumSets;

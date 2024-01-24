@@ -82,6 +82,7 @@
                         <Picker 
                             WidthRequest="80"
                             HeightRequest="40"
+                            SelectedIndexChanged="OnWeightUnitPickerSelectedIndexChanged"
                             ItemsSource="{Binding ValidWeightUnitList}"
                             SelectedItem="{Binding DefaultWeightUnit}" />
                         <Label 
@@ -282,6 +283,7 @@
                         <Picker 
                             WidthRequest="80"
                             HeightRequest="40"
+                            SelectedIndexChanged="OnDistanceUnitPickerSelectedIndexChanged"
                             ItemsSource="{Binding ValidDistanceUnitList}"
                             SelectedItem="{Binding DefaultDistanceUnit}" />
                         <Label 
