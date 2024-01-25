@@ -155,11 +155,26 @@
                 workoutTemplate = await _context.GetItemByKeyAsync<WorkoutTemplate>(Workout.WorkoutTemplateId);
             });
 
-            if (workoutTemplate is null) return;
+            if (workoutTemplate is null)
+            {
+                // Reset WorkoutTemplateId property if no WorkoutTemplate with that Id was found
+                await Shell.Current.DisplayAlert("Invalid Workout Template", "Workout contained a reference to a Workout Template that no longer exists and has been removed from Workout.", "OK");
+                await ResetWorkoutTemplateId();
+                return;
+            }
 
             OperatingWorkoutTemplate = workoutTemplate;
 
             await LoadSetListFromWorkoutTemplateIdAsync();
+        }
+
+        private async Task ResetWorkoutTemplateId()
+        {
+            if (Workout is null) return;
+
+            Workout.WorkoutTemplateId = 0;
+
+            await UpdateWorkoutAsync();
         }
 
         private void LoadSetListIdOrder()
