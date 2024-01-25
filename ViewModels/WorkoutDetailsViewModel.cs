@@ -344,7 +344,7 @@
         {
             if (WorkoutTemplate is null) return;
 
-            IEnumerable<string> setIdList = SetList.Select(set => set.Id.ToString());
+            IEnumerable<string> setIdList = SetList.Select(set => set.SetTemplate.Id.ToString());
 
             WorkoutTemplate.SetListOrder = string.Join(",", setIdList);
 
@@ -357,7 +357,7 @@
             if (setTemplate is null) return;
 
             // Get SetList index of current Set
-            int setIndex = SetList.IndexOf(setTemplate);
+            int setIndex = new List<SetTemplateExercisePackage>(SetList).FindIndex(item => item.SetTemplate.Equals(setTemplate));
 
             // Do nothing if item is already first in list
             if (setIndex < 1) return;
@@ -374,7 +374,7 @@
             if (setTemplate is null) return;
 
             // Get SetList index of current Set
-            int setIndex = SetList.IndexOf(setTemplate);
+            int setIndex = new List<SetTemplateExercisePackage>(SetList).FindIndex(item => item.SetTemplate.Equals(setTemplate));
 
             // Do nothing if item is already last in list
             if (setIndex > SetList.Count - 2) return;
