@@ -278,6 +278,19 @@
             }
         }
 
+        private async Task CreateSetAsync(Set set)
+        {
+            if (set is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.AddItemAsync<Set>(set))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when trying to save Set.", "OK");
+                }
+            });
+        }
+
         public async Task UpdateOperatingWorkoutTemplate(int workoutTemplateId)
         {
             if (workoutTemplateId < 1) return;
