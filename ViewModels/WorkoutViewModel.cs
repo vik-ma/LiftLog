@@ -147,7 +147,23 @@
             await UpdateWorkoutAsync();
         }
 
-        public async Task LoadWorkoutTemplateAsync()
+        public async Task LoadSetList()
+        {
+            if (Workout is null) return;
+
+            if (Workout.IsWorkoutLoaded)
+            {
+                // Load existing Sets for Workout to SetList
+
+            }
+            else
+            {
+                // Create new Sets from WorkoutTemplate and add to SetList
+                await LoadOperatingWorkoutTemplateAsync();
+            }
+        }
+
+        private async Task LoadOperatingWorkoutTemplateAsync()
         {
             if (Workout is null) return;
 
@@ -270,7 +286,7 @@
 
             await UpdateWorkoutAsync();
 
-            await LoadWorkoutTemplateAsync();
+            await LoadOperatingWorkoutTemplateAsync();
         }
 
         [RelayCommand]

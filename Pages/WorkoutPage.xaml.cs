@@ -13,7 +13,7 @@ public partial class WorkoutPage : ContentPage
     {
         base.OnAppearing();
         _viewModel.LoadSelectedDateTime();
-        await _viewModel.LoadWorkoutTemplateAsync();
+        await _viewModel.LoadSetList();
     }
 
     private async void OnDateSelected(object sender, DateChangedEventArgs e)
