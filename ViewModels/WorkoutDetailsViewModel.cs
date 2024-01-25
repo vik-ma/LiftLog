@@ -255,9 +255,10 @@
                     var itemCopy = item.Clone();
                     itemCopy.WorkoutTemplateId = WorkoutTemplate.Id;
                     await _context.AddItemAsync<SetTemplate>(itemCopy);
-                    SetList.Add(itemCopy);
                 }
             });
+
+            await LoadSetListFromWorkoutTemplateIdAsync();
 
             await GenerateSetListOrderString();
 
