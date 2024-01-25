@@ -83,18 +83,11 @@
                                 </Label.FormattedText>
                             </Label>
                             <Button 
-                                ImageSource="small_arrow_up.png"
-                                Padding="9"
-                                WidthRequest="1"
-                                ContentLayout="Top, 0"
-                                IsEnabled="True"
+                                Style="{StaticResource ArrowUpButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=MoveSetUpCommand}" 
                                 CommandParameter="{Binding SetTemplate}" />
                             <Button 
-                                ImageSource="small_arrow_down.png"
-                                Padding="9"
-                                WidthRequest="1"
-                                ContentLayout="Top, -5"
+                                Style="{StaticResource ArrowDownButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=MoveSetDownCommand}" 
                                 CommandParameter="{Binding SetTemplate}" />
                             <Button 

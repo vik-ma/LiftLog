@@ -244,6 +244,19 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="TextColor" Value="{DynamicResource MediumBlue}" />
             </Style>
+            <Style x:Key="ArrowUpButtonStyle" TargetType="Button">
+                <Setter Property="ImageSource" Value="small_arrow_up.png" />
+                <Setter Property="Padding" Value="9" />
+                <Setter Property="WidthRequest" Value="1" />
+                <Setter Property="ContentLayout" Value="Top, 0" />
+            </Style>
+            <Style x:Key="ArrowDownButtonStyle" TargetType="Button">
+                <Setter Property="ImageSource" Value="small_arrow_down.png" />
+                <Setter Property="Padding" Value="9" />
+                <Setter Property="WidthRequest" Value="1" />
+                <Setter Property="ContentLayout" Value="Top, -5" />
+            </Style>
+
             <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyTextConverter" />
             <converters:MultiBindingConverter x:Key="MultiBindingConverter" />
             <converters:DayConverter x:Key="DayConverter" />
