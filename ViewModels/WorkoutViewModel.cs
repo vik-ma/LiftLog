@@ -36,6 +36,9 @@
         [ObservableProperty]
         private ObservableCollection<SetTemplateExercisePackage> setList = new();
 
+        [ObservableProperty]
+        private bool workoutTemplateContainsInvalidExercise = false;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -211,6 +214,8 @@
 
             SetList.Clear();
 
+            WorkoutTemplateContainsInvalidExercise = false;
+
             List<SetTemplateExercisePackage> setTemplateExercisePackageList = new();
 
             Expression<Func<SetTemplate, bool>> predicateSetTemplate = entity => entity.WorkoutTemplateId == OperatingWorkoutTemplate.Id;
@@ -223,10 +228,17 @@
                 {
                     Exercise exercise = await _context.GetItemByKeyAsync<Exercise>(item.ExerciseId);
 
+                    // Don't add Set if Exercise Id does not exist 
+                    if (exercise is null)
+                    {
+                        WorkoutTemplateContainsInvalidExercise = true;
+                        continue;
+                    }
+
                     SetTemplateExercisePackage setTemplateExercisePackage = new()
                     {
                         SetTemplate = item,
-                        Exercise = exercise ?? new() { Name = "Invalid Exercise" } 
+                        Exercise = exercise 
                     };
 
                     setTemplateExercisePackageList.Add(setTemplateExercisePackage);
@@ -236,6 +248,11 @@
                 {
                     // Sort the SetList by its SetListIdOrder
                     SetList = new ObservableCollection<SetTemplateExercisePackage>(setTemplateExercisePackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.SetTemplate.Id)));
+                }
+
+                if (WorkoutTemplateContainsInvalidExercise)
+                {
+                    await Shell.Current.DisplayAlert("Invalid Exercise", "Workout Template contains a Set with an Exercise that no longer exists and was not added to Workout.", "OK");
                 }
             }
             catch
