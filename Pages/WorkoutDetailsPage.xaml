@@ -34,9 +34,18 @@
                     WidthRequest="150" />
             </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
+            <VerticalStackLayout>
                 <Label Text="{Binding WorkoutTemplate.SetListOrder}" />
-            </HorizontalStackLayout>
+                <Label 
+                    IsVisible="{Binding WorkoutTemplateContainsInvalidExercise}"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource MediumRed}">
+                    <Label.Text>
+Workout Template contains a Set with an Exercise that no longer exists!
+This Set will not show up in new Workouts unless it is changed to a valid Exercise.
+                    </Label.Text>
+                </Label>
+            </VerticalStackLayout>
 
             <Button 
                 Text="Remove All Sets"

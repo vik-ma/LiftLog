@@ -24,6 +24,9 @@
         [ObservableProperty]
         private bool showWorkoutTemplateList = false;
 
+        [ObservableProperty]
+        private bool workoutTemplateContainsInvalidExercise = false;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -75,6 +78,8 @@
 
             SetList.Clear();
 
+            WorkoutTemplateContainsInvalidExercise = false;
+
             List<SetTemplateExercisePackage> setTemplateExercisePackageList = new();
 
             Expression<Func<SetTemplate, bool>> predicate = entity => entity.WorkoutTemplateId == WorkoutTemplate.Id;
@@ -86,6 +91,8 @@
                 foreach (var item in filteredSetTemplateList)
                 {
                     Exercise exercise = await _context.GetItemByKeyAsync<Exercise>(item.ExerciseId);
+
+                    if (exercise is null) WorkoutTemplateContainsInvalidExercise = true;
 
                     SetTemplateExercisePackage setTemplateExercisePackage = new()
                     {
