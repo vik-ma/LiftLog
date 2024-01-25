@@ -74,6 +74,10 @@
                 Text="Set Workout Template"
                 Command="{Binding ShowWorkoutTemplateListPopupCommand}"
                 Style="{StaticResource ExtraSmallButtonStyle}" />
+            <Button 
+                Text="Remove Workout Template"
+                Command="{Binding ResetWorkoutTemplateIdCommand}"
+                Style="{StaticResource ExtraSmallRedButtonStyle}" />
         </HorizontalStackLayout>
 
         <VerticalStackLayout>
