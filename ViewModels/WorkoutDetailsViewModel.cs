@@ -358,7 +358,7 @@
             if (setTemplate is null) return;
 
             // Get SetList index of current Set
-            int setIndex = new List<SetTemplateExercisePackage>(SetList).FindIndex(item => item.SetTemplate.Equals(setTemplate));
+            int setIndex = SetList.ToList().FindIndex(item => item.SetTemplate.Equals(setTemplate));
 
             // Do nothing if item is already first in list
             if (setIndex < 1) return;
@@ -375,7 +375,7 @@
             if (setTemplate is null) return;
 
             // Get SetList index of current Set
-            int setIndex = new List<SetTemplateExercisePackage>(SetList).FindIndex(item => item.SetTemplate.Equals(setTemplate));
+            int setIndex = SetList.ToList().FindIndex(item => item.SetTemplate.Equals(setTemplate));
 
             // Do nothing if item is already last in list
             if (setIndex > SetList.Count - 2) return;
