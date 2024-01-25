@@ -88,24 +88,24 @@
                                 ContentLayout="Top, 0"
                                 IsEnabled="True"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=MoveSetUpCommand}" 
-                                CommandParameter="{Binding Id}" />
+                                CommandParameter="{Binding SetTemplate}" />
                             <Button 
                                 ImageSource="small_arrow_down.png"
                                 Padding="9"
                                 WidthRequest="1"
                                 ContentLayout="Top, -5"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=MoveSetDownCommand}" 
-                                CommandParameter="{Binding Id}" />
+                                CommandParameter="{Binding SetTemplate}" />
                             <Button 
                                 Text="Edit"
                                 Style="{StaticResource GenericButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=EditSetTemplateCommand}" 
-                                CommandParameter="{Binding Id}" />
+                                CommandParameter="{Binding SetTemplate}" />
                             <Button 
                                 Text="Remove"
                                 Style="{StaticResource DeleteButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=DeleteSetTemplateCommand}" 
-                                CommandParameter="{Binding Id}" />
+                                CommandParameter="{Binding SetTemplate}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

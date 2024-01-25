@@ -281,10 +281,8 @@
         }
 
         [RelayCommand]
-        private async Task DeleteSetTemplateAsync(int id)
+        private async Task DeleteSetTemplateAsync(SetTemplate setTemplate)
         {
-            SetTemplate setTemplate = SetList.FirstOrDefault(p => p.Id == id);
-
             if (setTemplate is null) return;
 
             await ExecuteAsync(async () =>
@@ -328,18 +326,14 @@
         }
 
         [RelayCommand]
-        private async Task EditSetTemplateAsync(int id)
+        private async Task EditSetTemplateAsync(SetTemplate setTemplate)
         {
-            if (WorkoutTemplate is null) return;
-
-            SetTemplate selectedSetTemplate = SetList.FirstOrDefault(p => p.Id == id);
-
-            if (selectedSetTemplate is null) return;
+            if (setTemplate is null) return;
 
             SetWorkoutTemplatePackage package = new()
             {
                 WorkoutTemplate = WorkoutTemplate,
-                SetTemplate = selectedSetTemplate,
+                SetTemplate = setTemplate,
                 IsEditing = true
             };
 
@@ -358,10 +352,8 @@
         }
 
         [RelayCommand]
-        private async Task MoveSetUp(int id)
+        private async Task MoveSetUp(SetTemplate setTemplate)
         {
-            SetTemplate setTemplate = SetList.Where(p => p.Id == id).FirstOrDefault();
-
             if (setTemplate is null) return;
 
             // Get SetList index of current Set
@@ -377,10 +369,8 @@
         }
 
         [RelayCommand]
-        private async Task MoveSetDown(int id)
+        private async Task MoveSetDown(SetTemplate setTemplate)
         {
-            SetTemplate setTemplate = SetList.Where(p => p.Id == id).FirstOrDefault();
-
             if (setTemplate is null) return;
 
             // Get SetList index of current Set
@@ -406,9 +396,9 @@
 
             try 
             {
-                foreach (var setTemplate in SetList)
+                foreach (var setPackage in SetList)
                 {
-                    await _context.DeleteItemAsync<SetTemplate>(setTemplate);
+                    await _context.DeleteItemAsync<SetTemplate>(setPackage.SetTemplate);
                 }
             }
             catch
