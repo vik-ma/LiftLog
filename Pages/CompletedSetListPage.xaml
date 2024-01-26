@@ -10,13 +10,13 @@
     <VerticalStackLayout HorizontalOptions="Center">
         <VerticalStackLayout>
             <Label 
-                Text="Completed Sets"
+                Text="Sets"
                 HorizontalOptions="Center"
                 FontSize="30"
                 FontAttributes="Bold"
                 Margin="10" />
             <CollectionView
-                ItemsSource="{Binding CompletedSetList}"
+                ItemsSource="{Binding SetList}"
                 HorizontalOptions="Center">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout 
@@ -24,7 +24,7 @@
                         Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:CompletedSet">
+                    <DataTemplate x:DataType="models:Set">
                         <VerticalStackLayout Spacing="5">
                             <HorizontalStackLayout 
                                 HorizontalOptions="Center"
@@ -50,14 +50,11 @@
                                                 FontAttributes="Bold"  
                                                 Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
-                                                Text="{Binding CompletedWorkoutId}"
+                                                Text="{Binding WorkoutId}"
                                                 Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Entry 
-                                    Text="{Binding CompletedWorkoutId}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
                                 <Label VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -71,47 +68,15 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Entry 
-                                    Text="{Binding SetTemplateId}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
                                 <Label VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span 
-                                                Text="Exercise Name: " 
+                                                Text="Exercise Id: " 
                                                 FontAttributes="Bold"  
                                                 Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
-                                                Text="{Binding ExerciseName}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Note: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Note}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Entry 
-                                    Text="{Binding Note}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Is Warm-up: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding IsWarmupSet}"
+                                                Text="{Binding ExerciseId}"
                                                 Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -149,49 +114,18 @@
                                 <Button 
                                     Text="Set Complete"
                                     Style="{StaticResource GenericButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=MarkCompletedSetAsCompleteCommand}"
-                                    CommandParameter="{Binding Id}" />
-                            </HorizontalStackLayout>
-                            <HorizontalStackLayout 
-                                HorizontalOptions="Center"
-                                Spacing="5">
-                                <Entry 
-                                    Text="{Binding Weight}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding Reps}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding Rir}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding Rpe}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding Time}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding Distance}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding CardioResistance}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding PercentCompleted}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
-                                <Entry 
-                                    Text="{Binding IsUsingBodyWeightAsWeight}"
-                                    Style="{StaticResource ExtraSmallEntryFieldStyle}" />
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=MarkSetAsCompleteCommand}"
+                                    CommandParameter="{Binding .}" />
                                 <Button 
                                     Text="Update"
                                     Style="{StaticResource AddButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=UpdateCompletedSetCommand}"
-                                    CommandParameter="{Binding Id}" />
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=UpdateSetCommand}"
+                                    CommandParameter="{Binding .}" />
                                 <Button 
                                     Text="Delete"
                                     Style="{StaticResource DeleteButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=DeleteCompletedSetCommand}"
-                                    CommandParameter="{Binding Id}" />
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=DeleteSetCommand}"
+                                    CommandParameter="{Binding .}" />
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
                     </DataTemplate>
@@ -202,7 +136,7 @@
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center">
                             <Label 
-                                Text="No Completed Sets In List!" 
+                                Text="No Sets In List!" 
                                 FontSize="18" 
                                 FontAttributes="Bold" 
                                 HorizontalTextAlignment="Center" />
@@ -211,11 +145,11 @@
                 </CollectionView.EmptyView>
             </CollectionView>
             <Button 
-                Text="New Completed Set"
+                Text="New Set"
                 Style="{StaticResource AddButtonStyle}"
                 WidthRequest="300"
                 Margin="5"
-                Command="{Binding CreateCompletedSetCommand}" />
+                Command="{Binding CreateSetCommand}" />
         </VerticalStackLayout>
 
         <VerticalStackLayout>

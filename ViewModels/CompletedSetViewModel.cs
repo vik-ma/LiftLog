@@ -9,23 +9,23 @@
         }
 
         [ObservableProperty]
-        private ObservableCollection<CompletedSet> completedSetList = new();
+        private ObservableCollection<Set> setList = new();
 
-        public async Task LoadCompletedSetsAsync()
+        public async Task LoadSetsAsync()
         {
             await ExecuteAsync(async () =>
             {
-                CompletedSetList.Clear();
+                SetList.Clear();
 
-                var completedSets = await _context.GetAllAsync<CompletedSet>();
+                var sets = await _context.GetAllAsync<Set>();
 
-                if (completedSets is not null && completedSets.Any())
+                if (sets is not null && sets.Any())
                 {
-                    completedSets ??= new ObservableCollection<CompletedSet>();
+                    sets ??= new ObservableCollection<Set>();
 
-                    foreach (var set in completedSets)
+                    foreach (var set in sets)
                     {
-                        CompletedSetList.Add(set);
+                        SetList.Add(set);
                     }
                 }
             });
@@ -50,75 +50,66 @@
         }
 
         [RelayCommand]
-        private async Task CreateCompletedSetAsync()
+        private async Task CreateSetAsync()
         {
             await ExecuteAsync(async () =>
             {
-                CompletedSet set = new();
-                await _context.AddItemAsync<CompletedSet>(set);
-                CompletedSetList.Add(set);
+                Set set = new();
+                await _context.AddItemAsync<Set>(set);
+                SetList.Add(set);
             });
         }
 
         [RelayCommand]
-        private async Task UpdateCompletedSetAsync(int id)
+        private async Task UpdateSetAsync(Set set)
         {
-            CompletedSet completedSet = CompletedSetList.FirstOrDefault(p => p.Id == id);
-
-            if (completedSet is null)
-                return;
+            if (set is null) return;
 
             await ExecuteAsync(async () =>
             {
-                if (!await _context.UpdateItemAsync<CompletedSet>(completedSet))
+                if (!await _context.UpdateItemAsync<Set>(set))
                 {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Completed Set.", "OK");
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Set.", "OK");
                 }
 
-                await LoadCompletedSetsAsync();
+                await LoadSetsAsync();
             });
         }
 
         [RelayCommand]
-        private async Task DeleteCompletedSetAsync(int id)
+        private async Task DeleteSetAsync(Set set)
         {
-            CompletedSet completedSet = CompletedSetList.FirstOrDefault(p => p.Id == id);
-
-            if (completedSet is null)
-                return;
+            if (set is null) return;
 
             await ExecuteAsync(async () =>
             {
-                if (!await _context.DeleteItemAsync<CompletedSet>(completedSet))
+                if (!await _context.DeleteItemAsync<Set>(set))
                 {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Completed Set.", "OK");
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set.", "OK");
                 }
             });
 
-            await LoadCompletedSetsAsync();
+            await LoadSetsAsync();
         }
 
         [RelayCommand]
-        private async Task MarkCompletedSetAsComplete(int id)
+        private async Task MarkSetAsComplete(Set set)
         {
-            CompletedSet completedSet = CompletedSetList.FirstOrDefault(p => p.Id == id);
-
-            if (completedSet is null)
-                return;
+            if (set is null) return;
 
             string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
 
-            completedSet.IsCompleted = true;
-            completedSet.TimeCompleted = currentDateTimeString;
+            set.IsCompleted = true;
+            set.TimeCompleted = currentDateTimeString;
 
             await ExecuteAsync(async () =>
             {
-                if (!await _context.UpdateItemAsync<CompletedSet>(completedSet))
+                if (!await _context.UpdateItemAsync<Set>(set))
                 {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Completed Set.", "OK");
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Set.", "OK");
                 }
 
-                await LoadCompletedSetsAsync();
+                await LoadSetsAsync();
             });
         }
 

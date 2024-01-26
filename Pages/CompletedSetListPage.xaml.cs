@@ -12,6 +12,6 @@ partial class CompletedSetListPage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-        await _viewModel.LoadCompletedSetsAsync();
+        await _viewModel.LoadSetsAsync();
     }
 }
