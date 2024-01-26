@@ -84,5 +84,30 @@
 
             await Shell.Current.GoToAsync($"{nameof(WorkoutPage)}?Id={workout.Id}", navigationParameter);
         }
+
+        private async Task UpdateWorkoutAsync(Workout workout)
+        {
+            if (workout is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<Workout>(workout))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating Workout.", "OK");
+                }
+            });
+        }
+
+        [RelayCommand]
+        private async Task ToggleIsWorkoutLoaded(Workout workout)
+        {
+            if (workout is null) return;
+
+            workout.IsWorkoutLoaded = !workout.IsWorkoutLoaded;
+
+            await UpdateWorkoutAsync(workout);
+
+            await LoadWorkoutsAsync();
+        }
     }
 }

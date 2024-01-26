@@ -76,6 +76,24 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Is Loaded: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding IsWorkoutLoaded}"
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Button 
+                                Text="Toggle IsLoaded"
+                                Style="{StaticResource ExtraSmallButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutListViewModel}}, Path=ToggleIsWorkoutLoadedCommand}"
+                                CommandParameter="{Binding .}" />
                             <Button 
                                 Text="Go To Workout"
                                 Style="{StaticResource ExtraSmallButtonStyle}"
