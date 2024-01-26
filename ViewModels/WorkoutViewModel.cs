@@ -445,5 +445,28 @@
 
             await GenerateSetListOrderString();
         }
+
+        private async Task UpdateSetAsync(Set set)
+        {
+            if (set is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<Set>(set))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when trying to update Set.", "OK");
+                }
+            });
+        }
+
+        [RelayCommand]
+        private async Task ToggleSetCompleted(Set set)
+        {
+            if (set is null) return;
+
+            set.IsCompleted = !set.IsCompleted;
+
+            await UpdateSetAsync(set);
+        }
     }
 }
