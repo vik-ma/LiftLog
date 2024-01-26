@@ -154,7 +154,7 @@
             if (Workout.IsWorkoutLoaded)
             {
                 // Load existing Sets for Workout to SetList
-
+                await Shell.Current.DisplayAlert("Workout Loaded", "Workout is already loaded.", "OK");
             }
             else
             {
@@ -240,9 +240,9 @@
             {
                 var filteredSetTemplateList = await _context.GetFilteredAsync<SetTemplate>(predicateSetTemplate);
 
-                foreach (var item in filteredSetTemplateList)
+                foreach (var setTemplate in filteredSetTemplateList)
                 {
-                    Exercise exercise = await _context.GetItemByKeyAsync<Exercise>(item.ExerciseId);
+                    Exercise exercise = await _context.GetItemByKeyAsync<Exercise>(setTemplate.ExerciseId);
 
                     // Don't add Set if Exercise Id does not exist 
                     if (exercise is null)
@@ -251,14 +251,28 @@
                         continue;
                     }
 
+                    Set newSet = new()
+                    {
+                        WorkoutId = Workout.Id,
+                        ExerciseId = exercise.Id,
+                        SetTemplateId = setTemplate.Id,
+                    };
+
+                    await CreateSetAsync(newSet);
+
                     SetTemplateExercisePackage setTemplateExercisePackage = new()
                     {
-                        SetTemplate = item,
-                        Exercise = exercise 
+                        SetTemplate = setTemplate,
+                        Exercise = exercise,
+                        Set = newSet,
                     };
 
                     setTemplateExercisePackageList.Add(setTemplateExercisePackage);
                 }
+
+                // Set Workout as loaded, as to not create new Sets next time Workout is opened
+                Workout.IsWorkoutLoaded = true;
+                await UpdateWorkoutAsync();
 
                 if (setTemplateExercisePackageList.Any())
                 {
