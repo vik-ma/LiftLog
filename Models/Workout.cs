@@ -10,5 +10,7 @@
         [ObservableProperty]
         public string date;
         public bool IsWorkoutLoaded { get; set; }
+        [ObservableProperty]
+        public string setListIdOrder;
     }
 }
