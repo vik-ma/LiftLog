@@ -170,6 +170,8 @@
         {
             if (Workout is null) return;
 
+            LoadSetListIdOrder(Workout.SetListIdOrder);
+
             SetList.Clear();
 
             SavedSetsContainsDeletedExercise = false;
@@ -255,13 +257,13 @@
             await UpdateWorkoutAsync();
         }
 
-        private void LoadSetListIdOrder()
+        private void LoadSetListIdOrder(string setListIdOrder)
         {
             if (OperatingWorkoutTemplate is null) return;
 
-            if (string.IsNullOrEmpty(OperatingWorkoutTemplate.SetListOrder)) return;
+            if (string.IsNullOrEmpty(setListIdOrder)) return;
 
-            string[] setList = OperatingWorkoutTemplate.SetListOrder.Split(',');
+            string[] setList = setListIdOrder.Split(',');
 
             foreach (string s in setList)
             {
@@ -276,7 +278,7 @@
         {
             if (OperatingWorkoutTemplate is null) return;
 
-            LoadSetListIdOrder();
+            LoadSetListIdOrder(OperatingWorkoutTemplate.SetListOrder);
 
             SetList.Clear();
 
