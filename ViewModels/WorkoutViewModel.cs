@@ -204,8 +204,8 @@
 
                 if (setTemplateExercisePackageList.Any())
                 {
-                    // Sort the SetList by its SetListIdOrder
-                    SetList = new ObservableCollection<SetTemplateExercisePackage>(setTemplateExercisePackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.SetTemplate.Id)));
+                    // Sort the SetList by Workouts SetListIdOrder
+                    SetList = new ObservableCollection<SetTemplateExercisePackage>(setTemplateExercisePackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Set.Id)));
                 }
             }
             catch
@@ -252,6 +252,7 @@
             {
                 // TODO: ADD PROMPT TO ALSO REMOVE INCOMPLETE SETS FROM SETLIST 
                 SetList = new();
+                Workout.SetListIdOrder = null;
             }
 
             await UpdateWorkoutAsync();
@@ -259,8 +260,6 @@
 
         private void LoadSetListIdOrder(string setListIdOrder)
         {
-            if (OperatingWorkoutTemplate is null) return;
-
             if (string.IsNullOrEmpty(setListIdOrder)) return;
 
             string[] setList = setListIdOrder.Split(',');
@@ -400,6 +399,51 @@
             };
 
             await Shell.Current.GoToAsync($"{nameof(WorkoutDetailsPage)}?Id={workoutTemplate.Id}", navigationParameter);
+        }
+
+        public async Task GenerateSetListOrderString()
+        {
+            if (Workout is null) return;
+
+            IEnumerable<string> setIdList = SetList.Select(set => set.Set.Id.ToString());
+
+            Workout.SetListIdOrder = string.Join(",", setIdList);
+
+            await UpdateWorkoutAsync();
+        }
+
+        [RelayCommand]
+        private async Task MoveSetUp(Set set)
+        {
+            if (set is null) return;
+
+            // Get SetList index of current Set
+            int setIndex = SetList.ToList().FindIndex(item => item.Set.Equals(set));
+
+            // Do nothing if item is already first in list
+            if (setIndex < 1) return;
+
+            // Swap current Set with Set at the index before
+            (SetList[setIndex - 1], SetList[setIndex]) = (SetList[setIndex], SetList[setIndex - 1]);
+
+            await GenerateSetListOrderString();
+        }
+
+        [RelayCommand]
+        private async Task MoveSetDown(Set set)
+        {
+            if (set is null) return;
+
+            // Get SetList index of current Set
+            int setIndex = SetList.ToList().FindIndex(item => item.Set.Equals(set));
+
+            // Do nothing if item is already last in list
+            if (setIndex > SetList.Count - 2) return;
+
+            // Swap current Set with Set at the index after
+            (SetList[setIndex + 1], SetList[setIndex]) = (SetList[setIndex], SetList[setIndex + 1]);
+
+            await GenerateSetListOrderString();
         }
     }
 }

@@ -102,6 +102,19 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
+                                            Text="Set Id: " 
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding Set.Id}"
+                                            Style="{StaticResource SmallSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
                                             Text="Exercise: " 
                                             FontAttributes="Bold"  
                                             Style="{StaticResource SmallSpanStyle}" />
@@ -111,6 +124,14 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            <Button 
+                                Style="{StaticResource ArrowUpButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=MoveSetUpCommand}" 
+                                CommandParameter="{Binding Set}" />
+                            <Button 
+                                Style="{StaticResource ArrowDownButtonStyle}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=MoveSetDownCommand}" 
+                                CommandParameter="{Binding Set}" />
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
