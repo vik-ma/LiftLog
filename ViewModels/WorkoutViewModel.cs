@@ -39,6 +39,9 @@
         [ObservableProperty]
         private bool workoutTemplateContainsInvalidExercise = false;
 
+        [ObservableProperty]
+        private bool savedSetsContainsDeletedExercise = false;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -169,7 +172,7 @@
 
             SetList.Clear();
 
-            WorkoutTemplateContainsInvalidExercise = false;
+            SavedSetsContainsDeletedExercise = false;
 
             List<SetTemplateExercisePackage> setTemplateExercisePackageList = new();
 
@@ -183,12 +186,14 @@
                 {
                     Exercise exercise = await _context.GetItemByKeyAsync<Exercise>(set.ExerciseId);
 
+                    if (exercise is null) SavedSetsContainsDeletedExercise = true;
+
                     SetTemplate setTemplate = await _context.GetItemByKeyAsync<SetTemplate>(set.SetTemplateId);
 
                     SetTemplateExercisePackage setTemplateExercisePackage = new()
                     {
                         SetTemplate = setTemplate ?? new(),
-                        Exercise = exercise ?? new() { Name = "Invalid Exercise" },
+                        Exercise = exercise ?? new() { Name = "Deleted Exercise" },
                         Set = set,
                     };
 
@@ -199,11 +204,6 @@
                 {
                     // Sort the SetList by its SetListIdOrder
                     SetList = new ObservableCollection<SetTemplateExercisePackage>(setTemplateExercisePackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.SetTemplate.Id)));
-                }
-
-                if (WorkoutTemplateContainsInvalidExercise)
-                {
-                    await Shell.Current.DisplayAlert("Invalid Exercise", "Workout Template contains a Set with an Exercise that no longer exists and was not added to Workout.", "OK");
                 }
             }
             catch

@@ -80,6 +80,12 @@
                 Style="{StaticResource ExtraSmallRedButtonStyle}" />
         </HorizontalStackLayout>
 
+        <Label 
+            IsVisible="{Binding SavedSetsContainsDeletedExercise}"
+            Text="One or more saved Sets in Workout contains a reference to an Exercise that no longer exists."
+            FontAttributes="Bold"
+            TextColor="{DynamicResource MediumRed}" />
+
         <VerticalStackLayout>
             <CollectionView
                 ItemsSource="{Binding SetList}"
