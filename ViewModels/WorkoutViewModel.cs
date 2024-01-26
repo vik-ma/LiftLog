@@ -154,12 +154,62 @@
             if (Workout.IsWorkoutLoaded)
             {
                 // Load existing Sets for Workout to SetList
-                await Shell.Current.DisplayAlert("Workout Loaded", "Workout is already loaded.", "OK");
+                await LoadSavedSetsAsync();
             }
             else
             {
                 // Create new Sets from WorkoutTemplate and add to SetList
                 await LoadOperatingWorkoutTemplateAsync();
+            }
+        }
+
+        private async Task LoadSavedSetsAsync()
+        {
+            if (Workout is null) return;
+
+            SetList.Clear();
+
+            WorkoutTemplateContainsInvalidExercise = false;
+
+            List<SetTemplateExercisePackage> setTemplateExercisePackageList = new();
+
+            Expression<Func<Set, bool>> predicateSet = entity => entity.WorkoutId == Workout.Id;
+
+            try
+            {
+                var filteredSetList = await _context.GetFilteredAsync<Set>(predicateSet);
+
+                foreach (var set in filteredSetList)
+                {
+                    Exercise exercise = await _context.GetItemByKeyAsync<Exercise>(set.ExerciseId);
+
+                    SetTemplate setTemplate = await _context.GetItemByKeyAsync<SetTemplate>(set.SetTemplateId);
+
+                    SetTemplateExercisePackage setTemplateExercisePackage = new()
+                    {
+                        SetTemplate = setTemplate ?? new(),
+                        Exercise = exercise ?? new() { Name = "Invalid Exercise" },
+                        Set = set,
+                    };
+
+                    setTemplateExercisePackageList.Add(setTemplateExercisePackage);
+                }
+
+                if (setTemplateExercisePackageList.Any())
+                {
+                    // Sort the SetList by its SetListIdOrder
+                    SetList = new ObservableCollection<SetTemplateExercisePackage>(setTemplateExercisePackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.SetTemplate.Id)));
+                }
+
+                if (WorkoutTemplateContainsInvalidExercise)
+                {
+                    await Shell.Current.DisplayAlert("Invalid Exercise", "Workout Template contains a Set with an Exercise that no longer exists and was not added to Workout.", "OK");
+                }
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
+                return;
             }
         }
 
