@@ -141,6 +141,7 @@
                                             Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
                                             Text="{Binding Set.IsCompleted}"
+                                            TextColor="{Binding Set.IsCompleted, Converter={StaticResource IsSetCompletedColorConverter}}"
                                             Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>

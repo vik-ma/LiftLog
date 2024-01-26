@@ -271,6 +271,8 @@
             <converters:WarmupSetColorConverter x:Key="WarmupSetColorConverter" />
             <converters:BoolToShowOrHideTextConverter x:Key="BoolToShowOrHideTextConverter" />
             <converters:InvalidExerciseColorConverter x:Key="InvalidExerciseColorConverter" />
+            <converters:IsSetCompletedColorConverter x:Key="IsSetCompletedColorConverter" />
+            
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             <toolkit:IndexToArrayItemConverter x:Key="IndexToArrayItemConverter" />
             <toolkit:IsListNullOrEmptyConverter x:Key="IsListNullOrEmptyConverter" />
