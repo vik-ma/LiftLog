@@ -419,5 +419,18 @@
 
             IsShowingDatePicker = false;
         }
+
+        [RelayCommand]
+        private async Task GoToSchedulePage()
+        {
+            if (WorkoutRoutine is null) return;
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["WorkoutRoutine"] = WorkoutRoutine
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(SchedulePage)}?Id={WorkoutRoutine.Id}", navigationParameter);
+        }
     }
 }

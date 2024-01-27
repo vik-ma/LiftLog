@@ -145,6 +145,12 @@
                 </HorizontalStackLayout>
 
                 <Button 
+                    Text="Go To Schedule"
+                    WidthRequest="250"
+                    Style="{StaticResource AddButtonStyle}"
+                    Command="{Binding GoToSchedulePageCommand}" />
+                
+                <Button 
                     Text="Create Schedule"
                     WidthRequest="250"
                     IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsInt0Converter}}"
