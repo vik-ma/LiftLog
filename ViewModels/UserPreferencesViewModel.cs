@@ -30,6 +30,8 @@
         [ObservableProperty]
         private WorkoutRoutine activeWorkoutRoutine = new();
 
+        private bool IsInitialized = false;
+
 #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
@@ -56,10 +58,14 @@
 
         public async Task InitializeUserPreferencesAsync()
         {
-            await LoadUserPreferencesAsync();
-            await LoadActiveUserWeightAsync();
-            await LoadDefaultEquipmentWeightsAsync();
-            await LoadActiveWorkoutRoutineAsync();
+            if (!IsInitialized)
+            {
+                await LoadUserPreferencesAsync();
+                await LoadActiveUserWeightAsync();
+                await LoadDefaultEquipmentWeightsAsync();
+                await LoadActiveWorkoutRoutineAsync();
+                IsInitialized = true;
+            }
         }
 
         private async Task LoadUserPreferencesAsync()
