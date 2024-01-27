@@ -1,4 +1,6 @@
-﻿namespace LocalLiftLog.Helpers
+﻿using System;
+
+namespace LocalLiftLog.Helpers
 {
     public class DateTimeHelper
     {
@@ -116,6 +118,21 @@
             }
 
             return "Invalid Date";
+        }
+
+        public static int GetCurrentWeekDayInt()
+        {
+            DateTime currentDateTime = DateTime.Now;
+
+            return GetWeekDayInt(currentDateTime);
+        }
+
+        public static int GetWeekDayInt(DateTime date)
+        {
+            // Int that represents the day of the week, where Monday = 0
+            int dayOfWeekInt = ((int)date.DayOfWeek + 6) % 7;
+
+            return dayOfWeekInt;
         }
     }
 }
