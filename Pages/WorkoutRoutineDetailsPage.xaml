@@ -168,7 +168,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
-                                            Text="{Binding WorkoutRoutine.CustomScheduleStartDate, Converter={StaticResource DateToWeekdayConverter}, ConverterParameter=IncludeDate}"
+                                            Text="{Binding WorkoutRoutine.NonWeeklyScheduleStartDate, Converter={StaticResource DateToWeekdayConverter}, ConverterParameter=IncludeDate}"
                                             TextColor="{DynamicResource DeepBlue}"
                                             Style="{StaticResource LargeSubSpanStyle}" />
                                     </FormattedString>

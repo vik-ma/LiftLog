@@ -8,8 +8,9 @@
         public string LastUpdateDateTime { get; set; }  
         public string Note { get; set; }
         public bool IsScheduleWeekly { get; set; }
+        public int NumDaysInSchedule { get; set; }
+        public string NonWeeklyScheduleStartDate { get; set; }
         public int ScheduleId { get; set; }
-        public string CustomScheduleStartDate { get; set; }
 
         public WorkoutRoutine Clone() => MemberwiseClone() as WorkoutRoutine;
 

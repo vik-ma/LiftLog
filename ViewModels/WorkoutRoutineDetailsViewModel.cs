@@ -156,7 +156,7 @@
         {
             WorkoutRoutine.ScheduleId = 0;
             WorkoutRoutine.IsScheduleWeekly = false;
-            WorkoutRoutine.CustomScheduleStartDate = null;
+            WorkoutRoutine.NonWeeklyScheduleStartDate = null;
 
             await UpdateWorkoutRoutine();
             await DeleteWorkoutTemplateCollectionsByWorkoutRoutineId();
@@ -413,7 +413,7 @@
         {
             if (WorkoutRoutine is null) return;
 
-            WorkoutRoutine.CustomScheduleStartDate = DateTimeHelper.FormatDateTimeToYmdString(SelectedDate);
+            WorkoutRoutine.NonWeeklyScheduleStartDate = DateTimeHelper.FormatDateTimeToYmdString(SelectedDate);
 
             await UpdateWorkoutRoutine();
 
