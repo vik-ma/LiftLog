@@ -27,6 +27,9 @@
         [ObservableProperty]
         private bool displayDefaultEquipmentWeightList;
 
+        [ObservableProperty]
+        private WorkoutRoutine activeWorkoutRoutine = new();
+
 #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
@@ -56,6 +59,7 @@
             await LoadUserPreferencesAsync();
             await LoadActiveUserWeightAsync();
             await LoadDefaultEquipmentWeightsAsync();
+            await LoadActiveWorkoutRoutineAsync();
         }
 
         private async Task LoadUserPreferencesAsync()
@@ -113,6 +117,26 @@
                         DefaultEquipmentWeightList.Add(weight);
                     }
                 }
+            });
+        }
+
+        public async Task LoadActiveWorkoutRoutineAsync()
+        {
+            if (UserSettings is null) return;
+
+            if (UserSettings.ActiveWorkoutRoutineId == 0) return;
+
+            await ExecuteAsync(async () =>
+            {
+                WorkoutRoutine workoutRoutine = await _context.GetItemByKeyAsync<WorkoutRoutine>(UserSettings.ActiveWorkoutRoutineId);
+
+                if (workoutRoutine is null)
+                {
+                    // Reset ActiveWorkoutRoutineId if Id does not exist
+                    UserSettings.ActiveWorkoutRoutineId = 0;
+                    await UpdateUserPreferencesAsync();
+                }
+                else { ActiveWorkoutRoutine = workoutRoutine; }
             });
         }
 
