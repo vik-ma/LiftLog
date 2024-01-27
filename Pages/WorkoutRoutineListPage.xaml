@@ -16,8 +16,7 @@
                 Text="Workout Routine List"
                 VerticalOptions="Center"
                 FontAttributes="Bold"
-                FontSize="36"
-                />
+                FontSize="36" />
         </VerticalStackLayout>
         <VerticalStackLayout 
             Grid.RowSpan="2"
@@ -145,7 +144,7 @@
                                     FontSize="18"
                                     FontAttributes="Bold" 
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=SetActiveWorkoutRoutineCommand}" 
-                                    CommandParameter="{Binding Id}" />
+                                    CommandParameter="{Binding .}" />
                                 <!--<Button 
                                     Text="Edit"
                                     Padding="20, 0"

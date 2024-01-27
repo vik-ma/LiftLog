@@ -193,15 +193,15 @@
         }
 
         [RelayCommand]
-        private async Task SetActiveWorkoutRoutine(int id)
+        private async Task SetActiveWorkoutRoutine(WorkoutRoutine workoutRoutine)
         {
-            var WorkoutRoutine = WorkoutRoutineList.FirstOrDefault(p => p.Id == id);
+            if (workoutRoutine is null) return;
 
-            if (WorkoutRoutine is null) return;
-
-            UserSettingsViewModel.UserSettings.ActiveWorkoutRoutineId = id;
+            UserSettingsViewModel.UserSettings.ActiveWorkoutRoutineId = workoutRoutine.Id;
 
             await UserSettingsViewModel.UpdateUserPreferencesAsync();
+
+            await UserSettingsViewModel.LoadActiveWorkoutRoutineAsync();
         }
     }
 }
