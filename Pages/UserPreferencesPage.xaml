@@ -144,11 +144,11 @@
                             TextColor="{DynamicResource MediumRed}"
                             FontSize="22"
                             FontAttributes="Bold"
-                            IsVisible="{Binding UserWeight, Converter={StaticResource IsNullConverter}}" />
+                            IsVisible="{Binding ActiveUserWeight, Converter={StaticResource IsNullConverter}}" />
                         <HorizontalStackLayout 
                             HorizontalOptions="Center"
                             Spacing="10"
-                            IsVisible="{Binding UserWeight, Converter={StaticResource IsNotNullConverter}}">
+                            IsVisible="{Binding ActiveUserWeight, Converter={StaticResource IsNotNullConverter}}">
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -157,7 +157,7 @@
                                             FontAttributes="Bold"  
                                             Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
-                                            Text="{Binding UserWeight.BodyWeight}"
+                                            Text="{Binding ActiveUserWeight.BodyWeight}"
                                             Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -170,7 +170,7 @@
                                             FontAttributes="Bold"  
                                             Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
-                                            Text="{Binding UserWeight.DateTime}"
+                                            Text="{Binding ActiveUserWeight.DateTime}"
                                             Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>

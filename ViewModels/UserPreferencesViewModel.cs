@@ -8,7 +8,7 @@
         private UserPreferences userSettings;
 
         [ObservableProperty]
-        private UserWeight userWeight;
+        private UserWeight activeUserWeight;
 
         public UserPreferencesViewModel(DatabaseContext context)
         {
@@ -102,7 +102,7 @@
                     UserSettings.ActiveUserWeightId = 0;
                     await UpdateUserPreferencesAsync();
                 }
-                else { UserWeight = userWeight; }
+                else { ActiveUserWeight = userWeight; }
             });
         }
 

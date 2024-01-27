@@ -83,7 +83,7 @@
         private async Task UpdateActiveUserWeightId(int id)
         {
             UserSettingsViewModel.UserSettings.ActiveUserWeightId = id;
-            UserSettingsViewModel.UserWeight = LatestWeight;
+            UserSettingsViewModel.ActiveUserWeight = LatestWeight;
 
             await UserSettingsViewModel.UpdateUserPreferencesAsync();
             await UserSettingsViewModel.LoadActiveUserWeightAsync();

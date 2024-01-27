@@ -246,9 +246,9 @@
 
         private bool ValidateUserWeightExists()
         {
-            if (UserSettingsViewModel.UserWeight is null) return false;
+            if (UserSettingsViewModel.ActiveUserWeight is null) return false;
 
-            if (UserSettingsViewModel.UserWeight.BodyWeight == 0) return false;
+            if (UserSettingsViewModel.ActiveUserWeight.BodyWeight == 0) return false;
 
             return true;
         }
