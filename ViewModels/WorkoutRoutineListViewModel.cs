@@ -142,7 +142,7 @@
                 {
                     WorkoutRoutineList.Remove(WorkoutRoutine);
 
-                    // Reset ActiveWorkoutRoutineId in UserSettings if current WorkoutRoutine is the same
+                    // Reset ActiveWorkoutRoutineId in UserSettings if deleted WorkoutRoutine is the active one
                     if (id == UserSettingsViewModel.UserSettings.ActiveWorkoutRoutineId)
                     {
                         await UserSettingsViewModel.ResetActiveWorkoutRoutine();

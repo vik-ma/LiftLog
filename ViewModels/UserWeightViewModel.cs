@@ -137,6 +137,12 @@
                 {
                     await Shell.Current.DisplayAlert("Error", "Error occured when deleting Weight.", "OK");
                 }
+
+                // Reset ActiveUserWeight in UserSettings if deleted UserWeight is the active one
+                if (userWeight.Id == UserSettingsViewModel.UserSettings.ActiveUserWeightId) 
+                {
+                    await UserSettingsViewModel.ResetActiveUserWeight();
+                }
             });
 
             await LoadUserWeightListAsync();
