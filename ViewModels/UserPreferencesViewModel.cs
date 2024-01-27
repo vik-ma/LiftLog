@@ -355,5 +355,12 @@
             await UpdateUserPreferencesAsync();
             await LoadActiveWorkoutRoutineAsync();
         }
+
+        public async Task ResetActiveUserWeight()
+        {
+            UserSettings.ActiveUserWeightId = 0;
+            await UpdateUserPreferencesAsync();
+            await LoadActiveUserWeightAsync();
+        }
     }
 }
