@@ -145,9 +145,7 @@
                     // Reset ActiveWorkoutRoutineId in UserSettings if current WorkoutRoutine is the same
                     if (id == UserSettingsViewModel.UserSettings.ActiveWorkoutRoutineId)
                     {
-                        UserSettingsViewModel.UserSettings.ActiveWorkoutRoutineId = 0;
-                        await UserSettingsViewModel.UpdateUserPreferencesAsync();
-                        await UserSettingsViewModel.LoadActiveWorkoutRoutineAsync();
+                        await UserSettingsViewModel.ResetActiveWorkoutRoutine();
                     }
                 }
                 else

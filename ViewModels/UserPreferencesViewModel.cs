@@ -348,5 +348,12 @@
         {
             DisplayDefaultEquipmentWeightList = !DisplayDefaultEquipmentWeightList;
         }
+
+        public async Task ResetActiveWorkoutRoutine()
+        {
+            UserSettings.ActiveWorkoutRoutineId = 0;
+            await UpdateUserPreferencesAsync();
+            await LoadActiveWorkoutRoutineAsync();
+        }
     }
 }
