@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LocalLiftLog.Pages.SchedulePage"
+             xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
+             xmlns:models="clr-namespace:LocalLiftLog.Models"
+             x:DataType="viewmodel:ScheduleViewModel"
+             Title="Schedule Page">
+    
+    <VerticalStackLayout Padding="6, 10">
+        <HorizontalStackLayout Spacing="50">
+            <Label 
+                Text="Workout Routine ID:"
+                VerticalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="36" />
+            <Label 
+                Text="{Binding WorkoutRoutine.Id}"
+                VerticalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="36" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
