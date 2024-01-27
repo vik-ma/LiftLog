@@ -199,6 +199,19 @@
         }
 
         [RelayCommand]
+        private async Task GoToSchedulePage(WorkoutRoutine workoutRoutine)
+        {
+            if (workoutRoutine is null) return;
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["WorkoutRoutine"] = workoutRoutine
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(SchedulePage)}?Id={workoutRoutine.Id}", navigationParameter);
+        }
+
+        [RelayCommand]
         private async Task SetActiveWorkoutRoutine(WorkoutRoutine workoutRoutine)
         {
             if (workoutRoutine is null) return;

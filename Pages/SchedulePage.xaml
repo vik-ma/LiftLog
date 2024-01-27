@@ -7,7 +7,8 @@
              x:DataType="viewmodel:ScheduleViewModel"
              Title="Schedule Page">
     
-    <VerticalStackLayout Padding="6, 10">
+    <VerticalStackLayout
+        HorizontalOptions="Center">
         <HorizontalStackLayout Spacing="50">
             <Label 
                 Text="Workout Routine ID:"

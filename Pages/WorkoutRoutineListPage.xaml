@@ -139,6 +139,13 @@
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=ViewWorkoutRoutineDetailsCommand}" 
                                     CommandParameter="{Binding Id}" />
                                 <Button 
+                                    Text="Go To Schedule"
+                                    Padding="20, 10"
+                                    FontSize="18"
+                                    FontAttributes="Bold" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=GoToSchedulePageCommand}" 
+                                    CommandParameter="{Binding .}" />
+                                <Button 
                                     Text="Set Active"
                                     Padding="20, 10"
                                     FontSize="18"
