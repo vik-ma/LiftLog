@@ -143,7 +143,7 @@
                     WidthRequest="250"
                     Style="{StaticResource MediumButtonStyle}"
                     Command="{Binding ConvertScheduleToWeeklyCommand}" />
-                
+
                 <Button 
                     IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly}"
                     Text="Convert To Custom"
@@ -151,79 +151,6 @@
                     Style="{StaticResource MediumButtonStyle}"
                     Command="{Binding ConvertScheduleToCustomCommand}" />
 
-                <!--<Button 
-                    Text="Create Schedule"
-                    WidthRequest="250"
-                    IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsInt0Converter}}"
-                    Style="{StaticResource AddButtonStyle}"
-                    Command="{Binding VisitScheduleCommand}" />-->
-
-                <!--<VerticalStackLayout 
-                    IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsIntNot0Converter}}">
-                    <VerticalStackLayout 
-                        Margin="0, 5, 0, 10"
-                        Spacing="5"
-                        IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}">
-                        <VerticalStackLayout>
-                            <Label
-                                HorizontalOptions="Center"
-                                Text="Start Day" 
-                                FontAttributes="Bold"
-                                Style="{StaticResource MediumLabelStyle}" />
-                            <Label
-                                HorizontalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="{Binding WorkoutRoutine.NonWeeklyScheduleStartDate, Converter={StaticResource DateToWeekdayConverter}, ConverterParameter=IncludeDate}"
-                                            TextColor="{DynamicResource DeepBlue}"
-                                            Style="{StaticResource LargeSubSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                        </VerticalStackLayout>
-                        <Button
-                            Text="Select Start Day"
-                            IsVisible="{Binding IsShowingDatePicker, Converter={StaticResource InvertedBoolConverter}}"
-                            Style="{StaticResource GenericButtonStyle}"
-                            Command="{Binding ShowDatePickerCommand}" />
-                        <VerticalStackLayout 
-                            Spacing="5"      
-                            HorizontalOptions="Center"
-                            IsVisible="{Binding IsShowingDatePicker}">
-                            <DatePicker 
-                                HorizontalOptions="Center"
-                                MinimumDate="12/01/2023"
-                                MaximumDate="12/31/2023"
-                                Date="{Binding SelectedDate}" />
-                            <HorizontalStackLayout Spacing="5">
-                                <Button 
-                                    Text="Cancel"
-                                    Style="{StaticResource DeleteButtonStyle}"
-                                    Command="{Binding HideDatePickerCommand}" />
-                                <Button 
-                                    Text="Save"
-                                    Style="{StaticResource AddButtonStyle}"
-                                    Command="{Binding SaveStartDayCommand}" />
-                            </HorizontalStackLayout>
-                        </VerticalStackLayout>
-                    </VerticalStackLayout>
-                    
-                    <Button 
-                        Text="Edit Schedule"
-                        WidthRequest="250"
-                        Style="{StaticResource GenericButtonStyle}"
-                        Command="{Binding VisitScheduleCommand}" />
-                    <Button 
-                        Text="Delete Schedule"
-                        WidthRequest="250"
-                        Style="{StaticResource DeleteButtonStyle}"
-                        Command="{Binding DeleteScheduleCommand}" />
-
-                    
-                    
-                </VerticalStackLayout>-->
-                
             </VerticalStackLayout>
         </Grid>
 
