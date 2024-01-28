@@ -28,7 +28,13 @@
         [ObservableProperty]
         private DateTime selectedDate;
 
-        public void LoadNumDaysInSchedule()
+        public async Task LoadScheduleAsync()
+        {
+            LoadNumDaysInSchedule();
+            await LoadWorkoutScheduleList();
+        }
+
+        private void LoadNumDaysInSchedule()
         {
             if (WorkoutRoutine is null) return;
 
@@ -47,7 +53,7 @@
             }
         }
 
-        public async Task LoadWorkoutScheduleList()
+        private async Task LoadWorkoutScheduleList()
         {
             if (WorkoutRoutine is null) return;
 
@@ -419,10 +425,7 @@
 
             await UpdateWorkoutRoutine();
 
-            LoadNumDaysInSchedule();
-            await LoadWorkoutScheduleList();
-
-            OnPropertyChanged(nameof(WorkoutRoutine));
+            await LoadScheduleAsync();
         }
 
         [RelayCommand]
@@ -439,10 +442,7 @@
 
             await UpdateWorkoutRoutine();
 
-            LoadNumDaysInSchedule();
-            await LoadWorkoutScheduleList();
-
-            OnPropertyChanged(nameof(WorkoutRoutine));  
+            await LoadScheduleAsync();
         }
 
         private static async Task<(bool, int)> ShowNumDaysPrompt()
