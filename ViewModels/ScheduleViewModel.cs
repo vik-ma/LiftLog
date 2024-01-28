@@ -90,7 +90,9 @@
 
         public async Task LoadWorkoutTemplateCollectionsAsync()
         {
-            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutRoutineId == CustomSchedule.WorkoutRoutineId;
+            if (WorkoutRoutine is null) return;
+
+            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutRoutineId == WorkoutRoutine.Id;
 
             IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
             try
@@ -234,6 +236,76 @@
                         break;
                 }
             }
+        }
+
+        [RelayCommand]
+        private async Task RemoveWorkoutTemplateCollection(int id)
+        {
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemByKeyAsync<WorkoutTemplateCollection>(id))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
+                }
+
+                await LoadWorkoutTemplateCollectionsAsync();
+            });
+        }
+
+        [RelayCommand]
+        private async Task AddWorkoutTemplateCollectionToDay(WorkoutTemplate workoutTemplate)
+        {
+            if (workoutTemplate is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                WorkoutTemplateCollection workoutCollection = new()
+                {
+                    Day = SelectedDay,
+                    WorkoutTemplateId = workoutTemplate.Id,
+                };
+                await _context.AddItemAsync<WorkoutTemplateCollection>(workoutCollection);
+            });
+
+            await LoadWorkoutTemplateCollectionsAsync();
+        }
+
+        [RelayCommand]
+        private async Task ShowWorkoutTemplateListSidebar(string dayString)
+        {
+            int day;
+
+            if (int.TryParse(dayString, out int intValue))
+            {
+                day = intValue;
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid Day String", "OK");
+                return;
+            }
+
+            if (day < 0 || day > 13)
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid Day", "OK");
+                return;
+            }
+
+            ShowWorkoutTemplateList = true;
+
+            SelectedDay = day;
+        }
+
+        [RelayCommand]
+        private void HideWorkoutTemplateList()
+        {
+            ShowWorkoutTemplateList = false;
+        }
+
+        [RelayCommand]
+        private static async Task GoToWorkoutTemplate()
+        {
+            await Shell.Current.GoToAsync($"{nameof(WorkoutTemplateListPage)}");
         }
     }
 }

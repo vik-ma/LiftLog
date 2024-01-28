@@ -454,7 +454,7 @@
                     </CollectionView>
                 </VerticalStackLayout>
 
-                <!--<VerticalStackLayout 
+                <VerticalStackLayout 
                     VerticalOptions="End"
                     Spacing="20">
                     <Button 
@@ -467,7 +467,7 @@
                         Style="{StaticResource ScheduleButtonStyle}"
                         Text="Close"
                         Command="{Binding HideWorkoutTemplateListCommand}"/>
-                </VerticalStackLayout>-->
+                </VerticalStackLayout>
             </Grid>
         </Grid>
 
