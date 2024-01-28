@@ -7,8 +7,8 @@
         public string Name { get; set; }
         public string LastUpdateDateTime { get; set; }  
         public string Note { get; set; }
-        public bool IsScheduleWeekly { get; set; }
-        public int NumDaysInSchedule { get; set; }
+        public bool IsScheduleWeekly { get; set; } = true;
+        public int NumDaysInSchedule { get; set; } = 7;
         public string NonWeeklyScheduleStartDate { get; set; }
         public int ScheduleId { get; set; }
 
