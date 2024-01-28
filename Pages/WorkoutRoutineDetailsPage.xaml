@@ -136,15 +136,29 @@
                     WidthRequest="250"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding GoToSchedulePageCommand}" />
+
+                <Button 
+                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
+                    Text="Convert To Weekly"
+                    WidthRequest="250"
+                    Style="{StaticResource MediumButtonStyle}"
+                    Command="{Binding ConvertScheduleToWeeklyCommand}" />
                 
                 <Button 
+                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly}"
+                    Text="Convert To Custom"
+                    WidthRequest="250"
+                    Style="{StaticResource MediumButtonStyle}"
+                    Command="{Binding ConvertScheduleToCustomCommand}" />
+
+                <!--<Button 
                     Text="Create Schedule"
                     WidthRequest="250"
                     IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsInt0Converter}}"
                     Style="{StaticResource AddButtonStyle}"
-                    Command="{Binding VisitScheduleCommand}" />
+                    Command="{Binding VisitScheduleCommand}" />-->
 
-                <VerticalStackLayout 
+                <!--<VerticalStackLayout 
                     IsVisible="{Binding WorkoutRoutine.ScheduleId, Converter={StaticResource IsIntNot0Converter}}">
                     <VerticalStackLayout 
                         Margin="0, 5, 0, 10"
@@ -208,7 +222,7 @@
 
                     
                     
-                </VerticalStackLayout>
+                </VerticalStackLayout>-->
                 
             </VerticalStackLayout>
         </Grid>

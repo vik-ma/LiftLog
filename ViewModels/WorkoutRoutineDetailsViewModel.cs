@@ -28,7 +28,7 @@
         [ObservableProperty]
         private DateTime selectedDate;
 
-        public async Task LoadNumDaysInSchedule()
+        public void LoadNumDaysInSchedule()
         {
             if (WorkoutRoutine is null) return;
 
@@ -40,21 +40,10 @@
             } 
             else
             {
-                await ExecuteAsync(async () =>
+                for (int i = 0; i < WorkoutRoutine.NumDaysInSchedule; i++) 
                 {
-                    var schedule = await _context.GetItemByKeyAsync<CustomSchedule>(WorkoutRoutine.ScheduleId);
-
-                    if (schedule is null)
-                    {
-                        await ResetScheduleId(true);
-                        return;
-                    } 
-
-                    for (int i = 0; i < WorkoutRoutine.NumDaysInSchedule; i++) 
-                    {
-                        DayNameList.Add($"Day {i+1}");
-                    }
-                });
+                    DayNameList.Add($"Day {i+1}");
+                }
             }
         }
 
@@ -421,12 +410,17 @@
         }
 
         [RelayCommand]
-        private void ConvertScheduleToWeekly()
+        private async Task ConvertScheduleToWeekly()
         {
             if (WorkoutRoutine is null || WorkoutRoutine.IsScheduleWeekly) return;
 
             WorkoutRoutine.IsScheduleWeekly = true;
             WorkoutRoutine.NumDaysInSchedule = 7;
+
+            await UpdateWorkoutRoutine();
+
+            LoadNumDaysInSchedule();
+            await LoadWorkoutScheduleList();
 
             OnPropertyChanged(nameof(WorkoutRoutine));
         }
@@ -434,7 +428,7 @@
         [RelayCommand]
         private async Task ConvertScheduleToCustom()
         {
-            if (WorkoutRoutine is null || WorkoutRoutine.IsScheduleWeekly) return;
+            if (WorkoutRoutine is null || !WorkoutRoutine.IsScheduleWeekly) return;
 
             var (userEnteredValidNumber, numberOfDays) = await ShowNumDaysPrompt();
 
@@ -443,7 +437,12 @@
             WorkoutRoutine.IsScheduleWeekly = false;
             WorkoutRoutine.NumDaysInSchedule = numberOfDays;
 
-            OnPropertyChanged(nameof(WorkoutRoutine));
+            await UpdateWorkoutRoutine();
+
+            LoadNumDaysInSchedule();
+            await LoadWorkoutScheduleList();
+
+            OnPropertyChanged(nameof(WorkoutRoutine));  
         }
 
         private static async Task<(bool, int)> ShowNumDaysPrompt()

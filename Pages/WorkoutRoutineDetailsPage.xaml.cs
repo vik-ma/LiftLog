@@ -12,7 +12,7 @@ public partial class WorkoutRoutineDetailsPage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-        await _viewModel.LoadNumDaysInSchedule();
+        _viewModel.LoadNumDaysInSchedule();
         await _viewModel.LoadWorkoutScheduleList();
     }
 }
