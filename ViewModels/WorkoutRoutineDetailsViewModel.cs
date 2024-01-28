@@ -419,5 +419,39 @@
 
             await Shell.Current.GoToAsync($"{nameof(SchedulePage)}?Id={WorkoutRoutine.Id}", navigationParameter);
         }
+
+        [RelayCommand]
+        private void ConvertScheduleToWeekly()
+        {
+            if (WorkoutRoutine is null || WorkoutRoutine.IsScheduleWeekly) return;
+
+            WorkoutRoutine.IsScheduleWeekly = true;
+            WorkoutRoutine.NumDaysInSchedule = 7;
+
+            OnPropertyChanged(nameof(WorkoutRoutine));
+        }
+
+        [RelayCommand]
+        private async Task ConvertScheduleToCustom()
+        {
+            if (WorkoutRoutine is null || WorkoutRoutine.IsScheduleWeekly) return;
+
+            string enteredNumber = await Shell.Current.DisplayPromptAsync("Number Of Days In Schedule", "How many days should the schedule contain?\n(Must be between 2 and 14)\n", "OK", "Cancel");
+
+            if (enteredNumber == null) return;
+
+            bool validInput = int.TryParse(enteredNumber, out int numberOfDays);
+
+            if (!validInput || numberOfDays < 2 || numberOfDays > 14)
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid input.", "OK");
+                return;
+            }
+
+            WorkoutRoutine.IsScheduleWeekly = false;
+            WorkoutRoutine.NumDaysInSchedule = numberOfDays;
+
+            OnPropertyChanged(nameof(WorkoutRoutine));
+        }
     }
 }
