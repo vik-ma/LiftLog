@@ -12,5 +12,7 @@ public partial class SchedulePage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
+        await _viewModel.LoadWorkoutTemplateCollectionsAsync();
+        await _viewModel.LoadWorkoutTemplatesAsync();
     }
 }
