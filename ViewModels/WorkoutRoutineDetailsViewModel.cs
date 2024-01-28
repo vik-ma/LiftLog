@@ -23,9 +23,6 @@
         private ObservableCollection<string> dayNameList = new();
 
         [ObservableProperty]
-        private int numDaysInSchedule;
-
-        [ObservableProperty]
         private bool isShowingDatePicker;
 
         [ObservableProperty]
@@ -37,12 +34,8 @@
 
             DayNameList.Clear();
 
-            // Exit function if no Schedule is set
-            if (WorkoutRoutine.ScheduleId == 0) return;
-
             if (WorkoutRoutine.IsScheduleWeekly) 
             {
-                NumDaysInSchedule = 7;
                 DayNameList = new(WeekdayHelper.WeekdayList);
             } 
             else
@@ -56,11 +49,8 @@
                         await ResetScheduleId(true);
                         return;
                     } 
-                    NumDaysInSchedule = schedule.NumDaysInSchedule;
 
-                    DayNameList.Clear();
-
-                    for (int i = 0; i < NumDaysInSchedule; i++) 
+                    for (int i = 0; i < WorkoutRoutine.NumDaysInSchedule; i++) 
                     {
                         DayNameList.Add($"Day {i+1}");
                     }
@@ -73,9 +63,6 @@
             if (WorkoutRoutine is null) return;
 
             WorkoutScheduleList.Clear();
-
-            // Exit function if no Schedule is set
-            if (WorkoutRoutine.ScheduleId == 0) return;
 
             Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutRoutineId == WorkoutRoutine.Id;
 
@@ -117,7 +104,7 @@
                .GroupBy(item => item.WorkoutTemplateCollection.Day)
                .ToDictionary(group => group.Key, group => group.ToList());
 
-            for (int i = 0; i < NumDaysInSchedule; i++)
+            for (int i = 0; i < WorkoutRoutine.NumDaysInSchedule; i++)
             {
                 string dayString;
 

@@ -128,19 +128,6 @@
                                 <Label Text="{Binding .}" />
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
-                        <CollectionView.EmptyView>
-                            <ContentView>
-                                <VerticalStackLayout
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center">
-                                    <Label 
-                                        Text="No Schedule Added!" 
-                                        FontSize="18" 
-                                        FontAttributes="Bold" 
-                                        HorizontalTextAlignment="Center" />
-                                </VerticalStackLayout>
-                            </ContentView>
-                        </CollectionView.EmptyView>
                     </CollectionView>
                 </HorizontalStackLayout>
 
