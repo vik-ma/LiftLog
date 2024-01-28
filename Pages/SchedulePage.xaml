@@ -56,7 +56,7 @@
                     Grid.Row="1"
                     ItemsSource="{Binding Day1WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
+                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
                         <Label Text="No Workout(s) Set" />
                     </CollectionView.EmptyView>
@@ -77,7 +77,7 @@
                     Grid.Row="3"
                     ItemsSource="{Binding Day2WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
+                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
                         <Label Text="No Workout(s) Set" />
                     </CollectionView.EmptyView>
@@ -102,7 +102,7 @@
                     IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
                     ItemsSource="{Binding Day3WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
+                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
                         <Label Text="No Workout(s) Set" />
                     </CollectionView.EmptyView>
@@ -127,7 +127,7 @@
                     IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=3}"
                     ItemsSource="{Binding Day4WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
+                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
                         <Label Text="No Workout(s) Set" />
                     </CollectionView.EmptyView>
@@ -152,7 +152,7 @@
                     IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=4}"
                     ItemsSource="{Binding Day5WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
+                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
                         <Label Text="No Workout(s) Set" />
                     </CollectionView.EmptyView>
@@ -177,7 +177,7 @@
                     IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=5}"
                     ItemsSource="{Binding Day6WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
+                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
                         <Label Text="No Workout(s) Set" />
                     </CollectionView.EmptyView>
@@ -202,7 +202,7 @@
                     IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=6}"
                     ItemsSource="{Binding Day7WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
+                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
                         <Label Text="No Workout(s) Set" />
                     </CollectionView.EmptyView>
@@ -228,7 +228,7 @@
                     IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=7}"
                     ItemsSource="{Binding Day8WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
+                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
                         <Label Text="No Workout(s) Set" />
                     </CollectionView.EmptyView>
@@ -254,7 +254,7 @@
                     IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=8}"
                     ItemsSource="{Binding Day9WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
+                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
                         <Label Text="No Workout(s) Set" />
                     </CollectionView.EmptyView>
@@ -280,7 +280,7 @@
                     IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=9}"
                     ItemsSource="{Binding Day10WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
+                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
                         <Label Text="No Workout(s) Set" />
                     </CollectionView.EmptyView>
@@ -306,7 +306,7 @@
                     IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=10}"
                     ItemsSource="{Binding Day11WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
+                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
                         <Label Text="No Workout(s) Set" />
                     </CollectionView.EmptyView>
@@ -332,7 +332,7 @@
                     IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=11}"
                     ItemsSource="{Binding Day12WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
+                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
                         <Label Text="No Workout(s) Set" />
                     </CollectionView.EmptyView>
@@ -358,7 +358,7 @@
                     IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=12}"
                     ItemsSource="{Binding Day13WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
+                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
                         <Label Text="No Workout(s) Set" />
                     </CollectionView.EmptyView>
@@ -384,7 +384,7 @@
                     IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=13}"
                     ItemsSource="{Binding Day14WorkoutTemplatePackageList}"
                     ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource CustomScheduleCollectionViewDataTemplate}">
+                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                     <CollectionView.EmptyView>
                         <Label Text="No Workout(s) Set" />
                     </CollectionView.EmptyView>
