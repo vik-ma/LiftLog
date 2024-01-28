@@ -436,22 +436,31 @@
         {
             if (WorkoutRoutine is null || WorkoutRoutine.IsScheduleWeekly) return;
 
+            var (userEnteredValidNumber, numberOfDays) = await ShowNumDaysPrompt();
+
+            if (!userEnteredValidNumber) return;
+
+            WorkoutRoutine.IsScheduleWeekly = false;
+            WorkoutRoutine.NumDaysInSchedule = numberOfDays;
+
+            OnPropertyChanged(nameof(WorkoutRoutine));
+        }
+
+        private static async Task<(bool, int)> ShowNumDaysPrompt()
+        {
             string enteredNumber = await Shell.Current.DisplayPromptAsync("Number Of Days In Schedule", "How many days should the schedule contain?\n(Must be between 2 and 14)\n", "OK", "Cancel");
 
-            if (enteredNumber == null) return;
+            if (enteredNumber == null) return (false, 0);
 
             bool validInput = int.TryParse(enteredNumber, out int numberOfDays);
 
             if (!validInput || numberOfDays < 2 || numberOfDays > 14)
             {
                 await Shell.Current.DisplayAlert("Error", "Invalid input.", "OK");
-                return;
+                return (false, 0);
             }
 
-            WorkoutRoutine.IsScheduleWeekly = false;
-            WorkoutRoutine.NumDaysInSchedule = numberOfDays;
-
-            OnPropertyChanged(nameof(WorkoutRoutine));
+            return (true, numberOfDays);
         }
     }
 }
