@@ -257,12 +257,15 @@
         {
             if (workoutTemplate is null) return;
 
+            if (WorkoutRoutine is null) return;
+
             await ExecuteAsync(async () =>
             {
                 WorkoutTemplateCollection workoutCollection = new()
                 {
                     Day = SelectedDay,
                     WorkoutTemplateId = workoutTemplate.Id,
+                    WorkoutRoutineId = WorkoutRoutine.Id,
                 };
                 await _context.AddItemAsync<WorkoutTemplateCollection>(workoutCollection);
             });
