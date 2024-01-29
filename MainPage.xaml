@@ -122,12 +122,6 @@
                 Command="{Binding GoToWorkoutRoutineListCommand}"
                 Style="{StaticResource MainPageNavigationButtonStyle}"/>
             <Button
-                Text="Schedule List"
-                Grid.Row="1"
-                Grid.Column="0"
-                Command="{Binding GoToScheduleListCommand}"
-                Style="{StaticResource MainPageNavigationButtonStyle}"/>
-            <Button
                 Text="Workout Template List"
                 Grid.Row="2"
                 Grid.Column="0"

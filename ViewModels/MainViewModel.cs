@@ -28,12 +28,6 @@
         }
 
         [RelayCommand]
-        private async Task GoToScheduleList()
-        {
-            await Shell.Current.GoToAsync($"{nameof(ScheduleListPage)}");
-        }
-
-        [RelayCommand]
         private async Task GoToWorkoutTemplate()
         {
             await Shell.Current.GoToAsync($"{nameof(WorkoutTemplateListPage)}");
