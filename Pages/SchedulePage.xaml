@@ -9,26 +9,21 @@
 
     <ScrollView>
         <VerticalStackLayout>
-            <HorizontalStackLayout
-                HorizontalOptions="Center"
-                Spacing="10">
-                <Button
-                    Text="Convert To Custom Schedule"
-                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly}"
-                    Style="{StaticResource GenericButtonStyle}"
-                    Command="{Binding CreateCustomScheduleCommand}"/>
-                <Button
-                    Text="Convert To Weekly Schedule"
-                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
-                    Style="{StaticResource GenericButtonStyle}"
-                    Command="{Binding CreateWeeklyScheduleCommand}"/>
-                <Button
-                    Text="Change Number Of Days"
-                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
-                    Style="{StaticResource GenericButtonStyle}"
-                    Command="{Binding CreateCustomScheduleCommand}"/>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span 
+                                Text="Workout Routine: " 
+                                FontAttributes="Bold"  
+                                Style="{StaticResource LargeHeaderSpanStyle}" />
+                            <Span 
+                                Text="{Binding WorkoutRoutine.Name}"
+                                Style="{StaticResource LargeHeaderSpanStyle}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </HorizontalStackLayout>
-
             <Grid 
                 ColumnDefinitions="*, *"
                 HorizontalOptions="Center">
@@ -538,6 +533,27 @@
                     </VerticalStackLayout>
                 </Grid>
             </Grid>
+
+            <VerticalStackLayout
+                HorizontalOptions="Center"
+                Spacing="5"
+                Margin="20">
+                <Button
+                    Text="Convert To Custom Schedule"
+                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly}"
+                    Style="{StaticResource GenericButtonStyle}"
+                    Command="{Binding CreateCustomScheduleCommand}"/>
+                <Button
+                    Text="Convert To Weekly Schedule"
+                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
+                    Style="{StaticResource GenericButtonStyle}"
+                    Command="{Binding CreateWeeklyScheduleCommand}"/>
+                <Button
+                    Text="Change Number Of Days"
+                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
+                    Style="{StaticResource GenericButtonStyle}"
+                    Command="{Binding CreateCustomScheduleCommand}"/>
+            </VerticalStackLayout>
 
             <Button 
                 Text="Go Back"
