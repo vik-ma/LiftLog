@@ -310,5 +310,78 @@
         {
             await Shell.Current.GoToAsync($"{nameof(WorkoutTemplateListPage)}");
         }
+
+        [RelayCommand]
+        private async Task UpdateWorkoutRoutine()
+        {
+            if (WorkoutRoutine is null) return;
+
+            var (isValid, errorMessage) = WorkoutRoutine.Validate();
+            if (!isValid)
+            {
+                await Shell.Current.DisplayAlert("Validation Error", errorMessage, "OK");
+                return;
+            }
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.UpdateItemAsync<WorkoutRoutine>(WorkoutRoutine))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating WorkoutRoutine.", "OK");
+                    return;
+                }
+            });
+        }
+
+        [RelayCommand]
+        private async Task CreateWeeklySchedule()
+        {
+            if (WorkoutRoutine is null || WorkoutRoutine.IsScheduleWeekly) return;
+
+            WorkoutRoutine.IsScheduleWeekly = true;
+            WorkoutRoutine.NumDaysInSchedule = 7;
+
+            await UpdateWorkoutRoutine();
+
+            await LoadWorkoutTemplateCollectionsAsync();
+
+            OnPropertyChanged(nameof(WorkoutRoutine));
+        }
+
+        [RelayCommand]
+        private async Task CreateCustomSchedule()
+        {
+            if (WorkoutRoutine is null) return;
+
+            var (userEnteredValidNumber, numberOfDays) = await ShowNumDaysPrompt();
+
+            if (!userEnteredValidNumber) return;
+
+            WorkoutRoutine.IsScheduleWeekly = false;
+            WorkoutRoutine.NumDaysInSchedule = numberOfDays;
+
+            await UpdateWorkoutRoutine();
+
+            await LoadWorkoutTemplateCollectionsAsync();
+
+            OnPropertyChanged(nameof(WorkoutRoutine));
+        }
+
+        private static async Task<(bool, int)> ShowNumDaysPrompt()
+        {
+            string enteredNumber = await Shell.Current.DisplayPromptAsync("Number Of Days In Schedule", "How many days should the schedule contain?\n(Must be between 2 and 14)\n", "OK", "Cancel");
+
+            if (enteredNumber == null) return (false, 0);
+
+            bool validInput = int.TryParse(enteredNumber, out int numberOfDays);
+
+            if (!validInput || numberOfDays < 2 || numberOfDays > 14)
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid input.", "OK");
+                return (false, 0);
+            }
+
+            return (true, numberOfDays);
+        }
     }
 }
