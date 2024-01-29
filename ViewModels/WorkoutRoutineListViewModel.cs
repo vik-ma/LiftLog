@@ -147,6 +147,9 @@
                     {
                         await UserSettingsViewModel.ResetActiveWorkoutRoutine();
                     }
+
+                    // Delete WorkoutTemplateCollection objects referencing the WorkoutRoutine
+                    await DeleteWorkoutTemplateCollectionsByWorkoutRoutineId(id);
                 }
                 else
                 {
@@ -221,6 +224,33 @@
             await UserSettingsViewModel.UpdateUserPreferencesAsync();
 
             await UserSettingsViewModel.LoadActiveWorkoutRoutineAsync();
+        }
+
+        private async Task DeleteWorkoutTemplateCollectionsByWorkoutRoutineId(int routineId)
+        {
+            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutRoutineId == routineId;
+
+            IEnumerable<WorkoutTemplateCollection> filteredList = null;
+            try
+            {
+                filteredList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Workout Template Collections.", "OK");
+            }
+
+            foreach (var item in filteredList)
+            {
+                await ExecuteAsync(async () =>
+                {
+                    if (!await _context.DeleteItemAsync<WorkoutTemplateCollection>(item))
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
+                        return;
+                    }
+                });
+            }
         }
     }
 }
