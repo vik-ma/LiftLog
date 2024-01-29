@@ -537,7 +537,20 @@
             <VerticalStackLayout
                 HorizontalOptions="Center"
                 Spacing="5"
-                Margin="20">
+                Margin="10">
+                <HorizontalStackLayout 
+                    HorizontalOptions="Center" 
+                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
+                    Spacing="10">
+                    <Label
+                        Text="{Binding WorkoutRoutine.CustomScheduleStartDate}"
+                        TextColor="{DynamicResource MediumBlue}"
+                        Style="{StaticResource LargeBoldLabelStyle}" />
+                    <DatePicker
+                        Format="yyyy-MM-dd"
+                        Date="{Binding WorkoutRoutine.CustomScheduleStartDate}"
+                        DateSelected="OnDateSelected" />
+                </HorizontalStackLayout>
                 <Button
                     Text="Convert To Custom Schedule"
                     IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly}"

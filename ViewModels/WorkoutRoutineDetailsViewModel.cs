@@ -220,7 +220,7 @@
         {
             if (WorkoutRoutine is null) return;
 
-            WorkoutRoutine.NonWeeklyScheduleStartDate = DateTimeHelper.FormatDateTimeToYmdString(SelectedDate);
+            WorkoutRoutine.CustomScheduleStartDate = DateTimeHelper.FormatDateTimeToYmdString(SelectedDate);
 
             await UpdateWorkoutRoutine();
 

@@ -15,4 +15,11 @@ public partial class SchedulePage : ContentPage
         await _viewModel.LoadWorkoutTemplateCollectionsAsync();
         await _viewModel.LoadWorkoutTemplatesAsync();
     }
+
+    private async void OnDateSelected(object sender, DateChangedEventArgs e)
+    {
+        DateTime selectedDate = e.NewDate;
+
+        await _viewModel.SetCustomScheduleStartDate(selectedDate);
+    }
 }
