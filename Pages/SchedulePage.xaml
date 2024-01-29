@@ -30,7 +30,7 @@
                 Grid.Column="0"
                 ColumnDefinitions="*, *, *, *"
                 RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *"
-                ColumnSpacing="20"
+                ColumnSpacing="10"
                 RowSpacing="2">
                 <Label 
                     Text="Day 1"

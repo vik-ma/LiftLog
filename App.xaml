@@ -311,21 +311,21 @@
             <DataTemplate 
                 x:Key="ScheduleCollectionViewDataTemplate"
                 x:DataType="models:WorkoutTemplatePackage">
-                <HorizontalStackLayout Spacing="10">
+                <HorizontalStackLayout Spacing="8">
                     <Label 
                         Text="{Binding WorkoutTemplate.Name}"
                         Style="{StaticResource ScheduleWTLabelStyle}" />
                     <Button 
                         Text="Delete"
-                        Style="{StaticResource ScheduleDeleteButtonStyle}"
+                        Style="{StaticResource ExtraSmallRedButtonStyle}"
                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=RemoveWorkoutTemplateCollectionCommand}" 
                         CommandParameter="{Binding WorkoutTemplateCollection.Id}" />
                 </HorizontalStackLayout>
             </DataTemplate>
             <LinearItemsLayout 
                 x:Key="ScheduleCollectionViewItemsLayout"
-                ItemSpacing="12"
-                Orientation="Horizontal" />
+                ItemSpacing="2"
+                Orientation="Vertical" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
