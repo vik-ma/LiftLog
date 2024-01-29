@@ -141,15 +141,22 @@
                     IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
                     Text="Convert To Weekly"
                     WidthRequest="250"
-                    Style="{StaticResource MediumButtonStyle}"
-                    Command="{Binding ConvertScheduleToWeeklyCommand}" />
+                    Style="{StaticResource GenericButtonStyle}"
+                    Command="{Binding CreateWeeklyScheduleCommand}" />
+
+                <Button 
+                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
+                    Text="Change Number Of Days"
+                    WidthRequest="250"
+                    Style="{StaticResource GenericButtonStyle}"
+                    Command="{Binding CreateCustomScheduleCommand}" />
 
                 <Button 
                     IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly}"
                     Text="Convert To Custom"
                     WidthRequest="250"
-                    Style="{StaticResource MediumButtonStyle}"
-                    Command="{Binding ConvertScheduleToCustomCommand}" />
+                    Style="{StaticResource GenericButtonStyle}"
+                    Command="{Binding CreateCustomScheduleCommand}" />
 
             </VerticalStackLayout>
         </Grid>

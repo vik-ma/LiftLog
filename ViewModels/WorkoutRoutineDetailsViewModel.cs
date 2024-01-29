@@ -241,7 +241,7 @@
         }
 
         [RelayCommand]
-        private async Task ConvertScheduleToWeekly()
+        private async Task CreateWeeklySchedule()
         {
             if (WorkoutRoutine is null || WorkoutRoutine.IsScheduleWeekly) return;
 
@@ -254,9 +254,9 @@
         }
 
         [RelayCommand]
-        private async Task ConvertScheduleToCustom()
+        private async Task CreateCustomSchedule()
         {
-            if (WorkoutRoutine is null || !WorkoutRoutine.IsScheduleWeekly) return;
+            if (WorkoutRoutine is null) return;
 
             var (userEnteredValidNumber, numberOfDays) = await ShowNumDaysPrompt();
 
