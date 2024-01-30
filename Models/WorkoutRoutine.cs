@@ -10,7 +10,6 @@
         public bool IsScheduleWeekly { get; set; } = true;
         public int NumDaysInSchedule { get; set; } = 7;
         public string CustomScheduleStartDate { get; set; }
-        public int ScheduleId { get; set; }
 
         public WorkoutRoutine Clone() => MemberwiseClone() as WorkoutRoutine;
 
