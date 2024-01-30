@@ -239,17 +239,19 @@
         }
 
         [RelayCommand]
-        private async Task RemoveWorkoutTemplateCollection(int id)
+        private async Task RemoveWorkoutTemplateCollection(WorkoutTemplateCollection workoutTemplateCollection)
         {
+            if (workoutTemplateCollection is null) return;
+
             await ExecuteAsync(async () =>
             {
-                if (!await _context.DeleteItemByKeyAsync<WorkoutTemplateCollection>(id))
+                if (!await _context.DeleteItemAsync<WorkoutTemplateCollection>(workoutTemplateCollection))
                 {
                     await Shell.Current.DisplayAlert("Error", "Error occured when deleting Workout Template Collection.", "OK");
                 }
-
-                await LoadWorkoutTemplateCollectionsAsync();
             });
+
+            await LoadWorkoutTemplateCollectionsAsync();
         }
 
         [RelayCommand]
@@ -396,5 +398,7 @@
 
             OnPropertyChanged(nameof(WorkoutRoutine));
         }
+
+
     }
 }

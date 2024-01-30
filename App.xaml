@@ -291,7 +291,7 @@
                         Text="Delete"
                         Style="{StaticResource ExtraSmallRedButtonStyle}"
                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=RemoveWorkoutTemplateCollectionCommand}" 
-                        CommandParameter="{Binding WorkoutTemplateCollection.Id}" />
+                        CommandParameter="{Binding WorkoutTemplateCollection}" />
                 </HorizontalStackLayout>
             </DataTemplate>
             <LinearItemsLayout 
