@@ -27,5 +27,12 @@
         {
             LastUpdateDateTime = DateTimeHelper.GetCurrentFormattedDateTime();
         }
+
+        public void ResetSchedule()
+        {
+            IsScheduleWeekly = true;
+            NumDaysInSchedule = 7;
+            CustomScheduleStartDate = null;
+        }
     }
 }
