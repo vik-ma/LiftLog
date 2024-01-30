@@ -14,4 +14,11 @@ public partial class WorkoutRoutineDetailsPage : ContentPage
         base.OnAppearing();
         await _viewModel.LoadScheduleAsync();
     }
+
+    private async void OnDateSelected(object sender, DateChangedEventArgs e)
+    {
+        DateTime selectedDate = e.NewDate;
+
+        await _viewModel.SetCustomScheduleStartDate(selectedDate);
+    }
 }

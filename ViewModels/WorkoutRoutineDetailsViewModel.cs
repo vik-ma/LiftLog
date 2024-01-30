@@ -169,7 +169,7 @@
         }
 
         [RelayCommand]
-        private async Task UpdateWorkoutRoutine()
+        private async Task UpdateWorkoutRoutineAsync()
         {
             var (isValid, errorMessage) = WorkoutRoutine.Validate();
             if (!isValid)
@@ -222,7 +222,7 @@
 
             WorkoutRoutine.CustomScheduleStartDate = DateTimeHelper.FormatDateTimeToYmdString(SelectedDate);
 
-            await UpdateWorkoutRoutine();
+            await UpdateWorkoutRoutineAsync();
 
             IsShowingDatePicker = false;
         }
@@ -248,7 +248,7 @@
             WorkoutRoutine.IsScheduleWeekly = true;
             WorkoutRoutine.NumDaysInSchedule = 7;
 
-            await UpdateWorkoutRoutine();
+            await UpdateWorkoutRoutineAsync();
 
             await LoadScheduleAsync();
         }
@@ -265,7 +265,7 @@
             WorkoutRoutine.IsScheduleWeekly = false;
             WorkoutRoutine.NumDaysInSchedule = numberOfDays;
 
-            await UpdateWorkoutRoutine();
+            await UpdateWorkoutRoutineAsync();
 
             await LoadScheduleAsync();
         }
@@ -285,6 +285,19 @@
             }
 
             return (true, numberOfDays);
+        }
+
+        public async Task SetCustomScheduleStartDate(DateTime selectedDate)
+        {
+            if (WorkoutRoutine is null || WorkoutRoutine.IsScheduleWeekly) return;
+
+            string ymdDateString = DateTimeHelper.FormatDateTimeToYmdString(selectedDate);
+
+            WorkoutRoutine.CustomScheduleStartDate = ymdDateString;
+
+            await UpdateWorkoutRoutineAsync();
+
+            OnPropertyChanged(nameof(WorkoutRoutine));
         }
     }
 }

@@ -131,19 +131,37 @@
                     </CollectionView>
                 </HorizontalStackLayout>
 
+                <HorizontalStackLayout 
+                    HorizontalOptions="Center" 
+                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
+                    Spacing="10">
+                    <DatePicker
+                        Format="yyyy-MM-dd"
+                        Date="{Binding WorkoutRoutine.CustomScheduleStartDate}"
+                        DateSelected="OnDateSelected" />
+                    <Label
+                        IsVisible="{Binding WorkoutRoutine.CustomScheduleStartDate, Converter={StaticResource IsNotNullConverter}}"
+                        Text="{Binding WorkoutRoutine.CustomScheduleStartDate}"
+                        TextColor="{DynamicResource MediumBlue}"
+                        Style="{StaticResource MediumBoldLabelStyle}" />
+                    <Label
+                        IsVisible="{Binding WorkoutRoutine.CustomScheduleStartDate, Converter={StaticResource IsNullConverter}}"
+                        Text="No Start Date Set"
+                        TextColor="{DynamicResource MediumRed}"
+                        Style="{StaticResource MediumBoldLabelStyle}" />
+                </HorizontalStackLayout>
+
                 <Button 
                     Text="Go To Schedule"
                     WidthRequest="250"
                     Style="{StaticResource AddButtonStyle}"
                     Command="{Binding GoToSchedulePageCommand}" />
-
                 <Button 
                     IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
                     Text="Convert To Weekly"
                     WidthRequest="250"
                     Style="{StaticResource GenericButtonStyle}"
                     Command="{Binding CreateWeeklyScheduleCommand}" />
-
                 <Button 
                     IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
                     Text="Change Number Of Days"
