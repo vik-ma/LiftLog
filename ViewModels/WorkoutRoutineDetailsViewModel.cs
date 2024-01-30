@@ -299,5 +299,25 @@
 
             OnPropertyChanged(nameof(WorkoutRoutine));
         }
+
+        [RelayCommand]
+        private async Task ResetSchedule()
+        {
+            if (WorkoutRoutine is null) return;
+
+            bool userClickedDelete = await Shell.Current.DisplayAlert("Reset Schedule", "Are you sure you want to completely reset the Workout Routine Schedule?", "Reset", "Cancel");
+
+            if (!userClickedDelete) return;
+
+            await DeleteWorkoutTemplateCollectionsByWorkoutRoutineId();
+
+            WorkoutRoutine.ResetSchedule();
+
+            await UpdateWorkoutRoutineAsync();
+
+            OnPropertyChanged(nameof(WorkoutRoutine));
+
+            await LoadScheduleAsync();
+        }
     }
 }

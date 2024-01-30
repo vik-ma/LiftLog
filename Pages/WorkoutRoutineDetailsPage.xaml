@@ -168,13 +168,17 @@
                     WidthRequest="250"
                     Style="{StaticResource GenericButtonStyle}"
                     Command="{Binding CreateCustomScheduleCommand}" />
-
                 <Button 
                     IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly}"
                     Text="Convert To Custom"
                     WidthRequest="250"
                     Style="{StaticResource GenericButtonStyle}"
                     Command="{Binding CreateCustomScheduleCommand}" />
+                <Button
+                    Text="Reset Schedule"
+                    BackgroundColor="{DynamicResource MediumRed}"
+                    Style="{StaticResource GenericButtonStyle}"
+                    Command="{Binding ResetScheduleCommand}"/>
 
             </VerticalStackLayout>
         </Grid>
