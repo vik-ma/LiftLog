@@ -542,14 +542,20 @@
                     HorizontalOptions="Center" 
                     IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
                     Spacing="10">
-                    <Label
-                        Text="{Binding WorkoutRoutine.CustomScheduleStartDate}"
-                        TextColor="{DynamicResource MediumBlue}"
-                        Style="{StaticResource LargeBoldLabelStyle}" />
                     <DatePicker
                         Format="yyyy-MM-dd"
                         Date="{Binding WorkoutRoutine.CustomScheduleStartDate}"
                         DateSelected="OnDateSelected" />
+                    <Label
+                        IsVisible="{Binding WorkoutRoutine.CustomScheduleStartDate, Converter={StaticResource IsNotNullConverter}}"
+                        Text="{Binding WorkoutRoutine.CustomScheduleStartDate}"
+                        TextColor="{DynamicResource MediumBlue}"
+                        Style="{StaticResource LargeBoldLabelStyle}" />
+                    <Label
+                        IsVisible="{Binding WorkoutRoutine.CustomScheduleStartDate, Converter={StaticResource IsNullConverter}}"
+                        Text="No Start Date Set"
+                        TextColor="{DynamicResource MediumRed}"
+                        Style="{StaticResource LargeBoldLabelStyle}" />
                 </HorizontalStackLayout>
                 <Button
                     Text="Convert To Custom Schedule"
@@ -572,7 +578,7 @@
                 Text="Go Back"
                 Style="{StaticResource LargeButtonStyle}"
                 Command="{Binding GoBackCommand}"
-                Margin="50" />
+                Margin="15" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
