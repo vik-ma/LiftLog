@@ -4,7 +4,7 @@
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public int BodyWeight { get; set; }
+        public double BodyWeight { get; set; }
         public string DateTime { get; set; }
     }
 }

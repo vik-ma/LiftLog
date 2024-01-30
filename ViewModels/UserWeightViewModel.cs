@@ -103,9 +103,9 @@
         {
             if (string.IsNullOrWhiteSpace(NewWeightInput)) return;
 
-            bool validInput = int.TryParse(NewWeightInput, out int weightInputInt);
+            bool validInput = double.TryParse(NewWeightInput, out double weightInputDouble);
 
-            if (!validInput || weightInputInt < ConstantsHelper.BodyWeightInputMinValue || weightInputInt > ConstantsHelper.BodyWeightMaxValue)
+            if (!validInput || weightInputDouble < ConstantsHelper.BodyWeightInputMinValue || weightInputDouble > ConstantsHelper.BodyWeightMaxValue)
             {
                 await Shell.Current.DisplayAlert("Error", "Invalid Weight Input.\n", "OK");
                 return;
@@ -113,9 +113,11 @@
 
             string currentDateTimeString = DateTimeHelper.GetCurrentFormattedDateTime();
 
+            double roundedInput = Math.Round(weightInputDouble, 2, MidpointRounding.AwayFromZero);
+
             UserWeight userWeight = new()
             {
-                BodyWeight = weightInputInt,
+                BodyWeight = roundedInput,
                 DateTime = currentDateTimeString
             };
 
@@ -123,7 +125,7 @@
 
             await LoadUserWeightListAsync();
 
-            NewWeightInput = "";
+            NewWeightInput = null;
         }
 
         [RelayCommand]

@@ -44,6 +44,7 @@
         public string DistanceUnit { get; set; }
         public double CardioResistance { get; set; }
         public int PercentCompleted { get; set; }
+        public double UserWeight { get; set; }
 
         #nullable enable
         public (bool IsValid, string? ErrorMessage) ValidateTrackingValues()
