@@ -239,7 +239,7 @@
         }
 
         [RelayCommand]
-        private async Task RemoveWorkoutTemplateCollection(WorkoutTemplateCollection workoutTemplateCollection)
+        private async Task DeleteWorkoutTemplateCollectionAsync(WorkoutTemplateCollection workoutTemplateCollection)
         {
             if (workoutTemplateCollection is null) return;
 
@@ -399,6 +399,43 @@
             OnPropertyChanged(nameof(WorkoutRoutine));
         }
 
+        [RelayCommand]
+        private async Task ResetSchedule()
+        {
+            if (WorkoutRoutine is null) return;
 
+            bool userClickedDelete = await Shell.Current.DisplayAlert("Reset Schedule", "Are you sure you want to completely reset the Workout Routine Schedule?", "Reset", "Cancel");
+
+            if (!userClickedDelete) return;
+
+            await DeleteAllWorkoutTemplateCollectionsForWorkoutRoutine();
+
+            WorkoutRoutine.ResetSchedule();
+
+            await UpdateWorkoutRoutineAsync();
+
+            OnPropertyChanged(nameof(WorkoutRoutine));
+        }
+
+        private async Task DeleteAllWorkoutTemplateCollectionsForWorkoutRoutine()
+        {
+            if (WorkoutRoutine is null) return;
+
+            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutRoutineId == WorkoutRoutine.Id;
+
+            IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
+
+            await ExecuteAsync(async () =>
+            {
+                filteredWtcList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+
+                foreach (var wtc in filteredWtcList)
+                {
+                    await DeleteWorkoutTemplateCollectionAsync(wtc);
+                }
+            });
+
+            await LoadWorkoutTemplateCollectionsAsync();
+        }
     }
 }

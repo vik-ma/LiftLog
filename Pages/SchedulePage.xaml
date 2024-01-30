@@ -572,6 +572,11 @@
                     IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
                     Style="{StaticResource GenericButtonStyle}"
                     Command="{Binding CreateCustomScheduleCommand}"/>
+                <Button
+                    Text="Reset Schedule"
+                    BackgroundColor="{DynamicResource MediumRed}"
+                    Style="{StaticResource GenericButtonStyle}"
+                    Command="{Binding ResetScheduleCommand}"/>
             </VerticalStackLayout>
 
             <Button 

@@ -290,7 +290,7 @@
                     <Button 
                         Text="Delete"
                         Style="{StaticResource ExtraSmallRedButtonStyle}"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=RemoveWorkoutTemplateCollectionCommand}" 
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=DeleteWorkoutTemplateCollectionCommand}" 
                         CommandParameter="{Binding WorkoutTemplateCollection}" />
                 </HorizontalStackLayout>
             </DataTemplate>
