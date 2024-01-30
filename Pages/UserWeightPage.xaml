@@ -21,7 +21,7 @@
                 FontSize="24"
                 FontAttributes="Bold"
                 TextColor="{DynamicResource VeryDarkGray}"/>
-            <HorizontalStackLayout Spacing="10">
+            <HorizontalStackLayout>
                 <Label 
                     Text="{Binding LatestWeight.BodyWeight}"
                     HorizontalOptions="Center"
@@ -29,6 +29,13 @@
                     FontAttributes="Bold"
                     TextColor="{DynamicResource MediumBlue}" />
                 <Label 
+                    Text="{Binding LatestWeight.WeightUnit}"
+                    HorizontalOptions="Center"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    TextColor="{DynamicResource MediumBlue}" />
+                <Label 
+                    Margin="10, 0"
                     Text="{Binding LatestWeight.DateTime}"
                     HorizontalOptions="Center"
                     FontSize="20"
@@ -69,6 +76,9 @@
                                         Style="{StaticResource SmallSpanStyle}" />
                                     <Span 
                                         Text="{Binding BodyWeight}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding WeightUnit}"
                                         Style="{StaticResource SmallSpanStyle}" />
                                 </FormattedString>
                             </Label.FormattedText>
@@ -115,6 +125,12 @@
             <Entry
                 Text="{Binding NewWeightInput}"
                 Style="{StaticResource ExtraSmallEntryFieldStyle}" />
+            <Picker 
+                WidthRequest="80"
+                HeightRequest="40"
+                SelectedIndexChanged="OnWeightUnitPickerSelectedIndexChanged"
+                ItemsSource="{Binding ValidWeightUnitList}"
+                SelectedItem="{Binding SelectedWeightUnit}" />
             <Button 
                 Text="Add New Weight"
                 Style="{StaticResource AddButtonStyle}"

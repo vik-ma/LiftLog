@@ -6,5 +6,6 @@
         public int Id { get; set; }
         public double BodyWeight { get; set; }
         public string DateTime { get; set; }
+        public string WeightUnit { get; set; }
     }
 }

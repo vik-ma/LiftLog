@@ -22,6 +22,12 @@
         [ObservableProperty]
         public UserWeight latestWeight;
 
+        [ObservableProperty]
+        private string selectedWeightUnit;
+
+        [ObservableProperty]
+        private List<string> validWeightUnitList = new(ConstantsHelper.ValidWeightUnits);
+
         #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
@@ -80,6 +86,11 @@
             });
         }
 
+        public void SetDefaultWeightUnit()
+        {
+            SelectedWeightUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits? ConstantsHelper.DefaultWeightUnitMetricTrue: ConstantsHelper.DefaultWeightUnitMetricFalse;
+        }
+
         private async Task UpdateActiveUserWeightId(int id)
         {
             UserSettingsViewModel.UserSettings.ActiveUserWeightId = id;
@@ -118,7 +129,8 @@
             UserWeight userWeight = new()
             {
                 BodyWeight = roundedInput,
-                DateTime = currentDateTimeString
+                DateTime = currentDateTimeString,
+                WeightUnit = SelectedWeightUnit,
             };
 
             await CreateUserWeightAsync(userWeight);
