@@ -61,8 +61,8 @@
         #nullable enable
         public (bool IsValid, string? ErrorMessage) ValidateTrackingValues()
         {
-            int minValue = ConstantsHelper.CompletedSetMinValue;
-            int maxValue = ConstantsHelper.CompletedSetMaxValue;
+            int minValue = ConstantsHelper.SetTrackingMinValue;
+            int maxValue = ConstantsHelper.SetTrackingMaxValue;
 
             if (Weight < minValue || Weight > maxValue) return (false, "Weight");
             if (Reps < minValue || Reps > maxValue) return (false, "Reps");
@@ -83,12 +83,31 @@
             return (true, null);
         }
 
+        public bool ValidateAtLeastOnePropertyTracked()
+        {
+            // Returns true if any Set Property is tracked, otherwise false
+            if (IsTrackingWeight) return true;
+            if (IsTrackingReps) return true;
+            if (IsTrackingRir) return true;
+            if (IsTrackingRpe) return true;
+            if (IsTrackingTime) return true;
+            if (IsTrackingDistance) return true;
+            if (IsTrackingCardioResistance) return true;
+            if (IsTrackingPercentCompleted) return true;
+
+            return false;
+        }
+
         public (bool IsValid, string? ErrorMessage) ValidateSet()
         {
-            if (ExerciseId < 1) return (false, "Invalid Exercise Id");
+            if (ExerciseId < 1) return (false, $"Invalid Exercise Id {ExerciseId}");
 
             if (PercentCompleted < 0 || PercentCompleted > 100) return (false, "Invalid Percent Value");
 
+            // Validate that at least one Set Property tracked
+            if (!ValidateAtLeastOnePropertyTracked()) return (false, "At least one property must be tracked!");
+
+            // Validate that all Default Values are within min and max range
             var (isTrackingValueValid, TrackingValueErrorMessage) = ValidateTrackingValues();
             if (!isTrackingValueValid) return (false, $"Invalid {TrackingValueErrorMessage} Value");
 
@@ -96,6 +115,44 @@
             if (!isUnitValueValid) return (false, $"Invalid {UnitValueErrorMessage} Unit Value");
 
             return (true, null);
+        }
+
+        public Dictionary<bool, List<string>> GetTrackingDict()
+        {
+            List<string> isTrackingList = new();
+            List<string> isNotTrackingList = new();
+
+            (IsWarmupSet ? isTrackingList : isNotTrackingList).Add("Warmup");
+            (IsTrackingWeight ? isTrackingList : isNotTrackingList).Add("Weight");
+            (IsTrackingReps ? isTrackingList : isNotTrackingList).Add("Reps");
+            (IsTrackingRir ? isTrackingList : isNotTrackingList).Add("RIR");
+            (IsTrackingRpe ? isTrackingList : isNotTrackingList).Add("RPE");
+            (IsTrackingTime ? isTrackingList : isNotTrackingList).Add("Time");
+            (IsTrackingDistance ? isTrackingList : isNotTrackingList).Add("Distance");
+            (IsTrackingCardioResistance ? isTrackingList : isNotTrackingList).Add("Cardio Resistance");
+            (IsTrackingPercentCompleted ? isTrackingList : isNotTrackingList).Add("Percent Completed");
+            (IsUsingBodyWeightAsWeight ? isTrackingList : isNotTrackingList).Add("Count Body Weight");
+
+            Dictionary<bool, List<string>> setTrackingDict = new()
+            {
+                { true, isTrackingList },
+                { false, isNotTrackingList }
+            };
+
+            return setTrackingDict;
+        }
+
+        public void ResetDefaultValuesIfNotTracking()
+        {
+            // Reset Default Values to 0 if tracking is turned off
+            if (!IsTrackingWeight && Weight != 0) Weight = 0;
+            if (!IsTrackingReps && Reps != 0) Reps = 0;
+            if (!IsTrackingRir && Rir != 0) Rir = 0;
+            if (!IsTrackingRpe && Rpe != 0) Rpe = 0;
+            if (!IsTrackingTime && TimeInSeconds != 0) TimeInSeconds = 0;
+            if (!IsTrackingDistance && Distance != 0) Distance = 0;
+            if (!IsTrackingCardioResistance && CardioResistance != 0) CardioResistance = 0;
+            if (!IsTrackingPercentCompleted && PercentCompleted != 0) PercentCompleted = 0;
         }
 
     }

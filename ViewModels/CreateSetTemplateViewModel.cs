@@ -152,13 +152,12 @@
 
                 int numSets = NumNewSets;
 
-                // Validate SetTemplate properties
-                //var (isSetTemplateValid, errorMessage) = newSetTemplate.ValidateSetTemplate();
-                //if (!isSetTemplateValid)
-                //{
-                //    await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
-                //    return;
-                //}
+                var (isSetValid, errorMessage) = newSet.ValidateSet();
+                if (!isSetValid)
+                {
+                    await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
+                    return;
+                }
 
                 if (newSet.IsUsingBodyWeightAsWeight)
                 {
@@ -171,7 +170,7 @@
                         if (!userUpdatedUserWeight) return;
                     }
 
-                    //newSetTemplate = DisableBodyWeightTrackingIfNotTrackingWeight(newSetTemplate);
+                    newSet = DisableBodyWeightTrackingIfNotTrackingWeight(newSet);
                 }
                 
                 await CreateNewSetAsync(newSet, numSets);
@@ -243,13 +242,12 @@
 
             OperatingSet.ExerciseId = SelectedExercise?.Id ?? 0;
 
-            // Validate SetTemplate properties
-            //var (isSetTemplateValid, errorMessage) = OperatingSet.ValidateSetTemplate();
-            //if (!isSetTemplateValid)
-            //{
-            //    await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
-            //    return;
-            //}
+            var (isSetValid, errorMessage) = OperatingSet.ValidateSet();
+            if (!isSetValid)
+            {
+                await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
+                return;
+            }
 
             if (OperatingSet.IsUsingBodyWeightAsWeight)
             {
@@ -262,7 +260,7 @@
                     if (!userUpdatedUserWeight) return;
                 }
 
-                //OperatingSetTemplate = DisableBodyWeightTrackingIfNotTrackingWeight(OperatingSetTemplate);
+                OperatingSet = DisableBodyWeightTrackingIfNotTrackingWeight(OperatingSet);
             }
 
             if (!await _context.UpdateItemAsync<Set>(OperatingSet))
@@ -329,13 +327,13 @@
         [RelayCommand]
         private async Task AddDefaultPropertyValue(string property)
         {
-            string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Default Value", $"Value must be between {ConstantsHelper.SetTemplateDefaultInputMinValue} and {ConstantsHelper.SetTemplateDefaultMaxValue}.\n", "OK", "Cancel");
+            string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Default Value", $"Value must be between {ConstantsHelper.SetTrackingMinValue} and {ConstantsHelper.SetTrackingMaxValue}.\n", "OK", "Cancel");
 
             if (enteredNumber == null) return;
 
             bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
 
-            if (!validInput || enteredNumberInt < ConstantsHelper.SetTemplateDefaultInputMinValue || enteredNumberInt > ConstantsHelper.SetTemplateDefaultMaxValue)
+            if (!validInput || enteredNumberInt < ConstantsHelper.SetTrackingMinValue || enteredNumberInt > ConstantsHelper.SetTrackingMaxValue)
             {
                 await Shell.Current.DisplayAlert("Error", "Invalid Input Value.\n", "OK");
                 return;
