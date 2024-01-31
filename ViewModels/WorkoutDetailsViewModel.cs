@@ -82,13 +82,13 @@
 
             List<SetTemplateExercisePackage> setTemplateExercisePackageList = new();
 
-            Expression<Func<SetTemplate, bool>> predicate = entity => entity.WorkoutTemplateId == WorkoutTemplate.Id;
+            Expression<Func<Set, bool>> predicate = entity => entity.WorkoutTemplateId == WorkoutTemplate.Id && entity.IsTemplate == true;
 
             try
             {
-                var filteredSetTemplateList = await _context.GetFilteredAsync<SetTemplate>(predicate);
+                var filteredSetList = await _context.GetFilteredAsync<Set>(predicate);
 
-                foreach (var item in filteredSetTemplateList)
+                foreach (var item in filteredSetList)
                 {
                     Exercise exercise = await _context.GetItemByKeyAsync<Exercise>(item.ExerciseId);
 
@@ -96,7 +96,7 @@
 
                     SetTemplateExercisePackage setTemplateExercisePackage = new()
                     {
-                        SetTemplate = item,
+                        Set = item,
                         Exercise = exercise ?? new() { Name = "Invalid Exercise" }
                     };
 
@@ -106,12 +106,12 @@
                 if (setTemplateExercisePackageList.Any())
                 {
                     // Sort the SetList by its SetListIdOrder
-                    SetList = new ObservableCollection<SetTemplateExercisePackage>(setTemplateExercisePackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.SetTemplate.Id)));
+                    SetList = new ObservableCollection<SetTemplateExercisePackage>(setTemplateExercisePackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Set.Id)));
                 }
             }
             catch
             {
-                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Sets.", "OK");
                 return;
             }
         }
@@ -216,13 +216,13 @@
                 return;
             }
 
-            Expression<Func<SetTemplate, bool>> predicate = entity => entity.WorkoutTemplateId == existingWorkoutId;
+            Expression<Func<Set, bool>> predicate = entity => entity.WorkoutTemplateId == existingWorkoutId;
 
-            IEnumerable<SetTemplate> filteredList = null;
+            IEnumerable<Set> filteredList = null;
             try
             {
-                // Get all SetTemplates of old WorkoutTemplate Id
-                filteredList = await _context.GetFilteredAsync<SetTemplate>(predicate);
+                // Get all Set Templates of old WorkoutTemplate Id
+                filteredList = await _context.GetFilteredAsync<Set>(predicate);
             }
             catch
             {
@@ -256,12 +256,12 @@
                 // Order the sets for the new workout the same as the old one
                 var orderedFilteredList = filteredList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Id));
 
-                // Copy old SetTemplates but with new WorkoutTemplateId
+                // Copy old Set Templates but with new WorkoutTemplateId
                 foreach (var item in orderedFilteredList)
                 {
                     var itemCopy = item.Clone();
                     itemCopy.WorkoutTemplateId = WorkoutTemplate.Id;
-                    await _context.AddItemAsync<SetTemplate>(itemCopy);
+                    await _context.AddItemAsync<Set>(itemCopy);
                 }
             });
 
@@ -276,7 +276,7 @@
         }
 
         [RelayCommand]
-        private async Task GoToCreateSetTemplatePage(SetWorkoutTemplatePackage package)
+        private async Task GoToCreateSetPage(SetWorkoutTemplatePackage package)
         {
             if (package is null) return;
 
@@ -289,13 +289,13 @@
         }
 
         [RelayCommand]
-        private async Task DeleteSetTemplateAsync(SetTemplate setTemplate)
+        private async Task DeleteSetAsync(Set set)
         {
-            if (setTemplate is null) return;
+            if (set is null) return;
 
             await ExecuteAsync(async () =>
             {
-                if (!await _context.DeleteItemAsync<SetTemplate>(setTemplate))
+                if (!await _context.DeleteItemAsync<Set>(set))
                 {
                     await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set.", "OK");
                 }
@@ -327,33 +327,32 @@
             {
                 WorkoutTemplate = WorkoutTemplate,
                 Set = new(),
-                SetTemplate = new(),
                 IsEditing = false
             };
 
-            await GoToCreateSetTemplatePage(package);
+            await GoToCreateSetPage(package);
         }
 
         [RelayCommand]
-        private async Task EditSetTemplateAsync(SetTemplate setTemplate)
+        private async Task EditSetAsync(Set set)
         {
-            if (setTemplate is null) return;
+            if (set is null) return;
 
             SetWorkoutTemplatePackage package = new()
             {
                 WorkoutTemplate = WorkoutTemplate,
-                SetTemplate = setTemplate,
+                Set = set,
                 IsEditing = true
             };
 
-            await GoToCreateSetTemplatePage(package);
+            await GoToCreateSetPage(package);
         }
 
         public async Task GenerateSetListOrderString()
         {
             if (WorkoutTemplate is null) return;
 
-            IEnumerable<string> setIdList = SetList.Select(set => set.SetTemplate.Id.ToString());
+            IEnumerable<string> setIdList = SetList.Select(set => set.Set.Id.ToString());
 
             WorkoutTemplate.SetListOrder = string.Join(",", setIdList);
 
@@ -361,12 +360,12 @@
         }
 
         [RelayCommand]
-        private async Task MoveSetUp(SetTemplate setTemplate)
+        private async Task MoveSetUp(Set set)
         {
-            if (setTemplate is null) return;
+            if (set is null) return;
 
             // Get SetList index of current Set
-            int setIndex = SetList.ToList().FindIndex(item => item.SetTemplate.Equals(setTemplate));
+            int setIndex = SetList.ToList().FindIndex(item => item.Set.Equals(set));
 
             // Do nothing if item is already first in list
             if (setIndex < 1) return;
@@ -378,12 +377,12 @@
         }
 
         [RelayCommand]
-        private async Task MoveSetDown(SetTemplate setTemplate)
+        private async Task MoveSetDown(Set set)
         {
-            if (setTemplate is null) return;
+            if (set is null) return;
 
             // Get SetList index of current Set
-            int setIndex = SetList.ToList().FindIndex(item => item.SetTemplate.Equals(setTemplate));
+            int setIndex = SetList.ToList().FindIndex(item => item.Set.Equals(set));
 
             // Do nothing if item is already last in list
             if (setIndex > SetList.Count - 2) return;
@@ -407,7 +406,7 @@
             {
                 foreach (var setPackage in SetList)
                 {
-                    await _context.DeleteItemAsync<SetTemplate>(setPackage.SetTemplate);
+                    await _context.DeleteItemAsync<Set>(setPackage.Set);
                 }
             }
             catch

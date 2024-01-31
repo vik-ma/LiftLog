@@ -135,6 +135,7 @@
                 // If creating new Set(s)
                 Set newSet = new()
                 {
+                    IsTemplate = true,
                     WorkoutTemplateId = OperatingWorkoutTemplate.Id,
                     ExerciseId = SelectedExercise.Id,
                     Note = OperatingSet.Note,

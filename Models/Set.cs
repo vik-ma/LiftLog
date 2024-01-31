@@ -58,6 +58,8 @@
         public int percentCompleted;
         public double UserWeight { get; set; }
 
+        public Set Clone() => MemberwiseClone() as Set;
+
         #nullable enable
         public (bool IsValid, string? ErrorMessage) ValidateTrackingValues()
         {
