@@ -6,6 +6,8 @@
         public int Id { get; set; }
         public int WorkoutId { get; set; }
         public int ExerciseId { get; set; }
+        public bool IsTemplate { get; set; }
+        public int WorkoutTemplateId { get; set; }
         public int SetTemplateId { get; set; }
         public string Note { get; set; }
         [ObservableProperty]
@@ -34,16 +36,26 @@
         public bool isCompleted;
         [ObservableProperty]
         public string timeCompleted;
-        public double Weight { get; set; }
-        public string WeightUnit { get; set; }
-        public int Reps { get; set; }
-        public int Rir { get; set; }
-        public int Rpe { get; set; }
-        public int TimeInSeconds { get; set; }
-        public double Distance { get; set; }
-        public string DistanceUnit { get; set; }
-        public double CardioResistance { get; set; }
-        public int PercentCompleted { get; set; }
+        [ObservableProperty]
+        public double weight;
+        [ObservableProperty]
+        public int reps;
+        [ObservableProperty]
+        public int rir;
+        [ObservableProperty]
+        public int rpe;
+        [ObservableProperty]
+        public int timeInSeconds;
+        [ObservableProperty]
+        public double distance;
+        [ObservableProperty]
+        public double cardioResistance;
+        [ObservableProperty]
+        public string weightUnit;
+        [ObservableProperty]
+        public string distanceUnit;
+        [ObservableProperty]
+        public int percentCompleted;
         public double UserWeight { get; set; }
 
         #nullable enable
