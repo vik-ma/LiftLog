@@ -11,7 +11,7 @@
         #nullable enable
         public (bool IsValid, string? ErrorMessage) Validate()
         {
-            if (BodyWeight < ConstantsHelper.BodyWeightInputMinValue || BodyWeight > ConstantsHelper.BodyWeightMaxValue) return (false, "Invalid Weight Number");
+            if (BodyWeight < ConstantsHelper.BodyWeightMinValue || BodyWeight > ConstantsHelper.BodyWeightMaxValue) return (false, "Invalid Weight Number");
 
             if (!ConstantsHelper.ValidWeightUnits.Contains(WeightUnit)) return (false, "Invalid Weight Unit");
 

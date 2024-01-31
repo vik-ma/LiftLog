@@ -57,7 +57,7 @@
 
             if (string.IsNullOrEmpty(WorkoutTemplate.SetListOrder)) return;
 
-            string[] setList = WorkoutTemplate.SetListOrder.Split(',');
+            string[] setList = WorkoutTemplate.SetListOrder.Split(",");
 
             foreach (string s in setList)
             {

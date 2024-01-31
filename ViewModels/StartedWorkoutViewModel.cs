@@ -61,7 +61,7 @@
 
             if (string.IsNullOrEmpty(WorkoutTemplate.SetListOrder)) return;
 
-            string[] setList = WorkoutTemplate.SetListOrder.Split(',');
+            string[] setList = WorkoutTemplate.SetListOrder.Split(",");
 
             foreach (string s in setList)
             {
@@ -271,7 +271,7 @@
 
                     bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
 
-                    if (!validInput || enteredNumberInt < ConstantsHelper.BodyWeightInputMinValue || enteredNumberInt > ConstantsHelper.BodyWeightMaxValue)
+                    if (!validInput || enteredNumberInt < ConstantsHelper.BodyWeightMinValue || enteredNumberInt > ConstantsHelper.BodyWeightMaxValue)
                     {
                         await Shell.Current.DisplayAlert("Error", "Invalid Input Value.\n", "OK");
                     }

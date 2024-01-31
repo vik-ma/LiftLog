@@ -262,7 +262,7 @@
         {
             if (string.IsNullOrEmpty(setListIdOrder)) return;
 
-            string[] setList = setListIdOrder.Split(',');
+            string[] setList = setListIdOrder.Split(",");
 
             foreach (string s in setList)
             {

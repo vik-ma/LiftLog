@@ -195,9 +195,9 @@
 
                 bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
 
-                if (!validInput || enteredNumberInt < ConstantsHelper.BodyWeightInputMinValue || enteredNumberInt > ConstantsHelper.BodyWeightMaxValue)
+                if (!validInput || enteredNumberInt < ConstantsHelper.BodyWeightMinValue || enteredNumberInt > ConstantsHelper.BodyWeightMaxValue)
                 {
-                    await Shell.Current.DisplayAlert("Error", "Invalid Input Value.\n", "OK");
+                    await Shell.Current.DisplayAlert("Error", "Invalid Input Value", "OK");
                 }
                 else
                 {
@@ -278,7 +278,7 @@
         {
             if (numSets < 1 || numSets > 10)
             {
-                await Shell.Current.DisplayAlert("Error", "Number of sets must be between 1 and 10!", "OK");
+                await Shell.Current.DisplayAlert("Error", "Number of sets must be between 1 and 10", "OK");
                 return;
             }
 
@@ -291,7 +291,7 @@
             if (!string.IsNullOrEmpty(OperatingWorkoutTemplate.SetListOrder))
             {
                 // Create list of Ids from comma separated SetListOrder string if it exists
-                newSetList = OperatingWorkoutTemplate.SetListOrder.Split(',').ToList();
+                newSetList = OperatingWorkoutTemplate.SetListOrder.Split(",").ToList();
             }
             else
             {
@@ -317,7 +317,7 @@
         [RelayCommand]
         private async Task AddDefaultPropertyValue(string property)
         {
-            string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Default Value", $"Value must be between {ConstantsHelper.SetTrackingMinValue} and {ConstantsHelper.SetTrackingMaxValue}.\n", "OK", "Cancel");
+            string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Default Value", $"Enter Default {property} Value", "OK", "Cancel");
 
             if (enteredNumber == null) return;
 
@@ -325,7 +325,7 @@
 
             if (!validInput || enteredNumberInt < ConstantsHelper.SetTrackingMinValue || enteredNumberInt > ConstantsHelper.SetTrackingMaxValue)
             {
-                await Shell.Current.DisplayAlert("Error", "Invalid Input Value.\n", "OK");
+                await Shell.Current.DisplayAlert("Error", "Invalid Input Value", "OK");
                 return;
             }
 
@@ -341,15 +341,15 @@
         [RelayCommand]
         private async Task AddPercentCompletedDefaultValue()
         {
-            string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Default Value", $"Value must be between {ConstantsHelper.PercentInputMinValue} and {ConstantsHelper.PercentInputMaxValue}.\n", "OK", "Cancel");
+            string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Default Value", "Value must be between 0 and 100.", "OK", "Cancel");
 
             if (enteredNumber == null) return;
 
             bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
 
-            if (!validInput || enteredNumberInt < ConstantsHelper.PercentInputMinValue || enteredNumberInt > ConstantsHelper.PercentInputMaxValue)
+            if (!validInput || enteredNumberInt < 0 || enteredNumberInt > 100)
             {
-                await Shell.Current.DisplayAlert("Error", "Invalid Input Value.\n", "OK");
+                await Shell.Current.DisplayAlert("Error", "Invalid Input Value", "OK");
                 return;
             }
 
