@@ -116,9 +116,9 @@
 
             bool validInput = double.TryParse(NewWeightInput, out double weightInputDouble);
 
-            if (!validInput || weightInputDouble < ConstantsHelper.BodyWeightInputMinValue || weightInputDouble > ConstantsHelper.BodyWeightMaxValue)
+            if (!validInput)
             {
-                await Shell.Current.DisplayAlert("Error", "Invalid Weight Input.\n", "OK");
+                await Shell.Current.DisplayAlert("Error", "Invalid Input", "OK");
                 return;
             }
 
@@ -132,6 +132,14 @@
                 DateTime = currentDateTimeString,
                 WeightUnit = SelectedWeightUnit,
             };
+
+            var (isValid, errorMessage) = userWeight.Validate();
+
+            if (!isValid) 
+            {
+                await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
+                return;
+            }
 
             await CreateUserWeightAsync(userWeight);
 
