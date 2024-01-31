@@ -326,6 +326,7 @@
             SetWorkoutTemplatePackage package = new()
             {
                 WorkoutTemplate = WorkoutTemplate,
+                Set = new(),
                 SetTemplate = new(),
                 IsEditing = false
             };

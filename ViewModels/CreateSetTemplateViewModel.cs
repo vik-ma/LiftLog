@@ -14,7 +14,7 @@
         private SetWorkoutTemplatePackage setWorkoutTemplatePackage;
 
         [ObservableProperty]
-        private SetTemplate operatingSetTemplate;
+        private Set operatingSet;
 
         [ObservableProperty]
         private WorkoutTemplate operatingWorkoutTemplate;
@@ -68,7 +68,7 @@
 
         public async void InitializeSetWorkoutTemplatePackage()
         {
-            OperatingSetTemplate = SetWorkoutTemplatePackage.SetTemplate;
+            OperatingSet = SetWorkoutTemplatePackage.Set;
             OperatingWorkoutTemplate = SetWorkoutTemplatePackage.WorkoutTemplate;
             IsEditing = SetWorkoutTemplatePackage.IsEditing;
 
@@ -79,7 +79,7 @@
                 if (SelectedExercise.Id == 0)
                 {
                     // Reset ExerciseId if Exercise does not exist
-                    OperatingSetTemplate.ExerciseId = 0;
+                    OperatingSet.ExerciseId = 0;
 
                     await Shell.Current.DisplayAlert("Invalid Exercise", "This Set references an Exercise that no longer exist.\nUpdate the Exercise or Set won't appear in Workout.", "OK");
                 }
@@ -88,11 +88,11 @@
 
         private async Task LoadExerciseAsync()
         {
-            if (OperatingSetTemplate is null) return;
+            if (OperatingSet is null) return;
 
             await ExecuteAsync(async () =>
             {
-                SelectedExercise = await _context.GetItemByKeyAsync<Exercise>(OperatingSetTemplate.ExerciseId) ?? new();
+                SelectedExercise = await _context.GetItemByKeyAsync<Exercise>(OperatingSet.ExerciseId) ?? new();
             });
         }
 
@@ -123,29 +123,29 @@
         [RelayCommand]
         private async Task SaveSetTemplateAsync()
         {
-            if (OperatingSetTemplate is null || OperatingWorkoutTemplate is null) return;
+            if (OperatingSet is null || OperatingWorkoutTemplate is null) return;
 
             if (IsEditing)
             {
-                // If editing existing SetTemplate
+                // If editing existing Set
                 await UpdateSetTemplateAsync();
             }
             else
             {
-                // If creating new SetTemplate(s)
-                SetTemplate newSetTemplate = new()
+                // If creating new Set(s)
+                Set newSet = new()
                 {
                     WorkoutTemplateId = OperatingWorkoutTemplate.Id,
                     ExerciseId = SelectedExercise.Id,
-                    Note = OperatingSetTemplate.Note,
-                    IsTrackingWeight = OperatingSetTemplate.IsTrackingWeight,
-                    IsTrackingReps = OperatingSetTemplate.IsTrackingReps,
-                    IsTrackingRir = OperatingSetTemplate.IsTrackingRir,
-                    IsTrackingRpe = OperatingSetTemplate.IsTrackingRpe,
-                    IsTrackingTime = OperatingSetTemplate.IsTrackingTime,
-                    IsTrackingDistance = OperatingSetTemplate.IsTrackingDistance,
-                    IsTrackingCardioResistance = OperatingSetTemplate.IsTrackingCardioResistance,
-                    IsUsingBodyWeightAsWeight = OperatingSetTemplate.IsUsingBodyWeightAsWeight,
+                    Note = OperatingSet.Note,
+                    IsTrackingWeight = OperatingSet.IsTrackingWeight,
+                    IsTrackingReps = OperatingSet.IsTrackingReps,
+                    IsTrackingRir = OperatingSet.IsTrackingRir,
+                    IsTrackingRpe = OperatingSet.IsTrackingRpe,
+                    IsTrackingTime = OperatingSet.IsTrackingTime,
+                    IsTrackingDistance = OperatingSet.IsTrackingDistance,
+                    IsTrackingCardioResistance = OperatingSet.IsTrackingCardioResistance,
+                    IsUsingBodyWeightAsWeight = OperatingSet.IsUsingBodyWeightAsWeight,
                     WeightUnit = SelectedWeightUnit,
                     DistanceUnit = SelectedDistanceUnit,
                 };
@@ -153,14 +153,14 @@
                 int numSets = NewSetTemplateNumSets;
 
                 // Validate SetTemplate properties
-                var (isSetTemplateValid, errorMessage) = newSetTemplate.ValidateSetTemplate();
-                if (!isSetTemplateValid)
-                {
-                    await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
-                    return;
-                }
+                //var (isSetTemplateValid, errorMessage) = newSetTemplate.ValidateSetTemplate();
+                //if (!isSetTemplateValid)
+                //{
+                //    await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
+                //    return;
+                //}
 
-                if (newSetTemplate.IsUsingBodyWeightAsWeight)
+                if (newSet.IsUsingBodyWeightAsWeight)
                 {
                     // If no Active UserWeight is set, but IsUsingBodyWeightAsWeight has been checked
                     if (UserSettingsViewModel.UserSettings.ActiveUserWeightId == 0)
@@ -171,21 +171,21 @@
                         if (!userUpdatedUserWeight) return;
                     }
 
-                    newSetTemplate = DisableBodyWeightTrackingIfNotTrackingWeight(newSetTemplate);
+                    //newSetTemplate = DisableBodyWeightTrackingIfNotTrackingWeight(newSetTemplate);
                 }
                 
-                await CreateNewSetTemplateAsync(newSetTemplate, numSets);
+                await CreateNewSetTemplateAsync(newSet, numSets);
             }
         }
 
-        private static SetTemplate DisableBodyWeightTrackingIfNotTrackingWeight(SetTemplate setTemplate) 
+        private static Set DisableBodyWeightTrackingIfNotTrackingWeight(Set set) 
         {
-            if (!setTemplate.IsTrackingWeight)
+            if (!set.IsTrackingWeight)
             {
                 // Set IsUsingBodyWeightAsWeight to false if it is checked even if Weight is not tracked
-                setTemplate.IsUsingBodyWeightAsWeight = false;
+                set.IsUsingBodyWeightAsWeight = false;
             }
-            return setTemplate;
+            return set;
         }
 
         private async Task<bool> ShowUpdateWeightPrompt()
@@ -239,19 +239,19 @@
         [RelayCommand]
         private async Task UpdateSetTemplateAsync()
         {
-            if (OperatingSetTemplate is null) return;
+            if (OperatingSet is null) return;
 
-            OperatingSetTemplate.ExerciseId = SelectedExercise?.Id ?? 0;
+            OperatingSet.ExerciseId = SelectedExercise?.Id ?? 0;
 
             // Validate SetTemplate properties
-            var (isSetTemplateValid, errorMessage) = OperatingSetTemplate.ValidateSetTemplate();
-            if (!isSetTemplateValid)
-            {
-                await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
-                return;
-            }
+            //var (isSetTemplateValid, errorMessage) = OperatingSet.ValidateSetTemplate();
+            //if (!isSetTemplateValid)
+            //{
+            //    await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
+            //    return;
+            //}
 
-            if (OperatingSetTemplate.IsUsingBodyWeightAsWeight)
+            if (OperatingSet.IsUsingBodyWeightAsWeight)
             {
                 // If no Active UserWeight is set, but IsUsingBodyWeightAsWeight has been checked
                 if (UserSettingsViewModel.UserSettings.ActiveUserWeightId == 0)
@@ -262,12 +262,12 @@
                     if (!userUpdatedUserWeight) return;
                 }
 
-                OperatingSetTemplate = DisableBodyWeightTrackingIfNotTrackingWeight(OperatingSetTemplate);
+                //OperatingSetTemplate = DisableBodyWeightTrackingIfNotTrackingWeight(OperatingSetTemplate);
             }
 
-            if (!await _context.UpdateItemAsync<SetTemplate>(OperatingSetTemplate))
+            if (!await _context.UpdateItemAsync<Set>(OperatingSet))
             {
-                await Shell.Current.DisplayAlert("Error", "Error occured when updating Set Template.", "OK");
+                await Shell.Current.DisplayAlert("Error", "Error occured when updating Set.", "OK");
             }
             else
             {
@@ -286,7 +286,7 @@
             });
         }
 
-        private async Task CreateNewSetTemplateAsync(SetTemplate setTemplate, int numSets)
+        private async Task CreateNewSetTemplateAsync(Set set, int numSets)
         {
             if (numSets < 1 || numSets > 10)
             {
@@ -294,7 +294,7 @@
                 return;
             }
 
-            if (setTemplate == null) return;
+            if (set is null) return;
 
             if (OperatingWorkoutTemplate is null) return;
 
@@ -314,8 +314,8 @@
             await ExecuteAsync(async () =>
             {
                 for (int i = 0; i < numSets; i++) {
-                    await _context.AddItemAsync<SetTemplate>(setTemplate);
-                    newSetList.Add(setTemplate.Id.ToString());
+                    await _context.AddItemAsync<Set>(set);
+                    newSetList.Add(set.Id.ToString());
                 }
             });
 
@@ -370,49 +370,49 @@
 
         private void ChangeSetTemplatePropertyValue(string property, int propertyValue)
         {
-            switch (property)
-            {
-                case "Weight":
-                    OperatingSetTemplate.DefaultWeightValue = propertyValue;
-                    break;
+            //switch (property)
+            //{
+            //    case "Weight":
+            //        OperatingSetTemplate.DefaultWeightValue = propertyValue;
+            //        break;
 
-                case "Reps":
-                    OperatingSetTemplate.DefaultRepsValue = propertyValue;
-                    break;
+            //    case "Reps":
+            //        OperatingSetTemplate.DefaultRepsValue = propertyValue;
+            //        break;
 
-                case "Rir":
-                    OperatingSetTemplate.DefaultRirValue = propertyValue;
-                    break;
+            //    case "Rir":
+            //        OperatingSetTemplate.DefaultRirValue = propertyValue;
+            //        break;
 
-                case "Rpe":
-                    OperatingSetTemplate.DefaultRpeValue = propertyValue;
-                    break;
+            //    case "Rpe":
+            //        OperatingSetTemplate.DefaultRpeValue = propertyValue;
+            //        break;
 
-                case "Time":
-                    OperatingSetTemplate.DefaultTimeValue = propertyValue;
-                    break;
+            //    case "Time":
+            //        OperatingSetTemplate.DefaultTimeValue = propertyValue;
+            //        break;
 
-                case "Distance":
-                    OperatingSetTemplate.DefaultDistanceValue = propertyValue;
-                    break;
+            //    case "Distance":
+            //        OperatingSetTemplate.DefaultDistanceValue = propertyValue;
+            //        break;
 
-                case "CardioResistance":
-                    OperatingSetTemplate.DefaultCardioResistanceValue = propertyValue;
-                    break;
+            //    case "CardioResistance":
+            //        OperatingSetTemplate.DefaultCardioResistanceValue = propertyValue;
+            //        break;
 
-                case "PercentCompleted":
-                    OperatingSetTemplate.DefaultPercentCompletedValue = propertyValue;
-                    break;
+            //    case "PercentCompleted":
+            //        OperatingSetTemplate.DefaultPercentCompletedValue = propertyValue;
+            //        break;
 
-                default:
-                    return;
-            }
+            //    default:
+            //        return;
+            //}
         }
 
         [RelayCommand]
         private async Task DeleteSetTemplateAsync()
         {
-            if (OperatingSetTemplate is null) return;
+            if (OperatingSet is null) return;
 
             bool userClickedDelete = await Shell.Current.DisplayAlert("Delete Set", "Are you sure you want to delete Set?\nThis can not be undone.", "Delete", "Cancel");
 
@@ -420,9 +420,9 @@
 
             await ExecuteAsync(async () =>
             {
-                if (!await _context.DeleteItemAsync<SetTemplate>(OperatingSetTemplate))
+                if (!await _context.DeleteItemAsync<Set>(OperatingSet))
                 {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when trying to delete Set Template.", "OK");
+                    await Shell.Current.DisplayAlert("Error", "Error occured when trying to delete Set.", "OK");
                 }
             });
 
