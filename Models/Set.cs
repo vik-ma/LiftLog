@@ -100,6 +100,13 @@
             return false;
         }
 
+        public bool ValidateTemplateId()
+        {
+            if (IsTemplate && WorkoutTemplateId == 0) return false;
+
+            return true;
+        }
+
         public (bool IsValid, string? ErrorMessage) ValidateSet()
         {
             if (ExerciseId < 1) return (false, $"Invalid Exercise Id {ExerciseId}");
@@ -115,6 +122,9 @@
 
             var (isUnitValueValid, UnitValueErrorMessage) = ValidateUnits();
             if (!isUnitValueValid) return (false, $"Invalid {UnitValueErrorMessage} Unit Value");
+
+            // Validate that Set has a WorkoutTemplateId if it is Template
+            if (!ValidateTemplateId()) return (false, "Invalid Workout Template");
 
             return (true, null);
         }
