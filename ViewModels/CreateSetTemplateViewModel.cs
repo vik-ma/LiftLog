@@ -43,7 +43,7 @@
         public ObservableCollection<Exercise> filteredExerciseList = new();
 
         [ObservableProperty]
-        private int newSetTemplateNumSets = 1;
+        private int numNewSets = 1;
 
         [ObservableProperty]
         private Exercise selectedExercise;
@@ -121,14 +121,14 @@
         }
 
         [RelayCommand]
-        private async Task SaveSetTemplateAsync()
+        private async Task SaveSetAsync()
         {
             if (OperatingSet is null || OperatingWorkoutTemplate is null) return;
 
             if (IsEditing)
             {
                 // If editing existing Set
-                await UpdateSetTemplateAsync();
+                await UpdateSetAsync();
             }
             else
             {
@@ -150,7 +150,7 @@
                     DistanceUnit = SelectedDistanceUnit,
                 };
 
-                int numSets = NewSetTemplateNumSets;
+                int numSets = NumNewSets;
 
                 // Validate SetTemplate properties
                 //var (isSetTemplateValid, errorMessage) = newSetTemplate.ValidateSetTemplate();
@@ -174,7 +174,7 @@
                     //newSetTemplate = DisableBodyWeightTrackingIfNotTrackingWeight(newSetTemplate);
                 }
                 
-                await CreateNewSetTemplateAsync(newSet, numSets);
+                await CreateNewSetAsync(newSet, numSets);
             }
         }
 
@@ -237,7 +237,7 @@
         }
 
         [RelayCommand]
-        private async Task UpdateSetTemplateAsync()
+        private async Task UpdateSetAsync()
         {
             if (OperatingSet is null) return;
 
@@ -286,7 +286,7 @@
             });
         }
 
-        private async Task CreateNewSetTemplateAsync(Set set, int numSets)
+        private async Task CreateNewSetAsync(Set set, int numSets)
         {
             if (numSets < 1 || numSets > 10)
             {
@@ -341,13 +341,13 @@
                 return;
             }
 
-            ChangeSetTemplatePropertyValue(property, enteredNumberInt);
+            ChangeSetPropertyValue(property, enteredNumberInt);
         }
 
         [RelayCommand]
         private void RemoveDefaultPropertyValue(string property)
         {
-            ChangeSetTemplatePropertyValue(property, 0);
+            ChangeSetPropertyValue(property, 0);
         }
 
         [RelayCommand]
@@ -365,10 +365,10 @@
                 return;
             }
 
-            ChangeSetTemplatePropertyValue("PercentCompleted", enteredNumberInt);
+            ChangeSetPropertyValue("PercentCompleted", enteredNumberInt);
         }
 
-        private void ChangeSetTemplatePropertyValue(string property, int propertyValue)
+        private void ChangeSetPropertyValue(string property, int propertyValue)
         {
             switch (property)
             {
@@ -410,7 +410,7 @@
         }
 
         [RelayCommand]
-        private async Task DeleteSetTemplateAsync()
+        private async Task DeleteSetAsync()
         {
             if (OperatingSet is null) return;
 

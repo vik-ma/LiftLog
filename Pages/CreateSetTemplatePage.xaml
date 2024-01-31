@@ -56,7 +56,7 @@
                         HorizontalOptions="End"
                         WidthRequest="30"
                         Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                        Text="{Binding NewSetTemplateNumSets}" />
+                        Text="{Binding NumNewSets}" />
                 </Grid>
                 <Grid Style="{StaticResource CreateSetTemplateNoteGridStyle}">
                     <Label 
@@ -443,13 +443,13 @@
                 HorizontalOptions="Center"
                 Text="Delete Set"
                 Style="{StaticResource DeleteButtonStyle}"
-                Command="{Binding DeleteSetTemplateCommand}"/>
+                Command="{Binding DeleteSetCommand}"/>
 
             <Button 
                 HorizontalOptions="Center"
                 Text="Save Set"
                 Style="{StaticResource AddButtonStyle}"
-                Command="{Binding SaveSetTemplateCommand}"/>
+                Command="{Binding SaveSetCommand}"/>
         </HorizontalStackLayout>
 
         <Button 
