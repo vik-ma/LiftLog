@@ -126,8 +126,7 @@
                 Text="{Binding NewWeightInput}"
                 Style="{StaticResource ExtraSmallEntryFieldStyle}" />
             <Picker 
-                WidthRequest="80"
-                HeightRequest="40"
+                Style="{StaticResource ExtraSmallPickerStyle}"
                 SelectedIndexChanged="OnWeightUnitPickerSelectedIndexChanged"
                 ItemsSource="{Binding ValidWeightUnitList}"
                 SelectedItem="{Binding SelectedWeightUnit}" />

@@ -80,8 +80,7 @@
                         Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
                         IsVisible="{Binding OperatingSetTemplate.IsTrackingWeight}">
                         <Picker 
-                            WidthRequest="80"
-                            HeightRequest="40"
+                            Style="{StaticResource ExtraSmallPickerStyle}"
                             SelectedIndexChanged="OnWeightUnitPickerSelectedIndexChanged"
                             ItemsSource="{Binding ValidWeightUnitList}"
                             SelectedItem="{Binding SelectedWeightUnit}" />
@@ -281,8 +280,7 @@
                         Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
                         IsVisible="{Binding OperatingSetTemplate.IsTrackingDistance}">
                         <Picker 
-                            WidthRequest="80"
-                            HeightRequest="40"
+                            Style="{StaticResource ExtraSmallPickerStyle}"
                             SelectedIndexChanged="OnDistanceUnitPickerSelectedIndexChanged"
                             ItemsSource="{Binding ValidDistanceUnitList}"
                             SelectedItem="{Binding SelectedDistanceUnit}" />
