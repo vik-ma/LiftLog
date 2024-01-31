@@ -370,43 +370,43 @@
 
         private void ChangeSetTemplatePropertyValue(string property, int propertyValue)
         {
-            //switch (property)
-            //{
-            //    case "Weight":
-            //        OperatingSetTemplate.DefaultWeightValue = propertyValue;
-            //        break;
+            switch (property)
+            {
+                case "Weight":
+                    OperatingSet.Weight = propertyValue;
+                    break;
 
-            //    case "Reps":
-            //        OperatingSetTemplate.DefaultRepsValue = propertyValue;
-            //        break;
+                case "Reps":
+                    OperatingSet.Reps = propertyValue;
+                    break;
 
-            //    case "Rir":
-            //        OperatingSetTemplate.DefaultRirValue = propertyValue;
-            //        break;
+                case "Rir":
+                    OperatingSet.Rir = propertyValue;
+                    break;
 
-            //    case "Rpe":
-            //        OperatingSetTemplate.DefaultRpeValue = propertyValue;
-            //        break;
+                case "Rpe":
+                    OperatingSet.Rpe = propertyValue;
+                    break;
 
-            //    case "Time":
-            //        OperatingSetTemplate.DefaultTimeValue = propertyValue;
-            //        break;
+                case "Time":
+                    OperatingSet.TimeInSeconds = propertyValue;
+                    break;
 
-            //    case "Distance":
-            //        OperatingSetTemplate.DefaultDistanceValue = propertyValue;
-            //        break;
+                case "Distance":
+                    OperatingSet.Distance = propertyValue;
+                    break;
 
-            //    case "CardioResistance":
-            //        OperatingSetTemplate.DefaultCardioResistanceValue = propertyValue;
-            //        break;
+                case "CardioResistance":
+                    OperatingSet.CardioResistance = propertyValue;
+                    break;
 
-            //    case "PercentCompleted":
-            //        OperatingSetTemplate.DefaultPercentCompletedValue = propertyValue;
-            //        break;
+                case "PercentCompleted":
+                    OperatingSet.PercentCompleted = propertyValue;
+                    break;
 
-            //    default:
-            //        return;
-            //}
+                default:
+                    return;
+            }
         }
 
         [RelayCommand]
