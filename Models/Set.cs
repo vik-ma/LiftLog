@@ -155,5 +155,13 @@
             if (!IsTrackingPercentCompleted && PercentCompleted != 0) PercentCompleted = 0;
         }
 
+        public void DisableBodyWeightTrackingIfNotTrackingWeight()
+        {
+            if (!IsTrackingWeight)
+            {
+                // Set IsUsingBodyWeightAsWeight to false if it is checked even if Weight is not tracked
+                IsUsingBodyWeightAsWeight = false;
+            }
+        }
     }
 }

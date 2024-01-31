@@ -170,21 +170,11 @@
                         if (!userUpdatedUserWeight) return;
                     }
 
-                    newSet = DisableBodyWeightTrackingIfNotTrackingWeight(newSet);
+                    newSet.DisableBodyWeightTrackingIfNotTrackingWeight();
                 }
                 
                 await CreateNewSetAsync(newSet, numSets);
             }
-        }
-
-        private static Set DisableBodyWeightTrackingIfNotTrackingWeight(Set set) 
-        {
-            if (!set.IsTrackingWeight)
-            {
-                // Set IsUsingBodyWeightAsWeight to false if it is checked even if Weight is not tracked
-                set.IsUsingBodyWeightAsWeight = false;
-            }
-            return set;
         }
 
         private async Task<bool> ShowUpdateWeightPrompt()
@@ -260,7 +250,7 @@
                     if (!userUpdatedUserWeight) return;
                 }
 
-                OperatingSet = DisableBodyWeightTrackingIfNotTrackingWeight(OperatingSet);
+                OperatingSet.DisableBodyWeightTrackingIfNotTrackingWeight();
             }
 
             if (!await _context.UpdateItemAsync<Set>(OperatingSet))
