@@ -175,7 +175,7 @@
             SetWorkoutTemplatePackage package = new()
             {
                 WorkoutTemplate = WorkoutTemplate,
-                SetTemplate = selectedSetTemplate,
+                //SetTemplate = selectedSetTemplate,
                 IsEditing = true
             };
 
