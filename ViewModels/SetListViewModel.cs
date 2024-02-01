@@ -114,6 +114,33 @@
         }
 
         [RelayCommand]
+        private async Task GoToCreateSetTemplatePage(Set set)
+        {
+            if (set is null || !set.IsTemplate || set.WorkoutTemplateId == 0) return;
+
+            WorkoutTemplate workoutTemplate = null;
+            await ExecuteAsync(async () =>
+            {
+                workoutTemplate = await _context.GetItemByKeyAsync<WorkoutTemplate>(set.WorkoutTemplateId);
+            });
+
+            if (workoutTemplate is null) return;
+
+            SetWorkoutTemplatePackage package = new() 
+            {
+                WorkoutTemplate = workoutTemplate,
+                Set = set
+            };
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["SetWorkoutTemplatePackage"] = package
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={workoutTemplate.Id}", navigationParameter);
+        }
+
+        [RelayCommand]
         static async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");

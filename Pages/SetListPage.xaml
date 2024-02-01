@@ -125,14 +125,10 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <Button 
-                                    Text="Set Complete"
+                                    IsVisible="{Binding IsTemplate}"
+                                    Text="Go To Page"
                                     Style="{StaticResource GenericButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetListViewModel}}, Path=MarkSetAsCompleteCommand}"
-                                    CommandParameter="{Binding .}" />
-                                <Button 
-                                    Text="Update"
-                                    Style="{StaticResource AddButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetListViewModel}}, Path=UpdateSetCommand}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetListViewModel}}, Path=GoToCreateSetTemplatePageCommand}"
                                     CommandParameter="{Binding .}" />
                                 <Button 
                                     Text="Delete"
@@ -157,12 +153,12 @@
                     </ContentView>
                 </CollectionView.EmptyView>
             </CollectionView>
-            <Button 
+            <!--<Button 
                 Text="New Set"
                 Style="{StaticResource AddButtonStyle}"
                 WidthRequest="300"
                 Margin="5"
-                Command="{Binding CreateSetCommand}" />
+                Command="{Binding CreateSetCommand}" />-->
         </VerticalStackLayout>
 
         <VerticalStackLayout>
