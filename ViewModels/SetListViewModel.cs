@@ -10,6 +10,9 @@
 
         [ObservableProperty]
         private ObservableCollection<Set> setList = new();
+        [ObservableProperty]
+        private ObservableCollection<Set> filteredSetList = new();
+
 
         public async Task LoadSetsAsync()
         {
@@ -28,6 +31,8 @@
                         SetList.Add(set);
                     }
                 }
+
+                FilteredSetList = SetList;
             });
         }
 
@@ -138,6 +143,28 @@
             };
 
             await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={workoutTemplate.Id}", navigationParameter);
+        }
+
+        [RelayCommand]
+        private void FilterSetList(string filterType)
+        {
+            switch (filterType)
+            {
+                case "All":
+                    FilteredSetList = SetList;
+                    break;
+
+                case "Template":
+                    FilteredSetList = new(SetList.Where(item => item.IsTemplate));
+                    break;
+
+                case "NotTemplate":
+                    FilteredSetList = new(SetList.Where(item => !item.IsTemplate));
+                    break;
+
+                default:
+                    return;
+            }
         }
 
         [RelayCommand]

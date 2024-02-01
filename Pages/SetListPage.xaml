@@ -6,167 +6,187 @@
              xmlns:models="clr-namespace:LocalLiftLog.Models"
              x:DataType="viewmodel:SetListViewModel"
              Title="Set List">
-    
-    <VerticalStackLayout HorizontalOptions="Center">
-        <VerticalStackLayout>
-            <Label 
-                Text="Sets"
-                HorizontalOptions="Center"
-                FontSize="30"
-                FontAttributes="Bold"
-                Margin="10" />
-            <CollectionView
-                ItemsSource="{Binding SetList}"
-                HorizontalOptions="Center">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="8"
-                        Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Set">
-                        <VerticalStackLayout Spacing="5">
-                            <HorizontalStackLayout 
-                                HorizontalOptions="Center"
-                                Spacing="5">
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Id: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Id}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Workout Id: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding WorkoutId}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Exercise Id: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding ExerciseId}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Is Template: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding IsTemplate}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="WorkoutTemplate Id: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding WorkoutTemplateId}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </HorizontalStackLayout>
-                            <HorizontalStackLayout 
-                                HorizontalOptions="Center"
-                                Spacing="5">
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Is Completed: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding IsCompleted}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Time Completed: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding TimeCompleted}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Button 
-                                    IsVisible="{Binding IsTemplate}"
-                                    Text="Go To Page"
-                                    Style="{StaticResource GenericButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetListViewModel}}, Path=GoToCreateSetTemplatePageCommand}"
-                                    CommandParameter="{Binding .}" />
-                                <Button 
-                                    Text="Delete"
-                                    Style="{StaticResource DeleteButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetListViewModel}}, Path=DeleteSetCommand}"
-                                    CommandParameter="{Binding .}" />
-                            </HorizontalStackLayout>
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <VerticalStackLayout
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center">
-                            <Label 
-                                Text="No Sets In List!" 
-                                FontSize="18" 
-                                FontAttributes="Bold" 
-                                HorizontalTextAlignment="Center" />
-                        </VerticalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
-            <!--<Button 
-                Text="New Set"
-                Style="{StaticResource AddButtonStyle}"
-                WidthRequest="300"
-                Margin="5"
-                Command="{Binding CreateSetCommand}" />-->
-        </VerticalStackLayout>
 
-        <VerticalStackLayout>
-            <Button 
-                Text="Go Back"
-                Style="{StaticResource LargeButtonStyle}"
-                Command="{Binding GoBackCommand}"
-                Margin="50" />
+    <ScrollView>
+        <VerticalStackLayout HorizontalOptions="Center">
+            <VerticalStackLayout Spacing="5">
+                <Label 
+                    Text="Set List"
+                    HorizontalOptions="Center"
+                    FontSize="30"
+                    FontAttributes="Bold" />
+                <HorizontalStackLayout
+                    HorizontalOptions="Center"
+                    Spacing="10">
+                    <Button 
+                        Text="Show All"
+                        Command="{Binding FilterSetListCommand}"
+                        CommandParameter="All"
+                        Style="{StaticResource ExtraSmallButtonStyle}" />
+                    <Button 
+                        Text="Show Only Templates"
+                        Command="{Binding FilterSetListCommand}"
+                        CommandParameter="Template"
+                        Style="{StaticResource ExtraSmallButtonStyle}" />
+                    <Button 
+                        Text="Don't Show Templates"
+                        Command="{Binding FilterSetListCommand}"
+                        CommandParameter="NotTemplate"
+                        Style="{StaticResource ExtraSmallButtonStyle}" />
+                </HorizontalStackLayout>
+                <CollectionView
+                    ItemsSource="{Binding FilteredSetList}"
+                    HorizontalOptions="Center">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout 
+                            ItemSpacing="8"
+                            Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Set">
+                            <VerticalStackLayout Spacing="5">
+                                <HorizontalStackLayout 
+                                    HorizontalOptions="Center"
+                                    Spacing="5">
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Id: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Id}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Workout Id: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding WorkoutId}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Exercise Id: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding ExerciseId}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Is Template: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding IsTemplate}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="WorkoutTemplate Id: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding WorkoutTemplateId}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout 
+                                    HorizontalOptions="Center"
+                                    Spacing="5">
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Is Completed: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding IsCompleted}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Time Completed: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding TimeCompleted}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Button 
+                                        IsVisible="{Binding IsTemplate}"
+                                        Text="Go To Page"
+                                        Style="{StaticResource ExtraSmallButtonStyle}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetListViewModel}}, Path=GoToCreateSetTemplatePageCommand}"
+                                        CommandParameter="{Binding .}" />
+                                    <Button 
+                                        Text="Delete"
+                                        Style="{StaticResource ExtraSmallRedButtonStyle}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetListViewModel}}, Path=DeleteSetCommand}"
+                                        CommandParameter="{Binding .}" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <ContentView>
+                            <VerticalStackLayout
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                <Label 
+                                    Text="No Sets In List!" 
+                                    FontSize="18" 
+                                    FontAttributes="Bold" 
+                                    HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </ContentView>
+                    </CollectionView.EmptyView>
+                </CollectionView>
+                <!--<Button 
+                    Text="New Set"
+                    Style="{StaticResource AddButtonStyle}"
+                    WidthRequest="300"
+                    Margin="5"
+                    Command="{Binding CreateSetCommand}" />-->
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Button 
+                    Text="Go Back"
+                    Style="{StaticResource LargeButtonStyle}"
+                    Command="{Binding GoBackCommand}"
+                    Margin="50" />
+            </VerticalStackLayout>
         </VerticalStackLayout>
-    </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
