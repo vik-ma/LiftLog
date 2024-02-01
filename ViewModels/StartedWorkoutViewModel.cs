@@ -167,25 +167,25 @@
             await Shell.Current.GoToAsync($"{nameof(WorkoutDetailsPage)}?Id={WorkoutTemplate.Id}", navigationParameter);
         }
 
-        [RelayCommand]
-        private async Task GoToCreateSetTemplatePage(SetTemplate selectedSetTemplate)
-        {
-            if (selectedSetTemplate is null) return;
+        //[RelayCommand]
+        //private async Task GoToCreateSetTemplatePage(SetTemplate selectedSetTemplate)
+        //{
+        //    if (selectedSetTemplate is null) return;
 
-            SetWorkoutTemplatePackage package = new()
-            {
-                WorkoutTemplate = WorkoutTemplate,
-                //SetTemplate = selectedSetTemplate,
-                IsEditing = true
-            };
+        //    SetWorkoutTemplatePackage package = new()
+        //    {
+        //        WorkoutTemplate = WorkoutTemplate,
+        //        //SetTemplate = selectedSetTemplate,
+        //        IsEditing = true
+        //    };
 
-            var navigationParameter = new Dictionary<string, object>
-            {
-                ["SetWorkoutTemplatePackage"] = package
-            };
+        //    var navigationParameter = new Dictionary<string, object>
+        //    {
+        //        ["SetWorkoutTemplatePackage"] = package
+        //    };
 
-            await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={WorkoutTemplate.Id}", navigationParameter);
-        }
+        //    await Shell.Current.GoToAsync($"{nameof(CreateSetTemplatePage)}?Id={WorkoutTemplate.Id}", navigationParameter);
+        //}
 
         [RelayCommand]
         private async Task SaveDate()

@@ -123,19 +123,13 @@
                 Style="{StaticResource MainPageNavigationButtonStyle}"/>
             <Button
                 Text="Workout Template List"
-                Grid.Row="2"
+                Grid.Row="1"
                 Grid.Column="0"
                 Command="{Binding GoToWorkoutTemplateCommand}"
                 Style="{StaticResource MainPageNavigationButtonStyle}"/>
             <Button
-                Text="Set Template List"
-                Grid.Row="3"
-                Grid.Column="0"
-                Command="{Binding GoToSetTemplateCommand}"
-                Style="{StaticResource MainPageNavigationButtonStyle}"/>
-            <Button
-                Text="Completed Set List"
-                Grid.Row="4"
+                Text="Set List"
+                Grid.Row="2"
                 Grid.Column="0"
                 Command="{Binding GoToCompletedSetCommand}"
                 Style="{StaticResource MainPageNavigationButtonStyle}"/>

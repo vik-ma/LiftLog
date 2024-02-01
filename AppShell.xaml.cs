@@ -10,7 +10,6 @@
             Routing.RegisterRoute(nameof(WorkoutRoutineDetailsPage), typeof(WorkoutRoutineDetailsPage));
             Routing.RegisterRoute(nameof(WorkoutTemplateListPage), typeof(WorkoutTemplateListPage));
             Routing.RegisterRoute(nameof(WorkoutDetailsPage), typeof(WorkoutDetailsPage));
-            Routing.RegisterRoute(nameof(SetTemplateListPage), typeof(SetTemplateListPage));
             Routing.RegisterRoute(nameof(CompletedSetListPage), typeof(CompletedSetListPage));
             Routing.RegisterRoute(nameof(CompletedWorkoutListPage), typeof(CompletedWorkoutListPage));
             Routing.RegisterRoute(nameof(TimePeriodListPage), typeof(TimePeriodListPage));

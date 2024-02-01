@@ -50,9 +50,6 @@ namespace LocalLiftLog
             builder.Services.AddTransient<WorkoutDetailsPage>();
             builder.Services.AddTransient<WorkoutDetailsViewModel>();
 
-            builder.Services.AddTransient<SetTemplateListPage>();
-            builder.Services.AddTransient<SetTemplateViewModel>();
-
             builder.Services.AddTransient<CompletedSetListPage>();
             builder.Services.AddTransient<CompletedSetViewModel>();
 
