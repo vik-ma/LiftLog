@@ -190,11 +190,8 @@
 
                     if (exercise is null) SavedSetsContainsDeletedExercise = true;
 
-                    SetTemplate setTemplate = await _context.GetItemByKeyAsync<SetTemplate>(set.SetTemplateId);
-
                     SetTemplateExercisePackage setTemplateExercisePackage = new()
                     {
-                        SetTemplate = setTemplate ?? new(),
                         Exercise = exercise ?? new() { Name = "Deleted Exercise" },
                         Set = set,
                     };
@@ -306,7 +303,6 @@
                     {
                         WorkoutId = Workout.Id,
                         ExerciseId = exercise.Id,
-                        SetTemplateId = setTemplate.Id,
                     };
 
                     await CreateSetAsync(newSet);

@@ -8,7 +8,6 @@
         public int ExerciseId { get; set; }
         public bool IsTemplate { get; set; }
         public int WorkoutTemplateId { get; set; }
-        public int SetTemplateId { get; set; }
         public string Note { get; set; }
         [ObservableProperty]
         public string comment;
