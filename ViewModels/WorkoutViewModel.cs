@@ -282,15 +282,15 @@
 
             List<SetTemplateExercisePackage> setTemplateExercisePackageList = new();
 
-            Expression<Func<SetTemplate, bool>> predicateSetTemplate = entity => entity.WorkoutTemplateId == OperatingWorkoutTemplate.Id;
+            Expression<Func<Set, bool>> predicateSet = entity => entity.WorkoutTemplateId == OperatingWorkoutTemplate.Id;
 
             try
             {
-                var filteredSetTemplateList = await _context.GetFilteredAsync<SetTemplate>(predicateSetTemplate);
+                var filteredSetList = await _context.GetFilteredAsync<Set>(predicateSet);
 
-                foreach (var setTemplate in filteredSetTemplateList)
+                foreach (var set in filteredSetList)
                 {
-                    Exercise exercise = await _context.GetItemByKeyAsync<Exercise>(setTemplate.ExerciseId);
+                    Exercise exercise = await _context.GetItemByKeyAsync<Exercise>(set.ExerciseId);
 
                     // Don't add Set if Exercise Id does not exist 
                     if (exercise is null)
@@ -309,7 +309,6 @@
 
                     SetTemplateExercisePackage setTemplateExercisePackage = new()
                     {
-                        SetTemplate = setTemplate,
                         Exercise = exercise,
                         Set = newSet,
                     };
@@ -324,7 +323,7 @@
                 if (setTemplateExercisePackageList.Any())
                 {
                     // Sort the SetList by its SetListIdOrder
-                    SetList = new ObservableCollection<SetTemplateExercisePackage>(setTemplateExercisePackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.SetTemplate.Id)));
+                    SetList = new ObservableCollection<SetTemplateExercisePackage>(setTemplateExercisePackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Set.Id)));
                 }
 
                 if (WorkoutTemplateContainsInvalidExercise)
