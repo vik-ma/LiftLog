@@ -12,7 +12,7 @@
         public bool IsWarmupSet { get; set; }
         [ObservableProperty]
         public string timeCompleted;
-        public int SetTemplateId { get; set; }
+        public int SetId { get; set; }
         public int CompletedWorkoutId { get; set; }
         public int Weight { get; set; }
         public int Reps { get; set; }

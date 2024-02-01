@@ -110,7 +110,7 @@
                         Set = item,
                         // Set the saved CompletedSet to the corresponding SetTemplate if it exists
                         // Otherwise create a new CompletedSet object
-                        CompletedSet = filteredCompletedSetList?.FirstOrDefault(c => c.SetTemplateId == item.Id) ?? new CompletedSet
+                        CompletedSet = filteredCompletedSetList?.FirstOrDefault(c => c.SetId == item.Id) ?? new CompletedSet
                         {
                             CompletedWorkoutId = CompletedWorkout.Id
                         }
@@ -329,7 +329,7 @@
 
             setPackage.CompletedSet.IsCompleted = true;
             setPackage.CompletedSet.TimeCompleted = DateTimeHelper.GetCurrentFormattedDateTime();
-            setPackage.CompletedSet.SetTemplateId = setPackage.Set.Id;
+            setPackage.CompletedSet.SetId = setPackage.Set.Id;
             
             await ExecuteAsync(async () =>
             {
