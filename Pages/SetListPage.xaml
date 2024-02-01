@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LocalLiftLog.Pages.CompletedSetListPage"
+             x:Class="LocalLiftLog.Pages.SetListPage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:models="clr-namespace:LocalLiftLog.Models"
-             x:DataType="viewmodel:CompletedSetViewModel"
-             Title="Completed Set List">
+             x:DataType="viewmodel:SetListViewModel"
+             Title="Set List">
     
     <VerticalStackLayout HorizontalOptions="Center">
         <VerticalStackLayout>
@@ -127,17 +127,17 @@
                                 <Button 
                                     Text="Set Complete"
                                     Style="{StaticResource GenericButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=MarkSetAsCompleteCommand}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetListViewModel}}, Path=MarkSetAsCompleteCommand}"
                                     CommandParameter="{Binding .}" />
                                 <Button 
                                     Text="Update"
                                     Style="{StaticResource AddButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=UpdateSetCommand}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetListViewModel}}, Path=UpdateSetCommand}"
                                     CommandParameter="{Binding .}" />
                                 <Button 
                                     Text="Delete"
                                     Style="{StaticResource DeleteButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedSetViewModel}}, Path=DeleteSetCommand}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetListViewModel}}, Path=DeleteSetCommand}"
                                     CommandParameter="{Binding .}" />
                             </HorizontalStackLayout>
                         </VerticalStackLayout>

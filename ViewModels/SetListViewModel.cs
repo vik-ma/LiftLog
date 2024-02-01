@@ -1,9 +1,9 @@
 ﻿namespace LocalLiftLog.ViewModels
 {
-    public partial class CompletedSetViewModel : ObservableObject
+    public partial class SetListViewModel : ObservableObject
     {
         private readonly DatabaseContext _context;
-        public CompletedSetViewModel(DatabaseContext context)
+        public SetListViewModel(DatabaseContext context)
         {
             _context = context;
         }

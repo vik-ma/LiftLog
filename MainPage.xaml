@@ -131,7 +131,7 @@
                 Text="Set List"
                 Grid.Row="2"
                 Grid.Column="0"
-                Command="{Binding GoToCompletedSetCommand}"
+                Command="{Binding GoToSetListCommand}"
                 Style="{StaticResource MainPageNavigationButtonStyle}"/>
             <Button
                 Text="Completed Workout List"

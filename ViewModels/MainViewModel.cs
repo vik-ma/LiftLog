@@ -34,9 +34,9 @@
         }
 
         [RelayCommand]
-        private async Task GoToCompletedSet()
+        private async Task GoToSetList()
         {
-            await Shell.Current.GoToAsync($"{nameof(CompletedSetListPage)}");
+            await Shell.Current.GoToAsync($"{nameof(SetListPage)}");
         }
 
         [RelayCommand]

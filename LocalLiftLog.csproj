@@ -62,6 +62,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\SetListPage.xaml.cs">
+	    <DependentUpon>SetListPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\WorkoutRoutineDetailsPage.xaml.cs">
 	    <DependentUpon>ProgramDetailsPage.xaml</DependentUpon>
 	  </Compile>
@@ -80,7 +83,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\CompletedSetListPage.xaml">
+	  <MauiXaml Update="Pages\SetListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\CompletedWorkoutListPage.xaml">

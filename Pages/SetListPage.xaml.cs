@@ -1,8 +1,8 @@
 namespace LocalLiftLog.Pages;
-partial class CompletedSetListPage : ContentPage
+partial class SetListPage : ContentPage
 {
-	private readonly CompletedSetViewModel _viewModel;
-	public CompletedSetListPage(CompletedSetViewModel viewModel)
+	private readonly SetListViewModel _viewModel;
+	public SetListPage(SetListViewModel viewModel)
 	{
 		InitializeComponent();
         _viewModel = viewModel;
