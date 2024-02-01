@@ -59,11 +59,11 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span 
-                                                Text="Set Template Id: " 
+                                                Text="Exercise Id: " 
                                                 FontAttributes="Bold"  
                                                 Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
-                                                Text="{Binding SetTemplateId}"
+                                                Text="{Binding ExerciseId}"
                                                 Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -72,11 +72,24 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span 
-                                                Text="Exercise Id: " 
+                                                Text="Is Template: " 
                                                 FontAttributes="Bold"  
                                                 Style="{StaticResource SmallSpanStyle}" />
                                             <Span 
-                                                Text="{Binding ExerciseId}"
+                                                Text="{Binding IsTemplate}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="WorkoutTemplate Id: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding WorkoutTemplateId}"
                                                 Style="{StaticResource SmallSpanStyle}" />
                                         </FormattedString>
                                     </Label.FormattedText>
