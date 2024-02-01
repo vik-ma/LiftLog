@@ -62,7 +62,7 @@ This Set will not show up in new Workouts unless it is changed to a valid Exerci
                         Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:SetTemplateExercisePackage">
+                    <DataTemplate x:DataType="models:SetExercisePackage">
                         <HorizontalStackLayout Spacing="5">
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>

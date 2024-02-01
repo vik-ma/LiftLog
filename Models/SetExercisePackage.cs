@@ -1,6 +1,6 @@
 ﻿namespace LocalLiftLog.Models
 {
-    public class SetTemplateExercisePackage
+    public class SetExercisePackage
     {
         public Exercise Exercise { get; set; }
         public Set Set { get; set; }

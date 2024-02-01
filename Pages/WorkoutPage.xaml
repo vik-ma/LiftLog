@@ -96,7 +96,7 @@
                         Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:SetTemplateExercisePackage">
+                    <DataTemplate x:DataType="models:SetExercisePackage">
                         <HorizontalStackLayout Spacing="10">
                             <Button 
                                 Style="{StaticResource ArrowUpButtonStyle}"

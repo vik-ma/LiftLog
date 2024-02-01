@@ -16,7 +16,7 @@
         }
 
         [ObservableProperty]
-        private ObservableCollection<SetTemplateExercisePackage> setList = new();
+        private ObservableCollection<SetExercisePackage> setList = new();
 
         [ObservableProperty]
         private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
@@ -80,7 +80,7 @@
 
             WorkoutTemplateContainsInvalidExercise = false;
 
-            List<SetTemplateExercisePackage> setTemplateExercisePackageList = new();
+            List<SetExercisePackage> setTemplateExercisePackageList = new();
 
             Expression<Func<Set, bool>> predicate = entity => entity.WorkoutTemplateId == WorkoutTemplate.Id && entity.IsTemplate == true;
 
@@ -94,7 +94,7 @@
 
                     if (exercise is null) WorkoutTemplateContainsInvalidExercise = true;
 
-                    SetTemplateExercisePackage setTemplateExercisePackage = new()
+                    SetExercisePackage setTemplateExercisePackage = new()
                     {
                         Set = item,
                         Exercise = exercise ?? new() { Name = "Invalid Exercise" }
@@ -106,7 +106,7 @@
                 if (setTemplateExercisePackageList.Any())
                 {
                     // Sort the SetList by its SetListIdOrder
-                    SetList = new ObservableCollection<SetTemplateExercisePackage>(setTemplateExercisePackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Set.Id)));
+                    SetList = new ObservableCollection<SetExercisePackage>(setTemplateExercisePackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Set.Id)));
                 }
             }
             catch
