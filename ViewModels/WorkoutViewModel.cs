@@ -282,7 +282,7 @@
 
             List<SetTemplateExercisePackage> setTemplateExercisePackageList = new();
 
-            Expression<Func<Set, bool>> predicateSet = entity => entity.WorkoutTemplateId == OperatingWorkoutTemplate.Id;
+            Expression<Func<Set, bool>> predicateSet = entity => entity.WorkoutTemplateId == OperatingWorkoutTemplate.Id && entity.IsTemplate == true;
 
             try
             {

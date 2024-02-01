@@ -187,7 +187,7 @@
 
             await DeleteWorkoutTemplateCollectionsByWorkoutTemplateId(id);
 
-            await DeleteSetTemplatesByWorkoutTemplateId(id);
+            await DeleteSetsByWorkoutTemplateId(id);
         }
 
         private async Task DeleteWorkoutTemplateCollectionsByWorkoutTemplateId(int id)
@@ -237,18 +237,18 @@
             await Shell.Current.GoToAsync($"{nameof(WorkoutDetailsPage)}?Id={id}", navigationParameter);
         }
 
-        private async Task DeleteSetTemplatesByWorkoutTemplateId(int id)
+        private async Task DeleteSetsByWorkoutTemplateId(int id)
         {
-            Expression<Func<SetTemplate, bool>> predicate = entity => entity.WorkoutTemplateId == id;
+            Expression<Func<Set, bool>> predicate = entity => entity.WorkoutTemplateId == id && entity.IsTemplate == true;
 
-            IEnumerable<SetTemplate> filteredList = null;
+            IEnumerable<Set> filteredList = null;
             try
             {
-                filteredList = await _context.GetFilteredAsync<SetTemplate>(predicate);
+                filteredList = await _context.GetFilteredAsync<Set>(predicate);
             }
             catch
             {
-                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Sets.", "OK");
             }
 
             if (!filteredList.Any()) return;
@@ -257,9 +257,9 @@
             {
                 await ExecuteAsync(async () =>
                 {
-                    if (!await _context.DeleteItemAsync<SetTemplate>(item))
+                    if (!await _context.DeleteItemAsync<Set>(item))
                     {
-                        await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set Template.", "OK");
+                        await Shell.Current.DisplayAlert("Error", "Error occured when trying to delete Set.", "OK");
                     }
                 });
             }
