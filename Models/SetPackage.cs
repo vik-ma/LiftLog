@@ -2,7 +2,7 @@
 {
     public partial class SetPackage : ObservableObject
     {
-        public SetTemplate SetTemplate { get; set; }
+        public Set Set { get; set; }
         public CompletedSet CompletedSet { get; set; }
 
         [ObservableProperty]

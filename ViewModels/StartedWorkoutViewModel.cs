@@ -89,12 +89,12 @@
 
             List<SetPackage> setPackageList = new();
 
-            Expression<Func<SetTemplate, bool>> predicateSetTemplate = entity => entity.WorkoutTemplateId == WorkoutTemplate.Id;
+            Expression<Func<Set, bool>> predicateSet = entity => entity.WorkoutTemplateId == WorkoutTemplate.Id && entity.IsTemplate == true;
             Expression<Func<CompletedSet, bool>> predicateCompletedSet = entity => entity.CompletedWorkoutId == CompletedWorkout.Id;
 
             try
             {
-                var filteredSetTemplateList = await _context.GetFilteredAsync<SetTemplate>(predicateSetTemplate);
+                var filteredSetTemplateList = await _context.GetFilteredAsync<Set>(predicateSet);
 
                 IEnumerable<CompletedSet> filteredCompletedSetList = null;
                 if (CompletedWorkout.Id != 0)
@@ -107,7 +107,7 @@
                 {
                     SetPackage setPackage = new() 
                     { 
-                        SetTemplate = item,
+                        Set = item,
                         // Set the saved CompletedSet to the corresponding SetTemplate if it exists
                         // Otherwise create a new CompletedSet object
                         CompletedSet = filteredCompletedSetList?.FirstOrDefault(c => c.SetTemplateId == item.Id) ?? new CompletedSet
@@ -117,7 +117,7 @@
                     };
 
                     // Load SetTemplate Default Values if Set is not completed
-                    if (!setPackage.CompletedSet.IsCompleted) setPackage = LoadSetTemplateDefaultValues(setPackage);
+                    //if (!setPackage.CompletedSet.IsCompleted) setPackage = LoadSetTemplateDefaultValues(setPackage);
 
                     setPackageList.Add(setPackage);
                 }
@@ -125,7 +125,7 @@
                 if (setPackageList.Any())
                 {
                     // Sort the SetList by its SetListIdOrder
-                    SetList = new ObservableCollection<SetPackage>(setPackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.SetTemplate.Id)));
+                    SetList = new ObservableCollection<SetPackage>(setPackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Set.Id)));
                 }
             }
             catch
@@ -135,20 +135,20 @@
             }
         }
 
-        private static SetPackage LoadSetTemplateDefaultValues(SetPackage setPackage)
-        {
-            // Assign SetTemplate Default Values to CompletedSet if any are set
-            if (setPackage.SetTemplate.DefaultWeightValue != 0) setPackage.CompletedSet.Weight = setPackage.SetTemplate.DefaultWeightValue;
-            if (setPackage.SetTemplate.DefaultRepsValue != 0) setPackage.CompletedSet.Reps = setPackage.SetTemplate.DefaultRepsValue;
-            if (setPackage.SetTemplate.DefaultRirValue != 0) setPackage.CompletedSet.Rir = setPackage.SetTemplate.DefaultRirValue;
-            if (setPackage.SetTemplate.DefaultRpeValue != 0) setPackage.CompletedSet.Rpe = setPackage.SetTemplate.DefaultRpeValue;
-            if (setPackage.SetTemplate.DefaultTimeValue != 0) setPackage.CompletedSet.Time = setPackage.SetTemplate.DefaultTimeValue;
-            if (setPackage.SetTemplate.DefaultDistanceValue != 0) setPackage.CompletedSet.Distance = setPackage.SetTemplate.DefaultDistanceValue;
-            if (setPackage.SetTemplate.DefaultCardioResistanceValue != 0) setPackage.CompletedSet.CardioResistance = setPackage.SetTemplate.DefaultCardioResistanceValue;
-            if (setPackage.SetTemplate.DefaultPercentCompletedValue != 0) setPackage.CompletedSet.PercentCompleted = setPackage.SetTemplate.DefaultPercentCompletedValue;
+        //private static SetPackage LoadSetTemplateDefaultValues(SetPackage setPackage)
+        //{
+        //    // Assign SetTemplate Default Values to CompletedSet if any are set
+        //    if (setPackage.SetTemplate.DefaultWeightValue != 0) setPackage.CompletedSet.Weight = setPackage.SetTemplate.DefaultWeightValue;
+        //    if (setPackage.SetTemplate.DefaultRepsValue != 0) setPackage.CompletedSet.Reps = setPackage.SetTemplate.DefaultRepsValue;
+        //    if (setPackage.SetTemplate.DefaultRirValue != 0) setPackage.CompletedSet.Rir = setPackage.SetTemplate.DefaultRirValue;
+        //    if (setPackage.SetTemplate.DefaultRpeValue != 0) setPackage.CompletedSet.Rpe = setPackage.SetTemplate.DefaultRpeValue;
+        //    if (setPackage.SetTemplate.DefaultTimeValue != 0) setPackage.CompletedSet.Time = setPackage.SetTemplate.DefaultTimeValue;
+        //    if (setPackage.SetTemplate.DefaultDistanceValue != 0) setPackage.CompletedSet.Distance = setPackage.SetTemplate.DefaultDistanceValue;
+        //    if (setPackage.SetTemplate.DefaultCardioResistanceValue != 0) setPackage.CompletedSet.CardioResistance = setPackage.SetTemplate.DefaultCardioResistanceValue;
+        //    if (setPackage.SetTemplate.DefaultPercentCompletedValue != 0) setPackage.CompletedSet.PercentCompleted = setPackage.SetTemplate.DefaultPercentCompletedValue;
 
-            return setPackage;
-        }
+        //    return setPackage;
+        //}
 
         [RelayCommand]
         private async Task GoToWorkoutTemplateDetails()
@@ -297,19 +297,19 @@
             }
 
             // Update IsUsingBodyWeightAsWeight property in SetTemplate to false
-            setPackage.SetTemplate.IsUsingBodyWeightAsWeight = false;
-            await UpdateSetTemplateAsync(setPackage.SetTemplate);
+            setPackage.Set.IsUsingBodyWeightAsWeight = false;
+            await UpdateSetTemplateAsync(setPackage.Set);
 
             return true;
         }
 
-        private async Task UpdateSetTemplateAsync(SetTemplate setTemplate)
+        private async Task UpdateSetTemplateAsync(Set set)
         {
-            if (setTemplate is null) return;
+            if (set is null) return;
 
             await ExecuteAsync(async () =>
             {
-                if (!await _context.UpdateItemAsync<SetTemplate>(setTemplate))
+                if (!await _context.UpdateItemAsync<Set>(set))
                 {
                     await Shell.Current.DisplayAlert("Error", "Error occured when trying to update Set.", "OK");
                 }
@@ -321,7 +321,7 @@
         {
             if (setPackage is null) return;
 
-            if (setPackage.SetTemplate.IsUsingBodyWeightAsWeight && !ValidateUserWeightExists())
+            if (setPackage.Set.IsUsingBodyWeightAsWeight && !ValidateUserWeightExists())
             {
                 // Exit function if user clicked cancel in ShowUpdateWeightPrompt function
                 if (!await ShowUpdateWeightPrompt(setPackage)) return;
@@ -329,7 +329,7 @@
 
             setPackage.CompletedSet.IsCompleted = true;
             setPackage.CompletedSet.TimeCompleted = DateTimeHelper.GetCurrentFormattedDateTime();
-            setPackage.CompletedSet.SetTemplateId = setPackage.SetTemplate.Id;
+            setPackage.CompletedSet.SetTemplateId = setPackage.Set.Id;
             
             await ExecuteAsync(async () =>
             {
