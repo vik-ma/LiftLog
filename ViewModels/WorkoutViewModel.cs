@@ -290,7 +290,7 @@
 
         public async Task LoadSetListFromWorkoutTemplateIdAsync()
         {
-            if (OperatingWorkoutTemplate is null) return;
+            if (OperatingWorkoutTemplate is null || OperatingWorkoutTemplate.Id == 0) return;
 
             LoadSetListIdOrder(OperatingWorkoutTemplate.SetListOrder);
 
@@ -413,6 +413,8 @@
             await UpdateWorkoutAsync();
 
             await LoadOperatingWorkoutTemplateAsync();
+
+            await LoadSetListFromWorkoutTemplateIdAsync();
         }
 
         [RelayCommand]
