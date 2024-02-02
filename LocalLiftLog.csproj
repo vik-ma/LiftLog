@@ -140,6 +140,9 @@
 	  <MauiXaml Update="Pages\WorkoutDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\WorkoutRoutineListPopupPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\WorkoutTemplateListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
