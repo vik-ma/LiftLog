@@ -293,6 +293,16 @@
         {
             if (OperatingWorkoutTemplate is null || OperatingWorkoutTemplate.Id == 0) return;
 
+            // Show prompt if SetList is already loaded
+            if (SetList.Any()) 
+            {
+                bool userClickedReload = await Shell.Current.DisplayAlert("Reload Workout Template", "Are you sure you want to reload all sets from Workout Template?", "Reload", "Cancel");
+
+                if (!userClickedReload) return;
+
+                await DeleteIncompleteSets();
+            }
+
             LoadSetListIdOrder(OperatingWorkoutTemplate.SetListOrder);
 
             WorkoutTemplateContainsInvalidExercise = false;
