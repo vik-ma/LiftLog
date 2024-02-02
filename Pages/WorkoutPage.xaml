@@ -101,7 +101,7 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:SetExercisePackage">
-                        <HorizontalStackLayout Spacing="10">
+                        <HorizontalStackLayout Spacing="7">
                             <Button 
                                 Style="{StaticResource ArrowUpButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=MoveSetUpCommand}" 
@@ -170,13 +170,23 @@
                             VerticalOptions="Center">
                             <Label 
                                 Text="Set List Is Empty!" 
-                                FontSize="18" 
+                                FontSize="16" 
                                 FontAttributes="Bold" 
                                 HorizontalTextAlignment="Center" />
                         </VerticalStackLayout>
                     </ContentView>
                 </CollectionView.EmptyView>
             </CollectionView>
+
+            <Grid>
+                <Button 
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding SetList.Count}"
+                    Text="Remove All Incomplete Sets"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=DeleteIncompleteSetsCommand}"
+                    Style="{StaticResource ExtraSmallRedButtonStyle}" />
+            </Grid>
+
         </VerticalStackLayout>
 
         <Button 

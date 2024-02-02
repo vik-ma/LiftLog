@@ -250,6 +250,7 @@
             await DeleteIncompleteSets();
         }
 
+        [RelayCommand]
         private async Task DeleteIncompleteSets()
         {
             if (SetList is null) return;
