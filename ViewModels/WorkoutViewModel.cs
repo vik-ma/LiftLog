@@ -245,15 +245,32 @@
 
             Workout.WorkoutTemplateId = 0;
 
-            if (SetList.Any())
+            await UpdateWorkoutAsync();
+
+            await DeleteIncompleteSets();
+        }
+
+        private async Task DeleteIncompleteSets()
+        {
+            if (SetList is null) return;
+
+            IEnumerable<SetExercisePackage> incompletedSets = SetList.Where(item => !item.Set.IsCompleted);
+
+            if (incompletedSets.Any())
             {
-                // TODO: ADD PROMPT TO ALSO REMOVE INCOMPLETE SETS FROM SETLIST 
+                bool userClickedRemove = await Shell.Current.DisplayAlert("Remove Incomplete Sets", "Remove all incomplete sets from workout?", "Remove", "Cancel");
+
+                if (!userClickedRemove) return;
+
+                foreach (var set in incompletedSets)
+                {
+                    await DeleteSetAsync(set.Set);
+                }
 
                 SetList = new(SetList.Where(item => item.Set.IsCompleted));
+
                 await GenerateSetListOrderString();
             }
-
-            await UpdateWorkoutAsync();
         }
 
         private void LoadSetListIdOrder(string setListIdOrder)
