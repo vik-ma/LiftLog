@@ -10,9 +10,9 @@
 
         [ObservableProperty]
         private ObservableCollection<Set> setList = new();
+
         [ObservableProperty]
         private ObservableCollection<Set> filteredSetList = new();
-
 
         public async Task LoadSetsAsync()
         {

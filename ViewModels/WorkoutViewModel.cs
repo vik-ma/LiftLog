@@ -248,8 +248,9 @@
             if (SetList.Any())
             {
                 // TODO: ADD PROMPT TO ALSO REMOVE INCOMPLETE SETS FROM SETLIST 
-                SetList = new();
-                Workout.SetListIdOrder = null;
+
+                SetList = new(SetList.Where(item => item.Set.IsCompleted));
+                await GenerateSetListOrderString();
             }
 
             await UpdateWorkoutAsync();
@@ -347,6 +348,20 @@
                 if (!await _context.AddItemAsync<Set>(set))
                 {
                     await Shell.Current.DisplayAlert("Error", "Error occured when trying to save Set.", "OK");
+                }
+            });
+        }
+
+        [RelayCommand]
+        private async Task DeleteSetAsync(Set set)
+        {
+            if (set is null) return;
+
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<Set>(set))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when deleting Set.", "OK");
                 }
             });
         }
