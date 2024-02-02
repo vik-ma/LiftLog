@@ -54,11 +54,11 @@
         </HorizontalStackLayout>
 
         <HorizontalStackLayout Spacing="10">
-            <Label 
+            <!--<Label 
                 IsVisible="{Binding Workout.WorkoutTemplateId, Converter={StaticResource IsInt0Converter}}"
                 Text="No Workout Template Set"
                 TextColor="{DynamicResource MediumRed}"
-                Style="{StaticResource MediumBoldLabelStyle}" />
+                Style="{StaticResource MediumBoldLabelStyle}" />-->
             <HorizontalStackLayout
                 IsVisible="{Binding Workout.WorkoutTemplateId, Converter={StaticResource IsIntNot0Converter}}"
                 Spacing="10">
@@ -70,14 +70,18 @@
                     TextColor="{DynamicResource MediumDarkGray}"
                     Style="{StaticResource MediumBoldLabelStyle}" />
             </HorizontalStackLayout>
-            <Button 
-                Text="Set Workout Template"
-                Command="{Binding ShowWorkoutTemplateListPopupCommand}"
-                Style="{StaticResource ExtraSmallButtonStyle}" />
-            <Button 
-                Text="Remove Workout Template"
-                Command="{Binding ResetWorkoutTemplateIdCommand}"
-                Style="{StaticResource ExtraSmallRedButtonStyle}" />
+            <HorizontalStackLayout>
+                <Button 
+                    IsVisible="{Binding Workout.WorkoutTemplateId, Converter={StaticResource IsInt0Converter}}"
+                    Text="Load Workout Template"
+                    Command="{Binding ShowWorkoutTemplateListPopupCommand}"
+                    Style="{StaticResource ExtraSmallButtonStyle}" />
+                <Button 
+                    IsVisible="{Binding Workout.WorkoutTemplateId, Converter={StaticResource IsIntNot0Converter}}"
+                    Text="Remove Workout Template"
+                    Command="{Binding ResetWorkoutTemplateIdCommand}"
+                    Style="{StaticResource ExtraSmallRedButtonStyle}" />
+            </HorizontalStackLayout>
         </HorizontalStackLayout>
 
         <Label 
