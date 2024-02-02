@@ -154,6 +154,8 @@
         {
             if (Workout is null) return;
 
+            await LoadOperatingWorkoutTemplateAsync();
+
             if (Workout.IsWorkoutLoaded)
             {
                 // Load existing Sets for Workout to SetList
@@ -162,7 +164,7 @@
             else
             {
                 // Create new Sets from WorkoutTemplate and add to SetList
-                await LoadOperatingWorkoutTemplateAsync();
+                await LoadSetListFromWorkoutTemplateIdAsync();
             }
         }
 
@@ -234,8 +236,6 @@
             }
 
             OperatingWorkoutTemplate = workoutTemplate;
-
-            await LoadSetListFromWorkoutTemplateIdAsync();
         }
 
         [RelayCommand]
@@ -358,7 +358,7 @@
             }
             catch
             {
-                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Set Templates.", "OK");
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Workout Template.", "OK");
                 return;
             }
         }
