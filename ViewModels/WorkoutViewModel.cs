@@ -390,6 +390,16 @@
             });
         }
 
+        [RelayCommand]
+        private async Task DeleteSetFromSetList(SetExercisePackage setExercisePackage)
+        {
+            if (setExercisePackage is null || setExercisePackage.Set is null) return;
+
+            await DeleteSetAsync(setExercisePackage.Set);
+
+            SetList.Remove(setExercisePackage);
+        }
+
         public async Task UpdateOperatingWorkoutTemplate(int workoutTemplateId)
         {
             if (workoutTemplateId < 1) return;
