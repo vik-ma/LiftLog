@@ -294,11 +294,12 @@
 
             LoadSetListIdOrder(OperatingWorkoutTemplate.SetListOrder);
 
-            SetList.Clear();
-
             WorkoutTemplateContainsInvalidExercise = false;
 
-            List<SetExercisePackage> setTemplateExercisePackageList = new();
+            // Retain completed Sets from existing SetList
+            SetList = new(SetList.Where(item => item.Set.IsCompleted));
+
+            List<SetExercisePackage> setExercisePackageList = new();
 
             Expression<Func<Set, bool>> predicateSet = entity => entity.WorkoutTemplateId == OperatingWorkoutTemplate.Id && entity.IsTemplate == true;
 
@@ -331,17 +332,23 @@
                         Set = newSet,
                     };
 
-                    setTemplateExercisePackageList.Add(setTemplateExercisePackage);
+                    setExercisePackageList.Add(setTemplateExercisePackage);
                 }
 
                 // Set Workout as loaded, as to not create new Sets next time Workout is opened
                 Workout.IsWorkoutLoaded = true;
                 await UpdateWorkoutAsync();
 
-                if (setTemplateExercisePackageList.Any())
+                if (setExercisePackageList.Any())
                 {
-                    // Sort the SetList by its SetListIdOrder
-                    SetList = new ObservableCollection<SetExercisePackage>(setTemplateExercisePackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Set.Id)));
+                    // Sort setExercisePackageList by its SetListIdOrder
+                    List<SetExercisePackage> sortedSetExercisePackageList = new(setExercisePackageList.OrderBy(obj => SetListIdOrder.IndexOf(obj.Set.Id)));
+
+                    // Add setExercisePackageList to the end of SetList
+                    foreach (var set in sortedSetExercisePackageList)
+                    {
+                        SetList.Add(set);
+                    }
                 }
 
                 if (WorkoutTemplateContainsInvalidExercise)
