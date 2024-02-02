@@ -395,6 +395,10 @@
         {
             if (setExercisePackage is null || setExercisePackage.Set is null) return;
 
+            bool userClickedDelete = await Shell.Current.DisplayAlert("Delete Set", "Are you sure you want to delete set?", "Delete", "Cancel");
+
+            if (!userClickedDelete) return;
+
             await DeleteSetAsync(setExercisePackage.Set);
 
             SetList.Remove(setExercisePackage);
