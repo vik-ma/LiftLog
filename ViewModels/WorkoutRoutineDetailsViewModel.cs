@@ -368,5 +368,16 @@
 
             Popup.Close();
         }
+
+        public async Task LoadWorkoutTemplateCollectionsFromWorkoutRoutineId(WorkoutRoutine selectedWorkoutRoutine)
+        {
+            if (selectedWorkoutRoutine is null || selectedWorkoutRoutine.Id < 1) return;
+
+            // CHECK IF WORKOUT ROUTINE IS THE SAME
+
+            // ADD PROMPT TO CONFIRM
+            // DELETE CURRENT SCHEDULE IF CLICKED YES
+
+        }
     }
 }

@@ -179,6 +179,10 @@
                     BackgroundColor="{DynamicResource MediumRed}"
                     Style="{StaticResource GenericButtonStyle}"
                     Command="{Binding ResetScheduleCommand}"/>
+                <Button
+                    Text="Copy Routine Schedule"
+                    Style="{StaticResource GenericButtonStyle}"
+                    Command="{Binding ShowWorkoutRoutineListPopupCommand}"/>
 
             </VerticalStackLayout>
         </Grid>

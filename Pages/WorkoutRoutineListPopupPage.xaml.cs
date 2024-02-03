@@ -14,8 +14,8 @@ public partial class WorkoutRoutineListPopupPage : Popup
     {
         if (args.SelectedItem != null)
         {
-            var selectedWorkoutTemplate = (WorkoutRoutine)args.SelectedItem;
-            // COPY WORKOUT ROUTINE FUNCTION
+            var selectedWorkoutRoutine = (WorkoutRoutine)args.SelectedItem;
+            await _viewModel.LoadWorkoutTemplateCollectionsFromWorkoutRoutineId(selectedWorkoutRoutine);
             _viewModel.ClosePopup();
         }
     }
