@@ -374,7 +374,7 @@
             Popup.Close();
         }
 
-        public async Task LoadWorkoutTemplateCollectionsFromWorkoutRoutineId(WorkoutRoutine selectedWorkoutRoutine)
+        public async Task CopyWorkoutRoutineSchedule(WorkoutRoutine selectedWorkoutRoutine)
         {
             if (WorkoutRoutine is null || selectedWorkoutRoutine is null || selectedWorkoutRoutine.Id < 1 || selectedWorkoutRoutine.Id == WorkoutRoutine.Id) return;
 
@@ -382,15 +382,54 @@
 
             if (!userClickedCopy) return;
 
+            // Reset current schedule
             await DeleteWorkoutTemplateCollectionsByWorkoutRoutineId();
-
             WorkoutRoutine.ResetSchedule();
 
-            await UpdateWorkoutRoutineAsync();
+            await CopyWorkoutTemplateCollectionsFromWorkoutRoutineId(selectedWorkoutRoutine.Id);
 
-            OnPropertyChanged(nameof(WorkoutRoutine));
 
-            await LoadScheduleAsync();
+        }
+
+        private async Task CopyWorkoutTemplateCollectionsFromWorkoutRoutineId(int selectedWorkoutRoutineId)
+        {
+            if (WorkoutRoutine is null) return;
+
+            bool isWorkoutTemplateDeleted = false;
+
+            Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutRoutineId == selectedWorkoutRoutineId;
+
+            IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
+            try
+            {
+                filteredWtcList = await _context.GetFilteredAsync<WorkoutTemplateCollection>(predicate);
+
+                foreach (var wtc in filteredWtcList)
+                {
+                    WorkoutTemplate workoutTemplate = await _context.GetItemByKeyAsync<WorkoutTemplate>(wtc.WorkoutTemplateId);
+
+                    if (workoutTemplate is not null)
+                    {
+                        var copiedWtc = wtc.Clone();
+                        copiedWtc.WorkoutRoutineId = WorkoutRoutine.Id;
+
+                        await _context.AddItemAsync<WorkoutTemplateCollection>(copiedWtc);
+                    }
+                    // If WorkoutTemplate was not found
+                    else isWorkoutTemplateDeleted = true;
+                }
+
+                if (isWorkoutTemplateDeleted) 
+                {
+                    await Shell.Current.DisplayAlert("Workout Removed", "The copied Routine's Schedule contained a reference to a Workout Template that no longer exists and was not copied over.", "OK");
+                }
+                
+            }
+            catch
+            {
+                await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Schedule.", "OK");
+                return;
+            }
         }
     }
 }

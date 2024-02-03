@@ -15,7 +15,7 @@ public partial class WorkoutRoutineListPopupPage : Popup
         if (args.SelectedItem != null)
         {
             var selectedWorkoutRoutine = (WorkoutRoutine)args.SelectedItem;
-            await _viewModel.LoadWorkoutTemplateCollectionsFromWorkoutRoutineId(selectedWorkoutRoutine);
+            await _viewModel.CopyWorkoutRoutineSchedule(selectedWorkoutRoutine);
             _viewModel.ClosePopup();
         }
     }
