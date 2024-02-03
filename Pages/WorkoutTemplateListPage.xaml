@@ -7,7 +7,7 @@
              x:DataType="viewmodel:WorkoutTemplateViewModel"
              Title="Workout Template List">
     
-    <VerticalStackLayout HorizontalOptions="Center">
+    <VerticalStackLayout>
         <VerticalStackLayout>
             <Label 
                 Text="Workout Templates"
@@ -16,8 +16,7 @@
                 FontAttributes="Bold"
                 Margin="10" />
             <CollectionView
-                    ItemsSource="{Binding WorkoutTemplateList}"
-                    HorizontalOptions="Center">
+                    ItemsSource="{Binding WorkoutTemplateList}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout 
                         ItemSpacing="3"
@@ -26,6 +25,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplate">
                         <HorizontalStackLayout
+                            HorizontalOptions="Center"
                             Spacing="15">
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
@@ -109,8 +109,7 @@
                 FontAttributes="Bold"
                 Margin="10" />
             <CollectionView
-                    ItemsSource="{Binding WorkoutTemplateCollectionList}"
-                    HorizontalOptions="Center">
+                    ItemsSource="{Binding WorkoutTemplateCollectionList}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout 
                         ItemSpacing="3"
@@ -119,6 +118,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkoutTemplateCollection">
                         <HorizontalStackLayout
+                            HorizontalOptions="Center"
                             Spacing="15">
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
