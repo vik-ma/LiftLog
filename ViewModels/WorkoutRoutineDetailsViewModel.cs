@@ -387,9 +387,7 @@
             await CopyWorkoutTemplateCollectionsFromWorkoutRoutineId(selectedWorkoutRoutine.Id);
 
             // Copy selectedWorkoutRoutine Schedule properties
-            WorkoutRoutine.IsScheduleWeekly = selectedWorkoutRoutine.IsScheduleWeekly;
-            WorkoutRoutine.NumDaysInSchedule = selectedWorkoutRoutine.NumDaysInSchedule;
-            WorkoutRoutine.CustomScheduleStartDate = selectedWorkoutRoutine.CustomScheduleStartDate;
+            WorkoutRoutine.CopySchedulePropertiesFromOtherWorkoutRoutine(selectedWorkoutRoutine);
             await UpdateWorkoutRoutineAsync();
 
             await LoadScheduleAsync();

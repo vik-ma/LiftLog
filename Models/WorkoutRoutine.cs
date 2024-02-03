@@ -33,5 +33,14 @@
             NumDaysInSchedule = 7;
             CustomScheduleStartDate = null;
         }
+
+        public void CopySchedulePropertiesFromOtherWorkoutRoutine(WorkoutRoutine otherWorkoutRoutine)
+        {
+            if (otherWorkoutRoutine is null) return;
+
+            IsScheduleWeekly = otherWorkoutRoutine.IsScheduleWeekly;
+            NumDaysInSchedule = otherWorkoutRoutine.NumDaysInSchedule;
+            CustomScheduleStartDate = otherWorkoutRoutine.CustomScheduleStartDate;
+        }
     }
 }
