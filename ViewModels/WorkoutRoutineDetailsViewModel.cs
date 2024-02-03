@@ -330,6 +330,8 @@
 
         public async Task LoadWorkoutRoutinesAsync()
         {
+            if (WorkoutRoutine is null) return;
+
             await ExecuteAsync(async () =>
             {
                 WorkoutRoutineList.Clear();
@@ -342,6 +344,9 @@
 
                     foreach (var routine in workoutRoutines)
                     {
+                        // Don't add current WorkoutRoutine to List
+                        if (routine.Id == WorkoutRoutine.Id) continue;
+
                         WorkoutRoutineList.Add(routine);
                     }
                 }
@@ -371,13 +376,21 @@
 
         public async Task LoadWorkoutTemplateCollectionsFromWorkoutRoutineId(WorkoutRoutine selectedWorkoutRoutine)
         {
-            if (selectedWorkoutRoutine is null || selectedWorkoutRoutine.Id < 1) return;
+            if (WorkoutRoutine is null || selectedWorkoutRoutine is null || selectedWorkoutRoutine.Id < 1 || selectedWorkoutRoutine.Id == WorkoutRoutine.Id) return;
 
-            // CHECK IF WORKOUT ROUTINE IS THE SAME
+            bool userClickedCopy = await Shell.Current.DisplayAlert("Copy Schedule", $"Delete current Schedule and copy {selectedWorkoutRoutine.Name} Schedule?", "Copy", "Cancel");
 
-            // ADD PROMPT TO CONFIRM
-            // DELETE CURRENT SCHEDULE IF CLICKED YES
+            if (!userClickedCopy) return;
 
+            await DeleteWorkoutTemplateCollectionsByWorkoutRoutineId();
+
+            WorkoutRoutine.ResetSchedule();
+
+            await UpdateWorkoutRoutineAsync();
+
+            OnPropertyChanged(nameof(WorkoutRoutine));
+
+            await LoadScheduleAsync();
         }
     }
 }
