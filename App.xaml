@@ -223,7 +223,7 @@
             <Style x:Key="ListViewLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="18" />
             </Style>
-            <Style x:Key="WorkoutTemplateListViewLabelStyle" TargetType="Label">
+            <Style x:Key="PopupPageListViewLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="22" />
             </Style>
             <Style x:Key="MediumHeaderLabelStyle" TargetType="Label">

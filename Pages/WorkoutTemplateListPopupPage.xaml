@@ -27,7 +27,7 @@
                         <ViewCell>
                             <Label 
                                 Text="{Binding Name}"
-                                Style="{StaticResource WorkoutTemplateListViewLabelStyle}"/>
+                                Style="{StaticResource PopupPageListViewLabelStyle}"/>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

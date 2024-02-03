@@ -327,6 +327,7 @@
 
             await LoadScheduleAsync();
         }
+
         public async Task LoadWorkoutRoutinesAsync()
         {
             await ExecuteAsync(async () =>
