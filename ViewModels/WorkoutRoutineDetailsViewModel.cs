@@ -323,8 +323,6 @@
 
             await UpdateWorkoutRoutineAsync();
 
-            OnPropertyChanged(nameof(WorkoutRoutine));
-
             await LoadScheduleAsync();
         }
 
@@ -382,13 +380,19 @@
 
             if (!userClickedCopy) return;
 
-            // Reset current schedule
+            // Delete WorkoutTemplateCollections of current WorkoutRoutine
             await DeleteWorkoutTemplateCollectionsByWorkoutRoutineId();
-            WorkoutRoutine.ResetSchedule();
 
+            // Create new WorkoutTemplateCollections from selectedWorkoutRoutine
             await CopyWorkoutTemplateCollectionsFromWorkoutRoutineId(selectedWorkoutRoutine.Id);
 
+            // Copy selectedWorkoutRoutine Schedule properties
+            WorkoutRoutine.IsScheduleWeekly = selectedWorkoutRoutine.IsScheduleWeekly;
+            WorkoutRoutine.NumDaysInSchedule = selectedWorkoutRoutine.NumDaysInSchedule;
+            WorkoutRoutine.CustomScheduleStartDate = selectedWorkoutRoutine.CustomScheduleStartDate;
+            await UpdateWorkoutRoutineAsync();
 
+            await LoadScheduleAsync();
         }
 
         private async Task CopyWorkoutTemplateCollectionsFromWorkoutRoutineId(int selectedWorkoutRoutineId)
@@ -413,6 +417,7 @@
                         var copiedWtc = wtc.Clone();
                         copiedWtc.WorkoutRoutineId = WorkoutRoutine.Id;
 
+                        // Create new WorkoutTemplateCollection with current WorkoutRoutine's Id
                         await _context.AddItemAsync<WorkoutTemplateCollection>(copiedWtc);
                     }
                     // If WorkoutTemplate was not found
