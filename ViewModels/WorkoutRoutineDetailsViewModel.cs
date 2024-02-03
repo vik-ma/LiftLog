@@ -67,6 +67,8 @@
 
             WorkoutScheduleList.Clear();
 
+            bool isWorkoutTemplateDeleted = false;
+
             Expression<Func<WorkoutTemplateCollection, bool>> predicate = entity => entity.WorkoutRoutineId == WorkoutRoutine.Id;
 
             IEnumerable<WorkoutTemplateCollection> filteredWtcList = null;
@@ -92,9 +94,13 @@
                     {
                         // Delete WTC if WorkoutTemplate with that Id does not exist
                         await _context.DeleteItemAsync<WorkoutTemplateCollection>(wtc);
-                            
-                        await Shell.Current.DisplayAlert("Workout Removed", "This Routine's Schedule contained a reference to a Workout Template that no longer exists.\nThis workout has been removed from the Schedule.", "OK");
+                        isWorkoutTemplateDeleted = true;
                     }
+                }
+
+                if (isWorkoutTemplateDeleted)
+                {
+                    await Shell.Current.DisplayAlert("Workout Removed", "This Routine's Schedule contained a reference to a Workout Template that no longer exists.\nThis workout has been removed from the Schedule.", "OK");
                 }
             }
             catch
