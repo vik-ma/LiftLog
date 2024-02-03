@@ -28,6 +28,14 @@
         [ObservableProperty]
         private DateTime selectedDate;
 
+        private WorkoutRoutineListPopupPage Popup;
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutRoutine> workoutRoutineList = new();
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutRoutine> filteredWorkoutRoutineList = new();
+
         public async Task LoadScheduleAsync()
         {
             LoadNumDaysInSchedule();
@@ -318,6 +326,46 @@
             OnPropertyChanged(nameof(WorkoutRoutine));
 
             await LoadScheduleAsync();
+        }
+        public async Task LoadWorkoutRoutinesAsync()
+        {
+            await ExecuteAsync(async () =>
+            {
+                WorkoutRoutineList.Clear();
+
+                var workoutRoutines = await _context.GetAllAsync<WorkoutRoutine>();
+
+                if (workoutRoutines is not null && workoutRoutines.Any())
+                {
+                    workoutRoutines ??= new ObservableCollection<WorkoutRoutine>();
+
+                    foreach (var routine in workoutRoutines)
+                    {
+                        WorkoutRoutineList.Add(routine);
+                    }
+                }
+
+                FilteredWorkoutRoutineList = new(WorkoutRoutineList);
+            });
+        }
+
+        [RelayCommand]
+        private async Task ShowWorkoutRoutineListPopup()
+        {
+            if (WorkoutRoutine is null) return;
+
+            await LoadWorkoutRoutinesAsync();
+
+            Popup = new WorkoutRoutineListPopupPage(this);
+            await Shell.Current.ShowPopupAsync(Popup);
+        }
+
+        [RelayCommand]
+        public void ClosePopup()
+        {
+            if (Popup is null) return;
+
+            Popup.Close();
         }
     }
 }
