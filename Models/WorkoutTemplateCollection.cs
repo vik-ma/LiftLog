@@ -7,6 +7,8 @@
         public int Day { get; set; }
         public int WorkoutTemplateId { get; set; }
         public int WorkoutRoutineId { get; set; }
+
+        public WorkoutTemplateCollection Clone() => MemberwiseClone() as WorkoutTemplateCollection;
     }
 
 }
