@@ -4,8 +4,7 @@
              x:Class="LocalLiftLog.Pages.WorkoutTemplateListPopupPage"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
-             xmlns:models="clr-namespace:LocalLiftLog.Models"
-             x:DataType="viewmodel:WorkoutViewModel">
+             xmlns:models="clr-namespace:LocalLiftLog.Models">
 
     <Border 
         BackgroundColor="White">

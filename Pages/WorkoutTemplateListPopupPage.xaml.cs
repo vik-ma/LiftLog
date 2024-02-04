@@ -2,12 +2,29 @@ namespace LocalLiftLog.Pages;
 
 public partial class WorkoutTemplateListPopupPage : Popup
 {
-    private readonly WorkoutViewModel _viewModel;
-    public WorkoutTemplateListPopupPage(WorkoutViewModel viewModel)
+    private readonly string _viewModelType;
+
+    private readonly WorkoutViewModel _workoutViewModel;
+    private readonly ScheduleViewModel _scheduleViewModel;
+
+    #nullable enable
+    public WorkoutTemplateListPopupPage(string viewModelType, WorkoutViewModel? workoutViewModel, ScheduleViewModel? scheduleViewModel)
 	{
 		InitializeComponent();
-        _viewModel = viewModel;
-        BindingContext = _viewModel;
+        _viewModelType = viewModelType;
+
+        switch (viewModelType) {
+            case "Workout":
+                _workoutViewModel = workoutViewModel;
+                BindingContext = _workoutViewModel;
+                break;
+            case "Schedule":
+                _scheduleViewModel = scheduleViewModel;
+                BindingContext = _scheduleViewModel;
+                break;
+            default:
+                return;
+        }
     }
 
     private async void OnWorkoutTemplateItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -15,8 +32,12 @@ public partial class WorkoutTemplateListPopupPage : Popup
         if (args.SelectedItem != null)
         {
             var selectedWorkoutTemplate = (WorkoutTemplate)args.SelectedItem;
-            await _viewModel.UpdateOperatingWorkoutTemplate(selectedWorkoutTemplate.Id);
-            _viewModel.ClosePopup();
+
+            if (_viewModelType == "Workout" && _workoutViewModel is not null) 
+            {
+                await _workoutViewModel.UpdateOperatingWorkoutTemplate(selectedWorkoutTemplate.Id);
+                _workoutViewModel.ClosePopup();
+            }
         }
     }
 
@@ -24,20 +45,23 @@ public partial class WorkoutTemplateListPopupPage : Popup
     {
         string filterText = args.NewTextValue.ToLowerInvariant();
 
-        _viewModel.FilteredWorkoutTemplateList.Clear();
-
-        if (string.IsNullOrWhiteSpace(filterText))
+        if (_viewModelType == "Workout" && _workoutViewModel is not null)
         {
-            _viewModel.FilteredWorkoutTemplateList = new(_viewModel.WorkoutTemplateList);
-        }
-        else
-        {
-            // Filter the list based on the user input
-            var filteredItems = _viewModel.WorkoutTemplateList.Where(item => item.Name.ToLowerInvariant().Contains(filterText));
+            _workoutViewModel.FilteredWorkoutTemplateList.Clear();
 
-            foreach (var item in filteredItems)
+            if (string.IsNullOrWhiteSpace(filterText))
             {
-                _viewModel.FilteredWorkoutTemplateList.Add(item);
+                _workoutViewModel.FilteredWorkoutTemplateList = new(_workoutViewModel.WorkoutTemplateList);
+            }
+            else
+            {
+                // Filter the list based on the user input
+                var filteredItems = _workoutViewModel.WorkoutTemplateList.Where(item => item.Name.ToLowerInvariant().Contains(filterText));
+
+                foreach (var item in filteredItems)
+                {
+                    _workoutViewModel.FilteredWorkoutTemplateList.Add(item);
+                }
             }
         }
     }
