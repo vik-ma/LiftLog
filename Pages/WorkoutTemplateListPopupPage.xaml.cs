@@ -27,7 +27,7 @@ public partial class WorkoutTemplateListPopupPage : Popup
         }
     }
 
-    private async void OnWorkoutTemplateItemSelected(object sender, SelectedItemChangedEventArgs args)
+    private void OnWorkoutTemplateItemSelected(object sender, SelectedItemChangedEventArgs args)
     {
         if (args.SelectedItem != null)
         {
@@ -35,8 +35,7 @@ public partial class WorkoutTemplateListPopupPage : Popup
 
             if (_viewModelType == "Workout" && _workoutViewModel is not null) 
             {
-                await _workoutViewModel.UpdateOperatingWorkoutTemplate(selectedWorkoutTemplate.Id);
-                _workoutViewModel.ClosePopup();
+                OnItemSelectedForWorkoutViewModel(selectedWorkoutTemplate);
             }
         }
     }
@@ -47,21 +46,34 @@ public partial class WorkoutTemplateListPopupPage : Popup
 
         if (_viewModelType == "Workout" && _workoutViewModel is not null)
         {
-            _workoutViewModel.FilteredWorkoutTemplateList.Clear();
+            OnFilterTextChangedForWorkoutViewModel(filterText);
+        }
+    }
 
-            if (string.IsNullOrWhiteSpace(filterText))
-            {
-                _workoutViewModel.FilteredWorkoutTemplateList = new(_workoutViewModel.WorkoutTemplateList);
-            }
-            else
-            {
-                // Filter the list based on the user input
-                var filteredItems = _workoutViewModel.WorkoutTemplateList.Where(item => item.Name.ToLowerInvariant().Contains(filterText));
+    private async void OnItemSelectedForWorkoutViewModel(WorkoutTemplate selectedWorkoutTemplate)
+    {
+        if (selectedWorkoutTemplate is null) return;
 
-                foreach (var item in filteredItems)
-                {
-                    _workoutViewModel.FilteredWorkoutTemplateList.Add(item);
-                }
+        await _workoutViewModel.UpdateOperatingWorkoutTemplate(selectedWorkoutTemplate.Id);
+        _workoutViewModel.ClosePopup();
+    }
+
+    private void OnFilterTextChangedForWorkoutViewModel(string filterText)
+    {
+        _workoutViewModel.FilteredWorkoutTemplateList.Clear();
+
+        if (string.IsNullOrWhiteSpace(filterText))
+        {
+            _workoutViewModel.FilteredWorkoutTemplateList = new(_workoutViewModel.WorkoutTemplateList);
+        }
+        else
+        {
+            // Filter the list based on the user input
+            var filteredItems = _workoutViewModel.WorkoutTemplateList.Where(item => item.Name.ToLowerInvariant().Contains(filterText));
+
+            foreach (var item in filteredItems)
+            {
+                _workoutViewModel.FilteredWorkoutTemplateList.Add(item);
             }
         }
     }
