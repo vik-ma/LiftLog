@@ -64,6 +64,8 @@
         [ObservableProperty]
         private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
 
+        private WorkoutTemplateListPopupPage Popup;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -311,6 +313,40 @@
         private static async Task GoToWorkoutTemplate()
         {
             await Shell.Current.GoToAsync($"{nameof(WorkoutTemplateListPage)}");
+        }
+
+        [RelayCommand]
+        private async Task ShowWorkoutTemplateListPopup()
+        {
+            if (WorkoutRoutine is null) return;
+
+            await LoadWorkoutTemplatesAsync();
+
+            Popup = new WorkoutTemplateListPopupPage("Schedule", null, this);
+            await Shell.Current.ShowPopupAsync(Popup);
+        }
+
+        [RelayCommand]
+        public void ClosePopup()
+        {
+            if (Popup is null) return;
+
+            Popup.Close();
+        }
+
+        [RelayCommand]
+        private async Task GoToWorkoutTemplateDetails()
+        {
+            ClosePopup();
+
+            WorkoutTemplate workoutTemplate = new();
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["WorkoutTemplate"] = workoutTemplate
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(WorkoutDetailsPage)}?Id={workoutTemplate.Id}", navigationParameter);
         }
 
         [RelayCommand]
