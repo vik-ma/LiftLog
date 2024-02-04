@@ -31,6 +31,9 @@
 
         private WorkoutTemplateListPopupPage Popup;
 
+        [ObservableProperty]
+        private string popupTitle = "Load Workout";
+
         private readonly List<int> SetListIdOrder = new();
 
         [ObservableProperty]

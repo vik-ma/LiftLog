@@ -12,7 +12,7 @@
             Spacing="15"
             Padding="30, 20">
             <Label 
-                Text="Workout Templates"
+                Text="{Binding PopupTitle}"
                 Style="{StaticResource LargeBoldLabelStyle}" />
             <SearchBar 
                 Placeholder="Search Workouts..."
