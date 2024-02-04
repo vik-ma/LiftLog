@@ -66,6 +66,9 @@
 
         private WorkoutTemplateListPopupPage Popup;
 
+        [ObservableProperty]
+        private string popupTitle;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -316,9 +319,31 @@
         }
 
         [RelayCommand]
-        private async Task ShowWorkoutTemplateListPopup()
+        private async Task ShowWorkoutTemplateListPopup(string dayString)
         {
             if (WorkoutRoutine is null) return;
+
+            int day;
+
+            if (int.TryParse(dayString, out int intValue))
+            {
+                day = intValue;
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid Day String", "OK");
+                return;
+            }
+
+            if (day < 0 || day > 13)
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid Day", "OK");
+                return;
+            }
+
+            SelectedDay = day;
+
+            PopupTitle = $"Add Workout To Day {day}";
 
             await LoadWorkoutTemplatesAsync();
 

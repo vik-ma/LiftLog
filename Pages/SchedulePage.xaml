@@ -51,7 +51,7 @@
                         Grid.RowSpan="2"
                         VerticalOptions="Center"
                         Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
                         CommandParameter="0" />
                     <CollectionView
                         Grid.Row="1"
@@ -80,7 +80,7 @@
                         Grid.RowSpan="2"
                         VerticalOptions="Center"
                         Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
                         CommandParameter="1" />
                     <CollectionView
                         Grid.Row="3"
@@ -112,7 +112,7 @@
                         VerticalOptions="Center"
                         IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
                         Style="{StaticResource ExtraSmallGreenButtonStyle}" 
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
                         CommandParameter="2" />
                     <CollectionView
                         Grid.Row="5"
@@ -145,7 +145,7 @@
                         VerticalOptions="Center"
                         IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=3}"
                         Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
                         CommandParameter="3" />
                     <CollectionView
                         Grid.Row="7"
@@ -178,7 +178,7 @@
                         VerticalOptions="Center"
                         IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=4}"
                         Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
                         CommandParameter="4" />
                     <CollectionView
                         Grid.Row="9"
@@ -211,7 +211,7 @@
                         VerticalOptions="Center"
                         IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=5}"
                         Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
                         CommandParameter="5" />
                     <CollectionView
                         Grid.Row="11"
@@ -244,7 +244,7 @@
                         VerticalOptions="Center"
                         IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=6}"
                         Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
                         CommandParameter="6" />
                     <CollectionView
                         Grid.Row="13"
@@ -271,7 +271,7 @@
                         VerticalOptions="Center"
                         Style="{StaticResource ExtraSmallGreenButtonStyle}"
                         IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=7}"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
                         CommandParameter="7" />
                     <CollectionView
                         Grid.Row="1"
@@ -299,7 +299,7 @@
                         VerticalOptions="Center"
                         IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=8}"
                         Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
                         CommandParameter="8" />
                     <CollectionView
                         Grid.Row="3"
@@ -327,7 +327,7 @@
                         VerticalOptions="Center"
                         IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=9}"
                         Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
                         CommandParameter="9" />
                     <CollectionView
                         Grid.Row="5"
@@ -355,7 +355,7 @@
                         VerticalOptions="Center"
                         IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=10}"
                         Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
                         CommandParameter="10" />
                     <CollectionView
                         Grid.Row="7"
@@ -383,7 +383,7 @@
                         VerticalOptions="Center"
                         IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=11}"
                         Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
                         CommandParameter="11" />
                     <CollectionView
                         Grid.Row="9"
@@ -411,7 +411,7 @@
                         VerticalOptions="Center"
                         IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=12}"
                         Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
                         CommandParameter="12" />
                     <CollectionView
                         Grid.Row="11"
@@ -439,7 +439,7 @@
                         VerticalOptions="Center"
                         IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=13}"
                         Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListSidebarCommand}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
                         CommandParameter="13" />
                     <CollectionView
                         Grid.Row="13"
