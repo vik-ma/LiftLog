@@ -56,13 +56,13 @@
         private ObservableCollection<WorkoutTemplatePackage> day14WorkoutTemplatePackageList = new();
 
         [ObservableProperty]
-        private bool showWorkoutTemplateList = false;
-
-        [ObservableProperty]
         private int selectedDay;
 
         [ObservableProperty]
-        private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
+        private ObservableCollection<WorkoutTemplate> workoutTemplateList = new(); 
+
+        [ObservableProperty]
+        private ObservableCollection<WorkoutTemplate> filteredWorkoutTemplateList = new();
 
         private WorkoutTemplateListPopupPage Popup;
 
@@ -128,6 +128,8 @@
                         WorkoutTemplateList.Add(workout);
                     }
                 }
+
+                FilteredWorkoutTemplateList = new(WorkoutTemplateList);
             });
         }
 
@@ -278,38 +280,6 @@
             });
 
             await LoadWorkoutTemplateCollectionsAsync();
-        }
-
-        [RelayCommand]
-        private async Task ShowWorkoutTemplateListSidebar(string dayString)
-        {
-            int day;
-
-            if (int.TryParse(dayString, out int intValue))
-            {
-                day = intValue;
-            }
-            else
-            {
-                await Shell.Current.DisplayAlert("Error", "Invalid Day String", "OK");
-                return;
-            }
-
-            if (day < 0 || day > 13)
-            {
-                await Shell.Current.DisplayAlert("Error", "Invalid Day", "OK");
-                return;
-            }
-
-            ShowWorkoutTemplateList = true;
-
-            SelectedDay = day;
-        }
-
-        [RelayCommand]
-        private void HideWorkoutTemplateList()
-        {
-            ShowWorkoutTemplateList = false;
         }
 
         [RelayCommand]
