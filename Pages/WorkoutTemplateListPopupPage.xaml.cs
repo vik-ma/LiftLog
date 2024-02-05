@@ -37,6 +37,10 @@ public partial class WorkoutTemplateListPopupPage : Popup
             {
                 OnItemSelectedForWorkoutViewModel(selectedWorkoutTemplate);
             }
+            if (_viewModelType == "Schedule" && _scheduleViewModel is not null)
+            {
+                OnItemSelectedForScheduleViewModel(selectedWorkoutTemplate);
+            }
         }
     }
 
@@ -76,5 +80,13 @@ public partial class WorkoutTemplateListPopupPage : Popup
                 _workoutViewModel.FilteredWorkoutTemplateList.Add(item);
             }
         }
+    }
+
+    private async void OnItemSelectedForScheduleViewModel(WorkoutTemplate selectedWorkoutTemplate)
+    {
+        if (selectedWorkoutTemplate is null) return;
+
+        await _scheduleViewModel.AddWorkoutTemplateCollectionToDay(selectedWorkoutTemplate);
+        _scheduleViewModel.ClosePopup();
     }
 }

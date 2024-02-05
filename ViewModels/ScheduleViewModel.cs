@@ -261,8 +261,7 @@
             await LoadWorkoutTemplateCollectionsAsync();
         }
 
-        [RelayCommand]
-        private async Task AddWorkoutTemplateCollectionToDay(WorkoutTemplate workoutTemplate)
+        public async Task AddWorkoutTemplateCollectionToDay(WorkoutTemplate workoutTemplate)
         {
             if (workoutTemplate is null) return;
 
