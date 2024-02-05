@@ -134,5 +134,29 @@ namespace LocalLiftLog.Helpers
 
             return dayOfWeekInt;
         }
+
+        public static string ConvertScheduleDayIntToDayString(bool isScheduleWeekly, int dayInt)
+        {
+            if (isScheduleWeekly)
+            {
+                return dayInt switch
+                {
+                    0 => "Monday",
+                    1 => "Tuesday",
+                    2 => "Wednesday",
+                    3 => "Thursday",
+                    4 => "Friday",
+                    5 => "Saturday",
+                    6 => "Sunday",
+                    _ => "Invalid Day",
+                };
+            }
+            else
+            {
+                if (dayInt < 0 || dayInt > 13) return "Invalid Day";
+
+                return $"Day {dayInt + 1}";
+            }
+        }
     }
 }

@@ -312,7 +312,9 @@
 
             SelectedDay = day;
 
-            PopupTitle = $"Add Workout To Day {day}";
+            string displayedDay = DateTimeHelper.ConvertScheduleDayIntToDayString(WorkoutRoutine.IsScheduleWeekly, day);
+
+            PopupTitle = $"Add Workout To {displayedDay}";
 
             await LoadWorkoutTemplatesAsync();
 
