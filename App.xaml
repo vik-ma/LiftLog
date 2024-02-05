@@ -176,6 +176,11 @@
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="{DynamicResource MediumGray}" />
             </Style>
+            <Style x:Key="FontSize14EntryFieldStyle" TargetType="Entry">
+                <Setter Property="HeightRequest" Value="30" />
+                <Setter Property="MinimumHeightRequest" Value="30" />
+                <Setter Property="FontSize" Value="14" />
+            </Style>
             <Style x:Key="ExtraSmallEntryFieldStyle" TargetType="Entry">
                 <Setter Property="WidthRequest" Value="60" />
                 <Setter Property="HeightRequest" Value="38" />

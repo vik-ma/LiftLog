@@ -56,10 +56,8 @@
                                 </Label>
                                 <Entry
                                     Text="{Binding Name}"
-                                    FontSize="14"
-                                    HeightRequest="30"
-                                    MinimumHeightRequest="30"
-                                    WidthRequest="140" />
+                                    WidthRequest="150"
+                                    Style="{StaticResource FontSize14EntryFieldStyle}" />
                                 <Button
                                     Text="Save"
                                     Style="{StaticResource SmallGreenButtonStyle}"
