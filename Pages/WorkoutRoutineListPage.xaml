@@ -305,13 +305,13 @@
             <VerticalStackLayout VerticalOptions="End">
                 <Button
                     Text="Create New Routine"
-                    Style="{StaticResource LargeButtonStyle}"
+                    Style="{StaticResource Width300ButtonStyle}"
                     Command="{Binding SetOperatingWorkoutRoutineCommand}"
                     Margin="50"
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
                 <Button 
                     Text="Go Back"
-                    Style="{StaticResource LargeButtonStyle}"
+                    Style="{StaticResource Width300ButtonStyle}"
                     Command="{Binding GoBackCommand}"
                     Margin="20" />
             </VerticalStackLayout>

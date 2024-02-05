@@ -94,7 +94,7 @@
 
                 <Button 
                     Text="Create New WT" 
-                    Style="{StaticResource LargeButtonStyle}"
+                    Style="{StaticResource Width300ButtonStyle}"
                     Command="{Binding CreateWorkoutTemplateCommand}"
                     Margin="15" />
             </VerticalStackLayout>
@@ -200,7 +200,7 @@
 
                 <Button 
                     Text="Create New WTC" 
-                    Style="{StaticResource LargeButtonStyle}"
+                    Style="{StaticResource Width300ButtonStyle}"
                     Command="{Binding CreateWorkoutTemplateCollectionCommand}"
                     Margin="15" />
             </VerticalStackLayout>
@@ -208,7 +208,7 @@
             <VerticalStackLayout>
                 <Button 
                     Text="Go Back"
-                    Style="{StaticResource LargeButtonStyle}"
+                    Style="{StaticResource Width300ButtonStyle}"
                     Command="{Binding GoBackCommand}"
                     Margin="50" />
             </VerticalStackLayout>

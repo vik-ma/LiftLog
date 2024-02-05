@@ -196,11 +196,11 @@ This Set will not show up in new Workouts unless it is changed to a valid Exerci
                     Text="Save Workout Template"
                     BackgroundColor="{DynamicResource MediumGreen}"
                     WidthRequest="320"
-                    Style="{StaticResource LargeButtonStyle}"
+                    Style="{StaticResource Width300ButtonStyle}"
                     Command="{Binding SaveWorkoutTemplateCommand}" />
                 <Button 
                     Text="Go Back"
-                    Style="{StaticResource LargeButtonStyle}"
+                    Style="{StaticResource Width300ButtonStyle}"
                     Command="{Binding GoBackCommand}" />
             </VerticalStackLayout>
         </VerticalStackLayout>

@@ -129,12 +129,12 @@
         <Button 
             Text="Add New Exercise"
             BackgroundColor="{DynamicResource MediumGreen}"
-            Style="{StaticResource LargeButtonStyle}"
+            Style="{StaticResource Width300ButtonStyle}"
             Command="{Binding CreateNewExerciseCommand}" />
 
         <Button 
             Text="Go Back"
-            Style="{StaticResource LargeButtonStyle}"
+            Style="{StaticResource Width300ButtonStyle}"
             Command="{Binding GoBackCommand}"
             Margin="0, 5" />
     </VerticalStackLayout>

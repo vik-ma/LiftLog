@@ -73,13 +73,13 @@
 
             <Button 
                 Text="Create New Routine"
-                Style="{StaticResource LargeButtonStyle}"
+                Style="{StaticResource Width300ButtonStyle}"
                 BackgroundColor="{DynamicResource DeepBlue}"
                 Command="{Binding GoToWorkoutRoutineListPageCommand}"
                 Margin="20" />
             <Button 
                 Text="Create New Workout"
-                Style="{StaticResource LargeButtonStyle}"
+                Style="{StaticResource Width300ButtonStyle}"
                 BackgroundColor="{DynamicResource DeepBlue}"
                 Command="{Binding CreateWorkoutTemplateCommand}"
                 Margin="20" />
@@ -185,7 +185,7 @@
         <VerticalStackLayout>
             <Button 
                 Text="Go Back"
-                Style="{StaticResource LargeButtonStyle}"
+                Style="{StaticResource Width300ButtonStyle}"
                 Command="{Binding GoBackCommand}"
                 Margin="20" />
         </VerticalStackLayout>

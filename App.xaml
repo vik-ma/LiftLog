@@ -23,16 +23,6 @@
             <Style x:Key="LargeHeaderSpanStyle" TargetType="Span">
                 <Setter Property="FontSize" Value="36" />
             </Style>
-            <Style x:Key="LargeButtonStyle" TargetType="Button">
-                <Setter Property="FontSize" Value="24" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="WidthRequest" Value="300" />
-            </Style>
-            <Style x:Key="MediumButtonStyle" TargetType="Button">
-                <Setter Property="FontSize" Value="24" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="WidthRequest" Value="140" />
-            </Style>
             <Style x:Key="MainPageNavigationButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="24" />
                 <Setter Property="FontAttributes" Value="Bold" />
@@ -95,6 +85,16 @@
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="Margin" Value="0" />
+            </Style>
+            <Style x:Key="Width300ButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="WidthRequest" Value="300" />
+            </Style>
+            <Style x:Key="Width150ButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="WidthRequest" Value="150" />
             </Style>
             <Style x:Key="AddButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="16" />

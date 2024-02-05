@@ -16,17 +16,17 @@
         <Button 
             Text="New Empty Workout"
             BackgroundColor="{DynamicResource MediumGreen}"
-            Style="{StaticResource LargeButtonStyle}"
+            Style="{StaticResource Width300ButtonStyle}"
             Command="{Binding GoToNewWorkoutCommand}" />
 
         <Button 
             Text="Workout List"
-            Style="{StaticResource LargeButtonStyle}"
+            Style="{StaticResource Width300ButtonStyle}"
             Command="{Binding GoToWorkoutListCommand}" />
 
         <Button 
             Text="Go Back"
-            Style="{StaticResource LargeButtonStyle}"
+            Style="{StaticResource Width300ButtonStyle}"
             Command="{Binding GoBackCommand}" />
     </VerticalStackLayout>
 </ContentPage>
