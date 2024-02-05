@@ -77,7 +77,7 @@ public partial class WorkoutTemplateListPopupPage : Popup
         else
         {
             // Filter the list based on the user input
-            var filteredItems = _workoutViewModel.WorkoutTemplateList.Where(item => item.Name.ToLowerInvariant().Contains(filterText));
+            var filteredItems = _workoutViewModel.WorkoutTemplateList.Where(item => item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase));
 
             foreach (var item in filteredItems)
             {
@@ -105,7 +105,7 @@ public partial class WorkoutTemplateListPopupPage : Popup
         else
         {
             // Filter the list based on the user input
-            var filteredItems = _scheduleViewModel.WorkoutTemplateList.Where(item => item.Name.ToLowerInvariant().Contains(filterText));
+            var filteredItems = _scheduleViewModel.WorkoutTemplateList.Where(item => item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase));
 
             foreach (var item in filteredItems)
             {
