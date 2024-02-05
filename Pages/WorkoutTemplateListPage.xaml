@@ -54,26 +54,27 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
+                                <Entry
+                                    Text="{Binding Name}"
+                                    FontSize="14"
+                                    HeightRequest="30"
+                                    MinimumHeightRequest="30"
+                                    WidthRequest="140" />
                                 <Button
                                     Text="Save"
                                     Style="{StaticResource SmallGreenButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutTemplateViewModel}}, Path=UpdateWorkoutTemplateCommand}" 
-                                    CommandParameter="{Binding Id}" />
+                                    CommandParameter="{Binding .}" />
                                 <Button
                                     Text="Delete"
                                     Style="{StaticResource SmallRedButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutTemplateViewModel}}, Path=DeleteWorkoutTemplateCommand}" 
-                                    CommandParameter="{Binding Id}" />
+                                    CommandParameter="{Binding .}" />
                                 <Button
-                                    Text="Details"
+                                    Text="Go To Details"
                                     Style="{StaticResource SmallButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutTemplateViewModel}}, Path=GoToWorkoutTemplateDetailsCommand}" 
-                                    CommandParameter="{Binding Id}" />
-                                <Button
-                                    Text="Start New Workout"
-                                    Style="{StaticResource SmallButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutTemplateViewModel}}, Path=StartWorkoutCommand}" 
-                                    CommandParameter="{Binding Id}" />
+                                    CommandParameter="{Binding .}" />
                             </HorizontalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -174,12 +175,12 @@
                                     Text="Save"
                                     Style="{StaticResource SmallGreenButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutTemplateViewModel}}, Path=UpdateWorkoutTemplateCollectionCommand}" 
-                                    CommandParameter="{Binding Id}" />
+                                    CommandParameter="{Binding .}" />
                                 <Button
                                     Text="Delete"
                                     Style="{StaticResource SmallRedButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutTemplateViewModel}}, Path=DeleteWorkoutTemplateCollectionCommand}" 
-                                    CommandParameter="{Binding Id}" />
+                                    CommandParameter="{Binding .}" />
                             </HorizontalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

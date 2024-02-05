@@ -111,10 +111,8 @@
         }
 
         [RelayCommand]
-        private async Task UpdateWorkoutTemplateAsync(int id)
+        private async Task UpdateWorkoutTemplateAsync(WorkoutTemplate workoutTemplate)
         {
-            WorkoutTemplate workoutTemplate = WorkoutTemplateList.FirstOrDefault(p => p.Id == id);
-
             if (workoutTemplate is null)
                 return;
 
@@ -130,10 +128,8 @@
         }
 
         [RelayCommand]
-        private async Task UpdateWorkoutTemplateCollectionAsync(int id)
+        private async Task UpdateWorkoutTemplateCollectionAsync(WorkoutTemplateCollection workoutTemplateCollection)
         {
-            WorkoutTemplateCollection workoutTemplateCollection = WorkoutTemplateCollectionList.FirstOrDefault(p => p.Id == id);
-
             if (workoutTemplateCollection is null)
                 return;
 
@@ -149,10 +145,8 @@
         }
 
         [RelayCommand]
-        private async Task DeleteWorkoutTemplateCollectionAsync(int id)
+        private async Task DeleteWorkoutTemplateCollectionAsync(WorkoutTemplateCollection workoutTemplateCollection)
         {
-            WorkoutTemplateCollection workoutTemplateCollection = WorkoutTemplateCollectionList.FirstOrDefault(p => p.Id == id);
-
             if (workoutTemplateCollection is null)
                 return;
 
@@ -168,10 +162,8 @@
         }
 
         [RelayCommand]
-        private async Task DeleteWorkoutTemplateAsync(int id)
+        private async Task DeleteWorkoutTemplateAsync(WorkoutTemplate workoutTemplate)
         {
-            WorkoutTemplate workoutTemplate = WorkoutTemplateList.FirstOrDefault(p => p.Id == id);
-
             if (workoutTemplate is null)
                 return;
 
@@ -185,9 +177,9 @@
 
             await LoadWorkoutTemplatesAsync();
 
-            await DeleteWorkoutTemplateCollectionsByWorkoutTemplateId(id);
+            await DeleteWorkoutTemplateCollectionsByWorkoutTemplateId(workoutTemplate.Id);
 
-            await DeleteSetsByWorkoutTemplateId(id);
+            await DeleteSetsByWorkoutTemplateId(workoutTemplate.Id);
         }
 
         private async Task DeleteWorkoutTemplateCollectionsByWorkoutTemplateId(int id)
@@ -219,10 +211,8 @@
         }
 
         [RelayCommand]
-        private async Task GoToWorkoutTemplateDetails(int id)
+        private async Task GoToWorkoutTemplateDetails(WorkoutTemplate workoutTemplate)
         {
-            WorkoutTemplate workoutTemplate = WorkoutTemplateList.FirstOrDefault(p => p.Id == id);
-
             if (workoutTemplate is null)
             {
                 await Shell.Current.DisplayAlert("Error", "Workout does not exist", "OK");
@@ -234,7 +224,7 @@
                 ["WorkoutTemplate"] = workoutTemplate
             };
 
-            await Shell.Current.GoToAsync($"{nameof(WorkoutDetailsPage)}?Id={id}", navigationParameter);
+            await Shell.Current.GoToAsync($"{nameof(WorkoutDetailsPage)}?Id={workoutTemplate.Id}", navigationParameter);
         }
 
         private async Task DeleteSetsByWorkoutTemplateId(int id)
@@ -263,30 +253,6 @@
                     }
                 });
             }
-        }
-
-        [RelayCommand]
-        private async Task StartWorkout(int id)
-        {
-            WorkoutTemplate workout = WorkoutTemplateList.FirstOrDefault(p => p.Id == id);
-
-            if (workout is null)
-            {
-                await Shell.Current.DisplayAlert("Error", "Workout does not exist", "OK");
-                return;
-            }
-
-            CompletedWorkout newCompletedWorkout = new()
-            {
-                WorkoutTemplateId = workout.Id
-            };
-
-            var navigationParameter = new Dictionary<string, object>
-            {
-                ["CompletedWorkout"] = newCompletedWorkout
-            };
-
-            await Shell.Current.GoToAsync($"{nameof(StartedWorkoutPage)}?Id={id}", navigationParameter);
         }
     }
 }
