@@ -24,10 +24,11 @@
                     </Label.FormattedText>
                 </Label>
             </HorizontalStackLayout>
-            <Grid 
-                ColumnDefinitions="*, *, *, *"
+            <Grid
+                HorizontalOptions="Center"
+                ColumnDefinitions="Auto, Auto, Auto, Auto"
                 RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *"
-                ColumnSpacing="10"
+                ColumnSpacing="15"
                 RowSpacing="2">
                 <Label 
                     Text="Day 1"
