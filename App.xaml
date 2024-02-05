@@ -119,28 +119,28 @@
                 <Setter Property="Padding" Value="20, 10" />
             </Style>
             <Style x:Key="ExtraSmallButtonStyle" TargetType="Button">
-                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontSize" Value="12" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="Padding" Value="12, 4" />
-                <Setter Property="HeightRequest" Value="38" />
-                <Setter Property="MinimumHeightRequest" Value="38" />
+                <Setter Property="Padding" Value="9, 2" />
+                <Setter Property="HeightRequest" Value="30" />
+                <Setter Property="MinimumHeightRequest" Value="30" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             <Style x:Key="ExtraSmallGreenButtonStyle" TargetType="Button">
-                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontSize" Value="12" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="Padding" Value="12, 4" />
-                <Setter Property="HeightRequest" Value="38" />
-                <Setter Property="MinimumHeightRequest" Value="38" />
+                <Setter Property="Padding" Value="9, 2" />
+                <Setter Property="HeightRequest" Value="30" />
+                <Setter Property="MinimumHeightRequest" Value="30" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource MediumGreen}" />
             </Style>
             <Style x:Key="ExtraSmallRedButtonStyle" TargetType="Button">
-                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontSize" Value="12" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="Padding" Value="12, 4" />
-                <Setter Property="HeightRequest" Value="38" />
-                <Setter Property="MinimumHeightRequest" Value="38" />
+                <Setter Property="Padding" Value="9, 2" />
+                <Setter Property="HeightRequest" Value="30" />
+                <Setter Property="MinimumHeightRequest" Value="30" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource MediumRed}" />
             </Style>
