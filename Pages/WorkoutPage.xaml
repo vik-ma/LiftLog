@@ -10,9 +10,10 @@
     <ScrollView>
         <VerticalStackLayout 
             Margin="0, 10" 
-            Spacing="10"
-            HorizontalOptions="Center">
-            <HorizontalStackLayout Spacing="10">
+            Spacing="5">
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                Spacing="10">
                 <Label 
                     Text="Workout ID:"
                     Style="{StaticResource MediumBoldLabelStyle}" />
@@ -22,7 +23,9 @@
                     Style="{StaticResource MediumBoldLabelStyle}" />
             </HorizontalStackLayout>
         
-            <HorizontalStackLayout Spacing="10">
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                Spacing="10">
                 <Label 
                     Text="Name:"
                     Style="{StaticResource MediumBoldLabelStyle}" />
@@ -39,8 +42,10 @@
                     Style="{StaticResource ExtraSmallRedButtonStyle}"
                     Command="{Binding ResetWorkoutNameCommand}" />
             </HorizontalStackLayout>
-        
-            <HorizontalStackLayout Spacing="10">
+
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                Spacing="10">
                 <Label 
                     Text="Date:"
                     Style="{StaticResource MediumBoldLabelStyle}" />
@@ -54,7 +59,9 @@
                     DateSelected="OnDateSelected" />
             </HorizontalStackLayout>
 
-            <HorizontalStackLayout Spacing="10">
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                Spacing="10">
                 <!--<Label 
                     IsVisible="{Binding Workout.WorkoutTemplateId, Converter={StaticResource IsInt0Converter}}"
                     Text="No Workout Template Set"
@@ -85,6 +92,7 @@
             </HorizontalStackLayout>
 
             <Label 
+                HorizontalOptions="Center"
                 IsVisible="{Binding SavedSetsContainsDeletedExercise}"
                 Text="One or more saved Sets in Workout contains a reference to an Exercise that no longer exists."
                 FontAttributes="Bold"
@@ -101,7 +109,9 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:SetExercisePackage">
-                            <HorizontalStackLayout Spacing="7">
+                            <HorizontalStackLayout 
+                                HorizontalOptions="Center"
+                                Spacing="7">
                                 <Button 
                                     Style="{StaticResource ArrowUpButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=MoveSetUpCommand}" 
@@ -184,14 +194,15 @@
                         IsVisible="{Binding SetList.Count}"
                         Text="Remove All Incomplete Sets"
                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=DeleteIncompleteSetsCommand}"
-                        Style="{StaticResource ExtraSmallRedButtonStyle}" />
+                        Style="{StaticResource SmallRedButtonStyle}" />
                 </Grid>
             </VerticalStackLayout>
 
             <Button 
                 Text="Go Back"
                 Style="{StaticResource Width300ButtonStyle}"
-                Command="{Binding GoBackCommand}" />
+                Command="{Binding GoBackCommand}"
+                Margin="30" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

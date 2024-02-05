@@ -6,127 +6,131 @@
              xmlns:models="clr-namespace:LocalLiftLog.Models"
              x:DataType="viewmodel:WorkoutListViewModel"
              Title="Workout List">
-    <VerticalStackLayout>
-        <Label 
-            Text="Workout List"
-            HorizontalOptions="Center"
-            FontSize="30"
-            FontAttributes="Bold" />
-        <CollectionView
-            ItemsSource="{Binding WorkoutList}"
-            HorizontalOptions="Center">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout 
-                    ItemSpacing="3"
-                    Orientation="Vertical" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Workout">
-                    <VerticalStackLayout Spacing="5">
-                        <HorizontalStackLayout Spacing="5">
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Id: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding Id}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Name: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding Name, Converter={StaticResource NullValueToEmptyTextConverter}, ConverterParameter=Name}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Workout Template Id: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding WorkoutTemplateId}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Date: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding Date}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Is Loaded: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding IsWorkoutLoaded}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Button 
-                                Text="Toggle IsLoaded"
-                                Style="{StaticResource ExtraSmallButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutListViewModel}}, Path=ToggleIsWorkoutLoadedCommand}"
-                                CommandParameter="{Binding .}" />
-                            <Button 
-                                Text="Go To Workout"
-                                Style="{StaticResource ExtraSmallButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutListViewModel}}, Path=GoToWorkoutCommand}"
-                                CommandParameter="{Binding .}" />
-                            <Button 
-                                Text="Delete"
-                                Style="{StaticResource ExtraSmallRedButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutListViewModel}}, Path=DeleteWorkoutCommand}"
-                                CommandParameter="{Binding .}" />
-                        </HorizontalStackLayout>
-                    </VerticalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-            <CollectionView.EmptyView>
-                <ContentView>
-                    <VerticalStackLayout
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center">
-                        <Label 
-                            Text="No Workouts In List!" 
-                            FontSize="18" 
-                            FontAttributes="Bold" 
-                            HorizontalTextAlignment="Center" />
-                    </VerticalStackLayout>
-                </ContentView>
-            </CollectionView.EmptyView>
-        </CollectionView>
 
-        <Button 
-            Text="Go Back"
-            Style="{StaticResource Width300ButtonStyle}"
-            Command="{Binding GoBackCommand}"
-            Margin="50" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Padding="10">
+            <Label 
+                Text="Workout List"
+                HorizontalOptions="Center"
+                FontSize="30"
+                FontAttributes="Bold" />
+            <CollectionView
+                ItemsSource="{Binding WorkoutList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Workout">
+                        <VerticalStackLayout Spacing="5">
+                            <HorizontalStackLayout 
+                                HorizontalOptions="Center"
+                                Spacing="5">
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Id: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Id}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Name: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Name, Converter={StaticResource NullValueToEmptyTextConverter}, ConverterParameter=Name}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Workout Template Id: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding WorkoutTemplateId}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Date: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Date}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Is Loaded: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding IsWorkoutLoaded}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Button 
+                                    Text="Toggle IsLoaded"
+                                    Style="{StaticResource ExtraSmallButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutListViewModel}}, Path=ToggleIsWorkoutLoadedCommand}"
+                                    CommandParameter="{Binding .}" />
+                                <Button 
+                                    Text="Go To Workout"
+                                    Style="{StaticResource ExtraSmallButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutListViewModel}}, Path=GoToWorkoutCommand}"
+                                    CommandParameter="{Binding .}" />
+                                <Button 
+                                    Text="Delete"
+                                    Style="{StaticResource ExtraSmallRedButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutListViewModel}}, Path=DeleteWorkoutCommand}"
+                                    CommandParameter="{Binding .}" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <VerticalStackLayout
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Label 
+                                Text="No Workouts In List!" 
+                                FontSize="18" 
+                                FontAttributes="Bold" 
+                                HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
+
+            <Button 
+                Text="Go Back"
+                Style="{StaticResource Width300ButtonStyle}"
+                Command="{Binding GoBackCommand}"
+                Margin="50" />
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
