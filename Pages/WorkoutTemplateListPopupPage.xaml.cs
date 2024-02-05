@@ -52,6 +52,10 @@ public partial class WorkoutTemplateListPopupPage : Popup
         {
             OnFilterTextChangedForWorkoutViewModel(filterText);
         }
+        if (_viewModelType == "Schedule" && _scheduleViewModel is not null)
+        {
+            OnFilterTextChangedForScheduleViewModel(filterText);
+        }
     }
 
     private async void OnItemSelectedForWorkoutViewModel(WorkoutTemplate selectedWorkoutTemplate)
@@ -88,5 +92,25 @@ public partial class WorkoutTemplateListPopupPage : Popup
 
         await _scheduleViewModel.AddWorkoutTemplateCollectionToDay(selectedWorkoutTemplate);
         _scheduleViewModel.ClosePopup();
+    }
+
+    private void OnFilterTextChangedForScheduleViewModel(string filterText)
+    {
+        _scheduleViewModel.FilteredWorkoutTemplateList.Clear();
+
+        if (string.IsNullOrWhiteSpace(filterText))
+        {
+            _scheduleViewModel.FilteredWorkoutTemplateList = new(_scheduleViewModel.WorkoutTemplateList);
+        }
+        else
+        {
+            // Filter the list based on the user input
+            var filteredItems = _scheduleViewModel.WorkoutTemplateList.Where(item => item.Name.ToLowerInvariant().Contains(filterText));
+
+            foreach (var item in filteredItems)
+            {
+                _scheduleViewModel.FilteredWorkoutTemplateList.Add(item);
+            }
+        }
     }
 }
