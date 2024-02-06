@@ -76,19 +76,19 @@
                         <Button 
                             Grid.Column="0"
                             Text="Cancel"
-                            Style="{StaticResource DeleteButtonStyle}"
+                            Style="{StaticResource MediumRedButtonStyle}"
                             Command="{Binding DisableEditingCommand}" />
                         <Button 
                             Grid.Column="1"
                             Text="Save"
-                            Style="{StaticResource AddButtonStyle}"
+                            Style="{StaticResource MediumGreenButtonStyle}"
                             Command="{Binding UpdateWorkoutRoutineCommand}" />
                     </HorizontalStackLayout>
                 </Grid>
 
                 <Button 
                     Text="Edit Routine"
-                    Style="{StaticResource GenericButtonStyle}"
+                    Style="{StaticResource MediumButtonStyle}"
                     Command="{Binding EnableEditingCommand}"
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
 
@@ -154,34 +154,34 @@
                 <Button 
                     Text="Go To Schedule"
                     WidthRequest="250"
-                    Style="{StaticResource AddButtonStyle}"
+                    Style="{StaticResource MediumGreenButtonStyle}"
                     Command="{Binding GoToSchedulePageCommand}" />
                 <Button 
                     IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
                     Text="Convert To Weekly"
                     WidthRequest="250"
-                    Style="{StaticResource GenericButtonStyle}"
+                    Style="{StaticResource MediumButtonStyle}"
                     Command="{Binding CreateWeeklyScheduleCommand}" />
                 <Button 
                     IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
                     Text="Change Number Of Days"
                     WidthRequest="250"
-                    Style="{StaticResource GenericButtonStyle}"
+                    Style="{StaticResource MediumButtonStyle}"
                     Command="{Binding CreateCustomScheduleCommand}" />
                 <Button 
                     IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly}"
                     Text="Convert To Custom"
                     WidthRequest="250"
-                    Style="{StaticResource GenericButtonStyle}"
+                    Style="{StaticResource MediumButtonStyle}"
                     Command="{Binding CreateCustomScheduleCommand}" />
                 <Button
                     Text="Reset Schedule"
                     BackgroundColor="{DynamicResource MediumRed}"
-                    Style="{StaticResource GenericButtonStyle}"
+                    Style="{StaticResource MediumButtonStyle}"
                     Command="{Binding ResetScheduleCommand}"/>
                 <Button
                     Text="Copy Routine Schedule"
-                    Style="{StaticResource GenericButtonStyle}"
+                    Style="{StaticResource MediumButtonStyle}"
                     Command="{Binding ShowWorkoutRoutineListPopupCommand}"/>
 
             </VerticalStackLayout>

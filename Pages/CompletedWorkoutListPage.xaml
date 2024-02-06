@@ -98,22 +98,22 @@
                             </Label>
                             <Button 
                                 Text="Set Complete"
-                                Style="{StaticResource GenericButtonStyle}"
+                                Style="{StaticResource MediumButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedWorkoutViewModel}}, Path=MarkCompletedWorkoutAsCompleteCommand}"
                                 CommandParameter="{Binding Id}" />
                             <Button 
                                 Text="Set Date"
-                                Style="{StaticResource GenericButtonStyle}"
+                                Style="{StaticResource MediumButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedWorkoutViewModel}}, Path=SetCompletedWorkoutDateCommand}"
                                 CommandParameter="{Binding Id}" />
                             <Button 
                                 Text="Update"
-                                Style="{StaticResource AddButtonStyle}"
+                                Style="{StaticResource MediumGreenButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedWorkoutViewModel}}, Path=UpdateCompletedWorkoutCommand}"
                                 CommandParameter="{Binding .}" />
                             <Button 
                                 Text="Delete"
-                                Style="{StaticResource DeleteButtonStyle}"
+                                Style="{StaticResource MediumRedButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CompletedWorkoutViewModel}}, Path=DeleteCompletedWorkoutCommand}"
                                 CommandParameter="{Binding Id}" />
                         </HorizontalStackLayout>
@@ -135,7 +135,7 @@
             </CollectionView>
             <Button 
                 Text="New Completed Workout"
-                Style="{StaticResource AddButtonStyle}"
+                Style="{StaticResource MediumGreenButtonStyle}"
                 WidthRequest="300"
                 Margin="5"
                 Command="{Binding CreateCompletedWorkoutCommand}" />

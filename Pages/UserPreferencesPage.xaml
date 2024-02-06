@@ -337,11 +337,11 @@
                         </Grid>
                         <Button 
                             Text="Reset User Settings"
-                            Style="{StaticResource GenericButtonStyle}"
+                            Style="{StaticResource MediumButtonStyle}"
                             Command="{Binding ResetUserPreferencesCommand}" />
                         <!--<Button 
                             Text="Delete User Settings"
-                            Style="{StaticResource DeleteButtonStyle}"
+                            Style="{StaticResource MediumRedButtonStyle}"
                             Command="{Binding DeleteUserPreferencesCommand}" />-->
                     </VerticalStackLayout>
                 </VerticalStackLayout>
@@ -385,13 +385,13 @@
                     <Button 
                         Grid.Column="1"
                         Text="Cancel"
-                        Style="{StaticResource DeleteButtonStyle}"
+                        Style="{StaticResource MediumRedButtonStyle}"
                         Command="{Binding CancelEditingDefaultEquipmentWeightCommand}" >
                     </Button>
                     <Button 
                         Grid.Column="1"
                         Text="Save"
-                        Style="{StaticResource AddButtonStyle}"
+                        Style="{StaticResource MediumGreenButtonStyle}"
                         Command="{Binding AddNewDefaultEquipmentWeightCommand}" >
                     </Button>
                 </HorizontalStackLayout>

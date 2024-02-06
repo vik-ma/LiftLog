@@ -141,7 +141,7 @@
                 SelectedItem="{Binding SelectedWeightUnit}" />
             <Button 
                 Text="Add New Weight"
-                Style="{StaticResource AddButtonStyle}"
+                Style="{StaticResource MediumGreenButtonStyle}"
                 Command="{Binding AddWeightCommand}" />
         </HorizontalStackLayout>
 

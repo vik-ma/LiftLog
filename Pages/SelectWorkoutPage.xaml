@@ -40,17 +40,17 @@
                             </Label>
                             <Button
                                 Text="Select"
-                                Style="{StaticResource AddButtonStyle}"
+                                Style="{StaticResource MediumGreenButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=SetOperatingRoutineCommand}" 
                                 CommandParameter="{Binding Id}" />
                             <Button
                                 Text="Edit"
-                                Style="{StaticResource GenericButtonStyle}"
+                                Style="{StaticResource MediumButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=GoToWorkoutRoutineDetailsPageCommand}" 
                                 CommandParameter="{Binding Id}" />
                             <Button
                                 Text="Delete"
-                                Style="{StaticResource DeleteButtonStyle}"
+                                Style="{StaticResource MediumRedButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=DeleteRoutineCommand}" 
                                 CommandParameter="{Binding Id}" />
                         </HorizontalStackLayout>
@@ -150,17 +150,17 @@
                             </Label>
                             <Button
                                 Text="Start Workout"
-                                Style="{StaticResource AddButtonStyle}"
+                                Style="{StaticResource MediumGreenButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=StartWorkoutCommand}" 
                                 CommandParameter="{Binding Id}" />
                             <Button
                                 Text="Edit"
-                                Style="{StaticResource GenericButtonStyle}"
+                                Style="{StaticResource MediumButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=GoToWorkoutDetailsPageCommand}" 
                                 CommandParameter="{Binding Id}" />
                             <Button
                                 Text="Delete"
-                                Style="{StaticResource DeleteButtonStyle}"
+                                Style="{StaticResource MediumRedButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=DeleteWorkoutTemplateCollectionCommand}" 
                                 CommandParameter="{Binding .}" />
                         </HorizontalStackLayout>

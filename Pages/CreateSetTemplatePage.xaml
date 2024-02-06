@@ -442,13 +442,13 @@
                 IsVisible="{Binding IsEditing}"
                 HorizontalOptions="Center"
                 Text="Delete Set"
-                Style="{StaticResource DeleteButtonStyle}"
+                Style="{StaticResource MediumRedButtonStyle}"
                 Command="{Binding DeleteSetCommand}"/>
 
             <Button 
                 HorizontalOptions="Center"
                 Text="Save Set"
-                Style="{StaticResource AddButtonStyle}"
+                Style="{StaticResource MediumGreenButtonStyle}"
                 Command="{Binding SaveSetCommand}"/>
         </HorizontalStackLayout>
 

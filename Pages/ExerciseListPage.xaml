@@ -121,7 +121,7 @@
                         Text="Reset"
                         IsVisible="{Binding ExerciseGroupFilterSet.Count}"
                         Command="{Binding ResetFilterListCommand}"
-                        Style="{StaticResource DeleteButtonStyle}" />
+                        Style="{StaticResource MediumRedButtonStyle}" />
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </Grid>

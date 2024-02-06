@@ -477,22 +477,22 @@
                 <Button
                     Text="Convert To Custom Schedule"
                     IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly}"
-                    Style="{StaticResource GenericButtonStyle}"
+                    Style="{StaticResource MediumButtonStyle}"
                     Command="{Binding CreateCustomScheduleCommand}"/>
                 <Button
                     Text="Convert To Weekly Schedule"
                     IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
-                    Style="{StaticResource GenericButtonStyle}"
+                    Style="{StaticResource MediumButtonStyle}"
                     Command="{Binding CreateWeeklyScheduleCommand}"/>
                 <Button
                     Text="Change Number Of Days"
                     IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
-                    Style="{StaticResource GenericButtonStyle}"
+                    Style="{StaticResource MediumButtonStyle}"
                     Command="{Binding CreateCustomScheduleCommand}"/>
                 <Button
                     Text="Reset Schedule"
                     BackgroundColor="{DynamicResource MediumRed}"
-                    Style="{StaticResource GenericButtonStyle}"
+                    Style="{StaticResource MediumButtonStyle}"
                     Command="{Binding ResetScheduleCommand}"/>
             </VerticalStackLayout>
 
