@@ -190,20 +190,20 @@
                 <Setter Property="MinimumHeightRequest" Value="30" />
                 <Setter Property="FontSize" Value="14" />
             </Style>
-            <Style x:Key="ExtraSmallEntryFieldStyle" TargetType="Entry">
-                <Setter Property="WidthRequest" Value="60" />
+            <Style x:Key="MediumEntryFieldStyle" TargetType="Entry">
+                <Setter Property="WidthRequest" Value="180" />
                 <Setter Property="HeightRequest" Value="38" />
                 <Setter Property="MinimumHeightRequest" Value="38" />
                 <Setter Property="FontSize" Value="18" />
             </Style>
             <Style x:Key="SmallEntryFieldStyle" TargetType="Entry">
                 <Setter Property="WidthRequest" Value="90" />
-                <Setter Property="HeightRequest" Value="38" />
-                <Setter Property="MinimumHeightRequest" Value="38" />
+                <Setter Property="HeightRequest" Value="42" />
+                <Setter Property="MinimumHeightRequest" Value="42" />
                 <Setter Property="FontSize" Value="18" />
             </Style>
-            <Style x:Key="MediumEntryFieldStyle" TargetType="Entry">
-                <Setter Property="WidthRequest" Value="180" />
+            <Style x:Key="ExtraSmallEntryFieldStyle" TargetType="Entry">
+                <Setter Property="WidthRequest" Value="60" />
                 <Setter Property="HeightRequest" Value="38" />
                 <Setter Property="MinimumHeightRequest" Value="38" />
                 <Setter Property="FontSize" Value="18" />
@@ -295,6 +295,12 @@
                 <Setter Property="WidthRequest" Value="80" />
                 <Setter Property="HeightRequest" Value="38" />
                 <Setter Property="MinimumHeightRequest" Value="38" />
+            </Style>
+            <Style x:Key="SmallPickerStyle" TargetType="Picker">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="WidthRequest" Value="80" />
+                <Setter Property="HeightRequest" Value="42" />
+                <Setter Property="MinimumHeightRequest" Value="42" />
             </Style>
 
             <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyTextConverter" />

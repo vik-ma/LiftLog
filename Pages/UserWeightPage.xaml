@@ -129,13 +129,14 @@
         </CollectionView>
         
         <HorizontalStackLayout
-            Spacing="12"
+            Spacing="13"
             HorizontalOptions="Center">
             <Entry
                 Text="{Binding NewWeightInput}"
-                Style="{StaticResource ExtraSmallEntryFieldStyle}" />
+                WidthRequest="72"
+                Style="{StaticResource SmallEntryFieldStyle}" />
             <Picker 
-                Style="{StaticResource ExtraSmallPickerStyle}"
+                Style="{StaticResource SmallPickerStyle}"
                 SelectedIndexChanged="OnWeightUnitPickerSelectedIndexChanged"
                 ItemsSource="{Binding ValidWeightUnitList}"
                 SelectedItem="{Binding SelectedWeightUnit}" />
