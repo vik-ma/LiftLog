@@ -107,12 +107,12 @@ This Set will not show up in new Workouts unless it is changed to a valid Exerci
                                 CommandParameter="{Binding Set}" />
                             <Button 
                                 Text="Edit"
-                                Style="{StaticResource MediumButtonStyle}"
+                                Style="{StaticResource SmallButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=EditSetCommand}" 
                                 CommandParameter="{Binding Set}" />
                             <Button 
                                 Text="Remove"
-                                Style="{StaticResource MediumRedButtonStyle}"
+                                Style="{StaticResource SmallRedButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=DeleteSetCommand}" 
                                 CommandParameter="{Binding Set}" />
                         </HorizontalStackLayout>
