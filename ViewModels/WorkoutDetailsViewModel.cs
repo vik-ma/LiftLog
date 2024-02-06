@@ -118,6 +118,8 @@
 
         public async Task LoadWorkoutTemplatesAsync()
         {
+            if (WorkoutTemplate is null) return;
+
             await ExecuteAsync(async () =>
             {
                 WorkoutTemplateList.Clear();
@@ -130,6 +132,9 @@
 
                     foreach (var workout in workoutTemplates)
                     {
+                        // Don't add current WorkoutTemplate to List
+                        if (workout.Id == WorkoutTemplate.Id) continue;
+
                         WorkoutTemplateList.Add(workout);
                     }
                 }
