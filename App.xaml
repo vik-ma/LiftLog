@@ -284,7 +284,8 @@
             </Style>
             <Style x:Key="ExtraSmallPickerStyle" TargetType="Picker">
                 <Setter Property="WidthRequest" Value="80" />
-                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="HeightRequest" Value="38" />
+                <Setter Property="MinimumHeightRequest" Value="38" />
             </Style>
 
             <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyTextConverter" />

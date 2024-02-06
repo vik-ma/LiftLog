@@ -18,34 +18,41 @@
             <Label 
                 Text="Latest Weight"
                 HorizontalOptions="Center"
-                FontSize="24"
+                FontSize="22"
                 FontAttributes="Bold"
                 TextColor="{DynamicResource VeryDarkGray}"/>
-            <HorizontalStackLayout>
-                <Label 
-                    Text="{Binding LatestWeight.BodyWeight}"
-                    HorizontalOptions="Center"
-                    FontSize="20"
-                    FontAttributes="Bold"
-                    TextColor="{DynamicResource MediumBlue}" />
-                <Label 
-                    Text="{Binding LatestWeight.WeightUnit}"
-                    HorizontalOptions="Center"
-                    FontSize="20"
-                    FontAttributes="Bold"
-                    TextColor="{DynamicResource MediumBlue}" />
-                <Label 
-                    Margin="10, 0"
-                    Text="{Binding LatestWeight.DateTime}"
-                    HorizontalOptions="Center"
-                    FontSize="20"
-                    FontAttributes="Bold"
-                    TextColor="{DynamicResource DarkGray}" />
+            <HorizontalStackLayout Spacing="10">
+                <Label VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span 
+                                Text="{Binding LatestWeight.BodyWeight}"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                TextColor="{DynamicResource MediumBlue}" />
+                            <Span 
+                                Text="{Binding LatestWeight.WeightUnit}"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                TextColor="{DynamicResource MediumBlue}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span 
+                                Text="{Binding LatestWeight.DateTime}"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                TextColor="{DynamicResource DarkGray}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </HorizontalStackLayout>
         </VerticalStackLayout>
         <CollectionView
-            ItemsSource="{Binding UserWeightList}"
-            HorizontalOptions="Center">
+            ItemsSource="{Binding UserWeightList}">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout 
                     ItemSpacing="3"
@@ -53,7 +60,9 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:UserWeight">
-                    <HorizontalStackLayout Spacing="5">
+                    <HorizontalStackLayout 
+                        HorizontalOptions="Center"
+                        Spacing="10">
                         <Label VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
@@ -120,7 +129,7 @@
         </CollectionView>
         
         <HorizontalStackLayout
-            Spacing="20"
+            Spacing="12"
             HorizontalOptions="Center">
             <Entry
                 Text="{Binding NewWeightInput}"
