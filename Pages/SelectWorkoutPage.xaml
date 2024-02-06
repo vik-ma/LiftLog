@@ -7,187 +7,195 @@
              x:DataType="viewmodel:SelectWorkoutViewModel"
              Title="Select Workout">
 
-    <VerticalStackLayout>
-        <VerticalStackLayout HorizontalOptions="Center">
-            <Label 
-                Text="Select Routine"
-                HorizontalOptions="Center"
-                FontSize="30"
-                FontAttributes="Bold"
-                Margin="10" />
-            <CollectionView 
-                ItemsSource="{Binding WorkoutRoutineList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:WorkoutRoutine">
-                        <HorizontalStackLayout Spacing="10">
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Name: " 
-                                            FontAttributes="Bold"
-                                            FontSize="18" />
-                                        <Span 
-                                            Text="{Binding Name}"
-                                            FontSize="18" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Button
-                                Text="Select"
-                                Style="{StaticResource MediumGreenButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=SetOperatingRoutineCommand}" 
-                                CommandParameter="{Binding Id}" />
-                            <Button
-                                Text="Edit"
-                                Style="{StaticResource MediumButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=GoToWorkoutRoutineDetailsPageCommand}" 
-                                CommandParameter="{Binding Id}" />
-                            <Button
-                                Text="Delete"
-                                Style="{StaticResource MediumRedButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=DeleteRoutineCommand}" 
-                                CommandParameter="{Binding Id}" />
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <VerticalStackLayout
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center">
-                            <Label 
-                                Text="No Routines In List!" 
-                                FontSize="20" 
-                                FontAttributes="Bold" 
-                                HorizontalTextAlignment="Center" />
-                        </VerticalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
-
-            <Button 
-                Text="Create New Routine"
-                Style="{StaticResource Width300ButtonStyle}"
-                BackgroundColor="{DynamicResource DeepBlue}"
-                Command="{Binding GoToWorkoutRoutineListPageCommand}"
-                Margin="20" />
-            <Button 
-                Text="Create New Workout"
-                Style="{StaticResource Width300ButtonStyle}"
-                BackgroundColor="{DynamicResource DeepBlue}"
-                Command="{Binding CreateWorkoutTemplateCommand}"
-                Margin="20" />
-        </VerticalStackLayout>
-
-        <VerticalStackLayout HorizontalOptions="Center">
-            <Label 
-                Text="Select Workout"
-                HorizontalOptions="Center"
-                FontSize="30"
-                FontAttributes="Bold"
-                Margin="10" />
-            <HorizontalStackLayout 
-                HorizontalOptions="Center"
-                Spacing="10">
+    <ScrollView>
+        <VerticalStackLayout>
+            <VerticalStackLayout HorizontalOptions="Center">
                 <Label 
-                    Text="{Binding OperatingRoutine.Name}"
+                    Text="Select Routine"
                     HorizontalOptions="Center"
                     FontSize="30"
                     FontAttributes="Bold"
-                    TextColor="{DynamicResource DeepBlue}" />
-                <DatePicker 
-                    MinimumDate="12/01/2023"
-                    MaximumDate="12/31/2023"
-                    Date="{Binding SelectedDate}" />
+                    Margin="10" />
+                <CollectionView 
+                    ItemsSource="{Binding WorkoutRoutineList}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout 
+                            ItemSpacing="3"
+                            Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:WorkoutRoutine">
+                            <HorizontalStackLayout 
+                                HorizontalOptions="Center"
+                                Spacing="10">
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Name: " 
+                                                FontAttributes="Bold"
+                                                FontSize="16" />
+                                            <Span 
+                                                Text="{Binding Name}"
+                                                FontSize="16" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Button
+                                    Text="Select"
+                                    Style="{StaticResource SmallGreenButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=SetOperatingRoutineCommand}" 
+                                    CommandParameter="{Binding Id}" />
+                                <Button
+                                    Text="Edit"
+                                    Style="{StaticResource SmallButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=GoToWorkoutRoutineDetailsPageCommand}" 
+                                    CommandParameter="{Binding Id}" />
+                                <Button
+                                    Text="Delete"
+                                    Style="{StaticResource SmallRedButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=DeleteRoutineCommand}" 
+                                    CommandParameter="{Binding Id}" />
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <ContentView>
+                            <VerticalStackLayout
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Label 
+                                    Text="No Routines In List!" 
+                                    FontSize="20" 
+                                    FontAttributes="Bold" 
+                                    HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </ContentView>
+                    </CollectionView.EmptyView>
+                </CollectionView>
+
+                <Button 
+                    Text="Create New Routine"
+                    WidthRequest="200"
+                    Style="{StaticResource MediumButtonStyle}"
+                    BackgroundColor="{DynamicResource DeepBlue}"
+                    Command="{Binding GoToWorkoutRoutineListPageCommand}"
+                    Margin="20" />
+                <Button 
+                    Text="Create New Workout"
+                    WidthRequest="200"
+                    Style="{StaticResource MediumButtonStyle}"
+                    BackgroundColor="{DynamicResource DeepBlue}"
+                    Command="{Binding CreateWorkoutTemplateCommand}"
+                    Margin="20" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout HorizontalOptions="Center">
                 <Label 
-                    Text="{Binding SelectedDate}"
-                    FontSize="16"
-                    TextColor="{DynamicResource DeepBlue}"
-                    VerticalOptions="Center" />
-            </HorizontalStackLayout>
+                    Text="Select Workout"
+                    HorizontalOptions="Center"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    Margin="10" />
+                <HorizontalStackLayout 
+                    HorizontalOptions="Center"
+                    Spacing="10">
+                    <Label 
+                        Text="{Binding OperatingRoutine.Name}"
+                        HorizontalOptions="Center"
+                        FontSize="26"
+                        FontAttributes="Bold"
+                        TextColor="{DynamicResource DeepBlue}" />
+                    <DatePicker 
+                        MinimumDate="12/01/2023"
+                        MaximumDate="12/31/2023"
+                        Date="{Binding SelectedDate}" />
+                    <Label 
+                        Text="{Binding SelectedDate}"
+                        FontSize="16"
+                        TextColor="{DynamicResource DeepBlue}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
-            <CollectionView 
-                ItemsSource="{Binding WorkoutList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:WorkoutTemplateCollection">
-                        <HorizontalStackLayout Spacing="10">
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Workout Template Id: " 
-                                            FontAttributes="Bold"
-                                            FontSize="18" />
-                                        <Span 
-                                            Text="{Binding WorkoutTemplateId}"
-                                            FontSize="18" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Day: " 
-                                            FontAttributes="Bold"
-                                            FontSize="18" />
-                                        <Span 
-                                            Text="{Binding Day}"
-                                            FontSize="18" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Button
-                                Text="Start Workout"
-                                Style="{StaticResource MediumGreenButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=StartWorkoutCommand}" 
-                                CommandParameter="{Binding Id}" />
-                            <Button
-                                Text="Edit"
-                                Style="{StaticResource MediumButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=GoToWorkoutDetailsPageCommand}" 
-                                CommandParameter="{Binding Id}" />
-                            <Button
-                                Text="Delete"
-                                Style="{StaticResource MediumRedButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=DeleteWorkoutTemplateCollectionCommand}" 
-                                CommandParameter="{Binding .}" />
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <VerticalStackLayout
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center">
-                            <Label 
-                                Text="No Workouts In Schedule!" 
-                                FontSize="20" 
-                                FontAttributes="Bold" 
-                                HorizontalTextAlignment="Center" />
-                        </VerticalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
-        </VerticalStackLayout>
+                <CollectionView 
+                    ItemsSource="{Binding WorkoutList}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout 
+                            ItemSpacing="3"
+                            Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:WorkoutTemplateCollection">
+                            <HorizontalStackLayout 
+                                HorizontalOptions="Center"
+                                Spacing="10">
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Workout Template Id: " 
+                                                FontAttributes="Bold"
+                                                FontSize="16" />
+                                            <Span 
+                                                Text="{Binding WorkoutTemplateId}"
+                                                FontSize="16" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Day: " 
+                                                FontAttributes="Bold"
+                                                FontSize="16" />
+                                            <Span 
+                                                Text="{Binding Day}"
+                                                FontSize="16" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Button
+                                    Text="Start Workout"
+                                    Style="{StaticResource SmallGreenButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=StartWorkoutCommand}" 
+                                    CommandParameter="{Binding Id}" />
+                                <Button
+                                    Text="Edit"
+                                    Style="{StaticResource SmallButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=GoToWorkoutDetailsPageCommand}" 
+                                    CommandParameter="{Binding Id}" />
+                                <Button
+                                    Text="Delete"
+                                    Style="{StaticResource SmallRedButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectWorkoutViewModel}}, Path=DeleteWorkoutTemplateCollectionCommand}" 
+                                    CommandParameter="{Binding .}" />
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <ContentView>
+                            <VerticalStackLayout
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Label 
+                                    Text="No Workouts In Schedule!" 
+                                    FontSize="20" 
+                                    FontAttributes="Bold" 
+                                    HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </ContentView>
+                    </CollectionView.EmptyView>
+                </CollectionView>
+            </VerticalStackLayout>
 
-        <VerticalStackLayout>
-            <Button 
-                Text="Go Back"
-                Style="{StaticResource Width300ButtonStyle}"
-                Command="{Binding GoBackCommand}"
-                Margin="20" />
+            <VerticalStackLayout>
+                <Button 
+                    Text="Go Back"
+                    Style="{StaticResource Width300ButtonStyle}"
+                    Command="{Binding GoBackCommand}"
+                    Margin="20" />
+            </VerticalStackLayout>
         </VerticalStackLayout>
-    </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
