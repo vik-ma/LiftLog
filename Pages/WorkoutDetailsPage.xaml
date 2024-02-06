@@ -10,9 +10,10 @@
         RowDefinitions="*, Auto">
         <VerticalStackLayout
             Grid.Row="0"
-            HorizontalOptions="Center"
             Spacing="10">
-            <HorizontalStackLayout Spacing="5">
+            <HorizontalStackLayout 
+                HorizontalOptions="Center"
+                Spacing="5">
                 <Label 
                     Text="Workout Template Id:"
                     FontSize="30"
@@ -23,7 +24,9 @@
                     FontAttributes="Bold" />
             </HorizontalStackLayout>
 
-            <HorizontalStackLayout Spacing="5">
+            <HorizontalStackLayout 
+                HorizontalOptions="Center"
+                Spacing="10">
                 <Label 
                     Text="Workout Name:"
                     VerticalOptions="Center"
@@ -31,10 +34,11 @@
                     FontAttributes="Bold" />
                 <Entry 
                     Text="{Binding WorkoutTemplate.Name}"
+                    Style="{StaticResource MediumEntryFieldStyle}"
                     WidthRequest="150" />
             </HorizontalStackLayout>
 
-            <VerticalStackLayout>
+            <VerticalStackLayout HorizontalOptions="Center">
                 <Label Text="{Binding WorkoutTemplate.SetListOrder}" />
                 <Label 
                     IsVisible="{Binding WorkoutTemplateContainsInvalidExercise}"
@@ -47,15 +51,15 @@ This Set will not show up in new Workouts unless it is changed to a valid Exerci
                 </Label>
             </VerticalStackLayout>
 
-            <Button 
+            <Button
+                HorizontalOptions="Center"
                 Text="Remove All Sets"
                 IsVisible="{Binding SetList, Converter={StaticResource IsListNotNullOrEmptyConverter}}"
                 Style="{StaticResource MediumRedButtonStyle}"
                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=DeleteAllSetsCommand}"/>
 
             <CollectionView
-                ItemsSource="{Binding SetList}"
-                HorizontalOptions="Center">
+                ItemsSource="{Binding SetList}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout 
                         ItemSpacing="3"
@@ -63,7 +67,9 @@ This Set will not show up in new Workouts unless it is changed to a valid Exerci
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:SetExercisePackage">
-                        <HorizontalStackLayout Spacing="5">
+                        <HorizontalStackLayout 
+                            HorizontalOptions="Center"
+                            Spacing="5">
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -119,7 +125,7 @@ This Set will not show up in new Workouts unless it is changed to a valid Exerci
                             VerticalOptions="Center">
                             <Label 
                                 Text="Set List Is Empty!" 
-                                FontSize="18" 
+                                FontSize="16" 
                                 FontAttributes="Bold" 
                                 HorizontalTextAlignment="Center" />
                         </VerticalStackLayout>
@@ -132,10 +138,12 @@ This Set will not show up in new Workouts unless it is changed to a valid Exerci
                 Spacing="10">
                 <Button 
                     Text="Add Set"
+                    HorizontalOptions="Center"
                     Style="{StaticResource MediumGreenButtonStyle}"
                     Command="{Binding CreateNewSetTemplateCommand}"/>
                 <Button 
                     Text="Copy Existing Workout"
+                    HorizontalOptions="Center"
                     IsVisible="{Binding SetList, Converter={StaticResource IsListNullOrEmptyConverter}}"
                     Style="{StaticResource MediumButtonStyle}"
                     Command="{Binding ShowExistingWorkoutListCommand}" />
@@ -168,7 +176,7 @@ This Set will not show up in new Workouts unless it is changed to a valid Exerci
                             </Label>
                             <Button 
                                 Text="Copy"
-                                Style="{StaticResource MediumGreenButtonStyle}"
+                                Style="{StaticResource ExtraSmallGreenButtonStyle}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=CopyWorkoutCommand}" 
                                 CommandParameter="{Binding Id}" />
                         </HorizontalStackLayout>
@@ -180,7 +188,7 @@ This Set will not show up in new Workouts unless it is changed to a valid Exerci
                             HorizontalOptions="Center"
                             VerticalOptions="Center">
                             <Label 
-                                Text="Set List Is Empty!" 
+                                Text="No Workout Templates To Copy!" 
                                 FontSize="18" 
                                 FontAttributes="Bold" 
                                 HorizontalTextAlignment="Center" />
@@ -191,12 +199,11 @@ This Set will not show up in new Workouts unless it is changed to a valid Exerci
 
             <VerticalStackLayout
                 Margin="0, 20"
-                Spacing="10">
+                Spacing="40">
                 <Button 
                     Text="Save Workout Template"
-                    BackgroundColor="{DynamicResource MediumGreen}"
-                    WidthRequest="320"
-                    Style="{StaticResource Width300ButtonStyle}"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource MediumGreenButtonStyle}"
                     Command="{Binding SaveWorkoutTemplateCommand}" />
                 <Button 
                     Text="Go Back"
