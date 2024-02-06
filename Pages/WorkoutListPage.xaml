@@ -44,19 +44,6 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span 
-                                                Text="Name: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Name, Converter={StaticResource NullValueToEmptyTextConverter}, ConverterParameter=Name}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
                                                 Text="Workout Template Id: " 
                                                 FontAttributes="Bold"  
                                                 Style="{StaticResource SmallSpanStyle}" />

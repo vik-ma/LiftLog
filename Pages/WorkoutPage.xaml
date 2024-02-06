@@ -22,26 +22,6 @@
                     TextColor="{DynamicResource MediumGreen}"
                     Style="{StaticResource MediumBoldLabelStyle}" />
             </HorizontalStackLayout>
-        
-            <HorizontalStackLayout
-                HorizontalOptions="Center"
-                Spacing="10">
-                <Label 
-                    Text="Name:"
-                    Style="{StaticResource MediumBoldLabelStyle}" />
-                <Label 
-                    Text="{Binding Workout.Name, Converter={StaticResource NullValueToEmptyTextConverter}, ConverterParameter=Name}"
-                    TextColor="{DynamicResource MediumOrange}"
-                    Style="{StaticResource MediumBoldLabelStyle}" />
-                <Button 
-                    Text="Change Name"
-                    Style="{StaticResource ExtraSmallButtonStyle}"
-                    Command="{Binding SetWorkoutNameCommand}" />
-                <Button 
-                    Text="Reset Name"
-                    Style="{StaticResource ExtraSmallRedButtonStyle}"
-                    Command="{Binding ResetWorkoutNameCommand}" />
-            </HorizontalStackLayout>
 
             <HorizontalStackLayout
                 HorizontalOptions="Center"

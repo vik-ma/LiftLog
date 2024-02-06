@@ -114,34 +114,6 @@
             OnPropertyChanged(nameof(Workout));
         }
 
-        [RelayCommand]
-        private async Task SetWorkoutName()
-        {
-            if (Workout is null) return;
-
-            string enteredName = await Shell.Current.DisplayPromptAsync("Workout Name", "Enter a name for the Workout", "OK", "Cancel");
-
-            if (enteredName is null || string.IsNullOrWhiteSpace(enteredName)) return;
-
-            Workout.Name = enteredName;
-
-            await UpdateWorkoutAsync();
-        }
-
-        [RelayCommand]
-        private async Task ResetWorkoutName()
-        {
-            if (Workout is null || Workout.Name is null) return;
-
-            bool userClickedReset = await Shell.Current.DisplayAlert("Reset Name", "Do you really want to reset Workout Name?", "Reset", "Cancel");
-
-            if (!userClickedReset) return;
-
-            Workout.Name = null;
-
-            await UpdateWorkoutAsync();
-        }
-
         public async Task UpdateWorkoutDate(DateTime selectedDate)
         {
             if (Workout is null) return;
