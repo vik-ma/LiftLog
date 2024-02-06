@@ -22,23 +22,24 @@
                     Date="{Binding SelectedDate}" />
                 <Label 
                     Text="{Binding SelectedDate}"
-                    FontSize="16"
+                    FontSize="18"
                     TextColor="{DynamicResource DeepBlue}"
                     VerticalOptions="Center" />
             </HorizontalStackLayout>
 
             <CollectionView
-                ItemsSource="{Binding TimePeriodList}"
-                HorizontalOptions="Center">
+                ItemsSource="{Binding TimePeriodList}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout 
-                        ItemSpacing="3"
+                        ItemSpacing="7"
                         Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:TimePeriod">
                         <VerticalStackLayout Spacing="5">
-                            <HorizontalStackLayout Spacing="5">
+                            <HorizontalStackLayout 
+                                HorizontalOptions="Center"
+                                Spacing="10">
                                 <Label VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -67,7 +68,8 @@
                                 </Label>
                                 <Entry 
                                     Text="{Binding Note}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                    WidthRequest="100"
+                                    Style="{StaticResource FontSize14EntryFieldStyle}" />
                                 <Label VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -83,7 +85,8 @@
                                 </Label>
                                 <Entry 
                                     Text="{Binding Note}"
-                                    Style="{StaticResource SmallEntryFieldStyle}" />
+                                    WidthRequest="100"
+                                    Style="{StaticResource FontSize14EntryFieldStyle}" />
                                 <Label VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -143,40 +146,42 @@
                                     </Label.FormattedText>
                                 </Label>
                             </HorizontalStackLayout>
-                            <HorizontalStackLayout Spacing="5">
+                            <HorizontalStackLayout 
+                                HorizontalOptions="Center"
+                                Spacing="7">
                                 <Button 
                                     Text="Set Start"
-                                    Style="{StaticResource MediumButtonStyle}"
+                                    Style="{StaticResource SmallButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=SetTimePeriodStartDateCommand}"
                                     CommandParameter="{Binding Id}" />
                                 <Button 
                                     Text="Set End"
-                                    Style="{StaticResource MediumButtonStyle}"
+                                    Style="{StaticResource SmallButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=SetTimePeriodEndDateCommand}"
                                     CommandParameter="{Binding Id}" />
                                 <Button 
                                     Text="Reset Start"
-                                    Style="{StaticResource MediumRedButtonStyle}"
+                                    Style="{StaticResource SmallRedButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=ResetStartDateCommand}"
                                     CommandParameter="{Binding Id}" />
                                 <Button 
                                     Text="Reset End"
-                                    Style="{StaticResource MediumRedButtonStyle}"
+                                    Style="{StaticResource SmallRedButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=ResetEndDateCommand}"
                                     CommandParameter="{Binding Id}" />
                                 <Button 
                                     Text="Update"
-                                    Style="{StaticResource MediumGreenButtonStyle}"
+                                    Style="{StaticResource SmallGreenButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=UpdateTimePeriodCommand}"
                                     CommandParameter="{Binding Id}" />
                                 <Button 
                                     Text="Delete"
-                                    Style="{StaticResource MediumRedButtonStyle}"
+                                    Style="{StaticResource SmallRedButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=DeleteTimePeriodCommand}"
                                     CommandParameter="{Binding Id}" />
                                 <Button 
                                     Text="Set Active"
-                                    Style="{StaticResource MediumButtonStyle}"
+                                    Style="{StaticResource SmallButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}, Path=SetActiveTimePeriodCommand}"
                                     CommandParameter="{Binding Id}" />
                             </HorizontalStackLayout>
@@ -200,7 +205,7 @@
             <Button 
                 Text="New Time Period"
                 Style="{StaticResource MediumGreenButtonStyle}"
-                WidthRequest="300"
+                WidthRequest="180"
                 Margin="5"
                 Command="{Binding CreateTimePeriodCommand}" />
         </VerticalStackLayout>
