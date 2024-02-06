@@ -195,8 +195,7 @@
                             IsVisible="{Binding DisplayDefaultEquipmentWeightList}"
                             Spacing="5">
                             <CollectionView
-                                ItemsSource="{Binding DefaultEquipmentWeightList}"
-                                HorizontalOptions="Center">
+                                ItemsSource="{Binding DefaultEquipmentWeightList}">
                                 <CollectionView.ItemsLayout>
                                     <LinearItemsLayout 
                                         ItemSpacing="3"
@@ -204,7 +203,9 @@
                                 </CollectionView.ItemsLayout>
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate x:DataType="models:DefaultEquipmentWeight">
-                                        <HorizontalStackLayout Spacing="5">
+                                        <HorizontalStackLayout
+                                            HorizontalOptions="Center"
+                                            Spacing="5">
                                             <Label VerticalOptions="Center">
                                                 <Label.FormattedText>
                                                     <FormattedString>
@@ -290,11 +291,11 @@
                                 <Button 
                                     Text="Restore Default Weights"
                                     Command="{Binding PopulateDefaultEquipmentWeightsCommand}"
-                                    Style="{StaticResource GenericButtonStyle}" />
+                                    Style="{StaticResource SmallButtonStyle}" />
                                 <Button 
                                     Text="Add New"
                                     Command="{Binding ShowEditingDefaultEquipmentWeightCommand}"
-                                    Style="{StaticResource AddButtonStyle}" />
+                                    Style="{StaticResource SmallGreenButtonStyle}" />
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
                     </VerticalStackLayout>
@@ -310,7 +311,7 @@
                                 Style="{StaticResource MediumLabelStyle}" />
                             <Button 
                                 Text="Change"
-                                Style="{StaticResource GenericButtonStyle}"
+                                Style="{StaticResource SmallButtonStyle}"
                                 HorizontalOptions="End"
                                 Command="{Binding ToggleIsUsingMetricUnitsCommand}" />
                         </Grid>
@@ -320,7 +321,7 @@
                                 Style="{StaticResource MediumLabelStyle}" />
                             <Button 
                                 Text="Change"
-                                Style="{StaticResource GenericButtonStyle}"
+                                Style="{StaticResource SmallButtonStyle}"
                                 HorizontalOptions="End"
                                 Command="{Binding ToggleIsUsing24HourClockCommand}" />
                         </Grid>
@@ -330,7 +331,7 @@
                                 Style="{StaticResource MediumLabelStyle}" />
                             <Button 
                                 Text="Change"
-                                Style="{StaticResource GenericButtonStyle}"
+                                Style="{StaticResource SmallButtonStyle}"
                                 HorizontalOptions="End"
                                 Command="{Binding ToggleShowCompletedSetTimestampCommand}" />
                         </Grid>
