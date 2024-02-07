@@ -6,9 +6,10 @@ public partial class WorkoutTemplateListPopupPage : Popup
 
     private readonly WorkoutViewModel _workoutViewModel;
     private readonly ScheduleViewModel _scheduleViewModel;
+    private readonly WorkoutDetailsViewModel _workoutDetailsViewModel;
 
     #nullable enable
-    public WorkoutTemplateListPopupPage(string viewModelType, WorkoutViewModel? workoutViewModel, ScheduleViewModel? scheduleViewModel)
+    public WorkoutTemplateListPopupPage(string viewModelType, WorkoutViewModel? workoutViewModel, ScheduleViewModel? scheduleViewModel, WorkoutDetailsViewModel? workoutDetailsViewModel)
 	{
 		InitializeComponent();
         _viewModelType = viewModelType;
@@ -21,6 +22,10 @@ public partial class WorkoutTemplateListPopupPage : Popup
             case "Schedule":
                 _scheduleViewModel = scheduleViewModel;
                 BindingContext = _scheduleViewModel;
+                break;
+            case "WorkoutDetails":
+                _workoutDetailsViewModel = workoutDetailsViewModel;
+                BindingContext = _workoutDetailsViewModel;
                 break;
             default:
                 return;
@@ -41,6 +46,10 @@ public partial class WorkoutTemplateListPopupPage : Popup
             {
                 OnItemSelectedForScheduleViewModel(selectedWorkoutTemplate);
             }
+            if (_viewModelType == "WorkoutDetails" && _scheduleViewModel is not null)
+            {
+                OnItemSelectedForWorkoutDetailsViewModel(selectedWorkoutTemplate);
+            }
         }
     }
 
@@ -55,6 +64,10 @@ public partial class WorkoutTemplateListPopupPage : Popup
         if (_viewModelType == "Schedule" && _scheduleViewModel is not null)
         {
             OnFilterTextChangedForScheduleViewModel(filterText);
+        }
+        if (_viewModelType == "WorkoutDetails" && _scheduleViewModel is not null)
+        {
+            OnFilterTextChangedForWorkoutDetailsViewModel(filterText);
         }
     }
 
@@ -110,6 +123,34 @@ public partial class WorkoutTemplateListPopupPage : Popup
             foreach (var item in filteredItems)
             {
                 _scheduleViewModel.FilteredWorkoutTemplateList.Add(item);
+            }
+        }
+    }
+
+    private async void OnItemSelectedForWorkoutDetailsViewModel(WorkoutTemplate selectedWorkoutTemplate)
+    {
+        if (selectedWorkoutTemplate is null) return;
+
+        await _workoutDetailsViewModel.UpdateOperatingWorkoutTemplate(selectedWorkoutTemplate.Id);
+        _workoutDetailsViewModel.ClosePopup();
+    }
+
+    private void OnFilterTextChangedForWorkoutDetailsViewModel(string filterText)
+    {
+        _workoutDetailsViewModel.FilteredWorkoutTemplateList.Clear();
+
+        if (string.IsNullOrWhiteSpace(filterText))
+        {
+            _workoutDetailsViewModel.FilteredWorkoutTemplateList = new(_workoutDetailsViewModel.WorkoutTemplateList);
+        }
+        else
+        {
+            // Filter the list based on the user input
+            var filteredItems = _workoutDetailsViewModel.WorkoutTemplateList.Where(item => item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase));
+
+            foreach (var item in filteredItems)
+            {
+                _workoutDetailsViewModel.FilteredWorkoutTemplateList.Add(item);
             }
         }
     }

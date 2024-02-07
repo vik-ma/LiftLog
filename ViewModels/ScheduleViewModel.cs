@@ -318,7 +318,7 @@
 
             await LoadWorkoutTemplatesAsync();
 
-            Popup = new WorkoutTemplateListPopupPage("Schedule", null, this);
+            Popup = new WorkoutTemplateListPopupPage("Schedule", null, this, null);
             await Shell.Current.ShowPopupAsync(Popup);
         }
 

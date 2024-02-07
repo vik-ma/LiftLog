@@ -410,7 +410,7 @@
 
             await LoadWorkoutTemplatesAsync();
 
-            Popup = new WorkoutTemplateListPopupPage("Workout", this, null);
+            Popup = new WorkoutTemplateListPopupPage("Workout", this, null, null);
             await Shell.Current.ShowPopupAsync(Popup);
         }
 
