@@ -4,6 +4,7 @@
              x:Class="LocalLiftLog.Pages.WorkoutRoutineDetailsPage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:models="clr-namespace:LocalLiftLog.Models"
+             xmlns:helpers="clr-namespace:LocalLiftLog.Helpers"
              x:DataType="viewmodel:WorkoutRoutineDetailsViewModel"
              Title="Workout Routine Details Page">
 
@@ -28,11 +29,15 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Entry 
-                    Text="{Binding WorkoutRoutine.Name}"
-                    Placeholder="Routine Name"
-                    FontSize="24"
-                    IsVisible="{Binding IsEditing}" />
+                <helpers:If Condition="{Binding IsEditing}">
+                    <helpers:If.True>
+                        <Entry 
+                            Text="{Binding WorkoutRoutine.Name}"
+                            Placeholder="Routine Name"
+                            FontSize="24" />
+                    </helpers:If.True>
+                </helpers:If>
+
                 <Label>
                     <Label.FormattedText>
                         <FormattedString>
@@ -59,38 +64,47 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Entry 
-                    Text="{Binding WorkoutRoutine.Note}"
-                    Placeholder="Routine Note"
-                    FontSize="24"
-                    IsVisible="{Binding IsEditing}" />
+                <helpers:If Condition="{Binding IsEditing}">
+                    <helpers:If.True>
+                        <Entry 
+                            Text="{Binding WorkoutRoutine.Note}"
+                            Placeholder="Routine Note"
+                            FontSize="24" />
+                    </helpers:If.True>
+                </helpers:If>
 
-                <Grid 
-                    WidthRequest="300"
-                    HorizontalOptions="Center"
-                    IsVisible="{Binding IsEditing}">
-                    <HorizontalStackLayout
-                        HorizontalOptions="Center"
-                        Spacing="20"
-                        Grid.Row="0">
-                        <Button 
-                            Grid.Column="0"
-                            Text="Cancel"
-                            Style="{StaticResource MediumRedButtonStyle}"
-                            Command="{Binding DisableEditingCommand}" />
-                        <Button 
-                            Grid.Column="1"
-                            Text="Save"
-                            Style="{StaticResource MediumGreenButtonStyle}"
-                            Command="{Binding UpdateWorkoutRoutineCommand}" />
-                    </HorizontalStackLayout>
-                </Grid>
+                <helpers:If Condition="{Binding IsEditing}">
+                    <helpers:If.True>
+                        <Grid 
+                            WidthRequest="300"
+                            HorizontalOptions="Center">
+                            <HorizontalStackLayout
+                                HorizontalOptions="Center"
+                                Spacing="20"
+                                Grid.Row="0">
+                                <Button 
+                                    Grid.Column="0"
+                                    Text="Cancel"
+                                    Style="{StaticResource MediumRedButtonStyle}"
+                                    Command="{Binding DisableEditingCommand}" />
+                                <Button 
+                                    Grid.Column="1"
+                                    Text="Save"
+                                    Style="{StaticResource MediumGreenButtonStyle}"
+                                    Command="{Binding UpdateWorkoutRoutineCommand}" />
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </helpers:If.True>
+                </helpers:If>
 
-                <Button 
-                    Text="Edit Routine"
-                    Style="{StaticResource MediumButtonStyle}"
-                    Command="{Binding EnableEditingCommand}"
-                    IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}" />
+                <helpers:If Condition="{Binding IsEditing}">
+                    <helpers:If.False>
+                        <Button 
+                            Text="Edit Routine"
+                            Style="{StaticResource MediumButtonStyle}"
+                            Command="{Binding EnableEditingCommand}" />
+                    </helpers:If.False>
+                </helpers:If>
 
             </VerticalStackLayout>
 
@@ -131,49 +145,64 @@
                     </CollectionView>
                 </HorizontalStackLayout>
 
-                <HorizontalStackLayout 
-                    HorizontalOptions="Center" 
-                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
-                    Spacing="10">
-                    <DatePicker
-                        Format="yyyy-MM-dd"
-                        Date="{Binding WorkoutRoutine.CustomScheduleStartDate}"
-                        DateSelected="OnDateSelected" />
-                    <Label
-                        IsVisible="{Binding WorkoutRoutine.CustomScheduleStartDate, Converter={StaticResource IsNotNullConverter}}"
-                        Text="{Binding WorkoutRoutine.CustomScheduleStartDate}"
-                        TextColor="{DynamicResource MediumBlue}"
-                        Style="{StaticResource MediumBoldLabelStyle}" />
-                    <Label
-                        IsVisible="{Binding WorkoutRoutine.CustomScheduleStartDate, Converter={StaticResource IsNullConverter}}"
-                        Text="No Start Date Set"
-                        TextColor="{DynamicResource MediumRed}"
-                        Style="{StaticResource MediumBoldLabelStyle}" />
-                </HorizontalStackLayout>
+                <helpers:If Condition="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}">
+                    <helpers:If.True>
+                        <HorizontalStackLayout 
+                            HorizontalOptions="Center"
+                            Spacing="10">
+                            <DatePicker
+                                Format="yyyy-MM-dd"
+                                Date="{Binding WorkoutRoutine.CustomScheduleStartDate}"
+                                DateSelected="OnDateSelected" />
+                            <helpers:If Condition="{Binding WorkoutRoutine.CustomScheduleStartDate, Converter={StaticResource IsNotNullConverter}}">
+                                <helpers:If.True>
+                                    <Label
+                                        Text="{Binding WorkoutRoutine.CustomScheduleStartDate}"
+                                        TextColor="{DynamicResource MediumBlue}"
+                                        Style="{StaticResource MediumBoldLabelStyle}" />
+                                </helpers:If.True>
+                                <helpers:If.False>
+                                    <Label
+                                        Text="No Start Date Set"
+                                        TextColor="{DynamicResource MediumRed}"
+                                        Style="{StaticResource MediumBoldLabelStyle}" />
+                                </helpers:If.False>
+                            </helpers:If>
+                        </HorizontalStackLayout>
+                    </helpers:If.True>
+                </helpers:If>
+
 
                 <Button 
                     Text="Go To Schedule"
                     WidthRequest="250"
                     Style="{StaticResource MediumGreenButtonStyle}"
                     Command="{Binding GoToSchedulePageCommand}" />
-                <Button 
-                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
-                    Text="Convert To Weekly"
-                    WidthRequest="250"
-                    Style="{StaticResource MediumButtonStyle}"
-                    Command="{Binding CreateWeeklyScheduleCommand}" />
-                <Button 
-                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
-                    Text="Change Number Of Days"
-                    WidthRequest="250"
-                    Style="{StaticResource MediumButtonStyle}"
-                    Command="{Binding CreateCustomScheduleCommand}" />
-                <Button 
-                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly}"
-                    Text="Convert To Custom"
-                    WidthRequest="250"
-                    Style="{StaticResource MediumButtonStyle}"
-                    Command="{Binding CreateCustomScheduleCommand}" />
+                <helpers:If Condition="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}">
+                    <helpers:If.True>
+                        <VerticalStackLayout Spacing="4">
+                            <Button 
+                                Text="Convert To Weekly"
+                                WidthRequest="250"
+                                Style="{StaticResource MediumButtonStyle}"
+                                Command="{Binding CreateWeeklyScheduleCommand}" />
+                            <Button 
+                                Text="Change Number Of Days"
+                                WidthRequest="250"
+                                Style="{StaticResource MediumButtonStyle}"
+                                Command="{Binding CreateCustomScheduleCommand}" />
+                        </VerticalStackLayout>
+                    </helpers:If.True>
+                    <helpers:If.False>
+                        <Button
+                            Text="Convert To Custom"
+                            WidthRequest="250"
+                            Style="{StaticResource MediumButtonStyle}"
+                            Command="{Binding CreateCustomScheduleCommand}" />
+                    </helpers:If.False>
+                </helpers:If>
+
+
                 <Button
                     Text="Reset Schedule"
                     BackgroundColor="{DynamicResource MediumRed}"
