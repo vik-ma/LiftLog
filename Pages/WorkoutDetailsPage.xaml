@@ -56,7 +56,7 @@ This Set will not show up in new Workouts unless it is changed to a valid Exerci
 
             </VerticalStackLayout>
 
-            <helpers:If Condition="{Binding SetList, Converter={StaticResource IsListNotNullOrEmptyConverter}}">
+            <helpers:If Condition="{Binding SetList.Count}">
                 <helpers:If.True>
                     <Button
                         HorizontalOptions="Center"
@@ -149,14 +149,14 @@ This Set will not show up in new Workouts unless it is changed to a valid Exerci
                     HorizontalOptions="Center"
                     Style="{StaticResource MediumGreenButtonStyle}"
                     Command="{Binding CreateNewSetTemplateCommand}"/>
-                <helpers:If Condition="{Binding SetList, Converter={StaticResource IsListNullOrEmptyConverter}}">
-                    <helpers:If.True>
+                <helpers:If Condition="{Binding SetList.Count}">
+                    <helpers:If.False>
                         <Button 
                             Text="Copy Existing Workout"
                             HorizontalOptions="Center"
                             Style="{StaticResource MediumButtonStyle}"
                             Command="{Binding ShowWorkoutTemplateListPopupCommand}" />
-                    </helpers:If.True>
+                    </helpers:If.False>
                 </helpers:If>
             </VerticalStackLayout>
 
