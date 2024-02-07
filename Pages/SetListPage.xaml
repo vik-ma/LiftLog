@@ -4,6 +4,7 @@
              x:Class="LocalLiftLog.Pages.SetListPage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:models="clr-namespace:LocalLiftLog.Models"
+             xmlns:helpers="clr-namespace:LocalLiftLog.Helpers"
              x:DataType="viewmodel:SetListViewModel"
              Title="Set List">
 
@@ -143,12 +144,16 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <Button 
-                                        IsVisible="{Binding IsTemplate}"
-                                        Text="Go To Page"
-                                        Style="{StaticResource ExtraSmallButtonStyle}"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetListViewModel}}, Path=GoToCreateSetTemplatePageCommand}"
-                                        CommandParameter="{Binding .}" />
+                                    <helpers:If Condition="{Binding IsTemplate}">
+                                        <helpers:If.True>
+                                            <Button 
+                                                Text="Go To Page"
+                                                Style="{StaticResource ExtraSmallButtonStyle}"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetListViewModel}}, Path=GoToCreateSetTemplatePageCommand}"
+                                                CommandParameter="{Binding .}" />
+                                        </helpers:If.True>
+                                    </helpers:If>
+
                                     <Button 
                                         Text="Delete"
                                         Style="{StaticResource ExtraSmallRedButtonStyle}"
