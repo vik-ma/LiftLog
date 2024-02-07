@@ -131,7 +131,7 @@ public partial class WorkoutTemplateListPopupPage : Popup
     {
         if (selectedWorkoutTemplate is null) return;
 
-        await _workoutDetailsViewModel.UpdateOperatingWorkoutTemplate(selectedWorkoutTemplate.Id);
+        await _workoutDetailsViewModel.CopyWorkout(selectedWorkoutTemplate.Id);
         _workoutDetailsViewModel.ClosePopup();
     }
 

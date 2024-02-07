@@ -22,10 +22,15 @@
         private ObservableCollection<WorkoutTemplate> workoutTemplateList = new();
 
         [ObservableProperty]
-        private bool showWorkoutTemplateList = false;
+        private ObservableCollection<WorkoutTemplate> filteredWorkoutTemplateList = new();
 
         [ObservableProperty]
         private bool workoutTemplateContainsInvalidExercise = false;
+
+        private WorkoutTemplateListPopupPage Popup;
+
+        [ObservableProperty]
+        private string popupTitle = "Copy Workout";
 
         [RelayCommand]
         static async Task GoBack()
@@ -138,6 +143,8 @@
                         WorkoutTemplateList.Add(workout);
                     }
                 }
+
+                FilteredWorkoutTemplateList = new(WorkoutTemplateList);
             });
         }
 
@@ -194,14 +201,24 @@
         }
 
         [RelayCommand]
-        private async Task ShowExistingWorkoutList()
+        private async Task ShowWorkoutTemplateListPopup()
         {
+            if (WorkoutTemplate is null) return;
+
             await LoadWorkoutTemplatesAsync();
-            ShowWorkoutTemplateList = true;
+
+            Popup = new WorkoutTemplateListPopupPage("WorkoutDetails", null, null, this);
+            await Shell.Current.ShowPopupAsync(Popup);
         }
 
-        [RelayCommand]
-        private async Task CopyWorkout(int existingWorkoutId)
+        public void ClosePopup()
+        {
+            if (Popup is null) return;
+
+            Popup.Close();
+        }
+
+        public async Task CopyWorkout(int existingWorkoutId)
         {
             if (WorkoutTemplate is null) return;
 
@@ -273,8 +290,6 @@
             await LoadSetListFromWorkoutTemplateIdAsync();
 
             await GenerateSetListOrderString();
-
-            ShowWorkoutTemplateList = false;
 
             OnPropertyChanged(nameof(WorkoutTemplate));
             OnPropertyChanged(nameof(SetList));
