@@ -11,7 +11,7 @@
     <VerticalStackLayout 
         HorizontalOptions="Center">
         <Grid 
-            ColumnDefinitions="*, *">
+            ColumnDefinitions="Auto, Auto">
             <VerticalStackLayout
                 Spacing="15"
                 Padding="15"
@@ -100,6 +100,7 @@
                 <helpers:If Condition="{Binding IsEditing}">
                     <helpers:If.False>
                         <Button 
+                            HorizontalOptions="Center"
                             Text="Edit Routine"
                             Style="{StaticResource MediumButtonStyle}"
                             Command="{Binding EnableEditingCommand}" />
