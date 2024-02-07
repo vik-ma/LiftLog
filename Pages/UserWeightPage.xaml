@@ -4,6 +4,7 @@
              x:Class="LocalLiftLog.Pages.UserWeightPage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:models="clr-namespace:LocalLiftLog.Models"
+             xmlns:helpers="clr-namespace:LocalLiftLog.Helpers"
              x:DataType="viewmodel:UserWeightViewModel"
              Title="User Weight">
     <VerticalStackLayout Spacing="10">
@@ -12,45 +13,49 @@
             HorizontalOptions="Center"
             FontSize="30"
             FontAttributes="Bold" />
-        <VerticalStackLayout 
-            HorizontalOptions="Center"
-            IsVisible="{Binding LatestWeight, Converter={StaticResource IsNotNullConverter}}">
-            <Label 
-                Text="Latest Weight"
-                HorizontalOptions="Center"
-                FontSize="22"
-                FontAttributes="Bold"
-                TextColor="{DynamicResource VeryDarkGray}"/>
-            <HorizontalStackLayout Spacing="10">
-                <Label VerticalOptions="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span 
-                                Text="{Binding LatestWeight.BodyWeight}"
-                                FontSize="20"
-                                FontAttributes="Bold"
-                                TextColor="{DynamicResource MediumBlue}" />
-                            <Span 
-                                Text="{Binding LatestWeight.WeightUnit}"
-                                FontSize="20"
-                                FontAttributes="Bold"
-                                TextColor="{DynamicResource MediumBlue}" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label VerticalOptions="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span 
-                                Text="{Binding LatestWeight.DateTime}"
-                                FontSize="20"
-                                FontAttributes="Bold"
-                                TextColor="{DynamicResource DarkGray}" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
+        <helpers:If Condition="{Binding LatestWeight, Converter={StaticResource IsNotNullConverter}}">
+            <helpers:If.True>
+                <VerticalStackLayout 
+                    HorizontalOptions="Center">
+                    <Label 
+                        Text="Latest Weight"
+                        HorizontalOptions="Center"
+                        FontSize="22"
+                        FontAttributes="Bold"
+                        TextColor="{DynamicResource VeryDarkGray}"/>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="{Binding LatestWeight.BodyWeight}"
+                                        FontSize="20"
+                                        FontAttributes="Bold"
+                                        TextColor="{DynamicResource MediumBlue}" />
+                                    <Span 
+                                        Text="{Binding LatestWeight.WeightUnit}"
+                                        FontSize="20"
+                                        FontAttributes="Bold"
+                                        TextColor="{DynamicResource MediumBlue}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="{Binding LatestWeight.DateTime}"
+                                        FontSize="20"
+                                        FontAttributes="Bold"
+                                        TextColor="{DynamicResource DarkGray}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </helpers:If.True>
+        </helpers:If>
+
         <CollectionView
             ItemsSource="{Binding UserWeightList}">
             <CollectionView.ItemsLayout>
