@@ -65,7 +65,7 @@ public partial class WorkoutTemplateListPopupPage : Popup
         {
             OnFilterTextChangedForScheduleViewModel(filterText);
         }
-        if (_viewModelType == "WorkoutDetails" && _scheduleViewModel is not null)
+        if (_viewModelType == "WorkoutDetails" && _workoutDetailsViewModel is not null)
         {
             OnFilterTextChangedForWorkoutDetailsViewModel(filterText);
         }
@@ -90,12 +90,7 @@ public partial class WorkoutTemplateListPopupPage : Popup
         else
         {
             // Filter the list based on the user input
-            var filteredItems = _workoutViewModel.WorkoutTemplateList.Where(item => item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase));
-
-            foreach (var item in filteredItems)
-            {
-                _workoutViewModel.FilteredWorkoutTemplateList.Add(item);
-            }
+            _workoutViewModel.FilteredWorkoutTemplateList = new(_workoutViewModel.WorkoutTemplateList.Where(item => item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)));
         }
     }
 
@@ -118,12 +113,7 @@ public partial class WorkoutTemplateListPopupPage : Popup
         else
         {
             // Filter the list based on the user input
-            var filteredItems = _scheduleViewModel.WorkoutTemplateList.Where(item => item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase));
-
-            foreach (var item in filteredItems)
-            {
-                _scheduleViewModel.FilteredWorkoutTemplateList.Add(item);
-            }
+            _scheduleViewModel.FilteredWorkoutTemplateList = new(_scheduleViewModel.WorkoutTemplateList.Where(item => item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)));
         }
     }
 
@@ -146,12 +136,7 @@ public partial class WorkoutTemplateListPopupPage : Popup
         else
         {
             // Filter the list based on the user input
-            var filteredItems = _workoutDetailsViewModel.WorkoutTemplateList.Where(item => item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase));
-
-            foreach (var item in filteredItems)
-            {
-                _workoutDetailsViewModel.FilteredWorkoutTemplateList.Add(item);
-            }
+            _workoutDetailsViewModel.FilteredWorkoutTemplateList = new(_workoutDetailsViewModel.WorkoutTemplateList.Where(item => item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)));
         }
     }
 }

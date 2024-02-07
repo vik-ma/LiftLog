@@ -211,6 +211,7 @@
             await Shell.Current.ShowPopupAsync(Popup);
         }
 
+        [RelayCommand]
         public void ClosePopup()
         {
             if (Popup is null) return;
