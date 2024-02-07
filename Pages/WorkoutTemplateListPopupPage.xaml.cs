@@ -46,7 +46,7 @@ public partial class WorkoutTemplateListPopupPage : Popup
             {
                 OnItemSelectedForScheduleViewModel(selectedWorkoutTemplate);
             }
-            if (_viewModelType == "WorkoutDetails" && _scheduleViewModel is not null)
+            if (_viewModelType == "WorkoutDetails" && _workoutDetailsViewModel is not null)
             {
                 OnItemSelectedForWorkoutDetailsViewModel(selectedWorkoutTemplate);
             }
