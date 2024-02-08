@@ -24,431 +24,510 @@
                     </Label.FormattedText>
                 </Label>
             </HorizontalStackLayout>
+            
             <Grid
                 HorizontalOptions="Center"
-                ColumnDefinitions="Auto, Auto, Auto, Auto"
+                ColumnDefinitions="Auto, Auto"
                 RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *"
-                ColumnSpacing="15"
+                ColumnSpacing="20"
                 RowSpacing="2">
-                <Label 
-                    Text="Day 1"
+                <Grid 
                     Grid.Row="0"
                     Grid.Column="0"
-                    Style="{StaticResource MediumBoldLabelStyle}">
-                    <Label.Triggers>
-                        <DataTrigger TargetType="Label" Binding="{Binding WorkoutRoutine.IsScheduleWeekly}" Value="True">
-                            <Setter Property="Text" Value="Monday" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
-                <Button 
-                    Text="Add Workout"
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Grid.RowSpan="2"
-                    VerticalOptions="Center"
-                    Style="{StaticResource SmallGreenButtonStyle}"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
-                    CommandParameter="0" />
-                <CollectionView
+                    Style="{StaticResource ScheduleDayGridStyle}">
+                    <Label 
+                        Text="Day 1"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Style="{StaticResource MediumBoldLabelStyle}">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding WorkoutRoutine.IsScheduleWeekly}" Value="True">
+                                <Setter Property="Text" Value="Monday" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Button 
+                        Text="Add Workout"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
+                        CommandParameter="0" />
+                    <CollectionView
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        ItemsSource="{Binding Day1WorkoutTemplatePackageList}"
+                        ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
+                        ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
+                        <CollectionView.EmptyView>
+                            <Label Text="No Workout(s) Set" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </Grid>
+
+                <Grid 
                     Grid.Row="1"
-                    ItemsSource="{Binding Day1WorkoutTemplatePackageList}"
-                    ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
-                    <CollectionView.EmptyView>
-                        <Label Text="No Workout(s) Set" />
-                    </CollectionView.EmptyView>
-                </CollectionView>
+                    Grid.Column="0"
+                    Style="{StaticResource ScheduleDayGridStyle}">
+                    <Label 
+                        Text="Day 2"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Style="{StaticResource MediumBoldLabelStyle}">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding WorkoutRoutine.IsScheduleWeekly}" Value="True">
+                                <Setter Property="Text" Value="Tuesday" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Button 
+                        Text="Add Workout"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
+                        CommandParameter="1" />
+                    <CollectionView
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        ItemsSource="{Binding Day2WorkoutTemplatePackageList}"
+                        ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
+                        ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
+                        <CollectionView.EmptyView>
+                            <Label Text="No Workout(s) Set" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </Grid>
 
-                <Label 
-                    Text="Day 2"
+                <Grid 
                     Grid.Row="2"
-                    Style="{StaticResource MediumBoldLabelStyle}">
-                    <Label.Triggers>
-                        <DataTrigger TargetType="Label" Binding="{Binding WorkoutRoutine.IsScheduleWeekly}" Value="True">
-                            <Setter Property="Text" Value="Tuesday" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
-                <Button 
-                    Text="Add Workout"
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    Grid.RowSpan="2"
-                    VerticalOptions="Center"
-                    Style="{StaticResource SmallGreenButtonStyle}"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
-                    CommandParameter="1" />
-                <CollectionView
+                    Grid.Column="0"
+                    Style="{StaticResource ScheduleDayGridStyle}">
+                    <Label 
+                        Text="Day 3"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
+                        Style="{StaticResource MediumBoldLabelStyle}">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding WorkoutRoutine.IsScheduleWeekly}" Value="True">
+                                <Setter Property="Text" Value="Wednesday" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Button 
+                        Text="Add Workout"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
+                        Style="{StaticResource SmallGreenButtonStyle}" 
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
+                        CommandParameter="2" />
+                    <CollectionView
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
+                        ItemsSource="{Binding Day3WorkoutTemplatePackageList}"
+                        ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
+                        ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
+                        <CollectionView.EmptyView>
+                            <Label Text="No Workout(s) Set" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </Grid>
+
+                <Grid 
                     Grid.Row="3"
-                    ItemsSource="{Binding Day2WorkoutTemplatePackageList}"
-                    ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
-                    <CollectionView.EmptyView>
-                        <Label Text="No Workout(s) Set" />
-                    </CollectionView.EmptyView>
-                </CollectionView>
+                    Grid.Column="0"
+                    Style="{StaticResource ScheduleDayGridStyle}">
+                    <Label 
+                        Text="Day 4"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=3}"
+                        Style="{StaticResource MediumBoldLabelStyle}">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding WorkoutRoutine.IsScheduleWeekly}" Value="True">
+                                <Setter Property="Text" Value="Thursday" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Button 
+                        Text="Add Workout"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=3}"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
+                        CommandParameter="3" />
+                    <CollectionView
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=3}"
+                        ItemsSource="{Binding Day4WorkoutTemplatePackageList}"
+                        ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
+                        ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
+                        <CollectionView.EmptyView>
+                            <Label Text="No Workout(s) Set" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </Grid>
 
-                <Label 
-                    Text="Day 3"
+                <Grid 
                     Grid.Row="4"
                     Grid.Column="0"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
-                    Style="{StaticResource MediumBoldLabelStyle}">
-                    <Label.Triggers>
-                        <DataTrigger TargetType="Label" Binding="{Binding WorkoutRoutine.IsScheduleWeekly}" Value="True">
-                            <Setter Property="Text" Value="Wednesday" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
-                <Button 
-                    Text="Add Workout"
-                    Grid.Row="4"
-                    Grid.Column="1"
-                    Grid.RowSpan="2"
-                    VerticalOptions="Center"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
-                    Style="{StaticResource SmallGreenButtonStyle}" 
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
-                    CommandParameter="2" />
-                <CollectionView
+                    Style="{StaticResource ScheduleDayGridStyle}">
+                    <Label 
+                        Text="Day 5"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=4}"
+                        Style="{StaticResource MediumBoldLabelStyle}">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding WorkoutRoutine.IsScheduleWeekly}" Value="True">
+                                <Setter Property="Text" Value="Friday" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Button 
+                        Text="Add Workout"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=4}"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
+                        CommandParameter="4" />
+                    <CollectionView
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=4}"
+                        ItemsSource="{Binding Day5WorkoutTemplatePackageList}"
+                        ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
+                        ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
+                        <CollectionView.EmptyView>
+                            <Label Text="No Workout(s) Set" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </Grid>
+
+                <Grid 
                     Grid.Row="5"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=2}"
-                    ItemsSource="{Binding Day3WorkoutTemplatePackageList}"
-                    ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
-                    <CollectionView.EmptyView>
-                        <Label Text="No Workout(s) Set" />
-                    </CollectionView.EmptyView>
-                </CollectionView>
+                    Grid.Column="0"
+                    Style="{StaticResource ScheduleDayGridStyle}">
+                    <Label 
+                        Text="Day 6"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=5}"
+                        Style="{StaticResource MediumBoldLabelStyle}">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding WorkoutRoutine.IsScheduleWeekly}" Value="True">
+                                <Setter Property="Text" Value="Saturday" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Button 
+                        Text="Add Workout"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=5}"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
+                        CommandParameter="5" />
+                    <CollectionView
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=5}"
+                        ItemsSource="{Binding Day6WorkoutTemplatePackageList}"
+                        ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
+                        ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
+                        <CollectionView.EmptyView>
+                            <Label Text="No Workout(s) Set" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </Grid>
 
-                <Label 
-                    Text="Day 4"
+                <Grid 
                     Grid.Row="6"
                     Grid.Column="0"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=3}"
-                    Style="{StaticResource MediumBoldLabelStyle}">
-                    <Label.Triggers>
-                        <DataTrigger TargetType="Label" Binding="{Binding WorkoutRoutine.IsScheduleWeekly}" Value="True">
-                            <Setter Property="Text" Value="Thursday" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
-                <Button 
-                    Text="Add Workout"
-                    Grid.Row="6"
-                    Grid.Column="1"
-                    Grid.RowSpan="2"
-                    VerticalOptions="Center"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=3}"
-                    Style="{StaticResource SmallGreenButtonStyle}"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
-                    CommandParameter="3" />
-                <CollectionView
-                    Grid.Row="7"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=3}"
-                    ItemsSource="{Binding Day4WorkoutTemplatePackageList}"
-                    ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
-                    <CollectionView.EmptyView>
-                        <Label Text="No Workout(s) Set" />
-                    </CollectionView.EmptyView>
-                </CollectionView>
+                    Style="{StaticResource ScheduleDayGridStyle}">
+                    <Label 
+                        Text="Day 7"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=6}"
+                        Style="{StaticResource MediumBoldLabelStyle}">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding WorkoutRoutine.IsScheduleWeekly}" Value="True">
+                                <Setter Property="Text" Value="Sunday" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Button 
+                        Text="Add Workout"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=6}"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
+                        CommandParameter="6" />
+                    <CollectionView
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=6}"
+                        ItemsSource="{Binding Day7WorkoutTemplatePackageList}"
+                        ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
+                        ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
+                        <CollectionView.EmptyView>
+                            <Label Text="No Workout(s) Set" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </Grid>
 
-                <Label 
-                    Text="Day 5"
-                    Grid.Row="8"
-                    Grid.Column="0"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=4}"
-                    Style="{StaticResource MediumBoldLabelStyle}">
-                    <Label.Triggers>
-                        <DataTrigger TargetType="Label" Binding="{Binding WorkoutRoutine.IsScheduleWeekly}" Value="True">
-                            <Setter Property="Text" Value="Friday" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
-                <Button 
-                    Text="Add Workout"
-                    Grid.Row="8"
-                    Grid.Column="1"
-                    Grid.RowSpan="2"
-                    VerticalOptions="Center"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=4}"
-                    Style="{StaticResource SmallGreenButtonStyle}"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
-                    CommandParameter="4" />
-                <CollectionView
-                    Grid.Row="9"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=4}"
-                    ItemsSource="{Binding Day5WorkoutTemplatePackageList}"
-                    ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
-                    <CollectionView.EmptyView>
-                        <Label Text="No Workout(s) Set" />
-                    </CollectionView.EmptyView>
-                </CollectionView>
-
-                <Label 
-                    Text="Day 6"
-                    Grid.Row="10"
-                    Grid.Column="0"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=5}"
-                    Style="{StaticResource MediumBoldLabelStyle}">
-                    <Label.Triggers>
-                        <DataTrigger TargetType="Label" Binding="{Binding WorkoutRoutine.IsScheduleWeekly}" Value="True">
-                            <Setter Property="Text" Value="Saturday" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
-                <Button 
-                    Text="Add Workout"
-                    Grid.Row="10"
-                    Grid.Column="1"
-                    Grid.RowSpan="2"
-                    VerticalOptions="Center"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=5}"
-                    Style="{StaticResource SmallGreenButtonStyle}"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
-                    CommandParameter="5" />
-                <CollectionView
-                    Grid.Row="11"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=5}"
-                    ItemsSource="{Binding Day6WorkoutTemplatePackageList}"
-                    ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
-                    <CollectionView.EmptyView>
-                        <Label Text="No Workout(s) Set" />
-                    </CollectionView.EmptyView>
-                </CollectionView>
-
-                <Label 
-                    Text="Day 7"
-                    Grid.Row="12"
-                    Grid.Column="0"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=6}"
-                    Style="{StaticResource MediumBoldLabelStyle}">
-                    <Label.Triggers>
-                        <DataTrigger TargetType="Label" Binding="{Binding WorkoutRoutine.IsScheduleWeekly}" Value="True">
-                            <Setter Property="Text" Value="Sunday" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
-                <Button 
-                    Text="Add Workout"
-                    Grid.Row="12"
-                    Grid.Column="1"
-                    Grid.RowSpan="2"
-                    VerticalOptions="Center"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=6}"
-                    Style="{StaticResource SmallGreenButtonStyle}"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
-                    CommandParameter="6" />
-                <CollectionView
-                    Grid.Row="13"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=6}"
-                    ItemsSource="{Binding Day7WorkoutTemplatePackageList}"
-                    ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
-                    <CollectionView.EmptyView>
-                        <Label Text="No Workout(s) Set" />
-                    </CollectionView.EmptyView>
-                </CollectionView>
-
-                <Label 
-                    Text="Day 8"
+                <Grid 
                     Grid.Row="0"
-                    Grid.Column="2"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=7}"
-                    Style="{StaticResource MediumBoldLabelStyle}" />
-                <Button 
-                    Text="Add Workout"
-                    Grid.Row="0"
-                    Grid.Column="3"
-                    Grid.RowSpan="2"
-                    VerticalOptions="Center"
-                    Style="{StaticResource SmallGreenButtonStyle}"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=7}"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
-                    CommandParameter="7" />
-                <CollectionView
+                    Grid.Column="1"
+                    Style="{StaticResource ScheduleDayGridStyle}">
+                    <Label 
+                        Text="Day 8"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=7}"
+                        Style="{StaticResource MediumBoldLabelStyle}" />
+                    <Button 
+                        Text="Add Workout"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=7}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
+                        CommandParameter="7" />
+                    <CollectionView
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=7}"
+                        ItemsSource="{Binding Day8WorkoutTemplatePackageList}"
+                        ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
+                        ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
+                        <CollectionView.EmptyView>
+                            <Label Text="No Workout(s) Set" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </Grid>
+
+                <Grid 
                     Grid.Row="1"
-                    Grid.Column="2"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=7}"
-                    ItemsSource="{Binding Day8WorkoutTemplatePackageList}"
-                    ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
-                    <CollectionView.EmptyView>
-                        <Label Text="No Workout(s) Set" />
-                    </CollectionView.EmptyView>
-                </CollectionView>
+                    Grid.Column="1"
+                    Style="{StaticResource ScheduleDayGridStyle}">
+                    <Label 
+                        Text="Day 9"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=8}"
+                        Style="{StaticResource MediumBoldLabelStyle}" />
+                    <Button 
+                        Text="Add Workout"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=8}"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
+                        CommandParameter="8" />
+                    <CollectionView
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=8}"
+                        ItemsSource="{Binding Day9WorkoutTemplatePackageList}"
+                        ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
+                        ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
+                        <CollectionView.EmptyView>
+                            <Label Text="No Workout(s) Set" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </Grid>
 
-                <Label 
-                    Text="Day 9"
+                <Grid 
                     Grid.Row="2"
-                    Grid.Column="2"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=8}"
-                    Style="{StaticResource MediumBoldLabelStyle}" />
-                <Button 
-                    Text="Add Workout"
-                    Grid.Row="2"
-                    Grid.Column="3"
-                    Grid.RowSpan="2"
-                    VerticalOptions="Center"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=8}"
-                    Style="{StaticResource SmallGreenButtonStyle}"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
-                    CommandParameter="8" />
-                <CollectionView
+                    Grid.Column="1"
+                    Style="{StaticResource ScheduleDayGridStyle}">
+                    <Label 
+                        Text="Day 10"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=9}"
+                        Style="{StaticResource MediumBoldLabelStyle}" />
+                    <Button 
+                        Text="Add Workout"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=9}"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
+                        CommandParameter="9" />
+                    <CollectionView
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=9}"
+                        ItemsSource="{Binding Day10WorkoutTemplatePackageList}"
+                        ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
+                        ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
+                        <CollectionView.EmptyView>
+                            <Label Text="No Workout(s) Set" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </Grid>
+
+                <Grid 
                     Grid.Row="3"
-                    Grid.Column="2"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=8}"
-                    ItemsSource="{Binding Day9WorkoutTemplatePackageList}"
-                    ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
-                    <CollectionView.EmptyView>
-                        <Label Text="No Workout(s) Set" />
-                    </CollectionView.EmptyView>
-                </CollectionView>
+                    Grid.Column="1"
+                    Style="{StaticResource ScheduleDayGridStyle}">
+                    <Label 
+                        Text="Day 11"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=10}"
+                        Style="{StaticResource MediumBoldLabelStyle}" />
+                    <Button 
+                        Text="Add Workout"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=10}"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
+                        CommandParameter="10" />
+                    <CollectionView
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=10}"
+                        ItemsSource="{Binding Day11WorkoutTemplatePackageList}"
+                        ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
+                        ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
+                        <CollectionView.EmptyView>
+                            <Label Text="No Workout(s) Set" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </Grid>
 
-                <Label 
-                    Text="Day 10"
+                <Grid 
                     Grid.Row="4"
-                    Grid.Column="2"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=9}"
-                    Style="{StaticResource MediumBoldLabelStyle}" />
-                <Button 
-                    Text="Add Workout"
-                    Grid.Row="4"
-                    Grid.Column="3"
-                    Grid.RowSpan="2"
-                    VerticalOptions="Center"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=9}"
-                    Style="{StaticResource SmallGreenButtonStyle}"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
-                    CommandParameter="9" />
-                <CollectionView
+                    Grid.Column="1"
+                    Style="{StaticResource ScheduleDayGridStyle}">
+                    <Label 
+                        Text="Day 12"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=11}"
+                        Style="{StaticResource MediumBoldLabelStyle}" />
+                    <Button 
+                        Text="Add Workout"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=11}"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
+                        CommandParameter="11" />
+                    <CollectionView
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=11}"
+                        ItemsSource="{Binding Day12WorkoutTemplatePackageList}"
+                        ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
+                        ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
+                        <CollectionView.EmptyView>
+                            <Label Text="No Workout(s) Set" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </Grid>
+
+                <Grid 
                     Grid.Row="5"
-                    Grid.Column="2"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=9}"
-                    ItemsSource="{Binding Day10WorkoutTemplatePackageList}"
-                    ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
-                    <CollectionView.EmptyView>
-                        <Label Text="No Workout(s) Set" />
-                    </CollectionView.EmptyView>
-                </CollectionView>
+                    Grid.Column="1"
+                    Style="{StaticResource ScheduleDayGridStyle}">
+                    <Label 
+                        Text="Day 13"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=12}"
+                        Style="{StaticResource MediumBoldLabelStyle}" />
+                    <Button 
+                        Text="Add Workout"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=12}"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
+                        CommandParameter="12" />
+                    <CollectionView
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=12}"
+                        ItemsSource="{Binding Day13WorkoutTemplatePackageList}"
+                        ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
+                        ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
+                        <CollectionView.EmptyView>
+                            <Label Text="No Workout(s) Set" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </Grid>
 
-                <Label 
-                    Text="Day 11"
+                <Grid 
                     Grid.Row="6"
-                    Grid.Column="2"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=10}"
-                    Style="{StaticResource MediumBoldLabelStyle}" />
-                <Button 
-                    Text="Add Workout"
-                    Grid.Row="6"
-                    Grid.Column="3"
-                    Grid.RowSpan="2"
-                    VerticalOptions="Center"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=10}"
-                    Style="{StaticResource SmallGreenButtonStyle}"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
-                    CommandParameter="10" />
-                <CollectionView
-                    Grid.Row="7"
-                    Grid.Column="2"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=10}"
-                    ItemsSource="{Binding Day11WorkoutTemplatePackageList}"
-                    ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
-                    <CollectionView.EmptyView>
-                        <Label Text="No Workout(s) Set" />
-                    </CollectionView.EmptyView>
-                </CollectionView>
-
-                <Label 
-                    Text="Day 12"
-                    Grid.Row="8"
-                    Grid.Column="2"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=11}"
-                    Style="{StaticResource MediumBoldLabelStyle}" />
-                <Button 
-                    Text="Add Workout"
-                    Grid.Row="8"
-                    Grid.Column="3"
-                    Grid.RowSpan="2"
-                    VerticalOptions="Center"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=11}"
-                    Style="{StaticResource SmallGreenButtonStyle}"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
-                    CommandParameter="11" />
-                <CollectionView
-                    Grid.Row="9"
-                    Grid.Column="2"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=11}"
-                    ItemsSource="{Binding Day12WorkoutTemplatePackageList}"
-                    ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
-                    <CollectionView.EmptyView>
-                        <Label Text="No Workout(s) Set" />
-                    </CollectionView.EmptyView>
-                </CollectionView>
-
-                <Label 
-                    Text="Day 13"
-                    Grid.Row="10"
-                    Grid.Column="2"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=12}"
-                    Style="{StaticResource MediumBoldLabelStyle}" />
-                <Button 
-                    Text="Add Workout"
-                    Grid.Row="10"
-                    Grid.Column="3"
-                    Grid.RowSpan="2"
-                    VerticalOptions="Center"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=12}"
-                    Style="{StaticResource SmallGreenButtonStyle}"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
-                    CommandParameter="12" />
-                <CollectionView
-                    Grid.Row="11"
-                    Grid.Column="2"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=12}"
-                    ItemsSource="{Binding Day13WorkoutTemplatePackageList}"
-                    ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
-                    <CollectionView.EmptyView>
-                        <Label Text="No Workout(s) Set" />
-                    </CollectionView.EmptyView>
-                </CollectionView>
-
-                <Label 
-                    Text="Day 14"
-                    Grid.Row="12"
-                    Grid.Column="2"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=13}"
-                    Style="{StaticResource MediumBoldLabelStyle}" />
-                <Button 
-                    Text="Add Workout"
-                    Grid.Row="12"
-                    Grid.Column="3"
-                    Grid.RowSpan="2"
-                    VerticalOptions="Center"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=13}"
-                    Style="{StaticResource SmallGreenButtonStyle}"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
-                    CommandParameter="13" />
-                <CollectionView
-                    Grid.Row="13"
-                    Grid.Column="2"
-                    IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=13}"
-                    ItemsSource="{Binding Day14WorkoutTemplatePackageList}"
-                    ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
-                    ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
-                    <CollectionView.EmptyView>
-                        <Label Text="No Workout(s) Set" />
-                    </CollectionView.EmptyView>
-                </CollectionView>
+                    Grid.Column="1"
+                    Style="{StaticResource ScheduleDayGridStyle}">
+                    <Label 
+                        Text="Day 14"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=13}"
+                        Style="{StaticResource MediumBoldLabelStyle}" />
+                    <Button 
+                        Text="Add Workout"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=13}"
+                        Style="{StaticResource SmallGreenButtonStyle}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ScheduleViewModel}}, Path=ShowWorkoutTemplateListPopupCommand}"
+                        CommandParameter="13" />
+                    <CollectionView
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        IsVisible="{Binding WorkoutRoutine.NumDaysInSchedule, Converter={StaticResource IntAboveThresholdConverter}, ConverterParameter=13}"
+                        ItemsSource="{Binding Day14WorkoutTemplatePackageList}"
+                        ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
+                        ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
+                        <CollectionView.EmptyView>
+                            <Label Text="No Workout(s) Set" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </Grid>
             </Grid>
 
             <VerticalStackLayout
