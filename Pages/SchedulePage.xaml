@@ -559,40 +559,54 @@
                 HorizontalOptions="Center"
                 Spacing="5"
                 Margin="10">
-                <HorizontalStackLayout 
-                    HorizontalOptions="Center" 
-                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
-                    Spacing="10">
-                    <DatePicker
-                        Format="yyyy-MM-dd"
-                        Date="{Binding WorkoutRoutine.CustomScheduleStartDate}"
-                        DateSelected="OnDateSelected" />
-                    <Label
-                        IsVisible="{Binding WorkoutRoutine.CustomScheduleStartDate, Converter={StaticResource IsNotNullConverter}}"
-                        Text="{Binding WorkoutRoutine.CustomScheduleStartDate}"
-                        TextColor="{DynamicResource MediumBlue}"
-                        Style="{StaticResource LargeBoldLabelStyle}" />
-                    <Label
-                        IsVisible="{Binding WorkoutRoutine.CustomScheduleStartDate, Converter={StaticResource IsNullConverter}}"
-                        Text="No Start Date Set"
-                        TextColor="{DynamicResource MediumRed}"
-                        Style="{StaticResource LargeBoldLabelStyle}" />
-                </HorizontalStackLayout>
-                <Button
-                    Text="Convert To Custom Schedule"
-                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly}"
-                    Style="{StaticResource MediumButtonStyle}"
-                    Command="{Binding CreateCustomScheduleCommand}"/>
-                <Button
-                    Text="Convert To Weekly Schedule"
-                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
-                    Style="{StaticResource MediumButtonStyle}"
-                    Command="{Binding CreateWeeklyScheduleCommand}"/>
-                <Button
-                    Text="Change Number Of Days"
-                    IsVisible="{Binding WorkoutRoutine.IsScheduleWeekly, Converter={StaticResource InvertedBoolConverter}}"
-                    Style="{StaticResource MediumButtonStyle}"
-                    Command="{Binding CreateCustomScheduleCommand}"/>
+                <helpers:If Condition="{Binding WorkoutRoutine.IsScheduleWeekly}">
+                    <helpers:If.False>
+                        <HorizontalStackLayout 
+                            HorizontalOptions="Center" 
+                            Spacing="10">
+                            <DatePicker
+                                Format="yyyy-MM-dd"
+                                Date="{Binding WorkoutRoutine.CustomScheduleStartDate}"
+                                DateSelected="OnDateSelected" />
+                            <helpers:If Condition="{Binding WorkoutRoutine.CustomScheduleStartDate, Converter={StaticResource IsNotNullConverter}}">
+                                <helpers:If.True>
+                                    <Label
+                                        Text="{Binding WorkoutRoutine.CustomScheduleStartDate}"
+                                        TextColor="{DynamicResource MediumBlue}"
+                                        Style="{StaticResource LargeBoldLabelStyle}" />
+                                </helpers:If.True>
+                                <helpers:If.False>
+                                    <Label
+                                        Text="No Start Date Set"
+                                        TextColor="{DynamicResource MediumRed}"
+                                        Style="{StaticResource LargeBoldLabelStyle}" />
+                                </helpers:If.False>
+                            </helpers:If>
+                        </HorizontalStackLayout>
+                    </helpers:If.False>
+                </helpers:If>
+
+                <helpers:If Condition="{Binding WorkoutRoutine.IsScheduleWeekly}">
+                    <helpers:If.True>
+                        <Button
+                            Text="Convert To Custom Schedule"
+                            Style="{StaticResource MediumButtonStyle}"
+                            Command="{Binding CreateCustomScheduleCommand}"/>
+                    </helpers:If.True>
+                    <helpers:If.False>
+                        <VerticalStackLayout Spacing="5">
+                            <Button
+                                Text="Convert To Weekly Schedule"
+                                Style="{StaticResource MediumButtonStyle}"
+                                Command="{Binding CreateWeeklyScheduleCommand}"/>
+                            <Button
+                                Text="Change Number Of Days"
+                                Style="{StaticResource MediumButtonStyle}"
+                                Command="{Binding CreateCustomScheduleCommand}"/>
+                        </VerticalStackLayout>
+                    </helpers:If.False>
+                </helpers:If>
+
                 <Button
                     Text="Reset Schedule"
                     BackgroundColor="{DynamicResource MediumRed}"
