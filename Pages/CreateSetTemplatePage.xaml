@@ -52,18 +52,22 @@
                         Style="{StaticResource MediumHeaderLabelStyle}"
                         TextColor="{DynamicResource MediumBlue}" />
                 </HorizontalStackLayout>
-                <Grid 
-                    IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}">
-                    <Label 
-                        Text="Number of Sets:"
-                        HorizontalOptions="Start"
-                        Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
-                    <Entry 
-                        HorizontalOptions="End"
-                        WidthRequest="30"
-                        Style="{StaticResource ExtraSmallEntryFieldStyle}"
-                        Text="{Binding NumNewSets}" />
-                </Grid>
+                <helpers:If Condition="{Binding IsEditing}">
+                    <helpers:If.False>
+                        <Grid>
+                            <Label 
+                                Text="Number of Sets:"
+                                HorizontalOptions="Start"
+                                Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
+                            <Entry 
+                                HorizontalOptions="End"
+                                WidthRequest="30"
+                                Style="{StaticResource ExtraSmallEntryFieldStyle}"
+                                Text="{Binding NumNewSets}" />
+                        </Grid>
+                    </helpers:If.False>
+                </helpers:If>
+
                 <Grid Style="{StaticResource CreateSetTemplateNoteGridStyle}">
                     <Label 
                         Text="Note:"
@@ -113,7 +117,7 @@
                             Text="Remove"/>
                         <Button
                             Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Weight, Converter={StaticResource IsInt0Converter}}"
+                            IsVisible="{Binding OperatingSet.Weight, Converter={StaticResource IsNumber0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
                             CommandParameter="Weight"
                             Text="Set Default Value"/>
@@ -152,7 +156,7 @@
                             Text="Remove"/>
                         <Button
                             Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Reps, Converter={StaticResource IsInt0Converter}}"
+                            IsVisible="{Binding OperatingSet.Reps, Converter={StaticResource IsNumber0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
                             CommandParameter="Reps"
                             Text="Set Default Value"/>
@@ -191,7 +195,7 @@
                             Text="Remove"/>
                         <Button
                             Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Rir, Converter={StaticResource IsInt0Converter}}"
+                            IsVisible="{Binding OperatingSet.Rir, Converter={StaticResource IsNumber0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
                             CommandParameter="Rir"
                             Text="Set Default Value"/>
@@ -230,7 +234,7 @@
                             Text="Remove"/>
                         <Button
                             Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Rpe, Converter={StaticResource IsInt0Converter}}"
+                            IsVisible="{Binding OperatingSet.Rpe, Converter={StaticResource IsNumber0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
                             CommandParameter="Rpe"
                             Text="Set Default Value"/>
@@ -269,7 +273,7 @@
                             Text="Remove"/>
                         <Button
                             Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.TimeInSeconds, Converter={StaticResource IsInt0Converter}}"
+                            IsVisible="{Binding OperatingSet.TimeInSeconds, Converter={StaticResource IsNumber0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
                             CommandParameter="Time"
                             Text="Set Default Value"/>
@@ -313,7 +317,7 @@
                             Text="Remove"/>
                         <Button
                             Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Distance, Converter={StaticResource IsInt0Converter}}"
+                            IsVisible="{Binding OperatingSet.Distance, Converter={StaticResource IsNumber0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
                             CommandParameter="Distance"
                             Text="Set Default Value"/>
@@ -352,7 +356,7 @@
                             Text="Remove"/>
                         <Button
                             Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.CardioResistance, Converter={StaticResource IsInt0Converter}}"
+                            IsVisible="{Binding OperatingSet.CardioResistance, Converter={StaticResource IsNumber0Converter}}"
                             Command="{Binding AddDefaultPropertyValueCommand}"
                             CommandParameter="CardioResistance"
                             Text="Set Default Value"/>
@@ -391,7 +395,7 @@
                             Text="Remove"/>
                         <Button
                             Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.PercentCompleted, Converter={StaticResource IsInt0Converter}}"
+                            IsVisible="{Binding OperatingSet.PercentCompleted, Converter={StaticResource IsNumber0Converter}}"
                             Command="{Binding AddPercentCompletedDefaultValueCommand}"
                             Text="Set Default Value"/>
                     </HorizontalStackLayout>
