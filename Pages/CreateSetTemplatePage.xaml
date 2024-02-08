@@ -47,10 +47,21 @@
                     <Label 
                         Text="Exercise:"
                         Style="{StaticResource MediumHeaderLabelStyle}" />
-                    <Label 
-                        Text="{Binding SelectedExercise.Name}"
-                        Style="{StaticResource MediumHeaderLabelStyle}"
-                        TextColor="{DynamicResource MediumBlue}" />
+                    <helpers:If Condition="{Binding SelectedExercise, Converter={StaticResource IsNotNullConverter}}">
+                        <helpers:If.True>
+                            <Label 
+                                Text="{Binding SelectedExercise.Name}"
+                                Style="{StaticResource MediumHeaderLabelStyle}"
+                                TextColor="{DynamicResource MediumBlue}" />
+                        </helpers:If.True>
+                        <helpers:If.False>
+                            <Label 
+                                Text="No Exercise Selected"
+                                Style="{StaticResource MediumHeaderLabelStyle}"
+                                TextColor="{DynamicResource MediumRed}" />
+                        </helpers:If.False>
+                    </helpers:If>
+                    
                 </HorizontalStackLayout>
                 <helpers:If Condition="{Binding IsEditing}">
                     <helpers:If.False>
