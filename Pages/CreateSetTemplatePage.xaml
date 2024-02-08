@@ -97,42 +97,50 @@
                     <CheckBox
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSet.IsTrackingWeight}" />
-                    <HorizontalStackLayout
-                        Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
-                        IsVisible="{Binding OperatingSet.IsTrackingWeight}">
-                        <Picker 
-                            Style="{StaticResource ExtraSmallPickerStyle}"
-                            SelectedIndexChanged="OnWeightUnitPickerSelectedIndexChanged"
-                            ItemsSource="{Binding ValidWeightUnitList}"
-                            SelectedItem="{Binding SelectedWeightUnit}" />
-                        <Label 
-                            IsVisible="{Binding OperatingSet.Weight, Converter={StaticResource IsNumberNot0Converter}}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span 
-                                        Text="Default Value: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                    <Span 
-                                        Text="{Binding OperatingSet.Weight}"
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Button
-                            Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Weight, Converter={StaticResource IsNumberNot0Converter}}"
-                            Command="{Binding RemoveDefaultPropertyValueCommand}"
-                            CommandParameter="Weight"
-                            Text="Remove"/>
-                        <Button
-                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Weight, Converter={StaticResource IsNumber0Converter}}"
-                            Command="{Binding AddDefaultPropertyValueCommand}"
-                            CommandParameter="Weight"
-                            Text="Set Default Value"/>
-                    </HorizontalStackLayout>
+                    <helpers:If Condition="{Binding OperatingSet.IsTrackingWeight}">
+                        <helpers:If.True>
+                            <HorizontalStackLayout
+                                Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}">
+                                <helpers:If Condition="{Binding OperatingSet.Weight}">
+                                    <helpers:If.True>
+                                        <HorizontalStackLayout Spacing="7">
+                                            <Label 
+                                                VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span 
+                                                            Text="Default Value: " 
+                                                            FontAttributes="Bold"  
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                        <Span 
+                                                            Text="{Binding OperatingSet.Weight}"
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Picker 
+                                                Style="{StaticResource ExtraSmallPickerStyle}"
+                                                SelectedIndexChanged="OnWeightUnitPickerSelectedIndexChanged"
+                                                ItemsSource="{Binding ValidWeightUnitList}"
+                                                SelectedItem="{Binding SelectedWeightUnit}" />
+                                            <Button
+                                                 Style="{StaticResource ExtraSmallRedButtonStyle}"
+                                                 Command="{Binding RemoveDefaultPropertyValueCommand}"
+                                                 CommandParameter="Weight"
+                                                 Text="Remove"/>
+                                        </HorizontalStackLayout>
+                                    </helpers:If.True>
+                                    <helpers:If.False>
+                                        <Button
+                                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
+                                            Command="{Binding AddDefaultPropertyValueCommand}"
+                                            CommandParameter="Weight"
+                                            Text="Set Default Value"/>
+                                    </helpers:If.False>
+                                </helpers:If>
+                            </HorizontalStackLayout>
+                        </helpers:If.True>
+                    </helpers:If>
                 </Grid>
                 <Grid>
                     <Label 
@@ -141,37 +149,45 @@
                     <CheckBox 
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}" 
                         IsChecked="{Binding OperatingSet.IsTrackingReps}" />
-                    <HorizontalStackLayout
-                        Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
-                        IsVisible="{Binding OperatingSet.IsTrackingReps}">
-                        <Label 
-                            IsVisible="{Binding OperatingSet.Reps, Converter={StaticResource IsNumberNot0Converter}}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span 
-                                        Text="Default Value: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                    <Span 
-                                        Text="{Binding OperatingSet.Reps}"
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Button
-                            Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Reps, Converter={StaticResource IsNumberNot0Converter}}"
-                            Command="{Binding RemoveDefaultPropertyValueCommand}"
-                            CommandParameter="Reps"
-                            Text="Remove"/>
-                        <Button
-                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Reps, Converter={StaticResource IsNumber0Converter}}"
-                            Command="{Binding AddDefaultPropertyValueCommand}"
-                            CommandParameter="Reps"
-                            Text="Set Default Value"/>
-                    </HorizontalStackLayout>
+                    <helpers:If Condition="{Binding OperatingSet.IsTrackingReps}">
+                        <helpers:If.True>
+                            <HorizontalStackLayout
+                                Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}">
+                                <helpers:If Condition="{Binding OperatingSet.Reps}">
+                                    <helpers:If.True>
+                                        <HorizontalStackLayout Spacing="7">
+                                            <Label 
+                                                VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span 
+                                                            Text="Default Value: " 
+                                                            FontAttributes="Bold"  
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                        <Span 
+                                                            Text="{Binding OperatingSet.Reps}"
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Button
+                                                 Style="{StaticResource ExtraSmallRedButtonStyle}"
+                                                 Command="{Binding RemoveDefaultPropertyValueCommand}"
+                                                 CommandParameter="Reps"
+                                                 Text="Remove"/>
+                                        </HorizontalStackLayout>
+                                    </helpers:If.True>
+                                    <helpers:If.False>
+                                        <Button
+                                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
+                                            Command="{Binding AddDefaultPropertyValueCommand}"
+                                            CommandParameter="Reps"
+                                            Text="Set Default Value"/>
+                                    </helpers:If.False>
+                                </helpers:If>
+                            </HorizontalStackLayout>
+                        </helpers:If.True>
+                    </helpers:If>
                 </Grid>
                 <Grid>
                     <Label 
@@ -180,37 +196,45 @@
                     <CheckBox 
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSet.IsTrackingRir}" />
-                    <HorizontalStackLayout
-                        Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
-                        IsVisible="{Binding OperatingSet.IsTrackingRir}">
-                        <Label 
-                            IsVisible="{Binding OperatingSet.Rir, Converter={StaticResource IsNumberNot0Converter}}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span 
-                                        Text="Default Value: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                    <Span 
-                                        Text="{Binding OperatingSet.Rir}"
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Button
-                            Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Rir, Converter={StaticResource IsNumberNot0Converter}}"
-                            Command="{Binding RemoveDefaultPropertyValueCommand}"
-                            CommandParameter="Rir"
-                            Text="Remove"/>
-                        <Button
-                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Rir, Converter={StaticResource IsNumber0Converter}}"
-                            Command="{Binding AddDefaultPropertyValueCommand}"
-                            CommandParameter="Rir"
-                            Text="Set Default Value"/>
-                    </HorizontalStackLayout>
+                    <helpers:If Condition="{Binding OperatingSet.IsTrackingRir}">
+                        <helpers:If.True>
+                            <HorizontalStackLayout
+                                Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}">
+                                <helpers:If Condition="{Binding OperatingSet.Rir}">
+                                    <helpers:If.True>
+                                        <HorizontalStackLayout Spacing="7">
+                                            <Label 
+                                                VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span 
+                                                            Text="Default Value: " 
+                                                            FontAttributes="Bold"  
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                        <Span 
+                                                            Text="{Binding OperatingSet.Rir}"
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Button
+                                                 Style="{StaticResource ExtraSmallRedButtonStyle}"
+                                                 Command="{Binding RemoveDefaultPropertyValueCommand}"
+                                                 CommandParameter="Rir"
+                                                 Text="Remove"/>
+                                        </HorizontalStackLayout>
+                                    </helpers:If.True>
+                                    <helpers:If.False>
+                                        <Button
+                                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
+                                            Command="{Binding AddDefaultPropertyValueCommand}"
+                                            CommandParameter="Rir"
+                                            Text="Set Default Value"/>
+                                    </helpers:If.False>
+                                </helpers:If>
+                            </HorizontalStackLayout>
+                        </helpers:If.True>
+                    </helpers:If>
                 </Grid>
                 <Grid>
                     <Label 
@@ -219,37 +243,45 @@
                     <CheckBox 
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSet.IsTrackingRpe}" />
-                    <HorizontalStackLayout
-                        Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
-                        IsVisible="{Binding OperatingSet.IsTrackingRpe}">
-                        <Label 
-                            IsVisible="{Binding OperatingSet.Rpe, Converter={StaticResource IsNumberNot0Converter}}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span 
-                                        Text="Default Value: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                    <Span 
-                                        Text="{Binding OperatingSet.Rpe}"
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Button
-                            Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Rpe, Converter={StaticResource IsNumberNot0Converter}}"
-                            Command="{Binding RemoveDefaultPropertyValueCommand}"
-                            CommandParameter="Rpe"
-                            Text="Remove"/>
-                        <Button
-                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Rpe, Converter={StaticResource IsNumber0Converter}}"
-                            Command="{Binding AddDefaultPropertyValueCommand}"
-                            CommandParameter="Rpe"
-                            Text="Set Default Value"/>
-                    </HorizontalStackLayout>
+                    <helpers:If Condition="{Binding OperatingSet.IsTrackingRpe}">
+                        <helpers:If.True>
+                            <HorizontalStackLayout
+                                Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}">
+                                <helpers:If Condition="{Binding OperatingSet.Rpe}">
+                                    <helpers:If.True>
+                                        <HorizontalStackLayout Spacing="7">
+                                            <Label 
+                                                VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span 
+                                                            Text="Default Value: " 
+                                                            FontAttributes="Bold"  
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                        <Span 
+                                                            Text="{Binding OperatingSet.Rpe}"
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Button
+                                                 Style="{StaticResource ExtraSmallRedButtonStyle}"
+                                                 Command="{Binding RemoveDefaultPropertyValueCommand}"
+                                                 CommandParameter="Rpe"
+                                                 Text="Remove"/>
+                                        </HorizontalStackLayout>
+                                    </helpers:If.True>
+                                    <helpers:If.False>
+                                        <Button
+                                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
+                                            Command="{Binding AddDefaultPropertyValueCommand}"
+                                            CommandParameter="Rpe"
+                                            Text="Set Default Value"/>
+                                    </helpers:If.False>
+                                </helpers:If>
+                            </HorizontalStackLayout>
+                        </helpers:If.True>
+                    </helpers:If>
                 </Grid>
                 <Grid>
                     <Label 
@@ -258,37 +290,45 @@
                     <CheckBox 
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSet.IsTrackingTime}" />
-                    <HorizontalStackLayout
-                        Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
-                        IsVisible="{Binding OperatingSet.IsTrackingTime}">
-                        <Label 
-                            IsVisible="{Binding OperatingSet.TimeInSeconds, Converter={StaticResource IsNumberNot0Converter}}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span 
-                                        Text="Default Value: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                    <Span 
-                                        Text="{Binding OperatingSet.TimeInSeconds}"
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Button
-                            Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.TimeInSeconds, Converter={StaticResource IsNumberNot0Converter}}"
-                            Command="{Binding RemoveDefaultPropertyValueCommand}"
-                            CommandParameter="Time"
-                            Text="Remove"/>
-                        <Button
-                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.TimeInSeconds, Converter={StaticResource IsNumber0Converter}}"
-                            Command="{Binding AddDefaultPropertyValueCommand}"
-                            CommandParameter="Time"
-                            Text="Set Default Value"/>
-                    </HorizontalStackLayout>
+                    <helpers:If Condition="{Binding OperatingSet.IsTrackingTime}">
+                        <helpers:If.True>
+                            <HorizontalStackLayout
+                                Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}">
+                                <helpers:If Condition="{Binding OperatingSet.TimeInSeconds}">
+                                    <helpers:If.True>
+                                        <HorizontalStackLayout Spacing="7">
+                                            <Label 
+                                                VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span 
+                                                            Text="Default Value: " 
+                                                            FontAttributes="Bold"  
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                        <Span 
+                                                            Text="{Binding OperatingSet.TimeInSeconds}"
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Button
+                                                 Style="{StaticResource ExtraSmallRedButtonStyle}"
+                                                 Command="{Binding RemoveDefaultPropertyValueCommand}"
+                                                 CommandParameter="Time"
+                                                 Text="Remove"/>
+                                        </HorizontalStackLayout>
+                                    </helpers:If.True>
+                                    <helpers:If.False>
+                                        <Button
+                                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
+                                            Command="{Binding AddDefaultPropertyValueCommand}"
+                                            CommandParameter="Time"
+                                            Text="Set Default Value"/>
+                                    </helpers:If.False>
+                                </helpers:If>
+                            </HorizontalStackLayout>
+                        </helpers:If.True>
+                    </helpers:If>
                 </Grid>
                 <Grid>
                     <Label 
@@ -297,42 +337,50 @@
                     <CheckBox 
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSet.IsTrackingDistance}" />
-                    <HorizontalStackLayout
-                        Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
-                        IsVisible="{Binding OperatingSet.IsTrackingDistance}">
-                        <Picker 
-                            Style="{StaticResource ExtraSmallPickerStyle}"
-                            SelectedIndexChanged="OnDistanceUnitPickerSelectedIndexChanged"
-                            ItemsSource="{Binding ValidDistanceUnitList}"
-                            SelectedItem="{Binding SelectedDistanceUnit}" />
-                        <Label 
-                            IsVisible="{Binding OperatingSet.Distance, Converter={StaticResource IsNumberNot0Converter}}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span 
-                                        Text="Default Value: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                    <Span 
-                                        Text="{Binding OperatingSet.Distance}"
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Button
-                            Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Distance, Converter={StaticResource IsNumberNot0Converter}}"
-                            Command="{Binding RemoveDefaultPropertyValueCommand}"
-                            CommandParameter="Distance"
-                            Text="Remove"/>
-                        <Button
-                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Distance, Converter={StaticResource IsNumber0Converter}}"
-                            Command="{Binding AddDefaultPropertyValueCommand}"
-                            CommandParameter="Distance"
-                            Text="Set Default Value"/>
-                    </HorizontalStackLayout>
+                    <helpers:If Condition="{Binding OperatingSet.IsTrackingDistance}">
+                        <helpers:If.True>
+                            <HorizontalStackLayout
+                                Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}">
+                                <helpers:If Condition="{Binding OperatingSet.Distance}">
+                                    <helpers:If.True>
+                                        <HorizontalStackLayout Spacing="7">
+                                            <Label 
+                                                VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span 
+                                                            Text="Default Value: " 
+                                                            FontAttributes="Bold"  
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                        <Span 
+                                                            Text="{Binding OperatingSet.Distance}"
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Picker 
+                                                Style="{StaticResource ExtraSmallPickerStyle}"
+                                                SelectedIndexChanged="OnDisanceUnitPickerSelectedIndexChanged"
+                                                ItemsSource="{Binding ValidDistanceUnitList}"
+                                                SelectedItem="{Binding SelectedDistanceUnit}" />
+                                            <Button
+                                                 Style="{StaticResource ExtraSmallRedButtonStyle}"
+                                                 Command="{Binding RemoveDefaultPropertyValueCommand}"
+                                                 CommandParameter="Distance"
+                                                 Text="Remove"/>
+                                        </HorizontalStackLayout>
+                                    </helpers:If.True>
+                                    <helpers:If.False>
+                                        <Button
+                                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
+                                            Command="{Binding AddDefaultPropertyValueCommand}"
+                                            CommandParameter="Distance"
+                                            Text="Set Default Value"/>
+                                    </helpers:If.False>
+                                </helpers:If>
+                            </HorizontalStackLayout>
+                        </helpers:If.True>
+                    </helpers:If>
                 </Grid>
                 <Grid>
                     <Label 
@@ -341,37 +389,45 @@
                     <CheckBox 
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSet.IsTrackingCardioResistance}" />
-                    <HorizontalStackLayout
-                        Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
-                        IsVisible="{Binding OperatingSet.IsTrackingCardioResistance}">
-                        <Label 
-                            IsVisible="{Binding OperatingSet.CardioResistance, Converter={StaticResource IsNumberNot0Converter}}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span 
-                                        Text="Default Value: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                    <Span 
-                                        Text="{Binding OperatingSet.CardioResistance}"
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Button
-                            Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.CardioResistance, Converter={StaticResource IsNumberNot0Converter}}"
-                            Command="{Binding RemoveDefaultPropertyValueCommand}"
-                            CommandParameter="CardioResistance"
-                            Text="Remove"/>
-                        <Button
-                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.CardioResistance, Converter={StaticResource IsNumber0Converter}}"
-                            Command="{Binding AddDefaultPropertyValueCommand}"
-                            CommandParameter="CardioResistance"
-                            Text="Set Default Value"/>
-                    </HorizontalStackLayout>
+                    <helpers:If Condition="{Binding OperatingSet.IsTrackingCardioResistance}">
+                        <helpers:If.True>
+                            <HorizontalStackLayout
+                                Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}">
+                                <helpers:If Condition="{Binding OperatingSet.CardioResistance}">
+                                    <helpers:If.True>
+                                        <HorizontalStackLayout Spacing="7">
+                                            <Label 
+                                                VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span 
+                                                            Text="Default Value: " 
+                                                            FontAttributes="Bold"  
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                        <Span 
+                                                            Text="{Binding OperatingSet.CardioResistance}"
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Button
+                                                 Style="{StaticResource ExtraSmallRedButtonStyle}"
+                                                 Command="{Binding RemoveDefaultPropertyValueCommand}"
+                                                 CommandParameter="CardioResitance"
+                                                 Text="Remove"/>
+                                        </HorizontalStackLayout>
+                                    </helpers:If.True>
+                                    <helpers:If.False>
+                                        <Button
+                                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
+                                            Command="{Binding AddDefaultPropertyValueCommand}"
+                                            CommandParameter="CardioResistance"
+                                            Text="Set Default Value"/>
+                                    </helpers:If.False>
+                                </helpers:If>
+                            </HorizontalStackLayout>
+                        </helpers:If.True>
+                    </helpers:If>
                 </Grid>
                 <Grid>
                     <Label 
@@ -380,36 +436,45 @@
                     <CheckBox 
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSet.IsTrackingPercentCompleted}" />
-                    <HorizontalStackLayout
-                        Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
-                        IsVisible="{Binding OperatingSet.IsTrackingPercentCompleted}">
-                        <Label 
-                            IsVisible="{Binding OperatingSet.PercentCompleted, Converter={StaticResource IsNumberNot0Converter}}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span 
-                                        Text="Default Value: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                    <Span 
-                                        Text="{Binding OperatingSet.PercentCompleted}"
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Button
-                            Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.PercentCompleted, Converter={StaticResource IsNumberNot0Converter}}"
-                            Command="{Binding RemoveDefaultPropertyValueCommand}"
-                            CommandParameter="PercentCompleted"
-                            Text="Remove"/>
-                        <Button
-                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
-                            IsVisible="{Binding OperatingSet.PercentCompleted, Converter={StaticResource IsNumber0Converter}}"
-                            Command="{Binding AddPercentCompletedDefaultValueCommand}"
-                            Text="Set Default Value"/>
-                    </HorizontalStackLayout>
+                    <helpers:If Condition="{Binding OperatingSet.IsTrackingPercentCompleted}">
+                        <helpers:If.True>
+                            <HorizontalStackLayout
+                                Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}">
+                                <helpers:If Condition="{Binding OperatingSet.PercentCompleted}">
+                                    <helpers:If.True>
+                                        <HorizontalStackLayout Spacing="7">
+                                            <Label 
+                                                VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span 
+                                                            Text="Default Value: " 
+                                                            FontAttributes="Bold"  
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                        <Span 
+                                                            Text="{Binding OperatingSet.PercentCompleted}"
+                                                            Style="{StaticResource SmallSpanStyle}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Button
+                                                 Style="{StaticResource ExtraSmallRedButtonStyle}"
+                                                 Command="{Binding RemoveDefaultPropertyValueCommand}"
+                                                 CommandParameter="PercentCompleted"
+                                                 Text="Remove"/>
+                                        </HorizontalStackLayout>
+                                    </helpers:If.True>
+                                    <helpers:If.False>
+                                        <Button
+                                            Style="{StaticResource ExtraSmallGreenButtonStyle}"
+                                            Command="{Binding AddDefaultPropertyValueCommand}"
+                                            CommandParameter="PercentCompleted"
+                                            Text="Set Default Value"/>
+                                    </helpers:If.False>
+                                </helpers:If>
+                            </HorizontalStackLayout>
+                        </helpers:If.True>
+                    </helpers:If>
                 </Grid>
                 <Grid>
                     <Label 
@@ -420,15 +485,20 @@
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSet.IsWarmupSet}" />
                 </Grid>
-                <Grid IsVisible="{Binding OperatingSet.IsTrackingWeight}">
-                    <Label 
-                        Text="Add Body Weight To Weight"
-                        TextColor="{DynamicResource MediumDarkGray}"
-                        Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
-                    <CheckBox 
-                        Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
-                        IsChecked="{Binding OperatingSet.IsUsingBodyWeightAsWeight}" />
-                </Grid>
+                <helpers:If Condition="{Binding OperatingSet.IsTrackingWeight}">
+                    <helpers:If.True>
+                        <Grid>
+                            <Label 
+                                Text="Add Body Weight To Weight"
+                                TextColor="{DynamicResource MediumDarkGray}"
+                                Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
+                            <CheckBox 
+                                Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
+                                IsChecked="{Binding OperatingSet.IsUsingBodyWeightAsWeight}" />
+                        </Grid>
+                    </helpers:If.True>
+                </helpers:If>
+                
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Column="1">
                 <Label 
