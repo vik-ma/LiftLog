@@ -125,6 +125,12 @@
         {
             if (OperatingSet is null || OperatingWorkoutTemplate is null) return;
 
+            if (SelectedExercise is null)
+            {
+                await Shell.Current.DisplayAlert("Error", "No Exercise Selected!", "OK");
+                return;
+            }
+
             if (IsEditing)
             {
                 // If editing existing Set
@@ -230,8 +236,6 @@
         private async Task UpdateSetAsync()
         {
             if (OperatingSet is null) return;
-
-            OperatingSet.ExerciseId = SelectedExercise?.Id ?? 0;
 
             var (isSetValid, errorMessage) = OperatingSet.ValidateSet();
             if (!isSetValid)
