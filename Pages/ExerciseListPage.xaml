@@ -4,6 +4,7 @@
              x:Class="LocalLiftLog.Pages.ExerciseListPage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:models="clr-namespace:LocalLiftLog.Models"
+             xmlns:helpers="clr-namespace:LocalLiftLog.Helpers"
              x:DataType="viewmodel:ExerciseListViewModel"
              Title="Exercise List">
     <VerticalStackLayout>
@@ -116,12 +117,15 @@
                     <Label 
                         Text="{Binding ExerciseGroupFilterSet, Converter={StaticResource ExerciseGroupConverter}}"
                         Style="{StaticResource SmallSpanStyle}" />
-                    <Button 
-                        HorizontalOptions="Center"
-                        Text="Reset"
-                        IsVisible="{Binding ExerciseGroupFilterSet.Count}"
-                        Command="{Binding ResetFilterListCommand}"
-                        Style="{StaticResource MediumRedButtonStyle}" />
+                    <helpers:If Condition="{Binding ExerciseGroupFilterSet.Count}">
+                        <helpers:If.True>
+                            <Button 
+                                HorizontalOptions="Center"
+                                Text="Reset"
+                                Command="{Binding ResetFilterListCommand}"
+                                Style="{StaticResource MediumRedButtonStyle}" />
+                        </helpers:If.True>
+                    </helpers:If>
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </Grid>
