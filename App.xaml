@@ -306,6 +306,11 @@
                 <Setter Property="HeightRequest" Value="42" />
                 <Setter Property="MinimumHeightRequest" Value="42" />
             </Style>
+            <Style x:Key="ScheduleDayGridStyle" TargetType="Grid">
+                <Setter Property="ColumnDefinitions" Value="Auto, Auto" />
+                <Setter Property="RowDefinitions" Value="Auto, Auto" />
+                <Setter Property="ColumnSpacing" Value="15" />
+            </Style>
 
             <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyTextConverter" />
             <converters:MultiBindingConverter x:Key="MultiBindingConverter" />
