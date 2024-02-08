@@ -4,30 +4,36 @@
              x:Class="LocalLiftLog.Pages.CreateSetTemplatePage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:models="clr-namespace:LocalLiftLog.Models"
+             xmlns:helpers="clr-namespace:LocalLiftLog.Helpers"
              x:DataType="viewmodel:CreateSetTemplateViewModel"
              Title="Create Set Template">
     <VerticalStackLayout>
-        <HorizontalStackLayout 
-            HorizontalOptions="Center"
-            Spacing="10"
-            IsVisible="{Binding IsEditing}">
-            <Label 
-                Text="Editing Set: "
-                Style="{StaticResource LargeHeaderLabelStyle}" />
-            <Label 
-                Text="{Binding SelectedExercise.Name}"
-                Style="{StaticResource LargeHeaderLabelStyle}"
-                TextColor="{DynamicResource DeepPink}" />
-        </HorizontalStackLayout>
-        <HorizontalStackLayout 
-            HorizontalOptions="Center"
-            Spacing="10"
-            IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}">
-            <Label 
-                Text="Add Exercise"
-                Style="{StaticResource LargeHeaderLabelStyle}"
-                TextColor="{DynamicResource Primary}"/>
-        </HorizontalStackLayout>
+        <helpers:If Condition="{Binding IsEditing}">
+            <helpers:If.True>
+                <HorizontalStackLayout 
+                    HorizontalOptions="Center"
+                    Spacing="10">
+                    <Label 
+                        Text="Editing Set: "
+                        Style="{StaticResource LargeHeaderLabelStyle}" />
+                    <Label 
+                        Text="{Binding SelectedExercise.Name}"
+                        Style="{StaticResource LargeHeaderLabelStyle}"
+                        TextColor="{DynamicResource DeepPink}" />
+                </HorizontalStackLayout>
+            </helpers:If.True>
+            <helpers:If.False>
+                <HorizontalStackLayout 
+                    HorizontalOptions="Center"
+                    Spacing="10">
+                    <Label 
+                        Text="Add Exercise"
+                        Style="{StaticResource LargeHeaderLabelStyle}"
+                        TextColor="{DynamicResource Primary}"/>
+                </HorizontalStackLayout>
+            </helpers:If.False>
+        </helpers:If>
+
         <Grid 
             RowDefinitions="*, *"
             ColumnDefinitions="*, Auto"
@@ -438,12 +444,15 @@
         <HorizontalStackLayout 
             Spacing="15"
             HorizontalOptions="Center">
-            <Button 
-                IsVisible="{Binding IsEditing}"
-                HorizontalOptions="Center"
-                Text="Delete Set"
-                Style="{StaticResource MediumRedButtonStyle}"
-                Command="{Binding DeleteSetCommand}"/>
+            <helpers:If Condition="{Binding IsEditing}">
+                <helpers:If.True>
+                    <Button 
+                        HorizontalOptions="Center"
+                        Text="Delete Set"
+                        Style="{StaticResource MediumRedButtonStyle}"
+                        Command="{Binding DeleteSetCommand}"/>
+                </helpers:If.True>
+            </helpers:If>
 
             <Button 
                 HorizontalOptions="Center"
