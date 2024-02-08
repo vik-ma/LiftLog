@@ -319,7 +319,7 @@
             <converters:ExerciseGroupConverter x:Key="ExerciseGroupConverter" />
             <converters:ScheduleTypeConverter x:Key="ScheduleTypeConverter" />
             <converters:IsNumber0Converter x:Key="IsNumber0Converter" />
-            <converters:IsIntNot0Converter x:Key="IsIntNot0Converter" />
+            <converters:IsNumberNot0Converter x:Key="IsNumberNot0Converter" />
             <converters:AreStringsOrIntsEqualMultiBindingConverter x:Key="AreStringsOrIntsEqualMultiBindingConverter" />
             <converters:DateToWeekdayConverter x:Key="DateToWeekdayConverter" />
             <converters:DateTimeToTimestampConverter x:Key="DateTimeToTimestampConverter" />

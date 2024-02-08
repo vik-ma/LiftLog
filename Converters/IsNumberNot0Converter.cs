@@ -1,12 +1,13 @@
 ﻿namespace LocalLiftLog.Converters
 {
-    public class IsIntNot0Converter : IValueConverter
+    public class IsNumberNot0Converter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is int intValue)
+            if (value is int || value is double)
             {
-                return intValue != 0;
+                if (value is int intValue) return intValue != 0;
+                if (value is double doubleValue) return doubleValue != 0;
             }
 
             return false;

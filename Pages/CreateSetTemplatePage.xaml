@@ -95,7 +95,7 @@
                             ItemsSource="{Binding ValidWeightUnitList}"
                             SelectedItem="{Binding SelectedWeightUnit}" />
                         <Label 
-                            IsVisible="{Binding OperatingSet.Weight, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.Weight, Converter={StaticResource IsNumberNot0Converter}}"
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
@@ -111,7 +111,7 @@
                         </Label>
                         <Button
                             Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Weight, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.Weight, Converter={StaticResource IsNumberNot0Converter}}"
                             Command="{Binding RemoveDefaultPropertyValueCommand}"
                             CommandParameter="Weight"
                             Text="Remove"/>
@@ -134,7 +134,7 @@
                         Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
                         IsVisible="{Binding OperatingSet.IsTrackingReps}">
                         <Label 
-                            IsVisible="{Binding OperatingSet.Reps, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.Reps, Converter={StaticResource IsNumberNot0Converter}}"
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
@@ -150,7 +150,7 @@
                         </Label>
                         <Button
                             Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Reps, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.Reps, Converter={StaticResource IsNumberNot0Converter}}"
                             Command="{Binding RemoveDefaultPropertyValueCommand}"
                             CommandParameter="Reps"
                             Text="Remove"/>
@@ -173,7 +173,7 @@
                         Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
                         IsVisible="{Binding OperatingSet.IsTrackingRir}">
                         <Label 
-                            IsVisible="{Binding OperatingSet.Rir, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.Rir, Converter={StaticResource IsNumberNot0Converter}}"
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
@@ -189,7 +189,7 @@
                         </Label>
                         <Button
                             Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Rir, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.Rir, Converter={StaticResource IsNumberNot0Converter}}"
                             Command="{Binding RemoveDefaultPropertyValueCommand}"
                             CommandParameter="Rir"
                             Text="Remove"/>
@@ -212,7 +212,7 @@
                         Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
                         IsVisible="{Binding OperatingSet.IsTrackingRpe}">
                         <Label 
-                            IsVisible="{Binding OperatingSet.Rpe, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.Rpe, Converter={StaticResource IsNumberNot0Converter}}"
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
@@ -228,7 +228,7 @@
                         </Label>
                         <Button
                             Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Rpe, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.Rpe, Converter={StaticResource IsNumberNot0Converter}}"
                             Command="{Binding RemoveDefaultPropertyValueCommand}"
                             CommandParameter="Rpe"
                             Text="Remove"/>
@@ -251,7 +251,7 @@
                         Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
                         IsVisible="{Binding OperatingSet.IsTrackingTime}">
                         <Label 
-                            IsVisible="{Binding OperatingSet.TimeInSeconds, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.TimeInSeconds, Converter={StaticResource IsNumberNot0Converter}}"
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
@@ -267,7 +267,7 @@
                         </Label>
                         <Button
                             Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.TimeInSeconds, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.TimeInSeconds, Converter={StaticResource IsNumberNot0Converter}}"
                             Command="{Binding RemoveDefaultPropertyValueCommand}"
                             CommandParameter="Time"
                             Text="Remove"/>
@@ -295,7 +295,7 @@
                             ItemsSource="{Binding ValidDistanceUnitList}"
                             SelectedItem="{Binding SelectedDistanceUnit}" />
                         <Label 
-                            IsVisible="{Binding OperatingSet.Distance, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.Distance, Converter={StaticResource IsNumberNot0Converter}}"
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
@@ -311,7 +311,7 @@
                         </Label>
                         <Button
                             Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.Distance, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.Distance, Converter={StaticResource IsNumberNot0Converter}}"
                             Command="{Binding RemoveDefaultPropertyValueCommand}"
                             CommandParameter="Distance"
                             Text="Remove"/>
@@ -334,7 +334,7 @@
                         Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
                         IsVisible="{Binding OperatingSet.IsTrackingCardioResistance}">
                         <Label 
-                            IsVisible="{Binding OperatingSet.CardioResistance, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.CardioResistance, Converter={StaticResource IsNumberNot0Converter}}"
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
@@ -350,7 +350,7 @@
                         </Label>
                         <Button
                             Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.CardioResistance, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.CardioResistance, Converter={StaticResource IsNumberNot0Converter}}"
                             Command="{Binding RemoveDefaultPropertyValueCommand}"
                             CommandParameter="CardioResistance"
                             Text="Remove"/>
@@ -373,7 +373,7 @@
                         Style="{StaticResource CreateSetTemplateDefaultValueLayoutStyle}"
                         IsVisible="{Binding OperatingSet.IsTrackingPercentCompleted}">
                         <Label 
-                            IsVisible="{Binding OperatingSet.PercentCompleted, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.PercentCompleted, Converter={StaticResource IsNumberNot0Converter}}"
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
@@ -389,7 +389,7 @@
                         </Label>
                         <Button
                             Style="{StaticResource ExtraSmallRedButtonStyle}"
-                            IsVisible="{Binding OperatingSet.PercentCompleted, Converter={StaticResource IsIntNot0Converter}}"
+                            IsVisible="{Binding OperatingSet.PercentCompleted, Converter={StaticResource IsNumberNot0Converter}}"
                             Command="{Binding RemoveDefaultPropertyValueCommand}"
                             CommandParameter="PercentCompleted"
                             Text="Remove"/>

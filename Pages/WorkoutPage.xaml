@@ -43,7 +43,7 @@
             <HorizontalStackLayout
                 HorizontalOptions="Center"
                 Spacing="10">
-                <helpers:If Condition="{Binding Workout.WorkoutTemplateId, Converter={StaticResource IsIntNot0Converter}}">
+                <helpers:If Condition="{Binding Workout.WorkoutTemplateId, Converter={StaticResource IsNumberNot0Converter}}">
                     <helpers:If.True>
                         <HorizontalStackLayout Spacing="10">
                             <Label 
@@ -62,7 +62,7 @@
                         Text="Load Workout Template"
                         Command="{Binding ShowWorkoutTemplateListPopupCommand}"
                         Style="{StaticResource ExtraSmallButtonStyle}" />
-                    <helpers:If Condition="{Binding Workout.WorkoutTemplateId, Converter={StaticResource IsIntNot0Converter}}">
+                    <helpers:If Condition="{Binding Workout.WorkoutTemplateId, Converter={StaticResource IsNumberNot0Converter}}">
                         <helpers:If.True>
                             <Button 
                                 Text="Remove Workout Template"
