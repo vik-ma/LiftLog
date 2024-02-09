@@ -185,26 +185,26 @@
 
             if (!userClickedSetBodyWeight) return false;
 
-            int userInputInt = 0;
+            double userInputDouble = 0;
 
             // Keep asking for input until valid input has been entered or user clicks Cancel
-            while (userInputInt == 0)
+            while (userInputDouble == 0)
             {
                 string enteredNumber = await Shell.Current.DisplayPromptAsync("Enter Body Weight", "Enter your current body weight:\n", "OK", "Cancel");
 
                 // Return false if user clicked Cancel
                 if (enteredNumber == null) return false;
 
-                bool validInput = int.TryParse(enteredNumber, out int enteredNumberInt);
+                bool validInput = double.TryParse(enteredNumber, out double enteredNumberDouble);
 
-                if (!validInput || enteredNumberInt < ConstantsHelper.BodyWeightMinValue || enteredNumberInt > ConstantsHelper.BodyWeightMaxValue)
+                if (!validInput || enteredNumberDouble < ConstantsHelper.BodyWeightMinValue || enteredNumberDouble > ConstantsHelper.BodyWeightMaxValue)
                 {
                     await Shell.Current.DisplayAlert("Error", "Invalid Input Value", "OK");
                 }
                 else
                 {
                     // Exit loop if user entered valid input
-                    userInputInt = enteredNumberInt;
+                    userInputDouble = enteredNumberDouble;
                 }
             }
 
@@ -212,8 +212,8 @@
 
             UserWeight userWeight = new()
             {
-                BodyWeight = userInputInt,
-                DateTime = currentDateTimeString
+                BodyWeight = userInputDouble,
+                DateTime = currentDateTimeString,
             };
 
             try
