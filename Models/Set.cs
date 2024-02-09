@@ -104,6 +104,15 @@
             return true;
         }
 
+        public bool ValidateRpe()
+        {
+            if (Rpe < 0 || Rpe > 10) return false;
+
+            if (Rpe == 0 && IsTrackingRpe) return false;
+
+            return true;
+        }
+
         public (bool IsValid, string? ErrorMessage) ValidateSet()
         {
             if (ExerciseId < 1) return (false, $"Invalid Exercise Id {ExerciseId}");
@@ -122,6 +131,9 @@
 
             // Validate that Set has a WorkoutTemplateId if it is Template
             if (!ValidateTemplateId()) return (false, "Invalid Workout Template");
+
+            // Validate that RPE is between 0 or 10, and not 0 if IsTrackingRpe is true
+            if (!ValidateRpe()) return (false, "Invalid RPE Value");
 
             return (true, null);
         }
