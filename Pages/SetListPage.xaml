@@ -23,31 +23,37 @@
                         Text="Show All"
                         Command="{Binding FilterSetListCommand}"
                         CommandParameter="All"
-                        Style="{StaticResource ExtraSmallButtonStyle}" />
+                        Style="{StaticResource SmallButtonStyle}" />
                     <Button 
                         Text="Show Only Templates"
                         Command="{Binding FilterSetListCommand}"
                         CommandParameter="Template"
-                        Style="{StaticResource ExtraSmallButtonStyle}" />
+                        Style="{StaticResource SmallButtonStyle}" />
                     <Button 
                         Text="Don't Show Templates"
                         Command="{Binding FilterSetListCommand}"
                         CommandParameter="NotTemplate"
-                        Style="{StaticResource ExtraSmallButtonStyle}" />
+                        Style="{StaticResource SmallButtonStyle}" />
                 </HorizontalStackLayout>
                 <CollectionView
                     ItemsSource="{Binding FilteredSetList}"
                     HorizontalOptions="Center">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout 
-                            ItemSpacing="8"
+                            ItemSpacing="5"
                             Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Set">
-                            <VerticalStackLayout Spacing="5">
-                                <HorizontalStackLayout 
-                                    HorizontalOptions="Center"
+                            <Grid 
+                                HorizontalOptions="Center"
+                                ColumnDefinitions="Auto, Auto"
+                                RowDefinitions="*, *, *"
+                                ColumnSpacing="10"
+                                RowSpacing="1">
+                                <HorizontalStackLayout
+                                    Grid.Row="0"
+                                    Grid.Column="0"
                                     Spacing="5">
                                     <Label VerticalOptions="Center">
                                         <Label.FormattedText>
@@ -114,9 +120,23 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Note: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Note}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </HorizontalStackLayout>
                                 <HorizontalStackLayout 
-                                    HorizontalOptions="Center"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
                                     Spacing="5">
                                     <Label VerticalOptions="Center">
                                         <Label.FormattedText>
@@ -144,23 +164,190 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Comment: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Comment}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Weight: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Weight}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Weight Unit: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding WeightUnit}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Reps: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Reps}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="RIR: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Rir}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="RPE: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Rpe}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout 
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Spacing="5">
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Time In Seconds: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding TimeInSeconds}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Distance: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Distance}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Distance Unit: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding DistanceUnit}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Cardio Resistance: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding CardioResistance}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Percent Completed: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding PercentCompleted}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="User Weight: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding UserWeight}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Grid.RowSpan="3"
+                                        VerticalOptions="Center"
+                                        Spacing="5">
+                                    <Button 
+                                        Text="Delete"
+                                        Style="{StaticResource SmallRedButtonStyle}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetListViewModel}}, Path=DeleteSetCommand}"
+                                        CommandParameter="{Binding .}" />
                                     <helpers:If Condition="{Binding IsTemplate}">
                                         <helpers:If.True>
                                             <Button 
-                                                Text="Go To Page"
-                                                Style="{StaticResource ExtraSmallButtonStyle}"
+                                                Text="Go To Template Page"
+                                                Style="{StaticResource SmallButtonStyle}"
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetListViewModel}}, Path=GoToCreateSetTemplatePageCommand}"
                                                 CommandParameter="{Binding .}" />
                                         </helpers:If.True>
                                     </helpers:If>
-
-                                    <Button 
-                                        Text="Delete"
-                                        Style="{StaticResource ExtraSmallRedButtonStyle}"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SetListViewModel}}, Path=DeleteSetCommand}"
-                                        CommandParameter="{Binding .}" />
                                 </HorizontalStackLayout>
-                            </VerticalStackLayout>
+                            </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                     <CollectionView.EmptyView>
