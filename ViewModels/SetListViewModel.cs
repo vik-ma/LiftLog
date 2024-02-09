@@ -134,7 +134,8 @@
             SetWorkoutTemplatePackage package = new() 
             {
                 WorkoutTemplate = workoutTemplate,
-                Set = set
+                Set = set,
+                IsEditing = true
             };
 
             var navigationParameter = new Dictionary<string, object>
