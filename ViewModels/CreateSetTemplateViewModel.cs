@@ -138,34 +138,20 @@
                 return;
             }
 
-            Set newSet = new()
-            {
-                IsTemplate = true,
-                WorkoutTemplateId = OperatingWorkoutTemplate.Id,
-                ExerciseId = SelectedExercise.Id,
-                Note = OperatingSet.Note,
-                IsTrackingWeight = OperatingSet.IsTrackingWeight,
-                IsTrackingReps = OperatingSet.IsTrackingReps,
-                IsTrackingRir = OperatingSet.IsTrackingRir,
-                IsTrackingRpe = OperatingSet.IsTrackingRpe,
-                IsTrackingTime = OperatingSet.IsTrackingTime,
-                IsTrackingDistance = OperatingSet.IsTrackingDistance,
-                IsTrackingCardioResistance = OperatingSet.IsTrackingCardioResistance,
-                IsUsingBodyWeightAsWeight = OperatingSet.IsUsingBodyWeightAsWeight,
-                WeightUnit = SelectedWeightUnit,
-                DistanceUnit = SelectedDistanceUnit,
-            };
+            OperatingSet.IsTemplate = true;
+            OperatingSet.WorkoutTemplateId = OperatingWorkoutTemplate.Id;
+            OperatingSet.ExerciseId = SelectedExercise.Id;
+            OperatingSet.WeightUnit = SelectedWeightUnit;
+            OperatingSet.DistanceUnit = SelectedDistanceUnit;
 
-            int numSets = NumNewSets;
-
-            var (isSetValid, errorMessage) = newSet.ValidateSet();
+            var (isSetValid, errorMessage) = OperatingSet.ValidateSet();
             if (!isSetValid)
             {
                 await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
                 return;
             }
 
-            if (newSet.IsUsingBodyWeightAsWeight)
+            if (OperatingSet.IsUsingBodyWeightAsWeight)
             {
                 // If no Active UserWeight is set, but IsUsingBodyWeightAsWeight has been checked
                 if (UserSettingsViewModel.UserSettings.ActiveUserWeightId == 0)
@@ -176,18 +162,20 @@
                     if (!userUpdatedUserWeight) return;
                 }
 
-                newSet.DisableBodyWeightTrackingIfNotTrackingWeight();
+                OperatingSet.DisableBodyWeightTrackingIfNotTrackingWeight();
             }
 
             if (IsEditing)
             {
                 // If editing existing Set
-                await UpdateSetAsync(newSet);
+                await UpdateSetAsync();
             }
             else
             {
                 // If creating new Set(s)
-                await CreateNewSetAsync(newSet, numSets);
+                int numSets = NumNewSets;
+
+                await CreateNewSetAsync(OperatingSet, numSets);
             }
         }
 
@@ -240,11 +228,11 @@
         }
 
         [RelayCommand]
-        private async Task UpdateSetAsync(Set set)
+        private async Task UpdateSetAsync()
         {
-            if (set is null) return;
+            if (OperatingSet is null) return;
 
-            if (!await _context.UpdateItemAsync<Set>(set))
+            if (!await _context.UpdateItemAsync<Set>(OperatingSet))
             {
                 await Shell.Current.DisplayAlert("Error", "Error occured when updating Set.", "OK");
             }
