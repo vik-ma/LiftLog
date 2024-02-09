@@ -131,12 +131,10 @@
 
             await LoadOperatingWorkoutTemplateAsync();
 
-            if (Workout.IsWorkoutLoaded)
-            {
-                // Load existing Sets for Workout to SetList
-                await LoadSavedSetsAsync();
-            }
-            else
+            // Load existing Sets for Workout to SetList
+            await LoadSavedSetsAsync();
+
+            if (!Workout.IsWorkoutLoaded)
             {
                 // Create new Sets from WorkoutTemplate and add to SetList
                 await LoadSetListFromWorkoutTemplateIdAsync();
@@ -323,7 +321,6 @@
 
                 // Set Workout as loaded, as to not create new Sets next time Workout is opened
                 Workout.IsWorkoutLoaded = true;
-                await UpdateWorkoutAsync();
 
                 if (setExercisePackageList.Any())
                 {
@@ -336,6 +333,9 @@
                         SetList.Add(set);
                     }
                 }
+
+                // GenerateSetListOrderString also saves Workout
+                await GenerateSetListOrderString();
 
                 if (WorkoutTemplateContainsInvalidExercise)
                 {
