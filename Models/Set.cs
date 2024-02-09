@@ -30,8 +30,6 @@
         [ObservableProperty]
         public bool isTrackingPercentCompleted;
         [ObservableProperty]
-        public bool isUsingBodyWeightAsWeight;
-        [ObservableProperty]
         public bool isCompleted;
         [ObservableProperty]
         public string timeCompleted;
@@ -142,7 +140,6 @@
             (IsTrackingDistance ? isTrackingList : isNotTrackingList).Add("Distance");
             (IsTrackingCardioResistance ? isTrackingList : isNotTrackingList).Add("Cardio Resistance");
             (IsTrackingPercentCompleted ? isTrackingList : isNotTrackingList).Add("Percent Completed");
-            (IsUsingBodyWeightAsWeight ? isTrackingList : isNotTrackingList).Add("Count Body Weight");
 
             Dictionary<bool, List<string>> setTrackingDict = new()
             {
@@ -164,15 +161,6 @@
             if (!IsTrackingDistance && Distance != 0) Distance = 0;
             if (!IsTrackingCardioResistance && CardioResistance != 0) CardioResistance = 0;
             if (!IsTrackingPercentCompleted && PercentCompleted != 0) PercentCompleted = 0;
-        }
-
-        public void DisableBodyWeightTrackingIfNotTrackingWeight()
-        {
-            if (!IsTrackingWeight)
-            {
-                // Set IsUsingBodyWeightAsWeight to false if it is checked even if Weight is not tracked
-                IsUsingBodyWeightAsWeight = false;
-            }
         }
     }
 }

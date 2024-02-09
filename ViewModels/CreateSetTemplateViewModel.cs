@@ -151,20 +151,6 @@
                 return;
             }
 
-            if (OperatingSet.IsUsingBodyWeightAsWeight)
-            {
-                // If no Active UserWeight is set, but IsUsingBodyWeightAsWeight has been checked
-                if (UserSettingsViewModel.UserSettings.ActiveUserWeightId == 0)
-                {
-                    bool userUpdatedUserWeight = await ShowUpdateWeightPrompt();
-
-                    // Exit function if user did not enter a valid weight
-                    if (!userUpdatedUserWeight) return;
-                }
-
-                OperatingSet.DisableBodyWeightTrackingIfNotTrackingWeight();
-            }
-
             if (IsEditing)
             {
                 // If editing existing Set
@@ -181,6 +167,8 @@
 
         private async Task<bool> ShowUpdateWeightPrompt()
         {
+            // TODO: MOVE FUNCTION TO WORKOUT VIEWMODEL
+
             bool userClickedSetBodyWeight = await Shell.Current.DisplayAlert("No Body Weight Set", "A body weight needs to be set in order to add body weight to total weight.\n\nDo you want to set a body weight?", "Set Body Weight", "Cancel");
 
             if (!userClickedSetBodyWeight) return false;

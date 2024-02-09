@@ -485,20 +485,6 @@
                         Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
                         IsChecked="{Binding OperatingSet.IsWarmupSet}" />
                 </Grid>
-                <helpers:If Condition="{Binding OperatingSet.IsTrackingWeight}">
-                    <helpers:If.True>
-                        <Grid>
-                            <Label 
-                                Text="Add Body Weight To Weight"
-                                TextColor="{DynamicResource MediumDarkGray}"
-                                Style="{StaticResource CreateSetTemplateCheckBoxLabelStyle}" />
-                            <CheckBox 
-                                Style="{StaticResource CreateSetTemplateCheckBoxStyle}"
-                                IsChecked="{Binding OperatingSet.IsUsingBodyWeightAsWeight}" />
-                        </Grid>
-                    </helpers:If.True>
-                </helpers:If>
-                
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Column="1">
                 <Label 

@@ -296,8 +296,6 @@
                 return true;
             }
 
-            // Update IsUsingBodyWeightAsWeight property in SetTemplate to false
-            setPackage.Set.IsUsingBodyWeightAsWeight = false;
             await UpdateSetTemplateAsync(setPackage.Set);
 
             return true;
@@ -320,12 +318,6 @@
         private async Task SaveSetAsync(SetPackage setPackage)
         {
             if (setPackage is null) return;
-
-            if (setPackage.Set.IsUsingBodyWeightAsWeight && !ValidateUserWeightExists())
-            {
-                // Exit function if user clicked cancel in ShowUpdateWeightPrompt function
-                if (!await ShowUpdateWeightPrompt(setPackage)) return;
-            }
 
             setPackage.CompletedSet.IsCompleted = true;
             setPackage.CompletedSet.TimeCompleted = DateTimeHelper.GetCurrentFormattedDateTime();

@@ -237,13 +237,7 @@
                                             Style="{StaticResource StartedWorkoutEntryFieldStyle}"
                                             IsVisible="{Binding Set.IsTrackingPercentCompleted}" />
                                     </HorizontalStackLayout>
-                                    <Label
-                                        Text="Includes Body Weight"
-                                        TextColor="{DynamicResource DarkGray}"
-                                        FontAttributes="Italic"
-                                        Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
-                                        IsVisible="{Binding Set.IsUsingBodyWeightAsWeight}" />
-                                </FlexLayout>
+                                    </FlexLayout>
                                 <Button 
                                     Grid.Column="1"
                                     HeightRequest="50"
