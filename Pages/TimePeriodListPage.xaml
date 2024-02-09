@@ -4,6 +4,7 @@
              x:Class="LocalLiftLog.Pages.TimePeriodListPage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:models="clr-namespace:LocalLiftLog.Models"
+             xmlns:helpers="clr-namespace:LocalLiftLog.Helpers"
              x:DataType="viewmodel:TimePeriodViewModel"
              Title="Time Period List">
     <VerticalStackLayout>
@@ -126,25 +127,30 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label VerticalOptions="Center">
-                                    <Label.IsVisible>
-                                        <MultiBinding Converter="{StaticResource AreStringsOrIntsEqualMultiBindingConverter}">
-                                            <MultiBinding.Bindings>
-                                                <Binding Path="Id" />
-                                                <Binding Path="UserSettingsViewModel.UserSettings.ActiveTimePeriodId" Source="{RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}" />
-                                            </MultiBinding.Bindings>
-                                        </MultiBinding>
-                                    </Label.IsVisible>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
+                                <helpers:If>
+                                    <helpers:If.Condition>
+                                    <MultiBinding Converter="{StaticResource AreStringsOrIntsEqualMultiBindingConverter}">
+                                        <MultiBinding.Bindings>
+                                            <Binding Path="Id" />
+                                            <Binding Path="UserSettingsViewModel.UserSettings.ActiveTimePeriodId" Source="{RelativeSource AncestorType={x:Type viewmodel:TimePeriodViewModel}}" />
+                                        </MultiBinding.Bindings>
+                                    </MultiBinding>
+                                    </helpers:If.Condition>
+                                    <helpers:If.True>
+                                        <Label VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
                                                 Text="Active Period" 
                                                 FontAttributes="Bold"
                                                 TextColor="{DynamicResource MediumGreen}"
                                                 Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </helpers:If.True>
+                                </helpers:If>
+
                             </HorizontalStackLayout>
                             <HorizontalStackLayout 
                                 HorizontalOptions="Center"

@@ -360,7 +360,7 @@
                                             </Label>
                                             <Picker 
                                                 Style="{StaticResource ExtraSmallPickerStyle}"
-                                                SelectedIndexChanged="OnDisanceUnitPickerSelectedIndexChanged"
+                                                SelectedIndexChanged="OnDistanceUnitPickerSelectedIndexChanged"
                                                 ItemsSource="{Binding ValidDistanceUnitList}"
                                                 SelectedItem="{Binding SelectedDistanceUnit}" />
                                             <Button

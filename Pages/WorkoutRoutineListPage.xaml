@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:models="clr-namespace:LocalLiftLog.Models"
+             xmlns:helpers="clr-namespace:LocalLiftLog.Helpers"
              x:DataType="viewmodel:WorkoutRoutineListViewModel"
              x:Class="LocalLiftLog.Pages.WorkoutRoutineListPage"
              Title="Workout Routine List">
@@ -106,25 +107,29 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label>
-                                    <Label.IsVisible>
+                                <helpers:If>
+                                    <helpers:If.Condition>
                                         <MultiBinding Converter="{StaticResource AreStringsOrIntsEqualMultiBindingConverter}">
                                             <MultiBinding.Bindings>
                                                 <Binding Path="Id" />
                                                 <Binding Path="UserSettingsViewModel.UserSettings.ActiveWorkoutRoutineId" Source="{RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}" />
                                             </MultiBinding.Bindings>
                                         </MultiBinding>
-                                    </Label.IsVisible>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Active Routine" 
-                                                FontAttributes="Bold"
-                                                TextColor="{DynamicResource MediumGreen}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
+                                    </helpers:If.Condition>
+                                    <helpers:If.True>
+                                        <Label VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="Active Routine" 
+                                                        FontAttributes="Bold"
+                                                        TextColor="{DynamicResource MediumGreen}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </helpers:If.True>
+                                </helpers:If>
                             </VerticalStackLayout>
                             <VerticalStackLayout
                                 Grid.Row="0"
