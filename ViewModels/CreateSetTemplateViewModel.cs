@@ -168,6 +168,7 @@
         private async Task<bool> ShowUpdateWeightPrompt()
         {
             // TODO: MOVE FUNCTION TO WORKOUT VIEWMODEL
+            // TODO: ENSURE THAT SET WEIGHTUNIT EQUALS USERWEIGHT WEIGHTUNIT 
 
             bool userClickedSetBodyWeight = await Shell.Current.DisplayAlert("No Body Weight Set", "A body weight needs to be set in order to add body weight to total weight.\n\nDo you want to set a body weight?", "Set Body Weight", "Cancel");
 
