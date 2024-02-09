@@ -138,55 +138,55 @@
                 return;
             }
 
+            Set newSet = new()
+            {
+                IsTemplate = true,
+                WorkoutTemplateId = OperatingWorkoutTemplate.Id,
+                ExerciseId = SelectedExercise.Id,
+                Note = OperatingSet.Note,
+                IsTrackingWeight = OperatingSet.IsTrackingWeight,
+                IsTrackingReps = OperatingSet.IsTrackingReps,
+                IsTrackingRir = OperatingSet.IsTrackingRir,
+                IsTrackingRpe = OperatingSet.IsTrackingRpe,
+                IsTrackingTime = OperatingSet.IsTrackingTime,
+                IsTrackingDistance = OperatingSet.IsTrackingDistance,
+                IsTrackingCardioResistance = OperatingSet.IsTrackingCardioResistance,
+                IsUsingBodyWeightAsWeight = OperatingSet.IsUsingBodyWeightAsWeight,
+                WeightUnit = SelectedWeightUnit,
+                DistanceUnit = SelectedDistanceUnit,
+            };
+
+            int numSets = NumNewSets;
+
+            var (isSetValid, errorMessage) = newSet.ValidateSet();
+            if (!isSetValid)
+            {
+                await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
+                return;
+            }
+
+            if (newSet.IsUsingBodyWeightAsWeight)
+            {
+                // If no Active UserWeight is set, but IsUsingBodyWeightAsWeight has been checked
+                if (UserSettingsViewModel.UserSettings.ActiveUserWeightId == 0)
+                {
+                    bool userUpdatedUserWeight = await ShowUpdateWeightPrompt();
+
+                    // Exit function if user did not enter a valid weight
+                    if (!userUpdatedUserWeight) return;
+                }
+
+                newSet.DisableBodyWeightTrackingIfNotTrackingWeight();
+            }
+
             if (IsEditing)
             {
                 // If editing existing Set
-                await UpdateSetAsync();
+                await UpdateSetAsync(newSet);
             }
             else
             {
                 // If creating new Set(s)
-                Set newSet = new()
-                {
-                    IsTemplate = true,
-                    WorkoutTemplateId = OperatingWorkoutTemplate.Id,
-                    ExerciseId = SelectedExercise.Id,
-                    Note = OperatingSet.Note,
-                    IsTrackingWeight = OperatingSet.IsTrackingWeight,
-                    IsTrackingReps = OperatingSet.IsTrackingReps,
-                    IsTrackingRir = OperatingSet.IsTrackingRir,
-                    IsTrackingRpe = OperatingSet.IsTrackingRpe,
-                    IsTrackingTime = OperatingSet.IsTrackingTime,
-                    IsTrackingDistance = OperatingSet.IsTrackingDistance,
-                    IsTrackingCardioResistance = OperatingSet.IsTrackingCardioResistance,
-                    IsUsingBodyWeightAsWeight = OperatingSet.IsUsingBodyWeightAsWeight,
-                    WeightUnit = SelectedWeightUnit,
-                    DistanceUnit = SelectedDistanceUnit,
-                };
-
-                int numSets = NumNewSets;
-
-                var (isSetValid, errorMessage) = newSet.ValidateSet();
-                if (!isSetValid)
-                {
-                    await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
-                    return;
-                }
-
-                if (newSet.IsUsingBodyWeightAsWeight)
-                {
-                    // If no Active UserWeight is set, but IsUsingBodyWeightAsWeight has been checked
-                    if (UserSettingsViewModel.UserSettings.ActiveUserWeightId == 0)
-                    {
-                        bool userUpdatedUserWeight = await ShowUpdateWeightPrompt();
-
-                        // Exit function if user did not enter a valid weight
-                        if (!userUpdatedUserWeight) return;
-                    }
-
-                    newSet.DisableBodyWeightTrackingIfNotTrackingWeight();
-                }
-                
                 await CreateNewSetAsync(newSet, numSets);
             }
         }
@@ -240,32 +240,11 @@
         }
 
         [RelayCommand]
-        private async Task UpdateSetAsync()
+        private async Task UpdateSetAsync(Set set)
         {
-            if (OperatingSet is null) return;
+            if (set is null) return;
 
-            var (isSetValid, errorMessage) = OperatingSet.ValidateSet();
-            if (!isSetValid)
-            {
-                await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
-                return;
-            }
-
-            if (OperatingSet.IsUsingBodyWeightAsWeight)
-            {
-                // If no Active UserWeight is set, but IsUsingBodyWeightAsWeight has been checked
-                if (UserSettingsViewModel.UserSettings.ActiveUserWeightId == 0)
-                {
-                    bool userUpdatedUserWeight = await ShowUpdateWeightPrompt();
-
-                    // Exit function if user did not enter a valid weight
-                    if (!userUpdatedUserWeight) return;
-                }
-
-                OperatingSet.DisableBodyWeightTrackingIfNotTrackingWeight();
-            }
-
-            if (!await _context.UpdateItemAsync<Set>(OperatingSet))
+            if (!await _context.UpdateItemAsync<Set>(set))
             {
                 await Shell.Current.DisplayAlert("Error", "Error occured when updating Set.", "OK");
             }
