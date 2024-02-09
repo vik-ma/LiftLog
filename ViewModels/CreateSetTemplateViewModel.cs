@@ -33,7 +33,6 @@
             _context = context;
             _exerciseData = exerciseData;
             userSettingsViewModel = userSettings;
-            SetDefaultUnitValues();
         }
 
         [ObservableProperty]
@@ -96,10 +95,18 @@
             });
         }
 
-        private void SetDefaultUnitValues()
+        public void SetDefaultUnitValues()
         {
-            SelectedWeightUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits ? ConstantsHelper.DefaultWeightUnitMetricTrue : ConstantsHelper.DefaultWeightUnitMetricFalse;
-            SelectedDistanceUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits ? ConstantsHelper.DefaultDistanceUnitMetricTrue : ConstantsHelper.DefaultDistanceUnitMetricFalse;
+            if (OperatingSet is null) return;
+
+            // Set SelectedWeightUnit and SelectedDistanceUnit to saved unit in Set if Set is saved
+            // Otherwise load default unit based on UserSettings
+
+            if (!string.IsNullOrEmpty(OperatingSet.WeightUnit)) SelectedWeightUnit = OperatingSet.WeightUnit;
+            else SelectedWeightUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits ? ConstantsHelper.DefaultWeightUnitMetricTrue : ConstantsHelper.DefaultWeightUnitMetricFalse;
+            
+            if (!string.IsNullOrEmpty(OperatingSet.DistanceUnit)) SelectedDistanceUnit = OperatingSet.DistanceUnit;
+            else SelectedDistanceUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits ? ConstantsHelper.DefaultDistanceUnitMetricTrue : ConstantsHelper.DefaultDistanceUnitMetricFalse;
         }
 
         #nullable enable

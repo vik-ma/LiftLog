@@ -14,6 +14,7 @@ public partial class CreateSetTemplatePage : ContentPage
         base.OnAppearing();
         _viewModel.LoadExerciseList();
         _viewModel.InitializeSetWorkoutTemplatePackage();
+        _viewModel.SetDefaultUnitValues();
     }
 
     private void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
