@@ -311,6 +311,12 @@
                 <Setter Property="RowDefinitions" Value="Auto, Auto" />
                 <Setter Property="ColumnSpacing" Value="10" />
             </Style>
+            <Style x:Key="SmallDatePickerStyle" TargetType="DatePicker">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="WidthRequest" Value="120" />
+                <Setter Property="HeightRequest" Value="36" />
+                <Setter Property="MinimumHeightRequest" Value="36" />
+            </Style>
 
             <converters:NullValueToEmptyTextConverter x:Key="NullValueToEmptyTextConverter" />
             <converters:MultiBindingConverter x:Key="MultiBindingConverter" />
