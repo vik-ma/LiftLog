@@ -25,19 +25,19 @@
             </Style>
             <Style x:Key="MainPageNavigationButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="24" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="WidthRequest" Value="400" />
                 <Setter Property="Margin" Value="15" />
             </Style>
             <Style x:Key="GoBackTopRightButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="WidthRequest" Value="120" />
                 <Setter Property="Margin" Value="10" />
             </Style>
             <Style x:Key="LargeBoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="26" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             <Style x:Key="LargeLabelStyle" TargetType="Label">
@@ -46,7 +46,7 @@
             </Style>
             <Style x:Key="MediumBoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="18" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             <Style x:Key="MediumLabelStyle" TargetType="Label">
@@ -55,7 +55,7 @@
             </Style>
             <Style x:Key="SmallBoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             <Style x:Key="SmallLabelStyle" TargetType="Label">
@@ -64,7 +64,7 @@
             </Style>
             <Style x:Key="ExtraSmallBoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="14" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             <Style x:Key="ExtraSmallLabelStyle" TargetType="Label">
@@ -77,28 +77,28 @@
             </Style>
             <Style x:Key="ScheduleMediumRedButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="Padding" Value="10, 4" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource MediumRed}" />
             </Style>
             <Style x:Key="ScheduleButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="Margin" Value="0" />
             </Style>
             <Style x:Key="Width300ButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="24" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="WidthRequest" Value="300" />
             </Style>
             <Style x:Key="Width150ButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="WidthRequest" Value="150" />
             </Style>
             <Style x:Key="MediumButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="Padding" Value="16, 2" />
                 <Setter Property="HeightRequest" Value="42" />
                 <Setter Property="MinimumHeightRequest" Value="42" />
@@ -106,7 +106,7 @@
             </Style>
             <Style x:Key="MediumGreenButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="Padding" Value="16, 2" />
                 <Setter Property="HeightRequest" Value="42" />
                 <Setter Property="MinimumHeightRequest" Value="42" />
@@ -115,7 +115,7 @@
             </Style>
             <Style x:Key="MediumRedButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="Padding" Value="16, 2" />
                 <Setter Property="HeightRequest" Value="42" />
                 <Setter Property="MinimumHeightRequest" Value="42" />
@@ -124,7 +124,7 @@
             </Style>
             <Style x:Key="SmallButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="14" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="Padding" Value="12, 2" />
                 <Setter Property="HeightRequest" Value="36" />
                 <Setter Property="MinimumHeightRequest" Value="36" />
@@ -132,7 +132,7 @@
             </Style>
             <Style x:Key="SmallGreenButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="14" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="Padding" Value="12, 2" />
                 <Setter Property="HeightRequest" Value="36" />
                 <Setter Property="MinimumHeightRequest" Value="36" />
@@ -141,7 +141,7 @@
             </Style>
             <Style x:Key="SmallRedButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="14" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="Padding" Value="12, 2" />
                 <Setter Property="HeightRequest" Value="36" />
                 <Setter Property="MinimumHeightRequest" Value="36" />
@@ -150,7 +150,7 @@
             </Style>
             <Style x:Key="ExtraSmallButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="12" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="Padding" Value="9, 2" />
                 <Setter Property="HeightRequest" Value="30" />
                 <Setter Property="MinimumHeightRequest" Value="30" />
@@ -158,7 +158,7 @@
             </Style>
             <Style x:Key="ExtraSmallGreenButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="12" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="Padding" Value="9, 2" />
                 <Setter Property="HeightRequest" Value="30" />
                 <Setter Property="MinimumHeightRequest" Value="30" />
@@ -167,7 +167,7 @@
             </Style>
             <Style x:Key="ExtraSmallRedButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="12" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="Padding" Value="9, 2" />
                 <Setter Property="HeightRequest" Value="30" />
                 <Setter Property="MinimumHeightRequest" Value="30" />
@@ -176,12 +176,12 @@
             </Style>
             <Style x:Key="TemplateIdListLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="24" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             <Style x:Key="TemplateIdEmptyListLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="{DynamicResource MediumGray}" />
             </Style>
@@ -221,12 +221,12 @@
                 <Setter Property="TextColor" Value="{DynamicResource MediumBlue}" />
             </Style>
             <Style x:Key="StartedWorkoutExpanderHeaderLabelStyle" TargetType="Label">
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             <Style x:Key="StartedWorkoutExpanderContentLabelStyle" TargetType="Label">
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="FontSize" Value="18" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="{DynamicResource DarkGray}" />
@@ -263,20 +263,20 @@
             </Style>
             <Style x:Key="MediumHeaderLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="24" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             <Style x:Key="LargeHeaderLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="30" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             <Style x:Key="OrangeBoldTextStyle" TargetType="Label">
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="TextColor" Value="{DynamicResource MediumOrange}" />
             </Style>
             <Style x:Key="MediumBlueBoldTextStyle" TargetType="Label">
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="TextColor" Value="{DynamicResource MediumBlue}" />
             </Style>
             <Style x:Key="ArrowUpButtonStyle" TargetType="Button">
