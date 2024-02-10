@@ -49,6 +49,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\Inter-Medium.ttf" />
+	  <None Remove="Resources\Fonts\Inter-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Inter-SemiBold.ttf" />
 	  <None Remove="Resources\Images\small_arrow_down.svg" />
 	  <None Remove="Resources\Images\small_arrow_up.svg" />
 	</ItemGroup>
