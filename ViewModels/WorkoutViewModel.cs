@@ -396,6 +396,8 @@
 
             await UpdateWorkoutAsync();
 
+            await DeleteIncompleteSets();
+
             await LoadOperatingWorkoutTemplateAsync();
 
             await LoadSetListFromWorkoutTemplateIdAsync();
@@ -405,6 +407,15 @@
         private async Task ShowWorkoutTemplateListPopup()
         {
             if (Workout is null) return;
+
+            IEnumerable<SetExercisePackage> incompletedSets = SetList.Where(item => !item.Set.IsCompleted);
+
+            if (incompletedSets.Any()) 
+            {
+                bool userClickedReload = await Shell.Current.DisplayAlert("Load Workout Template", "Delete all incomplete sets and load sets from a Workout Template?", "Load", "Cancel");
+
+                if (!userClickedReload) return;
+            }
 
             await LoadWorkoutTemplatesAsync();
 
