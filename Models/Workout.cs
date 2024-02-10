@@ -10,5 +10,7 @@
         public bool IsWorkoutLoaded { get; set; }
         [ObservableProperty]
         public string setListIdOrder;
+        [ObservableProperty]
+        public string note;
     }
 }
