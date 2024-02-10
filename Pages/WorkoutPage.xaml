@@ -235,7 +235,7 @@
                             <Button 
                                 HorizontalOptions="Center"
                                 Text="Remove All Incomplete Sets"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=DeleteIncompleteSetsCommand}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=ShowDeleteIncompleteSetsPromptCommand}"
                                 Style="{StaticResource SmallRedButtonStyle}" />
                         </Grid>
                     </helpers:If.True>
