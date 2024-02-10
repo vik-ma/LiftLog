@@ -118,6 +118,20 @@
                 </helpers:If.True>
             </helpers:If>
 
+            <Grid
+                HorizontalOptions="Center"
+                ColumnDefinitions="*, *"
+                ColumnSpacing="10">
+                <Label 
+                    Grid.Column="0"
+                    Text="Workout Note"
+                    Style="{StaticResource MediumBoldLabelStyle}" />
+                <Entry 
+                    Grid.Column="1"
+                    Text="{Binding Workout.Note}"
+                    Style="{StaticResource MediumEntryFieldStyle}" />
+            </Grid>
+
             <Label 
                 HorizontalOptions="Center"
                 Text="{Binding Workout.SetListIdOrder}" />
