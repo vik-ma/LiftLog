@@ -232,10 +232,6 @@
 
             if (incompletedSets.Any())
             {
-                bool userClickedRemove = await Shell.Current.DisplayAlert("Remove Incomplete Sets", "Remove all incomplete sets from workout?", "Remove", "Cancel");
-
-                if (!userClickedRemove) return;
-
                 foreach (var set in incompletedSets)
                 {
                     await DeleteSetAsync(set.Set);
@@ -265,16 +261,6 @@
         public async Task LoadSetListFromWorkoutTemplateIdAsync()
         {
             if (OperatingWorkoutTemplate is null || OperatingWorkoutTemplate.Id == 0) return;
-
-            // Show prompt if SetList is already loaded
-            if (SetList.Any()) 
-            {
-                bool userClickedReload = await Shell.Current.DisplayAlert("Reload Workout Template", "Are you sure you want to reload all sets from Workout Template?", "Reload", "Cancel");
-
-                if (!userClickedReload) return;
-
-                await DeleteIncompleteSets();
-            }
 
             LoadSetListIdOrder(OperatingWorkoutTemplate.SetListOrder);
 
@@ -407,6 +393,18 @@
         private async Task ShowWorkoutTemplateListPopup()
         {
             if (Workout is null) return;
+
+            // Show prompt if SetList is already loaded
+            if (SetList.Any())
+            {
+                bool userClickedReload = await Shell.Current.DisplayAlert("Reload Workout Template", "Are you sure you want to reload all sets from Workout Template?", "Reload", "Cancel");
+
+                if (!userClickedReload) return;
+
+                bool userClickedRemove = await Shell.Current.DisplayAlert("Remove Incomplete Sets", "Remove all incomplete sets from workout?", "Remove", "Cancel");
+
+                if (userClickedRemove) await DeleteIncompleteSets();
+            }
 
             await LoadWorkoutTemplatesAsync();
 
