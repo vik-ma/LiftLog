@@ -2,10 +2,21 @@
 {
     public class WorkoutTemplateListPopupPageHandler
     {
-        public string ViewModelType;
-        public WorkoutViewModel WorkoutViewModel;
-        public ScheduleViewModel ScheduleViewModel;
-        public WorkoutDetailsViewModel WorkoutDetailsViewModel;
+        public string ViewModelType { get; set; }
+        public WorkoutViewModel WorkoutViewModel { get; set; }
+        public ScheduleViewModel ScheduleViewModel { get; set; }
+        public WorkoutDetailsViewModel WorkoutDetailsViewModel { get; set; }
+
+        public dynamic GetViewModel()
+        {
+            return ViewModelType switch
+            {
+                "Workout" => WorkoutViewModel,
+                "Schedule" => ScheduleViewModel,
+                "WorkoutDetails" => WorkoutDetailsViewModel,
+                _ => default,
+            };
+        }
 
         public async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {

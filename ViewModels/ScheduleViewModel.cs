@@ -318,7 +318,12 @@
 
             await LoadWorkoutTemplatesAsync();
 
-            Popup = new WorkoutTemplateListPopupPage("Schedule", null, this, null);
+            WorkoutTemplateListPopupPageHandler handler = new()
+            {
+                ViewModelType = "Schedule",
+                ScheduleViewModel = this
+            };
+            Popup = new WorkoutTemplateListPopupPage(handler);
             await Shell.Current.ShowPopupAsync(Popup);
         }
 
