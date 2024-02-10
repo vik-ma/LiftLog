@@ -25,19 +25,39 @@
                     FontAttributes="Bold" />
             </HorizontalStackLayout>
 
-            <HorizontalStackLayout 
+            <Grid
                 HorizontalOptions="Center"
-                Spacing="10">
+                ColumnDefinitions="*, *"
+                RowDefinitions="*, *"
+                RowSpacing="5"
+                ColumnSpacing="10">
                 <Label 
+                    Grid.Row="0"
+                    Grid.Column="0"
                     Text="Workout Name:"
                     VerticalOptions="Center"
                     FontSize="20"
                     FontAttributes="Bold" />
                 <Entry 
+                    Grid.Row="0"
+                    Grid.Column="1"
                     Text="{Binding WorkoutTemplate.Name}"
                     Style="{StaticResource MediumEntryFieldStyle}"
                     WidthRequest="150" />
-            </HorizontalStackLayout>
+                <Label 
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Note:"
+                    VerticalOptions="Center"
+                    FontSize="20"
+                    FontAttributes="Bold" />
+                <Entry 
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="{Binding WorkoutTemplate.Note}"
+                    Style="{StaticResource MediumEntryFieldStyle}"
+                    WidthRequest="150" />
+            </Grid>
 
             <VerticalStackLayout HorizontalOptions="Center">
                 <Label Text="{Binding WorkoutTemplate.SetListOrder}" />
