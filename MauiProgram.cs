@@ -28,8 +28,6 @@ namespace LocalLiftLog
                     fonts.AddFont("Inter-Regular.ttf", "Inter");
                     fonts.AddFont("Inter-Medium.ttf", "InterMedium");
                     fonts.AddFont("Inter-SemiBold.ttf", "InterSemiBold");
-                    //fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    //fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
 #if DEBUG
