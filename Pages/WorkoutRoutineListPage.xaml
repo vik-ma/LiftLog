@@ -142,39 +142,27 @@
                                 VerticalOptions="Center">
                                 <Button 
                                     Text="Details"
-                                    Padding="20, 10"
-                                    FontSize="18"
-                                    FontAttributes="Bold" 
+                                    Style="{StaticResource MediumButtonStyle}" 
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=ViewWorkoutRoutineDetailsCommand}" 
                                     CommandParameter="{Binding Id}" />
                                 <Button 
                                     Text="Go To Schedule"
-                                    Padding="20, 10"
-                                    FontSize="18"
-                                    FontAttributes="Bold" 
+                                    Style="{StaticResource MediumButtonStyle}" 
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=GoToSchedulePageCommand}" 
                                     CommandParameter="{Binding .}" />
                                 <Button 
                                     Text="Set Active"
-                                    Padding="20, 10"
-                                    FontSize="18"
-                                    FontAttributes="Bold" 
+                                    Style="{StaticResource MediumButtonStyle}" 
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=SetActiveWorkoutRoutineCommand}" 
                                     CommandParameter="{Binding .}" />
                                 <!--<Button 
                                     Text="Edit"
-                                    Padding="20, 0"
-                                    HeightRequest="25"
-                                    FontSize="16"
-                                    FontAttributes="Bold" 
+                                    Style="{StaticResource MediumButtonStyle}" 
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=SetOperatingWorkoutRoutineCommand}" 
                                     CommandParameter="{Binding .}" />-->
                                 <Button 
                                     Text="Delete"
-                                    Padding="20, 10"
-                                    FontSize="18"
-                                    FontAttributes="Bold" 
-                                    BackgroundColor="{DynamicResource MediumRed}"
+                                    Style="{StaticResource MediumRedButtonStyle}" 
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=DeleteWorkoutRoutineCommand}" 
                                     CommandParameter="{Binding Id}" />
                             </VerticalStackLayout>
