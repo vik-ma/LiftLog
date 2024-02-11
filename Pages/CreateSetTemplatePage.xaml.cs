@@ -47,25 +47,15 @@ public partial class CreateSetTemplatePage : ContentPage
         }
     }
 
-    void OnFilterTextChanged(object sender, TextChangedEventArgs args) 
+    private void OnFilterTextChanged(object sender, TextChangedEventArgs args)
     {
         string filterText = args.NewTextValue.ToLowerInvariant();
 
         _viewModel.FilteredExerciseList.Clear();
 
         if (string.IsNullOrWhiteSpace(filterText))
-        {
             _viewModel.FilteredExerciseList = new(_viewModel.ExerciseList);
-        }
         else
-        {
-            // Filter the list based on the user input
-            var filteredItems = _viewModel.ExerciseList.Where(item => item.Name.ToLowerInvariant().Contains(filterText));
-            
-            foreach (var item in filteredItems)
-            {
-                _viewModel.FilteredExerciseList.Add(item);
-            }
-        }
+            _viewModel.FilteredExerciseList = new(_viewModel.ExerciseList.Where(item => item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)));
     }
 }
