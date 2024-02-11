@@ -8,303 +8,304 @@
              x:Class="LocalLiftLog.Pages.WorkoutRoutineListPage"
              Title="Workout Routine List">
 
-    <Grid RowDefinitions="Auto, *">
-        <VerticalStackLayout
-            Grid.Row="0"
-            Grid.Column="0"
-            Padding="6, 10" >
-            <Label 
-                Text="Workout Routine List"
-                VerticalOptions="Center"
-                FontAttributes="Bold"
-                FontSize="36" />
-        </VerticalStackLayout>
-        <helpers:If Condition="{Binding IsBusy}">
-            <helpers:If.True>
-                <VerticalStackLayout 
-                    Grid.RowSpan="2"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center">
-                    <ActivityIndicator 
-                        IsRunning="True"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center" />
-                    <Label 
-                        Text="{Binding BusyText}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center" />
-                </VerticalStackLayout>
-            </helpers:If.True>
-        </helpers:If>
-
-        <Grid 
-            Grid.Row="1"
-            RowDefinitions="*, Auto">
-            <CollectionView 
+    <ScrollView>
+        <Grid RowDefinitions="Auto, *">
+            <VerticalStackLayout
                 Grid.Row="0"
-                ItemsSource="{Binding WorkoutRoutineList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                    ItemSpacing="3"
-                    Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:WorkoutRoutine">
-                        <Grid 
-                            RowDefinitions="Auto, Auto"
-                            ColumnDefinitions="*, Auto"
-                            Padding="10"
-                            BackgroundColor="{DynamicResource VeryLightGray}">
-                            <VerticalStackLayout 
-                                Grid.Row="0" 
-                                Grid.Column="0"
-                                Spacing="15">
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Workout Routine: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Name}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Id: " 
-                                                FontAttributes="Bold"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Id}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Note: " 
-                                                FontAttributes="Bold"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Note, Converter={StaticResource NullValueToEmptyTextConverter}, ConverterParameter=Note}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Last Updated: " 
-                                                FontAttributes="Bold"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding LastUpdateDateTime, Converter={StaticResource NullValueToEmptyTextConverter}}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <helpers:If>
-                                    <helpers:If.Condition>
-                                        <MultiBinding Converter="{StaticResource AreStringsOrIntsEqualMultiBindingConverter}">
-                                            <MultiBinding.Bindings>
-                                                <Binding Path="Id" />
-                                                <Binding Path="UserSettingsViewModel.UserSettings.ActiveWorkoutRoutineId" Source="{RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}" />
-                                            </MultiBinding.Bindings>
-                                        </MultiBinding>
-                                    </helpers:If.Condition>
-                                    <helpers:If.True>
-                                        <Label VerticalOptions="Center">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span 
-                                                        Text="Active Routine" 
-                                                        FontAttributes="Bold"
-                                                        TextColor="{DynamicResource MediumGreen}"
-                                                        Style="{StaticResource SmallSpanStyle}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                    </helpers:If.True>
-                                </helpers:If>
-                            </VerticalStackLayout>
-                            <VerticalStackLayout
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Spacing="15"
-                                VerticalOptions="Center">
-                                <Button 
-                                    Text="Details"
-                                    Style="{StaticResource MediumButtonStyle}" 
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=ViewWorkoutRoutineDetailsCommand}" 
-                                    CommandParameter="{Binding Id}" />
-                                <Button 
-                                    Text="Go To Schedule"
-                                    Style="{StaticResource MediumButtonStyle}" 
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=GoToSchedulePageCommand}" 
-                                    CommandParameter="{Binding .}" />
-                                <Button 
-                                    Text="Set Active"
-                                    Style="{StaticResource MediumButtonStyle}" 
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=SetActiveWorkoutRoutineCommand}" 
-                                    CommandParameter="{Binding .}" />
-                                <!--<Button 
-                                    Text="Edit"
-                                    Style="{StaticResource MediumButtonStyle}" 
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=SetOperatingWorkoutRoutineCommand}" 
-                                    CommandParameter="{Binding .}" />-->
-                                <Button 
-                                    Text="Delete"
-                                    Style="{StaticResource MediumRedButtonStyle}" 
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=DeleteWorkoutRoutineCommand}" 
-                                    CommandParameter="{Binding Id}" />
-                            </VerticalStackLayout>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <VerticalStackLayout
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center">
-                            <Label 
-                                Text="No Workout Routines In List!" 
-                                FontSize="18" 
-                                FontAttributes="Bold" 
-                                HorizontalTextAlignment="Center" />
-                            <Label 
-                                Text="Create a Workout Routine in the form below." 
-                                FontSize="18" 
-                                FontAttributes="Bold" />
-                        </VerticalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
+                Grid.Column="0"
+                Padding="6, 10" >
+                <Label 
+                    Text="Workout Routine List"
+                    VerticalOptions="Center"
+                    FontAttributes="Bold"
+                    FontSize="36" />
+            </VerticalStackLayout>
+            <helpers:If Condition="{Binding IsBusy}">
+                <helpers:If.True>
+                    <VerticalStackLayout 
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                        <ActivityIndicator 
+                            IsRunning="True"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center" />
+                        <Label 
+                            Text="{Binding BusyText}"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </helpers:If.True>
+            </helpers:If>
 
-            <VerticalStackLayout Grid.Row="1">
-                <BoxView 
-                    Color="{DynamicResource Primary}"
-                    HeightRequest="1" />
-                <helpers:If Condition="{Binding IsEditing}">
-                    <helpers:If.True>
-                        <Grid
-                            RowDefinitions="*, *"
-                            ColumnDefinitions="*, *"
-                            Padding="10"
-                            ColumnSpacing="15"
-                            BackgroundColor="{DynamicResource VeryLightGray}">
-                            <VerticalStackLayout 
-                                Grid.Row="0"
-                                Grid.Column="0">
-                                <Label 
+            <Grid 
+                Grid.Row="1"
+                RowDefinitions="*, Auto">
+                <CollectionView 
+                    Grid.Row="0"
+                    ItemsSource="{Binding WorkoutRoutineList}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:WorkoutRoutine">
+                            <Grid 
+                                RowDefinitions="Auto, Auto"
+                                ColumnDefinitions="*, Auto"
+                                Padding="10"
+                                BackgroundColor="{DynamicResource VeryLightGray}">
+                                <VerticalStackLayout 
+                                    Grid.Row="0" 
                                     Grid.Column="0"
-                                    Text="Create New Routine" 
-                                    FontAttributes="Bold"
-                                    FontSize="32"
-                                    HorizontalOptions="Start"
-                                    VerticalOptions="Center" >
-                                </Label>
-                            </VerticalStackLayout>
-                            <HorizontalStackLayout 
-                                Grid.Row="0"
-                                Grid.Column="2"
-                                HorizontalOptions="End"
-                                Spacing="12">
-                                <Button 
+                                    Spacing="15">
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Workout Routine: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Name}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Id: " 
+                                                    FontAttributes="Bold"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Id}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Note: " 
+                                                    FontAttributes="Bold"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Note, Converter={StaticResource NullValueToEmptyTextConverter}, ConverterParameter=Note}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Last Updated: " 
+                                                    FontAttributes="Bold"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding LastUpdateDateTime, Converter={StaticResource NullValueToEmptyTextConverter}}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <helpers:If>
+                                        <helpers:If.Condition>
+                                            <MultiBinding Converter="{StaticResource AreStringsOrIntsEqualMultiBindingConverter}">
+                                                <MultiBinding.Bindings>
+                                                    <Binding Path="Id" />
+                                                    <Binding Path="UserSettingsViewModel.UserSettings.ActiveWorkoutRoutineId" Source="{RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}" />
+                                                </MultiBinding.Bindings>
+                                            </MultiBinding>
+                                        </helpers:If.Condition>
+                                        <helpers:If.True>
+                                            <Label VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span 
+                                                            Text="Active Routine"
+                                                            TextColor="{DynamicResource MediumGreen}"
+                                                            Style="{StaticResource MediumBoldSpanStyle}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </helpers:If.True>
+                                    </helpers:If>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout
+                                    Grid.Row="0"
                                     Grid.Column="1"
-                                    VerticalOptions="Center"
-                                    Text="Cancel"
-                                    FontSize="18"
-                                    FontAttributes="Bold"
-                                    CornerRadius="6"
-                                    BackgroundColor="{DynamicResource MediumRed}"
-                                    Command="{Binding CancelEditingCommand}" >
-                                </Button>
-                                <Button 
-                                    Grid.Column="1"
-                                    VerticalOptions="Center"
-                                    Text="Create Routine"
-                                    FontSize="18"
-                                    FontAttributes="Bold"
-                                    CornerRadius="6"
-                                    BackgroundColor="{DynamicResource MediumGreen}"
-                                    Command="{Binding SaveWorkoutRoutineCommand}" >
-                                </Button>
-                            </HorizontalStackLayout>
-                            <VerticalStackLayout 
-                                Grid.Row="1"
-                                Grid.Column="0">
+                                    Spacing="15"
+                                    VerticalOptions="Center">
+                                    <Button 
+                                        Text="Details"
+                                        Style="{StaticResource MediumButtonStyle}" 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=ViewWorkoutRoutineDetailsCommand}" 
+                                        CommandParameter="{Binding Id}" />
+                                    <Button 
+                                        Text="Go To Schedule"
+                                        Style="{StaticResource MediumButtonStyle}" 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=GoToSchedulePageCommand}" 
+                                        CommandParameter="{Binding .}" />
+                                    <Button 
+                                        Text="Set Active"
+                                        Style="{StaticResource MediumButtonStyle}" 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=SetActiveWorkoutRoutineCommand}" 
+                                        CommandParameter="{Binding .}" />
+                                    <!--<Button 
+                                        Text="Edit"
+                                        Style="{StaticResource MediumButtonStyle}" 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=SetOperatingWorkoutRoutineCommand}" 
+                                        CommandParameter="{Binding .}" />-->
+                                    <Button 
+                                        Text="Delete"
+                                        Style="{StaticResource MediumRedButtonStyle}" 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=DeleteWorkoutRoutineCommand}" 
+                                        CommandParameter="{Binding Id}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <ContentView>
+                            <VerticalStackLayout
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
                                 <Label 
-                                    Text="Name" 
+                                    Text="No Workout Routines In List!" 
+                                    FontSize="18" 
                                     FontAttributes="Bold" 
-                                    Margin="2, 0"
-                                    FontSize="20" />
-                                <helpers:If Condition="{Binding OperatingWorkoutRoutine.Id, Converter={StaticResource IsNumberNot0Converter}}">
-                                    <helpers:If.True>
-                                        <Label 
-                                            Text="{Binding OperatingWorkoutRoutine.Name}" 
-                                            Margin="2, 0"
-                                            FontSize="20" />
-                                    </helpers:If.True>
-                                </helpers:If>
-                                <Entry 
-                                    Text="{Binding OperatingWorkoutRoutine.Name}"
-                                    Placeholder="Name"
-                                    Margin="0, 5"
-                                    BackgroundColor="{DynamicResource White}"
-                                    FontSize="20"/>
-                            </VerticalStackLayout>
-                            <VerticalStackLayout 
-                                Grid.Row="1"
-                                Grid.Column="1">
+                                    HorizontalTextAlignment="Center" />
                                 <Label 
-                                    Text="Note (Optional)" 
-                                    FontAttributes="Bold" 
-                                    Margin="2, 0"
-                                    FontSize="20" />
-                                <helpers:If Condition="{Binding OperatingWorkoutRoutine.Id, Converter={StaticResource IsNumberNot0Converter}}">
-                                    <helpers:If.True>
-                                        <Label 
-                                            Text="{Binding OperatingWorkoutRoutine.Note}" 
-                                            Margin="2, 0"
-                                            FontSize="20" />
-                                    </helpers:If.True>
-                                </helpers:If>
-                                <Entry 
-                                    Text="{Binding OperatingWorkoutRoutine.Note}"
-                                    Placeholder="Note"
-                                    Margin="0, 5"
-                                    BackgroundColor="{DynamicResource White}"
-                                    FontSize="20" />
+                                    Text="Create a Workout Routine in the form below." 
+                                    FontSize="18" 
+                                    FontAttributes="Bold" />
                             </VerticalStackLayout>
-                        </Grid>
-                    </helpers:If.True>
-                </helpers:If>
+                        </ContentView>
+                    </CollectionView.EmptyView>
+                </CollectionView>
 
-            </VerticalStackLayout>
-            <VerticalStackLayout VerticalOptions="End">
-                <helpers:If Condition="{Binding IsEditing}">
-                    <helpers:If.False>
-                        <Button
-                            Text="Create New Routine"
-                            Style="{StaticResource Width300ButtonStyle}"
-                            Command="{Binding SetOperatingWorkoutRoutineCommand}"
-                            Margin="50" />
-                    </helpers:If.False>
-                </helpers:If>
-                <Button 
-                    Text="Go Back"
-                    Style="{StaticResource Width300ButtonStyle}"
-                    Command="{Binding GoBackCommand}"
-                    Margin="20" />
-            </VerticalStackLayout>
+                <VerticalStackLayout Grid.Row="1">
+                    <BoxView 
+                        Color="{DynamicResource Primary}"
+                        HeightRequest="1" />
+                    <helpers:If Condition="{Binding IsEditing}">
+                        <helpers:If.True>
+                            <Grid
+                                RowDefinitions="*, *"
+                                ColumnDefinitions="*, *"
+                                Padding="10"
+                                ColumnSpacing="15"
+                                BackgroundColor="{DynamicResource VeryLightGray}">
+                                <VerticalStackLayout 
+                                    Grid.Row="0"
+                                    Grid.Column="0">
+                                    <Label 
+                                        Grid.Column="0"
+                                        Text="Create New Routine" 
+                                        FontAttributes="Bold"
+                                        FontSize="32"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Center" >
+                                    </Label>
+                                </VerticalStackLayout>
+                                <HorizontalStackLayout 
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    HorizontalOptions="End"
+                                    Spacing="12">
+                                    <Button 
+                                        Grid.Column="1"
+                                        VerticalOptions="Center"
+                                        Text="Cancel"
+                                        FontSize="18"
+                                        FontAttributes="Bold"
+                                        CornerRadius="6"
+                                        BackgroundColor="{DynamicResource MediumRed}"
+                                        Command="{Binding CancelEditingCommand}" >
+                                    </Button>
+                                    <Button 
+                                        Grid.Column="1"
+                                        VerticalOptions="Center"
+                                        Text="Create Routine"
+                                        FontSize="18"
+                                        FontAttributes="Bold"
+                                        CornerRadius="6"
+                                        BackgroundColor="{DynamicResource MediumGreen}"
+                                        Command="{Binding SaveWorkoutRoutineCommand}" >
+                                    </Button>
+                                </HorizontalStackLayout>
+                                <VerticalStackLayout 
+                                    Grid.Row="1"
+                                    Grid.Column="0">
+                                    <Label 
+                                        Text="Name" 
+                                        FontAttributes="Bold" 
+                                        Margin="2, 0"
+                                        FontSize="20" />
+                                    <helpers:If Condition="{Binding OperatingWorkoutRoutine.Id, Converter={StaticResource IsNumberNot0Converter}}">
+                                        <helpers:If.True>
+                                            <Label 
+                                                Text="{Binding OperatingWorkoutRoutine.Name}" 
+                                                Margin="2, 0"
+                                                FontSize="20" />
+                                        </helpers:If.True>
+                                    </helpers:If>
+                                    <Entry 
+                                        Text="{Binding OperatingWorkoutRoutine.Name}"
+                                        Placeholder="Name"
+                                        Margin="0, 5"
+                                        BackgroundColor="{DynamicResource White}"
+                                        FontSize="20"/>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout 
+                                    Grid.Row="1"
+                                    Grid.Column="1">
+                                    <Label 
+                                        Text="Note (Optional)" 
+                                        FontAttributes="Bold" 
+                                        Margin="2, 0"
+                                        FontSize="20" />
+                                    <helpers:If Condition="{Binding OperatingWorkoutRoutine.Id, Converter={StaticResource IsNumberNot0Converter}}">
+                                        <helpers:If.True>
+                                            <Label 
+                                                Text="{Binding OperatingWorkoutRoutine.Note}" 
+                                                Margin="2, 0"
+                                                FontSize="20" />
+                                        </helpers:If.True>
+                                    </helpers:If>
+                                    <Entry 
+                                        Text="{Binding OperatingWorkoutRoutine.Note}"
+                                        Placeholder="Note"
+                                        Margin="0, 5"
+                                        BackgroundColor="{DynamicResource White}"
+                                        FontSize="20" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </helpers:If.True>
+                    </helpers:If>
+
+                </VerticalStackLayout>
+                <VerticalStackLayout 
+                    Spacing="10"
+                    VerticalOptions="End">
+                    <helpers:If Condition="{Binding IsEditing}">
+                        <helpers:If.False>
+                            <Button
+                                Text="Create New Routine"
+                                Style="{StaticResource Width300ButtonStyle}"
+                                Command="{Binding SetOperatingWorkoutRoutineCommand}" />
+                        </helpers:If.False>
+                    </helpers:If>
+                    <Button 
+                        Text="Go Back"
+                        Style="{StaticResource Width300ButtonStyle}"
+                        Command="{Binding GoBackCommand}" />
+                </VerticalStackLayout>
+            </Grid>
         </Grid>
-    </Grid>
+    </ScrollView>
 </ContentPage>
