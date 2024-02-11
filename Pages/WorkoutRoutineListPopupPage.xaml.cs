@@ -27,18 +27,8 @@ public partial class WorkoutRoutineListPopupPage : Popup
         _viewModel.FilteredWorkoutRoutineList.Clear();
 
         if (string.IsNullOrWhiteSpace(filterText))
-        {
             _viewModel.FilteredWorkoutRoutineList = new(_viewModel.WorkoutRoutineList);
-        }
         else
-        {
-            // Filter the list based on the user input
-            var filteredItems = _viewModel.WorkoutRoutineList.Where(item => item.Name.ToLowerInvariant().Contains(filterText));
-
-            foreach (var item in filteredItems)
-            {
-                _viewModel.FilteredWorkoutRoutineList.Add(item);
-            }
-        }
+            _viewModel.FilteredWorkoutRoutineList = new(_viewModel.WorkoutRoutineList.Where(item => item.Name != null && item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)));
     }
 }
