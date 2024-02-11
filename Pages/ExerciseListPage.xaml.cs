@@ -35,6 +35,6 @@ public partial class ExerciseListPage : ContentPage
         if (string.IsNullOrWhiteSpace(filterText))
             _viewModel.FilteredExerciseList = new(_viewModel.ExerciseList);
         else
-            _viewModel.FilteredExerciseList = new(_viewModel.ExerciseList.Where(item => item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)));
+            _viewModel.FilteredExerciseList = new(_viewModel.ExerciseList.Where(item => item.Name != null && item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)));
     }
 }
