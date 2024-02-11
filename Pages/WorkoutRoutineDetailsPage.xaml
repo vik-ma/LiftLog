@@ -44,10 +44,10 @@
                             <Span 
                                 Text="Id: " 
                                 FontAttributes="Bold"
-                                Style="{StaticResource LargeSubSpanStyle}" />
+                                Style="{StaticResource SmallSpanStyle}" />
                             <Span 
                                 Text="{Binding WorkoutRoutine.Id, Converter={StaticResource NullValueToEmptyTextConverter}}"
-                                Style="{StaticResource LargeSubSpanStyle}" />
+                                Style="{StaticResource SmallSpanStyle}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -57,10 +57,10 @@
                             <Span 
                                 Text="Note: " 
                                 FontAttributes="Bold"
-                                Style="{StaticResource LargeSubSpanStyle}" />
+                                Style="{StaticResource SmallSpanStyle}" />
                             <Span 
                                 Text="{Binding WorkoutRoutine.Note, Converter={StaticResource NullValueToEmptyTextConverter}, ConverterParameter=Note}"
-                                Style="{StaticResource LargeSubSpanStyle}" />
+                                Style="{StaticResource SmallSpanStyle}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
