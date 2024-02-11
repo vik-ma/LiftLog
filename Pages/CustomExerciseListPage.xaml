@@ -9,19 +9,19 @@
              Title="Custom Exercise List">
     <ScrollView>
         <VerticalStackLayout>
-            <VerticalStackLayout>
+            <VerticalStackLayout Spacing="7">
                 <Label 
                     Text="Exercises"
                     HorizontalOptions="Center"
                     FontSize="30"
                     FontAttributes="Bold"
-                    Margin="10" />
+                    Margin="5" />
                 <CollectionView
                     ItemsSource="{Binding ExerciseList}"
                     HorizontalOptions="Center">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout 
-                            ItemSpacing="3"
+                            ItemSpacing="2"
                             Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
@@ -106,15 +106,15 @@
                     Text="New Exercise"
                     Style="{StaticResource MediumGreenButtonStyle}"
                     WidthRequest="300"
-                    Margin="5"
                     Command="{Binding CreateExerciseCommand}" />
                 <Button 
                     Text="Restore Default Exercise"
                     Style="{StaticResource MediumButtonStyle}"
                     WidthRequest="300"
-                    Margin="5"
                     Command="{Binding ShowDefaultExerciseListCommand}" />
-                <helpers:If Condition="{Binding DisplayDefaultExerciseList}">
+                <helpers:If 
+                    WidthRequest="300"
+                    Condition="{Binding DisplayDefaultExerciseList}">
                     <helpers:If.True>
                         <VerticalStackLayout 
                             HorizontalOptions="Center"
@@ -145,13 +145,13 @@
                                 Command="{Binding HideDefaultExerciseListCommand}" />
                         </VerticalStackLayout>
                     </helpers:If.True>
+                    <helpers:If.False>
+                        <Button 
+                            Text="Reset Exercise List"
+                            Style="{StaticResource MediumRedButtonStyle}"
+                            Command="{Binding ResetExerciseListCommand}" />
+                    </helpers:If.False>
                 </helpers:If>
-                <Button 
-                    Text="Reset Exercise List"
-                    Style="{StaticResource MediumRedButtonStyle}"
-                    WidthRequest="300"
-                    Margin="5"
-                    Command="{Binding ResetExerciseListCommand}" />
             </VerticalStackLayout>
 
             <VerticalStackLayout>
