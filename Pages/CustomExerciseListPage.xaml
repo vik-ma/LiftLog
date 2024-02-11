@@ -4,122 +4,163 @@
              x:Class="LocalLiftLog.Pages.CustomExerciseListPage"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              xmlns:models="clr-namespace:LocalLiftLog.Models"
+             xmlns:helpers="clr-namespace:LocalLiftLog.Helpers"
              x:DataType="viewmodel:CustomExerciseViewModel"
              Title="Custom Exercise List">
-    <VerticalStackLayout>
+    <ScrollView>
         <VerticalStackLayout>
-            <Label 
-                Text="Exercises"
-                HorizontalOptions="Center"
-                FontSize="30"
-                FontAttributes="Bold"
-                Margin="10" />
-            <CollectionView
-                ItemsSource="{Binding ExerciseList}"
-                HorizontalOptions="Center">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Exercise">
-                        <VerticalStackLayout Spacing="5">
-                            <HorizontalStackLayout 
-                                Spacing="10"
-                                HorizontalOptions="Center">
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Id: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Id}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Name: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Name}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Exercise Group Set String: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding ExerciseGroupSetString}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Button 
-                                    Text="Add Group"
-                                    Style="{StaticResource ExtraSmallButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=AddExerciseGroupToExerciseCommand}"
-                                    CommandParameter="{Binding .}" />
-                                <Button 
-                                    Text="Remove Group"
-                                    Style="{StaticResource ExtraSmallButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=RemoveExerciseGroupFromExerciseCommand}"
-                                    CommandParameter="{Binding .}" />
-                                <Button 
-                                    Text="Delete"
-                                    Style="{StaticResource ExtraSmallRedButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=DeleteExerciseCommand}"
-                                    CommandParameter="{Binding .}" />
-                            </HorizontalStackLayout>
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <VerticalStackLayout
+            <VerticalStackLayout>
+                <Label 
+                    Text="Exercises"
+                    HorizontalOptions="Center"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    Margin="10" />
+                <CollectionView
+                    ItemsSource="{Binding ExerciseList}"
+                    HorizontalOptions="Center">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout 
+                            ItemSpacing="3"
+                            Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Exercise">
+                            <VerticalStackLayout Spacing="5">
+                                <HorizontalStackLayout 
+                                    Spacing="10"
+                                    HorizontalOptions="Center">
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Id: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Id}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Name: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Name}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Exercise Group Set String: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding ExerciseGroupSetString}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Button 
+                                        Text="Add Group"
+                                        Style="{StaticResource ExtraSmallButtonStyle}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=AddExerciseGroupToExerciseCommand}"
+                                        CommandParameter="{Binding .}" />
+                                    <Button 
+                                        Text="Remove Group"
+                                        Style="{StaticResource ExtraSmallButtonStyle}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=RemoveExerciseGroupFromExerciseCommand}"
+                                        CommandParameter="{Binding .}" />
+                                    <Button 
+                                        Text="Delete"
+                                        Style="{StaticResource ExtraSmallRedButtonStyle}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=DeleteExerciseCommand}"
+                                        CommandParameter="{Binding .}" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <ContentView>
+                            <VerticalStackLayout
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Label 
+                                    Text="No Exercises In List!" 
+                                    FontSize="18" 
+                                    FontAttributes="Bold" 
+                                    HorizontalTextAlignment="Center" />
+                            </VerticalStackLayout>
+                        </ContentView>
+                    </CollectionView.EmptyView>
+                </CollectionView>
+                <Button 
+                    Text="New Exercise"
+                    Style="{StaticResource MediumGreenButtonStyle}"
+                    WidthRequest="300"
+                    Margin="5"
+                    Command="{Binding CreateExerciseCommand}" />
+                <Button 
+                    Text="Restore Default Exercise"
+                    Style="{StaticResource MediumButtonStyle}"
+                    WidthRequest="300"
+                    Margin="5"
+                    Command="{Binding ShowDefaultExerciseListCommand}" />
+                <helpers:If Condition="{Binding DisplayDefaultExerciseList}">
+                    <helpers:If.True>
+                        <VerticalStackLayout 
                             HorizontalOptions="Center"
-                            VerticalOptions="Center">
+                            Spacing="5">
                             <Label 
-                                Text="No Exercises In List!" 
-                                FontSize="18" 
-                                FontAttributes="Bold" 
-                                HorizontalTextAlignment="Center" />
+                                Text="Restore Exercise"
+                                Style="{StaticResource LargeBoldLabelStyle}" />
+                            <SearchBar 
+                                Placeholder="Search Exercises..."
+                                TextChanged="OnFilterTextChanged" />
+                            <ListView
+                                SelectionMode="Single"
+                                ItemsSource="{Binding FilteredDefaultExerciseList}"
+                                ItemSelected="OnItemSelected">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="models:Exercise">
+                                        <ViewCell>
+                                            <Label 
+                                                Text="{Binding Name}"
+                                                Style="{StaticResource PopupPageListViewLabelStyle}"/>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <Button
+                                Text="Cancel"
+                                Style="{StaticResource MediumRedButtonStyle}"
+                                Command="{Binding HideDefaultExerciseListCommand}" />
                         </VerticalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
-            <Button 
-                Text="New Exercise"
-                Style="{StaticResource MediumGreenButtonStyle}"
-                WidthRequest="300"
-                Margin="5"
-                Command="{Binding CreateExerciseCommand}" />
-            <Button 
-                Text="Reset Exercise List"
-                Style="{StaticResource MediumRedButtonStyle}"
-                WidthRequest="300"
-                Margin="5"
-                Command="{Binding ResetExerciseListCommand}" />
-        </VerticalStackLayout>
+                    </helpers:If.True>
+                </helpers:If>
+                <Button 
+                    Text="Reset Exercise List"
+                    Style="{StaticResource MediumRedButtonStyle}"
+                    WidthRequest="300"
+                    Margin="5"
+                    Command="{Binding ResetExerciseListCommand}" />
+            </VerticalStackLayout>
 
-        <VerticalStackLayout>
-            <Button 
-                Text="Go Back"
-                Style="{StaticResource Width300ButtonStyle}"
-                Command="{Binding GoBackCommand}"
-                Margin="50" />
+            <VerticalStackLayout>
+                <Button 
+                    Text="Go Back"
+                    Style="{StaticResource Width300ButtonStyle}"
+                    Command="{Binding GoBackCommand}"
+                    Margin="50" />
+            </VerticalStackLayout>
         </VerticalStackLayout>
-    </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

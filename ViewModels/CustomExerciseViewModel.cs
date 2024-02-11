@@ -7,13 +7,22 @@
         private readonly ExerciseDataManager _exerciseData;
 
         [ObservableProperty]
-        private ObservableCollection<Exercise> exerciseList = new();
+        private ObservableCollection<Exercise> exerciseList = [];
 
         public CustomExerciseViewModel(DatabaseContext context, ExerciseDataManager exerciseData)
         {
             _context = context;
             _exerciseData = exerciseData;
         }
+
+        [ObservableProperty]
+        private ObservableCollection<Exercise> defaultExerciseList = new(DefaultExercises.DefaultExerciseList);
+
+        [ObservableProperty]
+        private ObservableCollection<Exercise> filteredDefaultExerciseList = [];
+
+        [ObservableProperty]
+        private bool displayDefaultExerciseList = false;
 
         public void LoadExerciseList()
         {
@@ -110,6 +119,31 @@
         static async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
+        }
+
+        [RelayCommand]
+        private void ShowDefaultExerciseList()
+        {
+            FilteredDefaultExerciseList = new(DefaultExerciseList);
+
+            DisplayDefaultExerciseList = true;
+        }
+
+        [RelayCommand]
+        private void HideDefaultExerciseList()
+        {
+            DisplayDefaultExerciseList = false;
+        }
+
+        public async Task RestoreExercise(Exercise exercise)
+        {
+            if (exercise is null) return;
+
+            await _exerciseData.CreateExerciseAsync(exercise);
+
+            LoadExerciseList();
+
+            HideDefaultExerciseList();
         }
     }
 }
