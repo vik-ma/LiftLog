@@ -53,7 +53,7 @@
                 if (string.IsNullOrWhiteSpace(filterText))
                     WorkoutViewModel.FilteredWorkoutTemplateList = new(WorkoutViewModel.WorkoutTemplateList);
                 else
-                    WorkoutViewModel.FilteredWorkoutTemplateList = new(WorkoutViewModel.WorkoutTemplateList.Where(item => item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)));
+                    WorkoutViewModel.FilteredWorkoutTemplateList = new(WorkoutViewModel.WorkoutTemplateList.Where(item => item.Name != null && item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)));
             }
             if (ViewModelType == "Schedule" && ScheduleViewModel is not null)
             {
@@ -62,7 +62,7 @@
                 if (string.IsNullOrWhiteSpace(filterText))
                     ScheduleViewModel.FilteredWorkoutTemplateList = new(ScheduleViewModel.WorkoutTemplateList);
                 else
-                    ScheduleViewModel.FilteredWorkoutTemplateList = new(ScheduleViewModel.WorkoutTemplateList.Where(item => item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)));
+                    ScheduleViewModel.FilteredWorkoutTemplateList = new(ScheduleViewModel.WorkoutTemplateList.Where(item => item.Name != null && item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)));
             }
             if (ViewModelType == "WorkoutDetails" && WorkoutDetailsViewModel is not null)
             {
@@ -71,7 +71,7 @@
                 if (string.IsNullOrWhiteSpace(filterText))
                     WorkoutDetailsViewModel.FilteredWorkoutTemplateList = new(WorkoutDetailsViewModel.WorkoutTemplateList);
                 else
-                    WorkoutDetailsViewModel.FilteredWorkoutTemplateList = new(WorkoutDetailsViewModel.WorkoutTemplateList.Where(item => item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)));
+                    WorkoutDetailsViewModel.FilteredWorkoutTemplateList = new(WorkoutDetailsViewModel.WorkoutTemplateList.Where(item => item.Name != null && item.Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)));
             }
         }
     }
