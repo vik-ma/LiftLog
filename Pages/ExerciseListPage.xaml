@@ -34,7 +34,7 @@
                             HorizontalOptions="Start">
                             <CollectionView.ItemsLayout>
                                 <LinearItemsLayout 
-                                    ItemSpacing="0"
+                                    ItemSpacing="2"
                                     Orientation="Vertical" />
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
@@ -52,8 +52,7 @@
                                                 <FormattedString>
                                                     <Span 
                                                         Text="{Binding Name}"
-                                                        FontAttributes="Bold"
-                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                        Style="{StaticResource MediumBoldSpanStyle}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -65,8 +64,9 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span 
-                                                    Text="{Binding ExerciseGroupSetString, Converter={StaticResource ExerciseGroupConverter}}"
-                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                        Text="{Binding ExerciseGroupSetString, Converter={StaticResource ExerciseGroupConverter}}"
+                                                        TextColor="{DynamicResource DarkGray}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -112,11 +112,10 @@
                     Margin="0, 10">
                     <Label
                         Text="Filtered Exercise Groups" 
-                        FontAttributes="Bold"  
-                        Style="{StaticResource SmallSpanStyle}" />
+                        Style="{StaticResource MediumBoldLabelStyle}" />
                     <Label 
                         Text="{Binding ExerciseGroupFilterSet, Converter={StaticResource ExerciseGroupConverter}}"
-                        Style="{StaticResource SmallSpanStyle}" />
+                        Style="{StaticResource SmallLabelStyle}" />
                     <helpers:If Condition="{Binding ExerciseGroupFilterSet.Count}">
                         <helpers:If.True>
                             <Button 
