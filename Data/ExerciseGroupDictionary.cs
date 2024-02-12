@@ -27,5 +27,14 @@
 
         // Change the value of this property when adding/removing ExerciseGroupDict key(s) to the new max value
         public static int ExerciseGroupMaxValue { get; } = 18;
+
+        public static List<int> GetSortedExerciseGroupList()
+        {
+            // Sorts ExerciseGroupDict by its values (alphabetically)
+            // and returns a list of the keys in that order
+            return ExerciseGroupDict.OrderBy(pair => pair.Value)
+                                   .Select(pair => pair.Key)
+                                   .ToList();
+        }
     }
 }

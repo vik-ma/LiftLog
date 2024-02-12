@@ -43,7 +43,7 @@
 
         public void LoadExerciseGroupIntList()
         {
-            ExerciseGroupIntList = new(ExerciseGroupDictionary.ExerciseGroupDict.Keys);
+            ExerciseGroupIntList = new(ExerciseGroupDictionary.GetSortedExerciseGroupList());
         }
 
         #nullable enable
