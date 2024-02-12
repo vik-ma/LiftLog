@@ -11,9 +11,7 @@
             <Label 
                 Text="Completed Workouts"
                 HorizontalOptions="Center"
-                FontSize="30"
-                FontAttributes="Bold"
-                Margin="10" />
+                Style="{StaticResource LargeHeaderLabelStyle}" />
             <CollectionView
                 ItemsSource="{Binding CompletedWorkoutList}"
                 HorizontalOptions="Center">

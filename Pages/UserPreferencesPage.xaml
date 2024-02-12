@@ -13,9 +13,7 @@
                 <Label 
                     Text="User Preferences"
                     HorizontalOptions="Center"
-                    FontSize="30"
-                    FontAttributes="Bold"
-                    Margin="0, 5" />
+                    Style="{StaticResource LargeHeaderLabelStyle}" />
 
                 <helpers:If Condition="{Binding UserSettings, Converter={StaticResource IsNullConverter}}">
                     <helpers:If.True>
@@ -142,9 +140,8 @@
                     <VerticalStackLayout Spacing="5">
                         <Label 
                             Text="User Weight"
-                            HorizontalOptions="Center"
-                            FontSize="26"
-                            FontAttributes="Bold" />
+                            HorizontalOptions="Center"     
+                            Style="{StaticResource MediumHeaderLabelStyle}" />
                         <helpers:If Condition="{Binding ActiveUserWeight, Converter={StaticResource IsNullConverter}}">
                             <helpers:If.True>
                                 <Label 
@@ -198,8 +195,7 @@
                             HorizontalOptions="Center">
                             <Label 
                                 Text="Default Equipment Weights"
-                                FontSize="26"
-                                FontAttributes="Bold" />
+                                Style="{StaticResource MediumHeaderLabelStyle}" />
                             <Button 
                                 Text="{Binding DisplayDefaultEquipmentWeightList, Converter={StaticResource BoolToShowOrHideTextConverter}, ConverterParameter=List}"
                                 Style="{StaticResource ExtraSmallButtonStyle}"

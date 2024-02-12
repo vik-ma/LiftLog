@@ -12,8 +12,7 @@
             <Label 
                 Text="Workout List"
                 HorizontalOptions="Center"
-                FontSize="30"
-                FontAttributes="Bold" />
+                Style="{StaticResource LargeHeaderLabelStyle}" />
             <CollectionView
                 ItemsSource="{Binding WorkoutList}">
                 <CollectionView.ItemsLayout>

@@ -12,8 +12,7 @@
             <Label 
                 Text="Time Periods"
                 HorizontalOptions="Center"
-                FontSize="30"
-                FontAttributes="Bold" />
+                Style="{StaticResource LargeHeaderLabelStyle}" />
             <HorizontalStackLayout 
                 HorizontalOptions="Center"
                 Spacing="20">

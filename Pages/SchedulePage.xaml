@@ -63,7 +63,7 @@
                         ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                         ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                         <CollectionView.EmptyView>
-                            <Label Text="No Workout(s) Set" />
+                            <Label Text="No Workout Set" />
                         </CollectionView.EmptyView>
                     </CollectionView>
                 </Grid>
@@ -99,7 +99,7 @@
                         ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                         ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                         <CollectionView.EmptyView>
-                            <Label Text="No Workout(s) Set" />
+                            <Label Text="No Workout Set" />
                         </CollectionView.EmptyView>
                     </CollectionView>
                 </Grid>
@@ -138,7 +138,7 @@
                                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                                 ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                                 <CollectionView.EmptyView>
-                                    <Label Text="No Workout(s) Set" />
+                                    <Label Text="No Workout Set" />
                                 </CollectionView.EmptyView>
                             </CollectionView>
                         </Grid>
@@ -179,7 +179,7 @@
                                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                                 ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                                 <CollectionView.EmptyView>
-                                    <Label Text="No Workout(s) Set" />
+                                    <Label Text="No Workout Set" />
                                 </CollectionView.EmptyView>
                             </CollectionView>
                         </Grid>
@@ -220,7 +220,7 @@
                                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                                 ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                                 <CollectionView.EmptyView>
-                                    <Label Text="No Workout(s) Set" />
+                                    <Label Text="No Workout Set" />
                                 </CollectionView.EmptyView>
                             </CollectionView>
                         </Grid>
@@ -261,7 +261,7 @@
                                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                                 ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                                 <CollectionView.EmptyView>
-                                    <Label Text="No Workout(s) Set" />
+                                    <Label Text="No Workout Set" />
                                 </CollectionView.EmptyView>
                             </CollectionView>
                         </Grid>
@@ -302,7 +302,7 @@
                                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                                 ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                                 <CollectionView.EmptyView>
-                                    <Label Text="No Workout(s) Set" />
+                                    <Label Text="No Workout Set" />
                                 </CollectionView.EmptyView>
                             </CollectionView>
                         </Grid>
@@ -337,7 +337,7 @@
                                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                                 ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                                 <CollectionView.EmptyView>
-                                    <Label Text="No Workout(s) Set" />
+                                    <Label Text="No Workout Set" />
                                 </CollectionView.EmptyView>
                             </CollectionView>
                         </Grid>
@@ -372,7 +372,7 @@
                                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                                 ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                                 <CollectionView.EmptyView>
-                                    <Label Text="No Workout(s) Set" />
+                                    <Label Text="No Workout Set" />
                                 </CollectionView.EmptyView>
                             </CollectionView>
                         </Grid>
@@ -407,7 +407,7 @@
                                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                                 ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                                 <CollectionView.EmptyView>
-                                    <Label Text="No Workout(s) Set" />
+                                    <Label Text="No Workout Set" />
                                 </CollectionView.EmptyView>
                             </CollectionView>
                         </Grid>
@@ -442,7 +442,7 @@
                                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                                 ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                                 <CollectionView.EmptyView>
-                                    <Label Text="No Workout(s) Set" />
+                                    <Label Text="No Workout Set" />
                                 </CollectionView.EmptyView>
                             </CollectionView>
                         </Grid>
@@ -477,7 +477,7 @@
                                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                                 ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                                 <CollectionView.EmptyView>
-                                    <Label Text="No Workout(s) Set" />
+                                    <Label Text="No Workout Set" />
                                 </CollectionView.EmptyView>
                             </CollectionView>
                         </Grid>
@@ -512,7 +512,7 @@
                                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                                 ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                                 <CollectionView.EmptyView>
-                                    <Label Text="No Workout(s) Set" />
+                                    <Label Text="No Workout Set" />
                                 </CollectionView.EmptyView>
                             </CollectionView>
                         </Grid>
@@ -547,7 +547,7 @@
                                 ItemsLayout="{StaticResource ScheduleCollectionViewItemsLayout}"
                                 ItemTemplate="{StaticResource ScheduleCollectionViewDataTemplate}">
                                 <CollectionView.EmptyView>
-                                    <Label Text="No Workout(s) Set" />
+                                    <Label Text="No Workout Set" />
                                 </CollectionView.EmptyView>
                             </CollectionView>
                         </Grid>

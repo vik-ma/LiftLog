@@ -13,9 +13,7 @@
                 <Label 
                     Text="Exercises"
                     HorizontalOptions="Center"
-                    FontSize="30"
-                    FontAttributes="Bold"
-                    Margin="5" />
+                    Style="{StaticResource LargeHeaderLabelStyle}" />
                 <CollectionView
                     ItemsSource="{Binding ExerciseList}"
                     HorizontalOptions="Center">

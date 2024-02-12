@@ -10,8 +10,7 @@
         <Label 
             Text="New Workout"
             HorizontalOptions="Center"
-            FontSize="30"
-            FontAttributes="Bold" />
+            Style="{StaticResource LargeHeaderLabelStyle}" />
 
         <Button 
             Text="New Empty Workout"

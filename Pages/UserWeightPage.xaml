@@ -11,8 +11,7 @@
         <Label 
             Text="User Weight"
             HorizontalOptions="Center"
-            FontSize="30"
-            FontAttributes="Bold" />
+            Style="{StaticResource LargeHeaderLabelStyle}" />
         <helpers:If Condition="{Binding LatestWeight, Converter={StaticResource IsNotNullConverter}}">
             <helpers:If.True>
                 <VerticalStackLayout 
@@ -20,9 +19,7 @@
                     <Label 
                         Text="Latest Weight"
                         HorizontalOptions="Center"
-                        FontSize="22"
-                        FontAttributes="Bold"
-                        TextColor="{DynamicResource VeryDarkGray}"/>
+                        Style="{StaticResource MediumHeaderLabelStyle}" />
                     <HorizontalStackLayout Spacing="10">
                         <Label VerticalOptions="Center">
                             <Label.FormattedText>

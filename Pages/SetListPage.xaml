@@ -10,12 +10,11 @@
 
     <ScrollView>
         <VerticalStackLayout HorizontalOptions="Center">
-            <VerticalStackLayout Spacing="5">
+            <VerticalStackLayout>
                 <Label 
                     Text="Set List"
                     HorizontalOptions="Center"
-                    FontSize="30"
-                    FontAttributes="Bold" />
+                    Style="{StaticResource LargeHeaderLabelStyle}" />
                 <HorizontalStackLayout
                     HorizontalOptions="Center"
                     Spacing="10">

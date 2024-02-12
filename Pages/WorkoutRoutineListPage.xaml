@@ -16,9 +16,7 @@
                 Padding="6, 10" >
                 <Label 
                     Text="Workout Routine List"
-                    VerticalOptions="Center"
-                    FontAttributes="Bold"
-                    FontSize="36" />
+                    Style="{StaticResource LargeHeaderLabelStyle}" />
             </VerticalStackLayout>
             <helpers:If Condition="{Binding IsBusy}">
                 <helpers:If.True>

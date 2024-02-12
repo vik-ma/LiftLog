@@ -13,9 +13,7 @@
                 <Label 
                     Text="Workout Templates"
                     HorizontalOptions="Center"
-                    FontSize="30"
-                    FontAttributes="Bold"
-                    Margin="10" />
+                    Style="{StaticResource LargeHeaderLabelStyle}" />
                 <CollectionView
                         ItemsSource="{Binding WorkoutTemplateList}">
                     <CollectionView.ItemsLayout>
@@ -100,9 +98,7 @@
                 <Label 
                     Text="Workout Template Collections"
                     HorizontalOptions="Center"
-                    FontSize="30"
-                    FontAttributes="Bold"
-                    Margin="10" />
+                    Style="{StaticResource LargeHeaderLabelStyle}" />
                 <CollectionView
                         ItemsSource="{Binding WorkoutTemplateCollectionList}">
                     <CollectionView.ItemsLayout>
