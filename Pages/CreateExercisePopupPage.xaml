@@ -14,7 +14,7 @@
         <Border 
             BackgroundColor="White">
             <VerticalStackLayout 
-                Spacing="15"
+                Spacing="8"
                 Padding="30, 20">
                 <Label 
                     Text="New Exercise"
@@ -47,16 +47,9 @@
                                 <Label 
                                     Grid.Column="0"
                                     HorizontalOptions="Start"
-                                    VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="{Binding ., Converter={StaticResource ExerciseGroupConverter}}"
-                                                FontAttributes="Bold"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
+                                    Text="{Binding ., Converter={StaticResource ExerciseGroupConverter}}"
+                                    VerticalOptions="Center"
+                                    Style="{StaticResource SmallBoldLabelStyle}" />
                                 <Button 
                                     Grid.Column="1"
                                     HorizontalOptions="End"
@@ -83,7 +76,7 @@
                 <Button 
                     Text="Save" 
                     BackgroundColor="{DynamicResource MediumGreen}"
-                    Style="{StaticResource SmallButtonStyle}"
+                    Style="{StaticResource Width150ButtonStyle}"
                     Command="{Binding SaveExerciseCommand}" />
                 
                 <helpers:If Condition="{Binding IsEditingExercise}">
@@ -91,14 +84,14 @@
                         <Button 
                             Text="Delete" 
                             BackgroundColor="{DynamicResource MediumRed}"
-                            Style="{StaticResource SmallButtonStyle}"
+                            Style="{StaticResource Width150ButtonStyle}"
                             Command="{Binding DeleteExerciseCommand}" />
                     </helpers:If.True>
                 </helpers:If>
 
                 <Button 
                     Text="Close" 
-                    Style="{StaticResource SmallButtonStyle}"
+                    Style="{StaticResource Width150ButtonStyle}"
                     Command="{Binding ClosePopupCommand}" />
             </VerticalStackLayout>
         </Border>
