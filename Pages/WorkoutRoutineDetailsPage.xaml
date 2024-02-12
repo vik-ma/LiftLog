@@ -125,7 +125,7 @@
                             <DataTemplate x:DataType="x:String">
                                 <Label 
                                     Text="{Binding .}"
-                                    FontAttributes="Bold" />
+                                    Style="{StaticResource ExtraSmallBoldLabelStyle}" />
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
@@ -140,7 +140,9 @@
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="x:String">
-                                <Label Text="{Binding .}" />
+                                <Label 
+                                    Text="{Binding .}"
+                                    Style="{StaticResource ExtraSmallLabelStyle}" />
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
