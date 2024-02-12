@@ -201,9 +201,7 @@
                             VerticalOptions="Center">
                             <Label 
                                 Text="No Time Periods In List!" 
-                                FontSize="18" 
-                                FontAttributes="Bold" 
-                                HorizontalTextAlignment="Center" />
+                                Style="{StaticResource EmptyCollectionViewLabelStyle}" />
                         </VerticalStackLayout>
                     </ContentView>
                 </CollectionView.EmptyView>

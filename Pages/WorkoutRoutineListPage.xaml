@@ -155,11 +155,11 @@
                                         Style="{StaticResource MediumButtonStyle}" 
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=SetActiveWorkoutRoutineCommand}" 
                                         CommandParameter="{Binding .}" />
-                                    <Button 
+                                    <!--<Button 
                                         Text="Edit"
                                         Style="{StaticResource MediumButtonStyle}" 
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutRoutineListViewModel}}, Path=SetOperatingWorkoutRoutineCommand}" 
-                                        CommandParameter="{Binding .}" />
+                                        CommandParameter="{Binding .}" />-->
                                     <Button 
                                         Text="Delete"
                                         Style="{StaticResource MediumRedButtonStyle}" 
@@ -175,14 +175,11 @@
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center">
                                 <Label 
-                                    Text="No Workout Routines In List!" 
-                                    FontSize="18" 
-                                    FontAttributes="Bold" 
-                                    HorizontalTextAlignment="Center" />
+                                    Text="No Workout Routines In List!"
+                                    Style="{StaticResource EmptyCollectionViewLabelStyle}" />
                                 <Label 
                                     Text="Create a Workout Routine in the form below." 
-                                    FontSize="18" 
-                                    FontAttributes="Bold" />
+                                    Style="{StaticResource EmptyCollectionViewLabelStyle}" />
                             </VerticalStackLayout>
                         </ContentView>
                     </CollectionView.EmptyView>

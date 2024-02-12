@@ -104,10 +104,8 @@
                             HorizontalOptions="Center"
                             VerticalOptions="Center">
                             <Label 
-                                Text="No Workouts In List!" 
-                                FontSize="18" 
-                                FontAttributes="Bold" 
-                                HorizontalTextAlignment="Center" />
+                                Text="No Workouts In List!"  
+                                Style="{StaticResource EmptyCollectionViewLabelStyle}" />
                         </VerticalStackLayout>
                     </ContentView>
                 </CollectionView.EmptyView>

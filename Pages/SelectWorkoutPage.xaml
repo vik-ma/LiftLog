@@ -65,10 +65,8 @@
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center">
                                 <Label 
-                                    Text="No Routines In List!" 
-                                    FontSize="20" 
-                                    FontAttributes="Bold" 
-                                    HorizontalTextAlignment="Center" />
+                                    Text="No Routines In List!"  
+                                    Style="{StaticResource EmptyCollectionViewLabelStyle}" />
                             </VerticalStackLayout>
                         </ContentView>
                     </CollectionView.EmptyView>
@@ -179,10 +177,8 @@
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center">
                                 <Label 
-                                    Text="No Workouts In Schedule!" 
-                                    FontSize="20" 
-                                    FontAttributes="Bold" 
-                                    HorizontalTextAlignment="Center" />
+                                    Text="No Workouts In Schedule!"  
+                                    Style="{StaticResource EmptyCollectionViewLabelStyle}" />
                             </VerticalStackLayout>
                         </ContentView>
                     </CollectionView.EmptyView>

@@ -292,9 +292,7 @@
                                                     VerticalOptions="Center">
                                                     <Label 
                                                         Text="No Default Equipment Weights Added!" 
-                                                        FontSize="18" 
-                                                        FontAttributes="Bold" 
-                                                        HorizontalTextAlignment="Center" />
+                                                        Style="{StaticResource EmptyCollectionViewLabelStyle}" />
                                                 </VerticalStackLayout>
                                             </ContentView>
                                         </CollectionView.EmptyView>

@@ -124,10 +124,8 @@
                             HorizontalOptions="Center"
                             VerticalOptions="Center">
                         <Label 
-                            Text="No Body Weight Value Added!" 
-                            FontSize="18" 
-                            FontAttributes="Bold" 
-                            HorizontalTextAlignment="Center" />
+                            Text="No Body Weight Value Added!"
+                            Style="{StaticResource EmptyCollectionViewLabelStyle}" />
                     </VerticalStackLayout>
                 </ContentView>
             </CollectionView.EmptyView>

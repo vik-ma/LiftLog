@@ -78,6 +78,12 @@
                 <Setter Property="FontFamily" Value="Inter" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
+            <Style x:Key="EmptyCollectionViewLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
             <Style x:Key="ScheduleWTLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontFamily" Value="Inter" />

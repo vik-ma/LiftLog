@@ -152,10 +152,8 @@ This Set will not show up in new Workouts unless it is changed to a valid Exerci
                             HorizontalOptions="Center"
                             VerticalOptions="Center">
                             <Label 
-                                Text="Set List Is Empty!" 
-                                FontSize="16" 
-                                FontAttributes="Bold" 
-                                HorizontalTextAlignment="Center" />
+                                Text="Set List Is Empty!"  
+                                Style="{StaticResource EmptyCollectionViewLabelStyle}" />
                         </VerticalStackLayout>
                     </ContentView>
                 </CollectionView.EmptyView>

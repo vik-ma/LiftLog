@@ -356,10 +356,8 @@
                                     HorizontalOptions="Center"
                                     VerticalOptions="Center">
                                 <Label 
-                                    Text="No Sets In List!" 
-                                    FontSize="18" 
-                                    FontAttributes="Bold" 
-                                    HorizontalTextAlignment="Center" />
+                                    Text="No Sets In List!"  
+                                    Style="{StaticResource EmptyCollectionViewLabelStyle}" />
                             </VerticalStackLayout>
                         </ContentView>
                     </CollectionView.EmptyView>

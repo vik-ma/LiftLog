@@ -74,10 +74,8 @@
                                 VerticalOptions="Center">
                                 <Label 
                                     Text="No Exercise Group Added" 
-                                    FontSize="16" 
-                                    FontAttributes="Bold" 
                                     TextColor="{DynamicResource MediumRed}"
-                                    HorizontalTextAlignment="Center" />
+                                    Style="{StaticResource EmptyCollectionViewLabelStyle}" />
                             </VerticalStackLayout>
                         </ContentView>
                     </CollectionView.EmptyView>

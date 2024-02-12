@@ -82,10 +82,8 @@
                                     HorizontalOptions="Center"
                                     VerticalOptions="Center">
                                 <Label 
-                                    Text="No Workout Templates In List!" 
-                                    FontSize="18" 
-                                    FontAttributes="Bold" 
-                                    HorizontalTextAlignment="Center" />
+                                    Text="No Workout Templates In List!"  
+                                    Style="{StaticResource EmptyCollectionViewLabelStyle}" />
                             </VerticalStackLayout>
                         </ContentView>
                     </CollectionView.EmptyView>
@@ -188,10 +186,8 @@
                                     HorizontalOptions="Center"
                                     VerticalOptions="Center">
                                 <Label 
-                                    Text="No Workout Template Collections In List!" 
-                                    FontSize="18" 
-                                    FontAttributes="Bold" 
-                                    HorizontalTextAlignment="Center" />
+                                    Text="No Workout Template Collections In List!"  
+                                    Style="{StaticResource EmptyCollectionViewLabelStyle}" />
                             </VerticalStackLayout>
                         </ContentView>
                     </CollectionView.EmptyView>

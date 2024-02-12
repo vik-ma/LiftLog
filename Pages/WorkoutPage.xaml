@@ -220,10 +220,8 @@
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center">
                                 <Label 
-                                    Text="Set List Is Empty!" 
-                                    FontSize="16" 
-                                    FontAttributes="Bold" 
-                                    HorizontalTextAlignment="Center" />
+                                    Text="Set List Is Empty!"  
+                                    Style="{StaticResource EmptyCollectionViewLabelStyle}" />
                             </VerticalStackLayout>
                         </ContentView>
                     </CollectionView.EmptyView>
