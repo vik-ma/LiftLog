@@ -135,7 +135,7 @@
         }
 
         [RelayCommand]
-        private void RemoveExerciseGroupFromOperatingExercise(int exerciseGroupInt)
+        public void RemoveExerciseGroupFromOperatingExercise(int exerciseGroupInt)
         {
             if (!OperatingExerciseExerciseGroupIntList.Contains(exerciseGroupInt)) return;
 

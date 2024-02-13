@@ -1,3 +1,5 @@
+using System.Collections.Immutable;
+
 namespace LocalLiftLog.Pages;
 
 public partial class CreateExercisePopupPage : Popup
@@ -35,5 +37,18 @@ public partial class CreateExercisePopupPage : Popup
             ExerciseGroupPicker.Items.Remove(selectedItem);
             ExerciseGroupPicker.SelectedItem = null;
         }
+    }
+
+    private void RemoveButtonClicked(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        int exerciseGroupInt = (int)button.BindingContext;
+
+        _viewModel.RemoveExerciseGroupFromOperatingExercise(exerciseGroupInt);
+
+        if (ExerciseGroupDictionary.ExerciseGroupDict.TryGetValue(exerciseGroupInt, out string exerciseGroupString))
+        {
+            ExerciseGroupPicker.Items.Add(exerciseGroupString);
+        }  
     }
 }
