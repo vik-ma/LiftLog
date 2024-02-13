@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LocalLiftLog.Pages.ExerciseDetailsPage"
+             xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
+             xmlns:models="clr-namespace:LocalLiftLog.Models"
+             xmlns:helpers="clr-namespace:LocalLiftLog.Helpers"
+             x:DataType="viewmodel:ExerciseDetailsViewModel"
+             Title="Exercise Details Page">
+    <VerticalStackLayout HorizontalOptions="Center">
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span 
+                        Text="Exercise: " 
+                        FontAttributes="Bold"  
+                        Style="{StaticResource LargeHeaderSpanStyle}" />
+                    <Span 
+                        Text="{Binding Exercise.Name}"
+                        Style="{StaticResource LargeHeaderSpanStyle}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </VerticalStackLayout>
+</ContentPage>
