@@ -95,6 +95,11 @@
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=RemoveExerciseGroupFromExerciseCommand}"
                                         CommandParameter="{Binding .}" />
                                     <Button 
+                                        Text="Details"
+                                        Style="{StaticResource ExtraSmallButtonStyle}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=GoToExerciseDetailsPageCommand}"
+                                        CommandParameter="{Binding .}" />
+                                    <Button 
                                         Text="Delete"
                                         Style="{StaticResource ExtraSmallRedButtonStyle}"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustomExerciseViewModel}}, Path=DeleteExerciseCommand}"

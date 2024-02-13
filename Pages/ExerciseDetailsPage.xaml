@@ -7,6 +7,7 @@
              xmlns:helpers="clr-namespace:LocalLiftLog.Helpers"
              x:DataType="viewmodel:ExerciseDetailsViewModel"
              Title="Exercise Details Page">
+    
     <VerticalStackLayout HorizontalOptions="Center">
         <Label>
             <Label.FormattedText>

@@ -145,5 +145,18 @@
 
             HideDefaultExerciseList();
         }
+
+        [RelayCommand]
+        private async Task GoToExerciseDetailsPage(Exercise exercise)
+        {
+            if (exercise is null) return;
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["Exercise"] = exercise
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(ExerciseDetailsPage)}?Id={exercise.Id}", navigationParameter);
+        }
     }
 }
