@@ -33,6 +33,9 @@
         private CreateExercisePopupPage Popup;
 
         [ObservableProperty]
+        private List<int> pickerExerciseGroupIntList = new();
+
+        [ObservableProperty]
         private bool isEditingExercise;
 
         public void LoadExerciseList()
@@ -44,6 +47,7 @@
         public void LoadExerciseGroupIntList()
         {
             ExerciseGroupIntList = new(ExerciseGroupDictionary.GetSortedExerciseGroupList());
+            PickerExerciseGroupIntList = new(ExerciseGroupIntList);
         }
 
         #nullable enable
@@ -100,6 +104,8 @@
         [RelayCommand]
         private async Task ShowCreateExercisePopup()
         {
+            FilterPickerExerciseList();
+
             Popup = new CreateExercisePopupPage(this);
             await Shell.Current.ShowPopupAsync(Popup);
         }
@@ -110,6 +116,14 @@
             if (Popup is null) return;
 
             Popup.Close();
+        }
+
+        private void FilterPickerExerciseList()
+        {
+            if (IsEditingExercise)
+                PickerExerciseGroupIntList.RemoveAll(x => OperatingExerciseExerciseGroupIntList.Contains(x));
+            else 
+                PickerExerciseGroupIntList = new(ExerciseGroupIntList);
         }
 
         public void AddExerciseGroupToOperatingExercise(int exerciseGroupInt)
