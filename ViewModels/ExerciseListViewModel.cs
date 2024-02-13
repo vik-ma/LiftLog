@@ -112,21 +112,21 @@
             Popup.Close();
         }
 
-        public void AddExerciseGroupToOperatingExercise(int selectedIndex)
+        public void AddExerciseGroupToOperatingExercise(int exerciseGroupInt)
         {
-            if (OperatingExerciseExerciseGroupIntList.Contains(selectedIndex)) return;
+            if (OperatingExerciseExerciseGroupIntList.Contains(exerciseGroupInt)) return;
 
-            OperatingExercise.AddExerciseGroup(selectedIndex);
-            OperatingExerciseExerciseGroupIntList.Add(selectedIndex);
+            OperatingExercise.AddExerciseGroup(exerciseGroupInt);
+            OperatingExerciseExerciseGroupIntList.Add(exerciseGroupInt);
         }
 
         [RelayCommand]
-        private void RemoveExerciseGroupFromOperatingExercise(int selectedIndex)
+        private void RemoveExerciseGroupFromOperatingExercise(int exerciseGroupInt)
         {
-            if (!OperatingExerciseExerciseGroupIntList.Contains(selectedIndex)) return;
+            if (!OperatingExerciseExerciseGroupIntList.Contains(exerciseGroupInt)) return;
 
-            OperatingExercise.RemoveExerciseGroup(selectedIndex);
-            OperatingExerciseExerciseGroupIntList.Remove(selectedIndex);
+            OperatingExercise.RemoveExerciseGroup(exerciseGroupInt);
+            OperatingExerciseExerciseGroupIntList.Remove(exerciseGroupInt);
         }
 
         [RelayCommand]

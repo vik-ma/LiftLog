@@ -13,11 +13,14 @@ public partial class CreateExercisePopupPage : Popup
     private void OnPickerSelectedIndexChanged(object sender, EventArgs e)
     {
         var picker = (Picker)sender;
-        int selectedIndex = picker.SelectedIndex;
+        string selectedItem = (string)picker.SelectedItem;
 
-        if (selectedIndex != -1)
+        if (!string.IsNullOrEmpty(selectedItem))
         {
-            _viewModel.AddExerciseGroupToOperatingExercise(selectedIndex);
+            if (!ExerciseGroupDictionary.FlippedExerciseGroupDict.TryGetValue(selectedItem, out int exerciseGroupInt))
+                return;
+
+            _viewModel.AddExerciseGroupToOperatingExercise(exerciseGroupInt);
         }
     }
 }
