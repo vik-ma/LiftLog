@@ -8,6 +8,16 @@ public partial class CreateExercisePopupPage : Popup
 		InitializeComponent();
         _viewModel = viewModel;
         BindingContext = _viewModel;
+        PopulatePickerItems();
+    }
+
+    private void PopulatePickerItems()
+    {
+        foreach (var item in _viewModel.PickerExerciseGroupIntList)
+        {
+            if (ExerciseGroupDictionary.ExerciseGroupDict.TryGetValue(item, out string exerciseGroupString))
+                ExerciseGroupPicker.Items.Add(exerciseGroupString);
+        }
     }
 
     private void OnPickerSelectedIndexChanged(object sender, EventArgs e)
@@ -21,6 +31,9 @@ public partial class CreateExercisePopupPage : Popup
                 return;
 
             _viewModel.AddExerciseGroupToOperatingExercise(exerciseGroupInt);
+
+            ExerciseGroupPicker.Items.Remove(selectedItem);
+            ExerciseGroupPicker.SelectedItem = null;
         }
     }
 }

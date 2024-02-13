@@ -33,10 +33,10 @@
                     Text="Exercise Group" 
                     Style="{StaticResource MediumBoldLabelStyle}" />
                 <Picker 
+                    x:Name="ExerciseGroupPicker"
                     WidthRequest="200"
                     HeightRequest="40"
-                    SelectedIndexChanged="OnPickerSelectedIndexChanged"
-                    ItemsSource="{Binding ExerciseGroupIntList, Converter={StaticResource ExerciseGroupConverter}}" />
+                    SelectedIndexChanged="OnPickerSelectedIndexChanged" />
                 <CollectionView
                     ItemsSource="{Binding OperatingExerciseExerciseGroupIntList}"
                     HorizontalOptions="Center">
