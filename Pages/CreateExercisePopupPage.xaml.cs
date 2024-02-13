@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic;
 using System.Collections.Immutable;
 
 namespace LocalLiftLog.Pages;
@@ -48,7 +49,19 @@ public partial class CreateExercisePopupPage : Popup
 
         if (ExerciseGroupDictionary.ExerciseGroupDict.TryGetValue(exerciseGroupInt, out string exerciseGroupString))
         {
-            ExerciseGroupPicker.Items.Add(exerciseGroupString);
+            string[] itemsArray = [.. ExerciseGroupPicker.Items];
+
+            // Find the index where exerciseGroupString should be inserted
+            int index = Array.BinarySearch(itemsArray, exerciseGroupString);
+
+            if (index < 0)
+            {
+                // Convert the negative index returned by BinarySearch to the index where exerciseGroupString should be inserted
+                index = ~index;
+            }
+
+            // Insert exerciseGroupString where it should be alphabetically
+            ExerciseGroupPicker.Items.Insert(index, exerciseGroupString);
         }  
     }
 }
