@@ -67,6 +67,23 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Note: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Note}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Entry 
+                                        Text="{Binding Note}"
+                                        WidthRequest="120"
+                                        Style="{StaticResource FontSize14EntryFieldStyle}" />
                                     <Button 
                                         Text="Add Group"
                                         Style="{StaticResource ExtraSmallButtonStyle}"
