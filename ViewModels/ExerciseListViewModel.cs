@@ -104,8 +104,6 @@
         [RelayCommand]
         private async Task ShowCreateExercisePopup()
         {
-            FilterPickerExerciseList();
-
             Popup = new CreateExercisePopupPage(this);
             await Shell.Current.ShowPopupAsync(Popup);
         }
@@ -116,14 +114,6 @@
             if (Popup is null) return;
 
             Popup.Close();
-        }
-
-        private void FilterPickerExerciseList()
-        {
-            if (IsEditingExercise)
-                PickerExerciseGroupIntList.RemoveAll(x => OperatingExerciseExerciseGroupIntList.Contains(x));
-            else 
-                PickerExerciseGroupIntList = new(ExerciseGroupIntList);
         }
 
         public void AddExerciseGroupToOperatingExercise(int exerciseGroupInt)
@@ -151,6 +141,9 @@
             OperatingExercise = exercise;
             OperatingExerciseExerciseGroupIntList = new(exercise.GetExerciseGroupIntList());
 
+            PickerExerciseGroupIntList = new(ExerciseGroupIntList);
+            PickerExerciseGroupIntList.RemoveAll(x => OperatingExerciseExerciseGroupIntList.Contains(x));
+
             IsEditingExercise = true;
 
             await ShowCreateExercisePopup();
@@ -165,6 +158,7 @@
                 OperatingExercise = new();
                 OperatingExerciseExerciseGroupIntList = new();
                 IsEditingExercise = false;
+                PickerExerciseGroupIntList = new(ExerciseGroupIntList);
             }
 
             await ShowCreateExercisePopup();
