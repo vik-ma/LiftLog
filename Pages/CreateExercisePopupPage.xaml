@@ -9,7 +9,7 @@
              x:DataType="viewmodel:ExerciseListViewModel">
 
     <ScrollView 
-        HeightRequest="500"
+        HeightRequest="560"
         WidthRequest="260">
         <Border 
             BackgroundColor="White">
@@ -23,6 +23,12 @@
                     Text="Name" 
                     Style="{StaticResource MediumBoldLabelStyle}" />
                 <Entry Text="{Binding OperatingExercise.Name}" />
+                <Label 
+                    Text="Note (Optional)" 
+                    Style="{StaticResource MediumBoldLabelStyle}" />
+                <Entry 
+                    ClearButtonVisibility="WhileEditing"
+                    Text="{Binding OperatingExercise.Note}" />
                 <Label 
                     Text="Exercise Group" 
                     Style="{StaticResource MediumBoldLabelStyle}" />
