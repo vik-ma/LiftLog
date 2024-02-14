@@ -194,6 +194,9 @@
                                                 <Span 
                                                     Text="{Binding ActiveUserWeight.BodyWeight}"
                                                     Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding ActiveUserWeight.WeightUnit}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
