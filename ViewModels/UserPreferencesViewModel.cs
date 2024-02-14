@@ -22,9 +22,6 @@
         private DefaultEquipmentWeight operatingDefaultEquipmentWeight = new();
 
         [ObservableProperty]
-        private bool isEditingDefaultEquipmentWeight;
-
-        [ObservableProperty]
         private bool displayDefaultEquipmentWeightList;
 
         [ObservableProperty]
@@ -224,7 +221,7 @@
 
             OperatingDefaultEquipmentWeight = new();
 
-            CancelEditingDefaultEquipmentWeight();
+            ClosePopup();
         }
 
         [RelayCommand]
@@ -327,22 +324,6 @@
             UserSettings.ResetUserPreferences();
 
             await UpdateUserPreferencesAsync();
-        }
-
-        #nullable enable
-        [RelayCommand]
-        private void ShowEditingDefaultEquipmentWeight(DefaultEquipmentWeight? defaultEquipmentWeight)
-        {
-            OperatingDefaultEquipmentWeight = defaultEquipmentWeight ?? new();
-
-            IsEditingDefaultEquipmentWeight = true;
-        }
-
-
-        [RelayCommand]
-        private void CancelEditingDefaultEquipmentWeight()
-        {
-            IsEditingDefaultEquipmentWeight = false;
         }
 
         [RelayCommand]

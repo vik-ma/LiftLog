@@ -135,7 +135,7 @@
                             </VerticalStackLayout>
                         </helpers:If.True>
                     </helpers:If>
-                    
+
 
                     <VerticalStackLayout Spacing="5">
                         <Label 
@@ -367,99 +367,5 @@
                     Margin="20" />
             </VerticalStackLayout>
         </ScrollView>
-
-        <VerticalStackLayout VerticalOptions="End">
-            <BoxView 
-                Color="{DynamicResource Primary}"
-                HeightRequest="1" />
-            <helpers:If Condition="{Binding IsEditingDefaultEquipmentWeight}">
-                <helpers:If.True>
-                    <Grid
-                        RowDefinitions="*, *"
-                        ColumnDefinitions="*, *"
-                        Padding="10"
-                        ColumnSpacing="15"
-                        BackgroundColor="{DynamicResource VeryLightGray}">
-                        <VerticalStackLayout 
-                            Grid.Row="0"
-                            Grid.Column="0">
-                            <Label 
-                                Grid.Column="0"
-                                Text="Default Equipment Weight" 
-                                FontAttributes="Bold"
-                                FontSize="32"
-                                HorizontalOptions="Start"
-                                VerticalOptions="Center" /> 
-                        </VerticalStackLayout>
-                        <HorizontalStackLayout 
-                            Grid.Row="0"
-                            Grid.Column="2"
-                            HorizontalOptions="End"
-                            Spacing="12">
-                                <Button 
-                                    Grid.Column="1"
-                                    Text="Cancel"
-                                    Style="{StaticResource MediumRedButtonStyle}"
-                                    Command="{Binding CancelEditingDefaultEquipmentWeightCommand}" >
-                                </Button>
-                                <Button 
-                                    Grid.Column="1"
-                                    Text="Save"
-                                    Style="{StaticResource MediumGreenButtonStyle}"
-                                    Command="{Binding AddNewDefaultEquipmentWeightCommand}" >
-                                </Button>
-                        </HorizontalStackLayout>
-                        <VerticalStackLayout 
-                            Grid.Row="1"
-                            Grid.Column="0">
-                            <Label 
-                                Text="Name" 
-                                FontAttributes="Bold" 
-                                Margin="2, 0"
-                                FontSize="20" />
-                            <helpers:If Condition="{Binding OperatingDefaultEquipmentWeight.Id}">
-                                <helpers:If.True>
-                                    <Label 
-                                        Text="{Binding OperatingDefaultEquipmentWeight.Name}" 
-                                        Margin="2, 0"
-                                        FontSize="20" />
-                                </helpers:If.True>
-                            </helpers:If>
-                            <Entry 
-                                Text="{Binding OperatingDefaultEquipmentWeight.Name}"
-                                Placeholder="Name"
-                                Margin="0, 5"
-                                BackgroundColor="{DynamicResource White}"
-                                FontSize="20"/>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout 
-                            Grid.Row="1"
-                            Grid.Column="1">
-                            <Label 
-                                Text="Weight" 
-                                FontAttributes="Bold" 
-                                Margin="2, 0"
-                                FontSize="20" />
-                            <helpers:If Condition="{Binding OperatingDefaultEquipmentWeight.Id}">
-                                <helpers:If.True>
-                                    <Label 
-                                        Text="{Binding OperatingDefaultEquipmentWeight.Weight}" 
-                                        Margin="2, 0"
-                                        FontSize="20" />
-                                </helpers:If.True>
-                            </helpers:If>
-
-                            <Entry 
-                                Text="{Binding OperatingDefaultEquipmentWeight.Weight}"
-                                Placeholder="Weight"
-                                Margin="0, 5"
-                                BackgroundColor="{DynamicResource White}"
-                                FontSize="20" />
-                        </VerticalStackLayout>
-                    </Grid> 
-                </helpers:If.True>
-            </helpers:If>
-            
-        </VerticalStackLayout>
     </Grid>
 </ContentPage>
