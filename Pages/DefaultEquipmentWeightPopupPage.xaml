@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LocalLiftLog.Pages.DefaultEquipmentWeightPopupPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
+             xmlns:models="clr-namespace:LocalLiftLog.Models"
+             xmlns:helpers="clr-namespace:LocalLiftLog.Helpers"
+             x:DataType="viewmodel:UserPreferencesViewModel">
+
+    <Border 
+        BackgroundColor="White">
+        <VerticalStackLayout 
+            Spacing="8"
+            Padding="30, 20">
+            
+        </VerticalStackLayout>
+    </Border>
+</toolkit:Popup>

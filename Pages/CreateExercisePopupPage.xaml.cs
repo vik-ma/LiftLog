@@ -1,6 +1,3 @@
-using Microsoft.VisualBasic;
-using System.Collections.Immutable;
-
 namespace LocalLiftLog.Pages;
 
 public partial class CreateExercisePopupPage : Popup
