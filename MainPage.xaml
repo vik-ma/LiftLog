@@ -32,19 +32,6 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span 
-                                Text="Is Using Metric Units: " 
-                                FontAttributes="Bold"  
-                                Style="{StaticResource SmallSpanStyle}" />
-                            <Span 
-                                Text="{Binding UserSettingsViewModel.UserSettings.IsUsingMetricUnits}"
-                                Style="{StaticResource SmallSpanStyle}" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label VerticalOptions="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span 
                                 Text="Is Using 24 Hour Clock: " 
                                 FontAttributes="Bold"  
                                 Style="{StaticResource SmallSpanStyle}" />

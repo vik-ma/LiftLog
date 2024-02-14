@@ -53,19 +53,6 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span 
-                                                    Text="Is Using Metric Units: " 
-                                                    FontAttributes="Bold"  
-                                                    Style="{StaticResource SmallSpanStyle}" />
-                                                <Span 
-                                                    Text="{Binding UserSettings.IsUsingMetricUnits}"
-                                                    Style="{StaticResource SmallSpanStyle}" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label VerticalOptions="Center">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span 
                                                     Text="Is Using 24 Hour Clock: " 
                                                     FontAttributes="Bold"  
                                                     Style="{StaticResource SmallSpanStyle}" />
@@ -360,17 +347,7 @@
                             <VerticalStackLayout
                                 WidthRequest="380"
                                 HorizontalOptions="Center"
-                                Spacing="10">
-                                <Grid>
-                                    <Label 
-                                        Text="Metric Units"
-                                        Style="{StaticResource MediumLabelStyle}" />
-                                    <Button 
-                                        Text="Change"
-                                        Style="{StaticResource SmallButtonStyle}"
-                                        HorizontalOptions="End"
-                                        Command="{Binding ToggleIsUsingMetricUnitsCommand}" />
-                                </Grid>
+                                Spacing="5">
                                 <Grid>
                                     <Label 
                                         Text="24 Hour Clock"

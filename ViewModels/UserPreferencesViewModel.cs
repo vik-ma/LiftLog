@@ -276,16 +276,6 @@
         }
 
         [RelayCommand]
-        private async Task ToggleIsUsingMetricUnits()
-        {
-            if (UserSettings is null) return;
-
-            UserSettings.IsUsingMetricUnits = !UserSettings.IsUsingMetricUnits;
-
-            await UpdateUserPreferencesAsync();
-        }
-
-        [RelayCommand]
         private async Task ToggleIsUsing24HourClock()
         {
             if (UserSettings is null) return;

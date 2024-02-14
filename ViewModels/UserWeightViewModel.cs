@@ -86,11 +86,6 @@
             });
         }
 
-        public void SetDefaultWeightUnit()
-        {
-            SelectedWeightUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits? ConstantsHelper.DefaultWeightUnitMetricTrue: ConstantsHelper.DefaultWeightUnitMetricFalse;
-        }
-
         private async Task UpdateActiveUserWeightId(int id)
         {
             UserSettingsViewModel.UserSettings.ActiveUserWeightId = id;
