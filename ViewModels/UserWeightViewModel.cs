@@ -86,8 +86,17 @@
             });
         }
 
+        public void LoadDefaultWeightUnit()
+        {
+            if (UserSettingsViewModel is null || UserSettingsViewModel.UserSettings is null) return;
+
+            SelectedWeightUnit = UserSettingsViewModel.UserSettings.DefaultWeightUnit;
+        }
+
         private async Task UpdateActiveUserWeightId(int id)
         {
+            if (UserSettingsViewModel is null || UserSettingsViewModel.UserSettings is null) return;
+
             UserSettingsViewModel.UserSettings.ActiveUserWeightId = id;
             UserSettingsViewModel.ActiveUserWeight = LatestWeight;
 

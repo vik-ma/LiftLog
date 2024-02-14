@@ -13,6 +13,7 @@ public partial class UserWeightPage : ContentPage
     {
         base.OnAppearing();
         await _viewModel.LoadUserWeightListAsync();
+        _viewModel.LoadDefaultWeightUnit();
     }
 
     private void OnWeightUnitPickerSelectedIndexChanged(object sender, EventArgs e)
