@@ -66,19 +66,6 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span 
-                                                    Text="Active Routine Id: " 
-                                                    FontAttributes="Bold"  
-                                                    Style="{StaticResource SmallSpanStyle}" />
-                                                <Span 
-                                                    Text="{Binding UserSettings.ActiveWorkoutRoutineId}"
-                                                    Style="{StaticResource SmallSpanStyle}" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label VerticalOptions="Center">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span 
                                                     Text="Is Using 24 Hour Clock: " 
                                                     FontAttributes="Bold"  
                                                     Style="{StaticResource SmallSpanStyle}" />
@@ -88,23 +75,6 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <Label VerticalOptions="Center">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span 
-                                                    Text="Active Time Period Id: " 
-                                                    FontAttributes="Bold"  
-                                                    Style="{StaticResource SmallSpanStyle}" />
-                                                <Span 
-                                                    Text="{Binding UserSettings.ActiveTimePeriodId}"
-                                                    Style="{StaticResource SmallSpanStyle}" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </HorizontalStackLayout>
-                                <HorizontalStackLayout 
-                                    HorizontalOptions="Center"
-                                    Spacing="10">
                                     <Label VerticalOptions="Center">
                                         <Label.FormattedText>
                                             <FormattedString>
@@ -122,11 +92,67 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span 
+                                                    Text="Active Routine Id: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding UserSettings.ActiveWorkoutRoutineId}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout 
+                                    HorizontalOptions="Center"
+                                    Spacing="10">
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Default Weight Unit: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding UserSettings.DefaultWeightUnit}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Default Distance Unit: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding UserSettings.DefaultDistanceUnit}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
                                                     Text="Active User Weight Id: " 
                                                     FontAttributes="Bold"  
                                                     Style="{StaticResource SmallSpanStyle}" />
                                                 <Span 
                                                     Text="{Binding UserSettings.ActiveUserWeightId}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Active Time Period Id: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding UserSettings.ActiveTimePeriodId}"
                                                     Style="{StaticResource SmallSpanStyle}" />
                                             </FormattedString>
                                         </Label.FormattedText>
