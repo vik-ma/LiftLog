@@ -32,10 +32,10 @@
         private DefaultEquipmentWeightPopupPage Popup;
 
         [ObservableProperty]
-        private HashSet<string> validWeightUnitList = new(ConstantsHelper.ValidWeightUnits);
+        private List<string> validWeightUnitList = new(ConstantsHelper.ValidWeightUnits.ToList());
 
         [ObservableProperty]
-        private HashSet<string> validDistanceUnitList = new(ConstantsHelper.ValidDistanceUnits);
+        private List<string> validDistanceUnitList = new(ConstantsHelper.ValidDistanceUnits.ToList());
 
         #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)

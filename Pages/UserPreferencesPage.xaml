@@ -396,9 +396,10 @@
                                         Text="Default Weight Unit" 
                                         Style="{StaticResource MediumLabelStyle}" />
                                     <Picker 
+                                        HorizontalOptions="End"
                                         Style="{StaticResource ExtraSmallPickerStyle}"
                                         ItemsSource="{Binding ValidWeightUnitList}"
-                                        HorizontalOptions="End"
+                                        SelectedIndexChanged="OnWeightUnitPickerSelectedIndexChanged"
                                         SelectedItem="{Binding UserSettings.DefaultWeightUnit}" />
                                 </Grid>
                                 <Grid>
@@ -406,9 +407,10 @@
                                         Text="Default Distance Unit" 
                                         Style="{StaticResource MediumLabelStyle}" />
                                     <Picker 
+                                        HorizontalOptions="End"
                                         Style="{StaticResource ExtraSmallPickerStyle}"
                                         ItemsSource="{Binding ValidDistanceUnitList}"
-                                        HorizontalOptions="End"
+                                        SelectedIndexChanged="OnDistanceUnitPickerSelectedIndexChanged"
                                         SelectedItem="{Binding UserSettings.DefaultDistanceUnit}" />
                                 </Grid>
                                 
