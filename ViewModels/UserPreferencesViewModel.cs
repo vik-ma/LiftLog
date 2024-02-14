@@ -31,7 +31,13 @@
 
         private DefaultEquipmentWeightPopupPage Popup;
 
-#nullable enable
+        [ObservableProperty]
+        private HashSet<string> validWeightUnitList = new(ConstantsHelper.ValidWeightUnits);
+
+        [ObservableProperty]
+        private HashSet<string> validDistanceUnitList = new(ConstantsHelper.ValidDistanceUnits);
+
+        #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
             try

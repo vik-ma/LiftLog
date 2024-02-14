@@ -218,6 +218,22 @@
                         </helpers:If>
                     </VerticalStackLayout>
 
+                    
+                    <Grid 
+                        HorizontalOptions="Center"
+                        ColumnDefinitions="*, *"
+                        RowDefinitions="*, *, *"
+                        ColumnSpacing="10">
+                        <Label 
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Text="User Weight"
+                            HorizontalOptions="Center"     
+                            Style="{StaticResource MediumHeaderLabelStyle}" />
+
+                    </Grid>
+
                     <VerticalStackLayout Spacing="5">
                         <HorizontalStackLayout 
                             Spacing="10"
@@ -342,7 +358,7 @@
                     <helpers:If Condition="{Binding UserSettings, Converter={StaticResource IsNotNullConverter}}">
                         <helpers:If.True>
                             <VerticalStackLayout
-                                WidthRequest="400"
+                                WidthRequest="380"
                                 HorizontalOptions="Center"
                                 Spacing="10">
                                 <Grid>
@@ -375,6 +391,27 @@
                                         HorizontalOptions="End"
                                         Command="{Binding ToggleShowCompletedSetTimestampCommand}" />
                                 </Grid>
+                                <Grid>
+                                    <Label 
+                                        Text="Default Weight Unit" 
+                                        Style="{StaticResource MediumLabelStyle}" />
+                                    <Picker 
+                                        Style="{StaticResource ExtraSmallPickerStyle}"
+                                        ItemsSource="{Binding ValidWeightUnitList}"
+                                        HorizontalOptions="End"
+                                        SelectedItem="{Binding UserSettings.DefaultWeightUnit}" />
+                                </Grid>
+                                <Grid>
+                                    <Label 
+                                        Text="Default Distance Unit" 
+                                        Style="{StaticResource MediumLabelStyle}" />
+                                    <Picker 
+                                        Style="{StaticResource ExtraSmallPickerStyle}"
+                                        ItemsSource="{Binding ValidDistanceUnitList}"
+                                        HorizontalOptions="End"
+                                        SelectedItem="{Binding UserSettings.DefaultDistanceUnit}" />
+                                </Grid>
+                                
                                 <Button 
                                     Text="Reset User Settings"
                                     Style="{StaticResource MediumButtonStyle}"
