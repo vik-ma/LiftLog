@@ -14,7 +14,7 @@
             Spacing="8"
             Padding="30, 20">
             <Label 
-                Text="New Equipment Weight"
+                Text="{Binding PopupTitle}"
                 Style="{StaticResource LargeBoldLabelStyle}" />
             <Label 
                 Text="Name" 
@@ -23,7 +23,23 @@
             <Label 
                 Text="Weight" 
                 Style="{StaticResource MediumBoldLabelStyle}" />
-            <Entry Text="{Binding OperatingDefaultEquipmentWeight.Weight}" />
+            <Grid
+                HorizontalOptions="Center"
+                ColumnDefinitions="*, *"
+                ColumnSpacing="10">
+                <Entry
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    WidthRequest="80"
+                    Text="{Binding OperatingDefaultEquipmentWeight.Weight}" />
+                <Picker 
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    Style="{StaticResource ExtraSmallPickerStyle}"
+                    ItemsSource="{Binding ValidWeightUnitList}"
+                    SelectedIndexChanged="OnWeightUnitPickerSelectedIndexChanged"
+                    SelectedItem="{Binding UserSettings.DefaultWeightUnit}" />
+            </Grid>
             <Button 
                 Text="Save" 
                 BackgroundColor="{DynamicResource MediumGreen}"

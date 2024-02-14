@@ -37,6 +37,9 @@
         [ObservableProperty]
         private List<string> validDistanceUnitList = new(ConstantsHelper.ValidDistanceUnits.ToList());
 
+        [ObservableProperty]
+        private string popupTitle;
+
         #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
@@ -207,8 +210,6 @@
                 return;
             }
 
-            OperatingDefaultEquipmentWeight.WeightUnit = "kg";
-
             if (OperatingDefaultEquipmentWeight.Id == 0)
             {
                 // Create New Default Equipment Weight
@@ -348,6 +349,7 @@
         private async Task ShowDefaultEquipmentWeightPopup(DefaultEquipmentWeight? defaultEquipmentWeight)
         {
             OperatingDefaultEquipmentWeight = defaultEquipmentWeight ?? new();
+            PopupTitle = defaultEquipmentWeight?.Name ?? "New Equipment";
 
             Popup = new DefaultEquipmentWeightPopupPage(this);
             await Shell.Current.ShowPopupAsync(Popup);

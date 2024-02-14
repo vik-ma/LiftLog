@@ -9,4 +9,15 @@ public partial class DefaultEquipmentWeightPopupPage : Popup
 		_viewModel = viewModel;
 		BindingContext = _viewModel;
 	}
+    
+    private void OnWeightUnitPickerSelectedIndexChanged(object sender, EventArgs e)
+    {
+        var picker = (Picker)sender;
+        int selectedIndex = picker.SelectedIndex;
+
+        if (selectedIndex != -1)
+        {
+            _viewModel.OperatingDefaultEquipmentWeight.WeightUnit = (string)picker.SelectedItem;
+        }
+    }
 }
