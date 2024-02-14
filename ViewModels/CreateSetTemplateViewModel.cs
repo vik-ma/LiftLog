@@ -103,10 +103,10 @@
             // Otherwise load default unit based on UserSettings
 
             if (!string.IsNullOrEmpty(OperatingSet.WeightUnit)) SelectedWeightUnit = OperatingSet.WeightUnit;
-            else SelectedWeightUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits ? ConstantsHelper.DefaultWeightUnitMetricTrue : ConstantsHelper.DefaultWeightUnitMetricFalse;
-            
+            else SelectedWeightUnit = UserSettingsViewModel.UserSettings.DefaultWeightUnit;
+
             if (!string.IsNullOrEmpty(OperatingSet.DistanceUnit)) SelectedDistanceUnit = OperatingSet.DistanceUnit;
-            else SelectedDistanceUnit = UserSettingsViewModel.UserSettings.IsUsingMetricUnits ? ConstantsHelper.DefaultDistanceUnitMetricTrue : ConstantsHelper.DefaultDistanceUnitMetricFalse;
+            else SelectedDistanceUnit = UserSettingsViewModel.UserSettings.DefaultDistanceUnit;
         }
 
         #nullable enable
