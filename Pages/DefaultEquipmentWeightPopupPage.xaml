@@ -13,7 +13,20 @@
         <VerticalStackLayout 
             Spacing="8"
             Padding="30, 20">
-            
+            <Label 
+                Text="New Equipment Weight"
+                Style="{StaticResource LargeBoldLabelStyle}" />
+            <Label 
+                Text="Name" 
+                Style="{StaticResource MediumBoldLabelStyle}" />
+            <Entry Text="{Binding OperatingDefaultEquipmentWeight.Name}" />
+            <Label 
+                Text="Weight" 
+                Style="{StaticResource MediumBoldLabelStyle}" />
+            <Entry Text="{Binding OperatingDefaultEquipmentWeight.Weight}" />
+            <Label 
+                Text="Unit" 
+                Style="{StaticResource MediumBoldLabelStyle}" />
         </VerticalStackLayout>
     </Border>
 </toolkit:Popup>

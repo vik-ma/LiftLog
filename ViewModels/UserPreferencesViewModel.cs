@@ -32,6 +32,8 @@
 
         private bool IsInitialized = false;
 
+        private DefaultEquipmentWeightPopupPage Popup;
+
 #nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
@@ -361,6 +363,24 @@
             UserSettings.ActiveUserWeightId = 0;
             await UpdateUserPreferencesAsync();
             await LoadActiveUserWeightAsync();
+        }
+
+        #nullable enable
+        [RelayCommand]
+        private async Task ShowDefaultEquipmentWeightPopup(DefaultEquipmentWeight? defaultEquipmentWeight)
+        {
+            OperatingDefaultEquipmentWeight = defaultEquipmentWeight ?? new();
+
+            Popup = new DefaultEquipmentWeightPopupPage(this);
+            await Shell.Current.ShowPopupAsync(Popup);
+        }
+
+        [RelayCommand]
+        public void ClosePopup()
+        {
+            if (Popup is null) return;
+
+            Popup.Close();
         }
     }
 }

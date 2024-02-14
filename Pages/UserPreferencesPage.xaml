@@ -270,7 +270,7 @@
                                                     </Label>
                                                     <Button 
                                                         Text="Edit Weight"
-                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserPreferencesViewModel}}, Path=ShowEditingDefaultEquipmentWeightCommand}"
+                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserPreferencesViewModel}}, Path=ShowDefaultEquipmentWeightPopupCommand}"
                                                         CommandParameter="{Binding .}"
                                                         Style="{StaticResource ExtraSmallButtonStyle}" />
                                                     <Button 
@@ -302,7 +302,7 @@
                                             Style="{StaticResource SmallButtonStyle}" />
                                         <Button 
                                             Text="Add New"
-                                            Command="{Binding ShowEditingDefaultEquipmentWeightCommand}"
+                                            Command="{Binding ShowDefaultEquipmentWeightPopupCommand}"
                                             Style="{StaticResource SmallGreenButtonStyle}" />
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
