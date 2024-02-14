@@ -24,9 +24,15 @@
                 Text="Weight" 
                 Style="{StaticResource MediumBoldLabelStyle}" />
             <Entry Text="{Binding OperatingDefaultEquipmentWeight.Weight}" />
-            <Label 
-                Text="Unit" 
-                Style="{StaticResource MediumBoldLabelStyle}" />
+            <Button 
+                Text="Save" 
+                BackgroundColor="{DynamicResource MediumGreen}"
+                Style="{StaticResource Width150ButtonStyle}"
+                Command="{Binding AddNewDefaultEquipmentWeightCommand}" />
+            <Button 
+                Text="Close" 
+                Style="{StaticResource Width150ButtonStyle}"
+                Command="{Binding ClosePopupCommand}" />
         </VerticalStackLayout>
     </Border>
 </toolkit:Popup>

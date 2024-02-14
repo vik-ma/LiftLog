@@ -10,6 +10,8 @@
         public int ActiveTimePeriodId { get; set; }
         public bool ShowCompletedSetTimestamp { get; set; } = true;
         public int ActiveUserWeightId { get; set; }
+        public string DefaultWeightUnit { get; set; } = "kg";
+        public string DefaultDistanceUnit { get; set; } = "km";
 
         public void ResetUserPreferences()
         {
@@ -18,7 +20,9 @@
             ActiveWorkoutRoutineId = 0;
             ActiveTimePeriodId = 0;
             ShowCompletedSetTimestamp = true;
-            ActiveUserWeightId = 0; 
+            ActiveUserWeightId = 0;
+            DefaultWeightUnit = "kg";
+            DefaultDistanceUnit = "km";
         }
     }
 }

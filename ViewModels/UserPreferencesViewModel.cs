@@ -10,6 +10,9 @@
         [ObservableProperty]
         private UserWeight activeUserWeight;
 
+        [ObservableProperty]
+        private DefaultUnitValues defaultUnitValues;
+
         public UserPreferencesViewModel(DatabaseContext context)
         {
             _context = context;
@@ -80,9 +83,17 @@
                 else
                 {
                     await CreateUserPreferencesAsync();
+                    // TOOD: ADD FUNCTION TO ASK FOR METRIC OR IMPERIAL UNITS
                     await PopulateDefaultEquipmentWeightsAsync();
                 }
             });
+        }
+
+        private async Task LoadDefaultUnitsAsync()
+        {
+            if (UserSettings is null) return;
+
+
         }
 
         public async Task LoadActiveUserWeightAsync()
