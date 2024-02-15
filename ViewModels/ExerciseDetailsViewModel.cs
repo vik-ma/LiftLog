@@ -15,6 +15,12 @@
         [ObservableProperty]
         private ObservableCollection<Set> setList = [];
 
+        [ObservableProperty]
+        private Set maxWeightSet;
+
+        [ObservableProperty]
+        private Set maxDistanceSet;
+
         public async Task LoadSetsFromExerciseIdAsync()
         {
             if (Exercise is null) return;
@@ -28,9 +34,11 @@
             {
                 filteredList = await _context.GetFilteredAsync<Set>(predicate);
 
-                foreach (var item in filteredList)
+                foreach (var set in filteredList)
                 {
-                    SetList.Add(item);
+                    SetList.Add(set);
+
+                    UpdateMaxSetForExericise(set);
                 }
             }
             catch
@@ -38,6 +46,14 @@
                 await Shell.Current.DisplayAlert("Error", "An error occured when trying to load Sets.", "OK");
                 return;
             }
+        }
+        public void UpdateMaxSetForExericise(Set set)
+        {
+            if (set is null) return;
+
+            if (set.IsTrackingWeight && set.Weight > MaxWeightSet.Weight) MaxWeightSet = set;
+
+            if (set.IsTrackingDistance && set.Distance > MaxDistanceSet.Distance) MaxDistanceSet = set;
         }
 
         [RelayCommand]
