@@ -300,11 +300,10 @@
                         continue;
                     }
 
-                    Set newSet = new()
-                    {
-                        WorkoutId = Workout.Id,
-                        ExerciseId = exercise.Id,
-                    };
+                    Set newSet = set.Clone();
+
+                    newSet.IsTemplate = false;
+                    newSet.WorkoutId = Workout.Id;
 
                     await CreateSetAsync(newSet);
 
