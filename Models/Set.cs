@@ -113,6 +113,15 @@
             return true;
         }
 
+        public bool ValidateUserWeightUnit(UserWeight userWeight)
+        {
+            if (userWeight is null) return false;
+
+            if (userWeight.WeightUnit != WeightUnit) return false;
+
+            return true;
+        }
+
         public (bool IsValid, string? ErrorMessage) ValidateSet()
         {
             if (ExerciseId < 1) return (false, $"Invalid Exercise Id {ExerciseId}");
