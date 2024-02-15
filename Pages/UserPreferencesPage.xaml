@@ -395,10 +395,10 @@
                                     Text="Reset User Settings"
                                     Style="{StaticResource MediumButtonStyle}"
                                     Command="{Binding ResetUserPreferencesCommand}" />
-                                <Button 
+                                <!--<Button 
                                     Text="Delete User Settings"
                                     Style="{StaticResource MediumRedButtonStyle}"
-                                    Command="{Binding DeleteUserPreferencesCommand}" />
+                                    Command="{Binding DeleteUserPreferencesCommand}" />-->
                             </VerticalStackLayout>
                         </helpers:If.True>
                     </helpers:If>

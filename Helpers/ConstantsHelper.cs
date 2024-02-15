@@ -12,14 +12,20 @@
         public static readonly int BodyWeightMinValue = 0;
         public static readonly int BodyWeightMaxValue = 999;
 
-        public static readonly HashSet<string> ValidWeightUnits = new() { "kg", "lbs" };
-        public static readonly HashSet<string> ValidDistanceUnits = new() { "km", "m", "mi", "ft", "yd" };
+        public static readonly HashSet<string> ValidWeightUnits = ["kg", "lbs"];
+        public static readonly HashSet<string> ValidDistanceUnits = ["km", "m", "mi", "ft", "yd"];
 
-        public static readonly string DefaultWeightUnitMetricTrue = "kg";
-        public static readonly string DefaultWeightUnitMetricFalse = "lbs";
+        public static readonly string DefaultWeightUnitMetric = "kg";
+        public static readonly string DefaultWeightUnitImperial = "lbs";
 
-        public static readonly string DefaultDistanceUnitMetricTrue = "km";
-        public static readonly string DefaultDistanceUnitMetricFalse = "mi";
+        public static readonly string DefaultDistanceUnitMetric = "km";
+        public static readonly string DefaultDistanceUnitImperial = "mi";
+
+        public static readonly int DefaultBarbellWeightMetric = 20;
+        public static readonly int DefaultDumbbellWeightMetric = 2;
+
+        public static readonly int DefaultBarbellWeightImperial = 45;
+        public static readonly int DefaultDumbbellWeightImperial = 5;
 
         public static readonly int ExerciseGroupMinValue = 0;
         public static readonly int ExerciseGroupMaxValue = ExerciseGroupDictionary.ExerciseGroupMaxValue;

@@ -183,17 +183,19 @@
         {
             if (UserSettings is null) return;
 
+            bool isMetricUnit = UserSettings.DefaultWeightUnit == ConstantsHelper.DefaultWeightUnitMetric; 
+
             // Default Equipment Weight Values
             DefaultEquipmentWeight defaultBarbellWeight = new()
             {
                 Name = "Barbell",
-                Weight = 20,
+                Weight = isMetricUnit ? ConstantsHelper.DefaultBarbellWeightMetric : ConstantsHelper.DefaultBarbellWeightImperial,
                 WeightUnit = UserSettings.DefaultWeightUnit
             };
             DefaultEquipmentWeight defaultDumbbellWeight = new()
             {
                 Name = "Dumbbell",
-                Weight = 2,
+                Weight = isMetricUnit ? ConstantsHelper.DefaultDumbbellWeightMetric : ConstantsHelper.DefaultDumbbellWeightImperial,
                 WeightUnit = UserSettings.DefaultWeightUnit
             };
 
@@ -311,23 +313,23 @@
             await UpdateUserPreferencesAsync();
         }
 
-        [RelayCommand]
-        private async Task DeleteUserPreferencesAsync()
-        {
-            if (UserSettings is null) return;
+        //[RelayCommand]
+        //private async Task DeleteUserPreferencesAsync()
+        //{
+        //    if (UserSettings is null) return;
 
-            await ExecuteAsync(async () =>
-            {
-                if (!await _context.DeleteItemAsync<UserPreferences>(UserSettings))
-                {
-                    await Shell.Current.DisplayAlert("Error", "Error occured when updating User Preferences.", "OK");
-                }
-            });
+        //    await ExecuteAsync(async () =>
+        //    {
+        //        if (!await _context.DeleteItemAsync<UserPreferences>(UserSettings))
+        //        {
+        //            await Shell.Current.DisplayAlert("Error", "Error occured when updating User Preferences.", "OK");
+        //        }
+        //    });
 
-            UserSettings = null;
+        //    UserSettings = null;
 
-            OnPropertyChanged(nameof(UserSettings));
-        }
+        //    OnPropertyChanged(nameof(UserSettings));
+        //}
 
         [RelayCommand]
         private async Task ResetUserPreferencesAsync()
