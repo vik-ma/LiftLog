@@ -103,8 +103,8 @@
 
             if (userClickedImperial)
             {
-                UserSettings.DefaultWeightUnit = "lbs";
-                UserSettings.DefaultDistanceUnit = "mi";
+                UserSettings.DefaultWeightUnit = ConstantsHelper.DefaultWeightUnitImperial;
+                UserSettings.DefaultDistanceUnit = ConstantsHelper.DefaultDistanceUnitImperial;
             }
         }
 

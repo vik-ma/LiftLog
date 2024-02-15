@@ -9,8 +9,8 @@
         public int ActiveTimePeriodId { get; set; }
         public bool ShowCompletedSetTimestamp { get; set; } = true;
         public int ActiveUserWeightId { get; set; }
-        public string DefaultWeightUnit { get; set; } = "kg";
-        public string DefaultDistanceUnit { get; set; } = "km";
+        public string DefaultWeightUnit { get; set; } = ConstantsHelper.DefaultWeightUnitMetric;
+        public string DefaultDistanceUnit { get; set; } = ConstantsHelper.DefaultDistanceUnitMetric;
 
         public void ResetUserPreferences()
         {
@@ -19,8 +19,8 @@
             ActiveTimePeriodId = 0;
             ShowCompletedSetTimestamp = true;
             ActiveUserWeightId = 0;
-            DefaultWeightUnit = "kg";
-            DefaultDistanceUnit = "km";
+            DefaultWeightUnit = ConstantsHelper.DefaultWeightUnitMetric;
+            DefaultDistanceUnit = ConstantsHelper.DefaultDistanceUnitMetric;
         }
     }
 }
