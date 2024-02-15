@@ -75,6 +75,21 @@
                             <HorizontalStackLayout 
                                 HorizontalOptions="Center"
                                 Spacing="10">
+                                <helpers:If Condition="{Binding IsWarmupSet}">
+                                    <helpers:If.True>
+                                        <Label VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="Warmup Set" 
+                                                        TextColor="{DynamicResource MediumOrange}"
+                                                        FontAttributes="Bold"  
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </helpers:If.True>
+                                </helpers:If>
                                 <Label VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -88,6 +103,151 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
+                                <helpers:If Condition="{Binding IsTrackingWeight}">
+                                    <helpers:If.True>
+                                        <Label VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="Weight: " 
+                                                        FontAttributes="Bold"  
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    <Span 
+                                                        Text="{Binding Weight}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    <Span 
+                                                        Text="{Binding WeightUnit}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </helpers:If.True>
+                                </helpers:If>
+                                <helpers:If Condition="{Binding IsTrackingReps}">
+                                    <helpers:If.True>
+                                        <Label VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="Reps: " 
+                                                        FontAttributes="Bold"  
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    <Span 
+                                                        Text="{Binding Reps}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </helpers:If.True>
+                                </helpers:If>
+                                <helpers:If Condition="{Binding IsTrackingRir}">
+                                    <helpers:If.True>
+                                        <Label VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="RIR: " 
+                                                        FontAttributes="Bold"  
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    <Span 
+                                                        Text="{Binding Rir}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </helpers:If.True>
+                                </helpers:If>
+                                <helpers:If Condition="{Binding IsTrackingRpe}">
+                                    <helpers:If.True>
+                                        <Label VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="RPE: " 
+                                                        FontAttributes="Bold"  
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    <Span 
+                                                        Text="{Binding Rpe}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </helpers:If.True>
+                                </helpers:If>
+                                <helpers:If Condition="{Binding IsTrackingTime}">
+                                    <helpers:If.True>
+                                        <Label VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="Time: " 
+                                                        FontAttributes="Bold"  
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    <Span 
+                                                        Text="{Binding TimeInSeconds}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </helpers:If.True>
+                                </helpers:If>
+                                <helpers:If Condition="{Binding IsTrackingDistance}">
+                                    <helpers:If.True>
+                                        <Label VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="Distance: " 
+                                                        FontAttributes="Bold"  
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    <Span 
+                                                        Text="{Binding Distance}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    <Span 
+                                                        Text="{Binding DistanceUnit}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </helpers:If.True>
+                                </helpers:If>
+                                <helpers:If Condition="{Binding IsTrackingCardioResistance}">
+                                    <helpers:If.True>
+                                        <Label VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="Cardio Resistance: " 
+                                                        FontAttributes="Bold"  
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    <Span 
+                                                        Text="{Binding CardioResistance}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </helpers:If.True>
+                                </helpers:If>
+                                <helpers:If Condition="{Binding IsTrackingPercentCompleted}">
+                                    <helpers:If.True>
+                                        <Label VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span 
+                                                        Text="Percent Completed: " 
+                                                        FontAttributes="Bold"  
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    <Span 
+                                                        Text="{Binding PercentCompleted}"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    <Span 
+                                                        Text="%"
+                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </helpers:If.True>
+                                </helpers:If>
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
                     </DataTemplate>
