@@ -7,20 +7,71 @@
              xmlns:helpers="clr-namespace:LocalLiftLog.Helpers"
              x:DataType="viewmodel:ExerciseDetailsViewModel"
              Title="Exercise Details Page">
-    
-    <VerticalStackLayout HorizontalOptions="Center">
-        <Label>
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span 
-                        Text="Exercise: " 
-                        FontAttributes="Bold"  
-                        Style="{StaticResource LargeHeaderSpanStyle}" />
-                    <Span 
-                        Text="{Binding Exercise.Name}"
-                        Style="{StaticResource LargeHeaderSpanStyle}" />
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </VerticalStackLayout>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="10">
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="Exercise: " 
+                            FontAttributes="Bold"  
+                            Style="{StaticResource LargeHeaderSpanStyle}" />
+                        <Span 
+                            Text="{Binding Exercise.Name}"
+                            Style="{StaticResource LargeHeaderSpanStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <CollectionView
+                ItemsSource="{Binding SetList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="3"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Set">
+                        <VerticalStackLayout Spacing="5">
+                            <HorizontalStackLayout 
+                                HorizontalOptions="Center"
+                                Spacing="10">
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Completed: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding TimeCompleted}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <VerticalStackLayout
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                            <Label 
+                                Text="Exercise has no completed sets!" 
+                                Style="{StaticResource EmptyCollectionViewLabelStyle}" />
+                        </VerticalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
+
+            <Button 
+                Text="Go Back"
+                Style="{StaticResource Width300ButtonStyle}"
+                Command="{Binding GoBackCommand}"
+                Margin="50" />
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
