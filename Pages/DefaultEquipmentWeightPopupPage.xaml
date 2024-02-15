@@ -18,10 +18,14 @@
                 Style="{StaticResource LargeBoldLabelStyle}" />
             <Label 
                 Text="Name" 
+                Margin="2, 0"
                 Style="{StaticResource MediumBoldLabelStyle}" />
-            <Entry Text="{Binding OperatingDefaultEquipmentWeight.Name}" />
+            <Entry
+                Text="{Binding OperatingDefaultEquipmentWeight.Name}"
+                Style="{StaticResource Height32EntryFieldStyle}" />
             <Label 
                 Text="Weight" 
+                Margin="2, 0"
                 Style="{StaticResource MediumBoldLabelStyle}" />
             <Grid
                 HorizontalOptions="Center"
@@ -29,9 +33,10 @@
                 ColumnSpacing="10">
                 <Entry
                     Grid.Column="0"
+                    Text="{Binding OperatingDefaultEquipmentWeight.Weight}"
                     HorizontalOptions="Start"
                     WidthRequest="80"
-                    Text="{Binding OperatingDefaultEquipmentWeight.Weight}" />
+                    Style="{StaticResource Height32EntryFieldStyle}" />
                 <Picker 
                     Grid.Column="1"
                     HorizontalOptions="End"
