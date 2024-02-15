@@ -38,7 +38,7 @@
                 {
                     SetList.Add(set);
 
-                    UpdateMaxSetForExericise(set);
+                    UpdateMaxSetForExercise(set);
                 }
             }
             catch
@@ -47,13 +47,25 @@
                 return;
             }
         }
-        public void UpdateMaxSetForExericise(Set set)
+        public void UpdateMaxSetForExercise(Set set)
         {
             if (set is null) return;
 
-            if (set.IsTrackingWeight && set.Weight > MaxWeightSet.Weight) MaxWeightSet = set;
+            if (set.IsTrackingWeight) 
+            {
+                if (MaxWeightSet is null) 
+                    MaxWeightSet = set;
+                else
+                    if (set.Weight > MaxWeightSet.Weight) MaxWeightSet = set;
+            }
 
-            if (set.IsTrackingDistance && set.Distance > MaxDistanceSet.Distance) MaxDistanceSet = set;
+            if (set.IsTrackingDistance)
+            {
+                if (MaxDistanceSet is null)
+                    MaxDistanceSet = set;
+                else
+                    if (set.Distance > MaxDistanceSet.Distance) MaxDistanceSet = set;
+            }
         }
 
         [RelayCommand]

@@ -24,6 +24,44 @@
                 </Label.FormattedText>
             </Label>
 
+            <helpers:If 
+                HorizontalOptions="Center"
+                Condition="{Binding MaxWeightSet, Converter={StaticResource IsNotNullConverter}}">
+                <helpers:If.True>
+                    <HorizontalStackLayout Spacing="5">
+                        <Label 
+                            Text="Max Weight Set:" 
+                            TextColor="{StaticResource MediumGreen}"
+                            Style="{StaticResource MediumBoldLabelStyle}" />
+                        <Label 
+                            Text="{Binding MaxWeightSet.Weight}"
+                            Style="{StaticResource MediumBoldLabelStyle}" />
+                        <Label 
+                            Text="{Binding MaxWeightSet.WeightUnit}"
+                            Style="{StaticResource MediumBoldLabelStyle}" />
+                    </HorizontalStackLayout>
+                </helpers:If.True>
+            </helpers:If>
+
+            <helpers:If 
+                HorizontalOptions="Center"
+                Condition="{Binding MaxDistanceSet, Converter={StaticResource IsNotNullConverter}}">
+                <helpers:If.True>
+                    <HorizontalStackLayout Spacing="5">
+                        <Label 
+                            Text="Max Distance Set:" 
+                            TextColor="{StaticResource MediumGreen}"
+                            Style="{StaticResource MediumBoldLabelStyle}" />
+                        <Label 
+                            Text="{Binding MaxDistanceSet.Distance}"
+                            Style="{StaticResource MediumBoldLabelStyle}" />
+                        <Label 
+                            Text="{Binding MaxDistanceSet.DistanceUnit}"
+                            Style="{StaticResource MediumBoldLabelStyle}" />
+                    </HorizontalStackLayout>
+                </helpers:If.True>
+            </helpers:If>
+
             <CollectionView
                 ItemsSource="{Binding SetList}">
                 <CollectionView.ItemsLayout>
