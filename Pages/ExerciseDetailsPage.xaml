@@ -29,16 +29,148 @@
                 Condition="{Binding MaxWeightSet, Converter={StaticResource IsNotNullConverter}}">
                 <helpers:If.True>
                     <HorizontalStackLayout Spacing="5">
-                        <Label 
-                            Text="Max Weight Set:" 
-                            TextColor="{StaticResource MediumGreen}"
-                            Style="{StaticResource MediumBoldLabelStyle}" />
-                        <Label 
-                            Text="{Binding MaxWeightSet.Weight}"
-                            Style="{StaticResource MediumBoldLabelStyle}" />
-                        <Label 
-                            Text="{Binding MaxWeightSet.WeightUnit}"
-                            Style="{StaticResource MediumBoldLabelStyle}" />
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Max Weight Set: " 
+                                        FontAttributes="Bold"
+                                        TextColor="{StaticResource MediumGreen}" 
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding MaxWeightSet.Weight}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding MaxWeightSet.WeightUnit}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <helpers:If Condition="{Binding MaxWeightSet.IsTrackingReps}">
+                            <helpers:If.True>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Reps: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding MaxWeightSet.Reps}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </helpers:If.True>
+                        </helpers:If>
+                        <helpers:If Condition="{Binding MaxWeightSet.IsTrackingRir}">
+                            <helpers:If.True>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="RIR: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding MaxWeightSet.Rir}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </helpers:If.True>
+                        </helpers:If>
+                        <helpers:If Condition="{Binding MaxWeightSet.IsTrackingRpe}">
+                            <helpers:If.True>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="RPE: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding MaxWeightSet.Rpe}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </helpers:If.True>
+                        </helpers:If>
+                        <helpers:If Condition="{Binding MaxWeightSet.IsTrackingTime}">
+                            <helpers:If.True>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Time: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding MaxWeightSet.TimeCompleted}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </helpers:If.True>
+                        </helpers:If>
+                        <helpers:If Condition="{Binding MaxWeightSet.IsTrackingDistance}">
+                            <helpers:If.True>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Distance: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding MaxWeightSet.Distance}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding MaxWeightSet.DistanceUnit}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </helpers:If.True>
+                        </helpers:If>
+                        <helpers:If Condition="{Binding MaxWeightSet.IsTrackingCardioResistance}">
+                            <helpers:If.True>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Cardio Resistance: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding MaxWeightSet.CardioResistance}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </helpers:If.True>
+                        </helpers:If>
+                        <helpers:If Condition="{Binding MaxWeightSet.IsTrackingPercentCompleted}">
+                            <helpers:If.True>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Percent Completed: " 
+                                                FontAttributes="Bold"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding MaxWeightSet.PercentCompleted}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="%"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </helpers:If.True>
+                        </helpers:If>
                     </HorizontalStackLayout>
                 </helpers:If.True>
             </helpers:If>
