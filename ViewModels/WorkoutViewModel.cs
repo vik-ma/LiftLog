@@ -516,6 +516,9 @@
 
             set.IsCompleted = !set.IsCompleted;
 
+            if (set.IsCompleted) set.TimeCompleted = DateTimeHelper.GetCurrentFormattedDateTime();
+            else set.TimeCompleted = null;
+
             await UpdateSetAsync(set);
         }
     }
