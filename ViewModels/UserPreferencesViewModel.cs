@@ -89,10 +89,23 @@
                 else
                 {
                     await CreateUserPreferencesAsync();
-                    // TOOD: ADD FUNCTION TO ASK FOR METRIC OR IMPERIAL UNITS
+                    await ShowUnitSelectionPrompt();
                     await PopulateDefaultEquipmentWeightsAsync();
                 }
             });
+        }
+
+        private async Task ShowUnitSelectionPrompt()
+        {
+            if (UserSettings is null) return;
+
+            bool userClickedImperial = await Shell.Current.DisplayAlert("Measurement Units", "Use imperial or metric units?", "Imperial", "Metric");
+
+            if (userClickedImperial)
+            {
+                UserSettings.DefaultWeightUnit = "lbs";
+                UserSettings.DefaultDistanceUnit = "mi";
+            }
         }
 
         public async Task LoadActiveUserWeightAsync()
@@ -168,18 +181,20 @@
         [RelayCommand]
         private async Task PopulateDefaultEquipmentWeightsAsync()
         {
+            if (UserSettings is null) return;
+
             // Default Equipment Weight Values
             DefaultEquipmentWeight defaultBarbellWeight = new()
             {
                 Name = "Barbell",
                 Weight = 20,
-                WeightUnit = "kg"
+                WeightUnit = UserSettings.DefaultWeightUnit
             };
             DefaultEquipmentWeight defaultDumbbellWeight = new()
             {
                 Name = "Dumbbell",
                 Weight = 2,
-                WeightUnit = "kg"
+                WeightUnit = UserSettings.DefaultWeightUnit
             };
 
             await CreateDefaultEquipmentWeightAsync(defaultBarbellWeight);
@@ -296,23 +311,23 @@
             await UpdateUserPreferencesAsync();
         }
 
-        //[RelayCommand]
-        //private async Task DeleteUserPreferencesAsync()
-        //{
-        //    if (UserSettings is null) return;
+        [RelayCommand]
+        private async Task DeleteUserPreferencesAsync()
+        {
+            if (UserSettings is null) return;
 
-        //    await ExecuteAsync(async () =>
-        //    {
-        //        if (!await _context.DeleteItemAsync<UserPreferences>(UserSettings))
-        //        {
-        //            await Shell.Current.DisplayAlert("Error", "Error occured when updating User Preferences.", "OK");
-        //        }
-        //    });
+            await ExecuteAsync(async () =>
+            {
+                if (!await _context.DeleteItemAsync<UserPreferences>(UserSettings))
+                {
+                    await Shell.Current.DisplayAlert("Error", "Error occured when updating User Preferences.", "OK");
+                }
+            });
 
-        //    UserSettings = null;
+            UserSettings = null;
 
-        //    OnPropertyChanged(nameof(UserSettings));
-        //}
+            OnPropertyChanged(nameof(UserSettings));
+        }
 
         [RelayCommand]
         private async Task ResetUserPreferencesAsync()
