@@ -52,8 +52,10 @@
 
                 foreach (var item in setDict)
                 {
-                    SetGroupList.Add(new SetGroup(item.Key, new List<Set>(item.Value)));
+                    SetGroupList.Add(new SetGroup(item.Key, item.Value));
                 }
+
+                SetGroupList = new(SetGroupList.OrderByDescending(x => x.Date));
             }
             catch
             {
