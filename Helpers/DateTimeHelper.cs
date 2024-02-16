@@ -158,5 +158,11 @@ namespace LocalLiftLog.Helpers
                 return $"Day {dayInt + 1}";
             }
         }
+
+        public static bool ValidateDateTimeString(string dateTime)
+        {
+            string dateTimeFormat = "yyyy-MM-dd HH:mm:ss";
+            return DateTime.TryParseExact(dateTime, dateTimeFormat, null, DateTimeStyles.None, out _);
+        }
     }
 }
