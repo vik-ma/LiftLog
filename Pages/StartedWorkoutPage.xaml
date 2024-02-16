@@ -52,8 +52,7 @@
                     FontAttributes="Bold" />
                 <Label 
                     Text="{Binding WorkoutTemplate.Name}"
-                    FontSize="30"
-                    Style="{StaticResource MediumBlueBoldTextStyle}" />
+                    FontSize="30" />
                 <Button 
                     Text="Modify Workout"
                     Style="{StaticResource MediumButtonStyle}"
@@ -100,8 +99,7 @@
                                             Text="{Binding Set.ExerciseId}"
                                             FontSize="20"
                                             VerticalOptions="Center"
-                                            TextColor="{Binding Set.IsWarmupSet, Converter={StaticResource WarmupSetColorConverter}}"
-                                            Style="{StaticResource OrangeBoldTextStyle}" />
+                                            TextColor="{Binding Set.IsWarmupSet, Converter={StaticResource WarmupSetColorConverter}}" />
                                         <Label
                                             Text="{Binding Set.Note}"
                                             TextColor="{DynamicResource DarkGray}"
