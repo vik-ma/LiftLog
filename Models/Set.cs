@@ -122,6 +122,19 @@
             return true;
         }
 
+        public bool ValidateTimeCompleted()
+        {
+            if (IsTemplate && IsCompleted) return false;
+
+            if (IsTemplate && TimeCompleted is not null) return false;
+
+            if (!IsTemplate && !IsCompleted) return false;
+
+            if (!IsTemplate && !DateTimeHelper.ValidateDateTimeString(TimeCompleted)) return false;
+
+            return true;
+        }
+
         public (bool IsValid, string? ErrorMessage) ValidateSet()
         {
             if (ExerciseId < 1) return (false, $"Invalid Exercise Id {ExerciseId}");
@@ -143,6 +156,9 @@
 
             // Validate that RPE is between 0 or 10, and not 0 if IsTrackingRpe is true
             if (!ValidateRpe()) return (false, "Invalid RPE Value");
+
+            // Validate that correct IsCompleted value is set and that TimeCompleted string is of correct format
+            if (!ValidateTimeCompleted()) return (false, "Invalid Date/Time");
 
             return (true, null);
         }
