@@ -520,5 +520,26 @@
 
             await UpdateSetAsync(set);
         }
+
+        [RelayCommand]
+        private async Task SetTimeCompletedProperty(Set set)
+        {
+            if (set is null) return;
+
+            string enteredDateTime = await Shell.Current.DisplayPromptAsync("Enter DateTime String", "", "OK", "Cancel");
+
+            if (enteredDateTime == null) return;
+
+            if (!DateTimeHelper.ValidateDateTimeString(enteredDateTime)) 
+            {
+                await Shell.Current.DisplayAlert("Error", "Invalid DateTime.", "OK");
+                return;
+            }
+
+            set.IsCompleted = true;
+            set.TimeCompleted = enteredDateTime;
+
+            await UpdateSetAsync(set);
+        }
     }
 }

@@ -207,6 +207,11 @@
                                     CommandParameter="{Binding Set}"
                                     Style="{StaticResource SmallGreenButtonStyle}" />
                                 <Button 
+                                    Text="Set Time Completed"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetTimeCompletedPropertyCommand}"
+                                    CommandParameter="{Binding Set}"
+                                    Style="{StaticResource SmallButtonStyle}" />
+                                <Button 
                                     Text="Delete"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=DeleteSetFromSetListCommand}"
                                     CommandParameter="{Binding .}"
