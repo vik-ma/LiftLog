@@ -122,7 +122,7 @@
                                                 Style="{StaticResource ExtraSmallPickerStyle}"
                                                 SelectedIndexChanged="OnWeightUnitPickerSelectedIndexChanged"
                                                 ItemsSource="{Binding ValidWeightUnitList}"
-                                                SelectedItem="{Binding SelectedWeightUnit}" />
+                                                SelectedItem="{Binding SelectedWeightUnit, Mode=OneWay}" />
                                             <Button
                                                  Style="{StaticResource ExtraSmallRedButtonStyle}"
                                                  Command="{Binding RemoveDefaultPropertyValueCommand}"
@@ -362,7 +362,7 @@
                                                 Style="{StaticResource ExtraSmallPickerStyle}"
                                                 SelectedIndexChanged="OnDistanceUnitPickerSelectedIndexChanged"
                                                 ItemsSource="{Binding ValidDistanceUnitList}"
-                                                SelectedItem="{Binding SelectedDistanceUnit}" />
+                                                SelectedItem="{Binding SelectedDistanceUnit, Mode=OneWay}" />
                                             <Button
                                                  Style="{StaticResource ExtraSmallRedButtonStyle}"
                                                  Command="{Binding RemoveDefaultPropertyValueCommand}"
