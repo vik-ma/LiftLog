@@ -369,7 +369,7 @@
                         <Grid HorizontalOptions="Center">
                             <Label 
                                 Text="{Binding Date}"
-                                Style="{StaticResource MediumBoldLabelStyle}"/>
+                                Style="{StaticResource MediumHeaderLabelStyle}"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.GroupHeaderTemplate>

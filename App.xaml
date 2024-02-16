@@ -38,6 +38,17 @@
                 <Setter Property="WidthRequest" Value="120" />
                 <Setter Property="Margin" Value="10" />
             </Style>
+            <Style x:Key="MediumHeaderLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="LargeHeaderLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="30" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0, 5" />
+            </Style>
             <Style x:Key="LargeBoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="26" />
                 <Setter Property="FontFamily" Value="InterSemiBold" />
@@ -84,10 +95,46 @@
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="Center" />
             </Style>
+            <Style x:Key="CollectionViewHeaderLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="{DynamicResource MediumDarkGray}" />
+            </Style>
             <Style x:Key="ScheduleWTLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontFamily" Value="Inter" />
                 <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="TemplateIdListLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="TemplateIdEmptyListLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="{DynamicResource MediumGray}" />
+            </Style>
+            <Style x:Key="StartedWorkoutExpanderHeaderLabelStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="InterSemiBold" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="StartedWorkoutExpanderContentLabelStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="InterSemiBold" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="{DynamicResource DarkGray}" />
+            </Style>
+            <Style x:Key="ListViewLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontFamily" Value="Inter" />
+            </Style>
+            <Style x:Key="PopupPageListViewLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="FontFamily" Value="Inter" />
             </Style>
             <Style x:Key="ScheduleMediumRedButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="16" />
@@ -188,17 +235,7 @@
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource MediumRed}" />
             </Style>
-            <Style x:Key="TemplateIdListLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="24" />
-                <Setter Property="FontFamily" Value="InterSemiBold" />
-                <Setter Property="VerticalOptions" Value="Center" />
-            </Style>
-            <Style x:Key="TemplateIdEmptyListLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontFamily" Value="InterSemiBold" />
-                <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="{DynamicResource MediumGray}" />
-            </Style>
+
             <Style x:Key="FontSize14EntryFieldStyle" TargetType="Entry">
                 <Setter Property="HeightRequest" Value="30" />
                 <Setter Property="MinimumHeightRequest" Value="30" />
@@ -239,17 +276,6 @@
                 <Setter Property="Keyboard" Value="Numeric" />
                 <Setter Property="TextColor" Value="{DynamicResource MediumBlue}" />
             </Style>
-            <Style x:Key="StartedWorkoutExpanderHeaderLabelStyle" TargetType="Label">
-                <Setter Property="FontFamily" Value="InterSemiBold" />
-                <Setter Property="FontSize" Value="20" />
-                <Setter Property="VerticalOptions" Value="Center" />
-            </Style>
-            <Style x:Key="StartedWorkoutExpanderContentLabelStyle" TargetType="Label">
-                <Setter Property="FontFamily" Value="InterSemiBold" />
-                <Setter Property="FontSize" Value="18" />
-                <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="{DynamicResource DarkGray}" />
-            </Style>
             <Style x:Key="StartedWorkoutLabelEntryLayoutStyle" TargetType="HorizontalStackLayout">
                 <Setter Property="Spacing" Value="12" />
                 <Setter Property="Margin" Value="0, 0, 5, 0" />
@@ -274,25 +300,6 @@
             <Style x:Key="CreateSetTemplateDefaultValueLayoutStyle" TargetType="HorizontalStackLayout">
                 <Setter Property="HorizontalOptions" Value="End" />
                 <Setter Property="Spacing" Value="7" />
-            </Style>
-            <Style x:Key="ListViewLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="18" />
-                <Setter Property="FontFamily" Value="Inter" />
-            </Style>
-            <Style x:Key="PopupPageListViewLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="22" />
-                <Setter Property="FontFamily" Value="Inter" />
-            </Style>
-            <Style x:Key="MediumHeaderLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="24" />
-                <Setter Property="FontFamily" Value="InterSemiBold" />
-                <Setter Property="VerticalOptions" Value="Center" />
-            </Style>
-            <Style x:Key="LargeHeaderLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="30" />
-                <Setter Property="FontFamily" Value="InterSemiBold" />
-                <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="Margin" Value="0, 5" />
             </Style>
             <Style x:Key="OrangeBoldTextStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="InterSemiBold" />
