@@ -13,7 +13,10 @@
         }
 
         [ObservableProperty]
-        private ObservableCollection<Set> setList = [];
+        private List<Set> setList = [];
+
+        [ObservableProperty]
+        private ObservableCollection<SetGroup> setGroupList = [];
 
         [ObservableProperty]
         private Set maxWeightSet;
@@ -39,6 +42,17 @@
                     SetList.Add(set);
 
                     UpdateMaxSetForExercise(set);
+                }
+
+                // Create a dictionary where every key is the yyyy-MM-dd date
+                // and every value is a list, ordered by TimeCompleted
+                var setDict = SetList.OrderBy(x => DateTime.Parse(x.TimeCompleted).TimeOfDay)
+                    .GroupBy(o => DateTime.Parse(o.TimeCompleted).ToString("yyyy-MM-dd"))
+                    .ToDictionary(g => g.Key, g => g.ToList());
+
+                foreach (var item in setDict)
+                {
+                    SetGroupList.Add(new SetGroup(item.Key, new List<Set>(item.Value)));
                 }
             }
             catch

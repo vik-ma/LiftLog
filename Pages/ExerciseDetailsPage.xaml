@@ -357,7 +357,13 @@
             </helpers:If>
 
             <CollectionView
-                ItemsSource="{Binding SetList}">
+                ItemsSource="{Binding SetGroupList}"
+                IsGrouped="True">
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate x:DataType="models:SetGroup">
+                        <Label Text="{Binding Date}" />
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout 
                         ItemSpacing="3"
