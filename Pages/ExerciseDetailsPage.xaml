@@ -171,6 +171,21 @@
                                 </Label>
                             </helpers:If.True>
                         </helpers:If>
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Completed " 
+                                        FontAttributes="Bold"
+                                        TextColor="{StaticResource MediumOrange}" 
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding MaxWeightSet.TimeCompleted}"
+                                        FontAttributes="Bold"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                     </HorizontalStackLayout>
                 </helpers:If.True>
             </helpers:If>
@@ -322,6 +337,21 @@
                                 </Label>
                             </helpers:If.True>
                         </helpers:If>
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Completed " 
+                                        FontAttributes="Bold"
+                                        TextColor="{StaticResource MediumOrange}" 
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding MaxDistanceSet.TimeCompleted}"
+                                        FontAttributes="Bold"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                     </HorizontalStackLayout>
                 </helpers:If.True>
             </helpers:If>
