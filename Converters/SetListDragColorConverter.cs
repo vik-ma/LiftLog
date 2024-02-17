@@ -6,15 +6,15 @@
         {
             ResourceDictionary ColorResource = Application.Current.Resources.MergedDictionaries.FirstOrDefault();
 
-            Color isDraggedColor = ColorResource["VeryLightGray"] as Color;
-            Color transparentColor = ColorResource["Transparent"] as Color;
+            Color isDraggedOverColor = ColorResource["VeryLightGray"] as Color;
+            Color defaultColor = ColorResource["White"] as Color;
 
             if (value is bool boolValue && boolValue)
             {
-                return isDraggedColor;
+                return isDraggedOverColor;
             }
 
-            return transparentColor;
+            return defaultColor;
 
         }
 

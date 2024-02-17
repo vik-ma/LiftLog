@@ -161,7 +161,7 @@
                                     Grid.Column="0"
                                     CornerRadius="6"  
                                     Padding="5, 2"
-                                    BackgroundColor="{Binding IsBeingDragged, Converter={StaticResource SetListDragColorConverter}}">
+                                    BackgroundColor="{Binding IsBeingDraggedOver, Converter={StaticResource SetListDragColorConverter}}">
                                     <HorizontalStackLayout Spacing="7">
                                         <Label VerticalOptions="Center">
                                             <Label.FormattedText>
@@ -238,7 +238,7 @@
                                     </Frame.GestureRecognizers>
                                 </Frame>
 
-                                <Border 
+                                <!--<Border 
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Stroke="{DynamicResource MediumGray}"
@@ -246,7 +246,7 @@
                                     StrokeShape="RoundRectangle 6"
                                     BackgroundColor="{DynamicResource VeryLightGray}"
                                     HeightRequest="40"
-                                    IsVisible="{Binding IsBeingDraggedOver}" />
+                                    IsVisible="{Binding IsBeingDraggedOver}" />-->
                                     <!--helpers:If instead of IsVisible makes page too jittery-->
                             </Grid>
                         </DataTemplate>
