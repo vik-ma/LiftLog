@@ -160,8 +160,15 @@
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     CornerRadius="6"  
-                                    Padding="5, 2"
-                                    BackgroundColor="{Binding IsBeingDraggedOver, Converter={StaticResource SetListDragColorConverter}}">
+                                    Padding="5, 2">
+                                    <Frame.BackgroundColor>
+                                        <MultiBinding Converter="{StaticResource SetListDragColorMultiBindingConverter}">
+                                            <MultiBinding.Bindings>
+                                                <Binding Path="IsBeingDraggedOver" />
+                                                <Binding Path="IsBeingDragged" />
+                                            </MultiBinding.Bindings>
+                                        </MultiBinding>
+                                    </Frame.BackgroundColor>
                                     <HorizontalStackLayout Spacing="7">
                                         <Label VerticalOptions="Center">
                                             <Label.FormattedText>
