@@ -6,13 +6,12 @@
         {
             ResourceDictionary ColorResource = Application.Current.Resources.MergedDictionaries.FirstOrDefault();
 
-            Color mediumGreenColor = ColorResource["MediumGreen"] as Color;
-
-            Color transparentColor = Color.FromArgb("#00FFFFFF");
+            Color isDraggedColor = ColorResource["VeryLightGray"] as Color;
+            Color transparentColor = ColorResource["Transparent"] as Color;
 
             if (value is bool boolValue && boolValue)
             {
-                return mediumGreenColor;
+                return isDraggedColor;
             }
 
             return transparentColor;

@@ -45,6 +45,7 @@
     <Color x:Key="MediumGreen">#22c55e</Color>
     <Color x:Key="VeryLightGray">#ECECEC</Color>
     <Color x:Key="LightGray">#DDDDDD</Color>
+    <Color x:Key="MediumLightGray">#cccccc</Color>
     <Color x:Key="MediumGray">#9e9e9e</Color>
     <Color x:Key="MediumDarkGray">#707070</Color>
     <Color x:Key="DarkGray">#606060</Color>
@@ -55,5 +56,8 @@
     <Color x:Key="DeepPink">#FF33A8</Color>
     <Color x:Key="VeryLightOrange">#faeac8</Color>
     <Color x:Key="MediumBrown">#9e7231</Color>
+    <Color x:Key="VeryLightGreen">#ecfccb</Color>
+
+    <Color x:Key="Transparent">#00FFFFFF</Color>
 
 </ResourceDictionary>

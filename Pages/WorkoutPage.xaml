@@ -244,10 +244,10 @@
                                 <Border 
                                     Grid.Row="1"
                                     Grid.Column="0"
-                                    Stroke="{DynamicResource DarkGray}"
+                                    Stroke="{DynamicResource MediumGray}"
                                     StrokeThickness="1"
                                     StrokeShape="RoundRectangle 6"
-                                    BackgroundColor="{DynamicResource LightGray}"
+                                    BackgroundColor="{DynamicResource VeryLightGray}"
                                     HeightRequest="40"
                                     IsVisible="{Binding IsBeingDraggedOver}">
                                 </Border>
