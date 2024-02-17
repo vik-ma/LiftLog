@@ -145,6 +145,7 @@
                     HorizontalOptions="Center">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout 
+                            ItemSpacing="1"
                             Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
@@ -235,11 +236,9 @@
                                 </StackLayout>
 
                             <StackLayout
-                                    BackgroundColor="LightGray"
-                                    HeightRequest="30"
-                                    HorizontalOptions="FillAndExpand"
-                                    IsVisible="{Binding IsBeingDraggedOver}"
-                                    VerticalOptions="FillAndExpand" />
+                                BackgroundColor="{DynamicResource LightGray}"
+                                HeightRequest="38"
+                                IsVisible="{Binding IsBeingDraggedOver}" />
                             </VerticalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

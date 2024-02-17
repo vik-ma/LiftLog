@@ -1,10 +1,13 @@
 ﻿namespace LocalLiftLog.Models
 {
-    public class SetExercisePackage
+    public partial class SetExercisePackage : ObservableObject
     {
         public Exercise Exercise { get; set; }
         public Set Set { get; set; }
-        public bool IsBeingDragged { get; set; }
-        public bool IsBeingDraggedOver { get; set; }
+
+        [ObservableProperty]
+        public bool isBeingDragged;
+        [ObservableProperty]
+        public bool isBeingDraggedOver;
     }
 }
