@@ -385,6 +385,8 @@
             await DeleteSetAsync(setExercisePackage.Set);
 
             SetList.Remove(setExercisePackage);
+
+            await GenerateSetListOrderString();
         }
 
         public async Task UpdateOperatingWorkoutTemplate(int workoutTemplateId)
