@@ -159,6 +159,7 @@
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     Orientation="Horizontal"
+                                    BackgroundColor="{Binding IsBeingDragged, Converter={StaticResource SetListDragColorConverter}}"
                                     Spacing="7">
                                     <Button 
                                         Style="{StaticResource ArrowUpButtonStyle}"
@@ -251,7 +252,6 @@
                                     IsVisible="{Binding IsBeingDraggedOver}">
                                 </Border>
                             </Grid>
-                            
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                     <CollectionView.EmptyView>
