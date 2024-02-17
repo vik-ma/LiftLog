@@ -1,4 +1,8 @@
-﻿namespace LocalLiftLog.ViewModels
+﻿using System.Diagnostics;
+using Windows.ApplicationModel;
+using Windows.System;
+
+namespace LocalLiftLog.ViewModels
 {
     [QueryProperty(nameof(Workout), nameof(Workout))]
     public partial class WorkoutViewModel : ObservableObject
@@ -44,6 +48,8 @@
 
         [ObservableProperty]
         private bool savedSetsContainsDeletedExercise = false;
+
+        private SetExercisePackage setBeingDragged;
 
         [RelayCommand]
         static async Task GoBack()
@@ -542,6 +548,58 @@
             set.TimeCompleted = enteredDateTime;
 
             await UpdateSetAsync(set);
+        }
+
+        [RelayCommand]
+        public void SetDragged(SetExercisePackage package)
+        {
+            package.IsBeingDragged = true;
+            setBeingDragged = package;
+        }
+
+        [RelayCommand]
+        public static void SetDragLeave(SetExercisePackage package)
+        {
+            package.IsBeingDraggedOver = false;
+        }
+
+        [RelayCommand]
+        public void SetDraggedOver(SetExercisePackage package)
+        {
+            if (package == setBeingDragged)
+            {
+                package.IsBeingDragged = false;
+            }
+            package.IsBeingDraggedOver = package != setBeingDragged;
+        }
+
+        [RelayCommand]
+        public async Task SetDropped(SetExercisePackage package)
+        {
+            try
+            {
+                var setToMove = setBeingDragged;
+                var setToInsertBefore = package;
+
+                if (setToMove == null || setToInsertBefore == null || setToMove == setToInsertBefore)
+                    return;
+
+                int insertAtIndex = SetList.IndexOf(setToInsertBefore);
+
+                if (insertAtIndex >= 0 && insertAtIndex < SetList.Count)
+                {
+                    SetList.Remove(setToMove);
+                    SetList.Insert(insertAtIndex, setToMove);
+                    setToMove.IsBeingDragged = false;
+                    setToInsertBefore.IsBeingDraggedOver = false;
+                }
+
+                await GenerateSetListOrderString();
+            }
+            catch
+            {
+
+            }
         }
     }
 }

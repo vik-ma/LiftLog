@@ -145,78 +145,102 @@
                     HorizontalOptions="Center">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout 
-                            ItemSpacing="3"
                             Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:SetExercisePackage">
-                            <HorizontalStackLayout 
-                                HorizontalOptions="Center"
-                                Spacing="7">
-                                <Button 
-                                    Style="{StaticResource ArrowUpButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=MoveSetUpCommand}" 
-                                    CommandParameter="{Binding Set}" />
-                                <Button 
-                                    Style="{StaticResource ArrowDownButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=MoveSetDownCommand}" 
-                                    CommandParameter="{Binding Set}" />
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Set Id: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Set.Id}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Exercise: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Exercise.Name}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span 
-                                                Text="Completed: " 
-                                                FontAttributes="Bold"  
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                            <Span 
-                                                Text="{Binding Set.IsCompleted}"
-                                                TextColor="{Binding Set.IsCompleted, Converter={StaticResource IsSetCompletedColorConverter}}"
-                                                Style="{StaticResource SmallSpanStyle}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Button 
-                                    Text="Toggle Complete"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=ToggleSetCompletedCommand}"
-                                    CommandParameter="{Binding Set}"
-                                    Style="{StaticResource SmallGreenButtonStyle}" />
-                                <Button 
-                                    Text="Set Time Completed"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetTimeCompletedPropertyCommand}"
-                                    CommandParameter="{Binding Set}"
-                                    Style="{StaticResource SmallButtonStyle}" />
-                                <Button 
-                                    Text="Delete"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=DeleteSetFromSetListCommand}"
-                                    CommandParameter="{Binding .}"
-                                    Style="{StaticResource SmallRedButtonStyle}" />
-                            </HorizontalStackLayout>
+                            <VerticalStackLayout>
+                                <StackLayout 
+                                    HorizontalOptions="Center"
+                                    Orientation="Horizontal"
+                                    Spacing="7">
+                                    <Button 
+                                        Style="{StaticResource ArrowUpButtonStyle}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=MoveSetUpCommand}" 
+                                        CommandParameter="{Binding Set}" />
+                                    <Button 
+                                        Style="{StaticResource ArrowDownButtonStyle}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=MoveSetDownCommand}" 
+                                        CommandParameter="{Binding Set}" />
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Set Id: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Set.Id}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Exercise: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Exercise.Name}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    Text="Completed: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                <Span 
+                                                    Text="{Binding Set.IsCompleted}"
+                                                    TextColor="{Binding Set.IsCompleted, Converter={StaticResource IsSetCompletedColorConverter}}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Button 
+                                        Text="Toggle Complete"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=ToggleSetCompletedCommand}"
+                                        CommandParameter="{Binding Set}"
+                                        Style="{StaticResource SmallGreenButtonStyle}" />
+                                    <Button 
+                                        Text="Set Time Completed"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetTimeCompletedPropertyCommand}"
+                                        CommandParameter="{Binding Set}"
+                                        Style="{StaticResource SmallButtonStyle}" />
+                                    <Button 
+                                        Text="Delete"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=DeleteSetFromSetListCommand}"
+                                        CommandParameter="{Binding .}"
+                                        Style="{StaticResource SmallRedButtonStyle}" />
+
+                                    <StackLayout.GestureRecognizers>
+                                        <DragGestureRecognizer
+                                            CanDrag="True"
+                                            DragStartingCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetDraggedCommand}"
+                                            DragStartingCommandParameter="{Binding}" />
+                                        <DropGestureRecognizer
+                                            AllowDrop="True"
+                                            DragLeaveCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetDragLeaveCommand}"
+                                            DragLeaveCommandParameter="{Binding}"
+                                            DragOverCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetDraggedOverCommand}"
+                                            DragOverCommandParameter="{Binding}"
+                                            DropCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetDroppedCommand}"
+                                            DropCommandParameter="{Binding}" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+
+                            <StackLayout
+                                    BackgroundColor="LightGray"
+                                    HeightRequest="30"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding IsBeingDraggedOver}"
+                                    VerticalOptions="FillAndExpand" />
+                            </VerticalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                     <CollectionView.EmptyView>
