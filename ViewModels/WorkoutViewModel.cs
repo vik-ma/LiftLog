@@ -532,10 +532,10 @@ namespace LocalLiftLog.ViewModels
         [RelayCommand]
         public void SetDraggedOver(SetExercisePackage package)
         {
-            if (package == setBeingDragged)
-            {
-                package.IsBeingDragged = false;
-            }
+            //if (package == setBeingDragged)
+            //{
+            //    package.IsBeingDragged = false;
+            //}
             package.IsBeingDraggedOver = package != setBeingDragged;
         }
 
