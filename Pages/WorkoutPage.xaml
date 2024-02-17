@@ -150,9 +150,14 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:SetExercisePackage">
-                            <VerticalStackLayout>
+                            <Grid
+                                HorizontalOptions="Center"
+                                ColumnDefinitions="*"
+                                RowDefinitions="Auto, Auto"
+                                Padding="10, 0">
                                 <StackLayout 
-                                    HorizontalOptions="Center"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
                                     Orientation="Horizontal"
                                     Spacing="7">
                                     <Button 
@@ -235,11 +240,18 @@
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
 
-                            <StackLayout
-                                BackgroundColor="{DynamicResource LightGray}"
-                                HeightRequest="38"
-                                IsVisible="{Binding IsBeingDraggedOver}" />
-                            </VerticalStackLayout>
+                                <Border 
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Stroke="{DynamicResource DarkGray}"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 6"
+                                    BackgroundColor="{DynamicResource LightGray}"
+                                    HeightRequest="40"
+                                    IsVisible="{Binding IsBeingDraggedOver}">
+                                </Border>
+                            </Grid>
+                            
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                     <CollectionView.EmptyView>
