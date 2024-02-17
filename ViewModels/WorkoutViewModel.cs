@@ -469,40 +469,6 @@ namespace LocalLiftLog.ViewModels
             await UpdateWorkoutAsync();
         }
 
-        [RelayCommand]
-        private async Task MoveSetUp(Set set)
-        {
-            if (set is null) return;
-
-            // Get SetList index of current Set
-            int setIndex = SetList.ToList().FindIndex(item => item.Set.Equals(set));
-
-            // Do nothing if item is already first in list
-            if (setIndex < 1) return;
-
-            // Swap current Set with Set at the index before
-            (SetList[setIndex - 1], SetList[setIndex]) = (SetList[setIndex], SetList[setIndex - 1]);
-
-            await GenerateSetListOrderString();
-        }
-
-        [RelayCommand]
-        private async Task MoveSetDown(Set set)
-        {
-            if (set is null) return;
-
-            // Get SetList index of current Set
-            int setIndex = SetList.ToList().FindIndex(item => item.Set.Equals(set));
-
-            // Do nothing if item is already last in list
-            if (setIndex > SetList.Count - 2) return;
-
-            // Swap current Set with Set at the index after
-            (SetList[setIndex + 1], SetList[setIndex]) = (SetList[setIndex], SetList[setIndex + 1]);
-
-            await GenerateSetListOrderString();
-        }
-
         private async Task UpdateSetAsync(Set set)
         {
             if (set is null) return;
