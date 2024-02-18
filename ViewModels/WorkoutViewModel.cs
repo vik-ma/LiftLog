@@ -517,20 +517,20 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        public void SetDragged(SetExercisePackage package)
+        private void SetDragged(SetExercisePackage package)
         {
             package.IsBeingDragged = true;
             setBeingDragged = package;
         }
 
         [RelayCommand]
-        public static void SetDragLeave(SetExercisePackage package)
+        private static void SetDragLeave(SetExercisePackage package)
         {
             package.IsBeingDraggedOver = false;
         }
 
         [RelayCommand]
-        public void SetDraggedOver(SetExercisePackage package)
+        private void SetDraggedOver(SetExercisePackage package)
         {
             //if (package == setBeingDragged)
             //{
@@ -540,7 +540,7 @@ namespace LocalLiftLog.ViewModels
         }
 
         [RelayCommand]
-        public async Task SetDropped(SetExercisePackage package)
+        private async Task SetDropped(SetExercisePackage package)
         {
             try
             {
@@ -567,5 +567,18 @@ namespace LocalLiftLog.ViewModels
 
             }
         }
+
+        [RelayCommand]
+        private static void SetHoverEnter(SetExercisePackage package)
+        {
+            package.IsBeingHovered = true;
+        }
+
+        [RelayCommand]
+        private static void SetHoverLeave(SetExercisePackage package)
+        {
+            package.IsBeingHovered = false;
+        }
+
     }
 }

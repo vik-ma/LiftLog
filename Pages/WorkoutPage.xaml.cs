@@ -33,6 +33,4 @@ public partial class WorkoutPage : ContentPage
     {
         e.AcceptedOperation = DataPackageOperation.None;
     }
-
-
 }
