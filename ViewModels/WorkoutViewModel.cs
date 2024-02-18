@@ -1,8 +1,4 @@
-﻿using System.Diagnostics;
-using Windows.ApplicationModel;
-using Windows.System;
-
-namespace LocalLiftLog.ViewModels
+﻿namespace LocalLiftLog.ViewModels
 {
     [QueryProperty(nameof(Workout), nameof(Workout))]
     public partial class WorkoutViewModel : ObservableObject
@@ -49,7 +45,7 @@ namespace LocalLiftLog.ViewModels
         [ObservableProperty]
         private bool savedSetsContainsDeletedExercise = false;
 
-        private SetExercisePackage setBeingDragged;
+        private SetExercisePackage SetBeingDragged;
 
         [RelayCommand]
         static async Task GoBack()
@@ -520,7 +516,7 @@ namespace LocalLiftLog.ViewModels
         private void SetDragged(SetExercisePackage package)
         {
             package.IsBeingDragged = true;
-            setBeingDragged = package;
+            SetBeingDragged = package;
         }
 
         [RelayCommand]
@@ -536,15 +532,21 @@ namespace LocalLiftLog.ViewModels
             //{
             //    package.IsBeingDragged = false;
             //}
-            package.IsBeingDraggedOver = package != setBeingDragged;
+            package.IsBeingDraggedOver = package != SetBeingDragged;
         }
 
         [RelayCommand]
-        private async Task SetDropped(SetExercisePackage package)
+        private static void SetDropCompleted(SetExercisePackage package)
+        {
+            package.IsBeingDragged = false;
+        }
+
+        [RelayCommand]
+        private async Task SetDropped(SetExercisePackage? package)
         {
             try
             {
-                var setToMove = setBeingDragged;
+                var setToMove = SetBeingDragged;
                 var setToInsertBefore = package;
 
                 if (setToMove == null || setToInsertBefore == null || setToMove == setToInsertBefore)
@@ -564,7 +566,7 @@ namespace LocalLiftLog.ViewModels
             }
             catch
             {
-
+                
             }
         }
 
