@@ -9,5 +9,7 @@
         public bool isBeingDragged;
         [ObservableProperty]
         public bool isBeingDraggedOver;
+        [ObservableProperty]
+        public bool isBeingHovered;
     }
 }
