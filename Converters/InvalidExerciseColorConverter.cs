@@ -6,14 +6,14 @@
         {
             ResourceDictionary ColorResource = Application.Current.Resources.MergedDictionaries.FirstOrDefault();
 
-            Color blackColor = ColorResource["Black"] as Color;
-            Color redColor = ColorResource["MediumRed"] as Color;
+            Color normalColor = ColorResource["Black"] as Color;
+            Color invalidColor = ColorResource["MediumRed"] as Color;
 
-            if (value is string stringValue && stringValue == "Invalid Exercise")
+            if (value is bool isInvalid && isInvalid)
             {
-                return redColor;
+                return invalidColor;
             }
-            return blackColor;
+            return normalColor;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

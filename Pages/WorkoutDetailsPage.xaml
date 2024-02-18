@@ -120,7 +120,7 @@ This Set will not show up in new Workouts unless it is changed to a valid Exerci
                                             Style="{StaticResource SmallSpanStyle}" />
                                         <Span 
                                             Text="{Binding Exercise.Name}"
-                                            TextColor="{Binding Exercise.Name, Converter={StaticResource InvalidExerciseColorConverter}}"
+                                            TextColor="{Binding Exercise.HasInvalidId, Converter={StaticResource InvalidExerciseColorConverter}}"
                                             Style="{StaticResource SmallSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
