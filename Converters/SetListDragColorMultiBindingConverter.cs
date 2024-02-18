@@ -6,8 +6,9 @@
         {
             ResourceDictionary ColorResource = Application.Current.Resources.MergedDictionaries.FirstOrDefault();
 
-            Color isItemDraggedColor = ColorResource["VeryLightGray"] as Color;
+            Color isItemDraggedColor = ColorResource["Gray100"] as Color;
             Color isDraggedOverColor = ColorResource["VeryLightYellow"] as Color;
+            Color isItemHoveredColor = ColorResource["VeryLightGray"] as Color;
             Color defaultColor = ColorResource["White"] as Color;
 
             if (values[1] is bool isItemDragged && isItemDragged)
@@ -18,6 +19,11 @@
             if (values[0] is bool isDraggedOver && isDraggedOver)
             {
                 return isDraggedOverColor;
+            }
+
+            if (values[2] is bool isHoveredOver && isHoveredOver)
+            {
+                return isItemHoveredColor;
             }
 
             return defaultColor;
