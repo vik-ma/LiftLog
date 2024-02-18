@@ -25,6 +25,7 @@
             Routing.RegisterRoute(nameof(WorkoutListPage), typeof(WorkoutListPage));
             Routing.RegisterRoute(nameof(SchedulePage), typeof(SchedulePage));
             Routing.RegisterRoute(nameof(ExerciseDetailsPage), typeof(ExerciseDetailsPage));
+            Routing.RegisterRoute(nameof(WorkoutOperatingSetPage), typeof(WorkoutOperatingSetPage));
         }
     }
 }

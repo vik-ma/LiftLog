@@ -589,7 +589,11 @@
         [RelayCommand]
         private async Task SetTapped(SetExercisePackage package)
         {
+            if (package is null) return;
+
             OperatingSetExercisePackage = package;
+
+            await Shell.Current.GoToAsync(nameof(WorkoutOperatingSetPage));
         }
     }
 }
