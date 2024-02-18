@@ -16,27 +16,27 @@
             ColumnDefinitions="*, *, *">
             <Grid
                 Grid.Column="0"
-                BackgroundColor="{DynamicResource MediumGray}">
+                Style="{StaticResource WorkoutTabGridActiveStyle}">
                 <Label 
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Text="Workout" />
+                    Text="Workout"
+                    TextColor="{DynamicResource DeepPurple}"
+                    Style="{StaticResource WorkoutTabLabelStyle}" />
             </Grid>
             <Grid 
                 Grid.Column="1"
-                BackgroundColor="{DynamicResource LightGray}">
+                Style="{StaticResource WorkoutTabGridInactiveStyle}">
                 <Label 
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Text="Active Set" />
+                    Text="Active Set"
+                    TextColor="{DynamicResource VeryDarkGray}"
+                    Style="{StaticResource WorkoutTabLabelStyle}" />
             </Grid>
             <Grid 
                 Grid.Column="2"
-                BackgroundColor="{DynamicResource LightGray}">
+                Style="{StaticResource WorkoutTabGridInactiveStyle}">
                 <Label 
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Text="Exercise History" />
+                    Text="Exercise History"
+                    TextColor="{DynamicResource VeryDarkGray}"
+                    Style="{StaticResource WorkoutTabLabelStyle}" />
             </Grid>
         </Grid>
         

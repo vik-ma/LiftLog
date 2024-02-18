@@ -382,6 +382,20 @@
                 x:Key="ScheduleCollectionViewItemsLayout"
                 ItemSpacing="2"
                 Orientation="Vertical" />
+
+            <Style x:Key="WorkoutTabGridActiveStyle" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="{DynamicResource LightGray}" />
+            </Style>
+            <Style x:Key="WorkoutTabGridInactiveStyle" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="{DynamicResource VeryLightGray}" />
+            </Style>
+            <Style x:Key="WorkoutTabLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -58,6 +58,7 @@
     <Color x:Key="MediumBrown">#9e7231</Color>
     <Color x:Key="VeryLightGreen">#ecfccb</Color>
     <Color x:Key="VeryLightYellow">#FFFEDD</Color>
+    <Color x:Key="DeepPurple">#5916cc</Color>
 
     <Color x:Key="Transparent">#00FFFFFF</Color>
 
