@@ -167,15 +167,16 @@
                 {
                     Exercise exercise = await _context.GetItemByKeyAsync<Exercise>(set.ExerciseId);
 
-                    if (exercise is null) SavedSetsContainsDeletedExercise = true;
+                    if (exercise is null)
+                    {
+                        SavedSetsContainsDeletedExercise = true;
+                        exercise = new();
+                        exercise.SetExerciseInvalid();
+                    }
 
                     SetExercisePackage setTemplateExercisePackage = new()
                     {
-                        Exercise = exercise ?? new()
-                        {
-                            Name = "Deleted Exercise",
-                            HasInvalidId = true,
-                        },
+                        Exercise = exercise,
                         Set = set,
                     };
 

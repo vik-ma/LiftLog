@@ -97,16 +97,17 @@
                 {
                     Exercise exercise = await _context.GetItemByKeyAsync<Exercise>(item.ExerciseId);
 
-                    if (exercise is null) WorkoutTemplateContainsInvalidExercise = true;
+                    if (exercise is null)
+                    {
+                        WorkoutTemplateContainsInvalidExercise = true;
+                        exercise = new();
+                        exercise.SetExerciseInvalid();
+                    }
 
                     SetExercisePackage setTemplateExercisePackage = new()
                     {
                         Set = item,
-                        Exercise = exercise ?? new() 
-                        { 
-                            Name = "Invalid Exercise",
-                            HasInvalidId = true,
-                        }
+                        Exercise = exercise,
                     };
 
                     setTemplateExercisePackageList.Add(setTemplateExercisePackage);

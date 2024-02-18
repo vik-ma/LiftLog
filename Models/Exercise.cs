@@ -129,7 +129,15 @@
 
             if (!IsHashSetValid(GetExerciseGroupHashSet())) return (false, "Invalid Exercise Group!");
 
+            if (HasInvalidId) return (false, "Invalid Exercise Id");
+
             return (true, null);
+        }
+
+        public void SetExerciseInvalid()
+        {
+            Name = "Invalid Exercise";
+            HasInvalidId = true;
         }
     }
 }
