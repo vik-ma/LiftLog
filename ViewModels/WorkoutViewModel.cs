@@ -47,7 +47,8 @@
 
         private SetExercisePackage SetBeingDragged;
 
-        
+        [ObservableProperty]
+        private SetExercisePackage operatingSetExercisePackage;
 
         [RelayCommand]
         static async Task GoBack()
@@ -535,10 +536,6 @@
         [RelayCommand]
         private void SetDraggedOver(SetExercisePackage package)
         {
-            //if (package == setBeingDragged)
-            //{
-            //    package.IsBeingDragged = false;
-            //}
             package.IsBeingDraggedOver = package != SetBeingDragged;
         }
 
@@ -589,5 +586,10 @@
             package.IsBeingHovered = false;
         }
 
+        [RelayCommand]
+        private async Task SetTapped(SetExercisePackage package)
+        {
+            OperatingSetExercisePackage = package;
+        }
     }
 }

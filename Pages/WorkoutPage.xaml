@@ -230,6 +230,9 @@
                                     </HorizontalStackLayout>
 
                                     <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetTappedCommand}"
+                                            CommandParameter="{Binding}" />
                                         <PointerGestureRecognizer 
                                             PointerEnteredCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetHoverEnterCommand}"
                                             PointerEnteredCommandParameter="{Binding}"
@@ -279,6 +282,29 @@
                         </ContentView>
                     </CollectionView.EmptyView>
                 </CollectionView>
+
+                <helpers:If 
+                    HorizontalOptions="Center"
+                    Condition="{Binding OperatingSetExercisePackage, Converter={StaticResource IsNotNullConverter}}">
+                    <helpers:If.True>
+                        <Label
+                            VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Operating Set: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource LargeHeaderSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding OperatingSetExercisePackage.Exercise.Name}"
+                                        TextColor="{DynamicResource MediumOrange}"
+                                        FontAttributes="Bold" 
+                                        Style="{StaticResource LargeHeaderSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </helpers:If.True>
+                </helpers:If>
 
                 <helpers:If Condition="{Binding SetList.Count}">
                     <helpers:If.True>
