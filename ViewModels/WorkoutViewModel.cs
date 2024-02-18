@@ -47,6 +47,8 @@
 
         private SetExercisePackage SetBeingDragged;
 
+        
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -169,7 +171,11 @@
 
                     SetExercisePackage setTemplateExercisePackage = new()
                     {
-                        Exercise = exercise ?? new() { Name = "Deleted Exercise" },
+                        Exercise = exercise ?? new()
+                        {
+                            Name = "Deleted Exercise",
+                            HasInvalidId = true,
+                        },
                         Set = set,
                     };
 

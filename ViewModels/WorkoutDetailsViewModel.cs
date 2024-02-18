@@ -102,7 +102,11 @@
                     SetExercisePackage setTemplateExercisePackage = new()
                     {
                         Set = item,
-                        Exercise = exercise ?? new() { Name = "Invalid Exercise" }
+                        Exercise = exercise ?? new() 
+                        { 
+                            Name = "Invalid Exercise",
+                            HasInvalidId = true,
+                        }
                     };
 
                     setTemplateExercisePackageList.Add(setTemplateExercisePackage);
