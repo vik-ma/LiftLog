@@ -151,9 +151,15 @@
         {
             if (exercise is null) return;
 
+            ExerciseDetailsPackage exercisePackage = new()
+            {
+                Exercise = exercise,
+                IsComingFromWorkoutPage = false,
+            };
+
             var navigationParameter = new Dictionary<string, object>
             {
-                ["Exercise"] = exercise
+                ["ExerciseDetailsPackage"] = exercisePackage
             };
 
             await Shell.Current.GoToAsync($"{nameof(ExerciseDetailsPage)}?Id={exercise.Id}", navigationParameter);

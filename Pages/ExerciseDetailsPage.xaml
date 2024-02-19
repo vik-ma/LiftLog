@@ -18,7 +18,7 @@
                             FontAttributes="Bold"  
                             Style="{StaticResource LargeHeaderSpanStyle}" />
                         <Span 
-                            Text="{Binding Exercise.Name}"
+                            Text="{Binding ExerciseDetailsPackage.Exercise.Name}"
                             Style="{StaticResource LargeHeaderSpanStyle}" />
                     </FormattedString>
                 </Label.FormattedText>

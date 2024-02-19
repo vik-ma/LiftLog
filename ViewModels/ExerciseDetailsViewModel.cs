@@ -1,12 +1,12 @@
 ﻿namespace LocalLiftLog.ViewModels
 {
-    [QueryProperty(nameof(Exercise), nameof(Exercise))]
+    [QueryProperty(nameof(ExerciseDetailsPackage), nameof(ExerciseDetailsPackage))]
     public partial class ExerciseDetailsViewModel : ObservableObject
     {
         private readonly DatabaseContext _context;
 
         [ObservableProperty]
-        private Exercise exercise;
+        private ExerciseDetailsPackage exerciseDetailsPackage;
         public ExerciseDetailsViewModel(DatabaseContext context)
         {
             _context = context;
@@ -26,11 +26,11 @@
 
         public async Task LoadSetsFromExerciseIdAsync()
         {
-            if (Exercise is null) return;
+            if (ExerciseDetailsPackage is null || ExerciseDetailsPackage.Exercise is null) return;
 
             SetList.Clear();
 
-            Expression<Func<Set, bool>> predicate = entity => entity.ExerciseId == Exercise.Id && entity.IsCompleted;
+            Expression<Func<Set, bool>> predicate = entity => entity.ExerciseId == ExerciseDetailsPackage.Exercise.Id && entity.IsCompleted;
 
             IEnumerable<Set> filteredList = null;
             try
