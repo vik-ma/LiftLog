@@ -56,12 +56,12 @@
             await Shell.Current.GoToAsync("..");
         }
 
-        #nullable enable
+#nullable enable
         private async Task ExecuteAsync(Func<Task> operation)
         {
             try
             {
-                #nullable disable
+#nullable disable
                 await operation?.Invoke();
             }
             catch
@@ -124,7 +124,7 @@
             if (Workout is null) return;
 
             string ymdDateString = DateTimeHelper.FormatDateTimeToYmdString(selectedDate);
-        
+
             Workout.Date = ymdDateString;
 
             await UpdateWorkoutAsync();
@@ -255,7 +255,7 @@
         [RelayCommand]
         private async Task ShowDeleteIncompleteSetsPrompt()
         {
-            if (SetList.Any()) 
+            if (SetList.Any())
             {
                 bool userClickedRemove = await Shell.Current.DisplayAlert("Remove Incomplete Sets", "Remove all incomplete sets from workout?", "Remove", "Cancel");
 
@@ -421,7 +421,7 @@
 
             IEnumerable<SetExercisePackage> incompletedSets = SetList.Where(item => !item.Set.IsCompleted);
 
-            if (incompletedSets.Any()) 
+            if (incompletedSets.Any())
             {
                 bool userClickedReload = await Shell.Current.DisplayAlert("Load Workout Template", "Delete all incomplete sets and load sets from a Workout Template?", "Load", "Cancel");
 
@@ -508,7 +508,7 @@
 
             if (enteredDateTime == null) return;
 
-            if (!DateTimeHelper.ValidateDateTimeString(enteredDateTime)) 
+            if (!DateTimeHelper.ValidateDateTimeString(enteredDateTime))
             {
                 await Shell.Current.DisplayAlert("Error", "Invalid DateTime.", "OK");
                 return;
@@ -570,7 +570,7 @@
             }
             catch
             {
-                
+
             }
         }
 
@@ -593,7 +593,42 @@
 
             OperatingSetExercisePackage = package;
 
+            await GoToWorkoutOperatingSetPage();
+        }
+
+        [RelayCommand]
+        private async Task GoToWorkoutOperatingSetPage()
+        {
+            if (OperatingSetExercisePackage is null) return;
+
+            // ADD PROMPT IF INVALID EXERCISE?
+
             await Shell.Current.GoToAsync(nameof(WorkoutOperatingSetPage));
+        }
+
+        [RelayCommand]
+        private async Task GoToExerciseDetailsPage()
+        {
+            if (OperatingSetExercisePackage is null || OperatingSetExercisePackage.Exercise is null) 
+                return;
+
+            Exercise exercise = OperatingSetExercisePackage.Exercise;
+
+            // ADD PROMPT IF INVALID EXERCISE
+            if (exercise.HasInvalidId || exercise.Id == 0) return;
+
+            ExerciseDetailsPackage exercisePackage = new()
+            {
+                Exercise = exercise,
+                IsComingFromWorkoutPage = true,
+            };
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["ExerciseDetailsPackage"] = exercisePackage
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(ExerciseDetailsPage)}?Id={exercise.Id}", navigationParameter);
         }
     }
 }
