@@ -16,8 +16,7 @@
             ColumnDefinitions="*, *, *">
             <Border 
                 Grid.Column="0"
-                Stroke="{DynamicResource VeryDarkGray}"
-                StrokeThickness="1">
+                Style="{StaticResource WorkoutTabBorderActiveStyle}">
                 <Grid
                     Style="{StaticResource WorkoutTabGridActiveStyle}">
                     <Label 
@@ -28,8 +27,7 @@
             </Border>
             <Border 
                 Grid.Column="1"
-                Stroke="{DynamicResource MediumLightGray}"
-                StrokeThickness="1">
+                Style="{StaticResource WorkoutTabBorderInactiveStyle}">
                 <Grid  
                     Style="{StaticResource WorkoutTabGridInactiveStyle}">
                     <Label 
@@ -40,8 +38,7 @@
             </Border>
             <Border 
                 Grid.Column="2"
-                 Stroke="{DynamicResource MediumLightGray}"
-                 StrokeThickness="1">
+                Style="{StaticResource WorkoutTabBorderInactiveStyle}">
                 <Grid 
                     Style="{StaticResource WorkoutTabGridInactiveStyle}">
                     <Label 
