@@ -14,41 +14,30 @@
             VerticalOptions="Start"
             HeightRequest="40"
             ColumnDefinitions="*, *, *">
-            <Border 
+            <Frame
                 Grid.Column="0"
-                Style="{StaticResource WorkoutTabBorderActiveStyle}">
-                <Grid
-                    Style="{StaticResource WorkoutTabGridActiveStyle}">
-                    <Label 
-                        Text="Workout"
-                        Style="{StaticResource WorkoutTabLabelActiveStyle}" />
-                </Grid>
-            </Border>
-            <Border 
+                Style="{StaticResource WorkoutTabFrameActiveStyle}">
+                <Label 
+                    Text="Workout"
+                    Style="{StaticResource WorkoutTabLabelActiveStyle}" />
+            </Frame>
+            <Frame 
                 Grid.Column="1"
-                Style="{StaticResource WorkoutTabBorderInactiveStyle}">
-                <Grid  
-                    Style="{StaticResource WorkoutTabGridInactiveStyle}">
-                    <Label 
-                        Text="Active Set"
-                        TextColor="{DynamicResource VeryDarkGray}"
-                        Style="{StaticResource WorkoutTabLabelInactiveStyle}" />
-                </Grid>
-            </Border>
-            <Border 
+                Style="{StaticResource WorkoutTabFrameInactiveStyle}">
+                <Label 
+                    Text="Active Set"
+                    BackgroundColor="AliceBlue"
+                    Style="{StaticResource WorkoutTabLabelInactiveStyle}" />
+            </Frame>
+            <Frame 
                 Grid.Column="2"
-                Style="{StaticResource WorkoutTabBorderInactiveStyle}">
-                <Grid 
-                    Style="{StaticResource WorkoutTabGridInactiveStyle}">
-                    <Label 
-                        Text="Exercise History"
-                        TextColor="{DynamicResource VeryDarkGray}"
-                        Style="{StaticResource WorkoutTabLabelInactiveStyle}" />
-                </Grid>
-            </Border>
+                Style="{StaticResource WorkoutTabFrameInactiveStyle}">
+                <Label 
+                    Text="Exercise History"
+                    Style="{StaticResource WorkoutTabLabelInactiveStyle}" />
+            </Frame>
         </Grid>
         
-
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Spacing="5">
                 <Grid
