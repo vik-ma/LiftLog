@@ -24,6 +24,10 @@
             <Frame 
                 Grid.Column="1"
                 Style="{StaticResource WorkoutTabFrameInactiveStyle}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=GoToWorkoutOperatingSetPageCommand}" />
+                </Frame.GestureRecognizers>
                 <Label 
                     Text="Active Set"
                     Style="{StaticResource WorkoutTabLabelInactiveStyle}" />
@@ -31,6 +35,10 @@
             <Frame 
                 Grid.Column="2"
                 Style="{StaticResource WorkoutTabFrameInactiveStyle}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=GoToExerciseDetailsPageCommand}" />
+                </Frame.GestureRecognizers>
                 <Label 
                     Text="Exercise History"
                     Style="{StaticResource WorkoutTabLabelInactiveStyle}" />

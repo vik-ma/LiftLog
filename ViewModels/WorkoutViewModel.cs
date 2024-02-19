@@ -601,6 +601,7 @@
         {
             if (OperatingSetExercisePackage is null) return;
 
+            // ADD PROMPT IF NO SETPACKAGE IS SET?
             // ADD PROMPT IF INVALID EXERCISE?
 
             await Shell.Current.GoToAsync(nameof(WorkoutOperatingSetPage));
@@ -611,6 +612,8 @@
         {
             if (OperatingSetExercisePackage is null || OperatingSetExercisePackage.Exercise is null) 
                 return;
+
+            // ADD PROMPT IF NO SETPACKAGE IS SET?
 
             Exercise exercise = OperatingSetExercisePackage.Exercise;
 
