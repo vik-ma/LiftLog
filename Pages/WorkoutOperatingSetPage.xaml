@@ -7,29 +7,68 @@
              xmlns:helpers="clr-namespace:LocalLiftLog.Helpers"
              x:DataType="viewmodel:WorkoutViewModel"
              Title="Workout Operating Set">
-    <ScrollView>
-        <VerticalStackLayout>
-            <HorizontalStackLayout
+
+    <Grid RowDefinitions="Auto, *">
+        <Grid
+            Grid.Row="0"
+            VerticalOptions="Start"
+            HeightRequest="40"
+            ColumnDefinitions="*, *, *">
+            <Frame
+                Grid.Column="0"
+                Style="{StaticResource WorkoutTabFrameInactiveStyle}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding GoToWorkoutPageCommand}" />
+                </Frame.GestureRecognizers>
+                <Label 
+                    Text="Workout"
+                    Style="{StaticResource WorkoutTabLabelInactiveStyle}" />
+            </Frame>
+            <Frame 
+                Grid.Column="1"
+                Style="{StaticResource WorkoutTabFrameActiveStyle}">
+                <Label 
+                    Text="Active Set"
+                    Style="{StaticResource WorkoutTabLabelActiveStyle}" />
+            </Frame>
+            <Frame 
+                Grid.Column="2"
+                Style="{StaticResource WorkoutTabFrameInactiveStyle}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding GoToExerciseDetailsPageCommand}" />
+                </Frame.GestureRecognizers>
+                <Label 
+                    Text="Exercise History"
+                    Style="{StaticResource WorkoutTabLabelInactiveStyle}" />
+            </Frame>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout>
+                <HorizontalStackLayout
                 HorizontalOptions="Center"
                 Spacing="10">
-                <Label 
+                    <Label 
                     Text="Set:"
                     Style="{StaticResource LargeBoldLabelStyle}" />
-                <Label 
+                    <Label 
                     Text="{Binding OperatingSetExercisePackage.Exercise.Name}"
                     TextColor="{DynamicResource MediumOrange}"
                     Style="{StaticResource LargeBoldLabelStyle}" />
-                <Label 
+                    <Label 
                     Text="{Binding OperatingSetExercisePackage.Set.Id}"
                     TextColor="{DynamicResource DarkGray}"
                     Style="{StaticResource LargeBoldLabelStyle}" />
-            </HorizontalStackLayout>
+                </HorizontalStackLayout>
 
-            <Button 
+                <Button 
                 Text="Go Back"
                 Style="{StaticResource Width300ButtonStyle}"
                 Command="{Binding GoBackCommand}"
                 Margin="30" />
-        </VerticalStackLayout>
-    </ScrollView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

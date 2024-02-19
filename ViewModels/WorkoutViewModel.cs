@@ -546,7 +546,7 @@
         }
 
         [RelayCommand]
-        private async Task SetDropped(SetExercisePackage? package)
+        private async Task SetDropped(SetExercisePackage package)
         {
             try
             {
@@ -594,6 +594,19 @@
             OperatingSetExercisePackage = package;
 
             await GoToWorkoutOperatingSetPage();
+        }
+
+        [RelayCommand]
+        private async Task GoToWorkoutPage()
+        {
+            if (Workout is null) return;
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["Workout"] = Workout
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(WorkoutPage)}?Id={Workout.Id}", navigationParameter);
         }
 
         [RelayCommand]
