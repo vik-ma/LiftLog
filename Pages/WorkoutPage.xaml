@@ -26,7 +26,6 @@
                 Style="{StaticResource WorkoutTabFrameInactiveStyle}">
                 <Label 
                     Text="Active Set"
-                    BackgroundColor="AliceBlue"
                     Style="{StaticResource WorkoutTabLabelInactiveStyle}" />
             </Frame>
             <Frame 
