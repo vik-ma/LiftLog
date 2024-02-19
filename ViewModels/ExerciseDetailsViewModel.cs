@@ -89,5 +89,34 @@
         {
             await Shell.Current.GoToAsync("..");
         }
+
+        [RelayCommand]
+        private async Task GoToWorkoutPage()
+        {
+            if (ExerciseDetailsPackage is null || !ExerciseDetailsPackage.IsComingFromWorkoutPage || ExerciseDetailsPackage.Workout is null) 
+                return;
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["Workout"] = ExerciseDetailsPackage.Workout
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(WorkoutPage)}?Id={ExerciseDetailsPackage.Workout.Id}", navigationParameter);
+        }
+
+        [RelayCommand]
+        private async Task GoToWorkoutOperatingSetPage()
+        {
+            if (ExerciseDetailsPackage is null || !ExerciseDetailsPackage.IsComingFromWorkoutPage || ExerciseDetailsPackage.Workout is null)
+                return;
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                ["Workout"] = ExerciseDetailsPackage.Workout
+            };
+
+            await Shell.Current.GoToAsync($"{nameof(WorkoutOperatingSetPage)}?Id={ExerciseDetailsPackage.Workout.Id}", navigationParameter);
+
+        }
     }
 }

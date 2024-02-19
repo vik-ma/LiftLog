@@ -610,6 +610,8 @@
         [RelayCommand]
         private async Task GoToExerciseDetailsPage()
         {
+            if (Workout is null) return;
+
             if (OperatingSetExercisePackage is null || OperatingSetExercisePackage.Exercise is null) 
                 return;
 
@@ -624,6 +626,7 @@
             {
                 Exercise = exercise,
                 IsComingFromWorkoutPage = true,
+                Workout = Workout,
             };
 
             var navigationParameter = new Dictionary<string, object>

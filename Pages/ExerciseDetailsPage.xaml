@@ -22,7 +22,7 @@
                         Style="{StaticResource WorkoutTabFrameInactiveStyle}">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
-                                Command="{Binding }" />
+                                Command="{Binding GoToWorkoutPageCommand}" />
                         </Frame.GestureRecognizers>
                         <Label 
                             Text="Workout"
@@ -33,7 +33,7 @@
                         Style="{StaticResource WorkoutTabFrameInactiveStyle}">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
-                                Command="{Binding }" />
+                                Command="{Binding GoToWorkoutOperatingSetPageCommand}" />
                         </Frame.GestureRecognizers>
                         <Label 
                             Text="Active Set"

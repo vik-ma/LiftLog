@@ -26,7 +26,7 @@
                 Style="{StaticResource WorkoutTabFrameInactiveStyle}">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=GoToWorkoutOperatingSetPageCommand}" />
+                        Command="{Binding GoToWorkoutOperatingSetPageCommand}" />
                 </Frame.GestureRecognizers>
                 <Label 
                     Text="Active Set"
@@ -37,7 +37,7 @@
                 Style="{StaticResource WorkoutTabFrameInactiveStyle}">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=GoToExerciseDetailsPageCommand}" />
+                        Command="{Binding GoToExerciseDetailsPageCommand}" />
                 </Frame.GestureRecognizers>
                 <Label 
                     Text="Exercise History"

@@ -154,7 +154,6 @@
             ExerciseDetailsPackage exercisePackage = new()
             {
                 Exercise = exercise,
-                IsComingFromWorkoutPage = false,
             };
 
             var navigationParameter = new Dictionary<string, object>
