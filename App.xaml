@@ -389,7 +389,15 @@
             <Style x:Key="WorkoutTabGridInactiveStyle" TargetType="Grid">
                 <Setter Property="BackgroundColor" Value="{DynamicResource VeryLightGray}" />
             </Style>
-            <Style x:Key="WorkoutTabLabelStyle" TargetType="Label">
+            <Style x:Key="WorkoutTabLabelActiveStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource White}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
+            </Style>
+            <Style x:Key="WorkoutTabLabelInactiveStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource LightGray}" />
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="FontSize" Value="20" />
@@ -397,7 +405,11 @@
             </Style>
             <Style x:Key="WorkoutTabBorderActiveStyle" TargetType="Border">
                 <Setter Property="Stroke" Value="{DynamicResource VeryDarkGray}" />
-                <Setter Property="StrokeThickness" Value="1.5" />
+                <Setter Property="StrokeThickness" Value="1" />
+            </Style>
+            <Style x:Key="WorkoutTabBorderInactiveStyle" TargetType="Border">
+                <Setter Property="Stroke" Value="{DynamicResource MediumLightGray}" />
+                <Setter Property="StrokeThickness" Value="1" />
             </Style>
 
         </ResourceDictionary>

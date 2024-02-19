@@ -21,8 +21,7 @@
                     Style="{StaticResource WorkoutTabGridActiveStyle}">
                     <Label 
                         Text="Workout"
-                        TextColor="{DynamicResource DeepPurple}"
-                        Style="{StaticResource WorkoutTabLabelStyle}" />
+                        Style="{StaticResource WorkoutTabLabelActiveStyle}" />
                 </Grid>
             </Border>
             <Border 
@@ -33,7 +32,7 @@
                     <Label 
                         Text="Active Set"
                         TextColor="{DynamicResource VeryDarkGray}"
-                        Style="{StaticResource WorkoutTabLabelStyle}" />
+                        Style="{StaticResource WorkoutTabLabelInactiveStyle}" />
                 </Grid>
             </Border>
             <Border 
@@ -44,7 +43,7 @@
                     <Label 
                         Text="Exercise History"
                         TextColor="{DynamicResource VeryDarkGray}"
-                        Style="{StaticResource WorkoutTabLabelStyle}" />
+                        Style="{StaticResource WorkoutTabLabelInactiveStyle}" />
                 </Grid>
             </Border>
         </Grid>
