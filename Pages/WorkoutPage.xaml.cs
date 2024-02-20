@@ -12,8 +12,14 @@ public partial class WorkoutPage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-        _viewModel.LoadSelectedDateTime();
-        await _viewModel.LoadSetList();
+
+        // Prevent reloading old page if navigated
+        // from WorkoutOperatingPage or ExerciseDetailsPage
+        if (!_viewModel.IsWorkoutLoaded) 
+        {
+            _viewModel.LoadSelectedDateTime();
+            await _viewModel.LoadSetList();
+        }
     }
 
     private async void OnDateSelected(object sender, DateChangedEventArgs e)

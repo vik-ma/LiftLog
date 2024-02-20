@@ -50,6 +50,8 @@
         [ObservableProperty]
         private SetExercisePackage operatingSetExercisePackage;
 
+        public bool IsWorkoutLoaded;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -144,6 +146,8 @@
                 // Create new Sets from WorkoutTemplate and add to SetList
                 await LoadSetListFromWorkoutTemplateIdAsync();
             }
+
+            IsWorkoutLoaded = true;
         }
 
         private async Task LoadSavedSetsAsync()
