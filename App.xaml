@@ -403,7 +403,7 @@
                 <Setter Property="FontFamily" Value="InterSemiBold" />
             </Style>
             <Style x:Key="WorkoutTabLabelInactiveStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="{DynamicResource DarkGray}" />
+                <Setter Property="TextColor" Value="{DynamicResource VeryDarkGray}" />
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="FontSize" Value="20" />
