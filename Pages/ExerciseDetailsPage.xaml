@@ -21,6 +21,9 @@
                         Grid.Column="0"
                         Style="{StaticResource WorkoutTabFrameInactiveStyle}">
                         <Frame.GestureRecognizers>
+                            <PointerGestureRecognizer
+                                PointerEntered="PointerGestureRecognizer_PointerEntered"
+                                PointerExited="PointerGestureRecognizer_PointerExited" />
                             <TapGestureRecognizer
                                 Command="{Binding GoToWorkoutPageCommand}" />
                         </Frame.GestureRecognizers>
@@ -32,6 +35,9 @@
                         Grid.Column="1"
                         Style="{StaticResource WorkoutTabFrameInactiveStyle}">
                         <Frame.GestureRecognizers>
+                            <PointerGestureRecognizer
+                                PointerEntered="PointerGestureRecognizer_PointerEntered"
+                                PointerExited="PointerGestureRecognizer_PointerExited" />
                             <TapGestureRecognizer
                                 Command="{Binding GoToWorkoutOperatingSetPageCommand}" />
                         </Frame.GestureRecognizers>
