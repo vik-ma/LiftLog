@@ -248,6 +248,9 @@
                 foreach (var set in incompletedSets)
                 {
                     await DeleteSetAsync(set.Set);
+
+                    if (set == OperatingSetExercisePackage)
+                        OperatingSetExercisePackage = SetList.FirstOrDefault() ?? null;
                 }
 
                 SetList = new(SetList.Where(item => item.Set.IsCompleted));
@@ -399,6 +402,9 @@
             await DeleteSetAsync(setExercisePackage.Set);
 
             SetList.Remove(setExercisePackage);
+
+            if (setExercisePackage == OperatingSetExercisePackage)
+                OperatingSetExercisePackage = SetList.FirstOrDefault() ?? null;
 
             await GenerateSetListOrderString();
         }
@@ -618,9 +624,6 @@
         {
             if (OperatingSetExercisePackage is null) return;
 
-            // ADD PROMPT IF NO SETPACKAGE IS SET?
-            // ADD PROMPT IF INVALID EXERCISE?
-
             await Shell.Current.GoToAsync(nameof(WorkoutOperatingSetPage));
         }
 
@@ -632,11 +635,8 @@
             if (OperatingSetExercisePackage is null || OperatingSetExercisePackage.Exercise is null) 
                 return;
 
-            // ADD PROMPT IF NO SETPACKAGE IS SET?
-
             Exercise exercise = OperatingSetExercisePackage.Exercise;
 
-            // ADD PROMPT IF INVALID EXERCISE
             if (exercise.HasInvalidId || exercise.Id == 0) return;
 
             ExerciseDetailsPackage exercisePackage = new()
