@@ -57,23 +57,17 @@
                 HorizontalOptions="Center"
                 Spacing="10">
                     <Label 
-                    Text="Set:"
-                    Style="{StaticResource LargeBoldLabelStyle}" />
+                        Text="Set:"
+                        Style="{StaticResource LargeBoldLabelStyle}" />
                     <Label 
-                    Text="{Binding OperatingSetExercisePackage.Exercise.Name}"
-                    TextColor="{DynamicResource MediumOrange}"
-                    Style="{StaticResource LargeBoldLabelStyle}" />
+                        Text="{Binding OperatingSetExercisePackage.Exercise.Name}"
+                        TextColor="{DynamicResource MediumOrange}"
+                        Style="{StaticResource LargeBoldLabelStyle}" />
                     <Label 
-                    Text="{Binding OperatingSetExercisePackage.Set.Id}"
-                    TextColor="{DynamicResource DarkGray}"
-                    Style="{StaticResource LargeBoldLabelStyle}" />
+                        Text="{Binding OperatingSetExercisePackage.Set.Id}"
+                        TextColor="{DynamicResource DarkGray}"
+                        Style="{StaticResource LargeBoldLabelStyle}" />
                 </HorizontalStackLayout>
-
-                <Button 
-                Text="Go Back"
-                Style="{StaticResource Width300ButtonStyle}"
-                Command="{Binding GoBackCommand}"
-                Margin="30" />
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
