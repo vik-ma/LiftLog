@@ -147,6 +147,9 @@
                 await LoadSetListFromWorkoutTemplateIdAsync();
             }
 
+            if (SetList.Any())
+                OperatingSetExercisePackage = SetList.FirstOrDefault();
+
             IsWorkoutLoaded = true;
         }
 
