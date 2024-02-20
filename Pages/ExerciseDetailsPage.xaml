@@ -616,11 +616,15 @@
                     </CollectionView.EmptyView>
                 </CollectionView>
 
-                <Button 
-                    Text="Go Back"
-                    Style="{StaticResource Width300ButtonStyle}"
-                    Command="{Binding GoBackCommand}"
-                    Margin="50" />
+                <helpers:If Condition="{Binding ExerciseDetailsPackage.IsComingFromWorkoutPage}">
+                    <helpers:If.False>
+                        <Button 
+                            Text="Go Back"
+                            Style="{StaticResource Width300ButtonStyle}"
+                            Command="{Binding GoBackCommand}"
+                            Margin="50" />
+                    </helpers:If.False>
+                </helpers:If>
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
