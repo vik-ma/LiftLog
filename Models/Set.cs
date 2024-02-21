@@ -108,8 +108,6 @@
         {
             if (Rpe < 0 || Rpe > 10) return false;
 
-            if (Rpe == 0 && IsTrackingRpe) return false;
-
             return true;
         }
 
