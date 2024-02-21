@@ -427,9 +427,15 @@
                 <Setter Property="FontFamily" Value="InterMedium" />
             </Style>
             <Style x:Key="ExerciseTrackPropertyGridStyle" TargetType="Grid">
-                <Setter Property="ColumnDefinitions" Value="*, *" />
+                <Setter Property="ColumnDefinitions" Value="Auto, Auto" />
                 <Setter Property="ColumnSpacing" Value="10" />
                 <Setter Property="Margin" Value="0, 0, 5, 0" />
+            </Style>
+            <Style x:Key="ExerciseTrackLabelStyle" TargetType="Label">
+                <Setter Property="Grid.Column" Value="0" />
+            </Style>
+            <Style x:Key="ExerciseTrackEntryStyle" TargetType="Entry">
+                <Setter Property="Grid.Column" Value="1" />
             </Style>
 
         </ResourceDictionary>
