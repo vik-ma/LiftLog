@@ -101,7 +101,11 @@
                 ["Workout"] = ExerciseDetailsPackage.Workout
             };
 
+            var currentPage = Shell.Current.CurrentPage;
+
             await Shell.Current.GoToAsync($"{nameof(WorkoutPage)}?Id={ExerciseDetailsPackage.Workout.Id}", navigationParameter);
+
+            Shell.Current.Navigation.RemovePage(currentPage);
         }
 
         [RelayCommand]
@@ -115,8 +119,11 @@
                 ["Workout"] = ExerciseDetailsPackage.Workout
             };
 
+            var currentPage = Shell.Current.CurrentPage;
+
             await Shell.Current.GoToAsync($"{nameof(WorkoutOperatingSetPage)}?Id={ExerciseDetailsPackage.Workout.Id}", navigationParameter);
 
+            Shell.Current.Navigation.RemovePage(currentPage);
         }
     }
 }

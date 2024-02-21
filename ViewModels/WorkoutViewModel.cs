@@ -619,7 +619,11 @@
                 ["Workout"] = Workout
             };
 
+            var currentPage = Shell.Current.CurrentPage;
+
             await Shell.Current.GoToAsync($"{nameof(WorkoutPage)}?Id={Workout.Id}", navigationParameter);
+
+            Shell.Current.Navigation.RemovePage(currentPage);
         }
 
         [RelayCommand]
@@ -627,7 +631,11 @@
         {
             if (OperatingSetExercisePackage is null) return;
 
+            var currentPage = Shell.Current.CurrentPage;
+
             await Shell.Current.GoToAsync(nameof(WorkoutOperatingSetPage));
+
+            Shell.Current.Navigation.RemovePage(currentPage);
         }
 
         [RelayCommand]
@@ -654,7 +662,11 @@
                 ["ExerciseDetailsPackage"] = exercisePackage
             };
 
+            var currentPage = Shell.Current.CurrentPage;
+
             await Shell.Current.GoToAsync($"{nameof(ExerciseDetailsPage)}?Id={exercise.Id}", navigationParameter);
+
+            Shell.Current.Navigation.RemovePage(currentPage);
         }
     }
 }

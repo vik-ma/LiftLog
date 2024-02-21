@@ -54,8 +54,8 @@
         <ScrollView Grid.Row="1">
             <VerticalStackLayout>
                 <HorizontalStackLayout
-                HorizontalOptions="Center"
-                Spacing="10">
+                    HorizontalOptions="Center"
+                    Spacing="10">
                     <Label 
                         Text="Set:"
                         Style="{StaticResource LargeBoldLabelStyle}" />
