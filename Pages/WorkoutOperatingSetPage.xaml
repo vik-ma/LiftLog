@@ -97,6 +97,90 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            <FlexLayout 
+                                Wrap="Wrap"
+                                JustifyContent="Start">
+                                <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
+                                    <Label
+                                            Text="Weight"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingWeight}" />
+                                    <Entry
+                                            Text="{Binding OperatingSetExercisePackage.Set.Weight}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingWeight}" />
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
+                                    <Label
+                                            Text="Reps"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingReps}" />
+                                    <Entry
+                                            Text="{Binding OperatingSetExercisePackage.Set.Reps}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingReps}" />
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
+                                    <Label
+                                            Text="RIR"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingRir}" />
+                                    <Entry
+                                            Text="{Binding OperatingSetExercisePackage.Set.Rir}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingRir}" />
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
+                                    <Label
+                                            Text="RPE"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingRpe}" />
+                                    <Entry
+                                            Text="{Binding OperatingSetExercisePackage.Set.Rpe}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingRpe}" />
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
+                                    <Label
+                                            Text="Time"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingTime}" />
+                                    <Entry
+                                            Text="{Binding OperatingSetExercisePackage.Set.TimeInSeconds}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingTime}" />
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
+                                    <Label
+                                            Text="Distance"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingDistance}" />
+                                    <Entry
+                                            Text="{Binding OperatingSetExercisePackage.Set.Distance}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingDistance}" />
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
+                                    <Label
+                                            Text="Resistance Level"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingCardioResistance}" />
+                                    <Entry
+                                            Text="{Binding OperatingSetExercisePackage.Set.CardioResistance}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingCardioResistance}" />
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Style="{StaticResource StartedWorkoutLabelEntryLayoutStyle}">
+                                    <Label
+                                            Text="Percent Completed"
+                                            Style="{StaticResource StartedWorkoutExpanderContentLabelStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingPercentCompleted}" />
+                                    <Entry
+                                            Text="{Binding OperatingSetExercisePackage.Set.PercentCompleted}"
+                                            Style="{StaticResource StartedWorkoutEntryFieldStyle}"
+                                            IsVisible="{Binding OperatingSetExercisePackage.Set.IsTrackingPercentCompleted}" />
+                                </HorizontalStackLayout>
+                            </FlexLayout>
                         </VerticalStackLayout>
                     </helpers:If.False>
                 </helpers:If>
