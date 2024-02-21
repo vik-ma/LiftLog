@@ -353,11 +353,6 @@
 
                 // GenerateSetListOrderString also saves Workout
                 await GenerateSetListOrderString();
-
-                if (WorkoutTemplateContainsInvalidExercise)
-                {
-                    await Shell.Current.DisplayAlert("Invalid Exercise", "Workout Template contains a Set with an Exercise that no longer exists and was not added to Workout.", "OK");
-                }
             }
             catch
             {
