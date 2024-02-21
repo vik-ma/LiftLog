@@ -7,7 +7,7 @@
              xmlns:models="clr-namespace:LocalLiftLog.Models"
              xmlns:viewmodel="clr-namespace:LocalLiftLog.ViewModels"
              x:Class="LocalLiftLog.App">
-    
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -356,7 +356,7 @@
             <converters:InvalidExerciseColorConverter x:Key="InvalidExerciseColorConverter" />
             <converters:IsSetCompletedColorConverter x:Key="IsSetCompletedColorConverter" />
             <converters:SetListDragColorMultiBindingConverter x:Key="SetListDragColorMultiBindingConverter" />
-            
+
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             <toolkit:IndexToArrayItemConverter x:Key="IndexToArrayItemConverter" />
             <toolkit:IsListNullOrEmptyConverter x:Key="IsListNullOrEmptyConverter" />
@@ -428,11 +428,15 @@
             </Style>
             <Style x:Key="ExerciseTrackPropertyGridStyle" TargetType="Grid">
                 <Setter Property="ColumnDefinitions" Value="Auto, Auto" />
-                <Setter Property="ColumnSpacing" Value="10" />
+                <Setter Property="ColumnSpacing" Value="8" />
                 <Setter Property="Margin" Value="0, 0, 5, 0" />
             </Style>
             <Style x:Key="ExerciseTrackLabelStyle" TargetType="Label">
                 <Setter Property="Grid.Column" Value="0" />
+                <Setter Property="TextColor" Value="{DynamicResource VeryDarkGray}" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
+                <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             <Style x:Key="ExerciseTrackEntryStyle" TargetType="Entry">
                 <Setter Property="Grid.Column" Value="1" />
