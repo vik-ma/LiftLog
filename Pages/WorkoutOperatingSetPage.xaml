@@ -77,12 +77,13 @@
                                     <FormattedString>
                                         <Span 
                                             Text="Exercise: "
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource LargeHeaderSpanStyle}" />
+                                            FontAttributes="Bold"
+                                            TextColor="{StaticResource VeryDarkGray}"
+                                            Style="{StaticResource ExerciseHeaderSpanStyle}" />
                                         <Span 
                                             Text="{Binding OperatingSetExercisePackage.Exercise.Name}"
-                                            TextColor="{DynamicResource MediumOrange}"
-                                            Style="{StaticResource LargeHeaderSpanStyle}" />
+                                            TextColor="{DynamicResource DeepBlue}"
+                                            Style="{StaticResource ExerciseHeaderSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
