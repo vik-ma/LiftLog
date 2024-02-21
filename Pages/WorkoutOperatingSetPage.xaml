@@ -52,22 +52,40 @@
         </Grid>
 
         <ScrollView Grid.Row="1">
-            <VerticalStackLayout>
-                <HorizontalStackLayout
-                    HorizontalOptions="Center"
-                    Spacing="10">
-                    <Label 
-                        Text="Set:"
-                        Style="{StaticResource LargeBoldLabelStyle}" />
-                    <Label 
-                        Text="{Binding OperatingSetExercisePackage.Exercise.Name}"
-                        TextColor="{DynamicResource MediumOrange}"
-                        Style="{StaticResource LargeBoldLabelStyle}" />
-                    <Label 
-                        Text="{Binding OperatingSetExercisePackage.Set.Id}"
-                        TextColor="{DynamicResource DarkGray}"
-                        Style="{StaticResource LargeBoldLabelStyle}" />
-                </HorizontalStackLayout>
+            <VerticalStackLayout Padding="0, 10">
+                <helpers:If Condition="{Binding OperatingSetExercisePackage.Exercise.HasInvalidId}">
+                    <helpers:If.True>
+                        <VerticalStackLayout 
+                            Spacing="5"
+                            HorizontalOptions="Center">
+                            <Label 
+                                Text="Invalid Exercise"
+                                HorizontalOptions="Center"
+                                TextColor="{StaticResource MediumRed}"
+                                Style="{StaticResource LargeBoldLabelStyle}"/>
+                            <Label 
+                                Text="This Set contains a reference to an Exercise that has been deleted!"
+                                Style="{StaticResource MediumLabelStyle}" />
+                        </VerticalStackLayout>
+                    </helpers:If.True>
+                    <helpers:If.False>
+                        <HorizontalStackLayout
+                            HorizontalOptions="Center"
+                            Spacing="10">
+                            <Label 
+                                Text="Set:"
+                                Style="{StaticResource LargeBoldLabelStyle}" />
+                            <Label 
+                                Text="{Binding OperatingSetExercisePackage.Exercise.Name}"
+                                TextColor="{DynamicResource MediumOrange}"
+                                Style="{StaticResource LargeBoldLabelStyle}" />
+                            <Label 
+                                Text="{Binding OperatingSetExercisePackage.Set.Id}"
+                                TextColor="{DynamicResource DarkGray}"
+                                Style="{StaticResource LargeBoldLabelStyle}" />
+                        </HorizontalStackLayout>
+                    </helpers:If.False>
+                </helpers:If>
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
