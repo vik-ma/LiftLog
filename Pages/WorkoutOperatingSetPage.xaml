@@ -71,7 +71,7 @@
                     <helpers:If.False>
                         <VerticalStackLayout
                             HorizontalOptions="Center"
-                            Spacing="10">
+                            Spacing="2">
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -84,6 +84,16 @@
                                             Text="{Binding OperatingSetExercisePackage.Exercise.Name}"
                                             TextColor="{DynamicResource DeepBlue}"
                                             Style="{StaticResource ExerciseHeaderSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="{Binding OperatingSetExercisePackage.Set.Note}"
+                                            TextColor="{DynamicResource MediumDarkGray}"
+                                            Style="{StaticResource ExerciseSubHeaderSpanStyle}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
