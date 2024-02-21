@@ -69,21 +69,24 @@
                         </VerticalStackLayout>
                     </helpers:If.True>
                     <helpers:If.False>
-                        <HorizontalStackLayout
+                        <VerticalStackLayout
                             HorizontalOptions="Center"
                             Spacing="10">
-                            <Label 
-                                Text="Set:"
-                                Style="{StaticResource LargeBoldLabelStyle}" />
-                            <Label 
-                                Text="{Binding OperatingSetExercisePackage.Exercise.Name}"
-                                TextColor="{DynamicResource MediumOrange}"
-                                Style="{StaticResource LargeBoldLabelStyle}" />
-                            <Label 
-                                Text="{Binding OperatingSetExercisePackage.Set.Id}"
-                                TextColor="{DynamicResource DarkGray}"
-                                Style="{StaticResource LargeBoldLabelStyle}" />
-                        </HorizontalStackLayout>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span 
+                                            Text="Exercise: "
+                                            FontAttributes="Bold"  
+                                            Style="{StaticResource LargeHeaderSpanStyle}" />
+                                        <Span 
+                                            Text="{Binding OperatingSetExercisePackage.Exercise.Name}"
+                                            TextColor="{DynamicResource MediumOrange}"
+                                            Style="{StaticResource LargeHeaderSpanStyle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
                     </helpers:If.False>
                 </helpers:If>
             </VerticalStackLayout>
