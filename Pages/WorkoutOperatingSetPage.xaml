@@ -76,35 +76,46 @@
                         </VerticalStackLayout>
                     </helpers:If.True>
                     <helpers:If.False>
-                        <VerticalStackLayout
+                        <Grid
+                            RowDefinitions="Auto, Auto"
                             HorizontalOptions="Center"
-                            Spacing="2">
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Exercise: "
-                                            FontAttributes="Bold"
-                                            TextColor="{StaticResource VeryDarkGray}"
-                                            Style="{StaticResource ExerciseHeaderSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding OperatingSetExercisePackage.Exercise.Name}"
-                                            TextColor="{DynamicResource Primary}"
-                                            Style="{StaticResource ExerciseHeaderSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
+                            RowSpacing="2">
+                            <Grid
+                                Grid.Row="0"
+                                RowDefinitions="Auto, Auto"
+                                HorizontalOptions="Center">
+                                <Label
+                                    Grid.Row="0"
+                                    VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Exercise: "
+                                                FontAttributes="Bold"
+                                                TextColor="{StaticResource VeryDarkGray}"
+                                                Style="{StaticResource ExerciseHeaderSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding OperatingSetExercisePackage.Exercise.Name}"
+                                                TextColor="{DynamicResource Primary}"
+                                                Style="{StaticResource ExerciseHeaderSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label 
+                                    Grid.Row="1"
+                                    VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
                                             Text="{Binding OperatingSetExercisePackage.Set.Note}"
                                             TextColor="{DynamicResource MediumDarkGray}"
                                             Style="{StaticResource ExerciseSubHeaderSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
                             <FlexLayout 
+                                Grid.Row="1"
                                 Wrap="Wrap"
                                 JustifyContent="Start">
                                 <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingWeight}">
@@ -210,7 +221,7 @@
                                     </helpers:If.True>
                                 </helpers:If>
                             </FlexLayout>
-                        </VerticalStackLayout>
+                        </Grid>
                     </helpers:If.False>
                 </helpers:If>
             </Border>
