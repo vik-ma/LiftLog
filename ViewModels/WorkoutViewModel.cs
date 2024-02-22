@@ -663,5 +663,13 @@
 
             Shell.Current.Navigation.RemovePage(currentPage);
         }
+
+        [RelayCommand]
+        private void SetOperatingSetExercisePackage(SetExercisePackage setExercisePackage)
+        {
+            if (setExercisePackage is null) return;
+
+            OperatingSetExercisePackage = setExercisePackage;
+        }
     }
 }

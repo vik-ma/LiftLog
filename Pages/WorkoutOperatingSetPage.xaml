@@ -245,6 +245,9 @@
                                         <PointerGestureRecognizer
                                             PointerEntered="PointerGestureRecognizer_PointerEntered"
                                             PointerExited="PointerGestureRecognizer_PointerExited" />
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetOperatingSetExercisePackageCommand}"
+                                            CommandParameter="{Binding .}" />
                                     </Border.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="7">
                                         <Label VerticalOptions="Center">
