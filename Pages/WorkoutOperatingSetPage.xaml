@@ -241,17 +241,22 @@
                                             </MultiBinding.Bindings>
                                         </MultiBinding>
                                     </Border.Stroke>
+                                    <Border.GestureRecognizers>
+                                        <PointerGestureRecognizer
+                                            PointerEntered="PointerGestureRecognizer_PointerEntered"
+                                            PointerExited="PointerGestureRecognizer_PointerExited" />
+                                    </Border.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="7">
                                         <Label VerticalOptions="Center">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span 
-                                                        Text="Set Id: " 
-                                                        FontAttributes="Bold"  
-                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    Text="Set Id: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
                                                     <Span 
-                                                        Text="{Binding Set.Id}"
-                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    Text="{Binding Set.Id}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -259,13 +264,13 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span 
-                                                        Text="Exercise: " 
-                                                        FontAttributes="Bold"  
-                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    Text="Exercise: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
                                                     <Span 
-                                                        Text="{Binding Exercise.Name}"
-                                                        TextColor="{Binding Exercise.HasInvalidId, Converter={StaticResource InvalidExerciseColorConverter}}"
-                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    Text="{Binding Exercise.Name}"
+                                                    TextColor="{Binding Exercise.HasInvalidId, Converter={StaticResource InvalidExerciseColorConverter}}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -273,28 +278,17 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span 
-                                                        Text="Completed: " 
-                                                        FontAttributes="Bold"  
-                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    Text="Completed: " 
+                                                    FontAttributes="Bold"  
+                                                    Style="{StaticResource SmallSpanStyle}" />
                                                     <Span 
-                                                        Text="{Binding Set.IsCompleted}"
-                                                        TextColor="{Binding Set.IsCompleted, Converter={StaticResource IsSetCompletedColorConverter}}"
-                                                        Style="{StaticResource SmallSpanStyle}" />
+                                                    Text="{Binding Set.IsCompleted}"
+                                                    TextColor="{Binding Set.IsCompleted, Converter={StaticResource IsSetCompletedColorConverter}}"
+                                                    Style="{StaticResource SmallSpanStyle}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
                                     </HorizontalStackLayout>
-
-                                    <!--<Frame.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetTappedCommand}"
-                                            CommandParameter="{Binding}" />
-                                        <PointerGestureRecognizer 
-                                            PointerEnteredCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetHoverEnterCommand}"
-                                            PointerEnteredCommandParameter="{Binding}"
-                                            PointerExitedCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetHoverLeaveCommand}"
-                                            PointerExitedCommandParameter="{Binding}" />
-                                    </Frame.GestureRecognizers>-->
                                 </Border>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
