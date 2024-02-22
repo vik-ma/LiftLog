@@ -109,6 +109,9 @@
                                             <Entry
                                                 Text="{Binding OperatingSetExercisePackage.Set.Weight}"
                                                 Style="{StaticResource ExerciseTrackEntryStyle}" />
+                                            <Label
+                                                Text="{Binding OperatingSetExercisePackage.Set.WeightUnit}"
+                                                Style="{StaticResource ExerciseTrackLabelUnitStyle}" />
                                         </Grid>
                                     </helpers:If.True>
                                 </helpers:If>
@@ -157,6 +160,9 @@
                                             <Entry
                                                 Text="{Binding OperatingSetExercisePackage.Set.Distance}"
                                                 Style="{StaticResource ExerciseTrackEntryStyle}" />
+                                            <Label
+                                                Text="{Binding OperatingSetExercisePackage.Set.DistanceUnit}"
+                                                Style="{StaticResource ExerciseTrackLabelUnitStyle}" />
                                         </Grid>
                                     </helpers:If.True>
                                 </helpers:If>
