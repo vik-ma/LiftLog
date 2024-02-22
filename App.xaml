@@ -420,7 +420,7 @@
             </Style>
 
             <Style x:Key="ExerciseHeaderSpanStyle" TargetType="Span">
-                <Setter Property="FontSize" Value="28" />
+                <Setter Property="FontSize" Value="30" />
                 <Setter Property="FontFamily" Value="InterSemiBold" />
             </Style>
             <Style x:Key="ExerciseSubHeaderSpanStyle" TargetType="Span">
@@ -460,6 +460,10 @@
                 <Setter Property="Padding" Value="0, 8, 0, 15" />
                 <Setter Property="StrokeThickness" Value="2" />
                 <Setter Property="StrokeShape" Value="RoundRectangle 20" />
+            </Style>
+            <Style x:Key="ExerciseSetListLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
             </Style>
 
         </ResourceDictionary>

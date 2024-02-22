@@ -260,48 +260,17 @@
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetOperatingSetExercisePackageCommand}"
                                             CommandParameter="{Binding .}" />
                                     </Border.GestureRecognizers>
-                                    <HorizontalStackLayout Spacing="7">
-                                        <Label VerticalOptions="Center">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span 
-                                                    Text="Set Id: " 
-                                                    FontAttributes="Bold"  
-                                                    Style="{StaticResource SmallSpanStyle}" />
-                                                    <Span 
-                                                    Text="{Binding Set.Id}"
-                                                    Style="{StaticResource SmallSpanStyle}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label VerticalOptions="Center">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span 
-                                                    Text="Exercise: " 
-                                                    FontAttributes="Bold"  
-                                                    Style="{StaticResource SmallSpanStyle}" />
-                                                    <Span 
-                                                    Text="{Binding Exercise.Name}"
-                                                    TextColor="{Binding Exercise.HasInvalidId, Converter={StaticResource InvalidExerciseColorConverter}}"
-                                                    Style="{StaticResource SmallSpanStyle}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label VerticalOptions="Center">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span 
-                                                    Text="Completed: " 
-                                                    FontAttributes="Bold"  
-                                                    Style="{StaticResource SmallSpanStyle}" />
-                                                    <Span 
-                                                    Text="{Binding Set.IsCompleted}"
-                                                    TextColor="{Binding Set.IsCompleted, Converter={StaticResource IsSetCompletedColorConverter}}"
-                                                    Style="{StaticResource SmallSpanStyle}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
+                                    <HorizontalStackLayout 
+                                        HorizontalOptions="Center"
+                                        Spacing="7">
+                                        <Label 
+                                            Text="{Binding Exercise.Name}"
+                                            TextColor="{Binding Exercise.HasInvalidId, Converter={StaticResource InvalidExerciseColorConverter}}"
+                                            Style="{StaticResource ExerciseSetListLabelStyle}" />
+                                        <Label 
+                                            Text="{Binding Set.IsCompleted}"
+                                            TextColor="{Binding Set.IsCompleted, Converter={StaticResource IsSetCompletedColorConverter}}"
+                                            Style="{StaticResource ExerciseSetListLabelStyle}" />
                                     </HorizontalStackLayout>
                                 </Border>
                             </DataTemplate>
