@@ -53,159 +53,161 @@
 
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="0, 10">
-                <helpers:If Condition="{Binding OperatingSetExercisePackage.Exercise.HasInvalidId}">
-                    <helpers:If.True>
-                        <VerticalStackLayout 
-                            Spacing="5"
-                            HorizontalOptions="Center">
-                            <Label 
-                                Text="Invalid Exercise"
+                <Border Style="{StaticResource ExerciseTrackBorderStyle}">
+                    <helpers:If Condition="{Binding OperatingSetExercisePackage.Exercise.HasInvalidId}">
+                        <helpers:If.True>
+                            <VerticalStackLayout 
+                                Spacing="5"
+                                HorizontalOptions="Center">
+                                <Label 
+                                    Text="Invalid Exercise"
+                                    HorizontalOptions="Center"
+                                    TextColor="{StaticResource MediumRed}"
+                                    Style="{StaticResource LargeBoldLabelStyle}"/>
+                                <Label 
+                                    Text="This Set contains a reference to an Exercise that has been deleted!"
+                                    Style="{StaticResource MediumLabelStyle}" />
+                            </VerticalStackLayout>
+                        </helpers:If.True>
+                        <helpers:If.False>
+                            <VerticalStackLayout
                                 HorizontalOptions="Center"
-                                TextColor="{StaticResource MediumRed}"
-                                Style="{StaticResource LargeBoldLabelStyle}"/>
-                            <Label 
-                                Text="This Set contains a reference to an Exercise that has been deleted!"
-                                Style="{StaticResource MediumLabelStyle}" />
-                        </VerticalStackLayout>
-                    </helpers:If.True>
-                    <helpers:If.False>
-                        <VerticalStackLayout
-                            HorizontalOptions="Center"
-                            Spacing="2">
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Exercise: "
-                                            FontAttributes="Bold"
-                                            TextColor="{StaticResource VeryDarkGray}"
-                                            Style="{StaticResource ExerciseHeaderSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding OperatingSetExercisePackage.Exercise.Name}"
-                                            TextColor="{DynamicResource DeepBlue}"
-                                            Style="{StaticResource ExerciseHeaderSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="{Binding OperatingSetExercisePackage.Set.Note}"
-                                            TextColor="{DynamicResource MediumDarkGray}"
-                                            Style="{StaticResource ExerciseSubHeaderSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <FlexLayout 
-                                Wrap="Wrap"
-                                JustifyContent="Start">
-                                <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingWeight}">
-                                    <helpers:If.True>
-                                        <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
-                                            <Label
-                                                Text="Weight"
-                                                Style="{StaticResource ExerciseTrackLabelStyle}" />
-                                            <Entry
-                                                Text="{Binding OperatingSetExercisePackage.Set.Weight}"
-                                                Style="{StaticResource ExerciseTrackEntryStyle}" />
-                                            <Label
-                                                Text="{Binding OperatingSetExercisePackage.Set.WeightUnit}"
-                                                Style="{StaticResource ExerciseTrackLabelUnitStyle}" />
-                                        </Grid>
-                                    </helpers:If.True>
-                                </helpers:If>
-                                <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingReps}">
-                                    <helpers:If.True>
-                                        <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
-                                            <Label
-                                                Text="Reps"
-                                                Style="{StaticResource ExerciseTrackLabelStyle}" />
-                                            <Entry
-                                                Text="{Binding OperatingSetExercisePackage.Set.Reps}"
-                                                Style="{StaticResource ExerciseTrackEntryStyle}" />
-                                        </Grid>
-                                    </helpers:If.True>
-                                </helpers:If>
-                                <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingRir}">
-                                    <helpers:If.True>
-                                        <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
-                                            <Label
-                                                Text="RIR"
-                                                Style="{StaticResource ExerciseTrackLabelStyle}" />
-                                            <Entry
-                                                Text="{Binding OperatingSetExercisePackage.Set.Rir}"
-                                                Style="{StaticResource ExerciseTrackEntryStyle}" />
-                                        </Grid>
-                                    </helpers:If.True>
-                                </helpers:If>
-                                <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingRpe}">
-                                    <helpers:If.True>
-                                        <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
-                                            <Label
-                                                Text="RPE"
-                                                Style="{StaticResource ExerciseTrackLabelStyle}" />
-                                            <Entry
-                                                Text="{Binding OperatingSetExercisePackage.Set.Rpe}"
-                                                Style="{StaticResource ExerciseTrackEntryStyle}" />
-                                        </Grid>
-                                    </helpers:If.True>
-                                </helpers:If>
-                                <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingDistance}">
-                                    <helpers:If.True>
-                                        <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
-                                            <Label
-                                                Text="Distance"
-                                                Style="{StaticResource ExerciseTrackLabelStyle}" />
-                                            <Entry
-                                                Text="{Binding OperatingSetExercisePackage.Set.Distance}"
-                                                Style="{StaticResource ExerciseTrackEntryStyle}" />
-                                            <Label
-                                                Text="{Binding OperatingSetExercisePackage.Set.DistanceUnit}"
-                                                Style="{StaticResource ExerciseTrackLabelUnitStyle}" />
-                                        </Grid>
-                                    </helpers:If.True>
-                                </helpers:If>
-                                <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingTime}">
-                                    <helpers:If.True>
-                                        <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
-                                            <Label
-                                                Text="Time"
-                                                Style="{StaticResource ExerciseTrackLabelStyle}" />
-                                            <Entry
-                                                Text="{Binding OperatingSetExercisePackage.Set.TimeInSeconds}"
-                                                Style="{StaticResource ExerciseTrackEntryStyle}" />
-                                        </Grid>
-                                    </helpers:If.True>
-                                </helpers:If>
-                                <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingCardioResistance}">
-                                    <helpers:If.True>
-                                        <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
-                                            <Label
-                                                Text="Cardio Resistance"
-                                                Style="{StaticResource ExerciseTrackLabelStyle}" />
-                                            <Entry
-                                                Text="{Binding OperatingSetExercisePackage.Set.CardioResistance}"
-                                                Style="{StaticResource ExerciseTrackEntryStyle}" />
-                                        </Grid>
-                                    </helpers:If.True>
-                                </helpers:If>
-                                <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingPercentCompleted}">
-                                    <helpers:If.True>
-                                        <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
-                                            <Label
-                                                Text="Percent Completed"
-                                                Style="{StaticResource ExerciseTrackLabelStyle}" />
-                                            <Entry
-                                                Text="{Binding OperatingSetExercisePackage.Set.PercentCompleted}"
-                                                Style="{StaticResource ExerciseTrackEntryStyle}" />
-                                        </Grid>
-                                    </helpers:If.True>
-                                </helpers:If>
-                            </FlexLayout>
-                        </VerticalStackLayout>
-                    </helpers:If.False>
-                </helpers:If>
+                                Spacing="2">
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Exercise: "
+                                                FontAttributes="Bold"
+                                                TextColor="{StaticResource VeryDarkGray}"
+                                                Style="{StaticResource ExerciseHeaderSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding OperatingSetExercisePackage.Exercise.Name}"
+                                                TextColor="{DynamicResource Primary}"
+                                                Style="{StaticResource ExerciseHeaderSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="{Binding OperatingSetExercisePackage.Set.Note}"
+                                                TextColor="{DynamicResource MediumDarkGray}"
+                                                Style="{StaticResource ExerciseSubHeaderSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <FlexLayout 
+                                    Wrap="Wrap"
+                                    JustifyContent="Start">
+                                    <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingWeight}">
+                                        <helpers:If.True>
+                                            <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
+                                                <Label
+                                                    Text="Weight"
+                                                    Style="{StaticResource ExerciseTrackLabelStyle}" />
+                                                <Entry
+                                                    Text="{Binding OperatingSetExercisePackage.Set.Weight}"
+                                                    Style="{StaticResource ExerciseTrackEntryStyle}" />
+                                                <Label
+                                                    Text="{Binding OperatingSetExercisePackage.Set.WeightUnit}"
+                                                    Style="{StaticResource ExerciseTrackLabelUnitStyle}" />
+                                            </Grid>
+                                        </helpers:If.True>
+                                    </helpers:If>
+                                    <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingReps}">
+                                        <helpers:If.True>
+                                            <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
+                                                <Label
+                                                    Text="Reps"
+                                                    Style="{StaticResource ExerciseTrackLabelStyle}" />
+                                                <Entry
+                                                    Text="{Binding OperatingSetExercisePackage.Set.Reps}"
+                                                    Style="{StaticResource ExerciseTrackEntryStyle}" />
+                                            </Grid>
+                                        </helpers:If.True>
+                                    </helpers:If>
+                                    <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingRir}">
+                                        <helpers:If.True>
+                                            <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
+                                                <Label
+                                                    Text="RIR"
+                                                    Style="{StaticResource ExerciseTrackLabelStyle}" />
+                                                <Entry
+                                                    Text="{Binding OperatingSetExercisePackage.Set.Rir}"
+                                                    Style="{StaticResource ExerciseTrackEntryStyle}" />
+                                            </Grid>
+                                        </helpers:If.True>
+                                    </helpers:If>
+                                    <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingRpe}">
+                                        <helpers:If.True>
+                                            <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
+                                                <Label
+                                                    Text="RPE"
+                                                    Style="{StaticResource ExerciseTrackLabelStyle}" />
+                                                <Entry
+                                                    Text="{Binding OperatingSetExercisePackage.Set.Rpe}"
+                                                    Style="{StaticResource ExerciseTrackEntryStyle}" />
+                                            </Grid>
+                                        </helpers:If.True>
+                                    </helpers:If>
+                                    <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingDistance}">
+                                        <helpers:If.True>
+                                            <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
+                                                <Label
+                                                    Text="Distance"
+                                                    Style="{StaticResource ExerciseTrackLabelStyle}" />
+                                                <Entry
+                                                    Text="{Binding OperatingSetExercisePackage.Set.Distance}"
+                                                    Style="{StaticResource ExerciseTrackEntryStyle}" />
+                                                <Label
+                                                    Text="{Binding OperatingSetExercisePackage.Set.DistanceUnit}"
+                                                    Style="{StaticResource ExerciseTrackLabelUnitStyle}" />
+                                            </Grid>
+                                        </helpers:If.True>
+                                    </helpers:If>
+                                    <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingTime}">
+                                        <helpers:If.True>
+                                            <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
+                                                <Label
+                                                    Text="Time"
+                                                    Style="{StaticResource ExerciseTrackLabelStyle}" />
+                                                <Entry
+                                                    Text="{Binding OperatingSetExercisePackage.Set.TimeInSeconds}"
+                                                    Style="{StaticResource ExerciseTrackEntryStyle}" />
+                                            </Grid>
+                                        </helpers:If.True>
+                                    </helpers:If>
+                                    <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingCardioResistance}">
+                                        <helpers:If.True>
+                                            <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
+                                                <Label
+                                                    Text="Cardio Resistance"
+                                                    Style="{StaticResource ExerciseTrackLabelStyle}" />
+                                                <Entry
+                                                    Text="{Binding OperatingSetExercisePackage.Set.CardioResistance}"
+                                                    Style="{StaticResource ExerciseTrackEntryStyle}" />
+                                            </Grid>
+                                        </helpers:If.True>
+                                    </helpers:If>
+                                    <helpers:If Condition="{Binding OperatingSetExercisePackage.Set.IsTrackingPercentCompleted}">
+                                        <helpers:If.True>
+                                            <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
+                                                <Label
+                                                    Text="Percent Completed"
+                                                    Style="{StaticResource ExerciseTrackLabelStyle}" />
+                                                <Entry
+                                                    Text="{Binding OperatingSetExercisePackage.Set.PercentCompleted}"
+                                                    Style="{StaticResource ExerciseTrackEntryStyle}" />
+                                            </Grid>
+                                        </helpers:If.True>
+                                    </helpers:If>
+                                </FlexLayout>
+                            </VerticalStackLayout>
+                        </helpers:If.False>
+                    </helpers:If>
+                </Border>
             </VerticalStackLayout>
         </ScrollView>
     </Grid>

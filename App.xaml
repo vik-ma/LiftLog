@@ -428,8 +428,8 @@
             </Style>
             <Style x:Key="ExerciseTrackPropertyGridStyle" TargetType="Grid">
                 <Setter Property="ColumnDefinitions" Value="Auto, Auto, Auto" />
-                <Setter Property="ColumnSpacing" Value="10" />
-                <Setter Property="Padding" Value="0, 0, 10, 0" />
+                <Setter Property="ColumnSpacing" Value="6" />
+                <Setter Property="Padding" Value="0, 0, 12, 0" />
             </Style>
             <Style x:Key="ExerciseTrackLabelStyle" TargetType="Label">
                 <Setter Property="Grid.Column" Value="0" />
@@ -440,7 +440,7 @@
             </Style>
             <Style x:Key="ExerciseTrackEntryStyle" TargetType="Entry">
                 <Setter Property="Grid.Column" Value="1" />
-                <Setter Property="TextColor" Value="{DynamicResource MediumGreen}" />
+                <Setter Property="TextColor" Value="{DynamicResource Primary}" />
                 <Setter Property="FontSize" Value="24" />
                 <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="WidthRequest" Value="70" />
@@ -449,10 +449,17 @@
             </Style>
             <Style x:Key="ExerciseTrackLabelUnitStyle" TargetType="Entry">
                 <Setter Property="Grid.Column" Value="2" />
-                <Setter Property="TextColor" Value="{DynamicResource VeryDarkGray}" />
+                <Setter Property="TextColor" Value="{DynamicResource MediumDarkGray}" />
                 <Setter Property="FontSize" Value="24" />
                 <Setter Property="FontFamily" Value="InterSemiBold" />
                 <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="ExerciseTrackBorderStyle" TargetType="Border">
+                <Setter Property="Margin" Value="5, 0" />
+                <Setter Property="Padding" Value="0, 8, 0, 15" />
+                <Setter Property="Stroke" Value="{DynamicResource Primary}" />
+                <Setter Property="StrokeThickness" Value="2" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 20" />
             </Style>
 
         </ResourceDictionary>
