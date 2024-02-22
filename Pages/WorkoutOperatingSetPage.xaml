@@ -53,7 +53,9 @@
 
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="0, 10">
-                <Border Style="{StaticResource ExerciseTrackBorderStyle}">
+                <Border 
+                    Stroke="{Binding OperatingSetExercisePackage.Exercise.HasInvalidId, Converter={StaticResource InvalidExerciseColorConverter}, ConverterParameter=Border}"
+                    Style="{StaticResource ExerciseTrackBorderStyle}">
                     <helpers:If Condition="{Binding OperatingSetExercisePackage.Exercise.HasInvalidId}">
                         <helpers:If.True>
                             <VerticalStackLayout 

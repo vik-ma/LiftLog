@@ -457,7 +457,6 @@
             <Style x:Key="ExerciseTrackBorderStyle" TargetType="Border">
                 <Setter Property="Margin" Value="5, 0" />
                 <Setter Property="Padding" Value="0, 8, 0, 15" />
-                <Setter Property="Stroke" Value="{DynamicResource Primary}" />
                 <Setter Property="StrokeThickness" Value="2" />
                 <Setter Property="StrokeShape" Value="RoundRectangle 20" />
             </Style>
