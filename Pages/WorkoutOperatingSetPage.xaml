@@ -216,7 +216,7 @@
             </Border>
 
             <ScrollView Grid.Row="1">
-                <Grid Margin="5, 0">
+                <Grid Margin="10, 0">
                     <CollectionView
                         ItemsSource="{Binding SetList}"
                         HorizontalOptions="Center">
@@ -233,6 +233,14 @@
                                     StrokeThickness="2"
                                     StrokeShape="RoundRectangle 7"
                                     Padding="8">
+                                    <Border.Stroke>
+                                        <MultiBinding Converter="{StaticResource CurrentSetBorderColorMultiBindingConverter}">
+                                            <MultiBinding.Bindings>
+                                                <Binding Path="." />
+                                                <Binding Path="OperatingSetExercisePackage" Source="{RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}" />
+                                            </MultiBinding.Bindings>
+                                        </MultiBinding>
+                                    </Border.Stroke>
                                     <HorizontalStackLayout Spacing="7">
                                         <Label VerticalOptions="Center">
                                             <Label.FormattedText>

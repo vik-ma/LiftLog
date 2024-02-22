@@ -356,6 +356,7 @@
             <converters:InvalidExerciseColorConverter x:Key="InvalidExerciseColorConverter" />
             <converters:IsSetCompletedColorConverter x:Key="IsSetCompletedColorConverter" />
             <converters:SetListDragColorMultiBindingConverter x:Key="SetListDragColorMultiBindingConverter" />
+            <converters:CurrentSetBorderColorMultiBindingConverter x:Key="CurrentSetBorderColorMultiBindingConverter" />
 
             <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             <toolkit:IndexToArrayItemConverter x:Key="IndexToArrayItemConverter" />
@@ -455,7 +456,7 @@
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             <Style x:Key="ExerciseTrackBorderStyle" TargetType="Border">
-                <Setter Property="Margin" Value="5, 0" />
+                <Setter Property="Margin" Value="10, 0" />
                 <Setter Property="Padding" Value="0, 8, 0, 15" />
                 <Setter Property="StrokeThickness" Value="2" />
                 <Setter Property="StrokeShape" Value="RoundRectangle 20" />
