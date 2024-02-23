@@ -708,7 +708,15 @@
         {
             if (OperatingSetExercisePackage is null) return;
 
-            if (CurrentSetListIndex == SetList.Count - 1) return;
+            if (CurrentSetListIndex == SetList.Count - 1)
+            {
+                var firstIncompleteSet = SetList.FirstOrDefault(x => x.Set.IsCompleted == false);
+
+                if (firstIncompleteSet is not null)
+                    OperatingSetExercisePackage = firstIncompleteSet;
+
+                return;
+            }
 
             CurrentSetListIndex += 1;
             OperatingSetExercisePackage = SetList[CurrentSetListIndex];
