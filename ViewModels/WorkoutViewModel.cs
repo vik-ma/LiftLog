@@ -52,6 +52,8 @@
 
         public bool IsWorkoutLoaded;
 
+        private int CurrentSetListIndex = 0;
+
         [RelayCommand]
         static async Task GoBack()
         {
@@ -600,6 +602,7 @@
             if (package is null) return;
 
             OperatingSetExercisePackage = package;
+            CurrentSetListIndex = SetList.IndexOf(OperatingSetExercisePackage);
 
             await GoToWorkoutOperatingSetPage();
         }
@@ -670,6 +673,7 @@
             if (setExercisePackage is null) return;
 
             OperatingSetExercisePackage = setExercisePackage;
+            CurrentSetListIndex = SetList.IndexOf(OperatingSetExercisePackage);
         }
 
         [RelayCommand]
@@ -696,6 +700,18 @@
             }
 
             await UpdateSetAsync(operatingSet);
+
+            GoToNextSetInSetList();
+        }
+
+        private void GoToNextSetInSetList()
+        {
+            if (OperatingSetExercisePackage is null) return;
+
+            if (CurrentSetListIndex == SetList.Count - 1) return;
+
+            CurrentSetListIndex += 1;
+            OperatingSetExercisePackage = SetList[CurrentSetListIndex];
         }
     }
 }
