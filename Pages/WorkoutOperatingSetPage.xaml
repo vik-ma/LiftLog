@@ -286,7 +286,7 @@
                                             <helpers:If.True>
                                                 <Label 
                                                     TextColor="{DynamicResource MediumGreen}"
-                                                    Style="{StaticResource ExerciseSetListLabelStyle}">
+                                                    Style="{StaticResource ExerciseSetListCompletedLabelStyle}">
                                                     <Label.Text>
                                                         <MultiBinding Converter="{StaticResource DateTimeToTimestampConverter}">
                                                             <MultiBinding.Bindings>
@@ -301,7 +301,7 @@
                                                 <Label
                                                     Text="Not Completed"
                                                     TextColor="{DynamicResource MediumRed}"
-                                                    Style="{StaticResource ExerciseSetListLabelStyle}" />
+                                                    Style="{StaticResource ExerciseSetListCompletedLabelStyle}" />
                                             </helpers:If.False>
                                         </helpers:If>
                                     </HorizontalStackLayout>

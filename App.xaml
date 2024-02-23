@@ -465,6 +465,10 @@
                 <Setter Property="FontSize" Value="18" />
                 <Setter Property="FontFamily" Value="InterSemiBold" />
             </Style>
+            <Style x:Key="ExerciseSetListCompletedLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontFamily" Value="InterMedium" />
+            </Style>
             <Style x:Key="ExerciseSaveButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="24" />
                 <Setter Property="FontFamily" Value="InterSemiBold" />
