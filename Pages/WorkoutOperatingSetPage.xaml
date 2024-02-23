@@ -242,8 +242,12 @@
             </Border>
 
             <ScrollView Grid.Row="1">
-                <Grid Margin="10, 0">
+                <Grid 
+                    RowDefinitions="Auto, Auto"
+                    RowSpacing="10"
+                    Margin="10, 0">
                     <CollectionView
+                        Grid.Row="0"
                         ItemsSource="{Binding SetList}"
                         HorizontalOptions="Center">
                         <CollectionView.ItemsLayout>
@@ -309,6 +313,46 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
+
+                    <HorizontalStackLayout
+                        Grid.Row="1"
+                        Spacing="10"
+                        HorizontalOptions="Center">
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="Show Timestamp: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding UserSettingsViewModel.UserSettings.ShowCompletedSetTimestamp}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button
+                            Text="Change"
+                            Style="{StaticResource ExtraSmallButtonStyle}"
+                            Command="{Binding ToggleShowCompletedSetTimeStampCommand}" />
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span 
+                                        Text="24 Hour Clock: " 
+                                        FontAttributes="Bold"  
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                    <Span 
+                                        Text="{Binding UserSettingsViewModel.UserSettings.IsUsing24HourClock}"
+                                        Style="{StaticResource SmallSpanStyle}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button
+                            Text="Change"
+                            Style="{StaticResource ExtraSmallButtonStyle}"
+                            Command="{Binding Toggle24HourClockCommand}" />
+                    </HorizontalStackLayout>
                 </Grid>
             </ScrollView>
         </Grid>
