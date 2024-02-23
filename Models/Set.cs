@@ -58,7 +58,7 @@
         public Set Clone() => MemberwiseClone() as Set;
 
         #nullable enable
-        public (bool IsValid, string? ErrorMessage) ValidateTrackingValues()
+        private (bool IsValid, string? ErrorMessage) ValidateTrackingValues()
         {
             int minValue = ConstantsHelper.SetTrackingMinValue;
             int maxValue = ConstantsHelper.SetTrackingMaxValue;
@@ -74,7 +74,7 @@
             return (true, null);
         }
 
-        public (bool IsValid, string? ErrorMessage) ValidateUnits()
+        private (bool IsValid, string? ErrorMessage) ValidateUnits()
         {
             if (!ConstantsHelper.ValidWeightUnits.Contains(WeightUnit)) return (false, "Weight");
             if (!ConstantsHelper.ValidDistanceUnits.Contains(DistanceUnit)) return (false, "Distance");
@@ -82,7 +82,7 @@
             return (true, null);
         }
 
-        public bool ValidateAtLeastOnePropertyTracked()
+        private bool ValidateAtLeastOnePropertyTracked()
         {
             // Returns true if any Set Property is tracked, otherwise false
             if (IsTrackingWeight) return true;
@@ -97,21 +97,21 @@
             return false;
         }
 
-        public bool ValidateTemplateId()
+        private bool ValidateTemplateId()
         {
             if (IsTemplate && WorkoutTemplateId == 0) return false;
 
             return true;
         }
 
-        public bool ValidateRpe()
+        private bool ValidateRpe()
         {
             if (Rpe < 0 || Rpe > 10) return false;
 
             return true;
         }
 
-        public bool ValidateUserWeightUnit(UserWeight userWeight)
+        private bool ValidateUserWeightUnit(UserWeight userWeight)
         {
             if (userWeight is null) return false;
 
@@ -120,7 +120,7 @@
             return true;
         }
 
-        public bool ValidateTimeCompleted()
+        private bool ValidateTimeCompleted()
         {
             if (IsTemplate && IsCompleted) return false;
 
