@@ -4,15 +4,17 @@
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values[0] is string dateString && values[1] is bool is24HourFormat)
+            if (values[0] is string dateString && values[1] is UserPreferences userSettings)
             {
+                if (!userSettings.ShowCompletedSetTimestamp) return "Completed";
+
                 if (parameter is string parameterString && parameterString == "IncludeDate")
                 {
-                    string dateTimeString = DateTimeHelper.FormatDateTimeStringToYmdDateAndTimestampString(dateString, is24HourFormat);
+                    string dateTimeString = DateTimeHelper.FormatDateTimeStringToYmdDateAndTimestampString(dateString, userSettings.IsUsing24HourClock);
                     return $"Completed {dateTimeString}";
                 }
 
-                string timeString = DateTimeHelper.FormatDateTimeStringToTimestamp(dateString, is24HourFormat);
+                string timeString = DateTimeHelper.FormatDateTimeStringToTimestamp(dateString, userSettings.IsUsing24HourClock);
                 return $"Completed {timeString}";
             }
 

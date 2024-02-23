@@ -291,7 +291,7 @@
                                                         <MultiBinding Converter="{StaticResource DateTimeToTimestampConverter}">
                                                             <MultiBinding.Bindings>
                                                                 <Binding Path="Set.TimeCompleted" />
-                                                                <Binding Path="UserSettingsViewModel.UserSettings.IsUsing24HourClock" Source="{RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}" />
+                                                                <Binding Path="UserSettingsViewModel.UserSettings" Source="{RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}" />
                                                             </MultiBinding.Bindings>
                                                         </MultiBinding>
                                                     </Label.Text>
