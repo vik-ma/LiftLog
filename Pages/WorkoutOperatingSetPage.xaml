@@ -228,7 +228,13 @@
                                 <Button 
                                     Text="Save"
                                     Command="{Binding SaveSetCommand}"
-                                    Style="{StaticResource ExerciseSaveButtonStyle}"/>
+                                    Style="{StaticResource ExerciseSaveButtonStyle}">
+                                    <Button.Triggers>
+                                        <DataTrigger TargetType="Button" Binding="{Binding OperatingSetExercisePackage.Set.IsCompleted}" Value="True">
+                                            <Setter Property="Text" Value="Update" />
+                                        </DataTrigger>
+                                    </Button.Triggers>
+                                </Button>
                             </Grid>
                         </Grid>
                     </helpers:If.False>
