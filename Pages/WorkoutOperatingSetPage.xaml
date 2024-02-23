@@ -282,10 +282,28 @@
                                             Text="{Binding Exercise.Name}"
                                             TextColor="{Binding Exercise.HasInvalidId, Converter={StaticResource InvalidExerciseColorConverter}}"
                                             Style="{StaticResource ExerciseSetListLabelStyle}" />
-                                        <Label 
-                                            Text="{Binding Set.IsCompleted}"
-                                            TextColor="{Binding Set.IsCompleted, Converter={StaticResource IsSetCompletedColorConverter}}"
-                                            Style="{StaticResource ExerciseSetListLabelStyle}" />
+                                        <helpers:If Condition="{Binding Set.IsCompleted}">
+                                            <helpers:If.True>
+                                                <Label 
+                                                    TextColor="{DynamicResource MediumGreen}"
+                                                    Style="{StaticResource ExerciseSetListLabelStyle}">
+                                                    <Label.Text>
+                                                        <MultiBinding Converter="{StaticResource DateTimeToTimestampConverter}">
+                                                            <MultiBinding.Bindings>
+                                                                <Binding Path="Set.TimeCompleted" />
+                                                                <Binding Path="UserSettingsViewModel.UserSettings.IsUsing24HourClock" Source="{RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}" />
+                                                            </MultiBinding.Bindings>
+                                                        </MultiBinding>
+                                                    </Label.Text>
+                                                </Label>
+                                            </helpers:If.True>
+                                            <helpers:If.False>
+                                                <Label
+                                                    Text="Not Completed"
+                                                    TextColor="{DynamicResource MediumRed}"
+                                                    Style="{StaticResource ExerciseSetListLabelStyle}" />
+                                            </helpers:If.False>
+                                        </helpers:If>
                                     </HorizontalStackLayout>
                                 </Border>
                             </DataTemplate>
