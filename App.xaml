@@ -465,6 +465,15 @@
                 <Setter Property="FontSize" Value="18" />
                 <Setter Property="FontFamily" Value="InterSemiBold" />
             </Style>
+            <Style x:Key="ExerciseSaveButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontFamily" Value="InterSemiBold" />
+                <Setter Property="Padding" Value="20, 2" />
+                <Setter Property="HeightRequest" Value="46" />
+                <Setter Property="MinimumHeightRequest" Value="46" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource BrightGreen}" />
+            </Style>
 
         </ResourceDictionary>
     </Application.Resources>

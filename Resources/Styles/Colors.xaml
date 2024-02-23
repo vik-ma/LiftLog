@@ -59,6 +59,7 @@
     <Color x:Key="VeryLightGreen">#ecfccb</Color>
     <Color x:Key="VeryLightYellow">#FFFEDD</Color>
     <Color x:Key="DeepPurple">#5916cc</Color>
+    <Color x:Key="BrightGreen">#42e362</Color>
 
     <Color x:Key="Transparent">#00FFFFFF</Color>
 
