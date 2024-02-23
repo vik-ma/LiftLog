@@ -8,10 +8,12 @@
             {
                 if (parameter is string parameterString && parameterString == "IncludeDate")
                 {
-                    return DateTimeHelper.FormatDateTimeStringToYmdDateAndTimestampString(dateString, is24HourFormat);
+                    string dateTimeString = DateTimeHelper.FormatDateTimeStringToYmdDateAndTimestampString(dateString, is24HourFormat);
+                    return $"Completed {dateTimeString}";
                 }
 
-                return DateTimeHelper.FormatDateTimeStringToTimestamp(dateString, is24HourFormat);
+                string timeString = DateTimeHelper.FormatDateTimeStringToTimestamp(dateString, is24HourFormat);
+                return $"Completed {timeString}";
             }
 
             return "Invalid DateTime";
