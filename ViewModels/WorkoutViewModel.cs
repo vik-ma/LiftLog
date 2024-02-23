@@ -713,5 +713,21 @@
             CurrentSetListIndex += 1;
             OperatingSetExercisePackage = SetList[CurrentSetListIndex];
         }
+
+        [RelayCommand]
+        private async Task ToggleIsUsing24HourClock()
+        {
+            await UserSettingsViewModel.ToggleIsUsing24HourClock();
+
+            await GoToWorkoutOperatingSetPage();
+        }
+
+        [RelayCommand]
+        private async Task ToggleShowCompletedSetTimestamp()
+        {
+            await UserSettingsViewModel.ToggleShowCompletedSetTimestamp();
+
+            await GoToWorkoutOperatingSetPage();
+        }
     }
 }

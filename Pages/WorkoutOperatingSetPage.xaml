@@ -334,7 +334,7 @@
                         <Button
                             Text="Change"
                             Style="{StaticResource ExtraSmallButtonStyle}"
-                            Command="{Binding ToggleShowCompletedSetTimeStampCommand}" />
+                            Command="{Binding ToggleShowCompletedSetTimestampCommand}" />
                         <Label VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
@@ -351,7 +351,7 @@
                         <Button
                             Text="Change"
                             Style="{StaticResource ExtraSmallButtonStyle}"
-                            Command="{Binding Toggle24HourClockCommand}" />
+                            Command="{Binding ToggleIsUsing24HourClockCommand}" />
                     </HorizontalStackLayout>
                 </Grid>
             </ScrollView>

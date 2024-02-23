@@ -294,7 +294,7 @@
         }
 
         [RelayCommand]
-        private async Task ToggleIsUsing24HourClock()
+        public async Task ToggleIsUsing24HourClock()
         {
             if (UserSettings is null) return;
 
@@ -304,7 +304,7 @@
         }
 
         [RelayCommand]
-        private async Task ToggleShowCompletedSetTimestamp()
+        public async Task ToggleShowCompletedSetTimestamp()
         {
             if (UserSettings is null) return;
 
