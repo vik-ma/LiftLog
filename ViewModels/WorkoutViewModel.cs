@@ -671,5 +671,31 @@
 
             OperatingSetExercisePackage = setExercisePackage;
         }
+
+        [RelayCommand]
+        private async Task SaveSet()
+        {
+            if (OperatingSetExercisePackage is null || OperatingSetExercisePackage.Set is null) return;
+
+            if (OperatingSetExercisePackage.Exercise.HasInvalidId) return;
+
+            Set operatingSet = OperatingSetExercisePackage.Set;
+
+            if (!operatingSet.IsCompleted)
+            {
+                operatingSet.IsCompleted = true;
+                operatingSet.TimeCompleted = DateTimeHelper.GetCurrentFormattedDateTime();
+            }
+
+            var (isValid, errorMessage) = operatingSet.ValidateSet();
+
+            if (!isValid) 
+            {
+                await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
+                return;
+            }
+
+            await UpdateSetAsync(operatingSet);
+        }
     }
 }
