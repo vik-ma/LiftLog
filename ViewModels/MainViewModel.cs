@@ -64,12 +64,6 @@
         }
 
         [RelayCommand]
-        private async Task GoToSelectWorkout()
-        {
-            await Shell.Current.GoToAsync($"{nameof(SelectWorkoutPage)}");
-        }
-
-        [RelayCommand]
         private async Task GoToUserPreferences()
         {
             await Shell.Current.GoToAsync($"{nameof(UserPreferencesPage)}");

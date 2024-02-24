@@ -15,9 +15,7 @@
             Routing.RegisterRoute(nameof(TimePeriodListPage), typeof(TimePeriodListPage));
             Routing.RegisterRoute(nameof(CustomExerciseListPage), typeof(CustomExerciseListPage));
             Routing.RegisterRoute(nameof(ExerciseListPage), typeof(ExerciseListPage));
-            Routing.RegisterRoute(nameof(StartedWorkoutPage), typeof(StartedWorkoutPage));
             Routing.RegisterRoute(nameof(CreateSetTemplatePage), typeof(CreateSetTemplatePage));
-            Routing.RegisterRoute(nameof(SelectWorkoutPage), typeof(SelectWorkoutPage));
             Routing.RegisterRoute(nameof(UserPreferencesPage), typeof(UserPreferencesPage));
             Routing.RegisterRoute(nameof(UserWeightPage), typeof(UserWeightPage));
             Routing.RegisterRoute(nameof(NewWorkoutPage), typeof(NewWorkoutPage));

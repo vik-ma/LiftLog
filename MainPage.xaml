@@ -171,12 +171,6 @@
                 Command="{Binding GoToExerciseListCommand}"
                 Style="{StaticResource MainPageNavigationButtonStyle}"/>
             <Button
-                Text="Select Workout"
-                Grid.Row="2"
-                Grid.Column="1"
-                Command="{Binding GoToSelectWorkoutCommand}"
-                Style="{StaticResource MainPageNavigationButtonStyle}"/>
-            <Button
                 Text="User Prefences"
                 Grid.Row="3"
                 Grid.Column="1"
