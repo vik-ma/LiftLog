@@ -25,6 +25,18 @@ public partial class WorkoutOperatingSetPage : ContentPage
         SetHoverBackgroundColor = ColorResource["VeryLightGray"] as Color;
     }
 
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        Dispatcher.StartTimer(TimeSpan.FromMilliseconds(600), () =>
+        {
+            // Scroll to OperatingSetExercisePackage 600 ms after page load
+            SetListCollectionView.ScrollTo(_viewModel.OperatingSetExercisePackage);
+            return false;
+        });
+    }
+
     private void PointerGestureRecognizer_PointerEntered(object sender, PointerEventArgs e)
     {
         if (sender is Frame frame)

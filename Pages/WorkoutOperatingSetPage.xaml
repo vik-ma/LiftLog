@@ -241,14 +241,16 @@
                 </helpers:If>
             </Border>
 
-            <ScrollView Grid.Row="1">
-                <Grid 
+                <!--<Grid 
                     RowDefinitions="Auto, Auto"
                     RowSpacing="10"
-                    Margin="10, 0">
+                    Margin="10, 0"
+                    >-->
                     <CollectionView
-                        Grid.Row="0"
+                        x:Name="SetListCollectionView"
+                        Grid.Row="1"
                         ItemsSource="{Binding SetList}"
+                        SelectedItem="{Binding OperatingSetExercisePackage}"
                         HorizontalOptions="Center">
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout
@@ -314,7 +316,7 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
 
-                    <HorizontalStackLayout
+                    <!--<HorizontalStackLayout
                         Grid.Row="1"
                         Spacing="10"
                         HorizontalOptions="Center">
@@ -353,8 +355,8 @@
                             Style="{StaticResource ExtraSmallButtonStyle}"
                             Command="{Binding ToggleIsUsing24HourClockCommand}" />
                     </HorizontalStackLayout>
-                </Grid>
-            </ScrollView>
+                </Grid>-->
+
         </Grid>
     </Grid>
 </ContentPage>
