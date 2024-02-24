@@ -7,190 +7,193 @@
              xmlns:helpers="clr-namespace:LocalLiftLog.Helpers"
              x:DataType="viewmodel:WorkoutDetailsViewModel"
              Title="Workout Details Page">
-    <Grid
-        RowDefinitions="*, Auto">
-        <VerticalStackLayout
-            Grid.Row="0"
-            Spacing="10">
-            <HorizontalStackLayout 
-                HorizontalOptions="Center"
-                Spacing="5">
-                <Label 
-                    Text="Workout Template Id:"
-                    FontSize="30"
-                    FontAttributes="Bold" />
-                <Label 
-                    Text="{Binding WorkoutTemplate.Id}"
-                    FontSize="30"
-                    FontAttributes="Bold" />
-            </HorizontalStackLayout>
 
-            <Grid
-                HorizontalOptions="Center"
-                ColumnDefinitions="*, *"
-                RowDefinitions="*, *"
-                RowSpacing="5"
-                ColumnSpacing="10">
-                <Label 
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Text="Workout Name:"
-                    VerticalOptions="Center"
-                    FontSize="20"
-                    FontAttributes="Bold" />
-                <Entry 
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Text="{Binding WorkoutTemplate.Name}"
-                    Style="{StaticResource MediumEntryFieldStyle}"
-                    WidthRequest="150" />
-                <Label 
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Text="Note:"
-                    VerticalOptions="Center"
-                    FontSize="20"
-                    FontAttributes="Bold" />
-                <Entry 
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Text="{Binding WorkoutTemplate.Note}"
-                    Style="{StaticResource MediumEntryFieldStyle}"
-                    WidthRequest="150" />
-            </Grid>
+    <ScrollView>
+        <Grid
+            RowDefinitions="*, Auto">
+            <VerticalStackLayout
+                Grid.Row="0"
+                Spacing="10">
+                <HorizontalStackLayout 
+                    HorizontalOptions="Center"
+                    Spacing="5">
+                    <Label 
+                        Text="Workout Template Id:"
+                        FontSize="30"
+                        FontAttributes="Bold" />
+                    <Label 
+                        Text="{Binding WorkoutTemplate.Id}"
+                        FontSize="30"
+                        FontAttributes="Bold" />
+                </HorizontalStackLayout>
 
-            <VerticalStackLayout HorizontalOptions="Center">
-                <Label Text="{Binding WorkoutTemplate.SetListOrder}" />
-                <helpers:If Condition="{Binding WorkoutTemplateContainsInvalidExercise}">
+                <Grid
+                    HorizontalOptions="Center"
+                    ColumnDefinitions="*, *"
+                    RowDefinitions="*, *"
+                    RowSpacing="5"
+                    ColumnSpacing="10">
+                    <Label 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="Workout Name:"
+                        VerticalOptions="Center"
+                        FontSize="20"
+                        FontAttributes="Bold" />
+                    <Entry 
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="{Binding WorkoutTemplate.Name}"
+                        Style="{StaticResource MediumEntryFieldStyle}"
+                        WidthRequest="150" />
+                    <Label 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="Note:"
+                        VerticalOptions="Center"
+                        FontSize="20"
+                        FontAttributes="Bold" />
+                    <Entry 
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding WorkoutTemplate.Note}"
+                        Style="{StaticResource MediumEntryFieldStyle}"
+                        WidthRequest="150" />
+                </Grid>
+
+                <VerticalStackLayout HorizontalOptions="Center">
+                    <Label Text="{Binding WorkoutTemplate.SetListOrder}" />
+                    <helpers:If Condition="{Binding WorkoutTemplateContainsInvalidExercise}">
+                        <helpers:If.True>
+                            <Label 
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource MediumRed}">
+                                <Label.Text>
+    Workout Template contains a Set with an Exercise that no longer exists!
+    This Set will not show up in new Workouts unless it is changed to a valid Exercise.
+                                </Label.Text>
+                            </Label>
+                        </helpers:If.True>
+                    </helpers:If>
+
+                </VerticalStackLayout>
+
+                <helpers:If Condition="{Binding SetList.Count}">
                     <helpers:If.True>
-                        <Label 
-                            FontAttributes="Bold"
-                            TextColor="{StaticResource MediumRed}">
-                            <Label.Text>
-Workout Template contains a Set with an Exercise that no longer exists!
-This Set will not show up in new Workouts unless it is changed to a valid Exercise.
-                            </Label.Text>
-                        </Label>
+                        <Button
+                            HorizontalOptions="Center"
+                            Text="Remove All Sets"
+                            Style="{StaticResource MediumRedButtonStyle}"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=DeleteAllSetsCommand}"/>
                     </helpers:If.True>
                 </helpers:If>
 
-            </VerticalStackLayout>
+                <CollectionView
+                    ItemsSource="{Binding SetList}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout 
+                            ItemSpacing="3"
+                            Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:SetExercisePackage">
+                            <HorizontalStackLayout 
+                                HorizontalOptions="Center"
+                                Spacing="5">
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Set Id: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Set.Id}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                Text="Exercise: " 
+                                                FontAttributes="Bold"  
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                            <Span 
+                                                Text="{Binding Exercise.Name}"
+                                                TextColor="{Binding Exercise.HasInvalidId, Converter={StaticResource InvalidExerciseColorConverter}}"
+                                                Style="{StaticResource SmallSpanStyle}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Button 
+                                    Style="{StaticResource ArrowUpButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=MoveSetUpCommand}" 
+                                    CommandParameter="{Binding Set}" />
+                                <Button 
+                                    Style="{StaticResource ArrowDownButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=MoveSetDownCommand}" 
+                                    CommandParameter="{Binding Set}" />
+                                <Button 
+                                    Text="Edit"
+                                    Style="{StaticResource SmallButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=EditSetCommand}" 
+                                    CommandParameter="{Binding Set}" />
+                                <Button 
+                                    Text="Remove"
+                                    Style="{StaticResource SmallRedButtonStyle}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=DeleteSetCommand}" 
+                                    CommandParameter="{Binding Set}" />
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <ContentView>
+                            <VerticalStackLayout
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Label 
+                                    Text="Set List Is Empty!"  
+                                    Style="{StaticResource EmptyCollectionViewLabelStyle}" />
+                            </VerticalStackLayout>
+                        </ContentView>
+                    </CollectionView.EmptyView>
+                </CollectionView>
 
-            <helpers:If Condition="{Binding SetList.Count}">
-                <helpers:If.True>
-                    <Button
+                <VerticalStackLayout
+                    Margin="0, 20"
+                    Spacing="10">
+                    <Button 
+                        Text="Add Set"
                         HorizontalOptions="Center"
-                        Text="Remove All Sets"
-                        Style="{StaticResource MediumRedButtonStyle}"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=DeleteAllSetsCommand}"/>
-                </helpers:If.True>
-            </helpers:If>
+                        Style="{StaticResource MediumGreenButtonStyle}"
+                        Command="{Binding CreateNewSetTemplateCommand}"/>
+                    <helpers:If Condition="{Binding SetList.Count}">
+                        <helpers:If.False>
+                            <Button 
+                                Text="Copy Existing Workout"
+                                HorizontalOptions="Center"
+                                Style="{StaticResource MediumButtonStyle}"
+                                Command="{Binding ShowWorkoutTemplateListPopupCommand}" />
+                        </helpers:If.False>
+                    </helpers:If>
+                </VerticalStackLayout>
 
-            <CollectionView
-                ItemsSource="{Binding SetList}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="3"
-                        Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:SetExercisePackage">
-                        <HorizontalStackLayout 
-                            HorizontalOptions="Center"
-                            Spacing="5">
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Set Id: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding Set.Id}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label VerticalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span 
-                                            Text="Exercise: " 
-                                            FontAttributes="Bold"  
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                        <Span 
-                                            Text="{Binding Exercise.Name}"
-                                            TextColor="{Binding Exercise.HasInvalidId, Converter={StaticResource InvalidExerciseColorConverter}}"
-                                            Style="{StaticResource SmallSpanStyle}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Button 
-                                Style="{StaticResource ArrowUpButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=MoveSetUpCommand}" 
-                                CommandParameter="{Binding Set}" />
-                            <Button 
-                                Style="{StaticResource ArrowDownButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=MoveSetDownCommand}" 
-                                CommandParameter="{Binding Set}" />
-                            <Button 
-                                Text="Edit"
-                                Style="{StaticResource SmallButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=EditSetCommand}" 
-                                CommandParameter="{Binding Set}" />
-                            <Button 
-                                Text="Remove"
-                                Style="{StaticResource SmallRedButtonStyle}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=DeleteSetCommand}" 
-                                CommandParameter="{Binding Set}" />
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <ContentView>
-                        <VerticalStackLayout
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center">
-                            <Label 
-                                Text="Set List Is Empty!"  
-                                Style="{StaticResource EmptyCollectionViewLabelStyle}" />
-                        </VerticalStackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
-
-            <VerticalStackLayout
-                Margin="0, 20"
-                Spacing="10">
-                <Button 
-                    Text="Add Set"
-                    HorizontalOptions="Center"
-                    Style="{StaticResource MediumGreenButtonStyle}"
-                    Command="{Binding CreateNewSetTemplateCommand}"/>
-                <helpers:If Condition="{Binding SetList.Count}">
-                    <helpers:If.False>
-                        <Button 
-                            Text="Copy Existing Workout"
-                            HorizontalOptions="Center"
-                            Style="{StaticResource MediumButtonStyle}"
-                            Command="{Binding ShowWorkoutTemplateListPopupCommand}" />
-                    </helpers:If.False>
-                </helpers:If>
+                <VerticalStackLayout
+                    Margin="0, 20"
+                    Spacing="40">
+                    <Button 
+                        Text="Save Workout Template"
+                        HorizontalOptions="Center"
+                        Style="{StaticResource MediumGreenButtonStyle}"
+                        Command="{Binding SaveWorkoutTemplateCommand}" />
+                    <Button 
+                        Text="Go Back"
+                        Style="{StaticResource Width300ButtonStyle}"
+                        Command="{Binding GoBackCommand}" />
+                </VerticalStackLayout>
             </VerticalStackLayout>
-
-            <VerticalStackLayout
-                Margin="0, 20"
-                Spacing="40">
-                <Button 
-                    Text="Save Workout Template"
-                    HorizontalOptions="Center"
-                    Style="{StaticResource MediumGreenButtonStyle}"
-                    Command="{Binding SaveWorkoutTemplateCommand}" />
-                <Button 
-                    Text="Go Back"
-                    Style="{StaticResource Width300ButtonStyle}"
-                    Command="{Binding GoBackCommand}" />
-            </VerticalStackLayout>
-        </VerticalStackLayout>
-    </Grid>
+        </Grid>
+    </ScrollView>
 </ContentPage>
