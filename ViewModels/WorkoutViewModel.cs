@@ -737,5 +737,14 @@
 
             await GoToWorkoutOperatingSetPage(false);
         }
+
+        [RelayCommand]
+        private void ClearTrackingValues()
+        {
+            if (OperatingSetExercisePackage is null || OperatingSetExercisePackage.Set is null) 
+                return;
+
+            OperatingSetExercisePackage.Set.ClearTrackingValues();
+        }
     }
 }
