@@ -277,6 +277,11 @@
                                     </MultiBinding.Bindings>
                                 </MultiBinding>
                             </Border.Stroke>
+                            <Border.Triggers>
+                                <DataTrigger TargetType="Border" Binding="{Binding Set.IsWarmupSet}" Value="True">
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource VeryLightOrange}" />
+                                </DataTrigger>
+                            </Border.Triggers>
                             <Border.GestureRecognizers>
                                 <PointerGestureRecognizer
                                     PointerEntered="PointerGestureRecognizer_PointerEntered"
@@ -288,6 +293,17 @@
                             <HorizontalStackLayout 
                                 HorizontalOptions="Center"
                                 Spacing="7">
+                                <helpers:If Condition="{Binding Set.IsWarmupSet}">
+                                    <helpers:If.True>
+                                        <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
+                                            <Label
+                                                Text="Warmup"
+                                                FontAttributes="Italic"
+                                                TextColor="{DynamicResource MediumBrown}"
+                                                Style="{StaticResource ExerciseSetListCompletedLabelStyle}" />
+                                        </Grid>
+                                    </helpers:If.True>
+                                </helpers:If>
                                 <Label 
                                     Text="{Binding Exercise.Name}"
                                     TextColor="{Binding Exercise.HasInvalidId, Converter={StaticResource InvalidExerciseColorConverter}}"
