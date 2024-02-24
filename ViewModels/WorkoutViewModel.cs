@@ -1,4 +1,8 @@
-﻿namespace LocalLiftLog.ViewModels
+﻿using CommunityToolkit.Maui.Alerts;
+using static System.Net.Mime.MediaTypeNames;
+using System.Threading;
+
+namespace LocalLiftLog.ViewModels
 {
     [QueryProperty(nameof(Workout), nameof(Workout))]
     public partial class WorkoutViewModel : ObservableObject
@@ -702,6 +706,13 @@
             await UpdateSetAsync(operatingSet);
 
             GoToNextSetInSetList();
+
+            if (DeviceInfo.Current.Platform != DevicePlatform.WinUI)
+            {
+                var toast = Toast.Make("Set Saved");
+
+                await toast.Show();
+            }
         }
 
         private void GoToNextSetInSetList()
