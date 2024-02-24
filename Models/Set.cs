@@ -197,5 +197,17 @@
             if (!IsTrackingCardioResistance && CardioResistance != 0) CardioResistance = 0;
             if (!IsTrackingPercentCompleted && PercentCompleted != 0) PercentCompleted = 0;
         }
+
+        public void ClearTrackingValues()
+        {
+            Weight = 0;
+            Reps = 0;
+            Rir = 0;
+            Rpe = 0;
+            TimeInSeconds = 0;
+            Distance = 0;
+            CardioResistance = 0;
+            PercentCompleted = 0;
+        }
     }
 }
