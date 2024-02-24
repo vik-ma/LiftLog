@@ -8,7 +8,8 @@
              x:DataType="viewmodel:WorkoutViewModel"
              Title="Workout Operating Set">
 
-    <Grid RowDefinitions="Auto, *">
+    <Grid 
+        RowDefinitions="Auto, *">
         <Grid
             Grid.Row="0"
             VerticalOptions="Start"
@@ -53,11 +54,12 @@
 
         <Grid 
             Grid.Row="1"
-            RowDefinitions="Auto, *"
+            RowDefinitions="Auto, *, Auto"
             RowSpacing="20"
-            Padding="0, 10">
+            Padding="10">
             <Border 
                 Grid.Row="0"
+                Margin="0"
                 Stroke="{Binding OperatingSetExercisePackage.Exercise.HasInvalidId, Converter={StaticResource InvalidExerciseColorConverter}, ConverterParameter=Border}"
                 Style="{StaticResource ExerciseTrackBorderStyle}">
                 <helpers:If Condition="{Binding OperatingSetExercisePackage.Exercise.HasInvalidId}">
@@ -241,122 +243,114 @@
                 </helpers:If>
             </Border>
 
-                <!--<Grid 
-                    RowDefinitions="Auto, Auto"
-                    RowSpacing="10"
-                    Margin="10, 0"
-                    >-->
-                    <CollectionView
-                        x:Name="SetListCollectionView"
-                        Grid.Row="1"
-                        ItemsSource="{Binding SetList}"
-                        SelectedItem="{Binding OperatingSetExercisePackage}"
-                        HorizontalOptions="Center">
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout
-                                ItemSpacing="3"
-                                Orientation="Vertical" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="models:SetExercisePackage">
-                                <Border 
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    StrokeThickness="2"
-                                    StrokeShape="RoundRectangle 7"
-                                    Padding="8">
-                                    <Border.Stroke>
-                                        <MultiBinding Converter="{StaticResource CurrentSetBorderColorMultiBindingConverter}">
-                                            <MultiBinding.Bindings>
-                                                <Binding Path="." />
-                                                <Binding Path="OperatingSetExercisePackage" Source="{RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}" />
-                                            </MultiBinding.Bindings>
-                                        </MultiBinding>
-                                    </Border.Stroke>
-                                    <Border.GestureRecognizers>
-                                        <PointerGestureRecognizer
-                                            PointerEntered="PointerGestureRecognizer_PointerEntered"
-                                            PointerExited="PointerGestureRecognizer_PointerExited" />
-                                        <TapGestureRecognizer
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetOperatingSetExercisePackageCommand}"
-                                            CommandParameter="{Binding .}" />
-                                    </Border.GestureRecognizers>
-                                    <HorizontalStackLayout 
-                                        HorizontalOptions="Center"
-                                        Spacing="7">
+            <CollectionView
+                x:Name="SetListCollectionView"
+                Grid.Row="1"
+                ItemsSource="{Binding SetList}"
+                HorizontalOptions="Center">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        ItemSpacing="2"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:SetExercisePackage">
+                        <Border 
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            StrokeThickness="2"
+                            StrokeShape="RoundRectangle 7"
+                            Padding="8">
+                            <Border.Stroke>
+                                <MultiBinding Converter="{StaticResource CurrentSetBorderColorMultiBindingConverter}">
+                                    <MultiBinding.Bindings>
+                                        <Binding Path="." />
+                                        <Binding Path="OperatingSetExercisePackage" Source="{RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}" />
+                                    </MultiBinding.Bindings>
+                                </MultiBinding>
+                            </Border.Stroke>
+                            <Border.GestureRecognizers>
+                                <PointerGestureRecognizer
+                                    PointerEntered="PointerGestureRecognizer_PointerEntered"
+                                    PointerExited="PointerGestureRecognizer_PointerExited" />
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetOperatingSetExercisePackageCommand}"
+                                    CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
+                            <HorizontalStackLayout 
+                                HorizontalOptions="Center"
+                                Spacing="7">
+                                <Label 
+                                    Text="{Binding Exercise.Name}"
+                                    TextColor="{Binding Exercise.HasInvalidId, Converter={StaticResource InvalidExerciseColorConverter}}"
+                                    Style="{StaticResource ExerciseSetListLabelStyle}" />
+                                <helpers:If Condition="{Binding Set.IsCompleted}">
+                                    <helpers:If.True>
                                         <Label 
-                                            Text="{Binding Exercise.Name}"
-                                            TextColor="{Binding Exercise.HasInvalidId, Converter={StaticResource InvalidExerciseColorConverter}}"
-                                            Style="{StaticResource ExerciseSetListLabelStyle}" />
-                                        <helpers:If Condition="{Binding Set.IsCompleted}">
-                                            <helpers:If.True>
-                                                <Label 
-                                                    TextColor="{DynamicResource MediumGreen}"
-                                                    Style="{StaticResource ExerciseSetListCompletedLabelStyle}">
-                                                    <Label.Text>
-                                                        <MultiBinding Converter="{StaticResource DateTimeToTimestampConverter}">
-                                                            <MultiBinding.Bindings>
-                                                                <Binding Path="Set.TimeCompleted" />
-                                                                <Binding Path="UserSettingsViewModel.UserSettings" Source="{RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}" />
-                                                            </MultiBinding.Bindings>
-                                                        </MultiBinding>
-                                                    </Label.Text>
-                                                </Label>
-                                            </helpers:If.True>
-                                            <helpers:If.False>
-                                                <Label
-                                                    Text="Not Completed"
-                                                    TextColor="{DynamicResource MediumRed}"
-                                                    Style="{StaticResource ExerciseSetListCompletedLabelStyle}" />
-                                            </helpers:If.False>
-                                        </helpers:If>
-                                    </HorizontalStackLayout>
-                                </Border>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                                            TextColor="{DynamicResource MediumGreen}"
+                                            Style="{StaticResource ExerciseSetListCompletedLabelStyle}">
+                                            <Label.Text>
+                                                <MultiBinding Converter="{StaticResource DateTimeToTimestampConverter}">
+                                                    <MultiBinding.Bindings>
+                                                        <Binding Path="Set.TimeCompleted" />
+                                                        <Binding Path="UserSettingsViewModel.UserSettings" Source="{RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}" />
+                                                    </MultiBinding.Bindings>
+                                                </MultiBinding>
+                                            </Label.Text>
+                                        </Label>
+                                    </helpers:If.True>
+                                    <helpers:If.False>
+                                        <Label
+                                            Text="Not Completed"
+                                            TextColor="{DynamicResource MediumRed}"
+                                            Style="{StaticResource ExerciseSetListCompletedLabelStyle}" />
+                                    </helpers:If.False>
+                                </helpers:If>
+                            </HorizontalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-                    <!--<HorizontalStackLayout
-                        Grid.Row="1"
-                        Spacing="10"
-                        HorizontalOptions="Center">
-                        <Label VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span 
-                                        Text="Show Timestamp: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                    <Span 
-                                        Text="{Binding UserSettingsViewModel.UserSettings.ShowCompletedSetTimestamp}"
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Button
-                            Text="Change"
-                            Style="{StaticResource ExtraSmallButtonStyle}"
-                            Command="{Binding ToggleShowCompletedSetTimestampCommand}" />
-                        <Label VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span 
-                                        Text="24 Hour Clock: " 
-                                        FontAttributes="Bold"  
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                    <Span 
-                                        Text="{Binding UserSettingsViewModel.UserSettings.IsUsing24HourClock}"
-                                        Style="{StaticResource SmallSpanStyle}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Button
-                            Text="Change"
-                            Style="{StaticResource ExtraSmallButtonStyle}"
-                            Command="{Binding ToggleIsUsing24HourClockCommand}" />
-                    </HorizontalStackLayout>
-                </Grid>-->
-
+            <HorizontalStackLayout
+                Grid.Row="2"
+                Spacing="10"
+                HorizontalOptions="Center">
+                <Label VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span 
+                                Text="Show Timestamp: " 
+                                FontAttributes="Bold"  
+                                Style="{StaticResource SmallSpanStyle}" />
+                            <Span 
+                                Text="{Binding UserSettingsViewModel.UserSettings.ShowCompletedSetTimestamp}"
+                                Style="{StaticResource SmallSpanStyle}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button
+                    Text="Change"
+                    Style="{StaticResource ExtraSmallButtonStyle}"
+                    Command="{Binding ToggleShowCompletedSetTimestampCommand}" />
+                <Label VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span 
+                                Text="24 Hour Clock: " 
+                                FontAttributes="Bold"  
+                                Style="{StaticResource SmallSpanStyle}" />
+                            <Span 
+                                Text="{Binding UserSettingsViewModel.UserSettings.IsUsing24HourClock}"
+                                Style="{StaticResource SmallSpanStyle}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button
+                    Text="Change"
+                    Style="{StaticResource ExtraSmallButtonStyle}"
+                    Command="{Binding ToggleIsUsing24HourClockCommand}" />
+            </HorizontalStackLayout>
         </Grid>
     </Grid>
 </ContentPage>
