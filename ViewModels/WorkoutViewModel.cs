@@ -625,13 +625,13 @@
         }
 
         [RelayCommand]
-        private async Task GoToWorkoutOperatingSetPage()
+        private async Task GoToWorkoutOperatingSetPage(bool animate = true)
         {
             if (OperatingSetExercisePackage is null) return;
 
             var currentPage = Shell.Current.CurrentPage;
 
-            await Shell.Current.GoToAsync(nameof(WorkoutOperatingSetPage));
+            await Shell.Current.GoToAsync(nameof(WorkoutOperatingSetPage), animate);
 
             Shell.Current.Navigation.RemovePage(currentPage);
         }
@@ -727,7 +727,7 @@
         {
             await UserSettingsViewModel.ToggleIsUsing24HourClock();
 
-            await GoToWorkoutOperatingSetPage();
+            await GoToWorkoutOperatingSetPage(false);
         }
 
         [RelayCommand]
@@ -735,7 +735,7 @@
         {
             await UserSettingsViewModel.ToggleShowCompletedSetTimestamp();
 
-            await GoToWorkoutOperatingSetPage();
+            await GoToWorkoutOperatingSetPage(false);
         }
     }
 }
