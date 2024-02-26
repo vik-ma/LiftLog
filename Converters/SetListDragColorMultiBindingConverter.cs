@@ -9,7 +9,13 @@
             Color isItemDraggedColor = ColorResource["Gray100"] as Color;
             Color isDraggedOverColor = ColorResource["VeryLightYellow"] as Color;
             Color isItemHoveredColor = ColorResource["VeryLightGray"] as Color;
+            Color isWarmupSetColor = ColorResource["VeryLightOrange"] as Color;
             Color defaultColor = ColorResource["White"] as Color;
+
+            if (values[3] is bool isWarmupSet && isWarmupSet)
+            {
+                return isWarmupSetColor;
+            }
 
             if (values[1] is bool isItemDragged && isItemDragged)
             {

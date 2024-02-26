@@ -209,6 +209,7 @@
                                                     <Binding Path="IsBeingDraggedOver" />
                                                     <Binding Path="IsBeingDragged" />
                                                     <Binding Path="IsBeingHovered" />
+                                                    <Binding Path="Set.IsWarmupSet" />
                                                 </MultiBinding.Bindings>
                                             </MultiBinding>
                                         </Frame.BackgroundColor>
