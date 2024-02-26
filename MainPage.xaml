@@ -147,12 +147,6 @@
                 Command="{Binding GoToSetListCommand}"
                 Style="{StaticResource MainPageNavigationButtonStyle}"/>
             <Button
-                Text="Completed Workout List"
-                Grid.Row="5"
-                Grid.Column="0"
-                Command="{Binding GoToCompletedWorkoutCommand}"
-                Style="{StaticResource MainPageNavigationButtonStyle}"/>
-            <Button
                 Text="Time Period List"
                 Grid.Row="6"
                 Grid.Column="0"

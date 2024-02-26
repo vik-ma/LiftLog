@@ -40,12 +40,6 @@
         }
 
         [RelayCommand]
-        private async Task GoToCompletedWorkout()
-        {
-            await Shell.Current.GoToAsync($"{nameof(CompletedWorkoutListPage)}");
-        }
-
-        [RelayCommand]
         private async Task GoToTimePeriod()
         {
             await Shell.Current.GoToAsync($"{nameof(TimePeriodListPage)}");
