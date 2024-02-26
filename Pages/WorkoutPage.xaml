@@ -240,6 +240,21 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
+                                            <helpers:If Condition="{Binding Set.IsWarmupSet}">
+                                                <helpers:If.True>
+                                                    <Label VerticalOptions="Center">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span 
+                                                                    Text="Warmup" 
+                                                                    FontAttributes="Italic"  
+                                                                    TextColor="{DynamicResource MediumBrown}"
+                                                                    Style="{StaticResource SmallSpanStyle}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                </helpers:If.True>
+                                            </helpers:If>
                                             <Label VerticalOptions="Center">
                                                 <Label.FormattedText>
                                                     <FormattedString>
