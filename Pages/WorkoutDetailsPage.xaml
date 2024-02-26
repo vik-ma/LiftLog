@@ -128,14 +128,6 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <Button 
-                                    Style="{StaticResource ArrowUpButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=MoveSetUpCommand}" 
-                                    CommandParameter="{Binding Set}" />
-                                <Button 
-                                    Style="{StaticResource ArrowDownButtonStyle}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=MoveSetDownCommand}" 
-                                    CommandParameter="{Binding Set}" />
-                                <Button 
                                     Text="Edit"
                                     Style="{StaticResource SmallButtonStyle}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutDetailsViewModel}}, Path=EditSetCommand}" 
