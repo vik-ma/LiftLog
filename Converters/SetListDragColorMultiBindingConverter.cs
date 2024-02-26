@@ -10,10 +10,14 @@
             Color isDraggedOverColor = ColorResource["VeryLightYellow"] as Color;
             Color isItemHoveredColor = ColorResource["VeryLightGray"] as Color;
             Color isWarmupSetColor = ColorResource["VeryLightOrange"] as Color;
+            Color isWarmupSetHoverColor = ColorResource["MediumLightOrange"] as Color;
             Color defaultColor = ColorResource["White"] as Color;
 
             if (values[3] is bool isWarmupSet && isWarmupSet)
             {
+                if (values[2] is bool isWarmupSetHoveredOver && isWarmupSetHoveredOver)
+                    return isWarmupSetHoverColor;
+
                 return isWarmupSetColor;
             }
 
