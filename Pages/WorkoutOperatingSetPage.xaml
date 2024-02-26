@@ -290,25 +290,38 @@
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:WorkoutViewModel}}, Path=SetOperatingSetExercisePackageCommand}"
                                     CommandParameter="{Binding .}" />
                             </Border.GestureRecognizers>
-                            <HorizontalStackLayout 
-                                HorizontalOptions="Center"
-                                Spacing="7">
-                                <helpers:If Condition="{Binding Set.IsWarmupSet}">
-                                    <helpers:If.True>
-                                        <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
-                                            <Label
-                                                Text="Warmup"
-                                                FontAttributes="Italic"
-                                                TextColor="{DynamicResource MediumBrown}"
-                                                Style="{StaticResource ExerciseSetListCompletedLabelStyle}" />
-                                        </Grid>
-                                    </helpers:If.True>
-                                </helpers:If>
-                                <Label 
-                                    Text="{Binding Exercise.Name}"
-                                    TextColor="{Binding Exercise.HasInvalidId, Converter={StaticResource InvalidExerciseColorConverter}}"
-                                    Style="{StaticResource ExerciseSetListLabelStyle}" />
-                                <helpers:If Condition="{Binding Set.IsCompleted}">
+                            <Grid 
+                                Padding="5, 0"
+                                ColumnDefinitions="*, *, *"
+                                ColumnSpacing="5">
+                                <Grid 
+                                    Grid.Column="0"
+                                    ColumnSpacing="10"
+                                    ColumnDefinitions="Auto, Auto">
+                                    <Label 
+                                        Grid.Column="0"
+                                        Text="{Binding Exercise.Name}"
+                                        TextColor="{Binding Exercise.HasInvalidId, Converter={StaticResource InvalidExerciseColorConverter}}"
+                                        Style="{StaticResource ExerciseSetListLabelStyle}" />
+                                    <helpers:If 
+                                        Grid.Column="1"
+                                        Condition="{Binding Set.IsWarmupSet}">
+                                        <helpers:If.True>
+                                            <Grid Style="{StaticResource ExerciseTrackPropertyGridStyle}">
+                                                <Label
+                                                    Text="Warmup"
+                                                    FontAttributes="Italic"
+                                                    TextColor="{DynamicResource MediumBrown}"
+                                                    Style="{StaticResource ExerciseSetListCompletedLabelStyle}" />
+                                            </Grid>
+                                        </helpers:If.True>
+                                    </helpers:If>
+                                </Grid>
+                                
+                                <helpers:If 
+                                    Grid.Column="2"
+                                    HorizontalOptions="End"
+                                    Condition="{Binding Set.IsCompleted}">
                                     <helpers:If.True>
                                         <Label 
                                             TextColor="{DynamicResource MediumGreen}"
@@ -330,7 +343,7 @@
                                             Style="{StaticResource ExerciseSetListCompletedLabelStyle}" />
                                     </helpers:If.False>
                                 </helpers:If>
-                            </HorizontalStackLayout>
+                            </Grid>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
