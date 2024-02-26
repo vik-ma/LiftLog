@@ -29,7 +29,8 @@
                         PointerEntered="PointerGestureRecognizer_PointerEntered"
                         PointerExited="PointerGestureRecognizer_PointerExited" />
                     <TapGestureRecognizer
-                        Command="{Binding GoToWorkoutOperatingSetPageCommand}" />
+                        Command="{Binding GoToWorkoutOperatingSetPageCommand}"
+                        CommandParameter="{x:Boolean True}"/>
                 </Frame.GestureRecognizers>
                 <Label 
                     Text="Active Set"
