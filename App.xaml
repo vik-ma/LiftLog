@@ -324,7 +324,6 @@
             <converters:AreStringsOrIntsEqualMultiBindingConverter x:Key="AreStringsOrIntsEqualMultiBindingConverter" />
             <converters:DateToWeekdayConverter x:Key="DateToWeekdayConverter" />
             <converters:DateTimeToTimestampConverter x:Key="DateTimeToTimestampConverter" />
-            <converters:WarmupSetColorConverter x:Key="WarmupSetColorConverter" />
             <converters:BoolToShowOrHideTextConverter x:Key="BoolToShowOrHideTextConverter" />
             <converters:InvalidExerciseColorConverter x:Key="InvalidExerciseColorConverter" />
             <converters:IsSetCompletedColorConverter x:Key="IsSetCompletedColorConverter" />
