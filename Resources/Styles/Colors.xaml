@@ -61,6 +61,8 @@
     <Color x:Key="DeepPurple">#5916cc</Color>
     <Color x:Key="BrightGreen">#42e362</Color>
     <Color x:Key="BrightRed">#fa3939</Color>
+    <Color x:Key="MediumLightOrange">#f5deab</Color>
+    <Color x:Key="LightBrown">#dbc09a</Color>
 
     <Color x:Key="Transparent">#00FFFFFF</Color>
 
