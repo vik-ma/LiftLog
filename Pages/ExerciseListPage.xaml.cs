@@ -9,7 +9,7 @@ public partial class ExerciseListPage : ContentPage
         BindingContext = _viewModel;
     }
 
-    protected async override void OnAppearing()
+    protected override void OnAppearing()
     {
         base.OnAppearing();
         _viewModel.LoadExerciseGroupIntList();

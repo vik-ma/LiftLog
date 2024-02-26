@@ -10,7 +10,7 @@ public partial class NewWorkoutPage : ContentPage
         BindingContext = _viewModel;
     }
 
-    protected async override void OnAppearing()
+    protected override void OnAppearing()
     {
         base.OnAppearing();
     }

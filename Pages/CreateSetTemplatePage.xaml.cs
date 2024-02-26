@@ -9,7 +9,7 @@ public partial class CreateSetTemplatePage : ContentPage
         BindingContext = _viewModel;
     }
 
-    protected async override void OnAppearing()
+    protected override void OnAppearing()
     {
         base.OnAppearing();
         _viewModel.LoadExerciseList();
